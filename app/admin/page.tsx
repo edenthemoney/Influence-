@@ -69,10 +69,16 @@ export default function AdminDashboard() {
 
   if (!authenticated) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center p-4">
-        <Card className="max-w-md w-full bg-zinc-900 border-white/10">
+      <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+        {/* Background using Deseray's photo */}
+        <div className="absolute inset-0 bg-black/60 z-0" />
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-[-1]"
+          style={{ backgroundImage: 'url(/images/Des/des-3.jpg)' }}
+        />
+        <Card className="max-w-md w-full bg-zinc-900/90 backdrop-blur-lg border-white/10 relative z-10">
           <CardHeader className="text-center">
-            <Crown className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
+            <Crown className="h-12 w-12 text-[#c9a96e] mx-auto mb-4" />
             <CardTitle className="text-2xl text-white">Admin Dashboard</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -95,7 +101,7 @@ export default function AdminDashboard() {
               Access Dashboard
             </Button>
             <p className="text-white/40 text-xs text-center">
-              Default: admin123 (set ADMIN_TOKEN in env for production)
+              Authorized personnel only
             </p>
           </CardContent>
         </Card>
@@ -108,16 +114,16 @@ export default function AdminDashboard() {
       {/* Header */}
       <nav className="border-b border-white/10 bg-black/80 backdrop-blur-xl fixed w-full z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex justify-center md:justify-between items-center h-20">
             <div className="flex items-center space-x-3">
-              <Crown className="h-10 w-10 text-yellow-500" />
+              <Crown className="h-10 w-10 text-[#c9a96e]" />
               <span className="text-3xl font-bold gradient-text tracking-tight">ADMIN</span>
             </div>
             <div className="flex items-center space-x-4">
               <Button 
                 variant="ghost" 
                 onClick={fetchOrders}
-                className="text-white/80 hover:text-yellow-500"
+                className="text-white/80 hover:text-[#c9a96e]"
               >
                 <RefreshCw className="h-4 w-4 mr-2" />
                 Refresh
@@ -137,7 +143,7 @@ export default function AdminDashboard() {
                   <p className="text-white/60 text-sm">Total Orders</p>
                   <p className="text-3xl font-bold text-white">{stats.count}</p>
                 </div>
-                <Package className="h-8 w-8 text-yellow-500" />
+                <Package className="h-8 w-8 text-[#c9a96e]" />
               </div>
             </CardContent>
           </Card>
@@ -172,7 +178,7 @@ export default function AdminDashboard() {
         
         {loading && orders.length === 0 ? (
           <div className="text-center py-20">
-            <RefreshCw className="h-12 w-12 text-yellow-500 animate-spin mx-auto mb-4" />
+            <RefreshCw className="h-12 w-12 text-[#c9a96e] animate-spin mx-auto mb-4" />
             <p className="text-white/60">Loading orders...</p>
           </div>
         ) : orders.length === 0 ? (
@@ -242,7 +248,7 @@ export default function AdminDashboard() {
                               href={order.songLink} 
                               target="_blank" 
                               rel="noopener noreferrer"
-                              className="text-yellow-500 text-sm flex items-center hover:underline"
+                              className="text-[#c9a96e] text-sm flex items-center hover:underline"
                             >
                               <ExternalLink className="h-3 w-3 mr-1" />
                               Open Song Link

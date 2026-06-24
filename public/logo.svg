@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 800 150">
+  <defs>
+    <linearGradient id="goldWord" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F4E4A3"/>
+      <stop offset="50%" stop-color="#D4A95A"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="goldLine" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#8B6914" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#D4A95A" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#F4E4A3"/>
+      <stop offset="80%" stop-color="#D4A95A" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#8B6914" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Main wordmark — Didone serif, regular weight, generous tracking -->
+  <text x="400" y="105"
+        text-anchor="middle"
+        font-family="'Bodoni Moda', 'Didot', 'Playfair Display', 'Times New Roman', serif"
+        font-size="72"
+        font-weight="400"
+        letter-spacing="14"
+        fill="url(#goldWord)">INFLUENCE</text>
+
+  <!-- Decorative thin line with diamond accent -->
+  <g>
+    <line x1="240" y1="138" x2="385" y2="138" stroke="url(#goldLine)" stroke-width="0.8"/>
+    <polygon points="400,131 408,138 400,145 392,138" fill="url(#goldWord)"/>
+    <line x1="415" y1="138" x2="560" y2="138" stroke="url(#goldLine)" stroke-width="0.8"/>
+  </g>
+
+  <!-- Tagline — small caps, sans-serif, wide tracking -->
+  <text x="400" y="168"
+        text-anchor="middle"
+        font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+        font-size="13"
+        font-weight="500"
+        letter-spacing="9"
+        fill="url(#goldWord)">MODELS&#160;&#160;&#160;AGENCY</text>
+</svg>

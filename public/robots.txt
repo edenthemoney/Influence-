@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /admin
+Disallow: /.env
+Disallow: /wp-admin
+Disallow: /wp-login
+Disallow: /wp-content
+Disallow: /logo-preview
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://influencemodels.agency/sitemap.xml

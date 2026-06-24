@@ -9,13 +9,18 @@ export async function POST(req: NextRequest) {
     const packages: Record<string, { name: string; price: number; description: string }> = {
       SAMPLE: {
         name: 'Sample Package',
-        price: 8000,
+        price: 10000,
         description: '1x 15-second Instagram Reel - Test our service risk-free',
       },
       STARTER: {
         name: 'Starter Package',
         price: 25000,
         description: '2x 30-second reels (TikTok + IG) - Perfect for first-time campaigns',
+      },
+      TRIPLE_POST: {
+        name: 'Triple Post',
+        price: 45000,
+        description: '3x 30-second reels across IG + TikTok + YouTube Shorts',
       },
       GROWTH: {
         name: 'Growth Package',
@@ -30,32 +35,37 @@ export async function POST(req: NextRequest) {
       TRIO: {
         name: 'Trio Campaign',
         price: 150000,
-        description: '3 verified creators - 3x 30-second reels each - 300K+ reach',
+        description: '3 verified influencers - 3x 30-second reels each - 300K+ reach',
       },
       SQUAD: {
         name: 'Squad Campaign',
         price: 275000,
-        description: '5 verified creators - 4x 30-second reels each - 500K+ reach',
+        description: '5 verified influencers - 4x 30-second reels each - 500K+ reach',
+      },
+      COLLECTIVE: {
+        name: 'Influencer Collective',
+        price: 449900,
+        description: '7 verified influencers - 4x 30-second reels each - 700K+ reach',
       },
       VIRAL_NETWORK: {
         name: 'Viral Network',
         price: 599900,
-        description: '10 verified creators - 5x 30-second reels each - 1M+ reach',
+        description: '10 verified influencers - 5x 30-second reels each - 1M+ reach',
       },
       MEGA: {
         name: 'Mega Campaign',
         price: 1299900,
-        description: '20 verified creators - 6x 30-second reels each - 2M+ reach',
+        description: '20 verified influencers - 6x 30-second reels each - 2M+ reach',
       },
       DOMINATION: {
         name: 'Domination',
         price: 3500000,
-        description: '50 verified creators - 8x 30-second reels each - 5M+ reach',
+        description: '50 verified influencers - 8x 30-second reels each - 5M+ reach',
       },
       ENTERPRISE: {
         name: 'Enterprise',
         price: 10000000,
-        description: '100+ verified creators - 10x 30-second reels each - 10M+ reach',
+        description: '100+ verified influencers - 10x 30-second reels each - 10M+ reach',
       },
     };
 
@@ -77,7 +87,7 @@ export async function POST(req: NextRequest) {
             product_data: {
               name: selectedPackage.name,
               description: selectedPackage.description,
-              images: ['https://your-domain.com/logo.png'],
+              images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencemodels.agency'}/logo_stripe.png`],
             },
             unit_amount: selectedPackage.price,
           },
@@ -95,8 +105,9 @@ export async function POST(req: NextRequest) {
         instructions: instructions?.substring(0, 490) || '',
         songTitle: songTitle || '',
         songLink: songLink || '',
-        agencyCommission: Math.round(selectedPackage.price * 0.40).toString(),
-        influencerPayout: Math.round(selectedPackage.price * 0.60).toString(),
+        influencerPayout: Math.round(selectedPackage.price * 0.50).toString(),
+        agencyCommission: Math.round(selectedPackage.price * 0.35).toString(),
+        desPartnerPayout: Math.round(selectedPackage.price * 0.15).toString(),
       },
     });
 

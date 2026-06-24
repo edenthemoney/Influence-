@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="goldRich" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4E4A3"/>
+      <stop offset="35%" stop-color="#E8C26B"/>
+      <stop offset="65%" stop-color="#C9962E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="goldThin" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#8B6914" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#E8C26B"/>
+      <stop offset="100%" stop-color="#8B6914" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Solid black background -->
+  <rect width="512" height="512" fill="#000000"/>
+
+  <!-- Subtle inner gold frame -->
+  <rect x="32" y="32" width="448" height="448" fill="none" stroke="url(#goldRich)" stroke-width="1" stroke-opacity="0.35"/>
+
+  <!-- Top decorative line + diamond -->
+  <line x1="120" y1="120" x2="240" y2="120" stroke="url(#goldThin)" stroke-width="1.2"/>
+  <polygon points="256,108 268,120 256,132 244,120" fill="url(#goldRich)"/>
+  <line x1="272" y1="120" x2="392" y2="120" stroke="url(#goldThin)" stroke-width="1.2"/>
+
+  <!-- IM Monogram (centered, large) -->
+  <g fill="url(#goldRich)" font-family="'Bodoni Moda', 'Didot', 'Playfair Display', 'Times New Roman', serif" font-weight="400">
+    <text x="256" y="320" text-anchor="middle" font-size="240" letter-spacing="-16" font-style="italic">IM</text>
+  </g>
+
+  <!-- Bottom decorative line + diamond -->
+  <line x1="120" y1="392" x2="240" y2="392" stroke="url(#goldThin)" stroke-width="1.2"/>
+  <polygon points="256,380 268,392 256,404 244,392" fill="url(#goldRich)"/>
+  <line x1="272" y1="392" x2="392" y2="392" stroke="url(#goldThin)" stroke-width="1.2"/>
+
+  <!-- Tiny brand tagline -->
+  <text x="256" y="440" text-anchor="middle"
+        font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+        font-size="14" font-weight="500" letter-spacing="6"
+        fill="url(#goldRich)">INFLUENCE&#160;&#160;MODELS</text>
+</svg>

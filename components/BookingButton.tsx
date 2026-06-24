@@ -34,18 +34,23 @@ export function BookingButton({
 
   const getPackagePrice = (tier: string): number => {
     const prices: Record<string, number> = {
-      'SAMPLE': 80,
-      'STARTER': 250,
-      'GROWTH': 500,
-      'PRO': 850,
-      'TRIO': 1500,
-      'SQUAD': 2750,
-      'VIRAL_NETWORK': 5999,
-      'MEGA': 12999,
+      'TEST': 1,
+      'SAMPLE': 300,
+      'GIFTED': 400,
+      'TESTIMONIAL': 400,
+      'STARTER': 500,
+      'TRIPLE_POST': 750,
+      'GROWTH': 1000,
+      'PRO': 1500,
+      'TRIO': 2250,
+      'SQUAD': 3500,
+      'COLLECTIVE': 5000,
+      'VIRAL_NETWORK': 8500,
+      'MEGA': 15000,
       'DOMINATION': 35000,
-      'ENTERPRISE': 100000,
+      'ENTERPRISE': 65000,
     };
-    return prices[tier] || 80;
+    return prices[tier] || 300;
   };
 
   const handleProceedToCheckout = async () => {
@@ -60,7 +65,7 @@ export function BookingButton({
     }
 
     if (!instructions.trim()) {
-      setError('Please provide instructions for the creator');
+      setError('Please provide instructions for the influencer');
       return;
     }
 
@@ -117,20 +122,22 @@ export function BookingButton({
 
       {showEmailModal && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-zinc-900 border border-yellow-500/30 p-8 max-w-md w-full relative">
+          <div className="bg-zinc-900 border border-yellow-500/30 max-w-md w-full relative flex flex-col max-h-[90vh]">
             <button
               onClick={() => setShowEmailModal(false)}
-              className="absolute top-4 right-4 text-white/60 hover:text-white"
+              className="absolute top-4 right-4 text-white/60 hover:text-white z-10"
             >
               <X className="h-5 w-5" />
             </button>
 
-            <h3 className="text-2xl font-bold text-white mb-2">Complete Your Purchase</h3>
-            <p className="text-white/60 mb-6">
-              Tell us what you want {influencerId !== 'default' ? 'the creator' : ''} to promote.
-            </p>
+            <div className="px-8 pt-8 pb-4 flex-shrink-0">
+              <h3 className="text-2xl font-bold text-white mb-2">Complete Your Purchase</h3>
+              <p className="text-white/60">
+                Tell us what you want {influencerId !== 'default' ? 'the influencer' : ''} to promote.
+              </p>
+            </div>
 
-            <div className="space-y-4 max-h-[70vh] overflow-y-auto pr-2">
+            <div className="space-y-4 overflow-y-auto px-8 flex-1 min-h-0">
               <div>
                 <label className="block text-sm font-medium text-white mb-2">
                   Email Address
@@ -208,13 +215,16 @@ export function BookingButton({
                   Detailed Instructions
                 </label>
                 <Textarea
-                  placeholder="Describe exactly what you want in the reels. What should the creator say/show? Any specific hashtags or mentions?"
+                  placeholder="Describe exactly what you want in the reels. What should the influencer say/show? Any specific hashtags or mentions?"
                   value={instructions}
                   onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setInstructions(e.target.value)}
                   className="bg-black border-white/20 text-white placeholder:text-white/40 min-h-[100px]"
                 />
               </div>
 
+            </div>
+
+            <div className="px-8 py-6 border-t border-white/10 flex-shrink-0 space-y-3 bg-zinc-900">
               {error && (
                 <p className="text-red-500 text-sm">{error}</p>
               )}

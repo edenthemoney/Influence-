@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <defs>
+    <linearGradient id="goldRich" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4E4A3"/>
+      <stop offset="35%" stop-color="#E8C26B"/>
+      <stop offset="65%" stop-color="#C9962E"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+    <linearGradient id="goldThin" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#8B6914" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#E8C26B"/>
+      <stop offset="100%" stop-color="#8B6914" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Decorative frame lines (top + bottom) -->
+  <line x1="50" y1="48" x2="190" y2="48" stroke="url(#goldThin)" stroke-width="0.8"/>
+  <line x1="50" y1="192" x2="190" y2="192" stroke="url(#goldThin)" stroke-width="0.8"/>
+
+  <!-- Tiny diamond accents -->
+  <g fill="url(#goldRich)">
+    <polygon points="120,42 124,48 120,54 116,48"/>
+    <polygon points="120,186 124,192 120,198 116,192"/>
+  </g>
+
+  <!-- IM Monogram -->
+  <g fill="url(#goldRich)" font-family="'Bodoni Moda', 'Didot', 'Playfair Display', 'Times New Roman', serif" font-weight="400">
+    <text x="120" y="148" text-anchor="middle" font-size="118" letter-spacing="-8" font-style="italic">IM</text>
+  </g>
+
+  <!-- Subtle outer border (almost invisible, very luxe) -->
+  <rect x="6" y="6" width="228" height="228" fill="none" stroke="url(#goldRich)" stroke-width="0.5" stroke-opacity="0.3"/>
+</svg>

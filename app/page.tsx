@@ -1,390 +1,516 @@
 import Link from 'next/link';
-import { Crown, Star, Sparkles, TrendingUp, Shield, Award, ChevronRight, Play, Music, ShoppingBag, Briefcase, Megaphone, Zap, Target, BarChart3, Users } from 'lucide-react';
+import Image from 'next/image';
+import { ChevronRight } from 'lucide-react';
+import HeroBooking from './components/HeroBooking';
+import FloatingBooking from './components/FloatingBooking';
+import MobileNav from './components/MobileNav';
+import HeroVideo from './components/HeroVideo';
+import HomeFAQ from './components/HomeFAQ';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black">
-      <nav className="border-b border-white/10 bg-black/80 backdrop-blur-xl fixed w-full z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <div className="flex items-center space-x-3">
-              <Crown className="h-10 w-10 text-yellow-500" />
-              <span className="text-3xl font-bold gradient-text tracking-tight">INFLUENCE</span>
+    <div className="min-h-screen bg-[#080808]">
+      <FloatingBooking />
+      <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
+        <div className="grid grid-cols-3 items-center h-16 md:h-24 px-6 md:px-14">
+          <div className="flex items-center gap-4">
+            <MobileNav />
+            <div className="hidden md:flex items-center gap-10">
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
+              <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
-            <div className="hidden md:flex items-center space-x-10">
-              <Link href="/marketplace" className="text-white/80 hover:text-yellow-500 transition-colors text-sm font-medium tracking-wide uppercase">
-                Talent
-              </Link>
-              <Link href="/pricing" className="text-white/80 hover:text-yellow-500 transition-colors text-sm font-medium tracking-wide uppercase">
-                Pricing
-              </Link>
-              <Link href="/faq" className="text-white/80 hover:text-yellow-500 transition-colors text-sm font-medium tracking-wide uppercase">
-                FAQ
-              </Link>
-              <Link href="/pricing" className="px-8 py-3 gold-gradient text-black rounded-none font-bold text-sm tracking-wider uppercase hover:shadow-2xl hover:shadow-yellow-500/50 transition-all">
-                Book Now
-              </Link>
-            </div>
+          </div>
+          <div className="flex justify-center">
+            <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
+          </div>
+          <div className="flex items-center justify-end gap-3 md:gap-10">
+            <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
+            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
+          </div>
+        </div>
+        <div className="overflow-hidden border-t border-white/[0.05]">
+          <div className="flex whitespace-nowrap py-2 md:py-4" style={{ animation: 'ticker-left 50s linear infinite' }}>
+            {[...Array(6)].map((_, i) => (
+              <span key={i} className="shrink-0 text-white font-heading tracking-[0.15em] pr-10 md:pr-20" style={{ fontSize: 'clamp(20px, 5.5vw, 52px)' }}>
+                Sean Paul &nbsp;&middot;&nbsp; Kai Cenat &nbsp;&middot;&nbsp; Bryson Tiller &nbsp;&middot;&nbsp; Akon &nbsp;&middot;&nbsp; Moneybagg Yo &nbsp;&middot;&nbsp; Lil Pump &nbsp;&middot;&nbsp; 6ix9ine &nbsp;&middot;&nbsp; Bossman Dlow &nbsp;&middot;&nbsp; Vybz Kartel &nbsp;&middot;&nbsp; DaBaby &nbsp;&middot;&nbsp; Mike Tyson &nbsp;&middot;&nbsp; Forbes &nbsp;&middot;&nbsp; Fenty Beauty &nbsp;&middot;&nbsp; Tyra Banks &nbsp;&middot;&nbsp; Keke Palmer &nbsp;&middot;&nbsp; Netflix &nbsp;&middot;&nbsp; Audible &nbsp;&middot;&nbsp; Peacock &nbsp;&middot;&nbsp; Target &nbsp;&middot;&nbsp; Celsius &nbsp;&middot;&nbsp; Red Stripe &nbsp;&middot;&nbsp; Miami Swim Week &nbsp;
+              </span>
+            ))}
           </div>
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-32 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-yellow-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-600 rounded-full blur-3xl"></div>
+      <section className="h-[70vh] md:h-screen relative overflow-hidden">
+        <HeroVideo />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/10 to-black/50" />
+
+        {/* Top-left eyebrow */}
+        <div className="absolute top-28 md:top-48 left-8 md:left-16 flex items-center gap-4">
+          <div className="w-8 h-px" style={{ backgroundColor: '#c9a96e' }} />
+          <p className="text-white/60 text-[11px] tracking-[0.4em] uppercase font-medium">Influencer Marketing Agency</p>
         </div>
-        <div className="relative max-w-7xl mx-auto text-center animate-fade-in">
-          <div className="mb-6 inline-flex items-center space-x-2 px-5 py-2 border border-yellow-500/30 rounded-full bg-yellow-500/5">
-            <Sparkles className="h-4 w-4 text-yellow-500" />
-            <span className="text-yellow-500 text-xs font-bold tracking-widest uppercase">All-In-One Influencer Marketing</span>
+
+        {/* Bottom — two column */}
+        <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 pb-10 md:pb-14 flex items-end justify-between gap-10">
+          {/* Left: Headline */}
+          <div className="shrink-0">
+            <h1 className="sr-only">
+              Miami Influencer Marketing Agency — Book Models, Actresses, Casting & Voiceover Talent in South Florida
+            </h1>
+            <p className="font-display font-bold italic text-white leading-[0.85]" style={{ fontSize: 'clamp(44px, 10vw, 140px)' }}>
+              Go Viral.<br />
+              Make an<br />
+              <span style={{ color: '#c9a96e' }}>Influence.</span>
+            </p>
+            <div className="mt-6 flex items-center gap-4 md:hidden">
+              <Link href="/start" className="inline-flex items-center gap-3 px-8 py-4 text-[13px] font-bold tracking-widest uppercase" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+                Book Now <ChevronRight className="h-4 w-4" />
+              </Link>
+              <span className="text-white/30 text-xs">Same-week availability</span>
+            </div>
           </div>
-          <h1 className="text-5xl md:text-8xl font-black mb-8 leading-[1.05] tracking-tight">
-            <span className="text-white">Go Viral.</span>
-            <br />
-            <span className="gradient-text text-shadow-luxury">On Demand.</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-white/80 mb-6 max-w-3xl mx-auto font-light leading-relaxed">
-            The elite influencer network trusted by brands, artists, and businesses to <span className="text-yellow-400 font-semibold">make anything go viral</span>.
-          </p>
-          <p className="text-base md:text-lg text-white/50 mb-12 max-w-2xl mx-auto">
-            Launch your song. Promote your product. Scale your brand. One platform. One solution. Guaranteed 10K+ views per reel.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link href="/pricing" className="group w-full sm:w-auto px-10 py-5 gold-gradient text-black text-lg font-black tracking-wider uppercase hover:shadow-2xl hover:shadow-yellow-500/50 transition-all flex items-center justify-center space-x-2 rounded-lg">
-              <span>Launch Campaign</span>
-              <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link href="/marketplace" className="w-full sm:w-auto px-10 py-5 bg-white/5 border border-white/20 text-white text-lg font-bold tracking-wider uppercase hover:bg-white/10 hover:border-yellow-500 transition-all flex items-center justify-center space-x-2 rounded-lg">
-              <Users className="h-5 w-5" />
-              <span>Browse Talent</span>
-            </Link>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-6 text-white/40 text-sm">
-            <div className="flex items-center space-x-2">
-              <Shield className="h-4 w-4 text-yellow-500" />
-              <span>Secure Escrow Payments</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Zap className="h-4 w-4 text-yellow-500" />
-              <span>Fast Turnaround</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <Target className="h-4 w-4 text-yellow-500" />
-              <span>10K+ Views Guaranteed</span>
-            </div>
+
+          {/* Right: Interactive booking widget */}
+          <div className="w-full md:w-[520px] shrink-0 hidden md:block">
+            <HeroBooking />
           </div>
         </div>
       </section>
 
-      {/* Use Cases - What You Can Promote */}
-      <section className="py-24 bg-zinc-950 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <p className="text-yellow-500 text-xs font-bold tracking-widest uppercase mb-3">What We Promote</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">One Platform. <span className="gradient-text">Every Use Case.</span></h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">From indie artists to Fortune 500 brands, we make anything go viral.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="group relative bg-gradient-to-br from-zinc-900 to-black border border-white/10 p-8 hover:border-yellow-500/50 transition-all overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-all"></div>
-              <Music className="h-10 w-10 text-yellow-500 mb-6 relative" />
-              <h3 className="text-2xl font-black text-white mb-3 relative">Music & Artists</h3>
-              <p className="text-white/60 leading-relaxed relative">Turn your track into the next viral sound. TikTok-ready placements with top creators who dance, lip-sync, and feature your music.</p>
-            </div>
-            <div className="group relative bg-gradient-to-br from-zinc-900 to-black border border-white/10 p-8 hover:border-yellow-500/50 transition-all overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-all"></div>
-              <ShoppingBag className="h-10 w-10 text-yellow-500 mb-6 relative" />
-              <h3 className="text-2xl font-black text-white mb-3 relative">Products</h3>
-              <p className="text-white/60 leading-relaxed relative">Drive sales with authentic product placements. Unboxings, tutorials, and reviews that convert viewers into buyers.</p>
-            </div>
-            <div className="group relative bg-gradient-to-br from-zinc-900 to-black border border-white/10 p-8 hover:border-yellow-500/50 transition-all overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-all"></div>
-              <Briefcase className="h-10 w-10 text-yellow-500 mb-6 relative" />
-              <h3 className="text-2xl font-black text-white mb-3 relative">Brands & Businesses</h3>
-              <p className="text-white/60 leading-relaxed relative">Build brand awareness that scales. Elevate your company's presence with strategic creator partnerships.</p>
-            </div>
-            <div className="group relative bg-gradient-to-br from-zinc-900 to-black border border-white/10 p-8 hover:border-yellow-500/50 transition-all overflow-hidden">
-              <div className="absolute -top-12 -right-12 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-all"></div>
-              <Megaphone className="h-10 w-10 text-yellow-500 mb-6 relative" />
-              <h3 className="text-2xl font-black text-white mb-3 relative">Services & Apps</h3>
-              <p className="text-white/60 leading-relaxed relative">Launch apps, services, or events with massive reach. Get instant downloads, signups, and attention.</p>
-            </div>
-          </div>
+      {/* Mobile: urgency strip + booking widget */}
+      <div className="md:hidden bg-[#060606] border-y border-[#c9a96e]/30 px-6 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <p className="text-green-400/80 text-[11px] font-semibold">Same-week availability</p>
         </div>
+        <p className="text-white/25 text-[10px] tracking-widest uppercase">Book in 2 min</p>
+      </div>
+      <section className="md:hidden bg-[#0a0a0a] px-6 pt-8 pb-12">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="w-2.5 h-2.5 rounded-full animate-pulse" style={{ backgroundColor: '#c9a96e' }} />
+          <p className="text-[12px] font-bold tracking-[0.35em] uppercase" style={{ color: '#c9a96e' }}>Find Your Package</p>
+        </div>
+        <HeroBooking />
       </section>
 
-      {/* How It Works */}
-      <section className="py-24 bg-black relative">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <p className="text-yellow-500 text-xs font-bold tracking-widest uppercase mb-3">How It Works</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">From Zero to Viral in <span className="gradient-text">3 Steps</span></h2>
-            <p className="text-white/60 text-lg">Simple, seamless, and built for speed.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-16 h-16 gold-gradient flex items-center justify-center text-black text-2xl font-black rounded-lg shadow-xl shadow-yellow-500/30">1</div>
-              <div className="bg-zinc-900 border border-white/10 p-8 pt-14 h-full hover:border-yellow-500/30 transition-all">
-                <h3 className="text-2xl font-black text-white mb-3">Pick Your Package</h3>
-                <p className="text-white/60 leading-relaxed">Choose the package that matches your goal — from a single creator to a 100+ creator viral network.</p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-16 h-16 gold-gradient flex items-center justify-center text-black text-2xl font-black rounded-lg shadow-xl shadow-yellow-500/30">2</div>
-              <div className="bg-zinc-900 border border-white/10 p-8 pt-14 h-full hover:border-yellow-500/30 transition-all">
-                <h3 className="text-2xl font-black text-white mb-3">We Handle Everything</h3>
-                <p className="text-white/60 leading-relaxed">Our team coordinates the creators, content, and launch timing. You just brief us on your vision.</p>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute -top-4 -left-4 w-16 h-16 gold-gradient flex items-center justify-center text-black text-2xl font-black rounded-lg shadow-xl shadow-yellow-500/30">3</div>
-              <div className="bg-zinc-900 border border-white/10 p-8 pt-14 h-full hover:border-yellow-500/30 transition-all">
-                <h3 className="text-2xl font-black text-white mb-3">Watch It Go Viral</h3>
-                <p className="text-white/60 leading-relaxed">Content drops synchronized for maximum algorithm impact. Track performance in real-time via your dashboard.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-32 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500 rounded-full blur-3xl"></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-4">Featured <span className="gradient-text">Creator</span></h2>
-            <p className="text-white/60 text-lg">Meet our elite talent available for booking</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-              <img src="/images/influencers/des-1.jpg" alt="Deseray Marie" className="relative w-full h-96 object-cover rounded-lg" />
-            </div>
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-4xl font-black text-white mb-2">Deseray Marie</h3>
-                <p className="text-yellow-500 font-semibold text-lg">@itsdezmarie</p>
-              </div>
-              <p className="text-white/70 text-lg leading-relaxed">
-                Beauty & Health Brand Owner | Fashion & Luxury Creator specializing in authentic brand partnerships that drive real engagement and conversions.
-              </p>
-              <div className="grid grid-cols-2 gap-6 py-6 border-y border-white/10 max-w-xs mx-auto">
-                <div>
-                  <p className="text-3xl font-black gradient-text">56.9K</p>
-                  <p className="text-white/60 text-sm uppercase tracking-wider">Followers</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-black text-white mb-1">★★★★★</p>
-                  <p className="text-white/60 text-sm uppercase tracking-wider">5 Stars</p>
-                </div>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {['Beauty', 'Health', 'Fashion', 'Luxury'].map((cat) => (
-                  <span key={cat} className="px-4 py-2 bg-yellow-500/10 text-yellow-500 border border-yellow-500/30 rounded-full text-sm font-medium">
-                    {cat}
+      <section className="bg-[#080808] border-t border-white/[0.05] overflow-hidden py-14">
+        <div className="overflow-hidden">
+          <div className="flex whitespace-nowrap animate-ticker-left">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-baseline shrink-0">
+                {['Sean Paul', 'Kai Cenat', 'Bryson Tiller', 'Akon', 'Moneybagg Yo', 'Lil Pump', 'Tekashi 6ix9ine', 'Bossman Dlow', 'Young Thug', 'Vybz Kartel', 'DaBaby', 'Mike Tyson'].map((name) => (
+                  <span key={name} className="font-display font-semibold text-white/75 leading-none" style={{ fontSize: 'clamp(52px, 8vw, 120px)' }}>
+                    {name}<span className="text-white/[0.06] mx-6 md:mx-10">·</span>
                   </span>
                 ))}
               </div>
-              <div className="flex gap-4 pt-4">
-                <Link href="/influencer/des-001" className="flex-1 px-8 py-4 bg-transparent border-2 border-white text-white font-bold tracking-wider uppercase hover:bg-white hover:text-black transition-all text-center rounded-none">
-                  View Profile
-                </Link>
-                <Link href="/pricing" className="flex-1 px-8 py-4 gold-gradient text-black font-bold tracking-wider uppercase hover:shadow-2xl hover:shadow-yellow-500/50 transition-all text-center rounded-none">
-                  Book Now
-                </Link>
+            ))}
+          </div>
+        </div>
+        <div className="overflow-hidden mt-3">
+          <div className="flex whitespace-nowrap animate-ticker-right">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-baseline shrink-0">
+                {['Forbes', 'Fenty Beauty', 'SavageXFenty', 'Meta Ray-Ban', 'Love & Hip Hop', 'Miami Swim Week', 'Tyra Banks', 'Keke Palmer', 'Netflix', 'Audible'].map((name) => (
+                  <span key={name} className="font-display font-light italic text-white/45 leading-none" style={{ fontSize: 'clamp(36px, 5.5vw, 80px)' }}>
+                    {name}<span className="text-white/[0.04] mx-6 md:mx-10">·</span>
+                  </span>
+                ))}
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-32 bg-zinc-950 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-500/5 via-transparent to-transparent"></div>
-        <div className="relative max-w-7xl mx-auto px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-4">The <span className="gradient-text">Elite</span> Difference</h2>
-            <p className="text-white/60 text-lg">Unmatched quality. Proven results. Premium service.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group bg-zinc-900 border border-white/10 p-10 hover-lift hover:border-yellow-500/50 transition-all">
-              <div className="w-16 h-16 gold-gradient flex items-center justify-center mb-6">
-                <Crown className="h-8 w-8 text-black" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Curated Excellence</h3>
-              <p className="text-white/60 leading-relaxed">
-                Hand-selected influencers with verified metrics, authentic engagement, and proven campaign success across all major platforms
-              </p>
-            </div>
-            <div className="group bg-zinc-900 border border-white/10 p-10 hover-lift hover:border-yellow-500/50 transition-all">
-              <div className="w-16 h-16 gold-gradient flex items-center justify-center mb-6">
-                <TrendingUp className="h-8 w-8 text-black" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Viral Mastery</h3>
-              <p className="text-white/60 leading-relaxed">
-                Strategic campaign planning with multi-creator coordination, trend optimization, and clip farming for maximum viral potential
-              </p>
-            </div>
-            <div className="group bg-zinc-900 border border-white/10 p-10 hover-lift hover:border-yellow-500/50 transition-all">
-              <div className="w-16 h-16 gold-gradient flex items-center justify-center mb-6">
-                <Shield className="h-8 w-8 text-black" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">Premium Protection</h3>
-              <p className="text-white/60 leading-relaxed">
-                Enterprise-grade security with escrow payments, milestone tracking, automated splits, and full legal protection
-              </p>
-            </div>
-          </div>
+
+
+      <section className="bg-[#080808] border-t border-white/[0.05] pt-16 md:pt-32 pb-14 md:pb-28 px-8 md:px-16">
+        <h2 className="font-display font-bold italic text-white leading-[0.9]" style={{ fontSize: 'clamp(44px, 12vw, 172px)' }}>We Influence.</h2>
+        <div className="flex items-end justify-between mt-8 md:mt-14 pt-6 md:pt-8 border-t border-white/[0.08]">
+          <p className="text-white/65 text-[15px] font-light max-w-md leading-relaxed">
+            Influence is a South Florida influencer marketing agency connecting artists, brands, business owners, and labels with verified models for content creation, music promotion, on-site shoots, event hosting, acting roles, casting, voiceover work, commercials, and full campaigns — starting at $300.
+          </p>
+          <p className="text-white/35 text-[10px] tracking-[0.5em] uppercase hidden md:block">Est. 2024 · Miami, FL</p>
         </div>
       </section>
 
-      <section className="py-32 bg-black">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-12">
-              <div>
-                <h2 className="text-5xl font-black text-white mb-6">Built For <span className="gradient-text">Champions</span></h2>
-                <p className="text-white/60 text-lg leading-relaxed">Whether you're launching a music career or scaling a global brand, our elite network delivers results.</p>
-              </div>
-              <div className="space-y-8">
-                <div className="flex items-start space-x-6">
-                  <div className="w-14 h-14 gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Sparkles className="h-7 w-7 text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-3">Artists & Musicians</h3>
-                    <p className="text-white/60 leading-relaxed">
-                      Turn your tracks into trending audio. Our influencers create viral content that gets your music heard by millions.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-6">
-                  <div className="w-14 h-14 gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Award className="h-7 w-7 text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-3">Premium Brands</h3>
-                    <p className="text-white/60 leading-relaxed">
-                      Elevate your brand with authentic partnerships. Drive sales, build awareness, and dominate your market segment.
-                    </p>
-                  </div>
-                </div>
-              </div>
+      {/* ── AI Entity / Internal Linking Block ── */}
+      <section className="bg-[#080808] border-t border-white/[0.05] py-16 md:py-24 px-8 md:px-16">
+        <div className="max-w-5xl mx-auto">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: '#c9a96e' }}>What We Do</p>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+            <div>
+              <h3 className="font-display font-bold italic text-white text-2xl md:text-3xl mb-4">Influencer Marketing & Talent Services</h3>
+              <p className="text-white/55 text-sm md:text-[15px] leading-relaxed mb-6">
+                Influence is a Miami-based influencer marketing agency and talent partner that connects brands and artists with verified creators for UGC content, music promotion, commercials, acting roles, casting, voiceover work, and business campaigns. We serve South Florida — Miami, Fort Lauderdale, Boca Raton, and Orlando — and offer nationwide remote content creation.
+              </p>
             </div>
-            <div className="bg-gradient-to-br from-zinc-900 to-black border border-yellow-500/30 p-12">
-              <div className="mb-8">
-                <div className="inline-block px-4 py-2 gold-gradient text-black text-sm font-bold tracking-wider uppercase mb-4">Premium Packages</div>
-                <h3 className="text-4xl font-black text-white mb-2">From $50</h3>
-                <p className="text-white/60">Professional campaigns that deliver</p>
-              </div>
-              <ul className="space-y-4 mb-10">
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 gold-gradient flex items-center justify-center">
-                    <span className="text-black text-sm font-bold">✓</span>
-                  </div>
-                  <span className="text-white font-medium">Elite creator selection</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 gold-gradient flex items-center justify-center">
-                    <span className="text-black text-sm font-bold">✓</span>
-                  </div>
-                  <span className="text-white font-medium">Multi-platform distribution</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 gold-gradient flex items-center justify-center">
-                    <span className="text-black text-sm font-bold">✓</span>
-                  </div>
-                  <span className="text-white font-medium">Full commercial rights</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 gold-gradient flex items-center justify-center">
-                    <span className="text-black text-sm font-bold">✓</span>
-                  </div>
-                  <span className="text-white font-medium">Priority support & revisions</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <div className="w-6 h-6 gold-gradient flex items-center justify-center">
-                    <span className="text-black text-sm font-bold">✓</span>
-                  </div>
-                  <span className="text-white font-medium">Performance analytics</span>
-                </li>
-              </ul>
-              <Link href="/pricing" className="block w-full text-center px-8 py-5 gold-gradient text-black font-bold text-lg tracking-wider uppercase hover:shadow-2xl hover:shadow-yellow-500/50 transition-all">
-                View All Packages
+            <div className="grid grid-cols-2 gap-4">
+              <Link href="/services/content" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">UGC Content</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Reels, TikToks, and branded posts</p>
+              </Link>
+              <Link href="/music-video-models" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Music Video Creators</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Talent for shoots & videos</p>
+              </Link>
+              <Link href="/services/business" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Business Content</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">On-site creators for local brands</p>
+              </Link>
+              <Link href="/services/events" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Event Talent</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Hosting, parties, activations</p>
+              </Link>
+              <Link href="/actress-models-miami" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Acting & Casting</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Actress roles, casting & voiceover</p>
+              </Link>
+              <Link href="/model-booking?service=reaction" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Song Promotion</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Instagram & TikTok music promo</p>
+              </Link>
+              <Link href="/marketplace" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Browse Talent</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Verified models & influencers</p>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-32 bg-gradient-to-b from-black via-zinc-900 to-black relative overflow-hidden">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-500 rounded-full blur-3xl"></div>
+      {/* ── Two-Path Split ── */}
+      <section className="bg-[#080808] border-t border-white/[0.05] py-16 md:py-28 px-8 md:px-16">
+        <p className="text-[10px] font-bold tracking-[0.4em] uppercase text-center mb-4" style={{ color: '#c9a96e' }}>What Are You Looking For?</p>
+        <h2 className="font-display font-bold italic text-white text-center mb-12 md:mb-16 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>Choose Your Path</h2>
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
+          {/* In-Person */}
+          <Link href="/model-booking" className="group relative border border-white/[0.08] p-8 md:p-12 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">South Florida Only</p>
+            <h3 className="font-display font-bold text-white text-2xl md:text-3xl mb-3">Book In-Person Talent</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-8">Creators come to your location for shoots, music videos, events, or business content. Same-week availability.</p>
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
+              Browse Packages <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </Link>
+          {/* Online Content */}
+          <Link href="/model-booking?service=ugc" className="group relative border border-white/[0.08] p-8 md:p-12 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">Nationwide &middot; Remote</p>
+            <h3 className="font-display font-bold text-white text-2xl md:text-3xl mb-3">Social Media Content</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-8">UGC reels, music reactions, branded posts, and full creator campaigns delivered digitally. No location needed.</p>
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
+              See Content Packages <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </Link>
         </div>
-        <div className="relative max-w-5xl mx-auto text-center px-4">
-          <h2 className="text-6xl md:text-7xl font-black text-white mb-8 leading-tight">
-            Ready to <span className="gradient-text text-shadow-luxury">Dominate?</span>
+      </section>
+
+      {/* ── Cinematic Miami Drone Footage ── */}
+      <section className="bg-[#080808] border-t border-white/[0.05] py-16 md:py-24 px-8 md:px-16">
+        <div className="max-w-5xl mx-auto mb-10 md:mb-14">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: '#c9a96e' }}>Cinematic Miami</p>
+          <h2 className="font-display font-bold italic text-white leading-[0.9]" style={{ fontSize: 'clamp(32px, 6vw, 72px)' }}>
+            Shot from the sky.
           </h2>
-          <p className="text-2xl text-white/70 mb-12 font-light max-w-3xl mx-auto">
-            Join the elite network of brands and creators launching viral campaigns that break the internet
+          <p className="text-white/45 text-sm md:text-[15px] leading-relaxed max-w-xl mt-4">
+            Stunning 4K drone footage captured over South Florida. The same energy, scale, and beauty we bring to every campaign — from the first shoot to the final edit.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/signup" className="px-12 py-6 gold-gradient text-black text-xl font-bold tracking-wider uppercase hover:shadow-2xl hover:shadow-yellow-500/50 transition-all">
-              Launch Campaign
-            </Link>
-            <Link href="/marketplace" className="px-12 py-6 bg-transparent border-2 border-white text-white text-xl font-bold tracking-wider uppercase hover:bg-white hover:text-black transition-all">
-              Browse Talent
-            </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+          <div className="relative w-full overflow-hidden bg-black/40" style={{ aspectRatio: '9/16' }}>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/videos/drone/drone-miami-01.jpg"
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/videos/drone/drone-miami-01.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          </div>
+          <div className="relative w-full overflow-hidden bg-black/40" style={{ aspectRatio: '9/16' }}>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/videos/drone/drone-miami-03.jpg"
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="/videos/drone/drone-miami-03.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           </div>
         </div>
       </section>
 
-      <footer className="bg-black border-t border-white/10 py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <Crown className="h-8 w-8 text-yellow-500" />
-                <span className="text-2xl font-bold gradient-text tracking-tight">INFLUENCE</span>
-              </div>
-              <p className="text-white/60 leading-relaxed">
-                Elite model agency and influencer marketplace for premium brands
-              </p>
+      {/* ── Selling Points ── */}
+      <section className="bg-[#080808] border-t border-white/[0.05] py-16 md:py-24 px-8 md:px-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+          {[
+            { label: 'Minority & Women-Owned', desc: 'Black, Latina & women-led agency proudly serving all communities' },
+            { label: 'Celebrity-Connected', desc: 'Talent with credits alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine & more' },
+            { label: 'Diverse Roster', desc: 'Models of all backgrounds, ethnicities, and styles — representation matters' },
+            { label: 'Latino & Black Owned', desc: 'Supporting underrepresented founders building in South Florida' },
+          ].map(({ label, desc }) => (
+            <div key={label} className="border border-white/[0.06] p-5 md:p-6">
+              <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-3" style={{ color: '#c9a96e' }}>{label}</p>
+              <p className="text-white/45 text-xs leading-relaxed">{desc}</p>
             </div>
-            <div>
-              <h4 className="font-bold text-white mb-6 tracking-wider uppercase text-sm">For Brands</h4>
-              <ul className="space-y-3 text-white/60">
-                <li><Link href="/marketplace" className="hover:text-yellow-500 transition-colors">Browse Talent</Link></li>
-                <li><Link href="/pricing" className="hover:text-yellow-500 transition-colors">Packages</Link></li>
-                <li><Link href="/case-studies" className="hover:text-yellow-500 transition-colors">Case Studies</Link></li>
-              </ul>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Accolades / Social Proof ── */}
+      <section className="bg-[#060606] border-t border-white/[0.05] py-16 md:py-24 px-8 md:px-16">
+        <div className="max-w-5xl mx-auto text-center mb-12">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: '#c9a96e' }}>Why Clients Trust Us</p>
+          <h2 className="font-display font-bold italic text-white leading-[0.9]" style={{ fontSize: 'clamp(32px, 6vw, 72px)' }}>
+            Rated South Florida&apos;s #1 Premium Model Agency
+          </h2>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          {[
+            { stat: '★★★★★', label: 'Best Marketing Solution 2026' },
+            { stat: '100s', label: 'Brands & Artists Served' },
+            { stat: '#1', label: 'South Florida Premium Agency' },
+            { stat: '5.0', label: 'Record Label Trusted Rating' },
+          ].map(({ stat, label }) => (
+            <div key={label} className="text-center py-6">
+              <p className="font-display font-bold italic text-white mb-2" style={{ fontSize: 'clamp(28px, 4vw, 44px)' }}>{stat}</p>
+              <p className="text-white/40 text-[10px] tracking-[0.2em] uppercase font-semibold">{label}</p>
             </div>
+          ))}
+        </div>
+        <p className="text-white/30 text-sm text-center max-w-2xl mx-auto mt-10">
+          We&apos;ve helped hundreds of brands, artists, products, businesses, and events go viral — from independent musicians to established record labels.
+        </p>
+      </section>
+
+      <section className="bg-[#080808] border-t border-white/[0.05]">
+        <Link href="/influencer/des-001" className="group relative block overflow-hidden h-screen">
+          <Image src="/images/Des/des-21.jpg" alt="Deseray Marie" fill className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-1000" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 pb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <h4 className="font-bold text-white mb-6 tracking-wider uppercase text-sm">For Creators</h4>
-              <ul className="space-y-3 text-white/60">
-                <li><Link href="/join" className="hover:text-yellow-500 transition-colors">Apply Now</Link></li>
-                <li><Link href="/resources" className="hover:text-yellow-500 transition-colors">Resources</Link></li>
-                <li><Link href="/success-stories" className="hover:text-yellow-500 transition-colors">Success Stories</Link></li>
-              </ul>
+              <p className="text-[10px] tracking-widest uppercase mb-4 font-semibold" style={{ color: '#c9a96e' }}>Forbes Featured · A-List Credits</p>
+              <h3 className="font-display font-light text-white leading-none" style={{ fontSize: 'clamp(48px, 8vw, 120px)' }}>Deseray Marie</h3>
+              <p className="text-white/55 text-sm mt-3">@itsdezmarie · 66K followers</p>
             </div>
-            <div>
-              <h4 className="font-bold text-white mb-6 tracking-wider uppercase text-sm">Company</h4>
-              <ul className="space-y-3 text-white/60">
-                <li><Link href="/about" className="hover:text-yellow-500 transition-colors">About</Link></li>
-                <li><Link href="/contact" className="hover:text-yellow-500 transition-colors">Contact</Link></li>
-                <li><Link href="/terms" className="hover:text-yellow-500 transition-colors">Terms</Link></li>
-              </ul>
+            <div className="flex items-center gap-2 text-white/35 group-hover:text-white transition-colors shrink-0">
+              <span className="text-[10px] tracking-widest uppercase">View Profile</span>
+              <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-white/40 text-sm">&copy; 2024 Influence. All rights reserved.</p>
-            <div className="flex items-center space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="text-white/40 hover:text-yellow-500 transition-colors text-sm">Privacy</Link>
-              <Link href="#" className="text-white/40 hover:text-yellow-500 transition-colors text-sm">Terms</Link>
-              <Link href="#" className="text-white/40 hover:text-yellow-500 transition-colors text-sm">Cookies</Link>
+        </Link>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:items-end">
+          {[
+            { id: 'maria-002', name: 'Maria', image: '/images/Maria/maria-1.jpg', tag: 'Lifestyle', h: '66vh' },
+            { id: 'genesis-003', name: 'Genesis Bravo', image: '/images/Genesis/genesis-1.jpg', tag: 'Fashion', h: '48vh' },
+            { id: 'ferrari-004', name: 'Ferrari', image: '/images/Ferrari/ferrari-1.jpg', tag: 'Lifestyle', h: '66vh' },
+          ].map((influencer) => (
+            <Link key={influencer.id} href={`/influencer/${influencer.id}`} className="group relative block overflow-hidden" style={{ height: influencer.h }}>
+              <Image src={influencer.image} alt={influencer.name} fill className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-1000" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <p className="text-[9px] tracking-widest uppercase mb-1 font-semibold" style={{ color: '#c9a96e' }}>{influencer.tag}</p>
+                <h3 className="text-xl md:text-2xl font-display font-semibold text-white leading-none">{influencer.name}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="py-10 px-8 md:px-16 border-t border-white/5">
+          <Link href="/marketplace" className="inline-flex items-center gap-3 px-10 py-5 text-[14px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+            <span>View Full Roster</span>
+            <ChevronRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="min-h-[60vh] md:min-h-screen border-t border-white/[0.05] bg-[#060606] flex items-center px-8 md:px-16 py-20 md:py-0">
+        <div>
+          <p className="text-[10px] tracking-[0.5em] uppercase mb-10 font-semibold" style={{ color: '#c9a96e' }}>Our Philosophy</p>
+          <p className="font-display font-semibold italic text-white leading-[1.05] mb-12" style={{ fontSize: 'clamp(44px, 7vw, 104px)' }}>
+            We don&apos;t chase trends.<br />We set them.
+          </p>
+          <div className="flex flex-col sm:flex-row items-start gap-6">
+            <Link href="/model-booking" className="inline-flex items-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+              Start Your Campaign <ChevronRight className="h-4 w-4" />
+            </Link>
+            <div className="text-white/30 text-xs leading-relaxed">
+              <p className="font-semibold text-white/50">Trusted by artists & brands</p>
+              <p>Content delivered in 48hrs · Starts at $300</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Two Clear Service Paths ── */}
+      <section className="border-t border-white/[0.05] bg-[#080808]">
+        <div className="px-8 md:px-16 pt-16 md:pt-28 pb-8 md:pb-12 text-center">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: '#c9a96e' }}>Our Services</p>
+          <h2 className="font-display font-light italic text-white leading-none mb-3" style={{ fontSize: 'clamp(40px, 7vw, 104px)' }}>How Can We Help Your Brand?</h2>
+          <p className="text-white/35 text-sm max-w-lg mx-auto">Book verified influencers for remote content creation or in-person shoots and events across South Florida. We handle everything from model selection to delivery.</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 border-t border-white/[0.06]">
+          {/* ─── Social Media Campaigns (Remote) ─── */}
+          <Link href="/model-booking?service=ugc" className="group border-r border-white/[0.06] py-14 md:py-20 px-8 md:px-14 flex flex-col hover:bg-white/[0.015] transition-all duration-300 relative">
+            <div className="absolute top-6 right-6 md:top-8 md:right-10">
+              <span className="text-[9px] font-bold tracking-[0.3em] uppercase px-3 py-1.5" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Remote · Nationwide</span>
+            </div>
+
+            <p className="text-[10px] tracking-[0.4em] uppercase mb-6 font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">Social Media Campaigns</p>
+            <h3 className="font-display font-bold italic text-white leading-tight mb-4" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>Content<br/>Delivered to You</h3>
+            <p className="text-white/50 text-[15px] leading-relaxed mb-8 max-w-sm">
+              Models create content remotely and deliver it straight to you — ready to post on any platform. Perfect for artists, brands, and businesses who need scroll-stopping content.
+            </p>
+
+            <div className="space-y-3 mb-10">
+              {[
+                'Music Reactions — models listen & react to your songs on video',
+                'UGC Reels & TikToks — branded skits, promos & short-form content',
+                'Product Showcases — lifestyle content for your brand or product',
+                'Album Livestreams — full album first-listen, live + recorded',
+                'Multi-Model Campaigns — multiple creators for maximum reach',
+              ].map(item => (
+                <div key={item} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: '#c9a96e' }} />
+                  <p className="text-white/45 text-sm leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-auto">
+              <div className="flex items-center justify-between mb-4 pt-5 border-t border-white/[0.06]">
+                <div>
+                  <p className="text-white/50 text-sm font-medium">Remote content delivered in 48hrs</p>
+                  <p className="text-white/25 text-xs mt-1">Get a custom quote after telling us your needs</p>
+                </div>
+                <span className="text-[11px] font-bold tracking-widest uppercase text-white/25 group-hover:text-[#c9a96e] flex items-center gap-2 transition-colors">
+                  Get Started <ChevronRight className="h-4 w-4" />
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          {/* ─── In-Person (Shoots, Events & Business Content) ─── */}
+          <Link href="/model-booking?service=business" className="group py-14 md:py-20 px-8 md:px-14 flex flex-col hover:bg-white/[0.015] transition-all duration-300 relative">
+            <div className="absolute top-6 right-6 md:top-8 md:right-10">
+              <span className="text-[9px] font-bold tracking-[0.3em] uppercase px-3 py-1.5 border border-white/20 text-white/50">South Florida</span>
+            </div>
+
+            <p className="text-[10px] tracking-[0.4em] uppercase mb-6 font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">In-Person Bookings</p>
+            <h3 className="font-display font-bold italic text-white leading-tight mb-4" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>Models at<br/>Your Location</h3>
+            <p className="text-white/50 text-[15px] leading-relaxed mb-8 max-w-sm">
+              A model shows up at your business, studio, venue, or set — ready to create content, appear in your video, or host your event. Same-week availability across South Florida.
+            </p>
+
+            <div className="space-y-3 mb-10">
+              {[
+                'Models at Your Business \u2014 on-site content & brand ambassador visits',
+                'Music Videos — professional models for your visual production',
+                'Brand & Fashion Shoots — styled shoots for your brand or product',
+                'Acting & Casting — actress roles, commercials, voiceover talent, and casting calls',
+                'Event Hosting — club nights, brand activations, parties',
+                'Bottle Girls & VIP Hostesses — nightclubs, lounges & premium venues',
+                'Monthly Packages — recurring content visits, shoots, or event hosting',
+              ].map(item => (
+                <div key={item} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: '#c9a96e' }} />
+                  <p className="text-white/45 text-sm leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-auto">
+              <div className="flex items-center justify-between mb-4 pt-5 border-t border-white/[0.06]">
+                <div>
+                  <p className="text-white/50 text-sm font-medium">Same-week availability across South Florida</p>
+                  <p className="text-white/25 text-xs mt-1">Get a custom quote after telling us your needs</p>
+                </div>
+                <span className="text-[11px] font-bold tracking-widest uppercase text-white/25 group-hover:text-[#c9a96e] flex items-center gap-2 transition-colors">
+                  Book Now <ChevronRight className="h-4 w-4" />
+                </span>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-40 bg-white border-t border-black/10">
+        <div className="px-10 md:px-16">
+          <p className="text-black/50 text-[10px] tracking-[0.5em] uppercase mb-12 font-semibold">Not Sure Where to Start?</p>
+          <h2 className="font-display font-bold italic text-black leading-[0.9] mb-8 md:mb-14" style={{ fontSize: 'clamp(44px, 11vw, 160px)' }}>
+            We&apos;ll guide you.
+          </h2>
+          <p className="text-black/50 text-base md:text-lg max-w-lg mb-10">Pick a service, choose your package, and checkout in under 2 minutes. No calls needed — unless you want to.</p>
+          <div className="flex flex-col sm:flex-row items-start gap-6">
+            <Link href="/start" className="group inline-flex items-center gap-4 px-14 py-6 text-[16px] font-bold tracking-widest uppercase transition-all hover:opacity-85" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+              <span>Find Your Solution</span>
+              <ChevronRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <div className="flex flex-col gap-2 text-black/40 text-xs">
+              <div className="flex items-center gap-6">
+                <span>✓ Secure Stripe checkout</span>
+                <span>✓ Delivered in 48hrs</span>
+                <span>✓ Verified talent</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-green-700 font-semibold">Same-week availability · Book in 2 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <HomeFAQ />
+
+      <footer className="bg-[#080808] border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 pt-16 pb-10">
+          <div className="flex flex-col md:flex-row justify-between gap-16 mb-16">
+            <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase self-start shrink-0" style={{ fontSize: '17px', color: '#c9a96e' }}>Influence</Link>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-20">
+              <div>
+                <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
+                <ul className="space-y-3">
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
+                  <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
+                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-white/20 text-[9px] tracking-widest uppercase mb-6">Services</p>
+                <ul className="space-y-3">
+                  <li><Link href="/services/content" className="text-white/40 hover:text-white transition-colors text-sm">Social Media Content</Link></li>
+                  <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Brand Ambassadors</Link></li>
+                  <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
+                  <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                  <li><Link href="/model-booking?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-white/20 text-[9px] tracking-widest uppercase mb-6">Info</p>
+                <ul className="space-y-3">
+                  <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
+                  <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
+                  <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
+            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>
       </footer>

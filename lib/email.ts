@@ -16,7 +16,9 @@ interface Order {
 
 export async function sendOrderNotification(order: Order) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'eden@influence.com';
+  const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'influencemodelsagency@gmail.com';
+  const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://influence-models-agency.netlify.app';
 
   if (!RESEND_API_KEY) {
     console.log('⚠️ RESEND_API_KEY not set. Skipping email notification.');
@@ -32,12 +34,13 @@ export async function sendOrderNotification(order: Order) {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'orders@influence-marketplace.com',
+        from: FROM_EMAIL,
         to: [ADMIN_EMAIL],
         subject: `🎉 NEW ORDER: $${order.amount} - ${order.packageTier}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #000 0%, #333 100%); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+              <img src="${BASE_URL}/logo.png" alt="Influence" style="height: 50px; margin-bottom: 16px;" />
               <h1 style="color: #FFD700; margin: 0; font-size: 28px;">🎉 NEW ORDER!</h1>
               <p style="color: #fff; margin: 10px 0 0 0;">Someone just booked ${order.packageTier}</p>
             </div>
@@ -82,7 +85,7 @@ export async function sendOrderNotification(order: Order) {
               </div>
 
               <div style="margin-top: 30px; text-align: center;">
-                <a href="https://influence-marketplace-demo.netlify.app/admin" 
+                <a href="${BASE_URL}/admin" 
                    style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); 
                           color: #000; padding: 15px 30px; text-decoration: none; 
                           border-radius: 5px; font-weight: bold; display: inline-block;">
@@ -115,6 +118,8 @@ export async function sendOrderNotification(order: Order) {
 
 export async function sendCustomerConfirmation(order: Order) {
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
+  const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://influence-models-agency.netlify.app';
 
   if (!RESEND_API_KEY) return;
 
@@ -126,12 +131,13 @@ export async function sendCustomerConfirmation(order: Order) {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'orders@influence-marketplace.com',
+        from: FROM_EMAIL,
         to: [order.customerEmail],
         subject: `✅ Order Confirmed - ${order.packageTier}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #000 0%, #333 100%); padding: 30px; text-align: center;">
+              <img src="${BASE_URL}/logo.png" alt="Influence" style="height: 50px; margin-bottom: 16px;" />
               <h1 style="color: #FFD700; margin: 0;">✅ Order Confirmed!</h1>
             </div>
             <div style="background: #f9f9f9; padding: 30px;">

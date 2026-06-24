@@ -1,15 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { Crown, ChevronRight, Check } from 'lucide-react';
+import { ChevronRight, Check } from 'lucide-react';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import MobileNav from '../components/MobileNav';
+
+const gold = '#c9a96e';
 
 interface PricingTier {
   tier: string;
   name: string;
   price: number;
-  creators: number;
+  influencers: number;
   reach: string;
   description: string;
   features: string[];
@@ -18,36 +20,36 @@ interface PricingTier {
 const pricingTiers: Record<string, PricingTier> = {
   SAMPLE: {
     tier: 'SAMPLE',
-    name: 'Sample',
-    price: 80,
-    creators: 1,
+    name: 'Single Reel',
+    price: 300,
+    influencers: 1,
     reach: '50K',
-    description: 'Test our service risk-free',
-    features: ['1x 15-second reel', 'Single platform', '48-hour delivery'],
+    description: '1 premium reel from a verified creator',
+    features: ['1x 30-second reel', 'Single platform', '3-day delivery'],
   },
   STARTER: {
     tier: 'STARTER',
-    name: 'Starter',
-    price: 250,
-    creators: 1,
+    name: 'Dual Reel',
+    price: 500,
+    influencers: 1,
     reach: '100K',
-    description: 'Perfect for first-time campaigns',
+    description: 'IG + TikTok — double the reach',
     features: ['2x 30-second reels', 'Dual platform', '3-day delivery'],
   },
   GROWTH: {
     tier: 'GROWTH',
-    name: 'Growth',
-    price: 500,
-    creators: 1,
+    name: 'Content Pack',
+    price: 1000,
+    influencers: 1,
     reach: '200K',
-    description: 'Scale your brand presence',
+    description: '4 premium reels multi-platform',
     features: ['4x 30-second reels', 'Multi-platform', '5-day delivery'],
   },
   PRO: {
     tier: 'PRO',
-    name: 'Pro',
-    price: 850,
-    creators: 1,
+    name: 'Brand Deal',
+    price: 1500,
+    influencers: 1,
     reach: '300K',
     description: 'Most popular for serious brands',
     features: ['6x premium reels', 'Full platform coverage', '7-day delivery'],
@@ -55,56 +57,56 @@ const pricingTiers: Record<string, PricingTier> = {
   TRIO: {
     tier: 'TRIO',
     name: 'Trio Campaign',
-    price: 1500,
-    creators: 3,
+    price: 2250,
+    influencers: 3,
     reach: '300K',
-    description: '3 verified creators posting together',
-    features: ['3 creators', '3x reels each', '24-hour launch window'],
+    description: '3 verified influencers, coordinated campaign',
+    features: ['3 influencers', '2x reels each', '24-hour launch window'],
   },
   SQUAD: {
     tier: 'SQUAD',
     name: 'Squad Campaign',
-    price: 2750,
-    creators: 5,
+    price: 3500,
+    influencers: 5,
     reach: '500K',
-    description: '5 verified creators coordinated launch',
-    features: ['5 creators', '4x reels each', '12-hour launch window'],
+    description: '5 verified influencers coordinated launch',
+    features: ['5 influencers', '2x reels each', '12-hour launch window'],
   },
   VIRAL_NETWORK: {
     tier: 'VIRAL_NETWORK',
-    name: 'Viral Network',
-    price: 5999,
-    creators: 10,
+    name: 'Viral Launch',
+    price: 8500,
+    influencers: 10,
     reach: '1M',
-    description: '10 creators synchronized launch',
-    features: ['10 creators', '5x reels each', '6-hour launch window'],
+    description: '10 influencers synchronized launch',
+    features: ['10 influencers', '2x reels each', '6-hour launch window'],
   },
   MEGA: {
     tier: 'MEGA',
-    name: 'Mega Campaign',
-    price: 12999,
-    creators: 20,
+    name: 'Feed Takeover',
+    price: 15000,
+    influencers: 20,
     reach: '2M',
-    description: '20 creators enterprise-level campaign',
-    features: ['20 creators', '6x reels each', '2-hour launch window'],
+    description: '20 influencers dominating feeds',
+    features: ['20 influencers', '2x reels each', '2-hour launch window'],
   },
   DOMINATION: {
     tier: 'DOMINATION',
-    name: 'Domination',
+    name: 'Agency Campaign',
     price: 35000,
-    creators: 50,
+    influencers: 50,
     reach: '5M',
-    description: '50 creators mega viral campaign',
-    features: ['50 creators', '8x reels each', 'Simultaneous launch'],
+    description: '50 influencers full agency management',
+    features: ['50 influencers', '2x reels each', 'Simultaneous launch'],
   },
   ENTERPRISE: {
     tier: 'ENTERPRISE',
     name: 'Enterprise',
-    price: 100000,
-    creators: 100,
+    price: 65000,
+    influencers: 100,
     reach: '10M',
-    description: '100+ creators total market domination',
-    features: ['100+ creators', '10x reels each', 'Full management team'],
+    description: '100+ influencers total market domination',
+    features: ['100+ influencers', '2x reels each', 'Full management team'],
   },
 };
 
@@ -176,117 +178,94 @@ export default function PricingGuidePage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <nav className="border-b border-white/10 bg-black/80 backdrop-blur-xl fixed w-full z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <Link href="/" className="flex items-center space-x-3">
-              <Crown className="h-10 w-10 text-yellow-500" />
-              <span className="text-3xl font-bold gradient-text tracking-tight">INFLUENCE</span>
-            </Link>
-            <Link href="/pricing" className="text-white/80 hover:text-yellow-500 transition-colors text-sm font-medium tracking-wide uppercase">
-              View All Packages
-            </Link>
+    <div className="min-h-screen bg-[#080808]">
+      {/* Nav */}
+      <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
+        <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
+          <div className="flex items-center gap-4">
+            <MobileNav />
+            <div className="hidden md:flex items-center gap-10">
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
+              <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
+            </div>
+          </div>
+          <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
+          <div className="flex items-center gap-10">
+            <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
+            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-20 px-4">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-zinc-900 to-black"></div>
-        <div className="relative max-w-2xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-black mb-6 leading-tight">
-            <span className="text-white">Find Your Perfect</span>
-            <br />
-            <span className="gradient-text">Campaign Package</span>
+      {/* Hero */}
+      <section className="pt-32 md:pt-44 pb-12 md:pb-16 px-8 md:px-16">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: gold }}>Package Finder</p>
+          <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}>
+            Find Your Perfect Campaign
           </h1>
-          <p className="text-xl text-white/70">
-            Answer a few quick questions and we'll recommend the ideal package for your budget and goals
+          <p className="text-white/45 text-sm md:text-base max-w-md mx-auto">
+            Answer a few quick questions and we&apos;ll recommend the ideal package for your budget and goals.
           </p>
         </div>
       </section>
 
-      <section className="py-20 bg-zinc-950">
-        <div className="max-w-2xl mx-auto px-4">
+      {/* Quiz */}
+      <section className="pb-20 md:pb-32 px-6 md:px-16">
+        <div className="max-w-2xl mx-auto">
           {step === 'budget' && (
-            <div className="bg-black border border-white/10 p-12 rounded-lg">
-              <h2 className="text-3xl font-black text-white mb-2">What's your budget?</h2>
-              <p className="text-white/60 mb-10">Use the slider to select your budget range</p>
-
+            <div className="border border-white/[0.08] p-8 md:p-12" style={{ backgroundColor: '#0a0a0a' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">What&apos;s your budget?</h2>
+              <p className="text-white/40 text-sm mb-10">Use the slider or quick-select below</p>
               <div className="space-y-8">
-                <div>
-                  <input
-                    type="range"
-                    min="80"
-                    max="100000"
-                    value={budget}
-                    onChange={(e) => handleBudgetChange(Number(e.target.value))}
-                    className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer accent-yellow-500"
-                  />
-                </div>
-
+                <input
+                  type="range" min="80" max="100000" value={budget}
+                  onChange={(e) => handleBudgetChange(Number(e.target.value))}
+                  className="w-full h-1 appearance-none cursor-pointer"
+                  style={{ background: `linear-gradient(to right, ${gold} ${((budget - 80) / (100000 - 80)) * 100}%, rgba(255,255,255,0.1) ${((budget - 80) / (100000 - 80)) * 100}%)` }}
+                />
                 <div className="text-center">
-                  <p className="text-5xl font-black gradient-text mb-2">${budget.toLocaleString()}</p>
-                  <p className="text-white/60">per campaign</p>
+                  <p className="font-display font-bold italic mb-1" style={{ fontSize: '48px', color: gold }}>${budget.toLocaleString()}</p>
+                  <p className="text-white/30 text-xs tracking-widest uppercase">Per campaign</p>
                 </div>
-
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <button
-                    onClick={() => handleBudgetChange(250)}
-                    className="p-4 bg-white/5 border border-white/10 rounded hover:border-yellow-500 transition-all"
-                  >
-                    <p className="text-white/60 text-sm">Quick Test</p>
-                    <p className="text-white font-bold">$250</p>
-                  </button>
-                  <button
-                    onClick={() => handleBudgetChange(2750)}
-                    className="p-4 bg-white/5 border border-white/10 rounded hover:border-yellow-500 transition-all"
-                  >
-                    <p className="text-white/60 text-sm">Popular</p>
-                    <p className="text-white font-bold">$2,750</p>
-                  </button>
-                  <button
-                    onClick={() => handleBudgetChange(35000)}
-                    className="p-4 bg-white/5 border border-white/10 rounded hover:border-yellow-500 transition-all"
-                  >
-                    <p className="text-white/60 text-sm">Enterprise</p>
-                    <p className="text-white font-bold">$35K+</p>
-                  </button>
+                <div className="grid grid-cols-3 gap-3">
+                  {[{ label: 'Quick Test', value: 250 }, { label: 'Popular', value: 2750 }, { label: 'Enterprise', value: 35000 }].map(({ label, value }) => (
+                    <button key={value} onClick={() => handleBudgetChange(value)}
+                      className="p-4 border transition-all text-center"
+                      style={{ borderColor: budget === value ? 'rgba(201,169,110,0.3)' : 'rgba(255,255,255,0.08)', backgroundColor: budget === value ? 'rgba(201,169,110,0.08)' : 'transparent' }}>
+                      <p className="text-white/40 text-[10px] tracking-widest uppercase">{label}</p>
+                      <p className="text-white font-bold mt-1">${value >= 1000 ? `${value / 1000}K` : value}</p>
+                    </button>
+                  ))}
                 </div>
-
-                <Button
-                  onClick={() => setStep('goal')}
-                  className="w-full gold-gradient text-black font-bold py-6 text-lg tracking-wider uppercase hover:shadow-2xl hover:shadow-yellow-500/50 transition-all"
-                >
-                  Continue <ChevronRight className="ml-2 h-5 w-5" />
-                </Button>
+                <button onClick={() => setStep('goal')}
+                  className="w-full flex items-center justify-center gap-3 py-5 text-[13px] font-bold tracking-widest uppercase transition-all hover:opacity-80"
+                  style={{ backgroundColor: gold, color: '#000' }}>
+                  Continue <ChevronRight className="h-4 w-4" />
+                </button>
               </div>
             </div>
           )}
 
           {step === 'goal' && (
-            <div className="bg-black border border-white/10 p-12 rounded-lg">
-              <h2 className="text-3xl font-black text-white mb-2">What's your main goal?</h2>
-              <p className="text-white/60 mb-10">Select what matters most for your campaign</p>
-
-              <div className="space-y-4">
+            <div className="border border-white/[0.08] p-8 md:p-12" style={{ backgroundColor: '#0a0a0a' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">What&apos;s your main goal?</h2>
+              <p className="text-white/40 text-sm mb-10">Select what matters most for your campaign</p>
+              <div className="space-y-3">
                 {[
                   { id: 'test', label: 'Test & Learn', desc: 'Try influencer marketing for the first time' },
                   { id: 'growth', label: 'Growth', desc: 'Scale your brand and increase awareness' },
                   { id: 'viral', label: 'Go Viral', desc: 'Maximum reach and trending potential' },
                   { id: 'dominate', label: 'Dominate', desc: 'Own your market and crush competitors' },
                 ].map((option) => (
-                  <button
-                    key={option.id}
-                    onClick={() => handleGoalSelect(option.id)}
-                    className="w-full p-6 bg-white/5 border border-white/10 rounded hover:border-yellow-500 hover:bg-yellow-500/5 transition-all text-left group"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-white font-bold text-lg">{option.label}</p>
-                        <p className="text-white/60 text-sm">{option.desc}</p>
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-white/40 group-hover:text-yellow-500 transition-colors" />
+                  <button key={option.id} onClick={() => handleGoalSelect(option.id)}
+                    className="w-full p-6 border border-white/[0.08] hover:border-white/20 transition-all text-left group flex items-center justify-between">
+                    <div>
+                      <p className="text-white font-bold text-lg">{option.label}</p>
+                      <p className="text-white/40 text-sm">{option.desc}</p>
                     </div>
+                    <ChevronRight className="h-5 w-5 text-white/20 group-hover:text-white/60 transition-colors" />
                   </button>
                 ))}
               </div>
@@ -294,29 +273,23 @@ export default function PricingGuidePage() {
           )}
 
           {step === 'reach' && (
-            <div className="bg-black border border-white/10 p-12 rounded-lg">
-              <h2 className="text-3xl font-black text-white mb-2">How much reach do you need?</h2>
-              <p className="text-white/60 mb-10">Select your target impression range</p>
-
-              <div className="space-y-4">
+            <div className="border border-white/[0.08] p-8 md:p-12" style={{ backgroundColor: '#0a0a0a' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">How much reach do you need?</h2>
+              <p className="text-white/40 text-sm mb-10">Select your target impression range</p>
+              <div className="space-y-3">
                 {[
-                  { id: 'local', label: '50K - 300K Impressions', desc: 'Local/niche audience reach' },
-                  { id: 'regional', label: '300K - 1M Impressions', desc: 'Regional/growing audience' },
-                  { id: 'viral', label: '1M - 5M Impressions', desc: 'Viral potential, major reach' },
+                  { id: 'local', label: '50K – 300K Impressions', desc: 'Local / niche audience reach' },
+                  { id: 'regional', label: '300K – 1M Impressions', desc: 'Regional / growing audience' },
+                  { id: 'viral', label: '1M – 5M Impressions', desc: 'Viral potential, major reach' },
                   { id: 'massive', label: '5M+ Impressions', desc: 'Massive scale, market domination' },
                 ].map((option) => (
-                  <button
-                    key={option.id}
-                    onClick={() => handleReachSelect(option.id)}
-                    className="w-full p-6 bg-white/5 border border-white/10 rounded hover:border-yellow-500 hover:bg-yellow-500/5 transition-all text-left group"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-white font-bold text-lg">{option.label}</p>
-                        <p className="text-white/60 text-sm">{option.desc}</p>
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-white/40 group-hover:text-yellow-500 transition-colors" />
+                  <button key={option.id} onClick={() => handleReachSelect(option.id)}
+                    className="w-full p-6 border border-white/[0.08] hover:border-white/20 transition-all text-left group flex items-center justify-between">
+                    <div>
+                      <p className="text-white font-bold text-lg">{option.label}</p>
+                      <p className="text-white/40 text-sm">{option.desc}</p>
                     </div>
+                    <ChevronRight className="h-5 w-5 text-white/20 group-hover:text-white/60 transition-colors" />
                   </button>
                 ))}
               </div>
@@ -325,63 +298,89 @@ export default function PricingGuidePage() {
 
           {step === 'result' && recommendedTier && (
             <div className="space-y-8">
-              <div className="bg-gradient-to-r from-yellow-500/10 to-yellow-600/10 border border-yellow-500/30 p-12 rounded-lg">
-                <p className="text-yellow-500 font-bold text-sm uppercase tracking-wider mb-4">Perfect Match</p>
-                <h2 className="text-4xl font-black text-white mb-4">{recommendedTier.name}</h2>
-                <p className="text-white/70 text-lg mb-8">{recommendedTier.description}</p>
-
-                <div className="grid grid-cols-3 gap-6 mb-8">
+              <div className="border p-8 md:p-12" style={{ backgroundColor: '#0a0a0a', borderColor: 'rgba(201,169,110,0.25)' }}>
+                <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-4" style={{ color: gold }}>Perfect Match</p>
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">{recommendedTier.name}</h2>
+                <p className="text-white/50 text-base mb-8">{recommendedTier.description}</p>
+                <div className="grid grid-cols-3 gap-6 mb-8 pt-6 border-t border-white/[0.06]">
                   <div>
-                    <p className="text-white/60 text-sm uppercase tracking-wider mb-2">Price</p>
-                    <p className="text-3xl font-black gradient-text">${recommendedTier.price.toLocaleString()}</p>
+                    <p className="text-white/30 text-[10px] tracking-widest uppercase mb-2">Price</p>
+                    <p className="font-display font-bold italic" style={{ fontSize: '28px', color: gold }}>${recommendedTier.price.toLocaleString()}</p>
                   </div>
                   <div>
-                    <p className="text-white/60 text-sm uppercase tracking-wider mb-2">Creators</p>
-                    <p className="text-3xl font-black text-white">{recommendedTier.creators}+</p>
+                    <p className="text-white/30 text-[10px] tracking-widest uppercase mb-2">Influencers</p>
+                    <p className="text-2xl font-bold text-white">{recommendedTier.influencers}+</p>
                   </div>
                   <div>
-                    <p className="text-white/60 text-sm uppercase tracking-wider mb-2">Reach</p>
-                    <p className="text-3xl font-black text-white">{recommendedTier.reach}</p>
+                    <p className="text-white/30 text-[10px] tracking-widest uppercase mb-2">Reach</p>
+                    <p className="text-2xl font-bold text-white">{recommendedTier.reach}</p>
                   </div>
                 </div>
-
                 <div className="space-y-3 mb-8">
                   {recommendedTier.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center space-x-3">
-                      <Check className="h-5 w-5 text-yellow-500" />
-                      <span className="text-white">{feature}</span>
+                    <div key={idx} className="flex items-center gap-3">
+                      <Check className="h-4 w-4 flex-shrink-0" style={{ color: gold }} />
+                      <span className="text-white/70 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
-
-                <Link href="/pricing">
-                  <Button className="w-full gold-gradient text-black font-bold py-6 text-lg tracking-wider uppercase hover:shadow-2xl hover:shadow-yellow-500/50 transition-all">
-                    Book {recommendedTier.name}
-                  </Button>
+                <Link href="/model-booking"
+                  className="flex items-center justify-center gap-3 w-full py-5 text-[13px] font-bold tracking-widest uppercase transition-all hover:opacity-80"
+                  style={{ backgroundColor: gold, color: '#000' }}>
+                  Book {recommendedTier.name} <ChevronRight className="h-4 w-4" />
                 </Link>
               </div>
-
-              <div className="text-center">
-                <p className="text-white/60 mb-4">Want to explore other options?</p>
-                <button
-                  onClick={resetQuiz}
-                  className="text-yellow-500 hover:text-yellow-400 font-bold transition-colors"
-                >
-                  Start Over
-                </button>
-                <span className="text-white/40 mx-4">•</span>
-                <Link href="/pricing" className="text-yellow-500 hover:text-yellow-400 font-bold transition-colors">
-                  View All Packages
-                </Link>
+              <div className="text-center flex items-center justify-center gap-6 text-sm">
+                <button onClick={resetQuiz} className="underline transition-colors hover:text-white" style={{ color: gold }}>Start Over</button>
+                <span className="text-white/20">|</span>
+                <Link href="/pricing" className="underline transition-colors hover:text-white" style={{ color: gold }}>View All Packages</Link>
               </div>
             </div>
           )}
         </div>
       </section>
 
-      <footer className="bg-black border-t border-white/10 py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-white/40 text-sm">&copy; 2024 INFLUENCE. All rights reserved.</p>
+      {/* Footer */}
+      <footer className="bg-[#080808] border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 pt-16 pb-10">
+          <div className="flex flex-col md:flex-row justify-between gap-16 mb-16">
+            <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase self-start shrink-0" style={{ fontSize: '17px', color: gold }}>Influence</Link>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-20">
+              <div>
+                <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
+                <ul className="space-y-3">
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
+                  <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
+                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-white/20 text-[9px] tracking-widest uppercase mb-6">Services</p>
+                <ul className="space-y-3">
+                  <li><Link href="/services/content" className="text-white/40 hover:text-white transition-colors text-sm">Social Media Content</Link></li>
+                  <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
+                  <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots &amp; Videos</Link></li>
+                  <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="text-white/20 text-[9px] tracking-widest uppercase mb-6">Info</p>
+                <ul className="space-y-3">
+                  <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
+                  <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
+                  <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
+            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
+          </div>
         </div>
       </footer>
     </div>
