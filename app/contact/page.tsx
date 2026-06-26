@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Mail, MapPin, Clock, Crown, ChevronRight, Phone } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
+import ContactForm from './ContactForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -44,6 +45,12 @@ export default function ContactPage() {
           <p className="text-white/50 text-lg max-w-xl mx-auto">
             Have a question about our services, need a custom quote, or want to discuss a partnership? We&apos;d love to hear from you.
           </p>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/model-booking" className="inline-flex items-center gap-3 px-10 py-4 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+              Book Now — Skip the Line <ChevronRight className="h-4 w-4" />
+            </Link>
+            <span className="text-white/25 text-xs">or scroll down to message us</span>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-16">
@@ -78,6 +85,11 @@ export default function ContactPage() {
             <p className="text-white/40 text-sm mb-4">We&apos;re always looking for new talent.</p>
             <p className="font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style={{ color: '#c9a96e' }}>Apply Now <ChevronRight className="h-4 w-4" /></p>
           </Link>
+        </div>
+
+        {/* Lead capture form */}
+        <div className="mb-16">
+          <ContactForm />
         </div>
 
         {/* Quick Actions */}

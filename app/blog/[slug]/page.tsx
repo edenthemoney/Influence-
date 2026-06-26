@@ -14,7 +14,7 @@ const articles: Record<string, any> = {
     category: 'Industry',
     readTime: '7 min read',
     date: 'May 19, 2025',
-    author: 'Influence Models Agency',
+    author: 'Eden Roy',
     image: '/images/Des/des-2.jpg',
     content: [
       { type: 'text', value: 'The influencer marketing industry is projected to hit $32.5 billion in 2025 — a number that would have sounded absurd just five years ago. But the data is undeniable, and the shift is irreversible.' },
@@ -40,7 +40,7 @@ const articles: Record<string, any> = {
     category: 'Data',
     readTime: '5 min read',
     date: 'May 18, 2025',
-    author: 'Influence Models Agency',
+    author: 'Eden Roy',
     image: '/images/Des/des-3.jpg',
     content: [
       { type: 'text', value: 'Every dollar spent on influencer marketing generates an average of $5.78 in earned media value. For top-performing campaigns, that number climbs to $11.69. Compare that to traditional digital ads averaging $2.80 per dollar spent, and the math becomes obvious.' },
@@ -63,7 +63,7 @@ const articles: Record<string, any> = {
     category: 'Case Study',
     readTime: '6 min read',
     date: 'May 17, 2025',
-    author: 'Influence Models Agency',
+    author: 'Eden Roy',
     image: '/images/Des/des-4.jpg',
     content: [
       { type: 'text', value: 'A South Beach restaurant spent $15,000 on Facebook and Instagram ads over three months. They got decent impressions, a few clicks, and maybe a handful of reservations they could directly attribute to the spend. Then they tried something different.' },
@@ -88,7 +88,7 @@ const articles: Record<string, any> = {
     category: 'Strategy',
     readTime: '5 min read',
     date: 'May 16, 2025',
-    author: 'Influence Models Agency',
+    author: 'Eden Roy',
     image: '/images/Des/des-5.jpg',
     content: [
       { type: 'text', value: 'Your brand just spent $20,000 on a professional video shoot. Studio lighting, professional makeup, scripted lines, multiple takes. The result is polished, beautiful — and it gets half the engagement of a 15-second reel shot on an iPhone by one of your customers.' },
@@ -115,7 +115,7 @@ const articles: Record<string, any> = {
     category: 'Music',
     readTime: '8 min read',
     date: 'May 15, 2025',
-    author: 'Influence Models Agency',
+    author: 'Deseray Marie',
     image: '/images/Nadia/nadia-1.jpg',
     content: [
       { type: 'text', value: 'Every artist knows the formula: a great beat, sharp visuals, and stunning models. But what separates a music video that gets 10,000 views from one that gets 10 million? More often than you\'d think, it comes down to the talent on screen.' },
@@ -144,7 +144,7 @@ const articles: Record<string, any> = {
     category: 'Music Promo',
     readTime: '6 min read',
     date: 'Jun 8, 2025',
-    author: 'Influence Models Agency',
+    author: 'Eden Roy',
     image: '/images/Shay/shay-1.jpg',
     content: [
       { type: 'text', value: 'TikTok has become the most powerful music discovery engine on the planet. In 2024, over 75% of TikTok users discovered new music on the platform. More songs charted on Billboard because of TikTok virality than any other platform combined. If you\'re an artist and you\'re not leveraging TikTok, you\'re leaving streams — and fans — on the table.' },
@@ -170,7 +170,7 @@ const articles: Record<string, any> = {
     category: 'Strategy',
     readTime: '8 min read',
     date: 'Jun 8, 2025',
-    author: 'Influence Models Agency',
+    author: 'Eden Roy',
     image: '/images/Nya/nya-1.jpg',
     content: [
       { type: 'text', value: 'A well-executed viral challenge is the single most cost-effective marketing tactic available to brands and artists today. The Ice Bucket Challenge raised $115 million. The #MannequinChallenge reached 600 million views. The #InMyFeelings challenge turned a Drake song into a global phenomenon overnight. And they all started the same way: one great hook, a handful of seed creators, and perfect timing.' },
@@ -195,7 +195,7 @@ const articles: Record<string, any> = {
     category: 'Music Promo',
     readTime: '5 min read',
     date: 'Jun 8, 2025',
-    author: 'Influence Models Agency',
+    author: 'Eden Roy',
     image: '/images/Kady/kady-1.jpg',
     content: [
       { type: 'text', value: 'Instagram is the second-largest music discovery platform after TikTok — and for many genres (R&B, hip-hop, dancehall, reggaeton), it\'s still number one. With 2 billion monthly active users and Reels now averaging 200 billion plays per day, the reach potential for a well-promoted song is massive. Here are the 7 most effective tactics working right now.' },
@@ -256,7 +256,7 @@ export default function ArticlePage() {
               <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">About</Link>
               <Link href="/contact" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Contact</Link>
             </div>
-            <Link href="/book" className="px-5 py-2.5 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-90" style={{ backgroundColor: gold, color: '#000' }}>
+            <Link href="/model-booking" className="px-5 py-2.5 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-90" style={{ backgroundColor: gold, color: '#000' }}>
               Book Now
             </Link>
           </div>
@@ -306,7 +306,7 @@ export default function ArticlePage() {
                   return (
                     <div key={i} className="mt-12 p-8 border border-white/[0.06] text-center">
                       <p className="text-white/60 text-base mb-5">{block.value}</p>
-                      <Link href="/book" className="inline-block px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+                      <Link href="/model-booking" className="inline-block px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                         Book Now
                       </Link>
                     </div>

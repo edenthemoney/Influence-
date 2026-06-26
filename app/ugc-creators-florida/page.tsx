@@ -2,6 +2,22 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check, Video, Zap, BarChart3 } from 'lucide-react';
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'UGC Content Creation — Florida',
+  description: 'Professional UGC creators in Florida produce branded short-form video content for TikTok and Instagram Reels. Authentic, high-converting content starting at $300 per reel. Available remotely nationwide.',
+  url: 'https://influencemodels.agency/ugc-creators-florida',
+  provider: { '@type': 'Organization', name: 'Influence Models Agency', url: 'https://influencemodels.agency' },
+  areaServed: [{ '@type': 'State', name: 'Florida' }, { '@type': 'Country', name: 'United States' }],
+  serviceType: 'UGC Content Creation',
+  offers: [
+    { '@type': 'Offer', name: 'Single Reel', price: '300', priceCurrency: 'USD', description: '1 branded reel or skit, to your brief.' },
+    { '@type': 'Offer', name: '3-Reel Pack', price: '750', priceCurrency: 'USD', description: '3 branded reels, A/B test content.' },
+    { '@type': 'Offer', name: 'Full Campaign', price: '2500', priceCurrency: 'USD', description: '5 creators, 10 videos, account manager.' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: 'UGC Creators in Florida | Hire UGC Content Creators | Influence Models Agency',
   description: 'Hire professional UGC creators in Florida for TikTok, Instagram Reels, and brand content. Authentic, high-converting content that outperforms traditional ads. From $100.',
@@ -18,6 +34,7 @@ const gold = '#c9a96e';
 export default function UGCCreatorsFlorida() {
   return (
     <div className="min-h-screen bg-[#080808] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <div className="max-w-4xl mx-auto px-6 py-24">
         <div className="mb-4">
           <span className="text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: gold }}>UGC Content Creation</span>

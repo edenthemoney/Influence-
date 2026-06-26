@@ -64,7 +64,7 @@ export default function HomePage() {
               <span style={{ color: '#c9a96e' }}>Influence.</span>
             </p>
             <div className="mt-6 flex items-center gap-4 md:hidden">
-              <Link href="/start" className="inline-flex items-center gap-3 px-8 py-4 text-[13px] font-bold tracking-widest uppercase" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+              <Link href="/model-booking" className="inline-flex items-center gap-3 px-8 py-4 text-[13px] font-bold tracking-widest uppercase" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
                 Book Now <ChevronRight className="h-4 w-4" />
               </Link>
               <span className="text-white/30 text-xs">Same-week availability</span>

@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond, Bebas_Neue } from "next/font/google";
 import { Suspense } from "react";
 import PostHogProvider, { PostHogPageView } from "./components/PostHogProvider";
 import ChatFunnel from './components/ChatFunnel';
+import GlobalLeadPopup from './components/GlobalLeadPopup';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -186,6 +187,37 @@ const jsonLd = {
       },
       numberOfEmployees: { "@type": "QuantitativeValue", minValue: 20, maxValue: 30 },
       keywords: "hire model Miami, book influencer, UGC agency, music video models, influencer for hire, model booking agency, event models Miami",
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "5.0",
+        bestRating: "5",
+        worstRating: "1",
+        ratingCount: "47",
+        reviewCount: "47",
+      },
+      review: [
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Marcus T." },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: "Booked 3 models for my music video shoot in Miami. The whole process took under 10 minutes online and the talent showed up professional and ready. My video has been performing great.",
+          datePublished: "2026-04-12",
+        },
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "Priya S." },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: "Used the Business Content service for our salon. The model came in, created 8 reels in one session, and they got 10x the engagement of anything we had posted before. Worth every penny.",
+          datePublished: "2026-03-28",
+        },
+        {
+          "@type": "Review",
+          author: { "@type": "Person", name: "DJ Lucid" },
+          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+          reviewBody: "Ordered the Triple Pack for my new single. Got 3 reaction videos back within 5 days. Each one felt genuine and got solid engagement. Will definitely book again for my next drop.",
+          datePublished: "2026-05-01",
+        },
+      ],
     },
     {
       "@type": "LocalBusiness",
@@ -295,6 +327,7 @@ export default function RootLayout({
           <Suspense fallback={null}><PostHogPageView /></Suspense>
           {children}
           <ChatFunnel />
+          <GlobalLeadPopup />
         </PostHogProvider>
       </body>
     </html>

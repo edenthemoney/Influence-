@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Music, Play, PartyPopper, Camera, TrendingUp, Headphones, ArrowRight, Check, Phone } from 'lucide-react';
+import { Check, Phone } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
+import StartSelector from './StartSelector';
 
 const gold = '#c9a96e';
 
@@ -13,70 +14,6 @@ export const metadata = {
     url: 'https://influencemodels.agency/start',
   },
 };
-
-const options = [
-  {
-    id: 'ugc',
-    title: 'Creator Content & UGC',
-    subtitle: 'Reels · Reviews · Testimonials',
-    description: 'Verified creators make scroll-stopping reels, reviews, and branded content for your brand — delivered ready to post. Nationwide.',
-    persona: 'Brands · Products · Businesses',
-    icon: Play,
-    href: '/ugc-content',
-    cta: 'Get Creator Content',
-    popular: true,
-  },
-  {
-    id: 'campaigns',
-    title: 'Influencer Campaigns',
-    subtitle: 'Multi-Creator Rollouts',
-    description: 'Launch coordinated creator campaigns with synchronized posting and real reach — for brand launches, labels, and big releases.',
-    persona: 'Brands · Labels · Agencies',
-    icon: TrendingUp,
-    href: '/influencer-campaigns',
-    cta: 'Plan a Campaign',
-  },
-  {
-    id: 'music-video',
-    title: 'Music Video Talent',
-    subtitle: 'Solo · Duo · Trio · Full Cast',
-    description: 'Book verified talent for your music video. From solo features to full squads — styled, camera-ready, and on time.',
-    persona: 'Artists · Labels · Directors',
-    icon: Music,
-    href: '/music-video-booking',
-    cta: 'Book Video Talent',
-  },
-  {
-    id: 'shoots',
-    title: 'Photo & Brand Shoots',
-    subtitle: 'Editorials · Lookbooks · E-Comm',
-    description: 'Camera-ready models for brand shoots, fashion editorials, lookbooks, and e-commerce productions across South Florida.',
-    persona: 'Brands · Photographers · Designers',
-    icon: Camera,
-    href: '/models-for-shoots',
-    cta: 'Book Models',
-  },
-  {
-    id: 'music-promo',
-    title: 'Music Promo & Reactions',
-    subtitle: 'On-Camera Song Reactions',
-    description: 'Creators react to and promote your song on camera — authentic content that markets your music on Instagram, TikTok & YouTube.',
-    persona: 'Artists · Independent Musicians',
-    icon: Headphones,
-    href: '/model-booking?service=reaction',
-    cta: 'Promote My Music',
-  },
-  {
-    id: 'events',
-    title: 'Events, VIP & Bottle Girls',
-    subtitle: 'Hostesses · VIP · Activations',
-    description: 'Professional event talent, bottle girls, and hostesses for clubs, parties, grand openings, and brand activations.',
-    persona: 'Venues · Promoters · Hosts',
-    icon: PartyPopper,
-    href: '/event-talent',
-    cta: 'Book Event Talent',
-  },
-];
 
 export default function StartPage() {
   return (
@@ -124,41 +61,9 @@ export default function StartPage() {
         </div>
       </section>
 
-      {/* Selector Grid */}
+      {/* Two-step selector */}
       <section className="px-8 md:px-16 pb-16 md:pb-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {options.map((option) => {
-            const Icon = option.icon;
-            return (
-              <Link
-                key={option.id}
-                href={option.href}
-                className="group relative flex flex-col border border-white/[0.08] bg-[#0a0a0a] p-7 md:p-8 transition-all duration-300 hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/[0.03]"
-              >
-                {option.popular && (
-                  <div className="absolute top-0 right-0 px-3 py-1.5 text-[9px] font-bold tracking-[0.2em] uppercase" style={{ backgroundColor: gold, color: '#000' }}>
-                    Most Popular
-                  </div>
-                )}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-14 h-14 border flex items-center justify-center" style={{ borderColor: gold }}>
-                    <Icon className="h-6 w-6" style={{ color: gold }} />
-                  </div>
-                  <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/25 text-right max-w-[140px]">{option.persona}</p>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-1">{option.title}</h3>
-                <p className="text-[11px] font-bold tracking-[0.25em] uppercase mb-4" style={{ color: `${gold}99` }}>{option.subtitle}</p>
-                <p className="text-white/45 text-[14px] leading-relaxed mb-8 flex-1">
-                  {option.description}
-                </p>
-                <div className="flex items-center justify-between pt-5 border-t border-white/[0.06]">
-                  <span className="text-[12px] font-bold tracking-widest uppercase text-white/40 group-hover:text-white transition-colors">{option.cta}</span>
-                  <ArrowRight className="h-4 w-4 text-white/20 group-hover:text-[#c9a96e] group-hover:translate-x-1 transition-all" />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <StartSelector />
       </section>
 
       {/* Trust Bar */}

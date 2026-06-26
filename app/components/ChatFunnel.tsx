@@ -8,7 +8,17 @@ import { MessageCircle, X, ChevronRight, Send } from 'lucide-react';
 
 const gold = '#c9a96e';
 
-type Step = 'welcome' | 'purpose' | 'location' | 'budget' | 'result';
+type Step = 'welcome' | 'purpose' | 'location' | 'budget' | 'contact' | 'result';
+
+// Map a chat purpose to a booking service param so we can route + prefill.
+const PURPOSE_TO_SERVICE: Record<string, string> = {
+  'Music Video': 'musicvideo',
+  'Photo / Video Shoot': 'shoot',
+  'Event Staffing': 'event',
+  'Models at My Business': 'business',
+  'Reels & Social Content': 'ugc',
+  'Music Promo & Reactions': 'reaction',
+};
 
 interface Result {
   title: string;
@@ -25,6 +35,10 @@ export default function ChatFunnel() {
   const [location, setLocation] = useState<'local' | 'remote' | ''>('');
   const [budget, setBudget] = useState('');
   const [customInput, setCustomInput] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const [messages, setMessages] = useState<{ from: 'bot' | 'user'; text: string }[]>([
     { from: 'bot', text: "Hey! I'll match you with the perfect package in 30 seconds. What are you looking for?" }
   ]);
@@ -77,27 +91,61 @@ export default function ChatFunnel() {
   const handleBudget = (range: string) => {
     setBudget(range);
     addMessage('user', range);
-    addMessage('bot', getResult(range).description);
+    addMessage('bot', "Perfect — I've got a match. Drop your name & number and I'll send your options and lock in availability.");
+    setStep('contact');
+    posthog.capture('chat_funnel_budget', { purpose, location, budget: range });
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !phone.trim()) return;
+    setSubmitting(true);
+    // Prefill the booking/quote forms downstream
+    try {
+      sessionStorage.setItem('lead_name', name);
+      sessionStorage.setItem('lead_phone', phone);
+      sessionStorage.setItem('lead_email', email);
+    } catch {}
+    // Capture the lead immediately so sales can follow up
+    try {
+      await fetch('/api/save-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name, phone, email,
+          source: 'chat_funnel',
+          serviceType: PURPOSE_TO_SERVICE[purpose] || purpose,
+          notes: `Chat funnel — Purpose: ${purpose} · ${location === 'remote' ? 'Remote/Digital' : location === 'local' ? 'In-person (South FL)' : 'Unspecified'} · Budget: ${budget}`,
+        }),
+      });
+    } catch {
+      // Non-fatal — still show the recommendation
+    }
+    posthog.capture('chat_funnel_complete', { purpose, location, budget, recommendation: getResult(budget).title });
+    addMessage('user', `${name} · ${phone}`);
+    addMessage('bot', getResult(budget).description);
     setStep('result');
-    posthog.capture('chat_funnel_complete', { purpose, location, budget: range, recommendation: getResult(range).title });
+    setSubmitting(false);
   };
 
   const getResult = (budgetRange: string): Result => {
+    const svc = PURPOSE_TO_SERVICE[purpose];
+    const bookLink = svc ? `/model-booking?service=${svc}` : '/start';
     if (location === 'remote') {
       if (budgetRange === 'Under $300') {
-        return { title: 'Starter Content', description: 'I\'d recommend our Starter pack — 1 model creates a reel or reaction for you. Quick, affordable, and effective.', link: '/pricing?tier=testing', cta: 'View Starter Packages' };
+        return { title: 'Starter Content', description: 'A Starter pack is your move — a creator makes a reel or reaction for you. Quick and effective. Let\u2019s get you set up.', link: bookLink, cta: 'See My Options' };
       } else if (budgetRange === '$300 – $700') {
-        return { title: 'Growth Campaign', description: 'Our Growth packages are perfect — multiple models, more content pieces, bigger reach. Most popular choice.', link: '/pricing?tier=scaling', cta: 'View Growth Packages' };
+        return { title: 'Growth Campaign', description: 'Growth is perfect — multiple creators, more content, bigger reach. Our most popular range. Let\u2019s build it.', link: bookLink, cta: 'See My Options' };
       } else {
-        return { title: 'Full Campaign', description: 'For that budget, you get the full campaign treatment — multiple influencers, coordinated rollout, maximum reach.', link: '/pricing?tier=enterprise', cta: 'View Campaign Packages' };
+        return { title: 'Full Campaign', description: 'You\u2019re in full-campaign territory — multiple influencers, coordinated rollout, max reach. A rep will tailor this with you.', link: '/quote', cta: 'Get My Custom Plan' };
       }
     } else {
       if (budgetRange === 'Under $300') {
-        return { title: 'Solo Model', description: 'Our Solo package is perfect — 1 model for your shoot or event. Starting at $400 for events, $300 for shoots.', link: '/model-booking', cta: 'Book a Model' };
+        return { title: 'Solo Model', description: 'A solo booking fits perfectly — one verified model for your shoot or event. Let\u2019s lock your date.', link: bookLink, cta: 'See My Options' };
       } else if (budgetRange === '$300 – $700') {
-        return { title: 'Duo or Trio', description: 'You could get 2–3 models for a shoot or a small event squad. Our most booked range.', link: '/model-booking', cta: 'Browse Packages' };
+        return { title: 'Duo or Trio', description: 'You could get a 2–3 model squad — our most booked range. Let\u2019s find your match.', link: bookLink, cta: 'See My Options' };
       } else {
-        return { title: 'Full Production', description: 'Full squad production — 4+ models, perfect for music videos, events, or big brand shoots.', link: '/model-booking', cta: 'View All Options' };
+        return { title: 'Full Production', description: 'Full squad production — ideal for music videos, events, or big brand shoots. A rep will help you plan it.', link: svc ? bookLink : '/quote', cta: 'See My Options' };
       }
     }
   };
@@ -108,6 +156,9 @@ export default function ChatFunnel() {
     setLocation('');
     setBudget('');
     setCustomInput('');
+    setName('');
+    setPhone('');
+    setEmail('');
     setMessages([{ from: 'bot', text: "Hey! I'll match you with the perfect package in 30 seconds. What are you looking for?" }]);
   };
 
@@ -241,6 +292,43 @@ export default function ChatFunnel() {
                   </button>
                 ))}
               </div>
+            )}
+
+            {step === 'contact' && (
+              <form onSubmit={handleContactSubmit} className="space-y-2">
+                <input
+                  type="text"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name *"
+                  className="w-full bg-transparent border border-white/[0.08] px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#c9a96e]/40"
+                />
+                <input
+                  type="tel"
+                  required
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="Phone number *"
+                  className="w-full bg-transparent border border-white/[0.08] px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#c9a96e]/40"
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email (optional)"
+                  className="w-full bg-transparent border border-white/[0.08] px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#c9a96e]/40"
+                />
+                <button
+                  type="submit"
+                  disabled={submitting || !name.trim() || !phone.trim()}
+                  className="w-full px-4 py-3 text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50"
+                  style={{ backgroundColor: gold, color: '#000' }}
+                >
+                  {submitting ? 'Sending...' : (<>Show My Match <ChevronRight className="w-3.5 h-3.5" /></>)}
+                </button>
+                <p className="text-white/20 text-[9px] text-center">No spam — we only reach out about your booking.</p>
+              </form>
             )}
 
             {step === 'result' && (

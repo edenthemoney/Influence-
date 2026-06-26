@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    href: '/services/content',
+    href: '/model-booking?service=ugc',
     tag: 'Remote · Nationwide',
     category: 'Social Media Campaigns',
     title: 'UGC, Reels & Music Reactions',
@@ -25,11 +25,11 @@ const services = [
     items: ['Music Reactions', 'UGC Reels & TikToks', 'Viral Challenges & Trends', 'Multi-Model Campaigns'],
     price: 'From $300',
     sub: 'Per video · 3-day delivery',
-    cta: 'Learn More',
+    cta: 'Book Now',
     icon: Play,
   },
   {
-    href: '/services/business',
+    href: '/model-booking?service=business',
     tag: 'In-Person · South Florida',
     category: 'Brand Ambassadors',
     title: 'Models at Your Business',
@@ -37,7 +37,7 @@ const services = [
     items: ['On-Site Content Creation', '3–12+ Content Pieces', 'Recurring Monthly Plans', 'Same-Week Booking'],
     price: 'From $300',
     sub: 'Per session · South Florida',
-    cta: 'Learn More',
+    cta: 'Book Now',
     icon: TrendingUp,
   },
   {
@@ -53,7 +53,7 @@ const services = [
     icon: Music,
   },
   {
-    href: '/services/shoots',
+    href: '/model-booking?service=shoot',
     tag: 'In-Person · South Florida',
     category: 'Photo Shoots',
     title: 'Talent for Your Production',
@@ -61,11 +61,11 @@ const services = [
     items: ['Brand Shoots', 'Fashion Editorials', 'Lookbooks', 'E-commerce'],
     price: 'From $300',
     sub: 'Per shoot · same-week available',
-    cta: 'Learn More',
+    cta: 'Book Now',
     icon: Camera,
   },
   {
-    href: '/services/commercials',
+    href: '/model-booking?service=commercial',
     tag: 'In-Person · South Florida',
     category: 'Commercials & Speaking Roles',
     title: 'Talent Who Can Act & Speak',
@@ -73,11 +73,11 @@ const services = [
     items: ['Script Reading & Delivery', 'Dialogue & Acting', 'TV & Web Commercials', 'Monthly Subscription Available'],
     price: 'From $599',
     sub: 'Per production · subscription available',
-    cta: 'Learn More',
+    cta: 'Book Now',
     icon: Film,
   },
   {
-    href: '/actress-models-miami',
+    href: '/model-booking?service=commercial',
     tag: 'Talent Partner · Casting',
     category: 'Acting & Casting',
     title: 'Actress Models, Casting & Voiceover',
@@ -85,11 +85,11 @@ const services = [
     items: ['Actress Roles & Film Casting', 'Voiceover Talent', 'Audiobooks & Commercials', 'Casting Call Coordination'],
     price: 'From $599',
     sub: 'Per role or production',
-    cta: 'Learn More',
+    cta: 'Book Now',
     icon: Clapperboard,
   },
   {
-    href: '/services/events',
+    href: '/model-booking?service=event',
     tag: 'In-Person · South Florida',
     category: 'Events & Hosting',
     title: 'Talent at Your Event',
@@ -97,7 +97,7 @@ const services = [
     items: ['Club Nights & Parties', 'Brand Activations', 'Private Events', 'Grand Openings'],
     price: 'From $400',
     sub: '1 talent · 4hr shift · $100/hr per talent',
-    cta: 'Learn More',
+    cta: 'Book Now',
     icon: Sparkles,
   },
   {

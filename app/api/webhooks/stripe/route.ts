@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
         instructions: session.metadata?.instructions || '',
         songTitle: session.metadata?.songTitle || '',
         songLink: session.metadata?.songLink || '',
-        packageTier: session.metadata?.packageTier || '',
+        packageTier: session.metadata?.packageTier || session.metadata?.packageName || '',
         influencerId: session.metadata?.influencerId || '',
       };
 

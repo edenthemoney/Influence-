@@ -2,6 +2,22 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check, Film, Star, Eye } from 'lucide-react';
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Music Video Models for Hire — Miami, South Florida',
+  description: 'Professional music video models in Miami with credits including Sean Paul, Trippie Redd, Kodak Black, DaBaby, and French Montana. Book for music video productions in South Florida. Starting at $500.',
+  url: 'https://influencemodels.agency/music-video-models',
+  provider: { '@type': 'Organization', name: 'Influence Models Agency', url: 'https://influencemodels.agency' },
+  areaServed: [{ '@type': 'City', name: 'Miami' }, { '@type': 'State', name: 'Florida' }],
+  serviceType: 'Music Video Model Booking',
+  offers: [
+    { '@type': 'Offer', name: 'Solo Feature', price: '500', priceCurrency: 'USD', description: '1 model, 4hr, featured scenes.' },
+    { '@type': 'Offer', name: 'Trio Feature', price: '1200', priceCurrency: 'USD', description: '3 models, 4hr, full video cast.' },
+    { '@type': 'Offer', name: 'Big Production', price: '3500', priceCurrency: 'USD', description: '10-50 models, full music video production.' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: 'Music Video Models for Hire | Miami | Influence Models Agency',
   description: 'Book professional music video models in Miami. Our talent has appeared in videos for Sean Paul, Trippie Redd, Kodak Black, French Montana & more. 17M+ combined views.',
@@ -18,6 +34,7 @@ const gold = '#c9a96e';
 export default function MusicVideoModels() {
   return (
     <div className="min-h-screen bg-[#080808] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <div className="max-w-4xl mx-auto px-6 py-24">
         <div className="mb-4">
           <span className="text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: gold }}>Music Video Talent</span>

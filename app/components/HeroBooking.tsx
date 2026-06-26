@@ -1,30 +1,27 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
 import posthog from 'posthog-js';
-import { ChevronRight, ChevronLeft, Camera, Headphones, Sparkles, Play, Check, Music, TrendingUp, Zap, Film, Wine } from 'lucide-react';
+import { ChevronRight, Camera, Headphones, Sparkles, Play, Check, Music, TrendingUp, Film, Wine, Phone } from 'lucide-react';
 
 const G = '#c9a96e';
 
-/* ── 3 Scenarios with sub-services ──────────────────────────────────── */
-type ScenarioId = 'business' | 'music' | 'event';
 type ServiceId = 'reaction' | 'ugc' | 'business' | 'musicvideo' | 'shoot' | 'commercial' | 'event' | 'bottle';
 
-const scenarios: { id: ScenarioId; Icon: React.ElementType; title: string; desc: string; services: ServiceId[] }[] = [
-  { id: 'business', Icon: TrendingUp, title: 'Promote My Business, Brand or Product', desc: 'Content that grows your brand — from on-site visits to professional campaigns', services: ['business', 'ugc', 'commercial'] },
-  { id: 'music',    Icon: Music,     title: 'Promote My Music',                      desc: 'Music videos, reactions, and promotional content for artists', services: ['musicvideo', 'reaction', 'shoot'] },
-  { id: 'event',    Icon: Sparkles,  title: 'Host an Event / VIP / Bottle Service',  desc: 'Models for your club, party, brand activation or private event', services: ['event', 'bottle'] },
+const topOptions: { id: ServiceId; Icon: React.ElementType; label: string; sub: string }[] = [
+  { id: 'business',   Icon: TrendingUp, label: 'Brands & Businesses', sub: 'UGC, reels, business content & commercials' },
+  { id: 'musicvideo', Icon: Music,      label: 'Artists & Music',     sub: 'Music videos, reactions & photo shoots' },
+  { id: 'event',      Icon: Sparkles,   label: 'Events & Nightlife',  sub: 'Event models, hosting & bottle girls' },
 ];
 
 const allServices: Record<ServiceId, { Icon: React.ElementType; label: string; sub: string; from: string; badge: string }> = {
-  reaction:   { Icon: Headphones, label: 'Music Reactions',   sub: 'Models react to your songs on camera',                    from: '$300',      badge: 'Remote' },
-  ugc:        { Icon: Play,       label: 'UGC & Reels',       sub: 'Branded skits, promos & short-form content',               from: '$300',      badge: 'Remote' },
-  business:   { Icon: TrendingUp, label: 'Business Content',  sub: 'Model comes to your business, creates reels on-site',     from: '$300',      badge: 'In-Person' },
-  musicvideo: { Icon: Camera,     label: 'Music Videos',      sub: 'Book models for your music video production',             from: '$500',      badge: 'In-Person' },
-  shoot:      { Icon: Camera,     label: 'Photo Shoots',      sub: 'Models for brand shoots, fashion, editorials',            from: '$300',      badge: 'In-Person' },
-  commercial: { Icon: Film,       label: 'Commercials',       sub: 'Script reading, dialogue & acting for commercials',       from: '$599',      badge: 'In-Person' },
-  event:      { Icon: Sparkles,   label: 'Events & Hosting',  sub: 'Models for parties, activations & brand events',         from: '$400/girl', badge: 'In-Person' },
-  bottle:     { Icon: Wine,       label: 'Bottle Girls / VIP', sub: 'VIP hostesses for clubs, lounges & nightlife',           from: '$400/girl', badge: 'In-Person' },
+  reaction:   { Icon: Headphones, label: 'Music Reactions',    sub: 'Models react to your songs on camera',               from: '$300',      badge: 'Remote' },
+  ugc:        { Icon: Play,       label: 'UGC & Reels',        sub: 'Branded skits, promos & short-form content',         from: '$300',      badge: 'Remote' },
+  business:   { Icon: TrendingUp, label: 'Business Content',   sub: 'Model visits your location, creates reels on-site',  from: '$300',      badge: 'In-Person' },
+  musicvideo: { Icon: Music,      label: 'Music Videos',       sub: 'Book models for your music video production',        from: '$500',      badge: 'In-Person' },
+  shoot:      { Icon: Camera,     label: 'Photo Shoots',       sub: 'Models for brand shoots, fashion, editorials',       from: '$300',      badge: 'In-Person' },
+  commercial: { Icon: Film,       label: 'Commercials',        sub: 'Script reading, dialogue & acting for commercials',  from: '$599',      badge: 'In-Person' },
+  event:      { Icon: Sparkles,   label: 'Events & Hosting',   sub: 'Models for parties, activations & brand events',    from: '$400/girl', badge: 'In-Person' },
+  bottle:     { Icon: Wine,       label: 'Bottle Girls / VIP', sub: 'VIP hostesses for clubs, lounges & nightlife',      from: '$400/girl', badge: 'In-Person' },
 };
 
 /* ── Budget → recommendation (per service) ──────────────────────── */
@@ -110,44 +107,43 @@ const sliderRanges: Record<string, { min: number; max: number; step: number }> =
   bottle:     { min: 400,  max: 9000,  step: 100 },
 };
 
-type SvcType = '' | 'reaction' | 'ugc' | 'business' | 'musicvideo' | 'shoot' | 'commercial' | 'event' | 'bottle';
-
-/* ── Client identity → service mapping ──────────────────────── */
-const identities = [
-  { id: 'indie-artist', label: 'Artist / Musician',   icon: Music,      rec: 'musicvideo' as const },
-  { id: 'label',        label: 'Record Label',        icon: Headphones, rec: 'musicvideo' as const },
-  { id: 'biz-owner',    label: 'Business Owner',      icon: TrendingUp, rec: 'business' as const },
-  { id: 'brand',        label: 'Brand / Product',     icon: Camera,     rec: 'ugc' as const },
-  { id: 'venue',        label: 'Venue / Promoter',    icon: Sparkles,   rec: 'event' as const },
-  { id: 'agency',       label: 'Marketing Agency',    icon: Zap,        rec: 'ugc' as const },
-];
-
 export default function HeroBooking() {
-  const [scenario, setScenario] = useState<ScenarioId | null>(null);
-  const [svc,      setSvc]      = useState<ServiceId | null>(null);
-  const [bgt,      setBgt]      = useState(250);
-  const [step,     setStep]     = useState<'scenario' | 'service' | 'budget'>('scenario');
+  const [svc,       setSvc]       = useState<ServiceId | null>(null);
+  const [bgt,       setBgt]       = useState(300);
+  const [step,      setStep]      = useState<'service' | 'budget' | 'lead'>('service');
+  const [name,      setName]      = useState('');
+  const [phone,     setPhone]     = useState('');
+  const [loading,   setLoading]   = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const currentService = svc || 'reaction';
-  const range = sliderRanges[currentService] || sliderRanges.reaction;
+  const range   = sliderRanges[currentService] || sliderRanges.reaction;
   const recList = recs[currentService] || [];
-  const rec = recList.find(r => bgt >= r.min && bgt < r.max) ?? recList[recList.length - 1];
-
-  const pickScenario = (id: ScenarioId) => {
-    posthog.capture('hero_scenario_selected', { scenario: id });
-    setScenario(id);
-    setStep('service');
-  };
+  const rec     = recList.find(r => bgt >= r.min && bgt < r.max) ?? recList[recList.length - 1];
 
   const pickService = (id: ServiceId) => {
-    posthog.capture('hero_service_selected', { service: id, scenario });
+    posthog.capture('hero_service_selected', { service: id });
     setSvc(id);
     setBgt(sliderRanges[id]?.min || 300);
     setStep('budget');
   };
 
-  const reset = () => { setScenario(null); setSvc(null); setStep('scenario'); };
-  const backToScenarios = () => { setSvc(null); setStep('scenario'); };
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!phone.trim()) return;
+    setLoading(true);
+    try {
+      await fetch('/api/save-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, source: 'hero_widget', serviceType: svc, notes: `Budget: $${bgt} · Package: ${rec?.name}` }),
+      });
+      try { sessionStorage.setItem('lead_name', name); sessionStorage.setItem('lead_phone', phone); } catch {}
+    } catch {}
+    setLoading(false);
+    setSubmitted(true);
+    setTimeout(() => { window.location.href = `/model-booking?service=${svc}`; }, 600);
+  };
 
   return (
     <div
@@ -160,181 +156,123 @@ export default function HeroBooking() {
           <span className="w-2.5 h-2.5 rounded-full animate-pulse inline-block" style={{ backgroundColor: G }} />
           <p className="text-[13px] tracking-[0.3em] uppercase font-bold" style={{ color: G }}>Find Your Package</p>
         </div>
-        {step !== 'scenario' && (
-          <button onClick={reset} className="text-white/30 hover:text-white/60 text-[11px] tracking-widest uppercase flex items-center gap-1.5 transition-colors">
-            <ChevronLeft className="h-3.5 w-3.5" /> Start Over
+        {step !== 'service' && (
+          <button onClick={() => { setSvc(null); setStep('service'); }} className="text-white/30 hover:text-white/60 text-[11px] tracking-widest uppercase transition-colors">
+            ← Change
           </button>
         )}
       </div>
 
-      {/* ─── Step 1: Pick Your Scenario ─── */}
-      {step === 'scenario' && (
+      {/* ─── Step 1: Pick category (3 options) ─── */}
+      {step === 'service' && (
         <div>
-          <p className="text-white/90 text-[16px] mb-1.5 font-medium">What are you looking for?</p>
-          <p className="text-white/35 text-[12px] mb-4">Pick the option that best describes you — then choose your specific service.</p>
-          <div className="flex flex-col gap-2.5">
-            {scenarios.map(({ id, Icon, title, desc, services: svcIds }) => (
+          <p className="text-white/85 text-[15px] font-medium mb-4">What do you need?</p>
+          <div className="flex flex-col gap-2">
+            {topOptions.map(({ id, Icon, label, sub }) => (
               <button
                 key={id}
-                onClick={() => pickScenario(id)}
-                className="w-full text-left p-4 transition-all duration-200 group rounded-sm"
-                style={{ border: '1px solid rgba(255,255,255,0.08)', backgroundColor: 'rgba(255,255,255,0.01)' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = G; e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.06)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.01)'; }}
+                onClick={() => pickService(id)}
+                className="w-full flex items-center gap-4 px-4 py-4 text-left group transition-all duration-150"
+                style={{ border: '1px solid rgba(255,255,255,0.07)', backgroundColor: 'rgba(255,255,255,0.01)' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = G; e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.05)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.01)'; }}
               >
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 flex items-center justify-center flex-shrink-0" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                    <Icon className="h-4 w-4 text-white/40 group-hover:text-[#c9a96e] transition-colors" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white/80 font-bold text-[14px] group-hover:text-[#c9a96e] transition-colors">{title}</p>
-                    <p className="text-white/35 text-[11px] mt-1 leading-relaxed">{desc}</p>
-                    <p className="text-white/20 text-[10px] mt-2 tracking-wider uppercase">{svcIds.length} services available</p>
-                  </div>
-                  <ChevronRight className="h-4 w-4 text-white/20 group-hover:text-[#c9a96e] transition-colors mt-1" />
+                <Icon className="h-4 w-4 text-white/30 group-hover:text-[#c9a96e] transition-colors shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-white/85 font-bold text-[14px] group-hover:text-white transition-colors">{label}</p>
+                  <p className="text-white/35 text-[11px] mt-0.5">{sub}</p>
                 </div>
+                <ChevronRight className="h-3.5 w-3.5 text-white/20 group-hover:text-[#c9a96e] transition-colors shrink-0" />
               </button>
             ))}
           </div>
         </div>
       )}
 
-      {/* ─── Step 2: Pick Your Service (within scenario) ─── */}
-      {step === 'service' && scenario && (
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <button onClick={backToScenarios} className="text-white/30 hover:text-white/60 text-[11px] tracking-widest uppercase flex items-center gap-1 transition-colors">
-              <ChevronLeft className="h-3 w-3" /> Back
-            </button>
+      {/* ─── Step 2: Budget slider + recommendation ─── */}
+      {step === 'budget' && rec && svc && (
+        <div className="flex flex-col gap-5">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-bold tracking-widest uppercase text-white/30">{allServices[svc].label}</span>
+            <span className="text-white/15 text-[10px]">·</span>
+            <span className="text-[10px] text-white/20">{allServices[svc].badge}</span>
           </div>
-          <p className="text-white/90 text-[16px] mb-1 font-medium">
-            {scenarios.find(s => s.id === scenario)?.title}
-          </p>
-          <p className="text-white/35 text-[12px] mb-4">Select the specific service you need:</p>
-          <div className="flex flex-col gap-1.5">
-            {scenarios.find(s => s.id === scenario)?.services.map(svcId => {
-              const service = allServices[svcId];
-              const Icon = service.Icon;
-              return (
-                <button
-                  key={svcId}
-                  onClick={() => pickService(svcId)}
-                  className="w-full flex items-center gap-3 px-4 py-3 transition-all duration-200 text-left group"
-                  style={{ border: '1px solid rgba(255,255,255,0.08)' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = G; e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.04)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'transparent'; }}
-                >
-                  <Icon className="h-4 w-4 text-white/30 group-hover:text-[#c9a96e] transition-colors shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-white/70 font-bold text-[14px] group-hover:text-[#c9a96e] transition-colors">{service.label}</p>
-                    <p className="text-white/30 text-[11px] mt-0.5">{service.sub}</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-white/20 text-[9px] uppercase tracking-wider">{service.badge}</p>
-                  </div>
-                </button>
-              );
-            })}
+
+          <div>
+            <div className="flex items-center justify-between mb-3">
+              <p className="text-white/70 text-[14px]">Your budget</p>
+              <span className="font-display font-bold italic text-2xl" style={{ color: G }}>${bgt.toLocaleString()}</span>
+            </div>
+            <input
+              type="range" min={range.min} max={range.max} step={range.step} value={bgt}
+              onChange={e => setBgt(Number(e.target.value))}
+              className="budget-slider w-full h-2 cursor-pointer rounded-full appearance-none"
+            />
+            <div className="flex justify-between text-white/20 text-[10px] tracking-widest uppercase mt-2">
+              <span>${range.min.toLocaleString()}</span><span>${range.max.toLocaleString()}+</span>
+            </div>
+          </div>
+
+          <div className="border p-5" style={{ borderColor: G, backgroundColor: 'rgba(201,169,110,0.03)' }}>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-white/35 text-[10px] tracking-[0.3em] uppercase font-bold">Best Match</p>
+              {rec.popular && <span className="text-green-400/60 text-[10px] font-semibold flex items-center gap-1"><Check className="h-3 w-3" /> Popular</span>}
+            </div>
+            <p className="text-white font-bold text-lg leading-tight">{rec.name}</p>
+            <p className="text-white/40 text-[12px] mt-1 mb-4">{rec.detail}</p>
+            <button
+              onClick={() => setStep('lead')}
+              className="flex items-center justify-center gap-2 w-full py-4 text-[13px] font-bold tracking-widest uppercase transition-all hover:opacity-85"
+              style={{ backgroundColor: G, color: '#000' }}
+            >
+              Book This Package <ChevronRight className="h-4 w-4" />
+            </button>
           </div>
         </div>
       )}
 
-      {/* ─── Step 3: Budget + Recommendation ─── */}
-      {step === 'budget' && rec && (
-        <div className="flex flex-col gap-6">
-          {/* Service context */}
-          <p className="text-white/30 text-[11px] tracking-widest uppercase">
-            {currentService === 'reaction' ? '🎧 Music Reactions' : currentService === 'ugc' ? '🎬 UGC & Reels' : currentService === 'business' ? '🏢 Business Content' : currentService === 'musicvideo' ? '🎬 Music Videos' : currentService === 'shoot' ? '📸 Photo Shoots' : currentService === 'commercial' ? '🎬 Commercials' : currentService === 'bottle' ? '🍾 Bottle Girls / VIP' : '✨ Events & Hosting'}
-          </p>
-
-          <div>
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-white/80 text-[17px] font-light">Your project range</p>
-              <span className="font-display font-bold italic" style={{ color: G, fontSize: 'clamp(28px, 5vw, 36px)' }}>${bgt.toLocaleString()}</span>
+      {/* ─── Step 3: Lead capture before redirect ─── */}
+      {step === 'lead' && (
+        <div>
+          {submitted ? (
+            <div className="text-center py-6">
+              <Check className="h-8 w-8 mx-auto mb-3" style={{ color: G }} />
+              <p className="text-white font-bold mb-1">Got it — taking you to booking</p>
+              <p className="text-white/35 text-sm">One moment...</p>
             </div>
-            <input
-              type="range"
-              min={range.min}
-              max={range.max}
-              step={range.step}
-              value={bgt}
-              onChange={e => setBgt(Number(e.target.value))}
-              className="budget-slider w-full h-2 cursor-pointer rounded-full appearance-none"
-            />
-            <div className="flex justify-between text-white/20 text-[11px] tracking-widest uppercase mt-3">
-              <span>${range.min.toLocaleString()}</span>
-              <span>${range.max.toLocaleString()}+</span>
-            </div>
-          </div>
-
-          {/* Recommendation card */}
-          <div className="border pt-6 pb-7 px-6" style={{ borderColor: G, backgroundColor: 'rgba(201,169,110,0.03)' }}>
-            <div className="flex items-center justify-between mb-3">
-              <p className="text-white/40 text-[11px] tracking-[0.3em] uppercase font-bold">Best Fit for Your Budget</p>
-              {rec.popular && (
-                <div className="flex items-center gap-1.5 text-green-400/60 text-[11px] font-semibold">
-                  <Check className="h-3.5 w-3.5" /> Most Popular
-                </div>
-              )}
-            </div>
-            <p className="text-white font-display font-bold italic leading-tight" style={{ fontSize: 'clamp(22px, 4vw, 28px)' }}>{rec.name}</p>
-            <p className="text-white/45 text-[13px] mt-2 mb-5">{rec.detail}</p>
-            <div className="flex items-center justify-between mb-6">
-              <p className="text-white/40 text-[12px]">Get a custom quote based on your needs</p>
-              {rec.popular && (
-                <div className="flex -space-x-1.5">
-                  {[...Array(3)].map((_, i) => (
-                    <div key={i} className="w-5 h-5 rounded-full border border-[#111] bg-white/10" />
-                  ))}
-                  <span className="text-white/25 text-[10px] ml-2 self-center">top choice</span>
-                </div>
-              )}
-            </div>
-            <Link
-              href={`/model-booking?service=${svc}`}
-              className="flex items-center justify-center gap-3 w-full py-5 text-[14px] font-bold tracking-[0.2em] uppercase transition-all hover:opacity-85"
-              style={{ backgroundColor: G, color: '#000' }}
-            >
-              Get Your Quote <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          {/* Cross-sell */}
-          {svc === 'reaction' && (
-            <button
-              onClick={() => pickService('ugc')}
-              className="w-full p-3 border border-white/[0.06] hover:border-[#c9a96e]/20 flex items-center gap-3 transition-all duration-200 group text-left"
-            >
-              <Play className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors shrink-0" />
-              <p className="text-white/25 text-[11px] group-hover:text-white/40 transition-colors">
-                Want promo skits too? Try <span className="font-semibold">UGC & Reels</span>
-              </p>
-              <ChevronRight className="h-3 w-3 text-white/10 group-hover:text-[#c9a96e] ml-auto shrink-0 transition-colors" />
-            </button>
-          )}
-          {svc === 'ugc' && (
-            <button
-              onClick={() => pickService('reaction')}
-              className="w-full p-3 border border-white/[0.06] hover:border-[#c9a96e]/20 flex items-center gap-3 transition-all duration-200 group text-left"
-            >
-              <Headphones className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors shrink-0" />
-              <p className="text-white/25 text-[11px] group-hover:text-white/40 transition-colors">
-                Promoting a song? Add <span className="font-semibold">music reactions</span>
-              </p>
-              <ChevronRight className="h-3 w-3 text-white/10 group-hover:text-[#c9a96e] ml-auto shrink-0 transition-colors" />
-            </button>
-          )}
-          {(svc === 'shoot' || svc === 'event' || svc === 'business' || svc === 'commercial') && (
-            <button
-              onClick={() => pickService('ugc')}
-              className="w-full p-3 border border-white/[0.06] hover:border-[#c9a96e]/20 flex items-center gap-3 transition-all duration-200 group text-left"
-            >
-              <Play className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors shrink-0" />
-              <p className="text-white/25 text-[11px] group-hover:text-white/40 transition-colors">
-                Need <span className="font-semibold">social media content</span> too? Add UGC reels
-              </p>
-              <ChevronRight className="h-3 w-3 text-white/10 group-hover:text-[#c9a96e] ml-auto shrink-0 transition-colors" />
-            </button>
+          ) : (
+            <>
+              <p className="text-white/85 text-[15px] font-medium mb-1">Almost there — drop your number</p>
+              <p className="text-white/35 text-[12px] mb-4">We'll confirm availability and have everything ready when you arrive.</p>
+              <form onSubmit={handleLeadSubmit} className="space-y-3">
+                <input
+                  type="text" placeholder="Your Name" value={name} onChange={e => setName(e.target.value)}
+                  className="w-full h-11 bg-white/[0.04] border border-white/10 px-4 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
+                />
+                <input
+                  type="tel" placeholder="Phone Number *" required value={phone} onChange={e => setPhone(e.target.value)}
+                  className="w-full h-11 bg-white/[0.04] border border-white/10 px-4 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
+                />
+                <button
+                  type="submit" disabled={loading || !phone.trim()}
+                  className="w-full py-4 text-[13px] font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-40"
+                  style={{ backgroundColor: G, color: '#000' }}
+                >
+                  {loading ? 'One sec...' : (<>Continue to Booking <ChevronRight className="h-4 w-4" /></>)}
+                </button>
+              </form>
+              <button
+                onClick={() => { window.location.href = `/model-booking?service=${svc}`; }}
+                className="w-full mt-2 text-center text-white/25 hover:text-white/50 text-[11px] transition-colors"
+              >
+                Skip → go straight to booking
+              </button>
+              <div className="flex items-center justify-center gap-2 mt-3">
+                <a href="tel:+15615520392" className="flex items-center gap-2 text-white/30 hover:text-white/60 text-[11px] transition-colors">
+                  <Phone className="h-3 w-3" /> Prefer to call? (561) 552-0392
+                </a>
+              </div>
+            </>
           )}
         </div>
       )}

@@ -65,11 +65,11 @@ export default function BookingSuccessPage() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Link href="/marketplace" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold, color: '#000' }}>
-            Browse Talent <ChevronRight className="h-4 w-4" />
+          <Link href="/model-booking" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold, color: '#000' }}>
+            Book Another Service <ChevronRight className="h-4 w-4" />
           </Link>
-          <Link href="/services" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase border border-white/10 text-white/50 hover:text-white hover:border-white/20 transition-all">
-            Explore Services
+          <Link href="/marketplace" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase border border-white/10 text-white/50 hover:text-white hover:border-white/20 transition-all">
+            Browse Talent
           </Link>
         </div>
 

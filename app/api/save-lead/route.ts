@@ -6,7 +6,7 @@ const GOLD = '#c9a96e';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, phone, source, serviceType, packageName, packagePrice, step } = body;
+    const { name, email, phone, source, serviceType, packageName, packagePrice, step, modelPreference, notes } = body;
 
     if (!phone && !email) {
       return NextResponse.json({ error: 'Missing contact info' }, { status: 400 });
@@ -46,6 +46,8 @@ export async function POST(req: Request) {
           ${serviceType ? row('Service Interest', serviceType) : ''}
           ${packageName ? row('Package', packageName) : ''}
           ${packagePrice ? row('Price', `$${Number(packagePrice).toLocaleString()}`) : ''}
+          ${modelPreference ? row('Model Preference', modelPreference) : ''}
+          ${notes ? row('Notes', notes) : ''}
           ${step !== undefined ? row('Dropped at Step', `Step ${step} of 4`) : ''}
         </table>
       </div>
@@ -72,7 +74,7 @@ export async function POST(req: Request) {
         await fetch(process.env.MAKE_LEADS_WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, phone, source, serviceType, packageName, packagePrice, step, timestamp: new Date().toISOString() }),
+          body: JSON.stringify({ name, email, phone, source, serviceType, packageName, packagePrice, step, modelPreference, notes, timestamp: new Date().toISOString() }),
         });
       } catch {
         // Non-fatal — don't block the response if Make.com is down

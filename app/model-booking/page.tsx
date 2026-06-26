@@ -219,7 +219,8 @@ const PACKAGES: Record<string, any[]> = {
   'bottle-monthly':    BOTTLE_MO,
 };
 
-const STEPS = ['What You Need', 'Service', 'Frequency', 'Details', 'Package'];
+const STEPS = ['Service', 'Frequency', 'Details', 'Package'];
+// step 0 = service picker (was steps 0+1), step 2 = frequency (remote only), step 3 = details, step 4 = package
 type ServiceType = 'shoot' | 'musicvideo' | 'event' | 'reaction' | 'ugc' | 'business' | 'commercial' | 'bottle';
 type ScenarioType = 'business' | 'music' | 'event';
 
@@ -288,6 +289,7 @@ function ModelBookingContent() {
   const [email,       setEmail]       = useState('');
   const [phone,       setPhone]       = useState('');
   const [notes,       setNotes]       = useState('');
+  const [modelPreference, setModelPreference] = useState<string>('');
   const [location,    setLocation]    = useState('');
   const [time,        setTime]        = useState('');
   const [songLink,    setSongLink]    = useState('');
@@ -329,6 +331,7 @@ function ModelBookingContent() {
           serviceType,
           packageName: pkg?.name,
           packagePrice: pkg?.price,
+          modelPreference: modelPreference || selectedModel || '',
           step,
         });
         navigator.sendBeacon('/api/save-lead', new Blob([payload], { type: 'application/json' }));
@@ -340,7 +343,6 @@ function ModelBookingContent() {
 
   const canNext = () => {
     if (step === 0) return serviceType !== null;
-    if (step === 1) return bookingType !== null;
     if (step === 2) return bookingType !== null;
     if (step === 3) return name.trim() !== '' && phone.trim() !== '' && email.trim() !== '';
     if (step === 4) return pkg !== null;
@@ -361,7 +363,8 @@ function ModelBookingContent() {
               source: 'booking_flow_details',
               serviceType,
               bookingType,
-              notes: selectedModel ? `Requested Model: ${selectedModel}` : '',
+              modelPreference: modelPreference || selectedModel || '',
+              notes: [selectedModel ? `Booked from: ${selectedModel}'s profile` : '', modelPreference ? `Model preference: ${modelPreference}` : ''].filter(Boolean).join(' | '),
             }),
           });
         } catch {
@@ -385,6 +388,7 @@ function ModelBookingContent() {
                   crewAddon: addCrew ? CREW_ADDONS.find(a => a.id === addCrew) : null,
                   date, name, email, phone, notes: selectedModel ? `[Requested Model: ${selectedModel}] ${notes}` : notes, location, time, songLink,
                   selectedModel,
+                  modelPreference: modelPreference || selectedModel || '',
         }),
       });
       const data = await res.json();
@@ -397,14 +401,22 @@ function ModelBookingContent() {
     }
   };
 
+  const IN_PERSON_SERVICES: ServiceType[] = ['musicvideo', 'shoot', 'event', 'bottle', 'business', 'commercial'];
+
   const chooseService = (t: ServiceType) => {
     posthog.capture('service_selected', { service: t });
     setServiceType(t);
     setSliderIdx(0);
     setShowAll(false);
     setAddCrew(null);
-    // Auto-advance to frequency step after selecting sub-service
-    setTimeout(() => { setStep(2); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 350);
+    // In-person services default to one-time and skip the frequency step
+    if (IN_PERSON_SERVICES.includes(t)) {
+      setBookingType('one-time');
+      setTimeout(() => { setStep(3); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 350);
+    } else {
+      // Remote services (ugc, reaction) offer meaningful monthly subscriptions
+      setTimeout(() => { setStep(2); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 350);
+    }
   };
   const chooseBooking = (t: 'one-time' | 'monthly') => {
     posthog.capture('booking_type_selected', { bookingType: t, serviceType });
@@ -511,36 +523,41 @@ function ModelBookingContent() {
             <button onClick={() => setSelectedModel(null)} className="text-white/30 hover:text-white/60 text-[10px] tracking-widest uppercase transition-colors">Change</button>
           </div>
         )}
-        {/* Progress steps */}
+        {/* Progress steps — maps display index to actual step numbers (0,2,3,4) */}
         <div className="flex items-center gap-2">
-          {STEPS.map((s, i) => (
-            <div key={s} className="flex items-center gap-2">
-              <div
-                className="flex items-center gap-2 cursor-pointer"
-                onClick={() => i < step && setStep(i)}
-              >
+          {STEPS.map((s, displayIdx) => {
+            const actualStep = displayIdx === 0 ? 0 : displayIdx === 1 ? 2 : displayIdx + 1;
+            const isCompleted = step > actualStep;
+            const isCurrent = step === actualStep || (actualStep === 2 && step === 2);
+            return (
+              <div key={s} className="flex items-center gap-2">
                 <div
-                  className="w-7 h-7 flex items-center justify-center text-[10px] font-bold transition-all duration-300 border"
-                  style={{
-                    backgroundColor: i < step ? gold : 'transparent',
-                    borderColor: i < step ? gold : i === step ? gold : 'rgba(255,255,255,0.1)',
-                    color: i < step ? '#000' : i === step ? gold : 'rgba(255,255,255,0.2)',
-                  }}
+                  className="flex items-center gap-2 cursor-pointer"
+                  onClick={() => isCompleted && setStep(actualStep)}
                 >
-                  {i < step ? <Check className="h-3 w-3" /> : i + 1}
+                  <div
+                    className="w-7 h-7 flex items-center justify-center text-[10px] font-bold transition-all duration-300 border"
+                    style={{
+                      backgroundColor: isCompleted ? gold : 'transparent',
+                      borderColor: isCompleted ? gold : isCurrent ? gold : 'rgba(255,255,255,0.1)',
+                      color: isCompleted ? '#000' : isCurrent ? gold : 'rgba(255,255,255,0.2)',
+                    }}
+                  >
+                    {isCompleted ? <Check className="h-3 w-3" /> : displayIdx + 1}
+                  </div>
+                  <span
+                    className="text-[10px] tracking-widest uppercase hidden sm:block"
+                    style={{ color: isCurrent ? 'white' : isCompleted ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.15)' }}
+                  >
+                    {s}
+                  </span>
                 </div>
-                <span
-                  className="text-[10px] tracking-widest uppercase hidden sm:block"
-                  style={{ color: i === step ? 'white' : i < step ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.15)' }}
-                >
-                  {s}
-                </span>
+                {displayIdx < STEPS.length - 1 && (
+                  <div className="w-6 md:w-10 h-px mx-1 transition-all duration-300" style={{ backgroundColor: isCompleted ? gold : 'rgba(255,255,255,0.07)' }} />
+                )}
               </div>
-              {i < STEPS.length - 1 && (
-                <div className="w-6 md:w-10 h-px mx-1 transition-all duration-300" style={{ backgroundColor: i < step ? gold : 'rgba(255,255,255,0.07)' }} />
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -565,114 +582,88 @@ function ModelBookingContent() {
       {/* Step Content */}
       <div ref={stepRef} className="flex-1 px-6 md:px-14 py-4 overflow-y-auto" key={step} style={{ animation: 'fadeIn 0.3s ease-out' }}>
 
-        {/* ── STEP 0: Pick Your Scenario (3 options) ── */}
+        {/* ── STEP 0: All services in one screen, grouped by category ── */}
         {step === 0 && (
           <div className="max-w-3xl">
-            <h2 className="font-display font-light italic text-white text-xl md:text-2xl mb-1">What are you looking for?</h2>
-            <p className="text-white/35 text-xs mb-4">Pick the option that best describes you — then choose your specific service.</p>
+            {selectedModel ? (
+              <div className="mb-4 px-4 py-3 border border-[#c9a96e]/30 bg-[#c9a96e]/5 flex items-center gap-3">
+                <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+                <p className="text-sm" style={{ color: gold }}>Booking <span className="font-bold">{selectedModel}</span> — select your service below</p>
+              </div>
+            ) : (
+              <div className="mb-4 p-3 border border-[#c9a96e]/15 bg-[#c9a96e]/[0.03] flex items-center justify-between gap-3">
+                <p className="text-white/40 text-xs">Want a specific model? <span className="text-white/25">Browse the roster first.</span></p>
+                <Link href="/marketplace" className="text-[10px] font-bold tracking-widest uppercase shrink-0 hover:opacity-80 transition-opacity px-3 py-2" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Browse Talent →</Link>
+              </div>
+            )}
 
-            <div className="flex flex-col gap-2.5">
-              {SCENARIOS.map(({ id, Icon, title, desc, services }) => (
-                <button
-                  key={id}
-                  onClick={() => { setScenario(id); setStep(1); }}
-                  className="w-full text-left p-4 border transition-all duration-200 group rounded-sm"
-                  style={{ border: '1px solid rgba(255,255,255,0.08)', backgroundColor: 'rgba(255,255,255,0.01)' }}
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 flex items-center justify-center flex-shrink-0" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                      <Icon className="h-5 w-5 text-white/40 group-hover:text-[#c9a96e] transition-colors" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-white/80 font-bold text-sm group-hover:text-[#c9a96e] transition-colors">{title}</p>
-                      <p className="text-white/35 text-xs mt-1 leading-relaxed">{desc}</p>
-                      <p className="text-white/20 text-[10px] mt-2 tracking-wider uppercase">{services.length} services · From {Math.min(...services.map(s => {
-                        const prices: Record<ServiceType, number> = { business: 300, ugc: 300, commercial: 599, musicvideo: 500, reaction: 300, shoot: 300, event: 400, bottle: 400 };
-                        return prices[s];
-                      })) === 300 ? '$300' : '$400'}</p>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-white/20 group-hover:text-[#c9a96e] transition-colors mt-1" />
+            <h2 className="font-display font-light italic text-white text-xl md:text-2xl mb-1">What do you need?</h2>
+            <p className="text-white/35 text-xs mb-5">Pick a service — we handle the rest.</p>
+
+            {([
+              { label: 'For Brands, Businesses & Products', services: ['business', 'ugc', 'commercial'] as ServiceType[] },
+              { label: 'For Artists & Music', services: ['musicvideo', 'reaction', 'shoot'] as ServiceType[] },
+              { label: 'For Events & Nightlife', services: ['event', 'bottle'] as ServiceType[] },
+            ] as { label: string; services: ServiceType[] }[]).map(({ label, services: svcList }) => {
+              const serviceInfo: Record<ServiceType, { title: string; desc: string; client: 'in-person' | 'social'; from: string; tag: string; Icon: React.ElementType }> = {
+                business:   { title: 'Models at Your Business', desc: 'A model visits your location, creates reels & promo content on-site.', client: 'in-person', from: '$300', tag: 'In-Person', Icon: TrendingUp },
+                ugc:        { title: 'UGC & Branded Reels', desc: 'Models create branded skits, promos & short-form content to your brief.', client: 'social', from: '$300', tag: 'Remote', Icon: Play },
+                commercial: { title: 'Commercials & Speaking Roles', desc: 'Script reading, dialogue & acting for TV, web & brand ads.', client: 'in-person', from: '$599', tag: 'In-Person', Icon: Film },
+                musicvideo: { title: 'Music Videos', desc: 'Featured talent for your video — solo, duo, trio, or full cast.', client: 'in-person', from: '$500', tag: 'In-Person', Icon: Music },
+                reaction:   { title: 'Music Reactions', desc: 'Models react to your songs on camera — first-listen & livestreams.', client: 'social', from: '$300', tag: 'Remote', Icon: Headphones },
+                shoot:      { title: 'Photo Shoots', desc: 'Models for brand shoots, fashion editorials & lookbooks.', client: 'in-person', from: '$300', tag: 'In-Person', Icon: Camera },
+                event:      { title: 'Events & Hosting', desc: 'Models for brand activations, parties & grand openings.', client: 'in-person', from: '$400/girl', tag: 'In-Person', Icon: Sparkles },
+                bottle:     { title: 'Bottle Girls / VIP Hostesses', desc: 'VIP hostesses for nightclubs, lounges & bottle service.', client: 'in-person', from: '$400/girl', tag: 'In-Person', Icon: Wine },
+              };
+              return (
+                <div key={label} className="mb-5">
+                  <p className="text-[9px] font-bold tracking-[0.35em] uppercase text-white/25 mb-2">{label}</p>
+                  <div className="grid gap-1.5">
+                    {svcList.map(svcId => {
+                      const info = serviceInfo[svcId];
+                      const SvcIcon = info.Icon;
+                      return (
+                        <button
+                          key={svcId}
+                          onClick={() => { setScenario(SCENARIOS.find(s => s.services.includes(svcId))?.id ?? null); setClientType(info.client); chooseService(svcId); }}
+                          className="w-full text-left p-3 border transition-all duration-200 flex items-center gap-3 group"
+                          style={{ borderColor: 'rgba(255,255,255,0.08)', backgroundColor: 'rgba(255,255,255,0.01)' }}
+                          onMouseEnter={e => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.04)'; }}
+                          onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.01)'; }}
+                        >
+                          <div className="w-9 h-9 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:border-[#c9a96e]/40 transition-colors">
+                            <SvcIcon className="h-4 w-4 text-white/35 group-hover:text-[#c9a96e] transition-colors" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-white/80 font-bold text-sm group-hover:text-white transition-colors">{info.title}</p>
+                            <p className="text-white/30 text-[11px] mt-0.5 leading-snug hidden md:block">{info.desc}</p>
+                          </div>
+                          <div className="text-right shrink-0 flex items-center gap-3">
+                            <span className="text-[9px] font-bold tracking-wider uppercase px-2 py-1 border border-white/10 text-white/25">{info.tag}</span>
+                            <p className="font-bold text-sm" style={{ color: gold }}>{info.from}</p>
+                          </div>
+                        </button>
+                      );
+                    })}
                   </div>
-                </button>
-              ))}
-            </div>
+                </div>
+              );
+            })}
 
-            {/* Not sure? */}
-            <div className="mt-6 p-4 border border-white/[0.04] bg-white/[0.01] flex items-center justify-between gap-4">
-              <p className="text-white/40 text-sm">Not sure? <span className="text-white/25">We'll help you pick in 2 min</span></p>
-              <a
-                href="tel:+15615520392"
-                className="flex items-center gap-2 px-4 py-2.5 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-80 shrink-0"
-                style={{ backgroundColor: gold, color: '#000' }}
-              >
-                <Phone className="h-3 w-3" /> Call
+            <div className="mt-2 p-4 border border-white/[0.04] bg-white/[0.01] flex items-center justify-between gap-4">
+              <p className="text-white/40 text-sm">Not sure what you need?</p>
+              <a href="tel:+15615520392" className="flex items-center gap-2 px-4 py-2.5 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-80 shrink-0" style={{ backgroundColor: gold, color: '#000' }}>
+                <Phone className="h-3 w-3" /> Call Us
               </a>
             </div>
           </div>
         )}
 
-        {/* ── STEP 1: Pick Service within Scenario ── */}
-        {step === 1 && scenario && (
-          <div className="max-w-3xl">
-            <button 
-              onClick={() => setStep(0)} 
-              className="text-white/30 hover:text-white/60 text-[11px] tracking-widest uppercase flex items-center gap-1 mb-3"
-            >
-              <ChevronLeft className="h-3 w-3" /> Back
-            </button>
-            <h2 className="font-display font-light italic text-white text-xl md:text-2xl mb-1">
-              {SCENARIOS.find(s => s.id === scenario)?.title}
-            </h2>
-            <p className="text-white/35 text-xs mb-4">Select the specific service you need:</p>
-
-            <div className="grid gap-1.5">
-              {SCENARIOS.find(s => s.id === scenario)?.services.map(svcId => {
-                const serviceInfo: Record<ServiceType, { title: string; desc: string; client: 'in-person' | 'social'; from: string; tag: string }> = {
-                  business:   { title: 'Models at Your Business', desc: 'A model visits your location and creates reels, stories & promo content on-site.', client: 'in-person', from: '$300', tag: 'In-Person · South Florida' },
-                  ugc:        { title: 'UGC & Branded Reels', desc: 'Models create branded skits, promos & short-form content to your brief.', client: 'social', from: '$300', tag: 'Remote · Nationwide' },
-                  commercial: { title: 'Commercials & Speaking Roles', desc: 'Models with script reading, dialogue, voiceover & acting for TV, web & brand commercials.', client: 'in-person', from: '$599', tag: 'In-Person · South Florida' },
-                  musicvideo: { title: 'Music Videos', desc: 'Book models specifically for your music video — featured roles, lead talent, or full video cast.', client: 'in-person', from: '$500', tag: 'In-Person · South Florida' },
-                  reaction:   { title: 'Music Reactions', desc: 'Models listen & react to your songs on camera. First-listen reactions & livestreams.', client: 'social', from: '$300', tag: 'Remote · Nationwide' },
-                  shoot:      { title: 'Photo Shoots', desc: 'Book models for brand shoots, fashion editorials, lookbooks, or non-speaking productions.', client: 'in-person', from: '$300', tag: 'In-Person · South Florida' },
-                  event:      { title: 'Events & Hosting', desc: 'Models for brand activations, parties, trade shows & promotional appearances.', client: 'in-person', from: '$400/girl', tag: 'In-Person · South Florida' },
-                  bottle:     { title: 'Bottle Girls / VIP Hostesses', desc: 'Dedicated bottle service girls for nightclubs, lounges & VIP sections.', client: 'in-person', from: '$400/girl', tag: 'In-Person · South Florida' },
-                };
-                const info = serviceInfo[svcId];
-                const active = serviceType === svcId;
-                const Icon = [TrendingUp, Play, Film, Music, Headphones, Camera, Sparkles, Wine][['business', 'ugc', 'commercial', 'musicvideo', 'reaction', 'shoot', 'event', 'bottle'].indexOf(svcId)];
-                return (
-                  <button
-                    key={svcId}
-                    onClick={() => { setClientType(info.client); chooseService(svcId); }}
-                    className="w-full text-left p-3 md:p-4 border transition-all duration-300 flex items-center gap-4"
-                    style={{
-                      borderColor: active ? gold : 'rgba(255,255,255,0.08)',
-                      backgroundColor: active ? 'rgba(201,169,110,0.04)' : 'rgba(255,255,255,0.01)',
-                    }}
-                  >
-                    <div className="w-10 h-10 border flex items-center justify-center flex-shrink-0" style={{ borderColor: active ? gold : 'rgba(255,255,255,0.1)' }}>
-                      <Icon className="h-5 w-5" style={{ color: active ? gold : 'rgba(255,255,255,0.35)' }} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-white font-bold text-sm md:text-base">{info.title}</h3>
-                      <p className="text-white/40 text-xs leading-relaxed mt-0.5 hidden lg:block">{info.desc}</p>
-                      <p className="text-[10px] tracking-[0.2em] uppercase mt-1 font-bold" style={{ color: active ? gold : 'rgba(255,255,255,0.25)' }}>{info.tag}</p>
-                    </div>
-                    <div className="text-right flex-shrink-0">
-                      <p className="font-display font-bold italic text-lg" style={{ color: gold }}>{info.from}</p>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-
-        {/* ── STEP 2: Booking Type ── */}
+        {/* ── STEP 2: Booking Type (only for remote services) ── */}
         {step === 2 && scenario && (
           <div>
             <button 
-              onClick={() => setStep(1)} 
+              onClick={() => setStep(0)} 
               className="text-white/30 hover:text-white/60 text-[11px] tracking-widest uppercase flex items-center gap-1 mb-3"
             >
               <ChevronLeft className="h-3 w-3" /> Back to Services
@@ -892,8 +883,23 @@ function ModelBookingContent() {
         {step === 3 && (
           <div className="max-w-xl">
             <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">Your Details</h2>
-            <p className="text-white/35 text-sm mb-3">Enter your contact info so we can confirm your booking.</p>
-            <div className="flex items-center gap-2 mb-8 px-3 py-2 border border-green-500/15 bg-green-500/[0.03]">
+            <p className="text-white/35 text-sm mb-5">Enter your contact info so we can confirm your booking.</p>
+
+            {/* Social proof strip */}
+            <div className="grid grid-cols-3 gap-3 mb-6">
+              {[
+                { stat: '500+', label: 'Clients Booked' },
+                { stat: '★ 5.0', label: 'Average Rating' },
+                { stat: '48hr', label: 'Avg. Response' },
+              ].map(({ stat, label }) => (
+                <div key={label} className="border border-white/[0.06] p-3 text-center">
+                  <p className="font-bold text-sm mb-0.5" style={{ color: gold }}>{stat}</p>
+                  <p className="text-white/30 text-[10px] leading-tight">{label}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2 mb-6 px-3 py-2 border border-green-500/15 bg-green-500/[0.03]">
               <Check className="h-3.5 w-3.5 text-green-400/70 flex-shrink-0" />
               <p className="text-green-300/60 text-[11px]">Next step: choose your package and secure your date</p>
             </div>
@@ -924,6 +930,84 @@ function ModelBookingContent() {
                 onChange={e => setEmail(e.target.value)}
                 className="w-full h-12 bg-white/[0.03] border border-white/10 px-4 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
               />
+              {selectedModel ? (
+                <div className="flex items-center gap-3 px-4 py-3 border border-[#c9a96e]/30 bg-[#c9a96e]/5">
+                  <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+                  <p className="text-sm" style={{ color: gold }}>Booking <span className="font-bold">{selectedModel}</span> — confirmed</p>
+                  <button onClick={() => setSelectedModel(null)} className="ml-auto text-[10px] text-white/30 hover:text-white/60 tracking-widest uppercase">Change</button>
+                </div>
+              ) : (
+                <div>
+                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/35 mb-2">Preferred Model <span className="text-white/20 normal-case tracking-normal font-normal">(optional — we'll cast the best match if blank)</span></p>
+                  <select
+                    value={modelPreference}
+                    onChange={e => setModelPreference(e.target.value)}
+                    className="w-full h-12 bg-white/[0.03] border border-white/10 px-4 text-sm focus:outline-none focus:border-[#c9a96e]/50 transition-colors appearance-none"
+                    style={{ color: modelPreference ? 'white' : 'rgba(255,255,255,0.25)' }}
+                  >
+                    <option value="">No preference — best available</option>
+                    <optgroup label="⭐ Featured">
+                      <option value="Deseray Marie">Deseray Marie (66K · Forbes · Celebrity Credits)</option>
+                      <option value="Ty Nadia">Ty Nadia (124K · 17M+ Views · Music Video Lead)</option>
+                      <option value="Bianca Bonnie">Bianca Bonnie (1.3M · Love &amp; Hip Hop · VH1)</option>
+                      <option value="Nya">Nya (94K · Celebrity Credits · Miami)</option>
+                      <option value="Bree">Bree (67K · Skits &amp; Brand Content)</option>
+                      <option value="Leila">Leila (64K · Fashion &amp; Fitness · Miami)</option>
+                    </optgroup>
+                    <optgroup label="Music Video Talent">
+                      <option value="Shay">Shay (25K · Kodak · Lil Baby · DJ Khaled)</option>
+                      <option value="Kady">Kady (11K · Tekashi · Lil Pump · Love &amp; Hip Hop)</option>
+                      <option value="Peach">Peach (23K · Buju Banton · Vybz Kartel · Peacock)</option>
+                      <option value="Breanna Banks">Breanna Banks (45K · Celeb Features)</option>
+                      <option value="Scarlet">Scarlet (12K · LA Fashion Week · Bossman Dlow)</option>
+                      <option value="Grace Jenn">Grace Jenn (20K · Coulda Been Love S2 · Druski)</option>
+                    </optgroup>
+                    <optgroup label="UGC &amp; Content Creators">
+                      <option value="Kiki">Kiki (15K · 7-8M Viral Views · Skits)</option>
+                      <option value="Malibu">Malibu (35K · Skits &amp; Brand Content)</option>
+                      <option value="Nysia">Nysia (60K · Beauty &amp; Lifestyle)</option>
+                      <option value="Jas Healer">Jas Healer (16K · YouTuber)</option>
+                      <option value="Maelyn Sabrina">Maelyn Sabrina (10K · TikTok &amp; YouTube)</option>
+                      <option value="Ashley Mar">Ashley Mar (Netflix · Target · Celsius · Peacock)</option>
+                    </optgroup>
+                    <optgroup label="Fashion &amp; Lifestyle">
+                      <option value="Angelina">Angelina (9.2K · Luxury Lifestyle · Miami)</option>
+                      <option value="Hope">Hope (5K · Editorial · Beauty)</option>
+                      <option value="Christina Rose">Christina Rose (10K · Editorial · Florida)</option>
+                      <option value="Sandra">Sandra (10K · Caribbean Lifestyle · Miami)</option>
+                      <option value="Lexi">Lexi (4.8K · Fashion · Miami)</option>
+                      <option value="Yuli Escobar">Yuli Escobar (22K · Fashion Week · Commercials)</option>
+                    </optgroup>
+                    <optgroup label="All Other Models">
+                      <option value="Kat">Kat (10K · Fashion &amp; Beauty · S. Florida)</option>
+                      <option value="Nikki">Nikki (8.6K · Fashion &amp; Lifestyle)</option>
+                      <option value="Ayana Alvarez">Ayana Alvarez (5K · Fashion &amp; Beauty)</option>
+                      <option value="Kaylese Redd">Kaylese Redd (Voiceover · Commercial · Hair)</option>
+                      <option value="Maria">Maria (13.9K · Lifestyle &amp; Fashion)</option>
+                      <option value="Genesis Bravo">Genesis Bravo (13.9K · Fashion)</option>
+                      <option value="Aliyana Vasquez">Aliyana Vasquez (5K · Miami Swim Week · Runway)</option>
+                      <option value="Gabriela">Gabriela (Savage X Fenty · Dez Beauty)</option>
+                      <option value="Seahra Raquel">Seahra Raquel (15K · Florida)</option>
+                      <option value="Krystle">Krystle (10K · Miami Fashion)</option>
+                      <option value="Kendra">Kendra (10K · Florida)</option>
+                    </optgroup>
+                  </select>
+                </div>
+              )}
+            </div>
+
+            {/* Mini-FAQ — top objections */}
+            <div className="mb-6 border border-white/[0.06] divide-y divide-white/[0.04]">
+              {[
+                { q: 'Can I request a specific model?', a: 'Yes — use the dropdown above or message us after booking. We\'ll do our best to match your preference.' },
+                { q: 'How fast will I receive the content?', a: 'Remote content (UGC, reactions) delivers in 3–7 business days. In-person bookings are scheduled same-week.' },
+                { q: 'Is there a contract or commitment?', a: 'No long-term commitment. One-time bookings are project-based. Monthly plans cancel anytime.' },
+              ].map(({ q, a }) => (
+                <div key={q} className="px-4 py-3">
+                  <p className="text-white/60 text-[12px] font-semibold mb-1">{q}</p>
+                  <p className="text-white/30 text-[11px] leading-relaxed">{a}</p>
+                </div>
+              ))}
             </div>
 
             <div className="space-y-5">
@@ -981,7 +1065,7 @@ function ModelBookingContent() {
               {serviceType === 'reaction' && (
                 <Link
                   href="/model-booking"
-                  onClick={() => { chooseService('ugc'); setStep(1); }}
+                  onClick={() => { chooseService('ugc'); }}
                   className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
                 >
                   <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
@@ -1001,7 +1085,7 @@ function ModelBookingContent() {
               {serviceType === 'ugc' && (
                 <Link
                   href="/model-booking"
-                  onClick={() => { chooseService('reaction'); setStep(1); }}
+                  onClick={() => { chooseService('reaction'); }}
                   className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
                 >
                   <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
@@ -1021,7 +1105,7 @@ function ModelBookingContent() {
               {(serviceType === 'shoot' || serviceType === 'event' || serviceType === 'business') && (
                 <Link
                   href="/model-booking"
-                  onClick={() => { chooseService('ugc'); setStep(1); }}
+                  onClick={() => { chooseService('ugc'); }}
                   className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
                 >
                   <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
@@ -1041,7 +1125,7 @@ function ModelBookingContent() {
               {serviceType === 'bottle' && (
                 <Link
                   href="/model-booking"
-                  onClick={() => { chooseService('event'); setStep(1); }}
+                  onClick={() => { chooseService('event'); }}
                   className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
                 >
                   <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
@@ -1061,7 +1145,7 @@ function ModelBookingContent() {
               {serviceType === 'commercial' && (
                 <Link
                   href="/model-booking"
-                  onClick={() => { chooseService('shoot'); setStep(1); }}
+                  onClick={() => { chooseService('shoot'); }}
                   className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
                 >
                   <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
@@ -1086,7 +1170,12 @@ function ModelBookingContent() {
       {/* Bottom Navigation */}
       <div className="px-6 md:px-14 py-6 border-t border-white/[0.06] flex items-center justify-between sticky bottom-0 bg-[#080808]">
         <button
-          onClick={() => { setStep(s => s - 1); setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50); }}
+          onClick={() => {
+            // Step 2 (frequency) goes back to step 0 — step 1 no longer exists
+            const prevStep = step === 2 ? 0 : step - 1;
+            setStep(prevStep);
+            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+          }}
           disabled={step === 0}
           className="flex items-center gap-2 text-sm tracking-widest uppercase text-white/30 hover:text-white transition-colors disabled:opacity-0"
         >
@@ -1107,14 +1196,17 @@ function ModelBookingContent() {
             </div>
           )}
 
-          <button
-            onClick={goNext}
-            disabled={!canNext() || sending}
-            className="flex items-center gap-3 px-8 py-4 text-sm font-bold tracking-widest uppercase transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-            style={{ backgroundColor: gold, color: '#000' }}
-          >
-{sending ? 'Redirecting to Payment...' : step === 4 ? (<><Lock className="h-3.5 w-3.5" /> Secure Checkout →</>) : step === 3 ? 'Choose Package →' : step === 2 && pkg ? `Continue with ${pkg.name} →` : 'Next →'}
-          </button>
+          {/* On step 0, service click auto-advances — no Next button needed */}
+          {step > 0 && (
+            <button
+              onClick={goNext}
+              disabled={!canNext() || sending}
+              className="flex items-center gap-3 px-8 py-4 text-sm font-bold tracking-widest uppercase transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              style={{ backgroundColor: gold, color: '#000' }}
+            >
+              {sending ? 'Redirecting to Payment...' : step === 4 ? (<><Lock className="h-3.5 w-3.5" /> Secure Checkout →</>) : step === 3 ? 'Choose Package →' : step === 2 && pkg ? `Continue with ${pkg.name} →` : 'Next →'}
+            </button>
+          )}
         </div>
       </div>
       {sendError && (

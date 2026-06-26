@@ -2,7 +2,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
-import LeadCapturePopup from '../components/LeadCapturePopup';
+
+export const dynamic = 'force-dynamic';
 
 const gold = '#c9a96e';
 
@@ -19,17 +20,6 @@ const influencers = [
     categories: ['Music Video', 'Commercial', 'Fashion', 'Film', 'TV', 'Entrepreneurship'],
     verified: true,
     celebrityCredits: true,
-  },
-  {
-    id: 'kaylese-062',
-    name: 'Kaylese "Redd" John-Brown',
-    title: 'Model · Actress · Voiceover · Public Speaker · Hair & Beauty · Lifestyle',
-    image: '/images/Kaylese/kaylese-1.jpg',
-    followers: 'New',
-    instagram: '@kaylese.johnbrown',
-    location: 'South Florida',
-    credits: ['Voiceover', 'Public Speaking', 'Commercial-Style Content', 'Hair & Beauty'],
-    categories: ['Fashion', 'Lifestyle', 'Beauty', 'Commercial', 'Voiceover', 'Acting'],
   },
   {
     id: 'seahra-026',
@@ -589,6 +579,17 @@ const influencers = [
     credits: ['Fashion Week', 'Commercials'],
     categories: ['Runway', 'Commercial', 'Fashion', 'Shoots'],
   },
+  {
+    id: 'kaylese-062',
+    name: 'Kaylese "Redd" John-Brown',
+    title: 'Model · Actress · Voiceover · Public Speaker · Hair & Beauty · Lifestyle',
+    image: '/images/Kaylese/kaylese-1.jpg',
+    followers: '4.2K',
+    instagram: '@lifeofreddofficial',
+    location: 'South Florida',
+    credits: ['Voiceover', 'Public Speaking', 'Commercial-Style Content', 'Hair & Beauty'],
+    categories: ['Fashion', 'Lifestyle', 'Beauty', 'Commercial', 'Voiceover', 'Acting'],
+  },
 ];
 
 export default function MarketplacePage() {
@@ -721,6 +722,10 @@ export default function MarketplacePage() {
                     <span className="text-[9px] text-white/40 ml-1">followers</span>
                   </div>
                 </div>
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="text-[9px] text-white/20 tracking-wider uppercase">Book from</span>
+                  <span className="text-[11px] font-bold" style={{ color: gold }}>$300</span>
+                </div>
                 {inf.credits.length > 0 && (
                   <p className="text-[9px] tracking-wider uppercase mt-2 truncate" style={{ color: gold }}>
                     {inf.credits.slice(0, 3).join(' · ')}
@@ -729,10 +734,18 @@ export default function MarketplacePage() {
               </div>
 
               {/* Hover action */}
-              <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-[2px]">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-[2px]">
                 <span className="text-[11px] font-bold tracking-widest uppercase text-white border border-white/30 px-5 py-2.5">
                   View Profile
                 </span>
+                <Link
+                  href={`/model-booking?model=${encodeURIComponent(inf.name)}`}
+                  onClick={e => e.stopPropagation()}
+                  className="text-[11px] font-bold tracking-widest uppercase px-5 py-2.5"
+                  style={{ backgroundColor: '#c9a96e', color: '#000' }}
+                >
+                  Book Now
+                </Link>
               </div>
             </Link>
           ))}
@@ -819,7 +832,6 @@ export default function MarketplacePage() {
           </div>
         </div>
       </footer>
-      <LeadCapturePopup />
     </div>
   );
 }
