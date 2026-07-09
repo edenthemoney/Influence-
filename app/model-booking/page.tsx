@@ -1,4 +1,4 @@
-also i see we choose price after we put it 'use client';
+'use client';
 
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
