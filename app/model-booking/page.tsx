@@ -296,6 +296,7 @@ function ModelBookingContent() {
   const [submitted,   setSubmitted]   = useState(false);
   const [sending,     setSending]     = useState(false);
   const [sendError,   setSendError]   = useState('');
+  const [showOptional, setShowOptional] = useState(false);
 
   // Pre-fill from lead capture popup
   useEffect(() => {
@@ -749,7 +750,13 @@ function ModelBookingContent() {
           </div>
         )}
 
-        {/* ── STEP 4: Budget-First Auto-Select ── */}
+        {/* ── STEP 4: Package Select ── */}
+        {step === 4 && !pkg && (
+          <div className="max-w-2xl">
+            <p className="text-white/40 text-sm mb-4">No packages found for this selection. Please go back and try again.</p>
+            <button onClick={() => setStep(0)} className="text-[11px] font-bold tracking-widest uppercase px-6 py-3" style={{ backgroundColor: gold, color: '#000' }}>Start Over</button>
+          </div>
+        )}
         {step === 4 && pkg && (
           <div className="max-w-2xl">
             {/* Promo banner */}
@@ -763,7 +770,7 @@ function ModelBookingContent() {
             <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">
               Choose your package.
             </h2>
-            <p className="text-white/35 text-sm mb-2">We picked the best match for your budget — drag the slider or tap below to explore more.</p>
+            <p className="text-white/35 text-sm mb-2">Drag the slider or tap the packages below to find the right fit.</p>
             <div className="flex items-center gap-2 mb-10 px-3 py-2 border border-white/[0.06] bg-white/[0.02] w-fit">
               <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: gold }} />
               <p className="text-white/60 text-xs font-semibold">
@@ -848,7 +855,7 @@ function ModelBookingContent() {
                 {/* Upgrade nudge */}
                 {upgradePkg && (
                   <button
-                    onClick={() => setBudget(upgradePkg.price)}
+                    onClick={() => { setSliderIdx(upgradeIdx); setBudget(upgradePkg.price); }}
                     className="w-full mt-4 p-4 border border-dashed border-white/10 hover:border-[#c9a96e]/40 bg-white/[0.01] hover:bg-[#c9a96e]/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
                   >
                     <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
@@ -882,8 +889,8 @@ function ModelBookingContent() {
         {/* ── STEP 3: Details ── */}
         {step === 3 && (
           <div className="max-w-xl">
-            <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">Your Details</h2>
-            <p className="text-white/35 text-sm mb-5">Enter your contact info so we can confirm your booking.</p>
+            <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">Quick — who are we booking for?</h2>
+            <p className="text-white/35 text-sm mb-5">Just name, phone &amp; email. Everything else is optional.</p>
 
             {/* Social proof strip */}
             <div className="grid grid-cols-3 gap-3 mb-6">
@@ -901,7 +908,7 @@ function ModelBookingContent() {
 
             <div className="flex items-center gap-2 mb-6 px-3 py-2 border border-green-500/15 bg-green-500/[0.03]">
               <Check className="h-3.5 w-3.5 text-green-400/70 flex-shrink-0" />
-              <p className="text-green-300/60 text-[11px]">Next step: choose your package and secure your date</p>
+              <p className="text-green-300/60 text-[11px]">Next: pick your package &amp; go to secure checkout</p>
             </div>
 
             {/* Contact capture before showing packages */}
@@ -930,115 +937,112 @@ function ModelBookingContent() {
                 onChange={e => setEmail(e.target.value)}
                 className="w-full h-12 bg-white/[0.03] border border-white/10 px-4 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
               />
-              {selectedModel ? (
+              {selectedModel && (
                 <div className="flex items-center gap-3 px-4 py-3 border border-[#c9a96e]/30 bg-[#c9a96e]/5">
                   <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
                   <p className="text-sm" style={{ color: gold }}>Booking <span className="font-bold">{selectedModel}</span> — confirmed</p>
                   <button onClick={() => setSelectedModel(null)} className="ml-auto text-[10px] text-white/30 hover:text-white/60 tracking-widest uppercase">Change</button>
                 </div>
-              ) : (
-                <div>
-                  <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/35 mb-2">Preferred Model <span className="text-white/20 normal-case tracking-normal font-normal">(optional — we'll cast the best match if blank)</span></p>
-                  <select
-                    value={modelPreference}
-                    onChange={e => setModelPreference(e.target.value)}
-                    className="w-full h-12 bg-white/[0.03] border border-white/10 px-4 text-sm focus:outline-none focus:border-[#c9a96e]/50 transition-colors appearance-none"
-                    style={{ color: modelPreference ? 'white' : 'rgba(255,255,255,0.25)' }}
-                  >
-                    <option value="">No preference — best available</option>
-                    <optgroup label="⭐ Featured">
-                      <option value="Deseray Marie">Deseray Marie (66K · Forbes · Celebrity Credits)</option>
-                      <option value="Ty Nadia">Ty Nadia (124K · 17M+ Views · Music Video Lead)</option>
-                      <option value="Bianca Bonnie">Bianca Bonnie (1.3M · Love &amp; Hip Hop · VH1)</option>
-                      <option value="Nya">Nya (94K · Celebrity Credits · Miami)</option>
-                      <option value="Bree">Bree (67K · Skits &amp; Brand Content)</option>
-                      <option value="Leila">Leila (64K · Fashion &amp; Fitness · Miami)</option>
-                    </optgroup>
-                    <optgroup label="Music Video Talent">
-                      <option value="Shay">Shay (25K · Kodak · Lil Baby · DJ Khaled)</option>
-                      <option value="Kady">Kady (11K · Tekashi · Lil Pump · Love &amp; Hip Hop)</option>
-                      <option value="Peach">Peach (23K · Buju Banton · Vybz Kartel · Peacock)</option>
-                      <option value="Breanna Banks">Breanna Banks (45K · Celeb Features)</option>
-                      <option value="Scarlet">Scarlet (12K · LA Fashion Week · Bossman Dlow)</option>
-                      <option value="Grace Jenn">Grace Jenn (20K · Coulda Been Love S2 · Druski)</option>
-                    </optgroup>
-                    <optgroup label="UGC &amp; Content Creators">
-                      <option value="Kiki">Kiki (15K · 7-8M Viral Views · Skits)</option>
-                      <option value="Malibu">Malibu (35K · Skits &amp; Brand Content)</option>
-                      <option value="Nysia">Nysia (60K · Beauty &amp; Lifestyle)</option>
-                      <option value="Jas Healer">Jas Healer (16K · YouTuber)</option>
-                      <option value="Maelyn Sabrina">Maelyn Sabrina (10K · TikTok &amp; YouTube)</option>
-                      <option value="Ashley Mar">Ashley Mar (Netflix · Target · Celsius · Peacock)</option>
-                    </optgroup>
-                    <optgroup label="Fashion &amp; Lifestyle">
-                      <option value="Angelina">Angelina (9.2K · Luxury Lifestyle · Miami)</option>
-                      <option value="Hope">Hope (5K · Editorial · Beauty)</option>
-                      <option value="Christina Rose">Christina Rose (10K · Editorial · Florida)</option>
-                      <option value="Sandra">Sandra (10K · Caribbean Lifestyle · Miami)</option>
-                      <option value="Lexi">Lexi (4.8K · Fashion · Miami)</option>
-                      <option value="Yuli Escobar">Yuli Escobar (22K · Fashion Week · Commercials)</option>
-                    </optgroup>
-                    <optgroup label="All Other Models">
-                      <option value="Kat">Kat (10K · Fashion &amp; Beauty · S. Florida)</option>
-                      <option value="Nikki">Nikki (8.6K · Fashion &amp; Lifestyle)</option>
-                      <option value="Ayana Alvarez">Ayana Alvarez (5K · Fashion &amp; Beauty)</option>
-                      <option value="Kaylese Redd">Kaylese Redd (Voiceover · Commercial · Hair)</option>
-                      <option value="Maria">Maria (13.9K · Lifestyle &amp; Fashion)</option>
-                      <option value="Genesis Bravo">Genesis Bravo (13.9K · Fashion)</option>
-                      <option value="Aliyana Vasquez">Aliyana Vasquez (5K · Miami Swim Week · Runway)</option>
-                      <option value="Gabriela">Gabriela (Savage X Fenty · Dez Beauty)</option>
-                      <option value="Seahra Raquel">Seahra Raquel (15K · Florida)</option>
-                      <option value="Krystle">Krystle (10K · Miami Fashion)</option>
-                      <option value="Kendra">Kendra (10K · Florida)</option>
-                    </optgroup>
-                  </select>
-                </div>
               )}
             </div>
 
-            {/* Mini-FAQ — top objections */}
-            <div className="mb-6 border border-white/[0.06] divide-y divide-white/[0.04]">
-              {[
-                { q: 'Can I request a specific model?', a: 'Yes — use the dropdown above or message us after booking. We\'ll do our best to match your preference.' },
-                { q: 'How fast will I receive the content?', a: 'Remote content (UGC, reactions) delivers in 3–7 business days. In-person bookings are scheduled same-week.' },
-                { q: 'Is there a contract or commitment?', a: 'No long-term commitment. One-time bookings are project-based. Monthly plans cancel anytime.' },
-              ].map(({ q, a }) => (
-                <div key={q} className="px-4 py-3">
-                  <p className="text-white/60 text-[12px] font-semibold mb-1">{q}</p>
-                  <p className="text-white/30 text-[11px] leading-relaxed">{a}</p>
-                </div>
-              ))}
-            </div>
+            {/* Optional details toggle */}
+            <button
+              onClick={() => setShowOptional(v => !v)}
+              className="w-full flex items-center justify-between px-4 py-3 mb-3 border border-white/[0.07] hover:border-white/[0.14] bg-white/[0.01] transition-colors text-left"
+            >
+              <span className="text-white/40 text-xs font-semibold tracking-widest uppercase">{showOptional ? 'Hide' : 'Add'} details — date, model preference, notes</span>
+              <ChevronRight className={`h-3.5 w-3.5 text-white/25 transition-transform duration-200 ${showOptional ? 'rotate-90' : ''}`} />
+            </button>
+            {showOptional && (
+              <div className="mb-6 space-y-3 border border-white/[0.06] p-4">
+                {!selectedModel && (
+                  <div>
+                    <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/35 mb-2">Preferred Model <span className="text-white/20 normal-case tracking-normal font-normal">(optional)</span></p>
+                    <select
+                      value={modelPreference}
+                      onChange={e => setModelPreference(e.target.value)}
+                      className="w-full h-12 bg-white/[0.03] border border-white/10 px-4 text-sm focus:outline-none focus:border-[#c9a96e]/50 transition-colors appearance-none"
+                      style={{ color: modelPreference ? 'white' : 'rgba(255,255,255,0.25)' }}
+                    >
+                      <option value="">No preference — best available</option>
+                      <optgroup label="⭐ Featured">
+                        <option value="Deseray Marie">Deseray Marie (66K · Forbes · Celebrity Credits)</option>
+                        <option value="Ty Nadia">Ty Nadia (124K · 17M+ Views · Music Video Lead)</option>
+                        <option value="Bianca Bonnie">Bianca Bonnie (1.3M · Love &amp; Hip Hop · VH1)</option>
+                        <option value="Nya">Nya (94K · Celebrity Credits · Miami)</option>
+                        <option value="Bree">Bree (67K · Skits &amp; Brand Content)</option>
+                        <option value="Leila">Leila (64K · Fashion &amp; Fitness · Miami)</option>
+                      </optgroup>
+                      <optgroup label="Music Video Talent">
+                        <option value="Shay">Shay (25K · Kodak · Lil Baby · DJ Khaled)</option>
+                        <option value="Kady">Kady (11K · Tekashi · Lil Pump · Love &amp; Hip Hop)</option>
+                        <option value="Peach">Peach (23K · Buju Banton · Vybz Kartel · Peacock)</option>
+                        <option value="Breanna Banks">Breanna Banks (45K · Celeb Features)</option>
+                        <option value="Scarlet">Scarlet (12K · LA Fashion Week · Bossman Dlow)</option>
+                        <option value="Grace Jenn">Grace Jenn (20K · Coulda Been Love S2 · Druski)</option>
+                      </optgroup>
+                      <optgroup label="UGC &amp; Content Creators">
+                        <option value="Kiki">Kiki (15K · 7-8M Viral Views · Skits)</option>
+                        <option value="Malibu">Malibu (35K · Skits &amp; Brand Content)</option>
+                        <option value="Nysia">Nysia (60K · Beauty &amp; Lifestyle)</option>
+                        <option value="Jas Healer">Jas Healer (16K · YouTuber)</option>
+                        <option value="Maelyn Sabrina">Maelyn Sabrina (10K · TikTok &amp; YouTube)</option>
+                        <option value="Ashley Mar">Ashley Mar (Netflix · Target · Celsius · Peacock)</option>
+                      </optgroup>
+                      <optgroup label="Fashion &amp; Lifestyle">
+                        <option value="Angelina">Angelina (9.2K · Luxury Lifestyle · Miami)</option>
+                        <option value="Hope">Hope (5K · Editorial · Beauty)</option>
+                        <option value="Christina Rose">Christina Rose (10K · Editorial · Florida)</option>
+                        <option value="Sandra">Sandra (10K · Caribbean Lifestyle · Miami)</option>
+                        <option value="Lexi">Lexi (4.8K · Fashion · Miami)</option>
+                        <option value="Yuli Escobar">Yuli Escobar (22K · Fashion Week · Commercials)</option>
+                      </optgroup>
+                      <optgroup label="All Other Models">
+                        <option value="Kat">Kat (10K · Fashion &amp; Beauty · S. Florida)</option>
+                        <option value="Nikki">Nikki (8.6K · Fashion &amp; Lifestyle)</option>
+                        <option value="Ayana Alvarez">Ayana Alvarez (5K · Fashion &amp; Beauty)</option>
+                        <option value="Kaylese Redd">Kaylese Redd (Voiceover · Commercial · Hair)</option>
+                        <option value="Maria">Maria (13.9K · Lifestyle &amp; Fashion)</option>
+                        <option value="Genesis Bravo">Genesis Bravo (13.9K · Fashion)</option>
+                        <option value="Aliyana Vasquez">Aliyana Vasquez (5K · Miami Swim Week · Runway)</option>
+                        <option value="Gabriela">Gabriela (Savage X Fenty · Dez Beauty)</option>
+                        <option value="Seahra Raquel">Seahra Raquel (15K · Florida)</option>
+                        <option value="Krystle">Krystle (10K · Miami Fashion)</option>
+                        <option value="Kendra">Kendra (10K · Florida)</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                )}
+                {/* Service-specific notes inside optional block */}
+                {(serviceType === 'shoot' || serviceType === 'event' || serviceType === 'business') && (
+                  <div className="flex items-start gap-3 pt-2 border-t border-white/[0.06]">
+                    <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: gold }} />
+                    <p className="text-white/25 text-xs leading-relaxed">
+                      All in-person bookings are for the <span className="text-white/45">South Florida / Greater Miami</span> area. Travel outside the region may incur additional fees discussed during confirmation.
+                    </p>
+                  </div>
+                )}
+                {serviceType === 'reaction' && (
+                  <div className="flex items-start gap-3 pt-2 border-t border-white/[0.06]">
+                    <Headphones className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: gold }} />
+                    <p className="text-white/25 text-xs leading-relaxed">
+                      Reaction videos are recorded <span className="text-white/45">remotely</span> and delivered as HD vertical video files ready to post. Typical turnaround is 3–5 business days.
+                    </p>
+                  </div>
+                )}
+                {serviceType === 'ugc' && (
+                  <div className="flex items-start gap-3 pt-2 border-t border-white/[0.06]">
+                    <Play className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: gold }} />
+                    <p className="text-white/25 text-xs leading-relaxed">
+                      UGC content is created <span className="text-white/45">remotely</span> to your brief and delivered as HD vertical video files. Typical turnaround is 5–7 business days.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
 
             <div className="space-y-5">
-              
-
-              {/* ── Videographer / Photographer Add-on — DISABLED until we partner with one ── */}
-
-              {(serviceType === 'shoot' || serviceType === 'event' || serviceType === 'business') && (
-                <div className="flex items-start gap-3 pt-3 border-t border-white/[0.06]">
-                  <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: gold }} />
-                  <p className="text-white/25 text-xs leading-relaxed">
-                    All in-person bookings are for the <span className="text-white/45">South Florida / Greater Miami</span> area. Travel outside the region may incur additional fees discussed during confirmation.
-                  </p>
-                </div>
-              )}
-              {serviceType === 'reaction' && (
-                <div className="flex items-start gap-3 pt-3 border-t border-white/[0.06]">
-                  <Headphones className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: gold }} />
-                  <p className="text-white/25 text-xs leading-relaxed">
-                    Reaction videos are recorded <span className="text-white/45">remotely</span> and delivered as HD vertical video files ready to post. Typical turnaround is 3–5 business days.
-                  </p>
-                </div>
-              )}
-              {serviceType === 'ugc' && (
-                <div className="flex items-start gap-3 pt-3 border-t border-white/[0.06]">
-                  <Play className="h-4 w-4 mt-0.5 flex-shrink-0" style={{ color: gold }} />
-                  <p className="text-white/25 text-xs leading-relaxed">
-                    UGC content is created <span className="text-white/45">remotely</span> to your brief and delivered as HD vertical video files. Typical turnaround is 5–7 business days.
-                  </p>
-                </div>
-              )}
 
               {/* Subscription nudge for one-time bookers */}
               {bookingType === 'one-time' && (
