@@ -76,7 +76,13 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error('Booking checkout error:', error);
     return NextResponse.json(
-      { error: error.message || 'Failed to create checkout session' },
+      {
+        error: error.message || 'Failed to create checkout session',
+        type: error.type || null,
+        code: error.code || null,
+        param: error.param || null,
+        raw: error.raw ? { message: error.raw.message, code: error.raw.code, type: error.raw.type } : null,
+      },
       { status: 500 }
     );
   }
