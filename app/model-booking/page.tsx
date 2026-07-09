@@ -1,4 +1,4 @@
-'use client';
+also i see we choose price after we put it 'use client';
 
 import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -219,16 +219,62 @@ const PACKAGES: Record<string, any[]> = {
   'bottle-monthly':    BOTTLE_MO,
 };
 
-const STEPS = ['Service', 'Frequency', 'Details', 'Package'];
-// step 0 = service picker (was steps 0+1), step 2 = frequency (remote only), step 3 = details, step 4 = package
+// ── New streamlined flow ──
+// Step 0: Scenario (3 cards: Business / Music / Event)
+// Step 1: Service (2-4 options filtered by scenario)
+// Step 2: Package + frequency toggle (show packages immediately)
+// Step 3: Contact details → lead save → Stripe
+
 type ServiceType = 'shoot' | 'musicvideo' | 'event' | 'reaction' | 'ugc' | 'business' | 'commercial' | 'bottle';
 type ScenarioType = 'business' | 'music' | 'event';
 
-// ── 3 Scenarios for better UX ───────────────────────────────────────────────
-const SCENARIOS: { id: ScenarioType; Icon: React.ElementType; title: string; desc: string; services: ServiceType[] }[] = [
-  { id: 'business', Icon: TrendingUp, title: 'Promote My Business, Brand or Product', desc: 'Content that grows your brand — from on-site visits to professional campaigns', services: ['business', 'ugc', 'commercial'] },
-  { id: 'music',    Icon: Music,     title: 'Promote My Music',                      desc: 'Music videos, reactions, and promotional content for artists', services: ['musicvideo', 'reaction', 'shoot'] },
-  { id: 'event',    Icon: Sparkles,  title: 'Host an Event / VIP / Bottle Service',  desc: 'Models for your club, party, brand activation or private event', services: ['event', 'bottle'] },
+const SCENARIOS: {
+  id: ScenarioType;
+  Icon: React.ElementType;
+  title: string;
+  sub: string;
+  services: {
+    id: ServiceType;
+    title: string;
+    desc: string;
+    from: string;
+    remote: boolean;
+    hasMonthly: boolean;
+    Icon: React.ElementType;
+  }[];
+}[] = [
+  {
+    id: 'business',
+    Icon: TrendingUp,
+    title: 'Promote My Business or Brand',
+    sub: 'On-site content, branded reels, commercials',
+    services: [
+      { id: 'business',   title: 'Brand Ambassador Visit',         desc: 'A model comes to your location and creates reels & promo content on-site.',        from: '$300', remote: false, hasMonthly: true,  Icon: TrendingUp },
+      { id: 'ugc',        title: 'UGC & Branded Reels (Remote)',   desc: 'Models film branded skits and promos from their studio and send you the files.',    from: '$300', remote: true,  hasMonthly: true,  Icon: Play },
+      { id: 'commercial', title: 'Commercial & Speaking Role',     desc: 'Script reading, dialogue and acting for TV spots, web ads and branded content.',    from: '$699', remote: false, hasMonthly: true,  Icon: Film },
+    ],
+  },
+  {
+    id: 'music',
+    Icon: Music,
+    title: 'Promote My Music',
+    sub: 'Music videos, reactions, photo shoots',
+    services: [
+      { id: 'musicvideo', title: 'Music Video Models',             desc: 'Featured talent for your music video — solo, duo, trio or full cast on set.',       from: '$500', remote: false, hasMonthly: false, Icon: Music },
+      { id: 'reaction',   title: 'Music Reaction Videos (Remote)', desc: 'Models record genuine first-listen reactions to your songs — delivered as HD reels.', from: '$300', remote: true,  hasMonthly: true,  Icon: Headphones },
+      { id: 'shoot',      title: 'Photo / Video Shoot',            desc: 'Models for editorial shoots, album art, press photos and brand content.',            from: '$300', remote: false, hasMonthly: true,  Icon: Camera },
+    ],
+  },
+  {
+    id: 'event',
+    Icon: Sparkles,
+    title: 'Host an Event or Nightlife',
+    sub: 'Promo models, VIP hostesses, bottle service',
+    services: [
+      { id: 'event',  title: 'Event & Promo Models',          desc: 'Models for brand activations, parties, grand openings and promotional appearances.', from: '$400/girl', remote: false, hasMonthly: true, Icon: Sparkles },
+      { id: 'bottle', title: 'Bottle Girls / VIP Hostesses',  desc: 'Professional VIP hostesses for nightclubs, lounges and bottle service sections.',    from: '$400/girl', remote: false, hasMonthly: true, Icon: Wine },
+    ],
+  },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -376,6 +422,11 @@ function ModelBookingContent() {
       setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
       return;
     }
+    // Hard guard — never call API with missing package data
+    if (!pkg || !pkg.name || !pkg.price) {
+      setSendError('No package selected. Please choose a package before checking out.');
+      return;
+    }
     setSending(true);
     setSendError('');
     try {
@@ -384,20 +435,29 @@ function ModelBookingContent() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          serviceType, bookingType, packageName: pkg?.name,
-                  packageTagline: pkg?.tagline, packagePrice: pkg?.price,
-                  crewAddon: addCrew ? CREW_ADDONS.find(a => a.id === addCrew) : null,
-                  date, name, email, phone, notes: selectedModel ? `[Requested Model: ${selectedModel}] ${notes}` : notes, location, time, songLink,
-                  selectedModel,
-                  modelPreference: modelPreference || selectedModel || '',
+          serviceType,
+          bookingType,
+          packageName: pkg.name,
+          packageTagline: pkg.tagline,
+          packagePrice: pkg.price,
+          crewAddon: addCrew ? CREW_ADDONS.find(a => a.id === addCrew) : null,
+          date, name, email, phone,
+          notes: selectedModel ? `[Requested Model: ${selectedModel}] ${notes}` : notes,
+          location, time, songLink,
+          selectedModel,
+          modelPreference: modelPreference || selectedModel || '',
         }),
       });
       const data = await res.json();
-      if (!res.ok || !data.url) throw new Error(data.error || 'Checkout failed');
-      posthog.capture('checkout_redirect', { serviceType, bookingType, packageName: pkg?.name, packagePrice: pkg?.price });
+      if (!res.ok || !data.url) {
+        const msg = data.error || 'Checkout failed';
+        const detail = data.code ? ` (${data.code})` : data.type ? ` (${data.type})` : '';
+        throw new Error(msg + detail);
+      }
+      posthog.capture('checkout_redirect', { serviceType, bookingType, packageName: pkg.name, packagePrice: pkg.price });
       window.location.href = data.url;
-    } catch {
-      setSendError('Something went wrong. Please email us directly at influencemodelsagency@gmail.com');
+    } catch (err: any) {
+      setSendError(err.message || 'Something went wrong. Please email us at influencemodelsagency@gmail.com');
       setSending(false);
     }
   };
