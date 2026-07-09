@@ -219,62 +219,35 @@ const PACKAGES: Record<string, any[]> = {
   'bottle-monthly':    BOTTLE_MO,
 };
 
-// ── New streamlined flow ──
-// Step 0: Scenario (3 cards: Business / Music / Event)
-// Step 1: Service (2-4 options filtered by scenario)
-// Step 2: Package + frequency toggle (show packages immediately)
-// Step 3: Contact details → lead save → Stripe
+// ── Streamlined 3-step flow ──
+// Step 0: Service picker (grouped by persona)
+// Step 1: Packages — frequency toggle + curated cards + custom card
+// Step 2: Contact details → lead save → Stripe checkout
 
 type ServiceType = 'shoot' | 'musicvideo' | 'event' | 'reaction' | 'ugc' | 'business' | 'commercial' | 'bottle';
-type ScenarioType = 'business' | 'music' | 'event';
 
-const SCENARIOS: {
-  id: ScenarioType;
-  Icon: React.ElementType;
-  title: string;
-  sub: string;
-  services: {
-    id: ServiceType;
-    title: string;
-    desc: string;
-    from: string;
-    remote: boolean;
-    hasMonthly: boolean;
-    Icon: React.ElementType;
-  }[];
-}[] = [
-  {
-    id: 'business',
-    Icon: TrendingUp,
-    title: 'Promote My Business or Brand',
-    sub: 'On-site content, branded reels, commercials',
-    services: [
-      { id: 'business',   title: 'Brand Ambassador Visit',         desc: 'A model comes to your location and creates reels & promo content on-site.',        from: '$300', remote: false, hasMonthly: true,  Icon: TrendingUp },
-      { id: 'ugc',        title: 'UGC & Branded Reels (Remote)',   desc: 'Models film branded skits and promos from their studio and send you the files.',    from: '$300', remote: true,  hasMonthly: true,  Icon: Play },
-      { id: 'commercial', title: 'Commercial & Speaking Role',     desc: 'Script reading, dialogue and acting for TV spots, web ads and branded content.',    from: '$699', remote: false, hasMonthly: true,  Icon: Film },
-    ],
-  },
-  {
-    id: 'music',
-    Icon: Music,
-    title: 'Promote My Music',
-    sub: 'Music videos, reactions, photo shoots',
-    services: [
-      { id: 'musicvideo', title: 'Music Video Models',             desc: 'Featured talent for your music video — solo, duo, trio or full cast on set.',       from: '$500', remote: false, hasMonthly: false, Icon: Music },
-      { id: 'reaction',   title: 'Music Reaction Videos (Remote)', desc: 'Models record genuine first-listen reactions to your songs — delivered as HD reels.', from: '$300', remote: true,  hasMonthly: true,  Icon: Headphones },
-      { id: 'shoot',      title: 'Photo / Video Shoot',            desc: 'Models for editorial shoots, album art, press photos and brand content.',            from: '$300', remote: false, hasMonthly: true,  Icon: Camera },
-    ],
-  },
-  {
-    id: 'event',
-    Icon: Sparkles,
-    title: 'Host an Event or Nightlife',
-    sub: 'Promo models, VIP hostesses, bottle service',
-    services: [
-      { id: 'event',  title: 'Event & Promo Models',          desc: 'Models for brand activations, parties, grand openings and promotional appearances.', from: '$400/girl', remote: false, hasMonthly: true, Icon: Sparkles },
-      { id: 'bottle', title: 'Bottle Girls / VIP Hostesses',  desc: 'Professional VIP hostesses for nightclubs, lounges and bottle service sections.',    from: '$400/girl', remote: false, hasMonthly: true, Icon: Wine },
-    ],
-  },
+const STEPS = ['Service', 'Package', 'Your Details'];
+
+// Tiers above this price route to a call instead of self-serve checkout
+const SELF_SERVE_MAX = 6000;
+// How many curated cards to show before "View all"
+const CURATED_COUNT = 4;
+
+const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: string; tag: 'In-Person' | 'Remote'; hasMonthly: boolean; Icon: React.ElementType }> = {
+  business:   { title: 'Models at Your Business',        desc: 'A model visits your location, creates reels & promo content on-site.',        from: '$300',      tag: 'In-Person', hasMonthly: true,  Icon: TrendingUp },
+  ugc:        { title: 'UGC & Branded Reels',            desc: 'Models create branded skits, promos & short-form content to your brief.',      from: '$300',      tag: 'Remote',    hasMonthly: true,  Icon: Play },
+  commercial: { title: 'Commercials & Speaking Roles',   desc: 'Script reading, dialogue & acting for TV, web & brand ads.',                   from: '$599',      tag: 'In-Person', hasMonthly: true,  Icon: Film },
+  musicvideo: { title: 'Music Videos',                   desc: 'Featured talent for your video — solo, duo, trio, or full cast.',              from: '$500',      tag: 'In-Person', hasMonthly: false, Icon: Music },
+  reaction:   { title: 'Music Reactions',                desc: 'Models react to your songs on camera — first-listen & livestreams.',           from: '$300',      tag: 'Remote',    hasMonthly: true,  Icon: Headphones },
+  shoot:      { title: 'Photo Shoots',                   desc: 'Models for brand shoots, fashion editorials & lookbooks.',                     from: '$300',      tag: 'In-Person', hasMonthly: true,  Icon: Camera },
+  event:      { title: 'Events & Hosting',               desc: 'Models for brand activations, parties & grand openings.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Sparkles },
+  bottle:     { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Wine },
+};
+
+const SERVICE_GROUPS: { label: string; services: ServiceType[] }[] = [
+  { label: 'For Brands, Businesses & Products', services: ['business', 'ugc', 'commercial'] },
+  { label: 'For Artists & Music',               services: ['musicvideo', 'reaction', 'shoot'] },
+  { label: 'For Events & Nightlife',            services: ['event', 'bottle'] },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -282,9 +255,7 @@ const SCENARIOS: {
 function ModelBookingContent() {
   const searchParams = useSearchParams();
   const [step,        setStep]        = useState(0);
-  const [clientType,  setClientType]  = useState<string | null>(null);
   const [serviceType, setServiceType] = useState<ServiceType | null>(null);
-  const [scenario,    setScenario]    = useState<ScenarioType | null>(null);
   const [addCrew, setAddCrew] = useState<string | null>(null);
 
   // Test mode disabled
@@ -294,41 +265,29 @@ function ModelBookingContent() {
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
 
   // Booking state
-  const [bookingType, setBookingType] = useState<'one-time' | 'monthly' | null>(null);
-  const [sliderIdx,   setSliderIdx]   = useState(0);
-  const [budget,      setBudget]      = useState(250);
+  const [bookingType, setBookingType] = useState<'one-time' | 'monthly'>('one-time');
+  const [selectedPkgId, setSelectedPkgId] = useState<string | null>(null);
+  const [showAllPkgs, setShowAllPkgs] = useState(false);
 
-  // Auto-skip to Service step if service was pre-selected from homepage
+  // Deep links: ?service=ugc&billing=monthly&package=triple&model=Nya
   useEffect(() => {
     const svc = searchParams.get('service') as ServiceType | null;
     const pkgParam = searchParams.get('package');
-    if (svc && ['shoot', 'musicvideo', 'event', 'reaction', 'ugc', 'business', 'commercial', 'bottle'].includes(svc)) {
+    if (svc && SERVICE_INFO[svc]) {
       setServiceType(svc);
-      setClientType(['shoot', 'musicvideo', 'event', 'business', 'commercial', 'bottle'].includes(svc) ? 'in-person' : 'social');
-      // Auto-detect scenario from service
-      const detectedScenario = SCENARIOS.find(s => s.services.includes(svc));
-      if (detectedScenario) setScenario(detectedScenario.id);
-      // Default to one-time unless monthly was explicitly requested
       const requestedType = searchParams.get('billing') as 'one-time' | 'monthly' | null;
-      const bookingType = requestedType || 'one-time';
-      setBookingType(bookingType);
+      const bt = (requestedType === 'monthly' && SERVICE_INFO[svc].hasMonthly) ? 'monthly' : 'one-time';
+      setBookingType(bt);
       if (pkgParam) {
-        const key = `${svc}-${bookingType}`;
-        const pkgs = PACKAGES[key] || [];
-        const idx = pkgs.findIndex((p: any) => p.id === pkgParam);
-        if (idx !== -1) {
-          setSliderIdx(idx);
-          setBudget(pkgs[idx].price);
-        }
-        setStep(3); // Package is preselected, but collect contact details before showing price
-      } else {
-        setStep(2); // Skip scenario & service selection
+        const pkgs = PACKAGES[`${svc}-${bt}`] || [];
+        const match = pkgs.find((p: any) => p.id === pkgParam);
+        if (match) setSelectedPkgId(match.id);
       }
+      setStep(1); // Straight to package selection
     }
     const modelParam = searchParams.get('model');
     if (modelParam) setSelectedModel(modelParam);
   }, [searchParams]);
-  const [showAll,     setShowAll]     = useState(false); // kept for compatibility
   const stepRef = useRef<HTMLDivElement>(null);
   const [date,        setDate]        = useState('');
   const [name,        setName]        = useState('');
@@ -354,24 +313,23 @@ function ModelBookingContent() {
     if (leadEmail) setEmail(leadEmail);
   }, []);
 
-  const pkgKey  = serviceType && bookingType ? `${serviceType}-${bookingType}` : '';
+  // ── Package derivation ──
+  const pkgKey  = serviceType ? `${serviceType}-${bookingType}` : '';
   const rawPackages = PACKAGES[pkgKey] || [];
   const packages = isTestMode ? rawPackages.map(p => ({ ...p, price: 1 })) : rawPackages;
-  // Auto-select best package that fits the budget (always use real prices for selection)
-  const autoIdx = rawPackages.length > 0
-    ? Math.max(0, [...rawPackages].reverse().findIndex(p => p.price <= budget) !== -1
-        ? rawPackages.length - 1 - [...rawPackages].reverse().findIndex(p => p.price <= budget)
-        : 0)
-    : 0;
-  const activeIdx = sliderIdx >= 0 ? sliderIdx : autoIdx;
-  const pkg = packages[activeIdx] || null;
-  const upgradeIdx = activeIdx + 1;
-  const upgradePkg = packages[upgradeIdx] || null;
+  // Self-serve tiers (checkout-able) vs enterprise tiers (routed to a call)
+  const selfServe = packages.filter((p: any) => p.price <= SELF_SERVE_MAX);
+  const hasEnterprise = packages.length > selfServe.length;
+  // Curated view: first N self-serve tiers (data is price-ascending, popular tier sits in range)
+  const curated = selfServe.slice(0, CURATED_COUNT);
+  const visiblePkgs = showAllPkgs ? selfServe : curated;
+  const hasMorePkgs = selfServe.length > curated.length;
+  const pkg = packages.find((p: any) => p.id === selectedPkgId) || null;
 
-  // Abandoned checkout tracking — fire when user leaves after reaching step 2+
+  // Abandoned checkout tracking — fire when user leaves after reaching step 1+
   useEffect(() => {
     const handleUnload = () => {
-      if (step >= 2 && (phone || email) && !submitted) {
+      if (step >= 1 && (phone || email) && !submitted) {
         const payload = JSON.stringify({
           name, email, phone,
           source: 'abandoned_checkout',
@@ -390,17 +348,20 @@ function ModelBookingContent() {
 
   const canNext = () => {
     if (step === 0) return serviceType !== null;
-    if (step === 2) return bookingType !== null;
-    if (step === 3) return name.trim() !== '' && phone.trim() !== '' && email.trim() !== '';
-    if (step === 4) return pkg !== null;
+    if (step === 1) return pkg !== null;
+    if (step === 2) return pkg !== null && name.trim() !== '' && phone.trim() !== '' && email.trim() !== '';
     return false;
   };
 
   const goNext = async () => {
-    if (step < 4) {
+    if (step < 2) {
       posthog.capture('booking_step_completed', { step, serviceType, bookingType, packageName: pkg?.name });
-      // Save lead as soon as contact details are provided
-      if (step === 3 && name.trim() && phone.trim() && email.trim()) {
+      setStep(s => s + 1);
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+      return;
+    }
+    // Step 2 (final): save lead, then straight to Stripe
+    if (name.trim() && phone.trim() && email.trim()) {
         try {
           await fetch('/api/save-lead', {
             method: 'POST',
@@ -414,13 +375,9 @@ function ModelBookingContent() {
               notes: [selectedModel ? `Booked from: ${selectedModel}'s profile` : '', modelPreference ? `Model preference: ${modelPreference}` : ''].filter(Boolean).join(' | '),
             }),
           });
-        } catch {
-          // Non-fatal — continue to package selection
-        }
+      } catch {
+        // Non-fatal — continue to checkout
       }
-      setStep(s => s + 1);
-      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
-      return;
     }
     // Hard guard — never call API with missing package data
     if (!pkg || !pkg.name || !pkg.price) {
@@ -462,30 +419,24 @@ function ModelBookingContent() {
     }
   };
 
-  const IN_PERSON_SERVICES: ServiceType[] = ['musicvideo', 'shoot', 'event', 'bottle', 'business', 'commercial'];
-
   const chooseService = (t: ServiceType) => {
     posthog.capture('service_selected', { service: t });
     setServiceType(t);
-    setSliderIdx(0);
-    setShowAll(false);
+    setSelectedPkgId(null);
+    setShowAllPkgs(false);
     setAddCrew(null);
-    // In-person services default to one-time and skip the frequency step
-    if (IN_PERSON_SERVICES.includes(t)) {
-      setBookingType('one-time');
-      setTimeout(() => { setStep(3); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 350);
-    } else {
-      // Remote services (ugc, reaction) offer meaningful monthly subscriptions
-      setTimeout(() => { setStep(2); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 350);
-    }
+    setBookingType('one-time');
+    setTimeout(() => { setStep(1); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 250);
   };
-  const chooseBooking = (t: 'one-time' | 'monthly') => {
+  const chooseFrequency = (t: 'one-time' | 'monthly') => {
     posthog.capture('booking_type_selected', { bookingType: t, serviceType });
     setBookingType(t);
-    setSliderIdx(0);
-    setShowAll(false);
-    // Auto-advance to contact/details step after selecting frequency
-    setTimeout(() => { setStep(3); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 350);
+    setSelectedPkgId(null);
+    setShowAllPkgs(false);
+  };
+  const choosePackage = (id: string) => {
+    posthog.capture('package_selected', { packageId: id, serviceType, bookingType });
+    setSelectedPkgId(id);
   };
 
   const gold  = '#c9a96e';
@@ -584,12 +535,12 @@ function ModelBookingContent() {
             <button onClick={() => setSelectedModel(null)} className="text-white/30 hover:text-white/60 text-[10px] tracking-widest uppercase transition-colors">Change</button>
           </div>
         )}
-        {/* Progress steps — maps display index to actual step numbers (0,2,3,4) */}
+        {/* Progress steps — 3 linear steps */}
         <div className="flex items-center gap-2">
           {STEPS.map((s, displayIdx) => {
-            const actualStep = displayIdx === 0 ? 0 : displayIdx === 1 ? 2 : displayIdx + 1;
+            const actualStep = displayIdx;
             const isCompleted = step > actualStep;
-            const isCurrent = step === actualStep || (actualStep === 2 && step === 2);
+            const isCurrent = step === actualStep;
             return (
               <div key={s} className="flex items-center gap-2">
                 <div
@@ -628,13 +579,13 @@ function ModelBookingContent() {
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: gold }} />
             <p className="text-white/60 text-sm font-semibold">
-              {serviceType === 'business' ? 'Models at Your Business' : serviceType === 'shoot' ? 'Shoots & Music Videos' : serviceType === 'commercial' ? 'Commercials & Speaking Roles' : serviceType === 'event' ? 'Events & Hosting' : serviceType === 'bottle' ? 'Bottle Girls / VIP Hostesses' : serviceType === 'reaction' ? 'Music Reactions' : 'UGC & Branded Reels'}
+              {SERVICE_INFO[serviceType].title}
             </p>
             <span className="text-white/20 text-xs">
-              {clientType === 'in-person' ? '· In-Person' : '· Remote'}
+              · {SERVICE_INFO[serviceType].tag}
             </span>
           </div>
-          <button onClick={() => { setStep(0); setServiceType(null); setBookingType(null); }} className="text-[10px] tracking-widest uppercase text-white/25 hover:text-white/50 transition-colors">
+          <button onClick={() => { setStep(0); setServiceType(null); setSelectedPkgId(null); }} className="text-[10px] tracking-widest uppercase text-white/25 hover:text-white/50 transition-colors">
             Change
           </button>
         </div>
@@ -661,32 +612,18 @@ function ModelBookingContent() {
             <h2 className="font-display font-light italic text-white text-xl md:text-2xl mb-1">What do you need?</h2>
             <p className="text-white/35 text-xs mb-5">Pick a service — we handle the rest.</p>
 
-            {([
-              { label: 'For Brands, Businesses & Products', services: ['business', 'ugc', 'commercial'] as ServiceType[] },
-              { label: 'For Artists & Music', services: ['musicvideo', 'reaction', 'shoot'] as ServiceType[] },
-              { label: 'For Events & Nightlife', services: ['event', 'bottle'] as ServiceType[] },
-            ] as { label: string; services: ServiceType[] }[]).map(({ label, services: svcList }) => {
-              const serviceInfo: Record<ServiceType, { title: string; desc: string; client: 'in-person' | 'social'; from: string; tag: string; Icon: React.ElementType }> = {
-                business:   { title: 'Models at Your Business', desc: 'A model visits your location, creates reels & promo content on-site.', client: 'in-person', from: '$300', tag: 'In-Person', Icon: TrendingUp },
-                ugc:        { title: 'UGC & Branded Reels', desc: 'Models create branded skits, promos & short-form content to your brief.', client: 'social', from: '$300', tag: 'Remote', Icon: Play },
-                commercial: { title: 'Commercials & Speaking Roles', desc: 'Script reading, dialogue & acting for TV, web & brand ads.', client: 'in-person', from: '$599', tag: 'In-Person', Icon: Film },
-                musicvideo: { title: 'Music Videos', desc: 'Featured talent for your video — solo, duo, trio, or full cast.', client: 'in-person', from: '$500', tag: 'In-Person', Icon: Music },
-                reaction:   { title: 'Music Reactions', desc: 'Models react to your songs on camera — first-listen & livestreams.', client: 'social', from: '$300', tag: 'Remote', Icon: Headphones },
-                shoot:      { title: 'Photo Shoots', desc: 'Models for brand shoots, fashion editorials & lookbooks.', client: 'in-person', from: '$300', tag: 'In-Person', Icon: Camera },
-                event:      { title: 'Events & Hosting', desc: 'Models for brand activations, parties & grand openings.', client: 'in-person', from: '$400/girl', tag: 'In-Person', Icon: Sparkles },
-                bottle:     { title: 'Bottle Girls / VIP Hostesses', desc: 'VIP hostesses for nightclubs, lounges & bottle service.', client: 'in-person', from: '$400/girl', tag: 'In-Person', Icon: Wine },
-              };
+            {SERVICE_GROUPS.map(({ label, services: svcList }) => {
               return (
                 <div key={label} className="mb-5">
                   <p className="text-[9px] font-bold tracking-[0.35em] uppercase text-white/25 mb-2">{label}</p>
                   <div className="grid gap-1.5">
                     {svcList.map(svcId => {
-                      const info = serviceInfo[svcId];
+                      const info = SERVICE_INFO[svcId];
                       const SvcIcon = info.Icon;
                       return (
                         <button
                           key={svcId}
-                          onClick={() => { setScenario(SCENARIOS.find(s => s.services.includes(svcId))?.id ?? null); setClientType(info.client); chooseService(svcId); }}
+                          onClick={() => chooseService(svcId)}
                           className="w-full text-left p-3 border transition-all duration-200 flex items-center gap-3 group"
                           style={{ borderColor: 'rgba(255,255,255,0.08)', backgroundColor: 'rgba(255,255,255,0.01)' }}
                           onMouseEnter={e => { e.currentTarget.style.borderColor = gold; e.currentTarget.style.backgroundColor = 'rgba(201,169,110,0.04)'; }}
@@ -720,237 +657,130 @@ function ModelBookingContent() {
           </div>
         )}
 
-        {/* ── STEP 2: Booking Type (only for remote services) ── */}
-        {step === 2 && scenario && (
-          <div>
-            <button 
-              onClick={() => setStep(0)} 
-              className="text-white/30 hover:text-white/60 text-[11px] tracking-widest uppercase flex items-center gap-1 mb-3"
-            >
-              <ChevronLeft className="h-3 w-3" /> Back to Services
-            </button>
-            <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">How would you like to book?</h2>
-            <p className="text-white/35 text-sm mb-10">One-time booking or monthly recurring access</p>
-            <div className="grid md:grid-cols-2 gap-6 max-w-2xl">
-              {[
-                {
-                  type: 'one-time' as const,
-                  Icon: CalendarDays,
-                  title: 'One-Time Booking',
-                  desc: serviceType === 'reaction'
-                    ? 'Order a batch of reaction videos or one livestream session for a specific release.'
-                    : serviceType === 'ugc'
-                    ? 'Order a set of branded reels or skits for a specific campaign or product launch.'
-                    : serviceType === 'business'
-                    ? 'Book a model to visit your business on a specific date and create content on-site.'
-                    : serviceType === 'commercial'
-                    ? 'Book models/actresses for a specific commercial production with script, dialogue & spoken roles.'
-                    : serviceType === 'event'
-                    ? 'Book models for a specific event, party, or activation. Pay once — no commitment.'
-                    : serviceType === 'bottle'
-                    ? 'Book bottle girls / VIP hostesses for a specific night. Pay once — no commitment.'
-                    : 'Book models for a specific shoot date. Perfect for a single production.',
-                  detail: 'Pay once · No commitment · Flexible scheduling',
-                  badge: '',
-                },
-                {
-                  type: 'monthly' as const,
-                  Icon: RefreshCcw,
-                  title: 'Monthly Subscription',
-                  desc: serviceType === 'reaction'
-                    ? 'Get recurring reaction content each month — consistent promo for every release. Best for artists dropping regularly.'
-                    : serviceType === 'ugc'
-                    ? 'Fresh branded reels delivered every month — keep your feed active & algorithm-friendly. Best for brands needing ongoing content.'
-                    : serviceType === 'business'
-                    ? 'A model visits your business on a recurring schedule — like having your own brand ambassador on retainer.'
-                    : serviceType === 'commercial'
-                    ? 'Ongoing commercial production access — dedicated talent for recurring ad campaigns & brand spots every month.'
-                    : serviceType === 'event'
-                    ? 'Lock in girls for your venue every month — same rate, priority scheduling, no hassle. Best for clubs, lounges & recurring events.'
-                    : serviceType === 'bottle'
-                    ? 'Lock in your bottle girl team every month — guaranteed availability, same rate, priority scheduling. Best for nightclubs & venues.'
-                    : 'Monthly access to our model roster for ongoing shoots. Priority scheduling + locked-in rates.',
-                  detail: 'Monthly billing · Priority booking · Cancel anytime',
-                  badge: 'Save up to 40%',
-                },
-              ].map(({ type, Icon, title, desc, detail, badge }) => {
-                const active = bookingType === type;
+        {/* ── STEP 1: Packages — frequency toggle + curated cards ── */}
+        {step === 1 && serviceType && (
+          <div className="max-w-3xl">
+            <h2 className="font-display font-light italic text-white text-2xl md:text-3xl mb-1">Choose your package.</h2>
+            <p className="text-white/35 text-xs mb-5">Transparent pricing — pick what fits, upgrade anytime.</p>
+
+            {/* Frequency toggle — only when monthly exists for this service */}
+            {SERVICE_INFO[serviceType].hasMonthly && (
+              <div className="inline-flex border border-white/10 mb-6">
+                {(['one-time', 'monthly'] as const).map(t => {
+                  const active = bookingType === t;
+                  return (
+                    <button
+                      key={t}
+                      onClick={() => chooseFrequency(t)}
+                      className="px-5 py-2.5 text-[11px] font-bold tracking-widest uppercase transition-all flex items-center gap-2"
+                      style={{
+                        backgroundColor: active ? gold : 'transparent',
+                        color: active ? '#000' : 'rgba(255,255,255,0.4)',
+                      }}
+                    >
+                      {t === 'one-time' ? <CalendarDays className="h-3 w-3" /> : <RefreshCcw className="h-3 w-3" />}
+                      {t === 'one-time' ? 'One-Time' : 'Monthly'}
+                      {t === 'monthly' && <span className="text-[8px] px-1.5 py-0.5 border" style={{ borderColor: active ? '#000' : 'rgba(74,222,128,0.3)', color: active ? '#000' : 'rgb(74,222,128)' }}>Save 40%</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+            {bookingType === 'monthly' && (
+              <p className="text-white/30 text-[11px] mb-5 -mt-2">Monthly billing · Priority scheduling · Cancel anytime</p>
+            )}
+
+            {/* Package cards */}
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              {visiblePkgs.map((p: any) => {
+                const active = selectedPkgId === p.id;
                 return (
                   <button
-                    key={type}
-                    onClick={() => chooseBooking(type)}
-                    className="text-left p-8 border transition-all duration-300"
+                    key={p.id}
+                    onClick={() => choosePackage(p.id)}
+                    className="text-left p-5 border transition-all duration-200 relative"
                     style={{
-                      borderColor: active ? gold : 'rgba(255,255,255,0.08)',
-                      backgroundColor: active ? 'rgba(201,169,110,0.04)' : 'rgba(255,255,255,0.01)',
+                      borderColor: active ? gold : p.popular ? 'rgba(201,169,110,0.35)' : 'rgba(255,255,255,0.08)',
+                      backgroundColor: active ? 'rgba(201,169,110,0.06)' : 'rgba(255,255,255,0.01)',
                     }}
                   >
-                    {badge && (
-                      <div className="mb-4">
-                        <span className="text-[9px] font-bold tracking-[0.2em] uppercase px-2.5 py-1 bg-green-500/15 text-green-400 border border-green-500/20">
-                          {badge}
-                        </span>
-                      </div>
+                    {p.popular && (
+                      <span className="absolute -top-2.5 left-4 text-[9px] font-bold tracking-[0.25em] uppercase px-2 py-0.5" style={{ backgroundColor: gold, color: '#000' }}>
+                        Most Popular
+                      </span>
                     )}
-                    <div className="w-12 h-12 border flex items-center justify-center mb-6" style={{ borderColor: active ? gold : 'rgba(255,255,255,0.1)' }}>
-                      <Icon className="h-5 w-5" style={{ color: active ? gold : 'rgba(255,255,255,0.35)' }} />
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <div>
+                        <h3 className="text-white font-bold text-base">{p.name}</h3>
+                        <p className="text-white/35 text-[11px] mt-0.5 leading-snug">{p.tagline}</p>
+                      </div>
+                      <p className="font-display italic font-bold text-lg shrink-0" style={{ color: gold }}>
+                        ${p.price.toLocaleString()}{bookingType === 'monthly' ? '/mo' : ''}
+                      </p>
                     </div>
-                    <h3 className="text-white font-bold text-lg mb-2">{title}</h3>
-                    <p className="text-white/35 text-sm leading-relaxed mb-4">{desc}</p>
-                    <p className="text-[11px] tracking-wide" style={{ color: active ? gold : 'rgba(255,255,255,0.2)' }}>{detail}</p>
+                    <div className="space-y-1.5">
+                      {p.perks.slice(0, 4).map((perk: string) => (
+                        <div key={perk} className="flex items-center gap-2">
+                          <Check className="h-3 w-3 flex-shrink-0" style={{ color: active ? gold : 'rgba(255,255,255,0.2)' }} />
+                          <span className="text-white/45 text-xs">{perk}</span>
+                        </div>
+                      ))}
+                    </div>
                     {active && (
-                      <div className="mt-5 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase" style={{ color: gold }}>
-                        <Check className="h-3 w-3" /> Selected
+                      <div className="mt-3 pt-3 border-t border-[#c9a96e]/20 flex items-center gap-2 text-[10px] font-bold tracking-widest uppercase" style={{ color: gold }}>
+                        <Check className="h-3 w-3" /> Selected — continue below
                       </div>
                     )}
                   </button>
                 );
               })}
             </div>
-          </div>
-        )}
 
-        {/* ── STEP 4: Package Select ── */}
-        {step === 4 && !pkg && (
-          <div className="max-w-2xl">
-            <p className="text-white/40 text-sm mb-4">No packages found for this selection. Please go back and try again.</p>
-            <button onClick={() => setStep(0)} className="text-[11px] font-bold tracking-widest uppercase px-6 py-3" style={{ backgroundColor: gold, color: '#000' }}>Start Over</button>
-          </div>
-        )}
-        {step === 4 && pkg && (
-          <div className="max-w-2xl">
-            {/* Promo banner */}
-            <div className="mb-6 border border-amber-500/20 bg-amber-500/[0.04] px-4 py-3 flex items-center gap-3">
-              <Zap className="h-4 w-4 text-amber-400 flex-shrink-0" />
-              <p className="text-amber-200/80 text-xs">
-                <span className="font-bold">Summer 2026 Special</span> — all packages at promotional pricing. Lock in these rates before they go up.
-              </p>
-            </div>
-
-            <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">
-              Choose your package.
-            </h2>
-            <p className="text-white/35 text-sm mb-2">Drag the slider or tap the packages below to find the right fit.</p>
-            <div className="flex items-center gap-2 mb-10 px-3 py-2 border border-white/[0.06] bg-white/[0.02] w-fit">
-              <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: gold }} />
-              <p className="text-white/60 text-xs font-semibold">
-                {serviceType === 'reaction' ? 'Music Reactions' : serviceType === 'ugc' ? 'UGC & Branded Reels' : serviceType === 'business' ? 'Models at Your Business' : serviceType === 'event' ? 'Events & Hosting' : serviceType === 'bottle' ? 'Bottle Girls / VIP Hostesses' : serviceType === 'commercial' ? 'Commercials & Speaking Roles' : 'Shoots & Music Videos'}
-              </p>
-              <span className="text-white/25 text-xs">·</span>
-              <p className="text-white/40 text-xs">{bookingType === 'monthly' ? 'Monthly Subscription' : 'One-Time Booking'}</p>
-            </div>
-
-            {/* Package tier slider — each notch = a different package */}
-            <div className="mb-10">
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-white/40 text-[10px] font-bold tracking-[0.4em] uppercase">
-                  {bookingType === 'monthly' ? 'Monthly Package' : 'Choose Your Package'}
-                </p>
-                <div className="text-right">
-                  <p className="font-display font-bold italic text-white" style={{ fontSize: 'clamp(36px, 6vw, 56px)', lineHeight: 1, color: gold }}>
-                    ${(packages[sliderIdx >= 0 ? sliderIdx : autoIdx]?.price || 250).toLocaleString()}{bookingType === 'monthly' ? '/mo' : ''}
-                  </p>
-                </div>
-              </div>
-              <input
-                type="range"
-                min={0}
-                max={packages.length - 1}
-                step={1}
-                value={sliderIdx >= 0 ? sliderIdx : autoIdx}
-                onChange={e => { const idx = Number(e.target.value); setSliderIdx(idx); setBudget(packages[idx]?.price || 250); }}
-                className="booking-slider w-full h-2 appearance-none cursor-pointer rounded-full"
-                style={{
-                  background: `linear-gradient(to right, ${gold} ${(((sliderIdx >= 0 ? sliderIdx : autoIdx)) / Math.max(packages.length - 1, 1)) * 100}%, rgba(255,255,255,0.08) ${(((sliderIdx >= 0 ? sliderIdx : autoIdx)) / Math.max(packages.length - 1, 1)) * 100}%)`,
-                }}
-              />
-              <div className="flex justify-between text-[10px] text-white/20 uppercase tracking-widest mt-2">
-                <span>{packages[0]?.name || ''} · ${(packages[0]?.price || 250).toLocaleString()}</span>
-                <span>{packages[packages.length - 1]?.name || ''} · ${(packages[packages.length - 1]?.price || 6000).toLocaleString()}{bookingType === 'monthly' ? '/mo' : ''}</span>
-              </div>
-            </div>
-
-            {/* Auto-selected package card */}
-            {pkg && (
-              <>
-                <div className="flex items-center gap-2 mb-4">
-                  <Check className="h-4 w-4" style={{ color: gold }} />
-                  <p className="text-white/50 text-[11px] tracking-[0.2em] uppercase font-bold">Best Match for Your Budget</p>
-                </div>
-
-                <div className="border p-7" style={{ borderColor: gold, backgroundColor: 'rgba(201,169,110,0.03)' }}>
-                  <div className="flex items-start justify-between mb-5">
-                    <div>
-                      <div className="flex items-center gap-2 flex-wrap mb-2">
-                        {pkg.popular && (
-                          <span className="text-[9px] font-bold tracking-[0.3em] uppercase px-2 py-1 inline-block" style={{ backgroundColor: gold, color: '#000' }}>
-                            Most Popular
-                          </span>
-                        )}
-                        {pkg.models > 1 && bookingType === 'monthly' && (
-                          <span className="text-[9px] font-bold tracking-[0.2em] uppercase px-2 py-1 inline-block bg-green-500/10 text-green-400 border border-green-500/20">
-                            Best monthly rate
-                          </span>
-                        )}
-                      </div>
-                      <h3 className="font-display italic text-white text-3xl">{pkg.name}</h3>
-                      <p className="text-white/40 text-sm mt-1">{pkg.tagline}</p>
-                    </div>
-                    <div className="text-right shrink-0">
-                          <p className="font-display italic text-2xl" style={{ color: gold }}>
-                        ${pkg.price.toLocaleString()}{bookingType === 'monthly' ? '/mo' : ''}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {pkg.perks.map((perk: string) => (
-                      <div key={perk} className="flex items-center gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: gold }} />
-                        <span className="text-white/55 text-sm">{perk}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Upgrade nudge */}
-                {upgradePkg && (
-                  <button
-                    onClick={() => { setSliderIdx(upgradeIdx); setBudget(upgradePkg.price); }}
-                    className="w-full mt-4 p-4 border border-dashed border-white/10 hover:border-[#c9a96e]/40 bg-white/[0.01] hover:bg-[#c9a96e]/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
-                  >
-                    <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
-                      <TrendingUp className="h-4 w-4 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white/60 text-sm font-semibold group-hover:text-white transition-colors">
-                        Upgrade to {upgradePkg.name} — {upgradePkg.models > pkg.models ? `+${upgradePkg.models - pkg.models} model${upgradePkg.models - pkg.models > 1 ? 's' : ''}` : 'more perks'}
-                      </p>
-                      <p className="text-white/25 text-xs">
-                        Just ${(upgradePkg.price - pkg.price).toLocaleString()} more · <span className="text-green-400/60">most clients upgrade</span>
-                      </p>
-                    </div>
-                    <ChevronRight className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors" />
-                  </button>
-                )}
-
-              </>
+            {/* View all packages */}
+            {hasMorePkgs && !showAllPkgs && (
+              <button
+                onClick={() => setShowAllPkgs(true)}
+                className="w-full py-3 mb-4 border border-dashed border-white/10 hover:border-white/25 text-white/35 hover:text-white/60 text-[11px] font-bold tracking-widest uppercase transition-all"
+              >
+                View All {selfServe.length} Packages ↓
+              </button>
             )}
 
-            {/* Limited availability nudge */}
-            <div className="mt-5 flex items-center gap-2 px-1">
-              <Zap className="h-3 w-3 text-amber-400/60" />
-              <p className="text-white/25 text-[11px]">
-                <span className="text-amber-400/60 font-semibold">Limited availability</span> — {bookingType === 'monthly' ? 'only 3 monthly slots left this quarter · lock in this rate before pricing update' : 'promotional pricing ends soon · weekends fill up fast'}
-              </p>
-            </div>
+            {/* Enterprise / custom — big productions route to a call */}
+            {hasEnterprise && (
+              <a
+                href="tel:+15615520392"
+                className="w-full p-4 border border-white/[0.07] bg-white/[0.01] hover:bg-[#c9a96e]/[0.04] hover:border-[#c9a96e]/30 transition-all duration-300 flex items-center gap-4 group"
+              >
+                <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
+                  <Phone className="h-4 w-4 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-white/60 text-sm font-semibold group-hover:text-white transition-colors">Need a larger production or custom package?</p>
+                  <p className="text-white/25 text-xs">Full casts, venue takeovers & multi-model teams — talk to us directly</p>
+                </div>
+                <ArrowUpRight className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors" />
+              </a>
+            )}
           </div>
         )}
 
-        {/* ── STEP 3: Details ── */}
-        {step === 3 && (
+        {/* ── STEP 2: Your Details ── */}
+        {step === 2 && (
           <div className="max-w-xl">
-            <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">Quick — who are we booking for?</h2>
-            <p className="text-white/35 text-sm mb-5">Just name, phone &amp; email. Everything else is optional.</p>
+            {pkg && (
+              <div className="mb-5 p-4 border flex items-center justify-between gap-3" style={{ borderColor: 'rgba(201,169,110,0.3)', backgroundColor: 'rgba(201,169,110,0.04)' }}>
+                <div>
+                  <p className="text-white font-bold text-sm">{pkg.name} — {SERVICE_INFO[serviceType!].title}</p>
+                  <p className="text-white/35 text-[11px] mt-0.5">{pkg.tagline}</p>
+                </div>
+                <p className="font-display italic font-bold text-xl shrink-0" style={{ color: gold }}>
+                  ${pkg.price.toLocaleString()}{bookingType === 'monthly' ? '/mo' : ''}
+                </p>
+              </div>
+            )}
+            <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">Where do we send your confirmation?</h2>
+            <p className="text-white/35 text-sm mb-5">Name, phone &amp; email — then straight to secure checkout.</p>
 
             {/* Social proof strip */}
             <div className="grid grid-cols-3 gap-3 mb-6">
@@ -968,7 +798,7 @@ function ModelBookingContent() {
 
             <div className="flex items-center gap-2 mb-6 px-3 py-2 border border-green-500/15 bg-green-500/[0.03]">
               <Check className="h-3.5 w-3.5 text-green-400/70 flex-shrink-0" />
-              <p className="text-green-300/60 text-[11px]">Next: pick your package &amp; go to secure checkout</p>
+              <p className="text-green-300/60 text-[11px]">Next: secure checkout — powered by Stripe</p>
             </div>
 
             {/* Contact capture before showing packages */}
@@ -1102,130 +932,10 @@ function ModelBookingContent() {
               </div>
             )}
 
-            <div className="space-y-5">
-
-              {/* Subscription nudge for one-time bookers */}
-              {bookingType === 'one-time' && (
-                <button
-                  onClick={() => { setBookingType('monthly'); setStep(4); }}
-                  className="w-full p-4 border border-dashed border-green-500/20 bg-green-500/[0.02] hover:bg-green-500/[0.05] transition-all duration-300 flex items-center gap-4 group text-left"
-                >
-                  <div className="w-10 h-10 border border-green-500/20 group-hover:border-green-400/40 flex items-center justify-center flex-shrink-0 transition-colors">
-                    <RefreshCcw className="h-4 w-4 text-green-400/50 group-hover:text-green-400 transition-colors" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-green-300/70 text-sm font-semibold group-hover:text-green-300 transition-colors">
-                      {serviceType === 'bottle' ? 'Lock in your bottle team monthly — save up to 40%' : serviceType === 'event' ? 'Subscribe for recurring event girls — save up to 40%' : serviceType === 'reaction' ? 'Get monthly reactions for every release — save up to 40%' : serviceType === 'ugc' ? 'Get fresh content every month — save up to 40%' : serviceType === 'business' ? 'Book your ambassador on retainer — save up to 40%' : 'Subscribe for recurring shoots — save up to 40%'}
-                    </p>
-                    <p className="text-white/25 text-xs">
-                      Monthly billing · Priority scheduling · Cancel anytime
-                    </p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-green-400/30 group-hover:text-green-400 transition-colors" />
-                </button>
-              )}
-
-              {/* Cross-sell: contextual */}
-              {serviceType === 'reaction' && (
-                <Link
-                  href="/model-booking"
-                  onClick={() => { chooseService('ugc'); }}
-                  className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
-                >
-                  <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
-                    <Play className="h-4 w-4 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/50 text-sm font-semibold group-hover:text-white transition-colors">
-                      Want promo skits & reels too? Add UGC content
-                    </p>
-                    <p className="text-white/25 text-xs">
-                      Models create branded content to your brief — <span style={{ color: gold }}>from $300</span>
-                    </p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors" />
-                </Link>
-              )}
-              {serviceType === 'ugc' && (
-                <Link
-                  href="/model-booking"
-                  onClick={() => { chooseService('reaction'); }}
-                  className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
-                >
-                  <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
-                    <Headphones className="h-4 w-4 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/50 text-sm font-semibold group-hover:text-white transition-colors">
-                      Promoting a song? Add music reactions
-                    </p>
-                    <p className="text-white/25 text-xs">
-                      Models listen & react to your music — <span style={{ color: gold }}>from $300</span>
-                    </p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors" />
-                </Link>
-              )}
-              {(serviceType === 'shoot' || serviceType === 'event' || serviceType === 'business') && (
-                <Link
-                  href="/model-booking"
-                  onClick={() => { chooseService('ugc'); }}
-                  className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
-                >
-                  <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
-                    <Play className="h-4 w-4 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/50 text-sm font-semibold group-hover:text-white transition-colors">
-                      Need social media content too? Add UGC reels
-                    </p>
-                    <p className="text-white/25 text-xs">
-                      Branded skits & promos delivered to you — <span style={{ color: gold }}>from $300</span>
-                    </p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors" />
-                </Link>
-              )}
-              {serviceType === 'bottle' && (
-                <Link
-                  href="/model-booking"
-                  onClick={() => { chooseService('event'); }}
-                  className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
-                >
-                  <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
-                    <Sparkles className="h-4 w-4 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/50 text-sm font-semibold group-hover:text-white transition-colors">
-                      Need event models too? Add promo hosting
-                    </p>
-                    <p className="text-white/25 text-xs">
-                      Promo models for appearances & activations — <span style={{ color: gold }}>from $400</span>
-                    </p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors" />
-                </Link>
-              )}
-              {serviceType === 'commercial' && (
-                <Link
-                  href="/model-booking"
-                  onClick={() => { chooseService('shoot'); }}
-                  className="w-full p-4 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-300 flex items-center gap-4 group text-left"
-                >
-                  <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
-                    <Camera className="h-4 w-4 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-white/50 text-sm font-semibold group-hover:text-white transition-colors">
-                      Need non-speaking models too? Add a shoot
-                    </p>
-                    <p className="text-white/25 text-xs">
-                      Music videos, brand shoots & editorials — <span style={{ color: gold }}>from $300</span>
-                    </p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-white/15 group-hover:text-[#c9a96e] transition-colors" />
-                </Link>
-              )}
+            {/* Trust strip — no distractions before checkout */}
+            <div className="flex items-center gap-2 text-white/25 text-[11px]">
+              <ShieldCheck className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+              <p>Secure checkout via Stripe · Our team confirms model availability within 24 hours of booking.</p>
             </div>
           </div>
         )}
@@ -1235,9 +945,7 @@ function ModelBookingContent() {
       <div className="px-6 md:px-14 py-6 border-t border-white/[0.06] flex items-center justify-between sticky bottom-0 bg-[#080808]">
         <button
           onClick={() => {
-            // Step 2 (frequency) goes back to step 0 — step 1 no longer exists
-            const prevStep = step === 2 ? 0 : step - 1;
-            setStep(prevStep);
+            setStep(s => Math.max(0, s - 1));
             setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
           }}
           disabled={step === 0}
@@ -1247,14 +955,14 @@ function ModelBookingContent() {
         </button>
 
         <div className="flex items-center gap-6">
-          {pkg && step === 4 && (
+          {pkg && step >= 1 && (
             <p className="text-white/25 text-sm hidden sm:block">
               <span className="text-white/60 font-semibold">{pkg.name}</span>
               {' · '}
               <span style={{ color: gold }}>${pkg.price.toLocaleString()}{bookingType === 'monthly' ? '/mo' : ''}</span>
             </p>
           )}
-          {step === 4 && canNext() && (
+          {step === 2 && canNext() && (
             <div className="items-center gap-1.5 text-white/20 text-[10px] hidden md:flex">
               <ShieldCheck className="h-3 w-3" /> Powered by Stripe · 256-bit SSL
             </div>
@@ -1268,7 +976,7 @@ function ModelBookingContent() {
               className="flex items-center gap-3 px-8 py-4 text-sm font-bold tracking-widest uppercase transition-all disabled:opacity-30 disabled:cursor-not-allowed"
               style={{ backgroundColor: gold, color: '#000' }}
             >
-              {sending ? 'Redirecting to Payment...' : step === 4 ? (<><Lock className="h-3.5 w-3.5" /> Secure Checkout →</>) : step === 3 ? 'Choose Package →' : step === 2 && pkg ? `Continue with ${pkg.name} →` : 'Next →'}
+              {sending ? 'Redirecting to Payment...' : step === 2 ? (<><Lock className="h-3.5 w-3.5" /> Secure Checkout →</>) : step === 1 && pkg ? `Continue with ${pkg.name} →` : step === 1 ? 'Select a Package' : 'Next →'}
             </button>
           )}
         </div>
