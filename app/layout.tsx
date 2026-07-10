@@ -89,6 +89,54 @@ export const metadata: Metadata = {
     "influencer agency South Florida",
     "music video models Miami",
     "song promotion agency",
+    "best influencer marketing agency",
+    "top influencer agency Florida",
+    "influencer marketing services",
+    "hire social media influencers",
+    "book Instagram influencers",
+    "book TikTok influencers",
+    "influencer marketing pricing",
+    "influencer marketing cost",
+    "influencer marketing ROI",
+    "how much to hire an influencer",
+    "influencer marketing for restaurants",
+    "influencer marketing for salons",
+    "influencer marketing for gyms",
+    "influencer marketing for retail",
+    "influencer marketing for real estate",
+    "influencer marketing for car dealerships",
+    "influencer marketing for med spas",
+    "influencer marketing for boutiques",
+    "influencer marketing for hotels",
+    "influencer marketing for Airbnbs",
+    "influencer marketing for apps",
+    "influencer marketing for startups",
+    "influencer marketing for clothing brands",
+    "influencer marketing for fashion brands",
+    "influencer marketing for record labels",
+    "influencer marketing for music producers",
+    "influencer marketing for DJs",
+    "influencer marketing for nightclubs",
+    "influencer marketing for lounges",
+    "influencer marketing for bars",
+    "influencer marketing for events",
+    "influencer marketing for parties",
+    "influencer marketing for brand activations",
+    "influencer marketing for product launches",
+    "influencer marketing for grand openings",
+    "influencer marketing for pop-up events",
+    "influencer marketing for red carpet events",
+    "influencer marketing for yacht events",
+    "influencer marketing for corporate events",
+    "influencer marketing for birthday parties",
+    "influencer marketing for weddings",
+    "influencer marketing for festivals",
+    "influencer marketing for concerts",
+    "influencer marketing for music festivals",
+    "influencer marketing for fashion shows",
+    "influencer marketing for trade shows",
+    "influencer marketing for conferences",
+    "influencer marketing for expos",
   ],
   verification: {
     google: "S8edkciJVfvUt7rZ_TIuu0UEZ9Im8lGKbh3Ix2qq0tE",
@@ -141,7 +189,7 @@ const jsonLd = {
       alternateName: ["Influence", "Influence Agency", "Influence Models"],
       url: "https://influencemodels.agency",
       logo: "https://influencemodels.agency/favicon.svg",
-      description: "South Florida's premier influencer marketing agency. Book verified models and influencers for music videos, UGC content, events, brand campaigns, and business promotions. Celebrity-connected talent with credits including Sean Paul, Bryson Tiller, Kai Cenat, Forbes, and Fenty Beauty. Starting at $300.",
+      description: "South Florida's premier influencer marketing agency. Book verified models and influencers for music videos, UGC content, events, brand campaigns, and business promotions. Celebrity-connected talent with credits including Sean Paul, Bryson Tiller, Kai Cenat, Forbes, and Fenty Beauty.",
       knowsAbout: ["influencer marketing", "UGC content creation", "music video production", "event hosting", "brand ambassadors", "Instagram marketing", "TikTok marketing", "music promotion", "model booking"],
       foundingDate: "2024",
       founders: [
@@ -220,7 +268,7 @@ const jsonLd = {
       ],
     },
     {
-      "@type": "LocalBusiness",
+      "@type": "ProfessionalService",
       "@id": "https://influencemodels.agency/#localbusiness",
       name: "Influence Models Agency",
       description: "Miami's premier influencer marketing agency. Book verified influencers for UGC content creation, music promotion, brand campaigns, event hosting, and model bookings in South Florida and Miami.",
@@ -233,15 +281,29 @@ const jsonLd = {
         addressRegion: "FL",
         addressCountry: "US",
       },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 25.76168,
+        longitude: -80.19178,
+      },
       areaServed: [
         { "@type": "City", name: "Miami" },
         { "@type": "City", name: "Fort Lauderdale" },
         { "@type": "City", name: "Hollywood" },
         { "@type": "City", name: "Orlando" },
         { "@type": "City", name: "Boca Raton" },
+        { "@type": "City", name: "Palm Beach" },
+        { "@type": "City", name: "West Palm Beach" },
+        { "@type": "City", name: "Delray Beach" },
+        { "@type": "City", name: "Pompano Beach" },
+        { "@type": "City", name: "Hallandale Beach" },
+        { "@type": "City", name: "Aventura" },
+        { "@type": "City", name: "Sunny Isles Beach" },
+        { "@type": "City", name: "Miami Beach" },
+        { "@type": "City", name: "Coral Gables" },
+        { "@type": "City", name: "Key Biscayne" },
         { "@type": "State", name: "Florida" },
       ],
-      priceRange: "$100 - $5000",
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -251,6 +313,7 @@ const jsonLd = {
       sameAs: [
         "https://www.instagram.com/influencemodels.agency",
         "https://www.tiktok.com/@influencemodelsagency",
+        "https://www.wikidata.org/wiki/Q140179528",
       ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
@@ -271,6 +334,51 @@ const jsonLd = {
       name: "Influence",
       publisher: { "@id": "https://influencemodels.agency/#organization" },
     },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How much does it cost to hire an influencer?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Influencer pricing varies based on the service type, influencer following, and deliverables. Services include UGC content creation, music promotion, business content visits, event hosting, and commercial production. Contact us for a custom quote based on your specific needs.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do I book an influencer for my business?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can book influencers through our online booking system. Select your service type (UGC, business content, events, etc.), choose your budget, and complete the booking in under 2 minutes. We also offer phone consultations for custom campaigns.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What services do you offer?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We offer UGC content creation, music reaction videos, business content visits (models at your location), event hosting and model booking, music video models, commercial production with speaking roles, and brand ambassador services.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you serve areas outside Miami?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, we serve all of South Florida including Miami, Fort Lauderdale, Boca Raton, Palm Beach, and Orlando. For remote services like UGC and music reactions, we work nationwide.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How fast can I get content delivered?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "UGC and music reaction content is typically delivered within 3-5 days. Business content visits deliver same-day or within 24 hours. Event hosting is scheduled based on your event date. Rush delivery is available for urgent projects.",
+          },
+        },
+      ],
+    },
   ],
 };
 
@@ -282,6 +390,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Google Ads conversion tracking */}
         {process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
           <>

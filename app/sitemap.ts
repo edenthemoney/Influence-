@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://influencemodels.agency';
-  const lastModified = new Date('2026-06-25');
+  const lastModified = new Date('2026-06-28');
 
   const routes: { route: string; priority: number; changeFrequency: 'weekly' | 'monthly' | 'yearly' }[] = [
     { route: '', priority: 1.0, changeFrequency: 'weekly' },

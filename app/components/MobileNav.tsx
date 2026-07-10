@@ -54,7 +54,7 @@ export default function MobileNav() {
 
           <div className="px-8 pb-14 pt-8">
             <Link
-              href="/model-booking"
+              href="/start"
               onClick={() => setOpen(false)}
               className="flex items-center justify-center w-full py-5 font-bold text-[14px] tracking-widest uppercase"
               style={{ backgroundColor: GOLD, color: '#000' }}

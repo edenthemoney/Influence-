@@ -236,8 +236,38 @@ export default function ArticlePage() {
     );
   }
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.content[0].value,
+    image: `https://influencemodels.agency${article.image}`,
+    author: {
+      "@type": "Person",
+      name: article.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Influence Models Agency",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://influencemodels.agency/favicon.svg",
+      },
+    },
+    datePublished: article.date,
+    dateModified: article.date,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://influencemodels.agency/blog/${slug}`,
+    },
+  };
+
   return (
     <div className="min-h-screen bg-[#080808]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Nav */}
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">

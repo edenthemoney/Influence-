@@ -7,10 +7,10 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Book Models for Shoots & Music Videos — Influence Agency | South Florida',
-  description: 'Professional models for music videos, brand shoots, fashion editorials, and commercial productions in South Florida. From $300. Same-week booking available.',
+  description: 'Professional models for music videos, brand shoots, fashion editorials, and commercial productions in South Florida. Same-week booking available.',
   openGraph: {
     title: 'Book Models for Shoots & Music Videos — Influence Agency',
-    description: 'Professional models for your video or photo production. South Florida. From $300.',
+    description: 'Professional models for your video or photo production. South Florida.',
     url: 'https://influencemodels.agency/services/shoots',
   },
 };
@@ -125,7 +125,30 @@ export default function ShootsPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Service Area */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Service Area</p>
+        <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+          South Florida Production Coverage
+        </h2>
+        <p className="text-white/45 text-lg max-w-2xl mb-12 leading-relaxed">
+          Our shoot and music video model services cover the entire South Florida region. From Miami studios to beach locations in Fort Lauderdale, Boca Raton, and Palm Beach, we provide professional models for any production.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+          {[
+            'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach',
+            'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach',
+            'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach',
+            'Coral Gables', 'Key Biscayne', 'Doral', 'Weston'
+          ].map(city => (
+            <div key={city} className="flex items-center gap-2">
+              <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+              <span className="text-white/55 text-[13px]">{city}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">
         <div className="max-w-3xl">
           <p className="text-black/40 text-[10px] tracking-[0.5em] uppercase mb-8 font-semibold">Ready to Shoot?</p>

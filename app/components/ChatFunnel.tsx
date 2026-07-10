@@ -67,7 +67,7 @@ export default function ChatFunnel() {
       setStep('location');
     } else if (choice === 'Reels & Social Content' || choice === 'Music Promo & Reactions') {
       setLocation('remote');
-      addMessage('bot', 'All done remotely — we deliver to your inbox. What\'s your budget?');
+      addMessage('bot', 'All done remotely — we deliver to your inbox. How much content do you need?');
       setStep('budget');
     } else {
       addMessage('bot', 'Got it. Would this be in-person (South Florida) or remote/digital?');
@@ -84,7 +84,7 @@ export default function ChatFunnel() {
   const handleLocation = (loc: 'local' | 'remote') => {
     setLocation(loc);
     addMessage('user', loc === 'local' ? 'In-person (South Florida)' : 'Remote / Digital');
-    addMessage('bot', 'Almost there — what\'s your budget?');
+    addMessage('bot', 'Almost there — how big is this booking?');
     setStep('budget');
   };
 
@@ -132,17 +132,17 @@ export default function ChatFunnel() {
     const svc = PURPOSE_TO_SERVICE[purpose];
     const bookLink = svc ? `/model-booking?service=${svc}` : '/start';
     if (location === 'remote') {
-      if (budgetRange === 'Under $300') {
-        return { title: 'Starter Content', description: 'A Starter pack is your move — a creator makes a reel or reaction for you. Quick and effective. Let\u2019s get you set up.', link: bookLink, cta: 'See My Options' };
-      } else if (budgetRange === '$300 – $700') {
+      if (budgetRange === 'Just one to start') {
+        return { title: 'Starter Content', description: 'A Starter pack is your move — a creator makes a reel or reaction for you. Quick and effective. Your packages are ready on the next screen.', link: bookLink, cta: 'See My Options' };
+      } else if (budgetRange === 'A few pieces of content') {
         return { title: 'Growth Campaign', description: 'Growth is perfect — multiple creators, more content, bigger reach. Our most popular range. Let\u2019s build it.', link: bookLink, cta: 'See My Options' };
       } else {
         return { title: 'Full Campaign', description: 'You\u2019re in full-campaign territory — multiple influencers, coordinated rollout, max reach. A rep will tailor this with you.', link: '/quote', cta: 'Get My Custom Plan' };
       }
     } else {
-      if (budgetRange === 'Under $300') {
+      if (budgetRange === 'Just one to start') {
         return { title: 'Solo Model', description: 'A solo booking fits perfectly — one verified model for your shoot or event. Let\u2019s lock your date.', link: bookLink, cta: 'See My Options' };
-      } else if (budgetRange === '$300 – $700') {
+      } else if (budgetRange === 'A few pieces of content') {
         return { title: 'Duo or Trio', description: 'You could get a 2–3 model squad — our most booked range. Let\u2019s find your match.', link: bookLink, cta: 'See My Options' };
       } else {
         return { title: 'Full Production', description: 'Full squad production — ideal for music videos, events, or big brand shoots. A rep will help you plan it.', link: svc ? bookLink : '/quote', cta: 'See My Options' };
@@ -282,7 +282,7 @@ export default function ChatFunnel() {
 
             {step === 'budget' && (
               <div className="space-y-2">
-                {['Under $300', '$300 – $700', '$700+'].map((range) => (
+                {['Just one to start', 'A few pieces of content', 'Full production / recurring'].map((range) => (
                   <button
                     key={range}
                     onClick={() => handleBudget(range)}

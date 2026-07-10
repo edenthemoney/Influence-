@@ -7,10 +7,10 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Social Media Content & Music Reactions — Influence Agency',
-  description: 'Beautiful models promote your brand or react to your music on camera. UGC reels, TikToks, music reactions, and branded content delivered to you. Nationwide. From $300.',
+  description: 'Beautiful models promote your brand or react to your music on camera. UGC reels, TikToks, music reactions, and branded content delivered to you. Nationwide.',
   openGraph: {
     title: 'Social Media Content & Music Reactions — Influence',
-    description: 'Models create scroll-stopping content for your brand or music. Delivered to your inbox. From $300.',
+    description: 'Models create scroll-stopping content for your brand or music. Delivered to your inbox. Nationwide.',
     url: 'https://influencemodels.agency/services/content',
   },
 };
@@ -109,7 +109,6 @@ export default function ContentPage() {
               ))}
             </div>
             <div className="mt-auto pt-5 border-t border-white/[0.06] flex items-center justify-between">
-              <p className="font-display font-bold italic text-2xl" style={{ color: gold }}>From $300</p>
               <Link href="/model-booking?service=ugc" className="text-[11px] font-bold tracking-widest uppercase text-white/30 hover:text-white transition-colors flex items-center gap-2">
                 Book <ChevronRight className="h-3.5 w-3.5" />
               </Link>
@@ -146,7 +145,6 @@ export default function ContentPage() {
               ))}
             </div>
             <div className="mt-auto pt-5 border-t border-white/[0.06] flex items-center justify-between">
-              <p className="font-display font-bold italic text-2xl" style={{ color: gold }}>From $300</p>
               <Link href="/model-booking?service=reaction" className="text-[11px] font-bold tracking-widest uppercase text-white/30 hover:text-white transition-colors flex items-center gap-2">
                 Book <ChevronRight className="h-3.5 w-3.5" />
               </Link>
@@ -206,6 +204,30 @@ export default function ContentPage() {
         </div>
       </section>
 
+      {/* Service Area */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Service Area</p>
+        <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+          Nationwide Delivery, South Florida Roots
+        </h2>
+        <p className="text-white/45 text-lg max-w-2xl mb-12 leading-relaxed">
+          Our UGC and music reaction services are available nationwide — we deliver professional content directly to your inbox wherever you are. For in-person shoots and events, we serve the entire South Florida region from Miami to Palm Beach.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+          {[
+            'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach',
+            'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach',
+            'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach',
+            'Coral Gables', 'Key Biscayne', 'Nationwide UGC', 'Nationwide Music Reactions'
+          ].map(city => (
+            <div key={city} className="flex items-center gap-2">
+              <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+              <span className="text-white/55 text-[13px]">{city}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">
         <div className="max-w-3xl">
@@ -213,15 +235,15 @@ export default function ContentPage() {
           <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
             Stop scrolling.<br />Start dominating.
           </h2>
-          <p className="text-black/50 text-lg mb-10 max-w-lg">Professional content delivered in 3 days. No production crew needed. Just order, approve, and post. From $300.</p>
+          <p className="text-black/50 text-lg mb-10 max-w-lg">Professional content delivered in 3 days. No production crew needed. Just order, approve, and post.</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/model-booking" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Get Started <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
-              <span>✓ From $300</span>
               <span>✓ Nationwide</span>
               <span>✓ 48hr delivery</span>
+              <span>✓ Custom packages</span>
             </div>
           </div>
         </div>

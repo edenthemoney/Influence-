@@ -7,10 +7,10 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Event Models & Hosting — Influence Agency | South Florida',
-  description: 'Book beautiful professional models for your event, club night, brand activation, or party in South Florida. Flat rate per girl starting at $150. Same-week booking available.',
+  description: 'Book beautiful professional models for your event, club night, brand activation, or party in South Florida. Same-week booking available.',
   openGraph: {
     title: 'Event Models & Hosting — Influence Agency',
-    description: 'Professional event models for clubs, parties, brand activations & more. South Florida. From $150/girl.',
+    description: 'Professional event models for clubs, parties, brand activations & more. South Florida.',
     url: 'https://influencemodels.agency/services/events',
   },
 };
@@ -61,19 +61,18 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* Pricing Strip */}
+      {/* Event Sizes */}
       <section className="border-t border-white/[0.06] bg-[#060606]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-white/[0.06]">
           {[
-            { girls: '1–2', rate: '$400/girl', label: 'Small Event' },
-            { girls: '3–5', rate: '$400/girl', label: 'Mid-Size' },
-            { girls: '8–10', rate: '$400/girl', label: 'Large Event' },
-            { girls: '15+', rate: '$400/girl', label: 'Best Rate' },
-          ].map(({ girls, rate, label }) => (
+            { girls: '1–2', label: 'Small Event' },
+            { girls: '3–5', label: 'Mid-Size' },
+            { girls: '8–10', label: 'Large Event' },
+            { girls: '15+', label: 'Best Rate' },
+          ].map(({ girls, label }) => (
             <div key={girls} className="text-center py-8 md:py-12">
               <p className="text-white/30 text-[10px] tracking-widest uppercase mb-2">{label}</p>
               <p className="font-display font-bold italic text-2xl md:text-3xl text-white mb-1">{girls} Girls</p>
-              <p className="font-display italic text-lg" style={{ color: gold }}>{rate}</p>
             </div>
           ))}
         </div>
@@ -158,7 +157,30 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Service Area */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Service Area</p>
+        <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+          South Florida Event Coverage
+        </h2>
+        <p className="text-white/45 text-lg max-w-2xl mb-12 leading-relaxed">
+          Our event models and hosting services cover the entire South Florida region. From Miami nightlife to Palm Beach galas, Fort Lauderdale events to Boca Raton parties, we provide professional models for any occasion.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+          {[
+            'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach',
+            'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach',
+            'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach',
+            'Coral Gables', 'Key Biscayne', 'Doral', 'Weston'
+          ].map(city => (
+            <div key={city} className="flex items-center gap-2">
+              <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+              <span className="text-white/55 text-[13px]">{city}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">
         <div className="max-w-3xl">
           <p className="text-black/40 text-[10px] tracking-[0.5em] uppercase mb-8 font-semibold">Ready to Book?</p>
@@ -171,8 +193,8 @@ export default function EventsPage() {
               Book Event Models <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
-              <span>✓ From $150/girl</span>
               <span>✓ South Florida</span>
+              <span>✓ Same-week booking</span>
               <span>✓ Stripe checkout</span>
             </div>
           </div>

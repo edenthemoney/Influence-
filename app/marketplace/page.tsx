@@ -667,11 +667,16 @@ export default function MarketplacePage() {
             });
             return [...featured, ...rest];
           })().map((inf) => (
-            <Link
+            <div
               key={inf.id}
-              href={`/influencer/${inf.id}`}
               className="group relative overflow-hidden bg-[#0a0a0a] border border-white/[0.04] hover:border-white/[0.12] transition-all duration-500"
             >
+              {/* Stretched profile link — makes the whole card clickable */}
+              <Link
+                href={`/influencer/${inf.id}`}
+                className="absolute inset-0 z-10"
+                aria-label={`View ${inf.name}'s profile`}
+              />
               {/* Image */}
               <div className={`${inf.id === 'des-001' ? 'aspect-square' : 'aspect-[3/4]'} overflow-hidden relative`}>
                 <Image
@@ -722,10 +727,6 @@ export default function MarketplacePage() {
                     <span className="text-[9px] text-white/40 ml-1">followers</span>
                   </div>
                 </div>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-[9px] text-white/20 tracking-wider uppercase">Book from</span>
-                  <span className="text-[11px] font-bold" style={{ color: gold }}>$300</span>
-                </div>
                 {inf.credits.length > 0 && (
                   <p className="text-[9px] tracking-wider uppercase mt-2 truncate" style={{ color: gold }}>
                     {inf.credits.slice(0, 3).join(' · ')}
@@ -734,20 +735,19 @@ export default function MarketplacePage() {
               </div>
 
               {/* Hover action */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-[2px]">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-[2px] pointer-events-none">
                 <span className="text-[11px] font-bold tracking-widest uppercase text-white border border-white/30 px-5 py-2.5">
                   View Profile
                 </span>
                 <Link
                   href={`/model-booking?model=${encodeURIComponent(inf.name)}`}
-                  onClick={e => e.stopPropagation()}
-                  className="text-[11px] font-bold tracking-widest uppercase px-5 py-2.5"
+                  className="relative z-20 pointer-events-auto text-[11px] font-bold tracking-widest uppercase px-5 py-2.5"
                   style={{ backgroundColor: '#c9a96e', color: '#000' }}
                 >
                   Book Now
                 </Link>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </section>

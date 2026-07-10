@@ -26,7 +26,7 @@ export default function HomePage() {
           </div>
           <div className="flex items-center justify-end gap-3 md:gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
           </div>
         </div>
         <div className="overflow-hidden border-t border-white/[0.05]">
@@ -64,7 +64,7 @@ export default function HomePage() {
               <span style={{ color: '#c9a96e' }}>Influence.</span>
             </p>
             <div className="mt-6 flex items-center gap-4 md:hidden">
-              <Link href="/model-booking" className="inline-flex items-center gap-3 px-8 py-4 text-[13px] font-bold tracking-widest uppercase" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+              <Link href="/start" className="inline-flex items-center gap-3 px-8 py-4 text-[13px] font-bold tracking-widest uppercase" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
                 Book Now <ChevronRight className="h-4 w-4" />
               </Link>
               <span className="text-white/30 text-xs">Same-week availability</span>
@@ -129,7 +129,7 @@ export default function HomePage() {
         <h2 className="font-display font-bold italic text-white leading-[0.9]" style={{ fontSize: 'clamp(44px, 12vw, 172px)' }}>We Influence.</h2>
         <div className="flex items-end justify-between mt-8 md:mt-14 pt-6 md:pt-8 border-t border-white/[0.08]">
           <p className="text-white/65 text-[15px] font-light max-w-md leading-relaxed">
-            Influence is a South Florida influencer marketing agency connecting artists, brands, business owners, and labels with verified models for content creation, music promotion, on-site shoots, event hosting, acting roles, casting, voiceover work, commercials, and full campaigns — starting at $300.
+            Influence is a South Florida influencer marketing agency connecting artists, brands, business owners, and labels with verified models for content creation, music promotion, on-site shoots, event hosting, acting roles, casting, voiceover work, commercials, and full campaigns.
           </p>
           <p className="text-white/35 text-[10px] tracking-[0.5em] uppercase hidden md:block">Est. 2024 · Miami, FL</p>
         </div>
@@ -186,7 +186,7 @@ export default function HomePage() {
         <h2 className="font-display font-bold italic text-white text-center mb-12 md:mb-16 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>Choose Your Path</h2>
         <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
           {/* In-Person */}
-          <Link href="/model-booking" className="group relative border border-white/[0.08] p-8 md:p-12 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+          <Link href="/start" className="group relative border border-white/[0.08] p-8 md:p-12 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
             <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">South Florida Only</p>
             <h3 className="font-display font-bold text-white text-2xl md:text-3xl mb-3">Book In-Person Talent</h3>
             <p className="text-white/50 text-sm leading-relaxed mb-8">Creators come to your location for shoots, music videos, events, or business content. Same-week availability.</p>
@@ -337,12 +337,12 @@ export default function HomePage() {
             We don&apos;t chase trends.<br />We set them.
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-6">
-            <Link href="/model-booking" className="inline-flex items-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+            <Link href="/start" className="inline-flex items-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
               Start Your Campaign <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="text-white/30 text-xs leading-relaxed">
               <p className="font-semibold text-white/50">Trusted by artists & brands</p>
-              <p>Content delivered in 48hrs · Starts at $300</p>
+              <p>Content delivered in 48hrs · Packages for every budget</p>
             </div>
           </div>
         </div>
@@ -406,7 +406,7 @@ export default function HomePage() {
             <p className="text-[10px] tracking-[0.4em] uppercase mb-6 font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">In-Person Bookings</p>
             <h3 className="font-display font-bold italic text-white leading-tight mb-4" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>Models at<br/>Your Location</h3>
             <p className="text-white/50 text-[15px] leading-relaxed mb-8 max-w-sm">
-              A model shows up at your business, studio, venue, or set — ready to create content, appear in your video, or host your event. Same-week availability across South Florida.
+              An influencer shows up at your business, studio, venue, or set — ready to create content, appear in your video, or host your event. Same-week availability across South Florida.
             </p>
 
             <div className="space-y-3 mb-10">
@@ -481,7 +481,7 @@ export default function HomePage() {
                   <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>

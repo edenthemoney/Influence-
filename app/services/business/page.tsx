@@ -7,10 +7,10 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Brand Ambassadors — Models Come to Your Business | Influence Agency',
-  description: 'Book a brand ambassador for your business. A model shows up at your location and creates reels, stories, and promo content on-site. Perfect for restaurants, salons, gyms, retail, and more. South Florida. From $300.',
+  description: 'Book a brand ambassador for your business. An influencer shows up at your location and creates reels, stories, and promo content on-site. Perfect for restaurants, salons, gyms, retail, and more. South Florida.',
   openGraph: {
     title: 'Brand Ambassadors — Models at Your Location | Influence',
-    description: 'Book a brand ambassador for your business. Reels, stories, promos — all delivered same day. South Florida. From $300.',
+    description: 'Book a brand ambassador for your business. Reels, stories, promos — all delivered same day. South Florida.',
     url: 'https://influencemodels.agency/services/business',
   },
 };
@@ -113,19 +113,18 @@ export default function BusinessContentPage() {
       <section className="py-20 md:py-28 px-8 md:px-16 border-t border-white/[0.06]">
         <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Packages</p>
         <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
-          Simple pricing. No hidden fees.
+          Flexible packages. No hidden fees.
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl">
           {[
-            { name: 'Solo Visit', price: '$300', desc: '1 model · 2hr session', pieces: '3–5 reels & stories', popular: false },
-            { name: 'Content Day', price: '$400', desc: '1 model · 4hr session', pieces: '8–12 content pieces', popular: true },
-            { name: 'Full Production', price: '$700', desc: '2 models · 4hr session', pieces: '12–20 content pieces', popular: false },
-          ].map(({ name, price, desc, pieces, popular }) => (
+            { name: 'Solo Visit', desc: '1 model · 2hr session', pieces: '3–5 reels & stories', popular: false },
+            { name: 'Content Day', desc: '1 model · 4hr session', pieces: '8–12 content pieces', popular: true },
+            { name: 'Full Production', desc: '2 models · 4hr session', pieces: '12–20 content pieces', popular: false },
+          ].map(({ name, desc, pieces, popular }) => (
             <div key={name} className="border p-8 flex flex-col" style={{ borderColor: popular ? gold : 'rgba(255,255,255,0.06)', backgroundColor: popular ? 'rgba(201,169,110,0.03)' : 'transparent' }}>
               {popular && <p className="text-[9px] font-bold tracking-[0.3em] uppercase mb-4" style={{ color: gold }}>Most Popular</p>}
               <h3 className="text-white font-bold text-xl mb-1">{name}</h3>
               <p className="text-white/35 text-sm mb-4">{desc}</p>
-              <p className="font-display font-bold italic text-3xl mb-4" style={{ color: gold }}>{price}</p>
               <div className="space-y-2.5 mb-6">
                 {[desc, pieces, 'South Florida · same-week booking', 'Content delivered within 24hrs'].map(item => (
                   <div key={item} className="flex items-center gap-2.5">
@@ -193,6 +192,30 @@ export default function BusinessContentPage() {
         </div>
       </section>
 
+      {/* Service Area */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Service Area</p>
+        <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+          Serving South Florida Businesses
+        </h2>
+        <p className="text-white/45 text-lg max-w-2xl mb-12 leading-relaxed">
+          We bring professional models directly to your business location across South Florida. From Miami to Palm Beach, our brand ambassadors create on-site content that drives real results for local businesses.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+          {[
+            'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach',
+            'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach',
+            'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach',
+            'Coral Gables', 'Key Biscayne', 'Doral', 'Weston'
+          ].map(city => (
+            <div key={city} className="flex items-center gap-2">
+              <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+              <span className="text-white/55 text-[13px]">{city}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">
         <div className="max-w-3xl">
@@ -200,15 +223,15 @@ export default function BusinessContentPage() {
           <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
             Your business deserves<br />content that converts.
           </h2>
-          <p className="text-black/50 text-lg mb-10 max-w-lg">One visit. Weeks of content. Real results for your social media. Starting at $300.</p>
+          <p className="text-black/50 text-lg mb-10 max-w-lg">One visit. Weeks of content. Real results for your social media.</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/model-booking?service=business" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Book a Brand Ambassador <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
-              <span>✓ From $300</span>
               <span>✓ South Florida</span>
               <span>✓ Same-week booking</span>
+              <span>✓ Custom packages</span>
             </div>
           </div>
         </div>

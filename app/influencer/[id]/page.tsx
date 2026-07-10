@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import { Instagram, Check, Film, Award, BadgeCheck, Sparkles } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
+import IPhoneMockup from '../../components/IPhoneMockup';
+import LuxuryBrandBanner from '../../components/LuxuryBrandBanner';
+import BrandLogoMarquee from '../../components/BrandLogoMarquee';
+import AnimatedCounter from '../../components/AnimatedCounter';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
@@ -1413,7 +1417,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
   } : null;
 
   return (
-    <div className="min-h-screen bg-[#080808]">
+    <div className="min-h-screen bg-[#080808] overflow-x-hidden">
       {deserayMarieSchema && (
         <script
           type="application/ld+json"
@@ -1438,11 +1442,60 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
         </div>
       </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        <div className="grid lg:grid-cols-3 gap-12">
+      {/* Hero Section */}
+      <div className="relative h-[60vh] min-h-[500px] overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#080808] via-[#0a0a0a] to-[#080808]" />
+        <div
+          className="absolute inset-0 opacity-[0.05]"
+          style={{ background: 'radial-gradient(circle at 50% 50%, #c9a96e 0%, transparent 60%)' }}
+        />
+
+        {/* Hero content */}
+        <div className="relative h-full flex items-end pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="w-full lg:w-2/3">
+            <div className="flex items-center gap-3 mb-4">
+              {influencer.verified && (
+                <BadgeCheck className="h-6 w-6 text-[#c9a96e] fill-[#c9a96e]/20" />
+              )}
+              {influencer.celebrityCredits && (
+                <span className="px-3 py-1 bg-[#c9a96e]/20 border border-[#c9a96e]/40 text-[#c9a96e] text-[10px] font-bold tracking-[0.2em] uppercase rounded-full">
+                  Celebrity Collaborator
+                </span>
+              )}
+            </div>
+            <h1 className="font-display font-bold text-white leading-tight mb-3" style={{ fontSize: 'clamp(40px, 6vw, 72px)' }}>
+              {influencer.name}
+            </h1>
+            <p className="text-white/70 text-lg md:text-xl mb-6 max-w-2xl">
+              {influencer.location} · {influencer.categories.join(' · ')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href={`/model-booking?model=${encodeURIComponent(influencer.name)}`}
+                className="px-6 py-4 text-black font-bold text-sm tracking-widest uppercase hover:opacity-90 transition-all text-center"
+                style={{ backgroundColor: '#c9a96e' }}
+              >
+                Book {influencer.name}
+              </Link>
+              <a
+                href={`https://instagram.com/${influencer.instagram.replace('@', '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-4 border border-white/30 text-white font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-all text-center"
+              >
+                View Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Profile Card */}
           <div className="lg:col-span-1">
-            <div className="bg-zinc-900 border border-white/10 p-8 sticky top-32">
+            <div className="bg-zinc-900 border border-white/10 p-5 sm:p-8 lg:sticky lg:top-32">
               <div className="relative mb-6">
                 <img
                   src={influencer.avatar}
@@ -1468,9 +1521,14 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               )}
               <p className="text-white/60 text-center mb-6">{influencer.location}</p>
 
-              <div className="grid grid-cols-2 gap-4 mb-6 text-center max-w-xs mx-auto">
+              <div className="grid grid-cols-2 gap-4 mb-6 text-center">
                 <div>
-                  <p className="text-2xl font-bold text-white">{influencer.followers >= 1000000 ? (influencer.followers / 1000000).toFixed(1) + 'M' : (influencer.followers / 1000).toFixed(0) + 'K'}</p>
+                  <p className="text-2xl font-bold text-white">
+                    <AnimatedCounter 
+                      value={influencer.followers >= 1000000 ? (influencer.followers / 1000000).toFixed(1) + 'M' : (influencer.followers / 1000).toFixed(0) + 'K'} 
+                      duration={1500}
+                    />
+                  </p>
                   <p className="text-xs text-white/40 uppercase tracking-wider">Followers</p>
                 </div>
                 <div>
@@ -1479,17 +1537,19 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                <div className="bg-black/40 border border-white/10 p-3 text-center">
-                  <p className="text-[9px] text-white/30 uppercase tracking-[0.2em] mb-1">Campaign Rate</p>
-                  <p className="text-white font-black text-base">$100</p>
-                  <p className="text-white/30 text-xs">– $10K+</p>
+              <div className="bg-[#c9a96e]/10 border border-[#c9a96e]/30 p-3 text-center mb-6">
+                <p className="text-[9px] text-[#c9a96e]/60 uppercase tracking-[0.2em] mb-1">Guarantee</p>
+                <p className="text-[#c9a96e] font-black text-base">10K+</p>
+                <p className="text-[#c9a96e]/60 text-xs">Views / Reel</p>
+              </div>
+
+              {/* Availability Badge */}
+              <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                <div className="flex items-center justify-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                  <p className="text-green-400 text-xs font-bold tracking-[0.2em] uppercase">Available This Week</p>
                 </div>
-                <div className="bg-[#c9a96e]/10 border border-[#c9a96e]/30 p-3 text-center">
-                  <p className="text-[9px] text-[#c9a96e]/60 uppercase tracking-[0.2em] mb-1">Guarantee</p>
-                  <p className="text-[#c9a96e] font-black text-base">10K+</p>
-                  <p className="text-[#c9a96e]/60 text-xs">Views / Reel</p>
-                </div>
+                <p className="text-white/50 text-[10px] text-center">Same-week booking available</p>
               </div>
 
               <a href={`https://instagram.com/${influencer.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2 mb-6 hover:opacity-80 transition-opacity">
@@ -1521,13 +1581,13 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
 
             {/* Stats Strip — By the Numbers */}
             {influencer.stats && influencer.stats.length > 0 && (
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border-y border-[#c9a96e]/20">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[#c9a96e]/20 md:border-x-0">
                 {influencer.stats.map((stat: any, idx: number) => (
                   <div
                     key={idx}
                     className={`py-6 px-4 text-center ${idx !== 0 ? 'md:border-l border-[#c9a96e]/10' : ''}`}
                   >
-                    <p className="text-4xl md:text-5xl font-black gradient-text mb-1">{stat.value}</p>
+                    <p className="text-2xl md:text-4xl lg:text-5xl font-black gradient-text mb-1">{stat.value}</p>
                     <p className="text-[10px] md:text-xs text-white/50 tracking-[0.2em] uppercase font-semibold">{stat.label}</p>
                   </div>
                 ))}
@@ -1551,44 +1611,84 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
             {/* Featured In — celebrity / notable collaborations */}
             {influencer.featuredIn && influencer.featuredIn.length > 0 && (
               <div>
-                <div className="flex items-center gap-3 mb-5">
-                  <Award className="h-6 w-6 text-[#c9a96e]" />
-                  <h2 className="text-2xl font-bold text-white">Featured In</h2>
+                <div className="flex items-center gap-3 mb-4">
+                  <Award className="h-5 w-5 text-[#c9a96e]" />
+                  <h2 className="text-xl font-bold text-white">Featured In</h2>
                 </div>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
                   {influencer.featuredIn.map((credit: any, idx: number) => (
                     <div
                       key={idx}
-                      className="relative bg-gradient-to-br from-[#c9a96e]/10 to-zinc-900 border border-[#c9a96e]/30 p-5 overflow-hidden"
+                      className="flex-shrink-0 bg-zinc-900 border border-white/10 px-4 py-3 rounded-lg hover:border-[#c9a96e]/30 transition-colors"
                     >
-                      <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 gold-gradient flex items-center justify-center flex-shrink-0">
-                          <Film className="h-5 w-5 text-black" />
-                        </div>
-                        <div className="min-w-0">
-                          <p className="text-[#c9a96e]/70 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">{credit.type}</p>
-                          <p className="text-white text-lg font-bold leading-tight truncate">{credit.title}</p>
-                          <p className="text-white/60 text-sm">{credit.subtitle}</p>
-                        </div>
-                      </div>
+                      <p className="text-[#c9a96e]/60 text-[9px] font-bold tracking-[0.15em] uppercase mb-1">{credit.type}</p>
+                      <p className="text-white text-sm font-semibold truncate max-w-[200px]">{credit.title}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-white/40 text-xs mt-3 italic">Additional credits available on request.</p>
+              </div>
+            )}
+
+            {/* Content Preview — UGC-style iPhone mockups */}
+            {influencer.gallery && influencer.gallery.length > 0 && (
+              <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-12 overflow-hidden">
+                {/* Soft gold glow backdrop */}
+                <div
+                  className="absolute inset-0 opacity-[0.07]"
+                  style={{ background: 'radial-gradient(circle at 50% 40%, #c9a96e 0%, transparent 60%)' }}
+                />
+                <div className="relative">
+                  <div className="text-center mb-2">
+                    <p className="text-[#c9a96e] text-[11px] font-bold tracking-[0.3em] uppercase">As Seen On Your Feed</p>
+                  </div>
+                  <h2 className="text-2xl font-bold text-white mb-2 text-center">Content That Stops The Scroll</h2>
+                  <p className="text-white/40 text-sm mb-10 text-center max-w-lg mx-auto">
+                    Scroll-ready reels and posts — delivered exactly how they&apos;ll look on Instagram &amp; TikTok.
+                  </p>
+                  <div className="flex justify-center gap-4 md:gap-10">
+                    {influencer.gallery.slice(0, 3).map((photo: string, idx: number) => (
+                      <IPhoneMockup
+                        key={idx}
+                        image={photo}
+                        title={`${influencer.name} content ${idx + 1}`}
+                        className={`${idx === 0 ? '' : idx === 1 ? 'hidden sm:block md:-translate-y-6' : 'hidden md:block'}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Brand Partnerships Marquee */}
+            {influencer.pastBrands && influencer.pastBrands.length > 0 && (
+              <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-10 overflow-hidden border-y border-white/[0.04]">
+                <div className="text-center mb-6">
+                  <p className="text-[#c9a96e] text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Trusted By</p>
+                  <h2 className="text-xl font-bold text-white">Brand Partnerships</h2>
+                </div>
+                <BrandLogoMarquee brands={influencer.pastBrands} speed={40} />
               </div>
             )}
 
             {/* Photo Gallery */}
             {influencer.gallery && (
               <div>
-                <h2 className="text-2xl font-bold text-white mb-4">Portfolio</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-1 h-8 bg-[#c9a96e]" />
+                  <h2 className="text-2xl font-bold text-white">Portfolio</h2>
+                </div>
+                <p className="text-white/40 text-sm mb-6 ml-4">Recent work &amp; campaigns</p>
+                <div className="grid grid-cols-2 gap-2">
                   {influencer.gallery.map((photo: string, idx: number) => (
-                    <div key={idx} className="aspect-square overflow-hidden border border-white/10">
+                    <div 
+                      key={idx} 
+                      className="relative overflow-hidden border border-white/10"
+                      style={{ height: '140px' }}
+                    >
                       <img
                         src={photo}
                         alt={`${influencer.name} - Photo ${idx + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover object-top"
                       />
                     </div>
                   ))}
@@ -1641,16 +1741,20 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
             )}
 
             {influencer.pastBrands && influencer.pastBrands.length > 0 && (
-              <div>
-                <h2 className="text-2xl font-bold text-white mb-4">Past Collaborations</h2>
-                <div className="flex flex-wrap gap-3">
-                  {influencer.pastBrands.map((brand: string) => (
-                    <div key={brand} className="bg-zinc-900 px-6 py-3 border border-white/10">
-                      <span className="text-white/80 font-medium">{brand}</span>
-                    </div>
-                  ))}
+              influencer.celebrityCredits ? (
+                <LuxuryBrandBanner brands={influencer.pastBrands} />
+              ) : (
+                <div>
+                  <h2 className="text-2xl font-bold text-white mb-4">Past Collaborations</h2>
+                  <div className="flex flex-wrap gap-3">
+                    {influencer.pastBrands.map((brand: string) => (
+                      <div key={brand} className="bg-zinc-900 px-6 py-3 border border-white/10">
+                        <span className="text-white/80 font-medium">{brand}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )
             )}
 
             {/* Book This Model — All Services */}
@@ -1659,21 +1763,18 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               <p className="text-white/40 text-sm mb-6">Choose a service below — {influencer.name} is available for all of them.</p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
-                  { svc: 'reaction', label: 'Music Reactions', desc: 'React to your songs on camera', from: '$300' },
-                  { svc: 'ugc', label: 'UGC & Reels', desc: 'Branded skits, promos & short-form content', from: '$300' },
-                  { svc: 'business', label: 'Business Content', desc: 'Model visits your business, creates reels', from: '$300' },
-                  { svc: 'shoot', label: 'Shoots & Videos', desc: 'On-location for your production', from: '$300' },
-                  { svc: 'event', label: 'Events & Hosting', desc: 'Model hosts or attends your event', from: '$400' },
-                ].map(({ svc, label, desc, from }) => (
+                  { svc: 'reaction', label: 'Music Reactions', desc: 'React to your songs on camera' },
+                  { svc: 'ugc', label: 'UGC & Reels', desc: 'Branded skits, promos & short-form content' },
+                  { svc: 'business', label: 'Business Content', desc: 'Influencer visits your business, creates reels' },
+                  { svc: 'shoot', label: 'Shoots & Videos', desc: 'On-location for your production' },
+                  { svc: 'event', label: 'Events & Hosting', desc: 'Model hosts or attends your event' },
+                ].map(({ svc, label, desc }) => (
                   <Link
                     key={svc}
                     href={`/model-booking?service=${svc}&model=${encodeURIComponent(influencer.name)}`}
                     className="p-5 border border-white/[0.08] hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all group"
                   >
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-white font-bold text-sm group-hover:text-[#c9a96e] transition-colors">{label}</h3>
-                      <span className="text-[#c9a96e] text-xs font-bold">{from}</span>
-                    </div>
+                    <h3 className="text-white font-bold text-sm group-hover:text-[#c9a96e] transition-colors mb-2">{label}</h3>
                     <p className="text-white/35 text-xs">{desc}</p>
                   </Link>
                 ))}

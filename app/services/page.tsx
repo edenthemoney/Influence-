@@ -5,12 +5,52 @@ import MobileNav from '../components/MobileNav';
 
 const gold = '#c9a96e';
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Influencer Marketing Services",
+  description: "Book verified influencers for UGC content, music promotion, brand campaigns, event hosting, and model bookings in South Florida.",
+  provider: {
+    "@type": "Organization",
+    name: "Influence Models Agency",
+    url: "https://influencemodels.agency",
+  },
+  areaServed: [
+    { "@type": "City", name: "Miami" },
+    { "@type": "City", name: "Fort Lauderdale" },
+    { "@type": "City", name: "Boca Raton" },
+    { "@type": "City", name: "Palm Beach" },
+    { "@type": "City", name: "West Palm Beach" },
+    { "@type": "City", name: "Delray Beach" },
+    { "@type": "City", name: "Hollywood" },
+    { "@type": "City", name: "Pompano Beach" },
+    { "@type": "City", name: "Hallandale Beach" },
+    { "@type": "City", name: "Aventura" },
+    { "@type": "City", name: "Sunny Isles Beach" },
+    { "@type": "City", name: "Miami Beach" },
+    { "@type": "City", name: "Coral Gables" },
+    { "@type": "City", name: "Key Biscayne" },
+    { "@type": "State", name: "Florida" },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Influencer Marketing Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "UGC Content Creation", description: "User-generated content videos, Instagram reels, TikToks, and brand promotional content created by verified influencers." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Music Promotion", description: "Song reaction videos, album livestreams, and music content promotion across TikTok and Instagram by influencers." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Event Hosting & Model Booking", description: "Book professional models for event hosting, party promotions, club appearances, and brand activations in South Florida." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Content Creation", description: "Professional models visit your business location to create reels, stories, and promotional content on-site." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Production", description: "Professional models and actresses for scripted commercial productions, national campaigns, and broadcast-quality content." } },
+    ],
+  },
+};
+
 export const metadata: Metadata = {
   title: 'Services — Influence Agency | Models, Content, Commercials & Events',
-  description: 'Book professional models for social media content, music reactions, business promos, video shoots, TV commercials, and events across South Florida. Starting at $300.',
+  description: 'Book professional models for social media content, music reactions, business promos, video shoots, TV commercials, and events across South Florida.',
   openGraph: {
     title: 'Services — Influence Agency',
-    description: 'Social media content, music reactions, business visits, shoots, commercials, and events. From $300.',
+    description: 'Social media content, music reactions, business visits, shoots, commercials, and events.',
     url: 'https://influencemodels.agency/services',
   },
 };
@@ -23,8 +63,6 @@ const services = [
     title: 'UGC, Reels & Music Reactions',
     desc: 'Models create branded content, react to your music, launch viral challenges, and produce scroll-stopping reels — all delivered to your inbox. Perfect for artists, brands, labels, and businesses.',
     items: ['Music Reactions', 'UGC Reels & TikToks', 'Viral Challenges & Trends', 'Multi-Model Campaigns'],
-    price: 'From $300',
-    sub: 'Per video · 3-day delivery',
     cta: 'Book Now',
     icon: Play,
   },
@@ -35,8 +73,6 @@ const services = [
     title: 'Models at Your Business',
     desc: 'A model visits your restaurant, salon, gym, or store and creates reels, stories, and promo content on-site — like having your own brand ambassador. Delivered same day.',
     items: ['On-Site Content Creation', '3–12+ Content Pieces', 'Recurring Monthly Plans', 'Same-Week Booking'],
-    price: 'From $300',
-    sub: 'Per session · South Florida',
     cta: 'Book Now',
     icon: TrendingUp,
   },
@@ -47,8 +83,6 @@ const services = [
     title: 'Creators for Your Music Video',
     desc: 'Book creators specifically for your music video — from solo featured roles to full 50+ talent productions. Our creators have credits with Sean Paul, Bryson Tiller, Trippie Redd, Kodak Black, and more.',
     items: ['Solo Features', 'Duo/Trio Leads', 'Squad Scenes (5+)', 'Full Video Cast (10-50)'],
-    price: 'From $500',
-    sub: 'Per feature · full day available',
     cta: 'Book Now',
     icon: Music,
   },
@@ -59,8 +93,6 @@ const services = [
     title: 'Talent for Your Production',
     desc: 'Professional talent for brand shoots, fashion editorials, lookbooks, and non-speaking productions. We handle casting — you focus on the creative.',
     items: ['Brand Shoots', 'Fashion Editorials', 'Lookbooks', 'E-commerce'],
-    price: 'From $300',
-    sub: 'Per shoot · same-week available',
     cta: 'Book Now',
     icon: Camera,
   },
@@ -71,8 +103,6 @@ const services = [
     title: 'Talent Who Can Act & Speak',
     desc: 'Book professional creators/actresses for TV commercials, web ads, brand spots, and any production requiring script reading, dialogue, or voiceover.',
     items: ['Script Reading & Delivery', 'Dialogue & Acting', 'TV & Web Commercials', 'Monthly Subscription Available'],
-    price: 'From $599',
-    sub: 'Per production · subscription available',
     cta: 'Book Now',
     icon: Film,
   },
@@ -83,8 +113,6 @@ const services = [
     title: 'Actress Models, Casting & Voiceover',
     desc: 'Cast professional models and actresses for film roles, TV, commercials, voiceover, audiobooks, and brand campaigns. Talent with Netflix, Audible, and major production credits.',
     items: ['Actress Roles & Film Casting', 'Voiceover Talent', 'Audiobooks & Commercials', 'Casting Call Coordination'],
-    price: 'From $599',
-    sub: 'Per role or production',
     cta: 'Book Now',
     icon: Clapperboard,
   },
@@ -93,10 +121,8 @@ const services = [
     tag: 'In-Person · South Florida',
     category: 'Events & Hosting',
     title: 'Talent at Your Event',
-    desc: 'Book professional creators for club nights, brand activations, private parties, and grand openings. $100/talent/hr — creators earn $50/hr.',
+    desc: 'Book professional creators for club nights, brand activations, private parties, and grand openings.',
     items: ['Club Nights & Parties', 'Brand Activations', 'Private Events', 'Grand Openings'],
-    price: 'From $400',
-    sub: '1 talent · 4hr shift · $100/hr per talent',
     cta: 'Book Now',
     icon: Sparkles,
   },
@@ -105,10 +131,8 @@ const services = [
     tag: 'In-Person · South Florida',
     category: 'Bottle Girls / VIP Hostesses',
     title: 'VIP Bottle Service Girls',
-    desc: 'Professional VIP bottle girls and hostesses for nightclubs, lounges, and premium venues. Same rate — $100/talent/hr, creators earn $50/hr.',
+    desc: 'Professional VIP bottle girls and hostesses for nightclubs, lounges, and premium venues.',
     items: ['Nightclub Bottle Service', 'VIP Table Hostesses', 'Lounge & Bar Events', 'Monthly Venue Packages'],
-    price: 'From $400',
-    sub: '1 talent · 4hr shift · $100/hr per talent',
     cta: 'Book Now',
     icon: Wine,
   },
@@ -117,6 +141,10 @@ const services = [
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-[#080808]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Nav */}
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
@@ -149,7 +177,7 @@ export default function ServicesPage() {
 
       {/* Services */}
       <section className="border-t border-white/[0.06]">
-        {services.map(({ href, tag, category, title, desc, items, price, sub, cta, icon: Icon }, i) => (
+        {services.map(({ href, tag, category, title, desc, items, cta, icon: Icon }, i) => (
           <Link
             key={href}
             href={href}
@@ -177,8 +205,6 @@ export default function ServicesPage() {
               </div>
 
               <div className="md:text-right shrink-0 md:pt-12">
-                <p className="text-white/40 text-xs mb-1">Custom quote</p>
-                <p className="text-white/25 text-xs mb-6">{sub}</p>
                 <span className="text-[11px] font-bold tracking-widest uppercase text-white/25 group-hover:text-[#c9a96e] flex items-center gap-2 md:justify-end transition-colors">
                   {cta} <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </span>

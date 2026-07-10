@@ -1,16 +1,16 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ChevronRight, Film, Mic, Users, Star, Clock, Clapperboard } from 'lucide-react';
+import { ChevronRight, Film, Mic, Users, Star, Clock, Clapperboard, Check } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
 
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Book Models for Commercials & Speaking Roles — Influence Agency | South Florida',
-  description: 'Professional models and actresses for TV commercials, web ads, brand spots & speaking roles. Script reading, dialogue, voiceover. From $599. South Florida.',
+  description: 'Professional models and actresses for TV commercials, web ads, brand spots & speaking roles. Script reading, dialogue, voiceover. South Florida.',
   openGraph: {
     title: 'Book Models for Commercials & Speaking Roles — Influence Agency',
-    description: 'Models with acting & speaking ability for your commercial production. From $599.',
+    description: 'Models with acting & speaking ability for your commercial production. South Florida.',
     url: 'https://influencemodels.agency/services/commercials',
   },
 };
@@ -46,7 +46,7 @@ export default function CommercialsPage() {
             Models for{'\n'}Commercials.
           </h1>
           <p className="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-            Need models who can speak, act, and deliver lines on camera? Book professional talent for TV spots, web commercials, brand ads, and any production requiring spoken delivery. Starting at $599.
+            Need models who can speak, act, and deliver lines on camera? Book professional talent for TV spots, web commercials, brand ads, and any production requiring spoken delivery.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/model-booking?service=commercial" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
@@ -91,16 +91,15 @@ export default function CommercialsPage() {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl">
           {[
-            { name: 'Solo', price: '$599', desc: '1 model · half-day · scripted', popular: false },
-            { name: 'Full Day', price: '$999', desc: '1 model · full day · multi-scene', popular: false },
-            { name: 'Duo', price: '$1,050', desc: '2 models · half-day · dialogue', popular: true },
-            { name: 'Squad', price: '$2,750+', desc: '5+ models · large-cast', popular: false },
-          ].map(({ name, price, desc, popular }) => (
+            { name: 'Solo', desc: '1 model · half-day · scripted', popular: false },
+            { name: 'Full Day', desc: '1 model · full day · multi-scene', popular: false },
+            { name: 'Duo', desc: '2 models · half-day · dialogue', popular: true },
+            { name: 'Squad', desc: '5+ models · large-cast', popular: false },
+          ].map(({ name, desc, popular }) => (
             <div key={name} className="border p-7 flex flex-col" style={{ borderColor: popular ? gold : 'rgba(255,255,255,0.06)', backgroundColor: popular ? 'rgba(201,169,110,0.03)' : 'transparent' }}>
               {popular && <p className="text-[9px] font-bold tracking-[0.3em] uppercase mb-3" style={{ color: gold }}>Most Popular</p>}
               <h3 className="text-white font-bold text-lg mb-1">{name}</h3>
-              <p className="text-white/35 text-sm mb-3">{desc}</p>
-              <p className="font-display font-bold italic text-2xl mb-5" style={{ color: gold }}>{price}</p>
+              <p className="text-white/35 text-sm mb-5">{desc}</p>
               <Link href="/model-booking?service=commercial" className="mt-auto flex items-center justify-center gap-2 py-3.5 text-[11px] font-bold tracking-widest uppercase transition-all hover:opacity-85" style={{ backgroundColor: popular ? gold : 'transparent', color: popular ? '#000' : 'rgba(255,255,255,0.5)', border: popular ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
                 Book <ChevronRight className="h-3 w-3" />
               </Link>
@@ -137,13 +136,37 @@ export default function CommercialsPage() {
         </div>
       </section>
 
+      {/* Service Area */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Service Area</p>
+        <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
+          South Florida Commercial Production
+        </h2>
+        <p className="text-white/45 text-lg max-w-2xl mb-12 leading-relaxed">
+          Our commercial talent and production services are available across South Florida. From Miami studios to on-location shoots in Fort Lauderdale, Boca Raton, and Palm Beach, we provide professional models and actresses for your commercial production needs.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+          {[
+            'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach',
+            'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach',
+            'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach',
+            'Coral Gables', 'Key Biscayne', 'Doral', 'Weston'
+          ].map(city => (
+            <div key={city} className="flex items-center gap-2">
+              <Check className="h-3.5 w-3.5 flex-shrink-0" style={{ color: gold }} />
+              <span className="text-white/55 text-[13px]">{city}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">
         <div className="max-w-3xl">
           <p className="text-black/40 text-[10px] tracking-[0.5em] uppercase mb-8 font-semibold">Ready to Produce?</p>
           <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
             Your commercial.{'\n'}Our talent.
           </h2>
-          <p className="text-black/50 text-lg mb-10 max-w-lg">Professional models with script delivery, dialogue, and acting ability. From $599. South Florida.</p>
+          <p className="text-black/50 text-lg mb-10 max-w-lg">Professional models with script delivery, dialogue, and acting ability. South Florida.</p>
           <Link href="/model-booking?service=commercial" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
             Book Your Commercial <ChevronRight className="h-4 w-4" />
           </Link>
