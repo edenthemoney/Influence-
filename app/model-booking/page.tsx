@@ -233,15 +233,17 @@ const SELF_SERVE_MAX = 6000;
 // How many curated cards to show before "View all"
 const CURATED_COUNT = 4;
 
-const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: string; tag: 'In-Person' | 'Remote'; hasMonthly: boolean; Icon: React.ElementType }> = {
-  business:   { title: 'Models at Your Business',        desc: 'A model visits your location, creates reels & promo content on-site.',        from: '$300',      tag: 'In-Person', hasMonthly: true,  Icon: TrendingUp },
-  ugc:        { title: 'UGC & Branded Reels',            desc: 'Models create branded skits, promos & short-form content to your brief.',      from: '$300',      tag: 'Remote',    hasMonthly: true,  Icon: Play },
-  commercial: { title: 'Commercials & Speaking Roles',   desc: 'Script reading, dialogue & acting for TV, web & brand ads.',                   from: '$599',      tag: 'In-Person', hasMonthly: true,  Icon: Film },
-  musicvideo: { title: 'Music Videos',                   desc: 'Featured talent for your video — solo, duo, trio, or full cast.',              from: '$500',      tag: 'In-Person', hasMonthly: false, Icon: Music },
-  reaction:   { title: 'Music Reactions',                desc: 'Models react to your songs on camera — first-listen & livestreams.',           from: '$300',      tag: 'Remote',    hasMonthly: true,  Icon: Headphones },
-  shoot:      { title: 'Photo Shoots',                   desc: 'Models for brand shoots, fashion editorials & lookbooks.',                     from: '$300',      tag: 'In-Person', hasMonthly: true,  Icon: Camera },
-  event:      { title: 'Events & Hosting',               desc: 'Models for brand activations, parties & grand openings.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Sparkles },
-  bottle:     { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Wine },
+// pickerQuestion = the unit-aware headline on the package step.
+// quantityPicker = linear per-girl pricing → stepper UI instead of card grid (one-time only).
+const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: string; tag: 'In-Person' | 'Remote'; hasMonthly: boolean; pickerQuestion: string; quantityPicker?: { noun: string; perUnit: number } ; Icon: React.ElementType }> = {
+  business:   { title: 'Models at Your Business',        desc: 'A model visits your location, creates reels & promo content on-site.',        from: '$300',      tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How big should your visit be?',            Icon: TrendingUp },
+  ugc:        { title: 'UGC & Branded Reels',            desc: 'Models create branded skits, promos & short-form content to your brief.',      from: '$300',      tag: 'Remote',    hasMonthly: true,  pickerQuestion: 'How many reels do you need?',              Icon: Play },
+  commercial: { title: 'Commercials & Speaking Roles',   desc: 'Script reading, dialogue & acting for TV, web & brand ads.',                   from: '$599',      tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many actresses does your production need?', Icon: Film },
+  musicvideo: { title: 'Music Videos',                   desc: 'Featured talent for your video — solo, duo, trio, or full cast.',              from: '$500',      tag: 'In-Person', hasMonthly: false, pickerQuestion: 'How many models on set?',                  Icon: Music },
+  reaction:   { title: 'Music Reactions',                desc: 'Models react to your songs on camera — first-listen & livestreams.',           from: '$300',      tag: 'Remote',    hasMonthly: true,  pickerQuestion: 'How many songs are we reacting to?',       Icon: Headphones },
+  shoot:      { title: 'Photo Shoots',                   desc: 'Models for brand shoots, fashion editorials & lookbooks.',                     from: '$300',      tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many models for your shoot?',          Icon: Camera },
+  event:      { title: 'Events & Hosting',               desc: 'Models for brand activations, parties & grand openings.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many girls for your event?',           quantityPicker: { noun: 'girl', perUnit: 400 }, Icon: Sparkles },
+  bottle:     { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many bottle girls for the night?',     quantityPicker: { noun: 'girl', perUnit: 400 }, Icon: Wine },
 };
 
 const SERVICE_GROUPS: { label: string; services: ServiceType[] }[] = [
@@ -325,6 +327,18 @@ function ModelBookingContent() {
   const visiblePkgs = showAllPkgs ? selfServe : curated;
   const hasMorePkgs = selfServe.length > curated.length;
   const pkg = packages.find((p: any) => p.id === selectedPkgId) || null;
+  // Quantity-stepper services (linear per-girl pricing) — one-time bookings only
+  const qp = serviceType ? SERVICE_INFO[serviceType].quantityPicker : undefined;
+  const useStepper = !!qp && bookingType === 'one-time';
+  const qIdx = useStepper ? Math.max(0, selfServe.findIndex((p: any) => p.id === selectedPkgId)) : 0;
+
+  // Stepper services start with the smallest tier pre-selected
+  useEffect(() => {
+    if (step === 1 && useStepper && !selectedPkgId && selfServe.length > 0) {
+      setSelectedPkgId(selfServe[0].id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [step, serviceType, bookingType, selectedPkgId]);
 
   // Abandoned checkout tracking — fire when user leaves after reaching step 1+
   useEffect(() => {
@@ -660,8 +674,8 @@ function ModelBookingContent() {
         {/* ── STEP 1: Packages — frequency toggle + curated cards ── */}
         {step === 1 && serviceType && (
           <div className="max-w-3xl">
-            <h2 className="font-display font-light italic text-white text-2xl md:text-3xl mb-1">Choose your package.</h2>
-            <p className="text-white/35 text-xs mb-5">Transparent pricing — pick what fits, upgrade anytime.</p>
+            <h2 className="font-display font-light italic text-white text-2xl md:text-3xl mb-1">{SERVICE_INFO[serviceType].pickerQuestion}</h2>
+            <p className="text-white/35 text-xs mb-5">{useStepper ? `$${qp!.perUnit}/${qp!.noun} · transparent pricing — adjust to fit your night.` : 'Transparent pricing — pick what fits, upgrade anytime.'}</p>
 
             {/* Frequency toggle — only when monthly exists for this service */}
             {SERVICE_INFO[serviceType].hasMonthly && (
@@ -690,7 +704,41 @@ function ModelBookingContent() {
               <p className="text-white/30 text-[11px] mb-5 -mt-2">Monthly billing · Priority scheduling · Cancel anytime</p>
             )}
 
-            {/* Package cards */}
+            {/* Quantity stepper — linear per-girl services */}
+            {useStepper && pkg ? (
+              <div className="mb-4 border border-white/[0.08] bg-white/[0.01] p-6">
+                <div className="flex items-center justify-center gap-8 mb-5">
+                  <button
+                    onClick={() => qIdx > 0 && choosePackage(selfServe[qIdx - 1].id)}
+                    disabled={qIdx === 0}
+                    className="w-12 h-12 border border-white/15 text-white/60 text-2xl font-light hover:border-[#c9a96e] hover:text-[#c9a96e] transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+                    aria-label="Fewer"
+                  >−</button>
+                  <div className="text-center min-w-[130px]">
+                    <p className="font-display italic font-bold text-white" style={{ fontSize: 'clamp(40px, 8vw, 56px)', lineHeight: 1 }}>{pkg.models}</p>
+                    <p className="text-white/40 text-[11px] tracking-[0.3em] uppercase mt-1">{qp!.noun}{pkg.models > 1 ? 's' : ''}</p>
+                  </div>
+                  <button
+                    onClick={() => qIdx < selfServe.length - 1 && choosePackage(selfServe[qIdx + 1].id)}
+                    disabled={qIdx === selfServe.length - 1}
+                    className="w-12 h-12 border border-white/15 text-white/60 text-2xl font-light hover:border-[#c9a96e] hover:text-[#c9a96e] transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+                    aria-label="More"
+                  >+</button>
+                </div>
+                <div className="text-center border-t border-white/[0.06] pt-4">
+                  <p className="font-display italic font-bold text-2xl" style={{ color: gold }}>${pkg.price.toLocaleString()}</p>
+                  <p className="text-white/30 text-[11px] mt-1">${qp!.perUnit}/{qp!.noun} · {pkg.tagline}</p>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-2 mt-4">
+                  {pkg.perks.slice(0, 4).map((perk: string) => (
+                    <div key={perk} className="flex items-center gap-2">
+                      <Check className="h-3 w-3 flex-shrink-0" style={{ color: gold }} />
+                      <span className="text-white/45 text-xs">{perk}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               {visiblePkgs.map((p: any) => {
                 const active = selectedPkgId === p.id;
@@ -735,9 +783,10 @@ function ModelBookingContent() {
                 );
               })}
             </div>
+            )}
 
-            {/* View all packages */}
-            {hasMorePkgs && !showAllPkgs && (
+            {/* View all packages — card grid only */}
+            {!useStepper && hasMorePkgs && !showAllPkgs && (
               <button
                 onClick={() => setShowAllPkgs(true)}
                 className="w-full py-3 mb-4 border border-dashed border-white/10 hover:border-white/25 text-white/35 hover:text-white/60 text-[11px] font-bold tracking-widest uppercase transition-all"
