@@ -259,17 +259,6 @@ const influencers = [
     categories: ['Fashion', 'Editorial', 'Beauty'],
   },
   {
-    id: 'christina-012',
-    name: 'Christina Rose',
-    title: 'Model & Influencer',
-    image: '/images/Christina/christina-1.jpg',
-    followers: '10K',
-    instagram: '@isthatchristinarose',
-    location: 'Crystal River, FL',
-    credits: [],
-    categories: ['Fashion', 'Lifestyle', 'Beauty'],
-  },
-  {
     id: 'nysia-014',
     name: 'Nysia',
     title: 'Creator & Content Creator · 60K',
