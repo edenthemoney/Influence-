@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const gold = '#c9a96e';
 
