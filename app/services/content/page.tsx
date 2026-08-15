@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, Phone, Play, Headphones, TrendingUp, Share2, BarChart3, Globe, Zap, Instagram, Youtube } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
@@ -6,18 +7,65 @@ import MobileNav from '../../components/MobileNav';
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
-  title: 'Social Media Content & Music Reactions — Influence Agency',
-  description: 'Beautiful models promote your brand or react to your music on camera. UGC reels, TikToks, music reactions, and branded content delivered to you. Nationwide.',
+  title: 'Social Media Content & Music Reactions Miami — UGC Agency Florida | Influence',
+  description: 'Miami UGC agency. Beautiful models create branded reels, TikToks, and music reactions. Serving Miami, Fort Lauderdale, Boca Raton, Palm Beach, and nationwide. From $300.',
   openGraph: {
-    title: 'Social Media Content & Music Reactions — Influence',
-    description: 'Models create scroll-stopping content for your brand or music. Delivered to your inbox. Nationwide.',
+    title: 'Social Media Content & Music Reactions Miami — UGC Agency Florida',
+    description: 'Miami UGC content creation. Models create scroll-stopping content for brands and music. Serving South Florida and nationwide.',
     url: 'https://influencemodels.agency/services/content',
+  },
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'UGC & Branded Reels',
+  description: 'Beautiful models create branded short-form video content for brands and products. Remote service available nationwide. From $300.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Influence Models Agency',
+    url: 'https://influencemodels.agency',
+  },
+  areaServed: ['United States', 'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach'],
+  offers: {
+    '@type': 'Offer',
+    price: '300',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+  },
+};
+
+const musicReactionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Music Reactions',
+  description: 'Models react to your songs on camera for TikTok and Instagram promotion. Remote service available nationwide. From $300.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Influence Models Agency',
+    url: 'https://influencemodels.agency',
+  },
+  areaServed: ['United States'],
+  offers: {
+    '@type': 'Offer',
+    price: '300',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
   },
 };
 
 export default function ContentPage() {
   return (
-    <div className="min-h-screen bg-[#080808]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(musicReactionSchema) }}
+      />
+      <div className="min-h-screen bg-[#080808]">
       {/* Nav */}
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
@@ -39,7 +87,7 @@ export default function ContentPage() {
 
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
-        <img src="/images/Ferrari/ferrari-1.jpg" alt="Social Media Content" className="absolute inset-0 w-full h-full object-cover object-top" />
+        <Image src="/images/Ferrari/ferrari-1.jpg" alt="Social Media Content" fill priority className="object-cover object-top" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
         <div className="relative z-10 px-8 md:px-16 pb-16 md:pb-24 max-w-4xl">
@@ -249,6 +297,38 @@ export default function ContentPage() {
         </div>
       </section>
 
+      {/* Related Services */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <div className="max-w-4xl">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Related Services</p>
+          <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}>
+            Complete your<br />marketing stack.
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/services/business" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Business Content & Brand Ambassadors</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Models visit your business to create authentic on-location content for restaurants, salons, retail stores, and more.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/events" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Event Models & Hosting</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Professional models for events, parties, activations, and brand experiences in South Florida.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/shoots" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Shoots & Music Videos</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Book models for photo shoots, music videos, commercials, and professional video productions.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/commercials" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Commercials & Speaking Roles</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Professional talent for TV commercials, speaking roles, and brand campaigns.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-[#080808] border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 md:px-16 pt-16 pb-10">
@@ -293,5 +373,6 @@ export default function ContentPage() {
         </div>
       </footer>
     </div>
+    </>
   );
 }

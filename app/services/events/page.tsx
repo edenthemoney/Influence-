@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, MapPin, Phone, Star, Users, Clock, Shield } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
@@ -6,18 +7,42 @@ import MobileNav from '../../components/MobileNav';
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
-  title: 'Event Models & Hosting — Influence Agency | South Florida',
-  description: 'Book beautiful professional models for your event, club night, brand activation, or party in South Florida. Same-week booking available.',
+  title: 'Event Models Miami — Party Models & Event Hosting Florida | Influence',
+  description: 'Miami event models. Book professional models for events, clubs, parties, brand activations in Miami, Fort Lauderdale, Boca Raton, Palm Beach. Same-week booking available.',
   openGraph: {
-    title: 'Event Models & Hosting — Influence Agency',
-    description: 'Professional event models for clubs, parties, brand activations & more. South Florida.',
+    title: 'Event Models Miami — Party Models & Event Hosting Florida',
+    description: 'Miami event models for clubs, parties, brand activations. Serving South Florida.',
     url: 'https://influencemodels.agency/services/events',
+  },
+};
+
+const eventModelsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Event Models & Hosting',
+  description: 'Professional models for events, club nights, brand activations, and parties in South Florida. From $400/girl. Same-week booking available.',
+  provider: {
+    '@type': 'Organization',
+    name: 'Influence Models Agency',
+    url: 'https://influencemodels.agency',
+  },
+  areaServed: ['Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach', 'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach', 'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach'],
+  offers: {
+    '@type': 'Offer',
+    price: '400',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
   },
 };
 
 export default function EventsPage() {
   return (
-    <div className="min-h-screen bg-[#080808]">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventModelsSchema) }}
+      />
+      <div className="min-h-screen bg-[#080808]">
       {/* Nav */}
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
@@ -39,7 +64,7 @@ export default function EventsPage() {
 
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
-        <img src="/images/Des/des-5.jpg" alt="Event Models" className="absolute inset-0 w-full h-full object-cover object-top" />
+        <Image src="/images/Des/des-5.jpg" alt="Event Models" fill priority className="object-cover object-top" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
         <div className="relative z-10 px-8 md:px-16 pb-16 md:pb-24 max-w-4xl">
@@ -201,6 +226,38 @@ export default function EventsPage() {
         </div>
       </section>
 
+      {/* Related Services */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <div className="max-w-4xl">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Related Services</p>
+          <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}>
+            Complete your<br />marketing stack.
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/services/content" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Social Media Content</h3>
+              <p className="text-white/35 text-sm leading-relaxed">UGC content creation including reaction videos, promo reels, and viral challenges for artists and brands.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/business" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Business Content & Brand Ambassadors</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Models visit your business to create authentic on-location content for restaurants, salons, retail stores, and more.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/shoots" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Shoots & Music Videos</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Book models for photo shoots, music videos, commercials, and professional video productions.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/commercials" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Commercials & Speaking Roles</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Professional talent for TV commercials, speaking roles, and brand campaigns.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-[#080808] border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 md:px-16 pt-16 pb-10">
@@ -245,5 +302,6 @@ export default function EventsPage() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
