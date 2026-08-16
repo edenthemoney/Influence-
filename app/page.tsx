@@ -514,6 +514,30 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── South Florida Locations ── */}
+      <section className="border-t border-white/[0.05] bg-[#080808]">
+        <div className="px-8 md:px-16 pt-16 md:pt-28 pb-8 md:pb-12">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: '#c9a96e' }}>Serving South Florida</p>
+          <h2 className="font-display font-light italic text-white leading-none mb-3" style={{ fontSize: 'clamp(40px, 7vw, 104px)' }}>Local Expertise</h2>
+          <p className="text-white/35 text-sm max-w-lg">We know the local market, venues, and what works for South Florida audiences. Book influencers across Miami-Dade, Broward, and Palm Beach counties.</p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 border-t border-white/[0.06]">
+          {[
+            { name: 'Miami', href: '/influencer-marketing-miami', desc: 'Miami-Dade County' },
+            { name: 'Boca Raton', href: '/influencer-marketing-boca-raton', desc: 'Palm Beach County' },
+            { name: 'Fort Lauderdale', href: '/influencer-marketing-fort-lauderdale', desc: 'Broward County' },
+            { name: 'West Palm Beach', href: '/influencer-marketing-west-palm-beach', desc: 'Palm Beach County' },
+          ].map((location) => (
+            <Link key={location.name} href={location.href} className="group border-r border-b border-white/[0.06] p-8 hover:bg-white/[0.015] transition-all duration-300">
+              <p className="text-[10px] tracking-[0.3em] uppercase mb-3 font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">{location.desc}</p>
+              <h3 className="font-display font-bold italic text-white leading-tight mb-2" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>{location.name}</h3>
+              <p className="text-white/45 text-xs">Influencer Marketing</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="py-20 md:py-40 bg-white border-t border-black/10">
         <div className="px-10 md:px-16">
           <p className="text-black/50 text-[10px] tracking-[0.5em] uppercase mb-12 font-semibold">Not Sure Where to Start?</p>
