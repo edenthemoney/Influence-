@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
 
     // Match by budget
     const budgetMatch = !budget || 
-      inf.pricing[contentType] <= parseInt(budget);
+      inf.pricing[contentType as keyof typeof inf.pricing] <= parseInt(budget);
 
     return categoryMatch && locationMatch && budgetMatch;
   });

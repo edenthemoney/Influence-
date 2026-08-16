@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Email templates
 const emailTemplates = {
-  ecommerce: (brandName, contactName, influencerProfiles) => `
+  ecommerce: (brandName: string, contactName: string, influencerProfiles: any[]) => `
 Hi ${contactName},
 
 I've been following ${brandName}'s growth on Instagram - love your recent product launches.
@@ -29,7 +29,7 @@ Influence Models Agency
 561-552-0392
 `,
   
-  restaurant: (brandName, contactName, location) => `
+  restaurant: (brandName: string, contactName: string, location: string) => `
 Hi ${contactName},
 
 I came across ${brandName} on Instagram and love your food presentation - it's exactly the kind of content that performs well with influencer marketing.
@@ -49,7 +49,7 @@ Influence Models Agency
 561-552-0392
 `,
   
-  music: (artistName, contactName) => `
+  music: (artistName: string, contactName: string) => `
 Hi ${contactName},
 
 I've been following ${artistName}'s music - great sound on your latest track!

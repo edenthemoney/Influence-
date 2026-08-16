@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Mock contact finding service
 // In production, this would integrate with Apollo.io, Hunter.io, or similar services
 
-const contactDatabase = {
+const contactDatabase: any = {
   'luxeswimwear.com': {
     ceo: { name: 'Sarah Johnson', email: 'sarah@luxeswimwear.com', linkedin: 'linkedin.com/in/sarahjohnson' },
     marketing: { name: 'Mike Chen', email: 'marketing@luxeswimwear.com', linkedin: 'linkedin.com/in/mikechen' },

@@ -5,10 +5,10 @@ import { ChevronRight, Mail, Users, TrendingUp, Calendar, Plus, Send } from 'luc
 
 export default function OutreachAdmin() {
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [campaigns, setCampaigns] = useState([]);
-  const [brands, setBrands] = useState([]);
-  const [metrics, setMetrics] = useState(null);
-  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [campaigns, setCampaigns] = useState<any[]>([]);
+  const [brands, setBrands] = useState<any[]>([]);
+  const [metrics, setMetrics] = useState<any>(null);
+  const [selectedBrand, setSelectedBrand] = useState<any>(null);
 
   useEffect(() => {
     // Load initial data
@@ -47,7 +47,7 @@ export default function OutreachAdmin() {
     }
   };
 
-  const sendEmail = async (brand) => {
+  const sendEmail = async (brand: any) => {
     try {
       const response = await fetch('/api/outreach/email', {
         method: 'POST',
@@ -132,7 +132,7 @@ export default function OutreachAdmin() {
                 { label: 'Responses', value: metrics.totalResponses, icon: Users },
                 { label: 'Meetings', value: metrics.totalMeetingsBooked, icon: Calendar },
                 { label: 'Deals', value: metrics.totalDealsClosed, icon: TrendingUp }
-              ].map(stat => (
+              ].map((stat: any) => (
                 <div key={stat.label} className="border border-white/[0.06] p-6">
                   <stat.icon className="h-5 w-5 mb-2" style={{ color: '#c9a96e' }} />
                   <p className="text-2xl font-bold">{stat.value}</p>
@@ -150,7 +150,7 @@ export default function OutreachAdmin() {
                   { label: 'Response Rate', value: `${metrics.averageResponseRate.toFixed(1)}%` },
                   { label: 'Meeting Rate', value: `${metrics.averageMeetingRate.toFixed(1)}%` },
                   { label: 'Deal Rate', value: `${metrics.averageDealRate.toFixed(1)}%` }
-                ].map(metric => (
+                ].map((metric: any) => (
                   <div key={metric.label}>
                     <p className="text-white/50 text-sm">{metric.label}</p>
                     <p className="text-xl font-bold">{metric.value}</p>
@@ -163,7 +163,7 @@ export default function OutreachAdmin() {
             <div className="border border-white/[0.06] p-6">
               <h3 className="text-xl font-bold mb-4">Top Performing Niches</h3>
               <div className="space-y-3">
-                {metrics.topPerformingNiches.map(niche => (
+                {metrics.topPerformingNiches.map((niche: any) => (
                   <div key={niche.niche} className="flex items-center justify-between p-4 bg-white/[0.02]">
                     <div>
                       <p className="font-bold capitalize">{niche.niche}</p>
@@ -188,7 +188,7 @@ export default function OutreachAdmin() {
             </div>
 
             <div className="space-y-4">
-              {campaigns.map(campaign => (
+              {campaigns.map((campaign: any) => (
                 <div key={campaign.id} className="border border-white/[0.06] p-6 hover:bg-white/[0.02] transition-all">
                   <div className="flex items-start justify-between mb-4">
                     <div>
@@ -241,7 +241,7 @@ export default function OutreachAdmin() {
             </div>
 
             <div className="space-y-4">
-              {brands.map(brand => (
+              {brands.map((brand: any) => (
                 <div key={brand.id} className="border border-white/[0.06] p-6 hover:bg-white/[0.02] transition-all">
                   <div className="flex items-start justify-between mb-4">
                     <div>
@@ -293,7 +293,7 @@ export default function OutreachAdmin() {
                 { name: 'E-commerce Pitch', template: 'ecommerce', description: 'For fashion, beauty, and retail brands' },
                 { name: 'Restaurant Pitch', template: 'restaurant', description: 'For food and beverage brands' },
                 { name: 'Music Promotion', template: 'music', description: 'For artists and record labels' }
-              ].map(template => (
+              ].map((template: any) => (
                 <div key={template.template} className="border border-white/[0.06] p-6 hover:bg-white/[0.02] transition-all">
                   <div className="flex items-start justify-between">
                     <div>
