@@ -7,7 +7,19 @@ export default function OutreachAdmin() {
   const [activeTab, setActiveTab] = useState('dashboard');
   const [campaigns, setCampaigns] = useState<any[]>([]);
   const [brands, setBrands] = useState<any[]>([]);
-  const [metrics, setMetrics] = useState<any>(null);
+  const [metrics, setMetrics] = useState<any>({
+    totalEmailsSent: 0,
+    totalOpens: 0,
+    totalResponses: 0,
+    totalMeetingsBooked: 0,
+    totalDealsClosed: 0,
+    averageOpenRate: 0,
+    averageResponseRate: 0,
+    averageMeetingRate: 0,
+    averageDealRate: 0,
+    topPerformingNiches: [],
+    weeklyStats: []
+  });
   const [selectedBrand, setSelectedBrand] = useState<any>(null);
 
   useEffect(() => {
@@ -120,60 +132,71 @@ export default function OutreachAdmin() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-6 py-8">
-        {activeTab === 'dashboard' && metrics && (
+        {activeTab === 'dashboard' && (
           <div>
             <h2 className="text-3xl font-bold mb-8">Campaign Overview</h2>
             
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
-              {[
-                { label: 'Emails Sent', value: metrics.totalEmailsSent, icon: Mail },
-                { label: 'Opens', value: metrics.totalOpens, icon: TrendingUp },
-                { label: 'Responses', value: metrics.totalResponses, icon: Users },
-                { label: 'Meetings', value: metrics.totalMeetingsBooked, icon: Calendar },
-                { label: 'Deals', value: metrics.totalDealsClosed, icon: TrendingUp }
-              ].map((stat: any) => (
-                <div key={stat.label} className="border border-white/[0.06] p-6">
-                  <stat.icon className="h-5 w-5 mb-2" style={{ color: '#c9a96e' }} />
-                  <p className="text-2xl font-bold">{stat.value}</p>
-                  <p className="text-white/50 text-sm">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Performance Metrics */}
-            <div className="border border-white/[0.06] p-6 mb-8">
-              <h3 className="text-xl font-bold mb-4">Performance Metrics</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {[
-                  { label: 'Open Rate', value: `${metrics.averageOpenRate.toFixed(1)}%` },
-                  { label: 'Response Rate', value: `${metrics.averageResponseRate.toFixed(1)}%` },
-                  { label: 'Meeting Rate', value: `${metrics.averageMeetingRate.toFixed(1)}%` },
-                  { label: 'Deal Rate', value: `${metrics.averageDealRate.toFixed(1)}%` }
-                ].map((metric: any) => (
-                  <div key={metric.label}>
-                    <p className="text-white/50 text-sm">{metric.label}</p>
-                    <p className="text-xl font-bold">{metric.value}</p>
-                  </div>
-                ))}
+            {metrics.totalEmailsSent === 0 ? (
+              <div className="border border-white/[0.06] p-12 text-center">
+                <p className="text-white/50 mb-4">No campaigns data yet</p>
+                <p className="text-white/30 text-sm">Add brands and start sending emails to see metrics</p>
               </div>
-            </div>
-
-            {/* Top Performing Niches */}
-            <div className="border border-white/[0.06] p-6">
-              <h3 className="text-xl font-bold mb-4">Top Performing Niches</h3>
-              <div className="space-y-3">
-                {metrics.topPerformingNiches.map((niche: any) => (
-                  <div key={niche.niche} className="flex items-center justify-between p-4 bg-white/[0.02]">
-                    <div>
-                      <p className="font-bold capitalize">{niche.niche}</p>
-                      <p className="text-white/50 text-sm">Response rate: {niche.responseRate}%</p>
+            ) : (
+              <>
+                {/* Stats Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                  {[
+                    { label: 'Emails Sent', value: metrics.totalEmailsSent, icon: Mail },
+                    { label: 'Opens', value: metrics.totalOpens, icon: TrendingUp },
+                    { label: 'Responses', value: metrics.totalResponses, icon: Users },
+                    { label: 'Meetings', value: metrics.totalMeetingsBooked, icon: Calendar },
+                    { label: 'Deals', value: metrics.totalDealsClosed, icon: TrendingUp }
+                  ].map((stat: any) => (
+                    <div key={stat.label} className="border border-white/[0.06] p-6">
+                      <stat.icon className="h-5 w-5 mb-2" style={{ color: '#c9a96e' }} />
+                      <p className="text-2xl font-bold">{stat.value}</p>
+                      <p className="text-white/50 text-sm">{stat.label}</p>
                     </div>
-                    <p className="text-[#c9a96e] font-bold">{niche.dealRate}% deal rate</p>
+                  ))}
+                </div>
+
+                {/* Performance Metrics */}
+                <div className="border border-white/[0.06] p-6 mb-8">
+                  <h3 className="text-xl font-bold mb-4">Performance Metrics</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {[
+                      { label: 'Open Rate', value: `${metrics.averageOpenRate.toFixed(1)}%` },
+                      { label: 'Response Rate', value: `${metrics.averageResponseRate.toFixed(1)}%` },
+                      { label: 'Meeting Rate', value: `${metrics.averageMeetingRate.toFixed(1)}%` },
+                      { label: 'Deal Rate', value: `${metrics.averageDealRate.toFixed(1)}%` }
+                    ].map((metric: any) => (
+                      <div key={metric.label}>
+                        <p className="text-white/50 text-sm">{metric.label}</p>
+                        <p className="text-xl font-bold">{metric.value}</p>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
+
+                {/* Top Performing Niches */}
+                {metrics.topPerformingNiches.length > 0 && (
+                  <div className="border border-white/[0.06] p-6">
+                    <h3 className="text-xl font-bold mb-4">Top Performing Niches</h3>
+                    <div className="space-y-3">
+                      {metrics.topPerformingNiches.map((niche: any) => (
+                        <div key={niche.niche} className="flex items-center justify-between p-4 bg-white/[0.02]">
+                          <div>
+                            <p className="font-bold capitalize">{niche.niche}</p>
+                            <p className="text-white/50 text-sm">Response rate: {niche.responseRate}%</p>
+                          </div>
+                          <p className="text-[#c9a96e] font-bold">{niche.dealRate}% deal rate</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
           </div>
         )}
 
@@ -187,46 +210,53 @@ export default function OutreachAdmin() {
               </button>
             </div>
 
-            <div className="space-y-4">
-              {campaigns.map((campaign: any) => (
-                <div key={campaign.id} className="border border-white/[0.06] p-6 hover:bg-white/[0.02] transition-all">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold">{campaign.name}</h3>
-                      <p className="text-white/50 text-sm capitalize">{campaign.niche} · {campaign.status}</p>
+            {campaigns.length === 0 ? (
+              <div className="border border-white/[0.06] p-12 text-center">
+                <p className="text-white/50 mb-4">No campaigns yet</p>
+                <p className="text-white/30 text-sm">Create your first campaign to start tracking outreach</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {campaigns.map((campaign: any) => (
+                  <div key={campaign.id} className="border border-white/[0.06] p-6 hover:bg-white/[0.02] transition-all">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold">{campaign.name}</h3>
+                        <p className="text-white/50 text-sm capitalize">{campaign.niche} · {campaign.status}</p>
+                      </div>
+                      <span className={`px-3 py-1 text-xs font-bold uppercase ${
+                        campaign.status === 'active' ? 'bg-green-500/20 text-green-400' : 'bg-white/10'
+                      }`}>
+                        {campaign.status}
+                      </span>
                     </div>
-                    <span className={`px-3 py-1 text-xs font-bold uppercase ${
-                      campaign.status === 'active' ? 'bg-green-500/20 text-green-400' : 'bg-white/10'
-                    }`}>
-                      {campaign.status}
-                    </span>
+                    
+                    <div className="grid grid-cols-5 gap-4 text-sm">
+                      <div>
+                        <p className="text-white/50">Target</p>
+                        <p className="font-bold">{campaign.targetBrands}</p>
+                      </div>
+                      <div>
+                        <p className="text-white/50">Sent</p>
+                        <p className="font-bold">{campaign.emailsSent}</p>
+                      </div>
+                      <div>
+                        <p className="text-white/50">Responses</p>
+                        <p className="font-bold">{campaign.responses}</p>
+                      </div>
+                      <div>
+                        <p className="text-white/50">Meetings</p>
+                        <p className="font-bold">{campaign.meetingsBooked}</p>
+                      </div>
+                      <div>
+                        <p className="text-white/50">Deals</p>
+                        <p className="font-bold">{campaign.dealsClosed}</p>
+                      </div>
+                    </div>
                   </div>
-                  
-                  <div className="grid grid-cols-5 gap-4 text-sm">
-                    <div>
-                      <p className="text-white/50">Target</p>
-                      <p className="font-bold">{campaign.targetBrands}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/50">Sent</p>
-                      <p className="font-bold">{campaign.emailsSent}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/50">Responses</p>
-                      <p className="font-bold">{campaign.responses}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/50">Meetings</p>
-                      <p className="font-bold">{campaign.meetingsBooked}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/50">Deals</p>
-                      <p className="font-bold">{campaign.dealsClosed}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
@@ -240,47 +270,54 @@ export default function OutreachAdmin() {
               </button>
             </div>
 
-            <div className="space-y-4">
-              {brands.map((brand: any) => (
-                <div key={brand.id} className="border border-white/[0.06] p-6 hover:bg-white/[0.02] transition-all">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-bold">{brand.name}</h3>
-                      <p className="text-white/50 text-sm capitalize">{brand.niche} · {brand.followers.toLocaleString()} followers</p>
+            {brands.length === 0 ? (
+              <div className="border border-white/[0.06] p-12 text-center">
+                <p className="text-white/50 mb-4">No brands added yet</p>
+                <p className="text-white/30 text-sm">Add target brands to start your outreach campaign</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {brands.map((brand: any) => (
+                  <div key={brand.id} className="border border-white/[0.06] p-6 hover:bg-white/[0.02] transition-all">
+                    <div className="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold">{brand.name}</h3>
+                        <p className="text-white/50 text-sm capitalize">{brand.niche} · {brand.followers.toLocaleString()} followers</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className={`px-3 py-1 text-xs font-bold uppercase ${
+                          brand.outreachStatus === 'contacted' ? 'bg-green-500/20 text-green-400' : 'bg-white/10'
+                        }`}>
+                          {brand.outreachStatus}
+                        </span>
+                        <button 
+                          onClick={() => sendEmail(brand)}
+                          className="flex items-center gap-2 px-4 py-2 bg-[#c9a96e] text-black font-bold text-sm"
+                        >
+                          <Send className="h-4 w-4" />
+                          Contact
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className={`px-3 py-1 text-xs font-bold uppercase ${
-                        brand.outreachStatus === 'contacted' ? 'bg-green-500/20 text-green-400' : 'bg-white/10'
-                      }`}>
-                        {brand.outreachStatus}
-                      </span>
-                      <button 
-                        onClick={() => sendEmail(brand)}
-                        className="flex items-center gap-2 px-4 py-2 bg-[#c9a96e] text-black font-bold text-sm"
-                      >
-                        <Send className="h-4 w-4" />
-                        Contact
-                      </button>
+                    
+                    <div className="grid grid-cols-3 gap-4 text-sm">
+                      <div>
+                        <p className="text-white/50">Location</p>
+                        <p className="font-bold">{brand.location}</p>
+                      </div>
+                      <div>
+                        <p className="text-white/50">Budget</p>
+                        <p className="font-bold">{brand.estimatedBudget}</p>
+                      </div>
+                      <div>
+                        <p className="text-white/50">Contact</p>
+                        <p className="font-bold">{brand.decisionMakers.marketing}</p>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="grid grid-cols-3 gap-4 text-sm">
-                    <div>
-                      <p className="text-white/50">Location</p>
-                      <p className="font-bold">{brand.location}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/50">Budget</p>
-                      <p className="font-bold">{brand.estimatedBudget}</p>
-                    </div>
-                    <div>
-                      <p className="text-white/50">Contact</p>
-                      <p className="font-bold">{brand.decisionMakers.marketing}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 

@@ -1,65 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Brand discovery API
+// Brand discovery API - ready for real data
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const niche = searchParams.get('niche');
   const followerRange = searchParams.get('followerRange');
   const location = searchParams.get('location');
 
-  // Mock data - in production, this would connect to real data sources
-  const brands = [
-    {
-      id: 'brand-001',
-      name: 'Luxe Swimwear',
-      niche: 'fashion',
-      followers: 45000,
-      location: 'Miami, FL',
-      website: 'luxeswimwear.com',
-      instagram: '@luxeswimwear',
-      decisionMakers: {
-        ceo: 'sarah@luxeswimwear.com',
-        marketing: 'marketing@luxeswimwear.com'
-      },
-      lastCampaign: 'Summer 2024 collection launch',
-      estimatedBudget: '$5,000-$15,000',
-      outreachStatus: 'not_contacted'
-    },
-    {
-      id: 'brand-002',
-      name: 'Miami Fitness Club',
-      niche: 'fitness',
-      followers: 32000,
-      location: 'Fort Lauderdale, FL',
-      website: 'miamifitnessclub.com',
-      instagram: '@miamifitnessclub',
-      decisionMakers: {
-        ceo: 'john@miamifitnessclub.com',
-        marketing: 'social@miamifitnessclub.com'
-      },
-      lastCampaign: 'New year promotion',
-      estimatedBudget: '$3,000-$10,000',
-      outreachStatus: 'not_contacted'
-    },
-    {
-      id: 'brand-003',
-      name: 'Ocean Drive Restaurant',
-      niche: 'food',
-      followers: 28000,
-      location: 'Miami Beach, FL',
-      website: 'oceandriverestaurant.com',
-      instagram: '@oceandriverestaurant',
-      decisionMakers: {
-        ceo: 'chef@oceandriverestaurant.com',
-        marketing: 'events@oceandriverestaurant.com'
-      },
-      lastCampaign: 'Summer menu launch',
-      estimatedBudget: '$2,000-$8,000',
-      outreachStatus: 'not_contacted'
-    }
-  ];
+  // In production, this would query a database
+  // For now, return empty array - system ready for real data input
+  const brands: any[] = [];
 
-  // Filter based on parameters
+  // Filter based on parameters when real data is added
   let filteredBrands = brands;
   if (niche) {
     filteredBrands = filteredBrands.filter(brand => brand.niche === niche);

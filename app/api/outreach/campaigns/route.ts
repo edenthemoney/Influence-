@@ -1,40 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// In-memory campaign storage (use database in production)
-let campaigns = [
-  {
-    id: 'campaign-001',
-    name: 'Miami Fashion Brands Q3 2024',
-    niche: 'fashion',
-    status: 'active',
-    targetBrands: 50,
-    emailsSent: 25,
-    opens: 18,
-    responses: 4,
-    meetingsBooked: 2,
-    dealsClosed: 0,
-    startDate: '2024-08-01',
-    endDate: '2024-08-31',
-    budget: '$5,000',
-    roi: 0
-  },
-  {
-    id: 'campaign-002', 
-    name: 'Restaurant Outreach Miami-Dade',
-    niche: 'food',
-    status: 'active',
-    targetBrands: 30,
-    emailsSent: 15,
-    opens: 12,
-    responses: 3,
-    meetingsBooked: 1,
-    dealsClosed: 1,
-    startDate: '2024-08-05',
-    endDate: '2024-08-25',
-    budget: '$3,000',
-    roi: 150 // 150% return
-  }
-];
+// Campaign management API - ready for real data
+let campaigns: any[] = [];
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;

@@ -1,23 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Mock contact finding service
+// Contact finding API - ready for real data
 // In production, this would integrate with Apollo.io, Hunter.io, or similar services
 
-const contactDatabase: any = {
-  'luxeswimwear.com': {
-    ceo: { name: 'Sarah Johnson', email: 'sarah@luxeswimwear.com', linkedin: 'linkedin.com/in/sarahjohnson' },
-    marketing: { name: 'Mike Chen', email: 'marketing@luxeswimwear.com', linkedin: 'linkedin.com/in/mikechen' },
-    ecommerce: { name: 'Emily Davis', email: 'emily@luxeswimwear.com', linkedin: 'linkedin.com/in/emilydavis' }
-  },
-  'miamifitnessclub.com': {
-    ceo: { name: 'John Smith', email: 'john@miamifitnessclub.com', linkedin: 'linkedin.com/in/johnsmith' },
-    marketing: { name: 'Lisa Brown', email: 'social@miamifitnessclub.com', linkedin: 'linkedin.com/in/lisabrown' }
-  },
-  'oceandriverestaurant.com': {
-    ceo: { name: 'Chef Marco', email: 'chef@oceandriverestaurant.com', linkedin: 'linkedin.com/in/chefmarco' },
-    marketing: { name: 'Anna Rodriguez', email: 'events@oceandriverestaurant.com', linkedin: 'linkedin.com/in/annarodriguez' }
-  }
-};
+const contactDatabase: any = {};
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -41,7 +27,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: false,
       message: 'No contacts found for this domain',
-      suggestion: 'Try using Apollo.io or Hunter.io for comprehensive contact finding'
+      suggestion: 'Add contacts via POST endpoint or integrate with Apollo.io/Hunter.io'
     }, { status: 404 });
   }
 

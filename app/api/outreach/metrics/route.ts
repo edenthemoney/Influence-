@@ -1,26 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// Metrics tracking API
-let metrics = {
-  totalEmailsSent: 40,
-  totalOpens: 30,
-  totalResponses: 7,
-  totalMeetingsBooked: 3,
-  totalDealsClosed: 1,
-  averageOpenRate: 75,
-  averageResponseRate: 17.5,
-  averageMeetingRate: 7.5,
-  averageDealRate: 2.5,
-  topPerformingNiches: [
-    { niche: 'fashion', responseRate: 25, dealRate: 5 },
-    { niche: 'food', responseRate: 20, dealRate: 10 },
-    { niche: 'fitness', responseRate: 15, dealRate: 0 }
-  ],
-  weeklyStats: [
-    { week: '2024-08-05', emailsSent: 10, opens: 8, responses: 2, meetings: 1, deals: 0 },
-    { week: '2024-08-12', emailsSent: 15, opens: 12, responses: 3, meetings: 1, deals: 1 },
-    { week: '2024-08-19', emailsSent: 15, opens: 10, responses: 2, meetings: 1, deals: 0 }
-  ]
+// Metrics tracking API - ready for real data
+let metrics: any = {
+  totalEmailsSent: 0,
+  totalOpens: 0,
+  totalResponses: 0,
+  totalMeetingsBooked: 0,
+  totalDealsClosed: 0,
+  averageOpenRate: 0,
+  averageResponseRate: 0,
+  averageMeetingRate: 0,
+  averageDealRate: 0,
+  topPerformingNiches: [],
+  weeklyStats: []
 };
 
 export async function GET(request: NextRequest) {
@@ -32,13 +24,13 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: true,
       timeframe: 'week',
-      metrics: latestWeek
+      metrics: latestWeek || { emailsSent: 0, opens: 0, responses: 0, meetings: 0, deals: 0 }
     });
   }
 
   if (timeframe === 'month') {
     const monthStats = metrics.weeklyStats.slice(-4);
-    const monthlyTotals = monthStats.reduce((acc, week) => ({
+    const monthlyTotals = monthStats.reduce((acc: any, week: any) => ({
       emailsSent: acc.emailsSent + week.emailsSent,
       opens: acc.opens + week.opens,
       responses: acc.responses + week.responses,
@@ -89,10 +81,12 @@ export async function POST(request: NextRequest) {
   }
 
   // Recalculate averages
-  metrics.averageOpenRate = (metrics.totalOpens / metrics.totalEmailsSent) * 100;
-  metrics.averageResponseRate = (metrics.totalResponses / metrics.totalEmailsSent) * 100;
-  metrics.averageMeetingRate = (metrics.totalMeetingsBooked / metrics.totalEmailsSent) * 100;
-  metrics.averageDealRate = (metrics.totalDealsClosed / metrics.totalEmailsSent) * 100;
+  if (metrics.totalEmailsSent > 0) {
+    metrics.averageOpenRate = (metrics.totalOpens / metrics.totalEmailsSent) * 100;
+    metrics.averageResponseRate = (metrics.totalResponses / metrics.totalEmailsSent) * 100;
+    metrics.averageMeetingRate = (metrics.totalMeetingsBooked / metrics.totalEmailsSent) * 100;
+    metrics.averageDealRate = (metrics.totalDealsClosed / metrics.totalEmailsSent) * 100;
+  }
 
   return NextResponse.json({
     success: true,
