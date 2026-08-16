@@ -7,9 +7,38 @@ import MobileNav from './components/MobileNav';
 import HeroVideo from './components/HeroVideo';
 import HomeFAQ from './components/HomeFAQ';
 
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Influence Models Agency',
+  alternateName: 'Influence',
+  url: 'https://influencemodels.agency',
+  logo: 'https://influencemodels.agency/favicon.svg',
+  description: 'South Florida influencer marketing agency providing UGC content, music promotion, brand campaigns, and event hosting services.',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Miami',
+    addressRegion: 'FL',
+    addressCountry: 'US',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+1-561-552-0392',
+    contactType: 'sales',
+  },
+  sameAs: [
+    'https://www.instagram.com/influencemodels.agency',
+  ],
+  serviceType: ['Influencer Marketing', 'UGC Content Creation', 'Music Promotion', 'Brand Campaigns', 'Event Marketing'],
+};
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#080808]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <FloatingBooking />
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="grid grid-cols-3 items-center h-16 md:h-24 px-6 md:px-14">
@@ -167,6 +196,14 @@ export default function HomePage() {
                 <p className="text-white text-sm font-medium mb-1">Acting & Casting</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Actress roles, casting & voiceover</p>
               </Link>
+              <Link href="/model-booking?service=storyreposts" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Story Reposts</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Instagram story amplification</p>
+              </Link>
+              <Link href="/model-booking?service=collabreposts" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+                <p className="text-white text-sm font-medium mb-1">Collab Posts</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Dual-feed co-authored posts</p>
+              </Link>
               <Link href="/model-booking?service=reaction" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Song Promotion</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Instagram & TikTok music promo</p>
@@ -180,27 +217,63 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Two-Path Split ── */}
+      {/* ── Persona-Based Entry Points ── */}
       <section className="bg-[#080808] border-t border-white/[0.05] py-16 md:py-28 px-8 md:px-16">
-        <p className="text-[10px] font-bold tracking-[0.4em] uppercase text-center mb-4" style={{ color: '#c9a96e' }}>What Are You Looking For?</p>
-        <h2 className="font-display font-bold italic text-white text-center mb-12 md:mb-16 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>Choose Your Path</h2>
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
-          {/* In-Person */}
-          <Link href="/start" className="group relative border border-white/[0.08] p-8 md:p-12 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
-            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">South Florida Only</p>
-            <h3 className="font-display font-bold text-white text-2xl md:text-3xl mb-3">Book In-Person Talent</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-8">Creators come to your location for shoots, music videos, events, or business content. Same-week availability.</p>
+        <p className="text-[10px] font-bold tracking-[0.4em] uppercase text-center mb-4" style={{ color: '#c9a96e' }}>Find Your Solution</p>
+        <h2 className="font-display font-bold italic text-white text-center mb-12 md:mb-16 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>What Are You Looking For?</h2>
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+          {/* Music Artists */}
+          <Link href="/model-booking?service=reaction" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Artists & Labels</p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Music Promotion</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Song reactions, story reposts, collab posts, and music video talent to get your music heard.</p>
             <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
-              Browse Packages <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>
-          {/* Online Content */}
-          <Link href="/model-booking?service=ugc" className="group relative border border-white/[0.08] p-8 md:p-12 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
-            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">Nationwide &middot; Remote</p>
-            <h3 className="font-display font-bold text-white text-2xl md:text-3xl mb-3">Social Media Content</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-8">UGC reels, music reactions, branded posts, and full creator campaigns delivered digitally. No location needed.</p>
+          {/* Brands */}
+          <Link href="/model-booking?service=storyreposts" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Brands & Products</p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Brand Visibility</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Story reposts, collab posts, UGC content, and brand ambassadors for maximum reach.</p>
             <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
-              See Content Packages <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </Link>
+          {/* Local Businesses */}
+          <Link href="/model-booking?service=business" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Local Businesses</p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">On-Site Content</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Brand ambassadors visit your location to create reels, stories, and promo content same-day.</p>
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
+              Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </Link>
+          {/* Events */}
+          <Link href="/model-booking?service=event" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Events & Venues</p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Event Talent</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Event hosting, brand activations, bottle girls, and VIP hostesses for your venue.</p>
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
+              Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </Link>
+          {/* Production */}
+          <Link href="/model-booking?service=commercial" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Productions</p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Acting & Casting</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Commercials, speaking roles, voiceover talent, and casting for TV/web productions.</p>
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
+              Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </span>
+          </Link>
+          {/* Browse All */}
+          <Link href="/services" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">View All Services</p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Full Service Menu</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Explore all our services including shoots, music videos, UGC, and more.</p>
+            <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
+              Browse Services <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>
         </div>
