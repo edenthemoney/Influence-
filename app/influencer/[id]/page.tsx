@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Instagram, Check, Film, Award, BadgeCheck, Sparkles } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
 import IPhoneMockup from '../../components/IPhoneMockup';
@@ -13,30 +14,30 @@ import type { Metadata } from 'next';
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   if (params.id === 'des-001') {
     return {
-      title: 'Deseray Marie | Model, Actress, Entrepreneur & CEO | Influence Models',
-      description: 'Deseray Marie is a Miami-based model, actress, entrepreneur, and CEO of Influence Models Agency. Featured in Forbes Magazine, 40M+ music video views with Sean Paul, Bryson Tiller, Kai Cenat. Film credits: Sacrifice, Spanish Fly. TV: Love & Hip Hop.',
-      keywords: ['Deseray Marie', 'Dez Marie', 'Model', 'Actress', 'Entrepreneur', 'CEO', 'Influence Models Agency', 'Miami Model', 'Forbes Feature', 'Music Video Model', 'Sacrifice Film', 'Spanish Fly Film'],
+      title: 'Deseray Marie | Creator, Actress, Entrepreneur & CEO | Influence',
+      description: 'Deseray Marie is a Miami-based creator, actress, entrepreneur, and CEO of Influence. Featured in Forbes Magazine, 40M+ music video views with Sean Paul, Bryson Tiller, Kai Cenat. Film credits: Sacrifice, Spanish Fly. TV: Love & Hip Hop.',
+      keywords: ['Deseray Marie', 'Dez Marie', 'Creator', 'Actress', 'Entrepreneur', 'CEO', 'Influence', 'Miami Creator', 'Forbes Feature', 'Music Video Creator', 'Sacrifice Film', 'Spanish Fly Film'],
       openGraph: {
-        title: 'Deseray Marie | Model, Actress, Entrepreneur & CEO',
-        description: 'Featured in Forbes Magazine. 40M+ music video views. Film & TV credits. CEO of Influence Models Agency.',
-        images: ['https://influencemodels.agency/images/Des/des-1.jpg'],
+        title: 'Deseray Marie | Creator, Actress, Entrepreneur & CEO',
+        description: 'Featured in Forbes Magazine. 40M+ music video views. Film & TV credits. CEO of Influence.',
+        images: ['https://influencecreators.marketing/images/Des/des-1.jpg'],
         type: 'profile',
       },
       twitter: {
         card: 'summary_large_image',
-        title: 'Deseray Marie | Model, Actress, Entrepreneur & CEO',
-        description: 'Featured in Forbes Magazine. 40M+ music video views. CEO of Influence Models Agency.',
-        images: ['https://influencemodels.agency/images/Des/des-1.jpg'],
+        title: 'Deseray Marie | Creator, Actress, Entrepreneur & CEO',
+        description: 'Featured in Forbes Magazine. 40M+ music video views. CEO of Influence.',
+        images: ['https://influencecreators.marketing/images/Des/des-1.jpg'],
       },
       alternates: {
-        canonical: 'https://influencemodels.agency/influencer/des-001',
+        canonical: 'https://influencecreators.marketing/influencer/des-001',
       },
     };
   }
   
   return {
-    title: 'Influencer Profile | Influence Models Agency',
-    description: 'Book top models and influencers for music videos, brand campaigns, and content creation.',
+    title: 'Influencer Profile | Influence',
+    description: 'Book top creators and influencers for music videos, brand campaigns, and content creation.',
   };
 }
 
@@ -54,7 +55,7 @@ const influencers: Record<string, any> = {
     location: 'South Florida',
     verified: true,
     celebrityCredits: true,
-    contentTypes: ['Music Video Talent', 'Fashion Modeling', 'Lifestyle Content', 'TV Appearances', 'Brand Partnerships', 'Event Hosting'],
+    contentTypes: ['Music Video Creators', 'Fashion Modeling', 'Lifestyle Content', 'TV Appearances', 'Brand Partnerships', 'Event Hosting'],
     pastBrands: ['Kodak Black', 'Vybz Kartel', 'Lil Baby', 'DJ Khaled', 'Moneybagg Yo', 'Future', 'NLE Choppa', 'Kali Uchis'],
     featuredIn: [
       { title: 'Kodak Black', subtitle: 'Music Video', type: 'Music Video' },
@@ -138,9 +139,9 @@ const influencers: Record<string, any> = {
   },
   'des-001': {
     name: 'Deseray Marie',
-    bio: 'Model · Actress · Entrepreneur · Influencer · CEO of Influence Models Agency · Forbes Featured · Sean Paul · Bryson Tiller · Kai Cenat · Akon · Moneybagg Yo · Lil Pump · Tekashi 6ix9ine · Bossman Dlow · Vybz Kartel · Young Thug · AMP · Love & Hip Hop · Films · Meta Billboard · 40M+ Music Video Views',
+    bio: 'Model · Actress · Entrepreneur · Influencer · CEO of Influence · Forbes Featured · Sean Paul · Bryson Tiller · Kai Cenat · Akon · Moneybagg Yo · Lil Pump · Tekashi 6ix9ine · Bossman Dlow · Vybz Kartel · Young Thug · AMP · Love & Hip Hop · Films · Meta Billboard · 40M+ Music Video Views',
     avatar: '/images/Des/des-1.jpg',
-    followers: 66000,
+    followers: 79400,
     rating: 5.0,
     categories: ['Music Video', 'Commercial', 'Fashion', 'Film', 'TV', 'Entrepreneurship', 'Beauty', 'Luxury'],
     instagram: '@itsdezmarie',
@@ -156,7 +157,7 @@ const influencers: Record<string, any> = {
       { value: '4', label: 'Countries' },
     ],
     contentTypes: [
-      'Music Video Talent',
+      'Music Video Creators',
       'National Commercials',
       'Fashion Show Runway',
       'Editorial Modeling',
@@ -199,7 +200,7 @@ const influencers: Record<string, any> = {
       { title: 'Elite 6 Makeup', subtitle: 'Brand Promo', type: 'Beauty' },
     ],
     travelHistory: ['United States', 'London', 'Mexico', 'Greece'],
-    description: 'Deseray Marie is a Miami-based model, actress, entrepreneur, and CEO of Influence Models Agency. With 7 years of professional modeling experience, she has been published in 20+ magazines and walked 10+ fashion shows across four countries (US, London, Mexico, Greece). She has been featured in Forbes Magazine for her fragrance brand and modeled for Fenty Beauty, SavageXFenty, and national Meta Ray-Ban Glasses billboards. As an actress, she has appeared in films including "Sacrifice" and "Spanish Fly" and on TV\'s Love & Hip Hop. Her music video credits include Sean Paul, Bryson Tiller, DaBaby, Akon, Shaggy, Young Thug, Vybz Kartel, and many more with over 40 million combined views. Celebrity collaborations include Kai Cenat, Mike Tyson, Tyra Banks, and Keke Palmer. As an entrepreneur, she founded and operates Influence Models Agency, the premier talent agency in South Florida.',
+    description: 'Deseray Marie is a Miami-based model, actress, entrepreneur, and CEO of Influence. With 7 years of professional modeling experience, she has been published in 20+ magazines and walked 10+ fashion shows across four countries (US, London, Mexico, Greece). She has been featured in Forbes Magazine for her fragrance brand and modeled for Fenty Beauty, SavageXFenty, and national Meta Ray-Ban Glasses billboards. As an actress, she has appeared in films including "Sacrifice" and "Spanish Fly" and on TV\'s Love & Hip Hop. Her music video credits include Sean Paul, Bryson Tiller, DaBaby, Akon, Shaggy, Young Thug, Vybz Kartel, and many more with over 40 million combined views. Celebrity collaborations include Kai Cenat, Mike Tyson, Tyra Banks, and Keke Palmer. As an entrepreneur, she founded and operates Influence, the premier creator network in South Florida.',
     gallery: [
       '/images/Des/des-21.jpg',
       '/images/Des/des-1.jpg',
@@ -222,7 +223,7 @@ const influencers: Record<string, any> = {
     location: 'South Florida',
     contentTypes: ['Fashion Modeling', 'Lifestyle Content', 'Hair & Beauty Campaigns', 'Commercial-Style Content', 'Voiceover Work', 'Brand Campaigns', 'Public Speaking', 'Hosting'],
     pastBrands: [],
-    description: 'Kaylese "Redd" John-Brown is a South Florida model, actress, and voiceover talent with a strong personality and natural on-camera presence. She is comfortable with public speaking, brand campaigns, commercial-style content, voiceover work, and hair, beauty, and lifestyle modeling. She is especially interested in projects that align with a positive, professional image and is open to acting roles, promotional videos, hosting, interviews, podcasts, and event appearances.',
+    description: 'Kaylese "Redd" John-Brown is a South Florida model, actress, and voiceover creators with a strong personality and natural on-camera presence. She is comfortable with public speaking, brand campaigns, commercial-style content, voiceover work, and hair, beauty, and lifestyle modeling. She is especially interested in projects that align with a positive, professional image and is open to acting roles, promotional videos, hosting, interviews, podcasts, and event appearances.',
     gallery: [
       '/images/Kaylese/kaylese-1.jpg',
       '/images/Kaylese/kaylese-2.jpg',
@@ -345,7 +346,7 @@ const influencers: Record<string, any> = {
     ugcFormats: ['Lifestyle', 'Trend', 'Brand Feature', 'Event Content'],
     niches: ['Music', 'Fashion', 'Lifestyle', 'Nightlife'],
     location: 'Miami, FL',
-    contentTypes: ['Music Video Talent', 'Fashion Modeling', 'Lifestyle Content', 'Brand Partnerships', 'Reels & Stories'],
+    contentTypes: ['Music Video Creators', 'Fashion Modeling', 'Lifestyle Content', 'Brand Partnerships', 'Reels & Stories'],
     pastBrands: ['Buju Banton', 'Vybz Kartel', 'Peacock Network'],
     featuredIn: [
       { title: 'Buju Banton', subtitle: 'Music Video', type: 'Music Video' },
@@ -370,7 +371,7 @@ const influencers: Record<string, any> = {
     ugcFormats: ['Lifestyle', 'Trend', 'Testimonial', 'Brand Feature'],
     niches: ['Music', 'Fashion', 'Lifestyle', 'Nightlife'],
     location: 'Miami, FL',
-    contentTypes: ['Music Video Talent', 'Fashion Modeling', 'Lifestyle Content', 'Brand Partnerships', 'Reels & Stories'],
+    contentTypes: ['Music Video Creators', 'Fashion Modeling', 'Lifestyle Content', 'Brand Partnerships', 'Reels & Stories'],
     pastBrands: [],
     description: 'Miami-based model with 45K following and celebrity feature credits. Experienced in music videos and brand content. Available for high-profile campaigns, music videos, and brand partnerships.',
     gallery: [
@@ -440,7 +441,7 @@ const influencers: Record<string, any> = {
       { value: '11K', label: 'Followers' },
       { value: '1', label: 'TV Show' },
     ],
-    contentTypes: ['Music Video Talent', 'Fashion Modeling', 'Lifestyle Content', 'Beauty Content', 'Brand Partnerships', 'Reels & Stories', 'Event Appearances'],
+    contentTypes: ['Music Video Creators', 'Fashion Modeling', 'Lifestyle Content', 'Beauty Content', 'Brand Partnerships', 'Reels & Stories', 'Event Appearances'],
     pastBrands: ['Tekashi 6ix9ine', 'Lil Pump', 'Bossman Dlow', 'Loe Shimmy', 'Love & Hip Hop'],
     featuredIn: [
       { title: 'Tekashi 6ix9ine', subtitle: 'Official Music Video', type: 'Music Video' },
@@ -449,7 +450,7 @@ const influencers: Record<string, any> = {
       { title: 'Loe Shimmy', subtitle: 'Official Music Video', type: 'Music Video' },
       { title: 'Love & Hip Hop', subtitle: 'TV Appearance', type: 'Television' },
     ],
-    description: 'Miami-based model and content creator with major music video credits. Featured in official music videos for Tekashi 6ix9ine, Lil Pump, Bossman Dlow, and Loe Shimmy. Television appearances include Love & Hip Hop. At 5\'5" with a polished, versatile look, Kady is a natural fit for music videos, fashion, beauty, and lifestyle brands looking for professional talent with real industry credits.',
+    description: 'Miami-based model and content creator with major music video credits. Featured in official music videos for Tekashi 6ix9ine, Lil Pump, Bossman Dlow, and Loe Shimmy. Television appearances include Love & Hip Hop. At 5\'5" with a polished, versatile look, Kady is a natural fit for music videos, fashion, beauty, and lifestyle brands looking for professional creators with real industry credits.',
     gallery: [
       '/images/Kady/kady-1.jpg',
       '/images/Kady/kady-2.jpg',
@@ -487,7 +488,7 @@ const influencers: Record<string, any> = {
     ugcFormats: ['Lifestyle', 'Trend', 'Testimonial', 'Brand Feature'],
     niches: ['Fashion', 'Music', 'Lifestyle', 'Nightlife'],
     location: 'Miami, FL',
-    contentTypes: ['Fashion Modeling', 'Lifestyle Content', 'Brand Partnerships', 'Product Promotions', 'Music Video Talent', 'Reels & Stories'],
+    contentTypes: ['Fashion Modeling', 'Lifestyle Content', 'Brand Partnerships', 'Product Promotions', 'Music Video Creators', 'Reels & Stories'],
     pastBrands: [],
     description: 'Miami-based model and content creator with a bold, confident on-camera presence. Known for sharp studio work and versatile looks that translate seamlessly across fashion, music, and lifestyle campaigns. A strong pick for brands that want energy, attitude, and authentic content.',
     gallery: [
@@ -534,28 +535,6 @@ const influencers: Record<string, any> = {
       '/images/Angelina/angelina-1.jpg',
       '/images/Angelina/angelina-2.jpg',
       '/images/Angelina/angelina-3.jpg',
-    ],
-  },
-  'christina-012': {
-    name: 'Christina Rose',
-    bio: 'Model & Influencer · Crystal River, FL',
-    avatar: '/images/Christina/christina-1.jpg',
-    followers: 10000,
-    rating: 5.0,
-    categories: ['Fashion', 'Lifestyle', 'Beauty'],
-    instagram: '@isthatchristinarose',
-    ugcFormats: ['Lifestyle', 'GRWM', 'Testimonial', 'Product Review', 'Trend'],
-    niches: ['Fashion', 'Beauty', 'Lifestyle', 'Skincare'],
-    location: 'Crystal River, FL',
-    contentTypes: ['Fashion Modeling', 'Lifestyle Content', 'Beauty Content', 'Brand Partnerships', 'Editorial Modeling', 'Reels & Stories'],
-    pastBrands: [],
-    description: 'Florida-based model and influencer with a natural, editorial look. Christina brings a polished presence to every shoot — versatile across fashion, beauty, and lifestyle campaigns. Photographer: David Lagarino (@davidjeromephotography).',
-    gallery: [
-      '/images/Christina/christina-1.jpg',
-      '/images/Christina/christina-2.jpg',
-      '/images/Christina/christina-3.jpg',
-      '/images/Christina/christina-4.jpg',
-      '/images/Christina/christina-5.jpg',
     ],
   },
   'nysia-014': {
@@ -614,7 +593,7 @@ const influencers: Record<string, any> = {
     location: 'Florida',
     contentTypes: ['Fashion Content', 'Lifestyle Posts', 'Beauty Content', 'Brand Partnerships', 'Product Reviews', 'Reels & Stories'],
     pastBrands: [],
-    description: 'Florida-based model and creator with a polished aesthetic and natural confidence on camera. Kendra is a versatile talent for fashion, beauty, and lifestyle content — delivering clean, professional visuals every time.',
+    description: 'Florida-based model and creator with a polished aesthetic and natural confidence on camera. Kendra is a versatile creators for fashion, beauty, and lifestyle content — delivering clean, professional visuals every time.',
     gallery: [
       '/images/Kendra/kendra-1.jpg',
       '/images/Kendra/kendra-2.jpg',
@@ -941,7 +920,7 @@ const influencers: Record<string, any> = {
     ugcFormats: ['Lifestyle', 'Trend', 'Brand Feature', 'Event Content'],
     niches: ['Fashion', 'Nightlife', 'Music', 'Lifestyle'],
     location: 'Florida',
-    contentTypes: ['Runway Modeling', 'Music Video Talent', 'Fashion Modeling', 'Hosting', 'Event Appearances', 'Reels & Stories'],
+    contentTypes: ['Runway Modeling', 'Music Video Creators', 'Fashion Modeling', 'Hosting', 'Event Appearances', 'Reels & Stories'],
     pastBrands: ['LA Fashion Week', 'Bossman Dlow'],
     featuredIn: [
       { title: 'LA Fashion Week', subtitle: 'Runway Model', type: 'Fashion Show' },
@@ -989,7 +968,7 @@ const influencers: Record<string, any> = {
     ugcFormats: ['Skit/Comedy', 'Trend', 'Testimonial', 'Lifestyle', 'Brand Feature'],
     niches: ['Beauty', 'Fashion', 'Lifestyle', 'Entertainment'],
     location: 'Florida',
-    contentTypes: ['Skits & Comedy', 'Music Video Talent', 'Fashion Modeling', 'Beauty Content', 'Brand Partnerships'],
+    contentTypes: ['Skits & Comedy', 'Music Video Creators', 'Fashion Modeling', 'Beauty Content', 'Brand Partnerships'],
     pastBrands: ['Dez Beauty'],
     stats: [
       { value: '15K', label: 'Followers' },
@@ -1011,9 +990,9 @@ const influencers: Record<string, any> = {
     ugcFormats: ['Lifestyle', 'Trend', 'Brand Feature'],
     niches: ['Music', 'Fashion', 'Lifestyle'],
     location: 'Florida',
-    contentTypes: ['Music Video Talent', 'Runway Modeling', 'Fashion Modeling', 'Brand Partnerships', 'Reels & Stories'],
+    contentTypes: ['Music Video Creators', 'Runway Modeling', 'Fashion Modeling', 'Brand Partnerships', 'Reels & Stories'],
     pastBrands: [],
-    description: 'Florida-based model and runway talent with music video experience. Available for music videos, runway shows, fashion shoots, and brand campaigns.',
+    description: 'Florida-based model and runway creators with music video experience. Available for music videos, runway shows, fashion shoots, and brand campaigns.',
     gallery: [
       '/images/Amanda/amanda-1.jpg',
       '/images/Amanda/amanda-2.jpg',
@@ -1052,7 +1031,7 @@ const influencers: Record<string, any> = {
     ugcFormats: ['Skit/Comedy', 'Trend', 'Testimonial', 'Brand Feature', 'Lifestyle'],
     niches: ['Entertainment', 'Fashion', 'Lifestyle', 'Music'],
     location: 'USA',
-    contentTypes: ['Skits & Comedy', 'Music Video Talent', 'Brand Content', 'Fashion Modeling', 'Reels & Stories'],
+    contentTypes: ['Skits & Comedy', 'Music Video Creators', 'Brand Content', 'Fashion Modeling', 'Reels & Stories'],
     pastBrands: [],
     description: 'Content creator and model with 35K following. Specializes in skits, brand content, and music videos. Available for creative collaborations and brand campaigns.',
     gallery: [
@@ -1075,7 +1054,7 @@ const influencers: Record<string, any> = {
     location: 'USA',
     contentTypes: ['Skits & Comedy', 'Influencer Content', 'Fashion Modeling', 'Brand Shoots', 'Reels & Stories'],
     pastBrands: [],
-    description: 'Multi-talented model and influencer with 67K following. Creates engaging skits and brand content. Available for influencer campaigns, brand shoots, and fashion projects.',
+    description: 'Multi-talented creator and influencer with 67K following. Creates engaging skits and brand content. Available for influencer campaigns, brand shoots, and fashion projects.',
     gallery: [
       '/images/Breeyisraela/bree-1.jpg',
       '/images/Breeyisraela/bree-2.jpg',
@@ -1095,7 +1074,7 @@ const influencers: Record<string, any> = {
     niches: ['Music', 'Fashion', 'Lifestyle', 'Nightlife'],
     location: 'Miami, FL',
     celebrityCredits: true,
-    contentTypes: ['Music Video Talent', 'Brand Content', 'Influencer Campaigns', 'Fashion Modeling', 'Reels & Stories'],
+    contentTypes: ['Music Video Creators', 'Brand Content', 'Influencer Campaigns', 'Fashion Modeling', 'Reels & Stories'],
     pastBrands: [],
     description: 'Miami-based model and influencer with 94K following and celebrity feature credits. Experienced in music videos and brand content. Available for high-profile campaigns, music videos, and brand partnerships.',
     gallery: [
@@ -1138,7 +1117,7 @@ const influencers: Record<string, any> = {
     niches: ['Commercial', 'Food & Beverage', 'Fitness & Wellness', 'Fashion', 'Lifestyle'],
     location: 'Miami, FL',
     celebrityCredits: true,
-    contentTypes: ['Commercial Modeling', 'Film & TV', 'Music Video Talent', 'Fashion Modeling', 'UGC Content', 'Brand Partnerships'],
+    contentTypes: ['Commercial Modeling', 'Film & TV', 'Music Video Creators', 'Fashion Modeling', 'UGC Content', 'Brand Partnerships'],
     pastBrands: ['Peacock Network', 'Netflix', 'Target', 'Celsius', 'Red Stripe'],
     featuredIn: [
       { title: 'Peacock Network', subtitle: 'Movie Sets', type: 'Film' },
@@ -1285,11 +1264,56 @@ const influencers: Record<string, any> = {
       '/images/Yuli/yuli-6.jpg',
     ],
   },
+  'madeline-063': {
+    name: 'Madeline',
+    bio: 'Model · Madison, WI',
+    avatar: '/images/Madeline/madeline-1.jpg',
+    followers: 1000,
+    rating: 5.0,
+    categories: ['Fashion', 'Lifestyle'],
+    ugcFormats: ['Lifestyle', 'Trend', 'Testimonial', 'GRWM'],
+    niches: ['Fashion', 'Lifestyle'],
+    instagram: '@maddy.scanlan',
+    location: 'Madison, WI',
+    contentTypes: ['Fashion Modeling', 'Lifestyle Content', 'Brand Partnerships', 'UGC Reels'],
+    pastBrands: [],
+    description: 'Madison, WI-based model with a clean, editorial look. Available for fashion shoots, brand partnerships, and lifestyle content creation.',
+    gallery: [
+      '/images/Madeline/madeline-1.jpg',
+      '/images/Madeline/madeline-2.jpg',
+      '/images/Madeline/madeline-3.jpg',
+      '/images/Madeline/madeline-4.jpg',
+    ],
+  },
+  'thereallexciii-064': {
+    name: 'Lexcii',
+    bio: 'Fashion beauty shoots and commercials · 16.4K',
+    avatar: '/images/TherealLexciii/thereallexciii-1.jpg',
+    followers: 16400,
+    rating: 5.0,
+    categories: ['Fashion', 'Beauty', 'Commercial'],
+    instagram: '@_thereallexciii',
+    ugcFormats: ['Lifestyle', 'Trend', 'Testimonial', 'Brand Feature'],
+    niches: ['Fashion', 'Beauty', 'Commercial', 'Lifestyle'],
+    location: 'USA',
+    contentTypes: ['Fashion Modeling', 'Beauty Content', 'Commercial Shoots', 'Brand Partnerships', 'UGC Reels'],
+    pastBrands: [],
+    description: 'Creator focused on fashion, beauty, and commercial shoots. 16.4K Instagram following. Available for brand campaigns, fashion shoots, beauty content, and commercial productions.',
+    gallery: [
+      '/images/TherealLexciii/thereallexciii-1.jpg',
+      '/images/TherealLexciii/thereallexciii-2.jpg',
+      '/images/TherealLexciii/thereallexciii-3.jpg',
+      '/images/TherealLexciii/thereallexciii-4.jpg',
+      '/images/TherealLexciii/thereallexciii-5.jpg',
+      '/images/TherealLexciii/thereallexciii-6.jpg',
+    ],
+  },
 };
 
 
 export default function InfluencerProfilePage({ params }: { params: { id: string } }) {
   const influencer = influencers[params.id];
+
   if (!influencer) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
@@ -1307,13 +1331,13 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
   const deserayMarieSchema = params.id === 'des-001' ? {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    '@id': 'https://influencemodels.agency/influencer/des-001',
+    '@id': 'https://influencecreators.marketing/influencer/des-001',
     name: 'Deseray Marie',
     alternateName: 'Dez Marie',
     jobTitle: ['Model', 'Actress', 'Entrepreneur', 'Influencer', 'CEO'],
-    description: 'Deseray Marie is a Miami-based model, actress, entrepreneur, and CEO of Influence Models Agency. Featured in Forbes Magazine with over 40 million music video views.',
-    image: 'https://influencemodels.agency/images/Des/des-1.jpg',
-    url: 'https://influencemodels.agency/influencer/des-001',
+    description: 'Deseray Marie is a Miami-based model, actress, entrepreneur, and CEO of Influence. Featured in Forbes Magazine with over 40 million music video views.',
+    image: 'https://influencecreators.marketing/images/Des/des-1.jpg',
+    url: 'https://influencecreators.marketing/influencer/des-001',
     sameAs: [
       'https://www.wikidata.org/wiki/Q140177827',
       'https://www.imdb.com/name/nm13223076/',
@@ -1326,12 +1350,12 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
     ],
     worksFor: {
       '@type': 'Organization',
-      '@id': 'https://influencemodels.agency',
-      name: 'Influence Models Agency',
-      alternateName: 'Influence Models',
-      url: 'https://influencemodels.agency',
-      logo: 'https://influencemodels.agency/images/Des/des-1.jpg',
-      description: 'Premier talent and influencer agency based in Miami, Florida.',
+      '@id': 'https://influencecreators.marketing',
+      name: 'Influence',
+      alternateName: 'Influence Marketplace',
+      url: 'https://influencecreators.marketing',
+      logo: 'https://influencecreators.marketing/images/Des/des-1.jpg',
+      description: 'Premier creator and influencer marketplace based in Miami, Florida.',
       foundingDate: '2024',
       founders: [{ '@type': 'Person', name: 'Deseray Marie' }],
       location: {
@@ -1346,8 +1370,8 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
       },
       sameAs: [
         'https://www.wikidata.org/wiki/Q140179528',
-        'https://www.instagram.com/influencemodels.agency',
-        'https://www.tiktok.com/@influencemodels.agency',
+        'https://www.instagram.com/influencecreators.marketing',
+        'https://www.tiktok.com/@influencecreators.marketing',
       ],
     },
     occupation: [
@@ -1375,7 +1399,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
     knowsAbout: ['Modeling', 'Acting', 'Music Videos', 'Fashion', 'Entrepreneurship', 'Talent Management'],
     alumniOf: {
       '@type': 'Organization',
-      name: 'Influence Models Agency',
+      name: 'Influence',
     },
     award: [
       'Forbes Magazine Feature',
@@ -1387,9 +1411,9 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
       name: 'CEO',
       worksFor: {
         '@type': 'Organization',
-        name: 'Influence Models Agency',
-        description: 'Premier talent agency in South Florida',
-        url: 'https://influencemodels.agency',
+        name: 'Influence',
+        description: 'Premier creator network in South Florida',
+        url: 'https://influencecreators.marketing',
       },
     },
     performerIn: [
@@ -1397,23 +1421,30 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
       { '@type': 'Movie', name: 'Spanish Fly' },
       { '@type': 'TVSeries', name: 'Love & Hip Hop' },
     ],
-    homeLocation: {
+  } : null;
+
+  // Generic Person schema for all influencers
+  const influencerPersonSchema = influencer ? {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `https://influencecreators.marketing/influencer/${params.id}`,
+    name: influencer.name,
+    description: influencer.description || `${influencer.name} is a ${influencer.location || 'Florida'}-based model and influencer.`,
+    image: `https://influencecreators.marketing${influencer.avatar}`,
+    url: `https://influencecreators.marketing/influencer/${params.id}`,
+    sameAs: influencer.instagram ? [`https://www.instagram.com/${influencer.instagram.replace('@', '')}`] : [],
+    jobTitle: influencer.categories || ['Model', 'Influencer'],
+    knowsAbout: influencer.niches || ['Fashion', 'Lifestyle', 'Content Creation'],
+    worksFor: {
+      '@type': 'Organization',
+      '@id': 'https://influencecreators.marketing',
+      name: 'Influence',
+      url: 'https://influencecreators.marketing',
+    },
+    location: {
       '@type': 'Place',
-      name: 'Miami, Florida',
-      geo: {
-        '@type': 'GeoCoordinates',
-        latitude: 25.7617,
-        longitude: -80.1918,
-      },
+      name: influencer.location || 'Florida',
     },
-    nationality: {
-      '@type': 'Country',
-      name: 'United States',
-    },
-    brand: [
-      { '@type': 'Brand', name: 'DezBeauty' },
-      { '@type': 'Brand', name: 'Influence Models Agency' },
-    ],
   } : null;
 
   return (
@@ -1424,12 +1455,18 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
           dangerouslySetInnerHTML={{ __html: JSON.stringify(deserayMarieSchema) }}
         />
       )}
+      {influencerPersonSchema && params.id !== 'des-001' && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(influencerPersonSchema) }}
+        />
+      )}
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -1437,7 +1474,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -1472,7 +1509,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                href={`/model-booking?model=${encodeURIComponent(influencer.name)}`}
+                href={`/start?model=${encodeURIComponent(influencer.name)}`}
                 className="px-6 py-4 text-black font-bold text-sm tracking-widest uppercase hover:opacity-90 transition-all text-center"
                 style={{ backgroundColor: '#c9a96e' }}
               >
@@ -1497,11 +1534,17 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
           <div className="lg:col-span-1">
             <div className="bg-zinc-900 border border-white/10 p-5 sm:p-8 lg:sticky lg:top-32">
               <div className="relative mb-6">
-                <img
-                  src={influencer.avatar}
-                  alt={influencer.name}
-                  className="w-48 h-48 rounded-full object-cover border-4 border-[#c9a96e]/30 mx-auto"
-                />
+                <div className="relative w-48 h-48 mx-auto">
+                  <Image
+                    src={influencer.avatar}
+                    alt={influencer.name}
+                    fill
+                    className="rounded-full object-cover object-center border-4 border-[#c9a96e]/30"
+                    sizes="(max-width: 768px) 192px, 192px"
+                    quality={90}
+                    priority
+                  />
+                </div>
                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-10 h-10 gold-gradient rounded-full flex items-center justify-center">
                   <Sparkles className="h-5 w-5 text-black" />
                 </div>
@@ -1566,7 +1609,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               </div>
 
               {/* Primary CTA */}
-              <Link href={`/model-booking?model=${encodeURIComponent(influencer.name)}`} className="block w-full py-4 text-center text-black font-bold text-sm tracking-widest uppercase hover:opacity-80 transition-all" style={{ backgroundColor: '#c9a96e' }}>
+              <Link href={`/start?model=${encodeURIComponent(influencer.name)}`} className="block w-full py-4 text-center text-black font-bold text-sm tracking-widest uppercase hover:opacity-80 transition-all" style={{ backgroundColor: '#c9a96e' }}>
                 Book {influencer.name}
               </Link>
             </div>
@@ -1685,10 +1728,13 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                       className="relative overflow-hidden border border-white/10"
                       style={{ height: '140px' }}
                     >
-                      <img
+                      <Image
                         src={photo}
                         alt={`${influencer.name} - Photo ${idx + 1}`}
-                        className="w-full h-full object-cover object-top"
+                        fill
+                        className="object-cover object-center"
+                        sizes="(max-width: 768px) 50vw, 40vw"
+                        quality={85}
                       />
                     </div>
                   ))}
@@ -1771,7 +1817,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                 ].map(({ svc, label, desc }) => (
                   <Link
                     key={svc}
-                    href={`/model-booking?service=${svc}&model=${encodeURIComponent(influencer.name)}`}
+                    href={`/start?service=${svc}&model=${encodeURIComponent(influencer.name)}`}
                     className="p-5 border border-white/[0.08] hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all group"
                   >
                     <h3 className="text-white font-bold text-sm group-hover:text-[#c9a96e] transition-colors mb-2">{label}</h3>
@@ -1780,7 +1826,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                 ))}
               </div>
               <div className="mt-4 text-center">
-                <Link href={`/model-booking?model=${encodeURIComponent(influencer.name)}`} className="text-[#c9a96e]/60 hover:text-[#c9a96e] text-xs tracking-widest uppercase font-semibold transition-colors">
+                <Link href={`/start?model=${encodeURIComponent(influencer.name)}`} className="text-[#c9a96e]/60 hover:text-[#c9a96e] text-xs tracking-widest uppercase font-semibold transition-colors">
                   Browse All Packages →
                 </Link>
               </div>
@@ -1798,10 +1844,10 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -1811,7 +1857,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots &amp; Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
                 </ul>
               </div>
               <div>
@@ -1820,14 +1866,14 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

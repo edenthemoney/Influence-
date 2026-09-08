@@ -2,9 +2,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
+import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: 'Connect with Verified Creators & Influencers in Miami — Verified Creator Network | Influence',
+  description: 'Browse verified creators and influencers for UGC content, music videos, brand campaigns, and events in Miami, Fort Lauderdale, Boca Raton, Palm Beach. Celebrity-connected creators available.',
+  openGraph: {
+    title: 'Connect with Verified Creators & Influencers in Miami — Verified Creator Network',
+    description: 'Browse verified creators and influencers for UGC content, music videos, brand campaigns, and events. Celebrity-connected creators.',
+    url: 'https://influencecreators.marketing/marketplace',
+  },
+};
 
 const gold = '#c9a96e';
 
@@ -12,9 +23,9 @@ const influencers = [
   {
     id: 'des-001',
     name: 'Deseray Marie',
-    title: 'Model · Actress · Entrepreneur · Influencer · CEO of Influence Models · 40M+ Music Video Views · Forbes Featured',
+    title: 'Creator · Actress · Entrepreneur · Influencer · CEO of Influence · 40M+ Music Video Views · Forbes Featured',
     image: '/images/Des/des-1.jpg',
-    followers: '66K',
+    followers: '79.4K',
     instagram: '@itsdezmarie',
     location: 'Miami, FL',
     credits: ['Kai Cenat', 'Sean Paul', 'Akon', 'Bryson Tiller', 'Moneybagg Yo', 'Forbes', 'Lil Pump', 'Tekashi 6ix9ine', 'Bossman Dlow', '40M+ Music Video Views', 'Love & Hip Hop', 'Mike Tyson Commercial', 'Meta Billboard'],
@@ -25,7 +36,7 @@ const influencers = [
   {
     id: 'seahra-026',
     name: 'Seahra Raquel',
-    title: 'Model · 15K Following',
+    title: 'Creator · 15K Following',
     image: '/images/Seahra/seahra-2.jpg',
     followers: '15K',
     instagram: '@seahraraquel',
@@ -58,7 +69,7 @@ const influencers = [
   {
     id: 'ferrari-004',
     name: 'Ferrari',
-    title: 'Swim Week · Model · Skits · Influencer · Music Videos',
+    title: 'Swim Week · Creator · Skits · Influencer · Music Videos',
     image: '/images/Ferrari/ferrari-1.jpg',
     followers: '2K',
     instagram: '@ferrarii_red',
@@ -69,7 +80,7 @@ const influencers = [
   {
     id: 'lexi-044',
     name: 'Lexi',
-    title: 'Model · 8K · Lifestyle · Fashion',
+    title: 'Creator · 8K · Lifestyle · Fashion',
     image: '/images/Lexi/lexi-1.jpg',
     followers: '8K',
     instagram: '@im__herr__',
@@ -80,7 +91,7 @@ const influencers = [
   {
     id: 'peach-045',
     name: 'Peach',
-    title: 'Model · 23K · Buju Banton · Vybz Kartel · Peacock',
+    title: 'Creator · 23K · Buju Banton · Vybz Kartel · Peacock',
     image: '/images/Peach/peach-1.jpg',
     followers: '23K',
     instagram: '@peach',
@@ -91,7 +102,7 @@ const influencers = [
   {
     id: 'breanna-046',
     name: 'Breanna Banks',
-    title: 'Model · 45K · Celeb Features · Music Videos',
+    title: 'Creator · 45K · Celeb Features · Music Videos',
     image: '/images/Bree/bree-1.jpg',
     followers: '45K',
     instagram: '@bbreannabankss',
@@ -115,7 +126,7 @@ const influencers = [
   {
     id: 'breyanna-056',
     name: 'Breyanna',
-    title: 'Model · 5K · Fashion · Lifestyle',
+    title: 'Creator · 5K · Fashion · Lifestyle',
     image: '/images/Breyanna/breyanna-1.jpg',
     followers: '5K',
     instagram: '@its.breyyy',
@@ -126,7 +137,7 @@ const influencers = [
   {
     id: 'ashley-morris-043',
     name: 'Ashley Morris',
-    title: 'Model · Content Creator',
+    title: 'Creator · Content Creator',
     image: '/images/AshleyM/ashleym-1.jpg',
     followers: '14K',
     instagram: '@theashleypage_',
@@ -428,7 +439,7 @@ const influencers = [
   {
     id: 'kiki-035',
     name: 'Kiki',
-    title: 'Skits · Model · Dez Beauty · Music Videos',
+    title: 'Skits · Creator · Dez Beauty · Music Videos',
     image: '/images/Kiki/kiki-1.jpg',
     followers: '15K',
     instagram: '@kikiithebiggest',
@@ -439,7 +450,7 @@ const influencers = [
   {
     id: 'amanda-037',
     name: 'Amanda Persaud',
-    title: 'Music Videos · Model · Runway',
+    title: 'Music Videos · Creator · Runway',
     image: '/images/Amanda/amanda-1.jpg',
     followers: '4K',
     instagram: '@persaud_26',
@@ -461,7 +472,7 @@ const influencers = [
   {
     id: 'bree-041',
     name: 'Bree',
-    title: 'Model · Skits · Influencer · Brand Shoots · 67K',
+    title: 'Creator · Skits · Influencer · Brand Shoots · 67K',
     image: '/images/Breeyisraela/bree-1.jpg',
     followers: '67K',
     instagram: '@breeyisraela',
@@ -483,7 +494,7 @@ const influencers = [
   {
     id: 'ashley-mar-044',
     name: 'Ashley Mar',
-    title: 'Professional Model · Peacock · Netflix · Target · Celsius',
+    title: 'Professional Creator · Peacock · Netflix · Target · Celsius',
     image: '/images/AshleyMar/ashleymar-1.jpg',
     followers: '3.3K',
     instagram: '@yelhsamar',
@@ -505,7 +516,7 @@ const influencers = [
   {
     id: 'endy-045',
     name: 'Endy',
-    title: 'Model · Content Creator',
+    title: 'Creator · Content Creator',
     image: '/images/Endy/endy-1.jpg',
     followers: '3K',
     instagram: '@theepetitebabe',
@@ -516,7 +527,7 @@ const influencers = [
   {
     id: 'mika-057',
     name: 'Mika',
-    title: 'Model · Content Creator · 10K',
+    title: 'Creator · Content Creator · 10K',
     image: '/images/Mika/mika-2.jpg',
     followers: '10K',
     instagram: '@iammika_ela',
@@ -527,7 +538,7 @@ const influencers = [
   {
     id: 'gracejenn-058',
     name: 'Grace Jenn',
-    title: 'DJ · Model · Host · Actress · Coulda Been Love S2 · 20K',
+    title: 'DJ · Creator · Host · Actress · Coulda Been Love S2 · 20K',
     image: '/images/GraceJenn/gracejenn-1.jpg',
     followers: '20K',
     instagram: '@gracejennofficial',
@@ -539,7 +550,7 @@ const influencers = [
   {
     id: 'ashleypena-060',
     name: 'Ashley Pena',
-    title: 'Model · Content Creator · 2K',
+    title: 'Creator · Content Creator · 2K',
     image: '/images/AshleyPena/ashleypena-1.jpg',
     followers: '2K',
     instagram: '@ashleypenaofficial',
@@ -550,7 +561,7 @@ const influencers = [
   {
     id: 'hannah-061',
     name: 'Hannah Lopez',
-    title: 'Model · 4.4K',
+    title: 'Creator · 4.4K',
     image: '/images/Hannah/hannah-1.jpg',
     followers: '4.4K',
     instagram: '@hannahlpez',
@@ -561,7 +572,7 @@ const influencers = [
   {
     id: 'yuli-059',
     name: 'Yuli Escobar',
-    title: 'Fashion Week Model · Commercials · Shoots · 22K',
+    title: 'Fashion Week Creator · Commercials · Shoots · 22K',
     image: '/images/Yuli/yuli-1.jpg',
     followers: '22K',
     instagram: '@yuliescobarr',
@@ -572,13 +583,24 @@ const influencers = [
   {
     id: 'kaylese-062',
     name: 'Kaylese "Redd" John-Brown',
-    title: 'Model · Actress · Voiceover · Public Speaker · Hair & Beauty · Lifestyle',
+    title: 'Creator · Actress · Voiceover · Public Speaker · Hair & Beauty · Lifestyle',
     image: '/images/Kaylese/kaylese-1.jpg',
     followers: '4.2K',
     instagram: '@lifeofreddofficial',
     location: 'South Florida',
     credits: ['Voiceover', 'Public Speaking', 'Commercial-Style Content', 'Hair & Beauty'],
     categories: ['Fashion', 'Lifestyle', 'Beauty', 'Commercial', 'Voiceover', 'Acting'],
+  },
+  {
+    id: 'thereallexciii-064',
+    name: 'Lexcii',
+    title: 'Creator · 16.4K · Fashion Beauty · Commercials',
+    image: '/images/TherealLexciii/thereallexciii-1.jpg',
+    followers: '16.4K',
+    instagram: '@_thereallexciii',
+    location: 'USA',
+    credits: [],
+    categories: ['Fashion', 'Beauty', 'Commercial'],
   },
 ];
 
@@ -591,7 +613,7 @@ export default function MarketplacePage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -599,7 +621,7 @@ export default function MarketplacePage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -617,13 +639,13 @@ export default function MarketplacePage() {
         </video>
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative max-w-5xl mx-auto text-center">
-          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: gold }}>Our Roster</p>
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: gold }}>Our Network</p>
           <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 88px)' }}>
-            Meet the <span style={{ color: gold }}>Talent</span>
+            Meet the <span style={{ color: gold }}>Creators</span>
           </h1>
           <p className="text-white/45 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
             Hand-selected influencers with verified metrics, A-list credentials, and proven campaign results.
-            Book for <span className="text-white/70">music videos · UGC · brand campaigns · events · social content</span>
+            Perfect for <span className="text-white/70">music videos · UGC · brand campaigns · events · social content</span>
           </p>
         </div>
       </section>
@@ -633,15 +655,15 @@ export default function MarketplacePage() {
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[10px] tracking-[0.2em] uppercase text-white/25">
           <span>★★★★★ Rated #1 in South Florida</span>
           <span className="hidden md:inline">·</span>
-          <span>Celebrity-Connected Talent</span>
+          <span>Celebrity-Connected Creators</span>
           <span className="hidden md:inline">·</span>
           <span>Content Delivered in 48hrs</span>
           <span className="hidden md:inline">·</span>
-          <span>Verified Roster</span>
+          <span>Verified Network</span>
         </div>
       </div>
 
-      {/* Talent Grid - Sorted by follower count after featured */}
+      {/* Creator Grid - Sorted by follower count after featured */}
       <section className="px-4 md:px-14 pb-20">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
           {(() => {
@@ -673,8 +695,10 @@ export default function MarketplacePage() {
                   src={inf.image}
                   alt={inf.name}
                   fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
                   className="group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  quality={85}
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
@@ -730,7 +754,7 @@ export default function MarketplacePage() {
                   View Profile
                 </span>
                 <Link
-                  href={`/model-booking?model=${encodeURIComponent(inf.name)}`}
+                  href={`/start?model=${encodeURIComponent(inf.name)}`}
                   className="relative z-20 pointer-events-auto text-[11px] font-bold tracking-widest uppercase px-5 py-2.5"
                   style={{ backgroundColor: '#c9a96e', color: '#000' }}
                 >
@@ -758,7 +782,7 @@ export default function MarketplacePage() {
           </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              href="/model-booking"
+              href="/start"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80"
               style={{ backgroundColor: gold, color: '#000' }}
             >
@@ -774,7 +798,7 @@ export default function MarketplacePage() {
           <div className="flex items-center justify-center gap-6 mt-5 text-white/25 text-xs">
             <span>✓ Secure Stripe checkout</span>
             <span>✓ Same-week availability</span>
-            <span>✓ Verified talent</span>
+            <span>✓ Verified creators</span>
           </div>
         </div>
       </section>
@@ -788,10 +812,10 @@ export default function MarketplacePage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -801,7 +825,7 @@ export default function MarketplacePage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
                 </ul>
               </div>
               <div>
@@ -810,14 +834,14 @@ export default function MarketplacePage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>
