@@ -161,7 +161,7 @@ html = f"""<!DOCTYPE html>
       <tr>
         <td width="33%" style="padding:10px;text-align:center;vertical-align:top;">
           <img src="cid:des" alt="Des" style="width:130px;height:auto;border-radius:8px;display:block;margin:0 auto;">
-          <p style="font-size:13px;line-height:1.4;color:#333333;margin-top:10px;"><strong>Des</strong><br>79.4K · Miami<br>Forbes / Fenty / Savage</p>
+          <p style="font-size:13px;line-height:1.4;color:#333333;margin-top:10px;"><strong>Des</strong><br>81.3K · Miami<br>Forbes / Fenty / Savage</p>
         </td>
         <td width="33%" style="padding:10px;text-align:center;vertical-align:top;">
           <img src="cid:seahra" alt="Sahara" style="width:130px;height:auto;border-radius:8px;display:block;margin:0 auto;">
@@ -207,7 +207,7 @@ The goal is not reach — it is booked consultations and reusable content that b
 
 My top recommendation: Des + Sahara + Genesis
 
-- Des (79.4K, Miami, Forbes/Fenty/Savage X Fenty credits) — luxury authority and premium social proof.
+- Des (81.3K, Miami, Forbes/Fenty/Savage X Fenty credits) — luxury authority and premium social proof.
 - Sahara (15K, Florida, beauty/lifestyle) — relatable, local, high trust.
 - Genesis (13.9K, beauty/skincare) — authentic skincare voice, perfect for Botox/glow content.
 

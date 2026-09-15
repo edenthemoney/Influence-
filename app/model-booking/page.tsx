@@ -13,11 +13,11 @@ import { Camera, Sparkles, CalendarDays, RefreshCcw, Users, ChevronRight, Chevro
 const MUSIC_VIDEO_OT = [
   { id: 'mv-solo',      name: 'Solo Feature',     tagline: '1 model · 4hr · featured scenes',        models: 1,  price: 500,   popular: false, perks: ['1 model · featured role in your video', '4 hours on set', 'Multiple scenes & looks', 'Styled & camera-ready', 'South Florida location'] },
   { id: 'mv-duo',       name: 'Duo Feature',      tagline: '2 models · 4hr · coordinated',            models: 2,  price: 900,   popular: false, perks: ['2 models · coordinated feature roles', '4 hours on set', 'Multiple scenes together', 'Styled ensemble looks', 'South Florida location'] },
-  { id: 'mv-trio',      name: 'Trio Feature',     tagline: '3 models · 4hr · full production',      models: 3,  price: 1200,  popular: true,  perks: ['3 models · full video feature cast', '4 hours on set', 'Multiple scenes & interactions', 'Styled production looks', 'On-set model coordinator'] },
+  { id: 'mv-trio',      name: 'Trio Feature',     tagline: '3 creators · 4hr · full production',      models: 3,  price: 1200,  popular: true,  perks: ['3 creators · full video feature cast', '4 hours on set', 'Multiple scenes & interactions', 'Styled production looks', 'On-set model coordinator'] },
   { id: 'mv-squad',     name: 'Squad (5)',        tagline: '5 models · 4hr · crew scenes',          models: 5,  price: 1800,  popular: false, perks: ['5 models · full squad energy', '4 hours on set', 'Multiple group scenes', 'Coordinated styling', 'On-set coordinator included'] },
   { id: 'mv-fullday',   name: 'Full Day Solo',    tagline: '1 model · 6-8hr · full video',        models: 1,  price: 800,   popular: false, perks: ['1 model · full video lead', '6-8 hours on set', 'All scenes & wardrobe changes', 'Dedicated styling time', 'Full day production support'] },
   { id: 'mv-fullday-duo', name: 'Full Day Duo',   tagline: '2 models · 6-8hr · all scenes',        models: 2,  price: 1400,  popular: false, perks: ['2 models · full video leads', '6-8 hours on set', 'All scenes together & separate', 'Multiple wardrobe changes', 'Dedicated model coordinator'] },
-  { id: 'mv-fullday-trio', name: 'Full Day Trio', tagline: '3 models · 6-8hr · complete video',  models: 3,  price: 2000,  popular: true,  perks: ['3 models · complete video cast', '6-8 hours on set', 'Full video coverage', 'Multiple looks each', 'On-site production manager'] },
+  { id: 'mv-fullday-trio', name: 'Full Day Trio', tagline: '3 creators · 6-8hr · complete video',  models: 3,  price: 2000,  popular: true,  perks: ['3 creators · complete video cast', '6-8 hours on set', 'Full video coverage', 'Multiple looks each', 'On-site production manager'] },
   { id: 'mv-ten',       name: '10 Models',        tagline: '10 models · 4hr · big production',      models: 10, price: 3500,  popular: false, perks: ['10 models · full video cast', '4 hours on set', 'Multiple scenes running', 'Styled & coordinated', 'Music video specialist crew'] },
   { id: 'mv-ten-fd',    name: '10 Models Full Day', tagline: '10 models · 6-8hr · major video',   models: 10, price: 5500,  popular: false, perks: ['10 models · major production', '6-8 hour full day', 'Maximum scene coverage', 'Coordinated wardrobe', 'Dedicated MV production manager'] },
   { id: 'mv-fifteen',   name: '15 Models',        tagline: '15 models · 4hr · large production',   models: 15, price: 6500,  popular: false, perks: ['15 models · large video production', '4 hours on set', 'Full cast coverage', 'On-set coordinator + lead', 'Label-ready production'] },
@@ -29,20 +29,20 @@ const MUSIC_VIDEO_OT = [
 
 const SHOOT_OT = [
   { id: 'solo',        name: 'Solo',           tagline: '1 model · 4-hour shoot',       models: 1,  price: 300,   popular: false, perks: ['1 professional model', '4 hours on set', 'Camera-ready & styled', 'South Florida location'] },
-  { id: 'duo',         name: 'Duo',            tagline: '2 models · 4-hour shoot',      models: 2,  price: 550,   popular: false, perks: ['2 professional models', '4 hours on set', 'Coordinated looks', 'South Florida location'] },
+  { id: 'duo',         name: 'Duo',            tagline: '2 models · 4-hour shoot',      models: 2,  price: 550,   popular: false, perks: ['2 professional creators', '4 hours on set', 'Coordinated looks', 'South Florida location'] },
   { id: 'fullday',     name: 'Full Day',       tagline: '1 model · 6–8 hour shoot',     models: 1,  price: 600,   popular: false, perks: ['1 professional model', '6–8 hours on set', 'Multiple looks & scenes', 'South Florida location'] },
-  { id: 'trio',        name: 'Trio',           tagline: '3 models · 4-hour shoot',      models: 3,  price: 650,   popular: true,  perks: ['3 professional models', '4 hours on set', 'Styled ensemble look', 'South Florida location'] },
-  { id: 'squad',       name: 'Squad',          tagline: '5 models · 4-hour shoot',      models: 5,  price: 950,   popular: false, perks: ['5 professional models', '4 hours on set', 'Full squad production', 'South Florida location'] },
-  { id: 'fullday-duo', name: 'Full Day Duo',   tagline: '2 models · 6–8 hour shoot',    models: 2,  price: 1050,  popular: false, perks: ['2 professional models', '6–8 hours on set', 'Multiple looks & scenes', 'South Florida location'] },
-  { id: 'fullday-trio',name: 'Full Day Trio',  tagline: '3 models · 6–8 hour shoot',    models: 3,  price: 1400,  popular: false, perks: ['3 professional models', '6–8 hours on set', 'Multiple looks & wardrobe changes', 'Dedicated shoot coordinator'] },
-  { id: 'crew',        name: 'Crew',           tagline: '6–8 models · 4-hour shoot',    models: 8,  price: 2000,  popular: false, perks: ['6–8 professional models', '4 hours on set', 'Large-scale production ready', 'On-set coordinator included'] },
-  { id: 'fullday-sqd', name: 'Full Day Squad', tagline: '5 models · 6–8 hour shoot',    models: 5,  price: 2500,  popular: false, perks: ['5 professional models', '6–8 hours on set', 'Multiple setups & scenes', 'Full production coordination'] },
-  { id: 'ten',         name: '10 Girls',       tagline: '10 models · 4-hour shoot',     models: 10, price: 3500,  popular: false, perks: ['10 professional models', '4 hours on set', 'Full crew coordination', 'Perfect for music videos & campaigns'] },
-  { id: 'ten-fullday', name: '10 Girls Full Day', tagline: '10 models · full day shoot', models: 10, price: 5500,  popular: false, perks: ['10 professional models', 'Full day (6–8 hours)', 'Multiple scenes & locations', 'Dedicated production manager'] },
-  { id: 'fifteen',     name: '15 Girls',       tagline: '15 models · 4-hour shoot',     models: 15, price: 6500,  popular: false, perks: ['15 professional models', '4 hours on set', 'Full music video production ready', 'On-set coordinator + model lead'] },
-  { id: 'fifteen-fd',  name: '15 Girls Full Day', tagline: '15 models · full day shoot', models: 15, price: 9500,  popular: false, perks: ['15 professional models', 'Full day (6–8 hours)', 'Multi-scene production', 'Dedicated production manager + model lead'] },
-  { id: 'vip',         name: 'VIP 20+',        tagline: '20+ models · full day shoot',   models: 20, price: 15000, popular: false, perks: ['20+ professional models', 'Full day production (8+ hours)', 'On-site production manager + model leads', 'Premium hand-picked talent'] },
-  { id: 'mega-shoot', name: 'Mega 30+',      tagline: '30+ models · multi-day shoot',  models: 30, price: 25000, popular: false, perks: ['30+ professional models', 'Multi-day production', 'Full crew + wardrobe + makeup', 'Enterprise-level coordination'] },
+  { id: 'trio',        name: 'Trio',           tagline: '3 creators · 4-hour shoot',      models: 3,  price: 650,   popular: true,  perks: ['3 professional creators', '4 hours on set', 'Styled ensemble look', 'South Florida location'] },
+  { id: 'squad',       name: 'Squad',          tagline: '5 models · 4-hour shoot',      models: 5,  price: 950,   popular: false, perks: ['5 professional creators', '4 hours on set', 'Full squad production', 'South Florida location'] },
+  { id: 'fullday-duo', name: 'Full Day Duo',   tagline: '2 models · 6–8 hour shoot',    models: 2,  price: 1050,  popular: false, perks: ['2 professional creators', '6–8 hours on set', 'Multiple looks & scenes', 'South Florida location'] },
+  { id: 'fullday-trio',name: 'Full Day Trio',  tagline: '3 creators · 6–8 hour shoot',    models: 3,  price: 1400,  popular: false, perks: ['3 professional creators', '6–8 hours on set', 'Multiple looks & wardrobe changes', 'Dedicated shoot coordinator'] },
+  { id: 'crew',        name: 'Crew',           tagline: '6–8 models · 4-hour shoot',    models: 8,  price: 2000,  popular: false, perks: ['6–8 professional creators', '4 hours on set', 'Large-scale production ready', 'On-set coordinator included'] },
+  { id: 'fullday-sqd', name: 'Full Day Squad', tagline: '5 models · 6–8 hour shoot',    models: 5,  price: 2500,  popular: false, perks: ['5 professional creators', '6–8 hours on set', 'Multiple setups & scenes', 'Full production coordination'] },
+  { id: 'ten',         name: '10 Girls',       tagline: '10 models · 4-hour shoot',     models: 10, price: 3500,  popular: false, perks: ['10 professional creators', '4 hours on set', 'Full crew coordination', 'Perfect for music videos & campaigns'] },
+  { id: 'ten-fullday', name: '10 Girls Full Day', tagline: '10 models · full day shoot', models: 10, price: 5500,  popular: false, perks: ['10 professional creators', 'Full day (6–8 hours)', 'Multiple scenes & locations', 'Dedicated production manager'] },
+  { id: 'fifteen',     name: '15 Girls',       tagline: '15 models · 4-hour shoot',     models: 15, price: 6500,  popular: false, perks: ['15 professional creators', '4 hours on set', 'Full music video production ready', 'On-set coordinator + model lead'] },
+  { id: 'fifteen-fd',  name: '15 Girls Full Day', tagline: '15 models · full day shoot', models: 15, price: 9500,  popular: false, perks: ['15 professional creators', 'Full day (6–8 hours)', 'Multi-scene production', 'Dedicated production manager + model lead'] },
+  { id: 'vip',         name: 'VIP 20+',        tagline: '20+ models · full day shoot',   models: 20, price: 15000, popular: false, perks: ['20+ professional creators', 'Full day production (8+ hours)', 'On-site production manager + model leads', 'Premium hand-picked creators'] },
+  { id: 'mega-shoot', name: 'Mega 30+',      tagline: '30+ models · multi-day shoot',  models: 30, price: 25000, popular: false, perks: ['30+ professional creators', 'Multi-day production', 'Full crew + wardrobe + makeup', 'Enterprise-level coordination'] },
   { id: 'blockbuster', name: 'Blockbuster',  tagline: '50+ models · full production',  models: 50, price: 50000, popular: false, perks: ['50+ hand-picked models', 'Multi-day multi-location', 'Full production team + directors', 'Label / studio grade'] },
 ];
 
@@ -50,17 +50,17 @@ const SHOOT_OT = [
 // Standard booking = 4 hours → $400/girl base
 const EVENT_OT = [
   { id: '1-girl',    name: '1 Girl',    tagline: '1 model · 4hr appearance · $50/hr per girl',    models: 1,  price: 400,   popular: false, perks: ['1 professional model', '4-hour appearance', 'Event-ready & styled', 'South Florida', 'Girl earns $200'] },
-  { id: '2-girls',   name: '2 Girls',   tagline: '2 models · 4hr appearance',                      models: 2,  price: 800,   popular: false, perks: ['2 professional models', '4-hour appearance', 'Coordinated looks', 'South Florida', 'Each girl earns $200'] },
-  { id: '3-girls',   name: '3 Girls',   tagline: '3 models · 4hr appearance',                      models: 3,  price: 1200,  popular: true,  perks: ['3 professional models', '4-hour appearance', 'VIP event presence', 'South Florida', 'Each girl earns $200'] },
-  { id: '5-girls',   name: '5 Girls',   tagline: '5 models · 4hr appearance',                      models: 5,  price: 2000,  popular: false, perks: ['5 professional models', '4-hour appearance', 'Full squad energy', 'South Florida', 'Each girl earns $200'] },
-  { id: '8-girls',   name: '8 Girls',   tagline: '8 models · 4hr appearance',                      models: 8,  price: 3200,  popular: false, perks: ['8 professional models', '4-hour appearance', 'Maximum event impact', 'South Florida', 'Each girl earns $200'] },
-  { id: '10-girls',  name: '10 Girls',  tagline: '10 models · 4hr appearance',                     models: 10, price: 4000,  popular: false, perks: ['10 professional models', '4-hour appearance', 'Dedicated event coordinator', 'South Florida', 'Each girl earns $200'] },
-  { id: '15-girls',  name: '15 Girls',  tagline: '15 models · 4hr appearance',                     models: 15, price: 6000,  popular: false, perks: ['15 professional models', '4-hour appearance', 'Full event takeover', 'Dedicated on-site lead', 'Each girl earns $200'] },
-  { id: '25-girls',  name: '25 Girls',  tagline: '25 models · 4hr appearance',                     models: 25, price: 10000, popular: false, perks: ['25 professional models', '4-hour appearance', 'Maximum event domination', 'Full coordinator team', 'Each girl earns $200'] },
-  { id: '40-girls',  name: '40 Girls',  tagline: '40 models · 4hr appearance',                     models: 40, price: 16000, popular: false, perks: ['40 professional models', '4-hour appearance', 'Full venue takeover', 'Production team + on-site leads', 'Each girl earns $200'] },
-  { id: '50-girls',  name: 'VIP 50+',   tagline: '50+ models · 4hr+ · premium',                   models: 50, price: 20000, popular: false, perks: ['50+ premium models', '4+ hour coverage', 'Hand-picked talent', 'White-glove management', 'Each girl earns $200+'] },
+  { id: '2-girls',   name: '2 Girls',   tagline: '2 models · 4hr appearance',                      models: 2,  price: 800,   popular: false, perks: ['2 professional creators', '4-hour appearance', 'Coordinated looks', 'South Florida', 'Each girl earns $200'] },
+  { id: '3-girls',   name: '3 Girls',   tagline: '3 creators · 4hr appearance',                      models: 3,  price: 1200,  popular: true,  perks: ['3 professional creators', '4-hour appearance', 'VIP event presence', 'South Florida', 'Each girl earns $200'] },
+  { id: '5-girls',   name: '5 Girls',   tagline: '5 models · 4hr appearance',                      models: 5,  price: 2000,  popular: false, perks: ['5 professional creators', '4-hour appearance', 'Full squad energy', 'South Florida', 'Each girl earns $200'] },
+  { id: '8-girls',   name: '8 Girls',   tagline: '8 models · 4hr appearance',                      models: 8,  price: 3200,  popular: false, perks: ['8 professional creators', '4-hour appearance', 'Maximum event impact', 'South Florida', 'Each girl earns $200'] },
+  { id: '10-girls',  name: '10 Girls',  tagline: '10 models · 4hr appearance',                     models: 10, price: 4000,  popular: false, perks: ['10 professional creators', '4-hour appearance', 'Dedicated event coordinator', 'South Florida', 'Each girl earns $200'] },
+  { id: '15-girls',  name: '15 Girls',  tagline: '15 models · 4hr appearance',                     models: 15, price: 6000,  popular: false, perks: ['15 professional creators', '4-hour appearance', 'Full event takeover', 'Dedicated on-site lead', 'Each girl earns $200'] },
+  { id: '25-girls',  name: '25 Girls',  tagline: '25 models · 4hr appearance',                     models: 25, price: 10000, popular: false, perks: ['25 professional creators', '4-hour appearance', 'Maximum event domination', 'Full coordinator team', 'Each girl earns $200'] },
+  { id: '40-girls',  name: '40 Girls',  tagline: '40 models · 4hr appearance',                     models: 40, price: 16000, popular: false, perks: ['40 professional creators', '4-hour appearance', 'Full venue takeover', 'Production team + on-site leads', 'Each girl earns $200'] },
+  { id: '50-girls',  name: 'VIP 50+',   tagline: '50+ models · 4hr+ · premium',                   models: 50, price: 20000, popular: false, perks: ['50+ premium models', '4+ hour coverage', 'Hand-picked creators', 'White-glove management', 'Each girl earns $200+'] },
   { id: 'mega-evt',  name: 'Mega Event',tagline: '75+ models · multi-day · full production',       models: 75, price: 30000, popular: false, perks: ['75+ models', 'Multi-day availability', 'Full production team', 'Enterprise coordination'] },
-  { id: 'festival',  name: 'Festival',  tagline: '100+ models · multi-day · premium talent',       models: 100, price: 40000, popular: false, perks: ['100+ premium models', 'Multi-day event coverage', 'Full logistics + coordination', 'White-glove VIP experience'] },
+  { id: 'festival',  name: 'Festival',  tagline: '100+ models · multi-day · premium creators',       models: 100, price: 40000, popular: false, perks: ['100+ premium models', 'Multi-day event coverage', 'Full logistics + coordination', 'White-glove VIP experience'] },
   { id: 'enterprise-evt', name: 'Enterprise', tagline: '150+ models · full event production',     models: 150, price: 60000, popular: false, perks: ['150+ hand-picked models', 'Multi-day multi-venue', 'Full production + management team', 'Fortune 500 grade'] },
 ];
 
@@ -74,12 +74,12 @@ const SHOOT_MO = [
 
 // Monthly event pricing: $100/girl/hr × 4hrs × models × events/mo
 const EVENT_MO = [
-  { id: 'venue-starter',  name: 'Venue Starter',  tagline: '2 girls × 4 events/mo · $400/girl/event',    models: 2,  events: 4,  price: 3200,   popular: false, perks: ['2 models per event', '4 events / month', 'Event coordination', '$400/girl/event · girl earns $200'] },
-  { id: 'venue-growth',   name: 'Venue Growth',   tagline: '3 girls × 8 events/mo · $400/girl/event',    models: 3,  events: 8,  price: 9600,   popular: true,  perks: ['3 models per event', '8 events / month', 'Dedicated coordinator', '$400/girl/event · girl earns $200'] },
-  { id: 'venue-pro',      name: 'Venue Pro',      tagline: '5 girls × 12 events/mo · $400/girl/event',   models: 5,  events: 12, price: 24000,  popular: false, perks: ['5 models per event', '12 events / month', 'Account manager', '$400/girl/event · girl earns $200'] },
-  { id: 'venue-elite',    name: 'Venue Elite',    tagline: '8 girls × 12 events/mo · $400/girl/event',   models: 8,  events: 12, price: 38400,  popular: false, perks: ['8 models per event', '12 events / month', 'White-glove service', '$400/girl/event · girl earns $200'] },
-  { id: 'venue-mega',     name: 'Venue Mega',     tagline: '10 girls × 16 events/mo · $400/girl/event',  models: 10, events: 16, price: 64000,  popular: false, perks: ['10 models per event', '16 events / month', 'Full production team', '$400/girl/event · girl earns $200'] },
-  { id: 'venue-takeover', name: 'Venue Takeover', tagline: '15 girls × 16 events/mo · $400/girl/event',  models: 15, events: 16, price: 96000,  popular: false, perks: ['15 models per event', '16 events / month', 'Complete event takeover', '$400/girl/event · girl earns $200'] },
+  { id: 'venue-starter',  name: 'Venue Starter',  tagline: '2 girls × 4 events/mo · 30% off one-time rate',    models: 2,  events: 4,  price: 2250,   popular: false, perks: ['2 models per event', '4 events / month', 'Event coordination', '30% off one-time rate'] },
+  { id: 'venue-growth',   name: 'Venue Growth',   tagline: '3 girls × 8 events/mo · 30% off one-time rate',    models: 3,  events: 8,  price: 6700,   popular: true,  perks: ['3 creators per event', '8 events / month', 'Dedicated coordinator', '30% off one-time rate'] },
+  { id: 'venue-pro',      name: 'Venue Pro',      tagline: '5 girls × 12 events/mo · 30% off one-time rate',   models: 5,  events: 12, price: 16800,  popular: false, perks: ['5 models per event', '12 events / month', 'Account manager', '30% off one-time rate'] },
+  { id: 'venue-elite',    name: 'Venue Elite',    tagline: '8 girls × 12 events/mo · 30% off one-time rate',   models: 8,  events: 12, price: 26900,  popular: false, perks: ['8 models per event', '12 events / month', 'White-glove service', '30% off one-time rate'] },
+  { id: 'venue-mega',     name: 'Venue Mega',     tagline: '10 girls × 16 events/mo · 30% off one-time rate',  models: 10, events: 16, price: 44800,  popular: false, perks: ['10 models per event', '16 events / month', 'Full production team', '30% off one-time rate'] },
+  { id: 'venue-takeover', name: 'Venue Takeover', tagline: '15 girls × 16 events/mo · 30% off one-time rate',  models: 15, events: 16, price: 67200,  popular: false, perks: ['15 models per event', '16 events / month', 'Complete event takeover', '30% off one-time rate'] },
 ];
 
 // ── Bottle Girls / VIP Hostess Service ──
@@ -97,100 +97,98 @@ const BOTTLE_OT = [
 ];
 
 const BOTTLE_MO = [
-  { id: 'bottle-mo-starter',  name: 'Venue Starter',   tagline: '2 hostesses × 4 nights/mo',   models: 2,  events: 4,  price: 3200,  popular: false, perks: ['2 bottle girls per night', '4 nights / month', 'Scheduling coordination', 'Each girl earns $200/shift'] },
-  { id: 'bottle-mo-growth',   name: 'Venue Growth',    tagline: '3 hostesses × 8 nights/mo',   models: 3,  events: 8,  price: 9600,  popular: true,  perks: ['3 bottle girls per night', '8 nights / month', 'Dedicated coordinator', 'Each girl earns $200/shift'] },
-  { id: 'bottle-mo-pro',      name: 'Venue Pro',       tagline: '5 hostesses × 12 nights/mo',  models: 5,  events: 12, price: 24000, popular: false, perks: ['5 bottle girls per night', '12 nights / month', 'Account manager', 'Each girl earns $200/shift'] },
-  { id: 'bottle-mo-elite',    name: 'Venue Elite',     tagline: '8 hostesses × 16 nights/mo',  models: 8,  events: 16, price: 51200, popular: false, perks: ['8 bottle girls per night', '16 nights / month', 'White-glove service', 'Each girl earns $200/shift'] },
-  { id: 'bottle-mo-takeover', name: 'Venue Takeover',  tagline: '10 hostesses × 20 nights/mo', models: 10, events: 20, price: 80000, popular: false, perks: ['10 bottle girls per night', '20 nights / month', 'Full nightlife partnership', 'Dedicated team + on-site leads', 'Each girl earns $200/shift'] },
+  { id: 'bottle-mo-starter',  name: 'Venue Starter',   tagline: '2 hostesses × 4 nights/mo · 30% off one-time rate',   models: 2,  events: 4,  price: 2250,  popular: false, perks: ['2 bottle girls per night', '4 nights / month', 'Scheduling coordination', '30% off one-time rate'] },
+  { id: 'bottle-mo-growth',   name: 'Venue Growth',    tagline: '3 hostesses × 8 nights/mo · 30% off one-time rate',   models: 3,  events: 8,  price: 6700,  popular: true,  perks: ['3 bottle girls per night', '8 nights / month', 'Dedicated coordinator', '30% off one-time rate'] },
+  { id: 'bottle-mo-pro',      name: 'Venue Pro',       tagline: '5 hostesses × 12 nights/mo · 30% off one-time rate',  models: 5,  events: 12, price: 16800, popular: false, perks: ['5 bottle girls per night', '12 nights / month', 'Account manager', '30% off one-time rate'] },
+  { id: 'bottle-mo-elite',    name: 'Venue Elite',     tagline: '8 hostesses × 16 nights/mo · 30% off one-time rate',  models: 8,  events: 16, price: 35800, popular: false, perks: ['8 bottle girls per night', '16 nights / month', 'White-glove service', '30% off one-time rate'] },
+  { id: 'bottle-mo-takeover', name: 'Venue Takeover',  tagline: '10 hostesses × 20 nights/mo · 30% off one-time rate', models: 10, events: 20, price: 56000, popular: false, perks: ['10 bottle girls per night', '20 nights / month', 'Full nightlife partnership', 'Dedicated team + on-site leads', '30% off one-time rate'] },
 ];
 
 const REACTION_OT = [
-  { id: 'single',       name: 'Single',        tagline: '1 song · 1 model reaction video',          models: 1, price: 300,   popular: false, perks: ['1 model reaction video', 'Genuine first-listen reaction', 'HD vertical video delivered', 'Ready for IG / TikTok / YouTube'] },
-  { id: 'double',       name: 'Double',         tagline: '2 songs · 1 model reaction videos',        models: 1, price: 550,   popular: false, perks: ['2 song reactions', 'Save $50 vs individual', 'HD vertical videos', 'Ready for all platforms'] },
-  { id: 'triple',       name: 'Triple',         tagline: '3 songs · 1 model reaction videos',        models: 1, price: 625,   popular: true,  perks: ['3 song reactions', 'Save $125 vs individual', 'HD vertical videos', 'Bulk discount applied'] },
-  { id: 'five-pack',    name: '5 Pack',         tagline: '5 songs · 1 model reaction videos',        models: 1, price: 1000,  popular: false, perks: ['5 song reactions', '$200/ea — best per-song rate', 'HD vertical videos', 'Priority turnaround'] },
-  { id: 'livestream',   name: 'Livestream',     tagline: 'Full album · 10+ tracks · live reaction',  models: 1, price: 1500,  popular: false, perks: ['Full album live reaction', '10+ tracks in one session', 'Live broadcast + recording', 'Edited highlights included'] },
-  { id: 'premium-live', name: 'Premium Live',   tagline: 'Full album · livestream + edited shorts',   models: 1, price: 2500,  popular: false, perks: ['Full album livestream', 'Edited short-form clips per track', 'Full VOD recording', 'Social media ready assets'] },
-  { id: 'multi-model',  name: 'Multi-Model',    tagline: '3 models · 3 songs each · 9 total videos', models: 3, price: 3500,  popular: false, perks: ['3 different models react', '3 songs each — 9 total videos', 'Wider audience reach', 'Bulk production discount'] },
-  { id: 'viral-push',   name: 'Viral Push',     tagline: '5 models · full album · livestreams',       models: 5, price: 6000,  popular: false, perks: ['5 models react to your album', 'Individual livestream per model', 'Edited highlights + shorts', 'Maximum exposure campaign'] },
-  { id: 'label-blast',  name: 'Label Blast',    tagline: '10 models · full album · coordinated rollout', models: 10, price: 10000, popular: false, perks: ['10 models react to your album', 'Coordinated release-day push', 'Livestreams + edited shorts', 'Full campaign management'] },
-  { id: 'viral-takeover', name: 'Viral Takeover', tagline: '20 models · multi-album · full campaign', models: 20, price: 20000, popular: false, perks: ['20 models across platforms', 'Multi-week rollout', 'Livestreams + shorts + stories', 'Dedicated campaign manager'] },
-  { id: 'label-domination', name: 'Label Domination', tagline: '50 models · full catalog · ongoing', models: 50, price: 50000, popular: false, perks: ['50+ models across all platforms', 'Full artist catalog promotion', 'Multi-month campaign', 'Enterprise label partnership'] },
+  { id: 'essential-r',       name: 'Essential',        tagline: '1 song · 1 celebrity-connected model reaction',          models: 1, price: 500,   popular: false, perks: ['1 celebrity-connected model reaction video', 'Genuine first-listen reaction', 'HD vertical video delivered', 'Major label quality at indie budget'] },
+  { id: 'professional-r',       name: 'Professional',         tagline: '2 songs · 1 celebrity-connected model reactions',        models: 1, price: 900,   popular: false, perks: ['2 celebrity-connected song reactions', 'Save $100 vs individual', 'HD vertical videos', 'Ready for all platforms'] },
+  { id: 'premium-r',       name: 'Premium',         tagline: '3 songs · 1 celebrity-connected model reactions',        models: 1, price: 1200,   popular: true,  perks: ['3 celebrity-connected song reactions', 'Save $300 vs individual', 'HD vertical videos', 'Bulk discount applied'] },
+  { id: 'elite-r',    name: 'Elite',         tagline: '5 songs · 1 celebrity-connected model reactions',        models: 1, price: 1800,  popular: false, perks: ['5 celebrity-connected song reactions', '$360/ea — best per-song rate', 'HD vertical videos', 'Priority turnaround'] },
+  { id: 'livestream',   name: 'Livestream',     tagline: 'Full album · 10+ tracks · live reaction',  models: 1, price: 2500,  popular: false, perks: ['Full album live reaction', '10+ tracks in one session', 'Live broadcast + recording', 'Edited highlights included'] },
+  { id: 'premium-live', name: 'Premium Live',   tagline: 'Full album · livestream + edited shorts',   models: 1, price: 4000,  popular: false, perks: ['Full album livestream', 'Edited short-form clips per track', 'Full VOD recording', 'Social media ready assets'] },
+  { id: 'multi-model',  name: 'Multi-Creator',    tagline: '3 celebrity-connected creators · 3 songs each · 9 total videos', models: 3, price: 4500,  popular: false, perks: ['3 different celebrity-connected creators react', '3 songs each — 9 total videos', 'Wider audience reach', 'Bulk production discount'] },
+  { id: 'viral-push',   name: 'Viral Push',     tagline: '5 celebrity-connected creators · full album · livestreams',       models: 5, price: 7500,  popular: false, perks: ['5 celebrity-connected creators react to your album', 'Individual livestream per model', 'Edited highlights + shorts', 'Maximum exposure campaign'] },
+  { id: 'label-blast',  name: 'Label Blast',    tagline: '10 celebrity-connected creators · full album · coordinated rollout', models: 10, price: 15000, popular: false, perks: ['10 celebrity-connected creators react to your album', 'Coordinated release-day push', 'Livestreams + edited shorts', 'Full campaign management'] },
+  { id: 'viral-takeover', name: 'Viral Takeover', tagline: '20 celebrity-connected creators · multi-album · full campaign', models: 20, price: 30000, popular: false, perks: ['20 celebrity-connected creators across platforms', 'Multi-week rollout', 'Livestreams + shorts + stories', 'Dedicated campaign manager'] },
+  { id: 'label-domination', name: 'Label Domination', tagline: '50 celebrity-connected creators · full catalog · ongoing', models: 50, price: 75000, popular: false, perks: ['50+ celebrity-connected creators across all platforms', 'Full artist catalog promotion', 'Multi-month campaign', 'Enterprise label partnership'] },
 ];
 
 const REACTION_MO = [
-  { id: 'starter-r',  name: 'Starter',    tagline: '4 reactions/mo · 1 model',             models: 1,  price: 800,   popular: false, perks: ['4 reaction videos / month', '1 dedicated model', 'Consistent content flow', 'Priority scheduling'] },
-  { id: 'growth-r',   name: 'Growth',     tagline: '8 reactions/mo · 2 models',             models: 2,  price: 1500,  popular: true,  perks: ['8 reaction videos / month', '2 rotating models', 'Wider audience reach', 'Dedicated coordinator'] },
-  { id: 'pro-r',      name: 'Pro',        tagline: '15 reactions/mo · 3 models + 1 live',   models: 3,  price: 2800,  popular: false, perks: ['15 reactions + 1 livestream/mo', '3 rotating models', 'Album release support', 'Account manager'] },
-  { id: 'label-r',    name: 'Label',      tagline: '30 reactions/mo · 5 models + 2 lives',  models: 5,  price: 5000,  popular: false, perks: ['30 reactions + 2 livestreams/mo', '5 rotating models', 'Full release campaigns', 'White-glove service'] },
+  { id: 'essential-r-m',  name: 'Essential',    tagline: '4 reactions/mo · 1 celebrity-connected model',             models: 1,  price: 1500,   popular: false, perks: ['4 celebrity-connected reaction videos / month', '1 dedicated celebrity-connected model', 'Consistent content flow', 'Compounding growth strategy'] },
+  { id: 'professional-r-m',   name: 'Professional',     tagline: '8 reactions/mo · 2 celebrity-connected creators',             models: 2, price: 2800,  popular: true,  perks: ['8 celebrity-connected reaction videos / month', '2 rotating celebrity-connected creators', 'Wider audience reach', 'Dedicated coordinator'] },
+  { id: 'premium-r-m',      name: 'Premium',       tagline: '15 reactions/mo · 3 celebrity-connected creators + 1 live',   models: 3, price: 4500,  popular: false, perks: ['15 celebrity-connected reactions + 1 livestream/mo', '3 rotating celebrity-connected creators', 'Album release support', 'Account manager'] },
+  { id: 'elite-r-m',    name: 'Elite',      tagline: '30 reactions/mo · 5 celebrity-connected creators + 2 lives',  models: 5, price: 7500,  popular: false, perks: ['30 celebrity-connected reactions + 2 livestreams/mo', '5 rotating celebrity-connected creators', 'Full release campaigns', 'White-glove service'] },
 ];
 
 const UGC_OT = [
-  { id: 'single-ugc',   name: 'Single Reel',     tagline: '1 model · 1 branded reel or skit',          models: 1, price: 300,   popular: false, perks: ['1 custom promotional reel', 'Model creates content to your brief', 'HD vertical video delivered', 'Ready for IG / TikTok / YouTube'] },
-  { id: 'double-ugc',   name: '2-Reel Pack',     tagline: '1 model · 2 branded reels',                 models: 1, price: 500,   popular: false, perks: ['2 custom promotional reels', 'Different hooks or angles', 'HD vertical videos', 'Ready for all platforms'] },
-  { id: 'triple-ugc',   name: '3-Reel Pack',     tagline: '1 model · 3 branded reels or skits',        models: 1, price: 750,   popular: true,  perks: ['3 custom reels or skits', 'Variety of creative angles', 'Best for A/B testing content', 'Priority turnaround'] },
-  { id: 'five-ugc',     name: '5-Reel Pack',     tagline: '1 model · 5 branded reels',                 models: 1, price: 1200,  popular: false, perks: ['5 custom reels', '$240/ea — best per-reel rate', 'Full content series', 'Priority turnaround'] },
-  { id: 'multi-ugc',    name: 'Multi-Model',     tagline: '3 models · 2 reels each · 6 total',         models: 3, price: 1500,  popular: false, perks: ['3 different creators', '2 reels each — 6 total videos', 'Wider audience appeal', 'Diverse content styles'] },
-  { id: 'campaign-ugc', name: 'Full Campaign',   tagline: '5 models · 2 reels each · 10 total',        models: 5, price: 2500,  popular: false, perks: ['5 different creators', '2 reels each — 10 total videos', 'Full brand campaign rollout', 'Account manager included'] },
-  { id: 'mega-ugc',     name: 'Mega Campaign',   tagline: '10 models · 2 reels each · 20 total',       models: 10, price: 5000,  popular: false, perks: ['10 different creators', '2 reels each — 20 total videos', 'Full content calendar', 'Dedicated account manager'] },
-  { id: 'enterprise-ugc', name: 'Enterprise',    tagline: '20 models · 2 reels each · 40 total',       models: 20, price: 10000, popular: false, perks: ['20 different creators', '2 reels each — 40 total videos', 'Multi-platform rollout', 'White-glove service + strategy'] },
-  { id: 'takeover-ugc', name: 'Brand Takeover',   tagline: '50 models · 2 reels each · 100 total',     models: 50, price: 25000, popular: false, perks: ['50+ creators', '2 reels each — 100 total videos', 'Full social media management', 'Enterprise campaign team'] },
-  { id: 'domination-ugc', name: 'Total Domination', tagline: '100+ models · 2 reels each · 200 total', models: 100, price: 50000, popular: false, perks: ['100+ creators network-wide', '2 reels each — 200 total videos', 'Full creative direction + strategy', 'Enterprise partnership'] },
+  { id: 'essential-ugc',   name: 'Essential',     tagline: '1 model · 1 premium branded reel',          models: 1, price: 500,   popular: false, perks: ['1 premium promotional reel', 'Celebrity-connected creator', 'HD vertical video delivered', 'Major label quality at indie budget'] },
+  { id: 'professional-ugc',   name: 'Professional',     tagline: '1 model · 2 branded reels',                 models: 1, price: 900,   popular: false, perks: ['2 premium promotional reels', 'Different hooks & angles', 'HD vertical videos', 'Ready for all platforms'] },
+  { id: 'premium-ugc',   name: 'Premium',     tagline: '1 model · 3 branded reels',        models: 1, price: 1200,   popular: true,  perks: ['3 premium reels or skits', 'Variety of creative angles', 'Best for A/B testing content', 'Priority turnaround'] },
+  { id: 'elite-ugc',     name: 'Elite',     tagline: '1 model · 5 branded reels',                 models: 1, price: 1800,  popular: false, perks: ['5 premium reels', '$360/ea — best per-reel rate', 'Full content series', 'Priority turnaround'] },
+  { id: 'multi-ugc',    name: 'Multi-Creator',     tagline: '3 creators · 2 reels each · 6 total',         models: 3, price: 2500,  popular: false, perks: ['3 celebrity-connected creators', '2 reels each — 6 total videos', 'Wider audience appeal', 'Diverse content styles'] },
+  { id: 'campaign-ugc', name: 'Brand Campaign',   tagline: '5 creators · 2 reels each · 10 total',        models: 5, price: 4000,  popular: false, perks: ['5 celebrity-connected creators', '2 reels each — 10 total videos', 'Full brand campaign rollout', 'Account manager included'] },
+  { id: 'mega-ugc',     name: 'Mega Campaign',   tagline: '10 creators · 2 reels each · 20 total',       models: 10, price: 7500,  popular: false, perks: ['10 celebrity-connected creators', '2 reels each — 20 total videos', 'Full content calendar', 'Dedicated account manager'] },
+  { id: 'enterprise-ugc', name: 'Enterprise',    tagline: '20 creators · 2 reels each · 40 total',       models: 20, price: 15000, popular: false, perks: ['20 celebrity-connected creators', '2 reels each — 40 total videos', 'Multi-platform rollout', 'White-glove service + strategy'] },
+  { id: 'takeover-ugc', name: 'Brand Takeover',   tagline: '50 creators · 2 reels each · 100 total',     models: 50, price: 35000, popular: false, perks: ['50+ celebrity-connected creators', '2 reels each — 100 total videos', 'Full social media management', 'Enterprise campaign team'] },
+  { id: 'domination-ugc', name: 'Total Domination', tagline: '100+ creators · 2 reels each · 200 total', models: 100, price: 75000, popular: false, perks: ['100+ celebrity-connected creators', '2 reels each — 200 total videos', 'Full creative direction + strategy', 'Enterprise partnership'] },
 ];
 
 const UGC_MO = [
-  { id: 'starter-u',  name: 'Starter',   tagline: '4 reels/mo · 1 model',             models: 1, price: 800,   popular: false, perks: ['4 branded reels / month', '1 dedicated creator', 'Consistent content flow', 'Priority scheduling'] },
-  { id: 'growth-u',   name: 'Growth',    tagline: '6 reels/mo · 2 models',             models: 2, price: 1500,  popular: true,  perks: ['6 branded reels / month', '2 rotating creators', 'Wider content variety', 'Dedicated coordinator'] },
-  { id: 'pro-u',      name: 'Pro',       tagline: '10 reels/mo · 3 models',            models: 3, price: 2500,  popular: false, perks: ['10 branded reels / month', '3 rotating creators', 'Full content calendar', 'Account manager'] },
-  { id: 'agency-u',   name: 'Agency',    tagline: '18 reels/mo · 5 models',            models: 5, price: 4500,  popular: false, perks: ['18 branded reels / month', '5 rotating creators', 'Brand campaign management', 'White-glove service'] },
+  { id: 'essential-u',  name: 'Essential',   tagline: '4 reels/mo · 1 celebrity-connected creator',             models: 1, price: 1500,   popular: false, perks: ['4 premium branded reels / month', '1 dedicated celebrity-connected creator', 'Consistent content flow', 'Compounding growth strategy'] },
+  { id: 'professional-u',   name: 'Professional',    tagline: '8 reels/mo · 2 celebrity-connected creators',             models: 2, price: 2800,  popular: true,  perks: ['8 premium branded reels / month', '2 rotating celebrity-connected creators', 'Wider content variety', 'Dedicated coordinator'] },
+  { id: 'premium-u',      name: 'Premium',       tagline: '15 reels/mo · 3 celebrity-connected creators',            models: 3, price: 4500,  popular: false, perks: ['15 premium branded reels / month', '3 rotating celebrity-connected creators', 'Full content calendar', 'Account manager'] },
+  { id: 'elite-u',   name: 'Elite',    tagline: '30 reels/mo · 5 celebrity-connected creators',            models: 5, price: 7500,  popular: false, perks: ['30 premium branded reels / month', '5 rotating celebrity-connected creators', 'Brand campaign management', 'White-glove service'] },
 ];
 
 // ── Brand Ambassadors (model comes to your business, creates reels/promos on-site) ──
 const BIZ_OT = [
-  { id: 'biz-solo',      name: 'Solo',            tagline: '1 model · 2hr · on-site content',            models: 1,  price: 300,   popular: false, perks: ['1 model at your location', '2-hour content session', '3–5 reels & stories created', 'South Florida'] },
-  { id: 'biz-duo',       name: 'Duo',             tagline: '2 models · 2hr · on-site content',            models: 2,  price: 450,   popular: false, perks: ['2 models at your location', '2-hour content session', '5–8 reels & stories', 'Coordinated content'] },
-  { id: 'biz-content',   name: 'Content Day',     tagline: '1 model · 4hr · multiple looks & scenes',     models: 1,  price: 400,   popular: true,  perks: ['1 model · full half-day', '4-hour session · multiple setups', '8–12 reels, posts & stories', 'Wardrobe changes included'] },
-  { id: 'biz-full',      name: 'Full Production', tagline: '2 models · 4hr · full content package',        models: 2,  price: 700,   popular: false, perks: ['2 models · full half-day', '4-hour session · multiple setups', '12–20 content pieces', 'Full brand content library'] },
-  { id: 'biz-premium',   name: 'Premium',         tagline: '3 models · 4hr · high-volume content',        models: 3,  price: 950,   popular: false, perks: ['3 models · full half-day', '4-hour session', '20+ content pieces', 'Dedicated content coordinator'] },
-  { id: 'biz-elite',     name: 'Elite',           tagline: '5 models · full day · brand takeover',         models: 5,  price: 1800,  popular: false, perks: ['5 models at your location', 'Full day (6–8 hours)', '40+ content pieces', 'Full brand content blitz'] },
-  { id: 'biz-mega',      name: 'Mega',            tagline: '8 models · full day · max content',            models: 8,  price: 3500,  popular: false, perks: ['8 models at your location', 'Full day (6–8 hours)', '75+ content pieces', 'On-site coordinator + content manager'] },
-  { id: 'biz-vip',       name: 'VIP Takeover',    tagline: '10+ models · full day · total brand takeover', models: 10, price: 5500,  popular: false, perks: ['10+ brand ambassadors', 'Full day production', '100+ content pieces', 'Dedicated production team'] },
-  { id: 'biz-grand',     name: 'Grand Takeover',  tagline: '15+ models · full day · ultimate brand event', models: 15, price: 8500,  popular: false, perks: ['15+ brand ambassadors', 'Full day production (8+ hours)', '150+ content pieces', 'Full production team + model leads'] },
-  { id: 'biz-franchise', name: 'Franchise',      tagline: '20+ models · multi-location · week-long',    models: 20, price: 12000, popular: false, perks: ['20+ brand ambassadors', 'Multi-location coverage', '200+ content pieces', 'Dedicated production manager'] },
-  { id: 'biz-enterprise', name: 'Enterprise',    tagline: '30+ models · ongoing · full brand rollout',   models: 30, price: 18000, popular: false, perks: ['30+ brand ambassadors', 'Multi-week campaign', '500+ content pieces', 'Full creative + production team'] },
-  { id: 'biz-national', name: 'National',       tagline: '50+ models · multi-city · full activation',  models: 50, price: 35000, popular: false, perks: ['50+ brand ambassadors', 'Multi-city activation', '1000+ content pieces', 'National campaign management'] },
-  { id: 'biz-domination', name: 'Total Domination', tagline: '100+ models · nationwide · ongoing',     models: 100, price: 50000, popular: false, perks: ['100+ brand ambassadors', 'Nationwide coverage', 'Unlimited content production', 'Enterprise partnership team'] },
+  { id: 'biz-essential',      name: 'Essential',            tagline: '1 celebrity-connected model · 2hr · on-site content',            models: 1,  price: 500,   popular: false, perks: ['1 celebrity-connected model at your location', '2-hour premium content session', '3–5 reels & stories created', 'Major brand quality'] },
+  { id: 'biz-professional',       name: 'Professional',             tagline: '2 celebrity-connected creators · 2hr · on-site content',            models: 2,  price: 750,   popular: false, perks: ['2 celebrity-connected creators at your location', '2-hour premium content session', '5–8 reels & stories', 'Coordinated premium content'] },
+  { id: 'biz-premium',   name: 'Premium',     tagline: '1 celebrity-connected model · 4hr · multiple looks & scenes',     models: 1,  price: 900,   popular: true,  perks: ['1 celebrity-connected model · full half-day', '4-hour session · multiple setups', '8–12 reels, posts & stories', 'Wardrobe changes included'] },
+  { id: 'biz-elite',      name: 'Elite', tagline: '2 celebrity-connected creators · 4hr · full content package',        models: 2,  price: 1500,   popular: false, perks: ['2 celebrity-connected creators · full half-day', '4-hour session · multiple setups', '12–20 content pieces', 'Full brand content library'] },
+  { id: 'biz-executive',   name: 'Executive',         tagline: '3 celebrity-connected creators · 4hr · high-volume content',        models: 3,  price: 2000,  popular: false, perks: ['3 celebrity-connected creators · full half-day', '4-hour session', '20+ content pieces', 'Dedicated content coordinator'] },
+  { id: 'biz-vip',     name: 'VIP Takeover',           tagline: '5 celebrity-connected creators · full day · brand takeover',         models: 5,  price: 3500,  popular: false, perks: ['5 celebrity-connected creators at your location', 'Full day (6–8 hours)', '40+ content pieces', 'Full brand content blitz'] },
+  { id: 'biz-mega',      name: 'Mega',            tagline: '8 celebrity-connected creators · full day · max content',            models: 8,  price: 5500,  popular: false, perks: ['8 celebrity-connected creators at your location', 'Full day (6–8 hours)', '75+ content pieces', 'On-site coordinator + content manager'] },
+  { id: 'biz-grand',     name: 'Grand Takeover',    tagline: '15+ celebrity-connected creators · full day · ultimate brand event', models: 15, price: 10000, popular: false, perks: ['15+ celebrity-connected brand ambassadors', 'Full day production (8+ hours)', '150+ content pieces', 'Full production team + model leads'] },
+  { id: 'biz-franchise', name: 'Franchise',      tagline: '20+ celebrity-connected creators · multi-location · week-long',    models: 20, price: 15000, popular: false, perks: ['20+ celebrity-connected brand ambassadors', 'Multi-location coverage', '200+ content pieces', 'Dedicated production manager'] },
+  { id: 'biz-enterprise', name: 'Enterprise',    tagline: '30+ celebrity-connected creators · ongoing · full brand rollout',   models: 30, price: 25000, popular: false, perks: ['30+ celebrity-connected brand ambassadors', 'Multi-week campaign', '500+ content pieces', 'Full creative + production team'] },
+  { id: 'biz-national', name: 'National',       tagline: '50+ celebrity-connected creators · multi-city · full activation',  models: 50, price: 45000, popular: false, perks: ['50+ celebrity-connected brand ambassadors', 'Multi-city activation', '1000+ content pieces', 'National campaign management'] },
+  { id: 'biz-domination', name: 'Total Domination', tagline: '100+ celebrity-connected creators · nationwide · ongoing',     models: 100, price: 75000, popular: false, perks: ['100+ celebrity-connected brand ambassadors', 'Nationwide coverage', 'Unlimited content production', 'Enterprise partnership team'] },
 ];
 
 const BIZ_MO = [
-  { id: 'biz-starter-m',  name: 'Starter',   tagline: '2 content visits/mo · 1 model',        models: 1, price: 700,   popular: false, perks: ['2 on-site visits / month', '1 dedicated model', '6–10 reels & stories / month', 'Consistent brand content'] },
-  { id: 'biz-growth-m',   name: 'Growth',    tagline: '4 visits/mo · 1–2 models',             models: 2, price: 1400,  popular: true,  perks: ['4 on-site visits / month', '1–2 rotating models', '12–20 reels & stories / month', 'Content calendar planning'] },
-  { id: 'biz-pro-m',      name: 'Pro',       tagline: '8 visits/mo · 2–3 models',             models: 3, price: 2500,  popular: false, perks: ['8 on-site visits / month', '2–3 rotating models', '25–40 content pieces / month', 'Dedicated account manager'] },
-  { id: 'biz-agency-m',   name: 'Agency',    tagline: '12 visits/mo · 3+ models',             models: 5, price: 4000,  popular: false, perks: ['12 on-site visits / month', '3+ rotating models', '50+ content pieces / month', 'Full social media content team'] },
+  { id: 'biz-essential-m',  name: 'Essential',   tagline: '2 content visits/mo · 1 celebrity-connected model · compounding growth',        models: 1, price: 1200,   popular: false, perks: ['2 on-site visits / month', '1 dedicated celebrity-connected model', '6–10 premium reels & stories / month', 'Compounding growth strategy'] },
+  { id: 'biz-professional-m',   name: 'Professional',    tagline: '4 visits/mo · 2 celebrity-connected creators',             models: 2, price: 2500,  popular: true,  perks: ['4 on-site visits / month', '2 rotating celebrity-connected creators', '12–20 premium reels & stories / month', 'Content calendar planning'] },
+  { id: 'biz-premium-m',      name: 'Premium',       tagline: '8 visits/mo · 3 celebrity-connected creators',             models: 3, price: 4500,  popular: false, perks: ['8 on-site visits / month', '3 rotating celebrity-connected creators', '25–40 premium content pieces / month', 'Dedicated account manager'] },
+  { id: 'biz-elite-m',   name: 'Elite',    tagline: '12 visits/mo · 5 celebrity-connected creators',             models: 5, price: 7500,  popular: false, perks: ['12 on-site visits / month', '5 rotating celebrity-connected creators', '50+ premium content pieces / month', 'Full social media content team'] },
 ];
 
 // ── Commercial Productions (script reading, spoken roles, acting) ──
 const COMMERCIAL_OT = [
-  { id: 'comm-solo',        name: 'Solo',            tagline: '1 model · half-day · script & spoken role',         models: 1,  price: 699,   popular: false, perks: ['1 professional model / actress', 'Half-day (4 hours) on set', 'Script reading & spoken delivery', 'Commercial-ready performance'] },
-  { id: 'comm-duo',         name: 'Duo',             tagline: '2 models · half-day · scripted commercial',         models: 2,  price: 1250,  popular: false, perks: ['2 professional models / actresses', 'Half-day (4 hours) on set', 'Scripted dialogue & interaction', 'Coordinated commercial performance'] },
-  { id: 'comm-trio',        name: 'Trio',            tagline: '3 models · half-day · full scripted production',    models: 3,  price: 1800,  popular: true,  perks: ['3 professional models / actresses', 'Half-day (4 hours) on set', 'Multi-person scripted scenes', 'Directed commercial performance'] },
-  { id: 'comm-full-solo',   name: 'Full Day Solo',   tagline: '1 model · full day · multi-scene commercial',       models: 1,  price: 1200,   popular: false, perks: ['1 professional model / actress', 'Full day (6–8 hours) on set', 'Multiple scenes & wardrobe changes', 'Professional script delivery'] },
-  { id: 'comm-full-duo',    name: 'Full Day Duo',    tagline: '2 models · full day · multi-scene commercial',      models: 2,  price: 2200,  popular: false, perks: ['2 professional models / actresses', 'Full day (6–8 hours) on set', 'Multi-scene scripted commercial', 'Wardrobe changes included'] },
-  { id: 'comm-squad',       name: 'Squad',           tagline: '5 models · half-day · large-cast commercial',       models: 5,  price: 2750,  popular: false, perks: ['5 professional models / actresses', 'Half-day (4 hours) on set', 'Large cast scripted scenes', 'On-set coordinator included'] },
-  { id: 'comm-full-squad',  name: 'Full Day Squad',  tagline: '5 models · full day · multi-scene production',      models: 5,  price: 4500,  popular: false, perks: ['5 professional models / actresses', 'Full day (6–8 hours)', 'Multi-scene commercial production', 'On-set coordinator + model lead'] },
-  { id: 'comm-ensemble',    name: 'Ensemble',        tagline: '8 models · full day · big-budget commercial',       models: 8,  price: 6500,  popular: false, perks: ['8 professional models / actresses', 'Full day production', 'Large-scale scripted commercial', 'Full production coordination'] },
-  { id: 'comm-mega',        name: 'Mega Production', tagline: '10+ models · full day · premium commercial',        models: 10, price: 9000,  popular: false, perks: ['10+ models / actresses', 'Full day production (8+ hours)', 'Multi-scene premium commercial', 'Dedicated production manager'] },
-  { id: 'comm-blockbuster', name: 'Blockbuster',     tagline: '15+ models · multi-day · national commercial',      models: 15, price: 15000, popular: false, perks: ['15+ professional talent', 'Multi-day production', 'National-quality commercial', 'Full production team + casting director'] },
-  { id: 'comm-enterprise',  name: 'Enterprise',      tagline: '25+ models · multi-day · broadcast-ready',          models: 25, price: 25000, popular: false, perks: ['25+ professional talent', 'Multi-day multi-location', 'Broadcast-quality commercial', 'Full creative + production team'] },
-  { id: 'comm-national',    name: 'National',        tagline: '50+ models · full production · TV/streaming ready', models: 50, price: 50000, popular: false, perks: ['50+ hand-picked talent', 'Multi-day full production', 'TV/streaming broadcast quality', 'Enterprise production partnership'] },
+  { id: 'comm-essential',        name: 'Essential',            tagline: '1 celebrity-connected model · half-day · script & spoken role',         models: 1,  price: 999,   popular: false, perks: ['1 celebrity-connected model / actress', 'Half-day (4 hours) on set', 'Script reading & spoken delivery', 'Major label quality at indie budget'] },
+  { id: 'comm-professional',         name: 'Professional',             tagline: '2 celebrity-connected creators · half-day · scripted commercial',         models: 2,  price: 1750,  popular: false, perks: ['2 celebrity-connected creators / actresses', 'Half-day (4 hours) on set', 'Scripted dialogue & interaction', 'Coordinated commercial performance'] },
+  { id: 'comm-premium',        name: 'Premium',            tagline: '3 celebrity-connected creators · half-day · full scripted production',    models: 3,  price: 2500,  popular: true,  perks: ['3 celebrity-connected creators / actresses', 'Half-day (4 hours) on set', 'Multi-person scripted scenes', 'Directed commercial performance'] },
+  { id: 'comm-elite',   name: 'Elite',   tagline: '1 celebrity-connected model · full day · multi-scene commercial',       models: 1,  price: 1800,  popular: false, perks: ['1 celebrity-connected model / actress', 'Full day (6–8 hours) on set', 'Multiple scenes & wardrobe changes', 'Professional script delivery'] },
+  { id: 'comm-executive',    name: 'Executive',    tagline: '2 celebrity-connected creators · full day · multi-scene commercial',      models: 2,  price: 3000,  popular: false, perks: ['2 celebrity-connected creators / actresses', 'Full day (6–8 hours) on set', 'Multi-scene scripted commercial', 'Wardrobe changes included'] },
+  { id: 'comm-vip',       name: 'VIP',           tagline: '5 celebrity-connected creators · half-day · large-cast commercial',       models: 5,  price: 4000,  popular: false, perks: ['5 celebrity-connected creators / actresses', 'Half-day (4 hours) on set', 'Large cast scripted scenes', 'On-set coordinator included'] },
+  { id: 'comm-royal',  name: 'Royal',  tagline: '5 celebrity-connected creators · full day · multi-scene production',      models: 5,  price: 6000,  popular: false, perks: ['5 celebrity-connected creators / actresses', 'Full day (6–8 hours)', 'Multi-scene commercial production', 'On-set coordinator + model lead'] },
+  { id: 'comm-majestic',    name: 'Majestic',        tagline: '8 celebrity-connected creators · full day · big-budget commercial',       models: 8,  price: 9000,  popular: false, perks: ['8 celebrity-connected creators / actresses', 'Full day production', 'Large-scale scripted commercial', 'Full production coordination'] },
+  { id: 'comm-blockbuster', name: 'Blockbuster',     tagline: '15+ celebrity-connected creators · multi-day · national commercial',      models: 15, price: 20000, popular: false, perks: ['15+ celebrity-connected professional creators', 'Multi-day production', 'National-quality commercial', 'Full production team + casting director'] },
+  { id: 'comm-empire',  name: 'Empire',      tagline: '25+ celebrity-connected creators · multi-day · broadcast-ready',          models: 25, price: 35000, popular: false, perks: ['25+ celebrity-connected professional creators', 'Multi-day multi-location', 'Broadcast-quality commercial', 'Full creative + production team'] },
+  { id: 'comm-legacy',    name: 'Legacy',        tagline: '50+ celebrity-connected creators · full production · TV/streaming ready', models: 50, price: 75000, popular: false, perks: ['50+ celebrity-connected hand-picked creators', 'Multi-day full production', 'TV/streaming broadcast quality', 'Enterprise production partnership'] },
 ];
 
 const COMMERCIAL_MO = [
-  { id: 'comm-starter-m',  name: 'Starter',   tagline: '2 commercial days/mo · 1 model',        models: 1, price: 1299,   popular: false, perks: ['2 commercial shoot days / month', '1 dedicated model / actress', 'Script reading & spoken roles', 'Priority scheduling'] },
-  { id: 'comm-growth-m',   name: 'Growth',    tagline: '4 commercial days/mo · 1–2 models',     models: 2, price: 2400,  popular: true,  perks: ['4 commercial shoot days / month', '1–2 rotating models / actresses', 'Script delivery & dialogue', 'Dedicated coordinator'] },
-  { id: 'comm-pro-m',      name: 'Pro',       tagline: '8 commercial days/mo · 2–3 models',     models: 3, price: 3500,  popular: false, perks: ['8 commercial shoot days / month', '2–3 rotating models / actresses', 'Full commercial production support', 'Account manager'] },
-  { id: 'comm-agency-m',   name: 'Agency',    tagline: '12 commercial days/mo · 5+ models',     models: 5, price: 6000,  popular: false, perks: ['12 commercial shoot days / month', '5+ rotating talent', 'Ongoing commercial campaign support', 'White-glove service'] },
-  { id: 'comm-enterprise-m', name: 'Enterprise', tagline: '20+ days/mo · 10+ models · dedicated team', models: 10, price: 12000, popular: false, perks: ['20+ commercial days / month', '10+ models on roster', 'Dedicated casting + production', 'Enterprise partnership'] },
+  { id: 'comm-essential-m',  name: 'Essential',   tagline: '2 commercial days/mo · 1 celebrity-connected model',        models: 1, price: 2000,   popular: false, perks: ['2 commercial shoot days / month', '1 dedicated celebrity-connected model / actress', 'Script reading & spoken roles', 'Compounding growth strategy'] },
+  { id: 'comm-professional-m',   name: 'Professional',    tagline: '4 commercial days/mo · 2 celebrity-connected creators',     models: 2, price: 3500,  popular: true,  perks: ['4 commercial shoot days / month', '2 rotating celebrity-connected creators / actresses', 'Script delivery & dialogue', 'Dedicated coordinator'] },
+  { id: 'comm-premium-m',      name: 'Premium',       tagline: '8 commercial days/mo · 3 celebrity-connected creators',     models: 3, price: 5500,  popular: false, perks: ['8 commercial shoot days / month', '3 rotating celebrity-connected creators / actresses', 'Full commercial production support', 'Account manager'] },
+  { id: 'comm-elite-m',   name: 'Elite',    tagline: '12 commercial days/mo · 5 celebrity-connected creators',     models: 5, price: 9000,  popular: false, perks: ['12 commercial shoot days / month', '5+ rotating celebrity-connected creators', 'Ongoing commercial campaign support', 'White-glove service'] },
+  { id: 'comm-royal-m', name: 'Royal', tagline: '20+ days/mo · 10 celebrity-connected creators · dedicated team', models: 10, price: 15000, popular: false, perks: ['20+ commercial days / month', '10+ celebrity-connected creators on roster', 'Dedicated casting + production', 'Enterprise partnership'] },
 ];
 
 // ── Videographer / Photographer Add-ons ──
@@ -199,6 +197,83 @@ const CREW_ADDONS = [
   { id: 'video-2hr',      name: 'Videographer',         tagline: '2hr session · professional video',        price: 300,  perks: ['Professional videographer', '2-hour session', 'Edited reels & raw footage', 'South Florida'] },
   { id: 'combo-2hr',      name: 'Photo + Video',        tagline: '2hr session · photo & video combo',       price: 450,  popular: true, perks: ['Photographer + videographer', '2-hour session', 'Photos + edited video', 'Best value combo'] },
   { id: 'combo-4hr',      name: 'Half Day Combo',       tagline: '4hr session · photo & video',             price: 850,  perks: ['Photographer + videographer', '4-hour session', 'Full content production', 'Multiple setups & locations'] },
+];
+
+// ── Story Reposts (influencer posts brand content to their Stories) ──
+const STORY_REPOSTS_OT = [
+  { id: 'story-essential',   name: 'Essential',     tagline: '1 celebrity-connected model · 1 story frame · 24hr visibility',     models: 1, price: 150,   popular: false, perks: ['1 celebrity-connected model posts your content to their Story', 'Single frame (15s)', '24-hour visibility', 'Swipe-up link available', 'Major label quality at indie budget'] },
+  { id: 'story-professional',      name: 'Professional',        tagline: '1 celebrity-connected model · 3-5 story frames · full narrative',  models: 1, price: 350,  popular: true,  perks: ['1 celebrity-connected model posts 3-5 Story frames', 'Full narrative arc (hook → showcase → CTA)', '24-hour visibility', 'Swipe-up link included', 'Best for conversions'] },
+  { id: 'story-premium',      name: 'Premium',    tagline: '2 celebrity-connected creators · 3-5 frames each · dual reach',       models: 2, price: 600,  popular: false, perks: ['2 celebrity-connected creators post Story sets', 'Dual audience reach', 'Coordinated messaging', 'Swipe-up links included'] },
+  { id: 'story-elite',     name: 'Elite',   tagline: '3 celebrity-connected creators · 3-5 frames each · wide reach',       models: 3, price: 900,  popular: false, perks: ['3 celebrity-connected creators post Story sets', 'Maximum Story reach', 'Coordinated campaign', 'Swipe-up links included'] },
+  { id: 'story-vip',    name: 'VIP',      tagline: '5 celebrity-connected creators · 3-5 frames each · viral push',      models: 5, price: 1500,  popular: false, perks: ['5 celebrity-connected creators post Story sets', 'Viral Story campaign', 'Coordinated rollout', 'Swipe-up links included'] },
+  { id: 'story-royal', name: 'Royal',   tagline: '10 celebrity-connected creators · 3-5 frames each · full takeover',    models: 10, price: 2800, popular: false, perks: ['10 celebrity-connected creators post Story sets', 'Full Story takeover', 'Dedicated coordinator', 'Swipe-up links included'] },
+];
+
+const STORY_REPOSTS_MO = [
+  { id: 'story-essential-m',  name: 'Essential',   tagline: '4 story sets/mo · 1 celebrity-connected model',             models: 1, price: 1200,   popular: false, perks: ['4 Story sets / month', '1 dedicated celebrity-connected model', 'Consistent Story presence', 'Compounding growth strategy'] },
+  { id: 'story-professional-m',   name: 'Professional',    tagline: '8 story sets/mo · 2 celebrity-connected creators',            models: 2, price: 2200,  popular: true,  perks: ['8 Story sets / month', '2 rotating celebrity-connected creators', 'Wider Story reach', 'Dedicated coordinator'] },
+  { id: 'story-premium-m',      name: 'Premium',       tagline: '15 story sets/mo · 3 celebrity-connected creators',           models: 3, price: 3500,  popular: false, perks: ['15 Story sets / month', '3 rotating celebrity-connected creators', 'Full Story calendar', 'Account manager'] },
+  { id: 'story-elite-m',   name: 'Elite',    tagline: '30 story sets/mo · 5 celebrity-connected creators',           models: 5, price: 6000,  popular: false, perks: ['30 Story sets / month', '5 rotating celebrity-connected creators', 'Full Story campaign management', 'White-glove service'] },
+];
+
+// ── Collab Reposts (influencer co-authors post with brand - appears on both feeds) ──
+const COLLAB_REPOSTS_OT = [
+  { id: 'collab-essential',   name: 'Essential',     tagline: '1 celebrity-connected model · 1 collab post · dual feed',         models: 1, price: 500,   popular: false, perks: ['1 celebrity-connected model co-authors post with your brand', 'Appears on both model\'s and brand\'s feeds', 'Dual audience reach', 'Shared engagement metrics', 'Major label quality at indie budget'] },
+  { id: 'collab-professional',      name: 'Professional',       tagline: '1 celebrity-connected model · 1 collab reel · dual feed',        models: 1, price: 700,   popular: true,  perks: ['1 celebrity-connected model co-authors Reel with your brand', 'Appears on both feeds', 'Reel algorithm boost', 'Dual audience reach'] },
+  { id: 'collab-premium',      name: 'Premium',        tagline: '2 celebrity-connected creators · 2 collab posts · coordinated',      models: 2, price: 1000,  popular: false, perks: ['2 celebrity-connected creators co-author posts with your brand', 'Coordinated dual-feed campaign', 'Maximum reach', 'Shared engagement'] },
+  { id: 'collab-elite',     name: 'Elite',       tagline: '3 celebrity-connected creators · 3 collab posts · wide reach',      models: 3, price: 1500,  popular: false, perks: ['3 celebrity-connected creators co-author posts with your brand', 'Wide dual-feed reach', 'Coordinated rollout', 'Full campaign coverage'] },
+  { id: 'collab-vip',    name: 'VIP',     tagline: '5 celebrity-connected creators · 5 collab posts · viral push',      models: 5, price: 2500,  popular: false, perks: ['5 celebrity-connected creators co-author posts with your brand', 'Viral dual-feed campaign', 'Coordinated messaging', 'Maximum exposure'] },
+  { id: 'collab-royal', name: 'Royal',  tagline: '10 celebrity-connected creators · 10 collab posts · full takeover',   models: 10, price: 4500, popular: false, perks: ['10 celebrity-connected creators co-author posts with your brand', 'Full dual-feed takeover', 'Dedicated coordinator', 'Enterprise campaign'] },
+];
+
+const COLLAB_REPOSTS_MO = [
+  { id: 'collab-essential-m',  name: 'Essential',   tagline: '4 collab posts/mo · 1 celebrity-connected model',          models: 1, price: 2000,  popular: false, perks: ['4 collab posts / month', '1 dedicated celebrity-connected model', 'Consistent dual-feed presence', 'Compounding growth strategy'] },
+  { id: 'collab-professional-m',   name: 'Professional',    tagline: '8 collab posts/mo · 2 celebrity-connected creators',         models: 2, price: 3500,  popular: true,  perks: ['8 collab posts / month', '2 rotating celebrity-connected creators', 'Wider dual-feed reach', 'Dedicated coordinator'] },
+  { id: 'collab-premium-m',      name: 'Premium',       tagline: '15 collab posts/mo · 3 celebrity-connected creators',        models: 3, price: 5500,  popular: false, perks: ['15 collab posts / month', '3 rotating celebrity-connected creators', 'Full dual-feed calendar', 'Account manager'] },
+  { id: 'collab-elite-m',   name: 'Elite',    tagline: '30 collab posts/mo · 5 celebrity-connected creators',        models: 5, price: 9000,  popular: false, perks: ['30 collab posts / month', '5 rotating celebrity-connected creators', 'Full campaign management', 'White-glove service'] },
+];
+
+// ── Story Reposts - Frequency-Based Packages ──
+const STORY_FREQUENCY_OT = [
+  { id: 'story-daily-1wk',   name: 'Daily - 1 Week',     tagline: '1 model · daily stories · 7 days',     models: 1, price: 1200,   popular: false, perks: ['7 daily story sets', 'Maximum visibility', 'Top-of-mind awareness', 'Swipe-up links included'] },
+  { id: 'story-daily-2wk',   name: 'Daily - 2 Weeks',     tagline: '1 model · daily stories · 14 days',  models: 1, price: 2200,  popular: true,  perks: ['14 daily story sets', 'Extended campaign', 'Brand reinforcement', 'Swipe-up links included'] },
+  { id: 'story-daily-1mo',   name: 'Daily - 1 Month',     tagline: '1 model · daily stories · 30 days',       models: 1, price: 4500,  popular: false, perks: ['30 daily story sets', 'Full month coverage', 'Consistent presence', 'Swipe-up links included'] },
+  { id: 'story-alt-1wk',   name: 'Every Other Day - 1 Week',     tagline: '1 model · 4 story sets · 7 days',     models: 1, price: 700,   popular: false, perks: ['4 story sets (every other day)', 'Balanced frequency', 'Cost-effective', 'Swipe-up links included'] },
+  { id: 'story-alt-2wk',   name: 'Every Other Day - 2 Weeks',     tagline: '1 model · 8 story sets · 14 days',  models: 1, price: 1300,  popular: false,  perks: ['8 story sets (every other day)', 'Extended coverage', 'Good value', 'Swipe-up links included'] },
+  { id: 'story-alt-1mo',   name: 'Every Other Day - 1 Month',     tagline: '1 model · 15 story sets · 30 days',       models: 1, price: 2400,  popular: false, perks: ['15 story sets (every other day)', 'Monthly presence', 'Sustainable frequency', 'Swipe-up links included'] },
+  { id: 'story-3day-1wk',   name: 'Every 3 Days - 1 Week',     tagline: '1 model · 3 story sets · 7 days',     models: 1, price: 500,   popular: false, perks: ['3 story sets (every 3 days)', 'Essential coverage', 'Budget-friendly', 'Swipe-up links included'] },
+  { id: 'story-3day-2wk',   name: 'Every 3 Days - 2 Weeks',     tagline: '1 model · 5 story sets · 14 days',  models: 1, price: 800,  popular: false,  perks: ['5 story sets (every 3 days)', 'Light campaign', 'Entry-level', 'Swipe-up links included'] },
+  { id: 'story-3day-1mo',   name: 'Every 3 Days - 1 Month',     tagline: '1 model · 10 story sets · 30 days',       models: 1, price: 1500,  popular: false, perks: ['10 story sets (every 3 days)', 'Monthly awareness', 'Minimal frequency', 'Swipe-up links included'] },
+];
+
+// ── Collab Posts - Frequency-Based Packages ──
+const COLLAB_FREQUENCY_OT = [
+  { id: 'collab-daily-1wk',   name: 'Daily - 1 Week',     tagline: '1 model · daily collabs · 7 days',     models: 1, price: 2500,   popular: false, perks: ['7 daily collab posts', 'Maximum dual-feed reach', 'Algorithm boost', 'Shared engagement'] },
+  { id: 'collab-daily-2wk',   name: 'Daily - 2 Weeks',     tagline: '1 model · daily collabs · 14 days',  models: 1, price: 4500,  popular: true,  perks: ['14 daily collab posts', 'Extended dual-feed', 'Brand domination', 'Shared engagement'] },
+  { id: 'collab-daily-1mo',   name: 'Daily - 1 Month',     tagline: '1 model · daily collabs · 30 days',       models: 1, price: 9000,  popular: false, perks: ['30 daily collab posts', 'Full month dual-feed', 'Maximum exposure', 'Shared engagement'] },
+  { id: 'collab-alt-1wk',   name: 'Every Other Day - 1 Week',     tagline: '1 model · 4 collab posts · 7 days',     models: 1, price: 1500,   popular: false, perks: ['4 collab posts (every other day)', 'Balanced dual-feed', 'Cost-effective', 'Shared engagement'] },
+  { id: 'collab-alt-2wk',   name: 'Every Other Day - 2 Weeks',     tagline: '1 model · 8 collab posts · 14 days',  models: 1, price: 2800,  popular: false,  perks: ['8 collab posts (every other day)', 'Extended dual-feed', 'Good value', 'Shared engagement'] },
+  { id: 'collab-alt-1mo',   name: 'Every Other Day - 1 Month',     tagline: '1 model · 15 collab posts · 30 days',       models: 1, price: 5000,  popular: false, perks: ['15 collab posts (every other day)', 'Monthly dual-feed', 'Sustainable frequency', 'Shared engagement'] },
+  { id: 'collab-3day-1wk',   name: 'Every 3 Days - 1 Week',     tagline: '1 model · 3 collab posts · 7 days',     models: 1, price: 1100,   popular: false, perks: ['3 collab posts (every 3 days)', 'Essential dual-feed', 'Budget-friendly', 'Shared engagement'] },
+  { id: 'collab-3day-2wk',   name: 'Every 3 Days - 2 Weeks',     tagline: '1 model · 5 collab posts · 14 days',  models: 1, price: 1800,  popular: false,  perks: ['5 collab posts (every 3 days)', 'Light dual-feed', 'Entry-level', 'Shared engagement'] },
+  { id: 'collab-3day-1mo',   name: 'Every 3 Days - 1 Month',     tagline: '1 model · 10 collab posts · 30 days',       models: 1, price: 3200,  popular: false, perks: ['10 collab posts (every 3 days)', 'Monthly dual-feed', 'Minimal frequency', 'Shared engagement'] },
+];
+
+// ── 2-Week Campaign Packages (Lemar-style) ──
+const CAMPAIGN_2WEEK = [
+  { id: 'campaign-essential',   name: 'Essential Campaign',     tagline: '3 creators · every 3 days · 2 weeks',     models: 3, price: 2200,   popular: false, perks: ['3 celebrity-connected creators', '5 story sets each (every 3 days)', '15 total story sets', 'Coordinated campaign', 'Bundle discount applied'] },
+  { id: 'campaign-professional',   name: 'Professional Campaign',     tagline: '3 creators · every other day · 2 weeks',  models: 3, price: 3500,  popular: true,  perks: ['3 celebrity-connected creators', '7 story sets each (every other day)', '21 total story sets', 'Coordinated campaign', 'Bundle discount applied'] },
+  { id: 'campaign-premium',   name: 'Premium Campaign',     tagline: '3 creators · daily · 2 weeks',       models: 3, price: 6000,  popular: false, perks: ['3 celebrity-connected creators', '14 story sets each (daily)', '42 total story sets', 'Maximum visibility', 'Bundle discount applied'] },
+  { id: 'campaign-collab-essential',   name: 'Collab Essential',     tagline: '3 creators · 1 collab each · 2 weeks',     models: 3, price: 1350,   popular: false, perks: ['3 celebrity-connected creators', '1 collab post each', '3 total collab posts', 'Dual-feed reach', 'Bundle discount applied'] },
+  { id: 'campaign-collab-professional',   name: 'Collab Professional',     tagline: '3 creators · 2 collabs each · 2 weeks',  models: 3, price: 2550,  popular: false,  perks: ['3 celebrity-connected creators', '2 collab posts each', '6 total collab posts', 'Extended dual-feed', 'Bundle discount applied'] },
+];
+
+// ── Hybrid Campaign Packages (Story + Collab) ──
+const HYBRID_CAMPAIGNS = [
+  { id: 'hybrid-blitz',   name: '2-Week Blitz',     tagline: '3 creators · 1 collab + 14 days stories',     models: 3, price: 3500,   popular: true, perks: ['3 celebrity-connected creators', '1 collab post each', '14 days of story reposts each', 'Full campaign coverage', 'Lemar-style package'] },
+  { id: 'hybrid-30day',   name: '30-Day Campaign',     tagline: '3 creators · 2 collabs + 30 days stories',  models: 3, price: 6500,  popular: false,  perks: ['3 celebrity-connected creators', '2 collab posts each', '30 days of story reposts each', 'Extended campaign', 'Maximum reach'] },
+  { id: 'hybrid-quarterly',   name: 'Quarterly Dominance',     tagline: '5 models · ongoing collabs + daily stories',       models: 5, price: 12000,  popular: false, perks: ['5 celebrity-connected creators', 'Ongoing collab posts', 'Daily story reposts', 'Full campaign management', 'White-glove service'] },
+  { id: 'hybrid-viral',   name: 'Viral Takeover',     tagline: '10 models · multi-collab + intensive stories',     models: 10, price: 25000,  popular: false, perks: ['10 celebrity-connected creators', 'Multi-collab campaign', 'Intensive story schedule', 'Viral potential', 'Enterprise partnership'] },
 ];
 
 const PACKAGES: Record<string, any[]> = {
@@ -210,6 +285,12 @@ const PACKAGES: Record<string, any[]> = {
   'business-one-time': BIZ_OT,
   'commercial-one-time': COMMERCIAL_OT,
   'bottle-one-time':   BOTTLE_OT,
+  'storyreposts-one-time': STORY_REPOSTS_OT,
+  'collabreposts-one-time': COLLAB_REPOSTS_OT,
+  'storyreposts-frequency': STORY_FREQUENCY_OT,
+  'collabreposts-frequency': COLLAB_FREQUENCY_OT,
+  'campaign-2week': CAMPAIGN_2WEEK,
+  'hybrid-campaigns': HYBRID_CAMPAIGNS,
   'shoot-monthly':     SHOOT_MO,
   'event-monthly':     EVENT_MO,
   'reaction-monthly':  REACTION_MO,
@@ -217,6 +298,8 @@ const PACKAGES: Record<string, any[]> = {
   'business-monthly':  BIZ_MO,
   'commercial-monthly': COMMERCIAL_MO,
   'bottle-monthly':    BOTTLE_MO,
+  'storyreposts-monthly': STORY_REPOSTS_MO,
+  'collabreposts-monthly': COLLAB_REPOSTS_MO,
 };
 
 // ── Streamlined 3-step flow ──
@@ -224,7 +307,9 @@ const PACKAGES: Record<string, any[]> = {
 // Step 1: Packages — frequency toggle + curated cards + custom card
 // Step 2: Contact details → lead save → Stripe checkout
 
-type ServiceType = 'shoot' | 'musicvideo' | 'event' | 'reaction' | 'ugc' | 'business' | 'commercial' | 'bottle';
+type ServiceType = 'shoot' | 'musicvideo' | 'event' | 'reaction' | 'ugc' | 'business' | 'commercial' | 'bottle' | 'storyreposts' | 'collabreposts';
+
+type ServiceCategory = 'in-person' | 'remote-content' | 'story-reposts' | 'collab-posts';
 
 const STEPS = ['Service', 'Package', 'Your Details'];
 
@@ -233,23 +318,37 @@ const SELF_SERVE_MAX = 6000;
 // How many curated cards to show before "View all"
 const CURATED_COUNT = 4;
 
-// pickerQuestion = the unit-aware headline on the package step.
-// quantityPicker = linear per-girl pricing → stepper UI instead of card grid (one-time only).
-const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: string; tag: 'In-Person' | 'Remote'; hasMonthly: boolean; pickerQuestion: string; quantityPicker?: { noun: string; perUnit: number } ; Icon: React.ElementType }> = {
-  business:   { title: 'Models at Your Business',        desc: 'A model visits your location, creates reels & promo content on-site.',        from: '$300',      tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How big should your visit be?',            Icon: TrendingUp },
-  ugc:        { title: 'UGC & Branded Reels',            desc: 'Models create branded skits, promos & short-form content to your brief.',      from: '$300',      tag: 'Remote',    hasMonthly: true,  pickerQuestion: 'How many reels do you need?',              Icon: Play },
-  commercial: { title: 'Commercials & Speaking Roles',   desc: 'Script reading, dialogue & acting for TV, web & brand ads.',                   from: '$599',      tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many actresses does your production need?', Icon: Film },
-  musicvideo: { title: 'Music Videos',                   desc: 'Featured talent for your video — solo, duo, trio, or full cast.',              from: '$500',      tag: 'In-Person', hasMonthly: false, pickerQuestion: 'How many models on set?',                  Icon: Music },
-  reaction:   { title: 'Music Reactions',                desc: 'Models react to your songs on camera — first-listen & livestreams.',           from: '$300',      tag: 'Remote',    hasMonthly: true,  pickerQuestion: 'How many songs are we reacting to?',       Icon: Headphones },
-  shoot:      { title: 'Photo Shoots',                   desc: 'Models for brand shoots, fashion editorials & lookbooks.',                     from: '$300',      tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many models for your shoot?',          Icon: Camera },
-  event:      { title: 'Events & Hosting',               desc: 'Models for brand activations, parties & grand openings.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many girls for your event?',           quantityPicker: { noun: 'girl', perUnit: 400 }, Icon: Sparkles },
-  bottle:     { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  pickerQuestion: 'How many bottle girls for the night?',     quantityPicker: { noun: 'girl', perUnit: 400 }, Icon: Wine },
+const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: string; tag: 'In-Person' | 'Remote'; hasMonthly: boolean; Icon: React.ElementType; category: ServiceCategory }> = {
+  business:      { title: 'Celebrity-Connected Brand Ambassadors',        desc: 'Celebrity-connected creators visit your location, create reels & promo content on-site.',        from: '$500',      tag: 'In-Person', hasMonthly: true,  Icon: TrendingUp, category: 'in-person' },
+  ugc:           { title: 'Premium UGC & Branded Reels',            desc: 'Celebrity-connected creators create branded skits, promos & short-form content to your brief.',      from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Play, category: 'remote-content' },
+  commercial:    { title: 'Premium Commercials & Speaking Roles',   desc: 'Celebrity-connected creators for script reading, dialogue & acting for TV, web & brand ads.',                   from: '$999',      tag: 'In-Person', hasMonthly: true,  Icon: Film, category: 'in-person' },
+  musicvideo:    { title: 'Music Videos',                   desc: 'Featured creators for your video — solo, duo, trio, or full cast.',              from: '$500',      tag: 'In-Person', hasMonthly: false, Icon: Music, category: 'in-person' },
+  reaction:      { title: 'Premium Music Reactions',                desc: 'Celebrity-connected creators react to your songs on camera — first-listen & livestreams.',           from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Headphones, category: 'remote-content' },
+  shoot:         { title: 'Photo Shoots',                   desc: 'Creators for brand shoots, fashion editorials & lookbooks.',                     from: '$300',      tag: 'In-Person', hasMonthly: true,  Icon: Camera, category: 'in-person' },
+  event:         { title: 'Events & Hosting',               desc: 'Creators for brand activations, parties & grand openings.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Sparkles, category: 'in-person' },
+  bottle:        { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Wine, category: 'in-person' },
+  storyreposts:  { title: 'Premium Story Reposts',                 desc: 'Celebrity-connected creators post your content to their Instagram Stories with swipe-up links.',      from: '$150',       tag: 'Remote',    hasMonthly: true,  Icon: RefreshCcw, category: 'story-reposts' },
+  collabreposts: { title: 'Premium Collab Posts',                  desc: 'Celebrity-connected creators co-author posts with your brand — appears on both feeds for dual reach.', from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Users, category: 'collab-posts' },
 };
 
-const SERVICE_GROUPS: { label: string; services: ServiceType[] }[] = [
-  { label: 'For Brands, Businesses & Products', services: ['business', 'ugc', 'commercial'] },
-  { label: 'For Artists & Music',               services: ['musicvideo', 'reaction', 'shoot'] },
-  { label: 'For Events & Nightlife',            services: ['event', 'bottle'] },
+// Verified monthly-vs-one-time savings, computed from actual PACKAGES data.
+// Every service below has a real discount of at least this percentage vs. booking one-time repeatedly.
+const MONTHLY_SAVINGS_PCT: Partial<Record<ServiceType, number>> = {
+  shoot: 30,
+  ugc: 30,
+  reaction: 30,
+  event: 30,
+  bottle: 30,
+  business: 30,
+  storyreposts: 25,
+  collabreposts: 25,
+};
+
+const SERVICE_GROUPS: { label: string; services: ServiceType[]; category: ServiceCategory }[] = [
+  { label: 'In-Person Services', services: ['business', 'commercial', 'musicvideo', 'shoot', 'event', 'bottle'], category: 'in-person' },
+  { label: 'Remote Content Creation', services: ['ugc', 'reaction'], category: 'remote-content' },
+  { label: 'Content Amplification', services: ['storyreposts'], category: 'story-reposts' },
+  { label: 'Co-Authored Content', services: ['collabreposts'], category: 'collab-posts' },
 ];
 
 // ── Page ─────────────────────────────────────────────────────────────────────
@@ -327,18 +426,6 @@ function ModelBookingContent() {
   const visiblePkgs = showAllPkgs ? selfServe : curated;
   const hasMorePkgs = selfServe.length > curated.length;
   const pkg = packages.find((p: any) => p.id === selectedPkgId) || null;
-  // Quantity-stepper services (linear per-girl pricing) — one-time bookings only
-  const qp = serviceType ? SERVICE_INFO[serviceType].quantityPicker : undefined;
-  const useStepper = !!qp && bookingType === 'one-time';
-  const qIdx = useStepper ? Math.max(0, selfServe.findIndex((p: any) => p.id === selectedPkgId)) : 0;
-
-  // Stepper services start with the smallest tier pre-selected
-  useEffect(() => {
-    if (step === 1 && useStepper && !selectedPkgId && selfServe.length > 0) {
-      setSelectedPkgId(selfServe[0].id);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step, serviceType, bookingType, selectedPkgId]);
 
   // Abandoned checkout tracking — fire when user leaves after reaching step 1+
   useEffect(() => {
@@ -360,10 +447,18 @@ function ModelBookingContent() {
     return () => window.removeEventListener('beforeunload', handleUnload);
   }, [step, phone, email, name, serviceType, pkg, submitted]);
 
+  // In-person one-time bookings need a date + location before we can confirm availability
+  const requiresDateLocation = bookingType === 'one-time' && !!serviceType && SERVICE_INFO[serviceType].tag === 'In-Person';
+
   const canNext = () => {
     if (step === 0) return serviceType !== null;
     if (step === 1) return pkg !== null;
-    if (step === 2) return pkg !== null && name.trim() !== '' && phone.trim() !== '' && email.trim() !== '';
+    if (step === 2) {
+      const baseValid = pkg !== null && name.trim() !== '' && phone.trim() !== '' && email.trim() !== '';
+      if (!baseValid) return false;
+      if (requiresDateLocation) return date.trim() !== '' && location.trim() !== '';
+      return true;
+    }
     return false;
   };
 
@@ -503,7 +598,7 @@ function ModelBookingContent() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -511,7 +606,7 @@ function ModelBookingContent() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/marketplace" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>View Talent</Link>
+            <Link href="/marketplace" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>View Creators</Link>
           </div>
         </div>
       </nav>
@@ -534,11 +629,11 @@ function ModelBookingContent() {
           ) : serviceType === 'shoot' ? (
             <><Camera className="h-3 w-3" /> Shoots & Videos</>
           ) : (
-            <><MapPin className="h-3 w-3" /> Influence Agency</>
+            <><MapPin className="h-3 w-3" /> Influence Marketplace</>
           )}
         </p>
         <h1 className="font-display font-light italic text-white mb-2" style={{ fontSize: 'clamp(24px, 4vw, 48px)' }}>
-          {selectedModel ? `Book ${selectedModel}` : serviceType === 'reaction' ? 'Get Your Music Heard' : serviceType === 'ugc' ? 'Get Content Created' : serviceType === 'business' ? 'Models at Your Business' : serviceType === 'commercial' ? 'Book Your Commercial' : serviceType === 'event' ? 'Book Event Models' : serviceType === 'bottle' ? 'Book Bottle Girls / VIP Hostesses' : serviceType === 'shoot' ? 'Book Your Shoot' : 'What Do You Need?'}
+          {selectedModel ? `Book ${selectedModel}` : serviceType === 'reaction' ? 'Get Your Music Heard' : serviceType === 'ugc' ? 'Get Content Created' : serviceType === 'business' ? 'Models at Your Business' : serviceType === 'commercial' ? 'Book Your Commercial' : serviceType === 'event' ? 'Book Event Creators' : serviceType === 'bottle' ? 'Book Bottle Girls / VIP Hostesses' : serviceType === 'shoot' ? 'Book Your Shoot' : 'What Do You Need?'}
         </h1>
         {selectedModel && (
           <div className="flex items-center gap-3 mb-3">
@@ -619,7 +714,7 @@ function ModelBookingContent() {
             ) : (
               <div className="mb-4 p-3 border border-[#c9a96e]/15 bg-[#c9a96e]/[0.03] flex items-center justify-between gap-3">
                 <p className="text-white/40 text-xs">Want a specific model? <span className="text-white/25">Browse the roster first.</span></p>
-                <Link href="/marketplace" className="text-[10px] font-bold tracking-widest uppercase shrink-0 hover:opacity-80 transition-opacity px-3 py-2" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Browse Talent →</Link>
+                <Link href="/marketplace" className="text-[10px] font-bold tracking-widest uppercase shrink-0 hover:opacity-80 transition-opacity px-3 py-2" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Browse Creators →</Link>
               </div>
             )}
 
@@ -652,7 +747,10 @@ function ModelBookingContent() {
                           </div>
                           <div className="text-right shrink-0 flex items-center gap-3">
                             <span className="text-[9px] font-bold tracking-wider uppercase px-2 py-1 border border-white/10 text-white/25">{info.tag}</span>
-                            <p className="font-bold text-sm" style={{ color: gold }}>{info.from}</p>
+                            <span className="text-[9px] font-bold tracking-wider uppercase px-2 py-1 text-white/40" style={{ backgroundColor: info.category === 'in-person' ? 'rgba(201,169,110,0.15)' : info.category === 'remote-content' ? 'rgba(59,130,246,0.15)' : info.category === 'story-reposts' ? 'rgba(168,85,247,0.15)' : 'rgba(236,72,153,0.15)' }}>
+                              {info.category === 'in-person' ? 'In-Person' : info.category === 'remote-content' ? 'Remote' : info.category === 'story-reposts' ? 'Story Reposts' : 'Collab Posts'}
+                            </span>
+                            <p className="text-white/50 text-xs font-bold">{info.from}</p>
                           </div>
                         </button>
                       );
@@ -662,9 +760,23 @@ function ModelBookingContent() {
               );
             })}
 
-            <div className="mt-2 p-4 border border-white/[0.04] bg-white/[0.01] flex items-center justify-between gap-4">
-              <p className="text-white/40 text-sm">Not sure what you need?</p>
-              <a href="tel:+15615520392" className="flex items-center gap-2 px-4 py-2.5 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-80 shrink-0" style={{ backgroundColor: gold, color: '#000' }}>
+            <div className="mt-2 p-4 border border-white/[0.04] bg-white/[0.01]">
+              <p className="text-white/40 text-sm mb-3">Not sure what you need? Answer a quick question:</p>
+              <div className="flex flex-wrap gap-2 mb-3">
+                <button onClick={() => { if (typeof window !== 'undefined') window.location.href = '/start?service=storyreposts'; }} className="px-3 py-1.5 text-[10px] font-bold tracking-wider uppercase border border-white/10 text-white/40 hover:border-[#c9a96e]/40 hover:text-white/60 transition-all">
+                  Quick visibility boost
+                </button>
+                <button onClick={() => { if (typeof window !== 'undefined') window.location.href = '/start?service=collabreposts'; }} className="px-3 py-1.5 text-[10px] font-bold tracking-wider uppercase border border-white/10 text-white/40 hover:border-[#c9a96e]/40 hover:text-white/60 transition-all">
+                  Dual audience reach
+                </button>
+                <button onClick={() => { if (typeof window !== 'undefined') window.location.href = '/start?service=ugc'; }} className="px-3 py-1.5 text-[10px] font-bold tracking-wider uppercase border border-white/10 text-white/40 hover:border-[#c9a96e]/40 hover:text-white/60 transition-all">
+                  Custom content creation
+                </button>
+                <button onClick={() => { if (typeof window !== 'undefined') window.location.href = '/start?service=business'; }} className="px-3 py-1.5 text-[10px] font-bold tracking-wider uppercase border border-white/10 text-white/40 hover:border-[#c9a96e]/40 hover:text-white/60 transition-all">
+                  In-person brand activation
+                </button>
+              </div>
+              <a href="tel:+15612877194" className="inline-flex items-center gap-2 px-4 py-2.5 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-80 shrink-0" style={{ backgroundColor: gold, color: '#000' }}>
                 <Phone className="h-3 w-3" /> Call Us
               </a>
             </div>
@@ -674,8 +786,8 @@ function ModelBookingContent() {
         {/* ── STEP 1: Packages — frequency toggle + curated cards ── */}
         {step === 1 && serviceType && (
           <div className="max-w-3xl">
-            <h2 className="font-display font-light italic text-white text-2xl md:text-3xl mb-1">{SERVICE_INFO[serviceType].pickerQuestion}</h2>
-            <p className="text-white/35 text-xs mb-5">{useStepper ? `$${qp!.perUnit}/${qp!.noun} · transparent pricing — adjust to fit your night.` : 'Transparent pricing — pick what fits, upgrade anytime.'}</p>
+            <h2 className="font-display font-light italic text-white text-2xl md:text-3xl mb-1">Choose your package</h2>
+            <p className="text-white/35 text-xs mb-5">Transparent pricing — pick what fits, upgrade anytime.</p>
 
             {/* Frequency toggle — only when monthly exists for this service */}
             {SERVICE_INFO[serviceType].hasMonthly && (
@@ -694,7 +806,11 @@ function ModelBookingContent() {
                     >
                       {t === 'one-time' ? <CalendarDays className="h-3 w-3" /> : <RefreshCcw className="h-3 w-3" />}
                       {t === 'one-time' ? 'One-Time' : 'Monthly'}
-                      {t === 'monthly' && <span className="text-[8px] px-1.5 py-0.5 border" style={{ borderColor: active ? '#000' : 'rgba(74,222,128,0.3)', color: active ? '#000' : 'rgb(74,222,128)' }}>Save 40%</span>}
+                      {t === 'monthly' && (
+                        <span className="text-[8px] px-1.5 py-0.5 border" style={{ borderColor: active ? '#000' : 'rgba(74,222,128,0.3)', color: active ? '#000' : 'rgb(74,222,128)' }}>
+                          {MONTHLY_SAVINGS_PCT[serviceType] ? `Save ${MONTHLY_SAVINGS_PCT[serviceType]}%` : 'Priority Scheduling'}
+                        </span>
+                      )}
                     </button>
                   );
                 })}
@@ -704,41 +820,6 @@ function ModelBookingContent() {
               <p className="text-white/30 text-[11px] mb-5 -mt-2">Monthly billing · Priority scheduling · Cancel anytime</p>
             )}
 
-            {/* Quantity stepper — linear per-girl services */}
-            {useStepper && pkg ? (
-              <div className="mb-4 border border-white/[0.08] bg-white/[0.01] p-6">
-                <div className="flex items-center justify-center gap-8 mb-5">
-                  <button
-                    onClick={() => qIdx > 0 && choosePackage(selfServe[qIdx - 1].id)}
-                    disabled={qIdx === 0}
-                    className="w-12 h-12 border border-white/15 text-white/60 text-2xl font-light hover:border-[#c9a96e] hover:text-[#c9a96e] transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-                    aria-label="Fewer"
-                  >−</button>
-                  <div className="text-center min-w-[130px]">
-                    <p className="font-display italic font-bold text-white" style={{ fontSize: 'clamp(40px, 8vw, 56px)', lineHeight: 1 }}>{pkg.models}</p>
-                    <p className="text-white/40 text-[11px] tracking-[0.3em] uppercase mt-1">{qp!.noun}{pkg.models > 1 ? 's' : ''}</p>
-                  </div>
-                  <button
-                    onClick={() => qIdx < selfServe.length - 1 && choosePackage(selfServe[qIdx + 1].id)}
-                    disabled={qIdx === selfServe.length - 1}
-                    className="w-12 h-12 border border-white/15 text-white/60 text-2xl font-light hover:border-[#c9a96e] hover:text-[#c9a96e] transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
-                    aria-label="More"
-                  >+</button>
-                </div>
-                <div className="text-center border-t border-white/[0.06] pt-4">
-                  <p className="font-display italic font-bold text-2xl" style={{ color: gold }}>${pkg.price.toLocaleString()}</p>
-                  <p className="text-white/30 text-[11px] mt-1">${qp!.perUnit}/{qp!.noun} · {pkg.tagline}</p>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-2 mt-4">
-                  {pkg.perks.slice(0, 4).map((perk: string) => (
-                    <div key={perk} className="flex items-center gap-2">
-                      <Check className="h-3 w-3 flex-shrink-0" style={{ color: gold }} />
-                      <span className="text-white/45 text-xs">{perk}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
             <div className="grid sm:grid-cols-2 gap-3 mb-4">
               {visiblePkgs.map((p: any) => {
                 const active = selectedPkgId === p.id;
@@ -783,10 +864,9 @@ function ModelBookingContent() {
                 );
               })}
             </div>
-            )}
 
             {/* View all packages — card grid only */}
-            {!useStepper && hasMorePkgs && !showAllPkgs && (
+            {hasMorePkgs && !showAllPkgs && (
               <button
                 onClick={() => setShowAllPkgs(true)}
                 className="w-full py-3 mb-4 border border-dashed border-white/10 hover:border-white/25 text-white/35 hover:text-white/60 text-[11px] font-bold tracking-widest uppercase transition-all"
@@ -798,7 +878,7 @@ function ModelBookingContent() {
             {/* Enterprise / custom — big productions route to a call */}
             {hasEnterprise && (
               <a
-                href="tel:+15615520392"
+                href="tel:+15612877194"
                 className="w-full p-4 border border-white/[0.07] bg-white/[0.01] hover:bg-[#c9a96e]/[0.04] hover:border-[#c9a96e]/30 transition-all duration-300 flex items-center gap-4 group"
               >
                 <div className="w-10 h-10 border border-white/10 group-hover:border-[#c9a96e]/40 flex items-center justify-center flex-shrink-0 transition-colors">
@@ -885,16 +965,63 @@ function ModelBookingContent() {
               )}
             </div>
 
+            {/* Date / Location — required for in-person one-time bookings so we can confirm availability */}
+            {requiresDateLocation && (
+              <div className="mb-8 space-y-3">
+                <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/35">Booking Date &amp; Location</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <input
+                    type="date"
+                    placeholder="Date *"
+                    value={date}
+                    min={new Date().toISOString().split('T')[0]}
+                    onChange={e => setDate(e.target.value)}
+                    className={input}
+                    style={{ colorScheme: 'dark' }}
+                  />
+                  <input
+                    type="time"
+                    placeholder="Preferred Time"
+                    value={time}
+                    onChange={e => setTime(e.target.value)}
+                    className={input}
+                    style={{ colorScheme: 'dark' }}
+                  />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Location / Venue Address * (South Florida / Greater Miami)"
+                  value={location}
+                  onChange={e => setLocation(e.target.value)}
+                  className={input}
+                />
+                <p className="text-white/20 text-[10px]">We confirm exact availability within 24 hours of booking. Travel outside South Florida / Greater Miami may incur additional fees.</p>
+              </div>
+            )}
+
             {/* Optional details toggle */}
             <button
               onClick={() => setShowOptional(v => !v)}
               className="w-full flex items-center justify-between px-4 py-3 mb-3 border border-white/[0.07] hover:border-white/[0.14] bg-white/[0.01] transition-colors text-left"
             >
-              <span className="text-white/40 text-xs font-semibold tracking-widest uppercase">{showOptional ? 'Hide' : 'Add'} details — date, model preference, notes</span>
+              <span className="text-white/40 text-xs font-semibold tracking-widest uppercase">{showOptional ? 'Hide' : 'Add'} details — {!requiresDateLocation ? 'date, ' : ''}model preference, notes</span>
               <ChevronRight className={`h-3.5 w-3.5 text-white/25 transition-transform duration-200 ${showOptional ? 'rotate-90' : ''}`} />
             </button>
             {showOptional && (
               <div className="mb-6 space-y-3 border border-white/[0.06] p-4">
+                {!requiresDateLocation && (
+                  <div>
+                    <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/35 mb-2">Preferred Date <span className="text-white/20 normal-case tracking-normal font-normal">(optional)</span></p>
+                    <input
+                      type="date"
+                      value={date}
+                      min={new Date().toISOString().split('T')[0]}
+                      onChange={e => setDate(e.target.value)}
+                      className={input}
+                      style={{ colorScheme: 'dark' }}
+                    />
+                  </div>
+                )}
                 {!selectedModel && (
                   <div>
                     <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-white/35 mb-2">Preferred Model <span className="text-white/20 normal-case tracking-normal font-normal">(optional)</span></p>
@@ -913,7 +1040,7 @@ function ModelBookingContent() {
                         <option value="Bree">Bree (67K · Skits &amp; Brand Content)</option>
                         <option value="Leila">Leila (64K · Fashion &amp; Fitness · Miami)</option>
                       </optgroup>
-                      <optgroup label="Music Video Talent">
+                      <optgroup label="Music Video Creators">
                         <option value="Shay">Shay (25K · Kodak · Lil Baby · DJ Khaled)</option>
                         <option value="Kady">Kady (11K · Tekashi · Lil Pump · Love &amp; Hip Hop)</option>
                         <option value="Peach">Peach (23K · Buju Banton · Vybz Kartel · Peacock)</option>
@@ -932,9 +1059,8 @@ function ModelBookingContent() {
                       <optgroup label="Fashion &amp; Lifestyle">
                         <option value="Angelina">Angelina (9.2K · Luxury Lifestyle · Miami)</option>
                         <option value="Hope">Hope (5K · Editorial · Beauty)</option>
-                        <option value="Christina Rose">Christina Rose (10K · Editorial · Florida)</option>
                         <option value="Sandra">Sandra (10K · Caribbean Lifestyle · Miami)</option>
-                        <option value="Lexi">Lexi (4.8K · Fashion · Miami)</option>
+                        <option value="Lexcii">Lexcii (4.8K · Fashion · Miami)</option>
                         <option value="Yuli Escobar">Yuli Escobar (22K · Fashion Week · Commercials)</option>
                       </optgroup>
                       <optgroup label="All Other Models">

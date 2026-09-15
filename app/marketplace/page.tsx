@@ -25,7 +25,7 @@ const influencers = [
     name: 'Deseray Marie',
     title: 'Creator · Actress · Entrepreneur · Influencer · CEO of Influence · 40M+ Music Video Views · Forbes Featured',
     image: '/images/Des/des-1.jpg',
-    followers: '79.4K',
+    followers: '81.3K',
     instagram: '@itsdezmarie',
     location: 'Miami, FL',
     credits: ['Kai Cenat', 'Sean Paul', 'Akon', 'Bryson Tiller', 'Moneybagg Yo', 'Forbes', 'Lil Pump', 'Tekashi 6ix9ine', 'Bossman Dlow', '40M+ Music Video Views', 'Love & Hip Hop', 'Mike Tyson Commercial', 'Meta Billboard'],
@@ -79,7 +79,7 @@ const influencers = [
   },
   {
     id: 'lexi-044',
-    name: 'Lexi',
+    name: 'Lexcii',
     title: 'Creator · 8K · Lifestyle · Fashion',
     image: '/images/Lexi/lexi-1.jpg',
     followers: '8K',

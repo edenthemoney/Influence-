@@ -141,7 +141,7 @@ const influencers: Record<string, any> = {
     name: 'Deseray Marie',
     bio: 'Model · Actress · Entrepreneur · Influencer · CEO of Influence · Forbes Featured · Sean Paul · Bryson Tiller · Kai Cenat · Akon · Moneybagg Yo · Lil Pump · Tekashi 6ix9ine · Bossman Dlow · Vybz Kartel · Young Thug · AMP · Love & Hip Hop · Films · Meta Billboard · 40M+ Music Video Views',
     avatar: '/images/Des/des-1.jpg',
-    followers: 79400,
+    followers: 81300,
     rating: 5.0,
     categories: ['Music Video', 'Commercial', 'Fashion', 'Film', 'TV', 'Entrepreneurship', 'Beauty', 'Luxury'],
     instagram: '@itsdezmarie',
@@ -316,7 +316,7 @@ const influencers: Record<string, any> = {
     ],
   },
   'lexi-044': {
-    name: 'Lexi',
+    name: 'Lexcii',
     bio: 'Model · Lifestyle · Fashion',
     avatar: '/images/Lexi/lexi-1.jpg',
     followers: 4800,

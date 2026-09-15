@@ -23,7 +23,7 @@
 
 | Influencer | ID | Handle | Followers | Location | Key Niches | Med-Spa Fit | Suggested Base Reel Package |
 |------------|----|--------|-----------|----------|------------|-------------|----------------------------|
-| **Deseray Marie** | `des-001` | @itsdezmarie | 79.4K | Miami, FL | Beauty, Luxury, Skincare, Hair Care, Forbes/Fenty credits | **Luxury anchor.** Strongest credibility for premium Botox/med-spa positioning. | $3,500 – $5,000 |
+| **Deseray Marie** | `des-001` | @itsdezmarie | 81.3K | Miami, FL | Beauty, Luxury, Skincare, Hair Care, Forbes/Fenty credits | **Luxury anchor.** Strongest credibility for premium Botox/med-spa positioning. | $3,500 – $5,000 |
 | **Breanna “Bre” Banks** | `breanna-046` | @bbreannabankss | 45K | Miami, FL | Fashion, Lifestyle, Beauty, Music Video credits | **Premium micro-mid.** High production value, great on camera. | $1,800 – $2,500 |
 | **Shay** | `shay-050` | @shay | 25K | South Florida | Music, Fashion, Lifestyle, TV (NowThatsTV) | **Lifestyle/TV edge.** Good for event-style or behind-the-scenes Reels. | $1,200 – $1,800 |
 | **Peach** | `peach-045` | @peach | 23K | Miami, FL | Music Video, Fashion, Lifestyle, Peacock TV | **TV-credited lifestyle.** Strong visual presence. | $1,100 – $1,700 |
@@ -203,7 +203,7 @@ Our current roster leans female lifestyle/beauty creators, so I recommend leadin
 **My top recommendation:**  
 **Des + Sahara + Genesis**
 
-- **Des** (79.4K, Miami, Forbes/Fenty/Savage X Fenty credits) — luxury authority and premium social proof.
+- **Des** (81.3K, Miami, Forbes/Fenty/Savage X Fenty credits) — luxury authority and premium social proof.
 - **Sahara** (15K, Florida, beauty/lifestyle) — relatable, local, high trust.
 - **Genesis** (13.9K, beauty/skincare) — authentic skincare voice, perfect for Botox/glow content.
 
