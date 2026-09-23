@@ -40,3 +40,6 @@ prisma/migrations/
 
 # Local Netlify folder
 .netlify
+
+# Private local marketing assets
+marketing/
