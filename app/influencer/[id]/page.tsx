@@ -315,14 +315,14 @@ const influencers: Record<string, any> = {
       '/images/Ferrari/ferrari-3.jpg',
     ],
   },
-  'lexi-044': {
-    name: 'Lexcii',
+  'lexci-044': {
+    name: 'Lexci',
     bio: 'Model · Lifestyle · Fashion',
-    avatar: '/images/Lexi/lexi-1.jpg',
+    avatar: '/images/Lexci/lexci-1.jpg',
     followers: 4800,
     rating: 5.0,
     categories: ['Fashion', 'Lifestyle', 'Beauty'],
-    instagram: '@im__herr__',
+    instagram: '@_thereallexciii',
     ugcFormats: ['Lifestyle', 'GRWM', 'Testimonial', 'Trend', 'Brand Feature'],
     niches: ['Fashion', 'Beauty', 'Lifestyle'],
     location: 'Miami, FL',
@@ -330,9 +330,9 @@ const influencers: Record<string, any> = {
     pastBrands: [],
     description: 'Miami-based model specializing in fashion, lifestyle, and beauty content. Available for brand partnerships, editorial shoots, and modeling campaigns.',
     gallery: [
-      '/images/Lexi/lexi-1.jpg',
-      '/images/Lexi/lexi-2.jpg',
-      '/images/Lexi/lexi-3.jpg',
+      '/images/Lexci/lexci-1.jpg',
+      '/images/Lexci/lexci-2.jpg',
+      '/images/Lexci/lexci-3.jpg',
     ],
   },
   'peach-045': {
