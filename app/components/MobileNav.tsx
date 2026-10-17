@@ -5,7 +5,8 @@ import { Menu, X } from 'lucide-react';
 
 const GOLD = '#c9a96e';
 const links = [
-  { href: '/marketplace', label: 'Talent' },
+  { href: '/talent', label: 'Talent' },
+  { href: '/marketplace', label: 'Venues' },
   { href: '/services', label: 'Services' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/about', label: 'About' },
@@ -43,7 +44,7 @@ export default function MobileNav() {
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="font-display font-light italic text-white border-b border-white/[0.06] py-6 flex items-center justify-between group"
+                className="font-display font-light italic text-white border-b border-white/[0.06] py-4 flex items-center justify-between group"
                 style={{ fontSize: 'clamp(38px, 11vw, 58px)' }}
               >
                 <span>{label}</span>
@@ -52,7 +53,15 @@ export default function MobileNav() {
             ))}
           </nav>
 
-          <div className="px-8 pb-14 pt-8">
+          <div className="px-8 pb-14 pt-6">
+            <Link
+              href="/tickets"
+              onClick={() => setOpen(false)}
+              className="mb-4 flex items-center justify-center text-[11px] tracking-[0.22em] uppercase"
+              style={{ color: GOLD }}
+            >
+              Nov 18 · Black & Gold
+            </Link>
             <Link
               href="/start"
               onClick={() => setOpen(false)}

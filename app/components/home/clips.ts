@@ -96,12 +96,16 @@ export const ROOMS: {
   id: string;
   name: string;
   lede: string;
+  clip: number | null;
+  screen: string;
   concepts: { title: string; text: string }[];
 }[] = [
   {
     id: 'restaurants',
     name: 'Restaurants',
     lede: 'The table is the set. The dish is the turn.',
+    clip: 4,
+    screen: 'On screen: Oia, a Greek restaurant in Fort Lauderdale.',
     concepts: [
       { title: 'The order', text: 'She tells the camera what to skip, then the plate arrives and ends the argument.' },
       { title: 'Table for one', text: 'A reservation played straight. The room, the pour, the first bite, one line to the people watching.' },
@@ -112,6 +116,8 @@ export const ROOMS: {
     id: 'nightclubs',
     name: 'Nightclubs',
     lede: 'The door, the booth, the song. A night with a point of view.',
+    clip: 0,
+    screen: 'On screen: Prime Time. A night-out skit under the red light.',
     concepts: [
       { title: 'The door', text: 'Arrival and the look back. The room opens. It does not look like a flyer.' },
       { title: 'The booth', text: 'Bottle service as a scene. The night is the thing being sold, and she is already in it.' },
@@ -122,6 +128,8 @@ export const ROOMS: {
     id: 'hotels',
     name: 'Hotels',
     lede: 'A stay filmed as a night, from the desk to the reservation downstairs.',
+    clip: null,
+    screen: 'No hotel footage yet. The card is the pitch, not a stand-in clip.',
     concepts: [
       { title: 'Check-in', text: 'The lobby, the key, the line she says before the elevator doors close.' },
       { title: 'The mirror', text: 'Dressed for dinner, caught in the elevator or the suite. The hotel is the wardrobe.' },
@@ -132,6 +140,8 @@ export const ROOMS: {
     id: 'resorts',
     name: 'Resorts',
     lede: 'Daytime opens. Dinner is why they came.',
+    clip: null,
+    screen: 'No resort footage yet. The card is the pitch, not a stand-in clip.',
     concepts: [
       { title: 'The walk down', text: 'From the room to the water in one feeling. No list of features. Just the path.' },
       { title: 'Golden hour', text: 'Pool or terrace. A single aside to camera while the light is doing the selling.' },
@@ -142,6 +152,8 @@ export const ROOMS: {
     id: 'lounges',
     name: 'Lounges',
     lede: 'Low light, one seat, a story told at the volume of the room.',
+    clip: null,
+    screen: 'No lounge footage yet. The card is the pitch, not a stand-in clip.',
     concepts: [
       { title: 'One cocktail', text: 'The corner, the glass, a story that fits the lighting. Quiet rooms can photograph loud.' },
       { title: 'The dress code', text: 'She treats the seating and the light as the set. The lounge looks like a place with rules.' },

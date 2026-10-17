@@ -1,26 +1,90 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { CLIPS, ROOMS, STEPS, VENUES } from './clips';
 import { BookForm, JoinForm } from './InquiryForms';
+import { useMotion } from './motion';
 import Reveal from './Reveal';
-import SkitPhone, { type SkitPhoneHandle } from './SkitPhone';
+import StagePhone, { type StagePhoneHandle } from './StagePhone';
 
 const NAV = [
-  { href: '#work', label: 'The skits' },
-  { href: '#venues', label: 'Venues' },
-  { href: '#rooms', label: 'Who we serve' },
-  { href: '#method', label: 'How it works' },
-  { href: '#network', label: 'Join' },
+  { href: '#proof', label: 'Proof' },
+  { href: '#rooms', label: 'Rooms' },
+  { href: '#method', label: 'Method' },
+  { href: '#book', label: 'Book' },
 ];
 
+function Words({ text, className, start = 0 }: { text: string; className?: string; start?: number }) {
+  const words = text.split(' ');
+  return (
+    <span className={className}>
+      {words.map((word, index) => (
+        <span key={`${word}-${index}`} className="ix-word" style={{ animationDelay: `${start + index * 90}ms` }}>
+          {word}
+          {index < words.length - 1 ? '\u00A0' : ''}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function Magnet({
+  href,
+  children,
+  variant = 'solid',
+  onClick,
+}: {
+  href: string;
+  children: React.ReactNode;
+  variant?: 'solid' | 'ghost';
+  onClick?: () => void;
+}) {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  const move = (event: MouseEvent<HTMLAnchorElement>) => {
+    const el = ref.current;
+    if (!el) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect = el.getBoundingClientRect();
+    const x = (event.clientX - rect.left - rect.width / 2) * 0.18;
+    const y = (event.clientY - rect.top - rect.height / 2) * 0.28;
+    el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  };
+
+  return (
+    <a
+      ref={ref}
+      href={href}
+      className={variant === 'solid' ? 'ix-btn ix-btn-solid' : 'ix-btn ix-btn-ghost'}
+      onMouseMove={move}
+      onMouseLeave={() => {
+        if (ref.current) ref.current.style.transform = '';
+      }}
+      onClick={onClick}
+    >
+      {children}
+    </a>
+  );
+}
+
 export default function MarketplaceHome() {
-  const phoneRef = useRef<SkitPhoneHandle>(null);
-  const phoneWrap = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
+  const phoneRef = useRef<StagePhoneHandle>(null);
+  const heroRef = useRef<HTMLElement>(null);
+  const storyRef = useRef<HTMLElement>(null);
+  const barRef = useRef<HTMLSpanElement>(null);
+  const motion = useMotion();
+  const cinematic = motion === 'full';
+  const reduced = motion !== 'full';
   const [open, setOpen] = useState(false);
-  const onIndexChange = useCallback((next: number) => setActive(next), []);
+  const [heroLive, setHeroLive] = useState(true);
+  const [owner, setOwner] = useState<'hero' | 'story' | 'none'>('hero');
+  const [beat, setBeat] = useState(0);
+  const [concept, setConcept] = useState(0);
+  const [picked, setPicked] = useState(0);
+  const [reel, setReel] = useState(0);
+  const onIndexChange = useCallback((next: number) => setReel(next), []);
 
   useEffect(() => {
     try {
@@ -40,24 +104,71 @@ export default function MarketplaceHome() {
   }, []);
 
   useEffect(() => {
-    const node = phoneWrap.current;
+    const hero = heroRef.current;
+    const story = storyRef.current;
+    if (!hero) return;
+    const ratios = { hero: 1, story: 0 };
+    const commit = () => {
+      const next = ratios.story > 0.42 ? 'story' : ratios.hero > 0.28 ? 'hero' : 'none';
+      setOwner((current) => (current === next ? current : next));
+      setHeroLive(ratios.hero > 0.05);
+    };
+    const storyOnScreen = (rect: DOMRectReadOnly) => rect.top < window.innerHeight * 0.72 && rect.bottom > window.innerHeight * 0.22;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === hero) ratios.hero = entry.intersectionRatio;
+          if (entry.target === story) ratios.story = storyOnScreen(entry.boundingClientRect) ? 1 : 0;
+        });
+        commit();
+      },
+      { threshold: [0, 0.05, 0.2, 0.45, 0.75] },
+    );
+    io.observe(hero);
+    if (story) io.observe(story);
+    return () => io.disconnect();
+  }, [cinematic]);
+
+  useEffect(() => {
+    if (!cinematic) return;
+    const node = storyRef.current;
     if (!node) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    if (!window.matchMedia('(min-width: 768px)').matches) return;
     let frame = 0;
+    const beatNow = { beat: 0, concept: 0 };
+    const measure = () => {
+      const rect = node.getBoundingClientRect();
+      const total = node.offsetHeight - window.innerHeight;
+      const progress = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
+      if (barRef.current) barRef.current.style.transform = `scaleX(${progress})`;
+      const storyVisible = rect.top < window.innerHeight * 0.72 && rect.bottom > window.innerHeight * 0.22;
+      const heroRect = heroRef.current?.getBoundingClientRect();
+      const heroVisible = !!heroRect && heroRect.bottom > 80 && heroRect.top < window.innerHeight * 0.75;
+      const nextOwner = storyVisible ? 'story' : heroVisible ? 'hero' : 'none';
+      setOwner((current) => (current === nextOwner ? current : nextOwner));
+      setHeroLive(heroVisible);
+      const scaled = Math.min(progress * ROOMS.length, ROOMS.length - 0.0001);
+      const nextBeat = Math.floor(scaled);
+      const nextConcept = Math.min(2, Math.floor((scaled - nextBeat) * 3));
+      if (nextBeat !== beatNow.beat || nextConcept !== beatNow.concept) {
+        beatNow.beat = nextBeat;
+        beatNow.concept = nextConcept;
+        setBeat(nextBeat);
+        setConcept(nextConcept);
+      }
+    };
     const onScroll = () => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        const y = Math.min(window.scrollY, 640);
-        node.style.transform = `translate3d(0, ${y * 0.06}px, 0)`;
-      });
+      frame = requestAnimationFrame(measure);
     };
+    measure();
     window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     };
-  }, []);
+  }, [cinematic]);
 
   useEffect(() => {
     if (!open) return;
@@ -76,227 +187,144 @@ export default function MarketplaceHome() {
   const watch = (index: number) => {
     phoneRef.current?.goTo(index);
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.getElementById('work')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    document.getElementById('reel')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   };
 
-  const activeVenue = CLIPS[active]?.venueId;
+  const room = ROOMS[cinematic ? beat : picked];
+  const activeConcept = room.concepts[cinematic ? concept : 0];
+  const reelClip = CLIPS[reel];
+
+  const phone = (which: 'hero' | 'story') => (
+    <StagePhone
+      ref={which === 'hero' ? phoneRef : undefined}
+      mode={which === 'hero' ? 'reel' : 'single'}
+      size={which === 'hero' ? 'hero' : 'story'}
+      clipIndex={which === 'story' ? room.clip : undefined}
+      slate={{
+        kicker: room.name,
+        title: 'A skit we can write.',
+        line: 'No footage of this room yet.',
+      }}
+      active={owner === which}
+      reduced={reduced}
+      onIndexChange={which === 'hero' ? onIndexChange : undefined}
+    />
+  );
 
   return (
-    <div className="ix-page min-h-screen">
-      <a href="#work" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:bg-[#c6a15a] focus:px-4 focus:py-2 focus:text-[#1a1408]">
-        Skip to the skits
+    <div className="ix-page min-h-screen" data-motion={motion === 'reduce' ? 'reduce' : 'full'}>
+      <a href="#proof" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[80] focus:bg-[#c6a15a] focus:px-4 focus:py-2 focus:text-[#1a1408]">
+        Skip to the proof
       </a>
 
-      <div className="sticky top-0 z-40 bg-[#070705]/95 pt-[env(safe-area-inset-top)] supports-[backdrop-filter]:backdrop-blur-md">
-        <Link href="/tickets" prefetch={false} className="ix-banner flex min-h-11 items-center justify-center gap-3 px-4 py-2.5 text-center">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em]">Nov 18 · Black & Gold Soirée</span>
-          <span className="hidden text-[11px] font-medium uppercase tracking-[0.16em] md:inline">Serena Pastificio · Mizner Park</span>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.18em]">Tickets</span>
+      <header className="ix-header">
+        <Link href="/tickets" prefetch={false} className="ix-banner">
+          <span>Nov 18</span>
+          <span className="ix-banner-dot" aria-hidden />
+          <span>Black &amp; Gold Soirée</span>
+          <span className="hidden sm:inline ix-banner-dot" aria-hidden />
+          <span className="hidden sm:inline">Serena Pastificio</span>
+          <span className="ix-banner-go">Tickets</span>
         </Link>
-        <nav className="flex h-14 items-center justify-between border-b border-[#c6a15a]/20 px-4 md:h-16 md:px-8" aria-label="Primary">
-          <button
-            type="button"
-            className="flex h-11 w-11 items-center justify-center md:hidden"
-            aria-expanded={open}
-            aria-controls="ix-menu"
-            onClick={() => setOpen((value) => !value)}
-          >
+        <nav className="ix-nav" aria-label="Primary">
+          <button type="button" className="ix-nav-toggle md:hidden" aria-expanded={open} aria-controls="ix-menu" onClick={() => setOpen((value) => !value)}>
             <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
-            <span aria-hidden className="flex w-5 flex-col gap-1.5">
-              <span className="block h-px w-full bg-[#f3e6c4]" />
-              <span className="block h-px w-full bg-[#f3e6c4]" />
-            </span>
+            <span aria-hidden />
+            <span aria-hidden />
           </button>
-          <Link href="/" className="font-display text-[15px] uppercase tracking-[0.42em] text-[#f3e6c4] md:text-[16px]">
-            Influence
-          </Link>
-          <div className="hidden items-center gap-7 md:flex">
+          <Link href="/" className="ix-logo">Influence</Link>
+          <div className="hidden items-center gap-8 md:flex">
             {NAV.map((item) => (
-              <a key={item.href} href={item.href} className="ix-link text-[11px] uppercase tracking-[0.2em] text-[#f6f1e7]/70">
+              <a key={item.href} href={item.href} className="ix-nav-link">
                 {item.label}
               </a>
             ))}
           </div>
-          <a href="#book" className="bg-[#c6a15a] px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1a1408] md:px-4 md:text-[11px] md:tracking-[0.2em]">
-            Book
-          </a>
+          <Magnet href="#book">Book</Magnet>
         </nav>
-      </div>
+      </header>
 
       {open && (
-        <div id="ix-menu" className="fixed inset-0 z-50 bg-[#070705] px-6 pt-[max(1.5rem,env(safe-area-inset-top))] md:hidden">
+        <div id="ix-menu" className="ix-menu md:hidden">
           <div className="flex items-center justify-between">
-            <p className="font-display text-[15px] uppercase tracking-[0.42em] text-[#f3e6c4]">Influence</p>
-            <button type="button" className="h-11 px-2 text-sm uppercase tracking-[0.18em] text-[#f6f1e7]" onClick={() => setOpen(false)}>
+            <p className="ix-logo">Influence</p>
+            <button type="button" className="h-11 px-2 text-[11px] uppercase tracking-[0.2em]" onClick={() => setOpen(false)}>
               Close
             </button>
           </div>
-          <div className="mt-10 flex flex-col">
+          <div className="mt-8 flex flex-col">
             {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="border-t border-[#c6a15a]/20 py-4 font-display text-4xl italic text-[#f6f1e7]"
-                onClick={() => setOpen(false)}
-              >
+              <a key={item.href} href={item.href} className="ix-menu-link" onClick={() => setOpen(false)}>
                 {item.label}
               </a>
             ))}
-            <a href="#book" className="border-t border-[#c6a15a]/20 py-4 font-display text-4xl italic text-[#f3e6c4]" onClick={() => setOpen(false)}>
-              Book influencers
-            </a>
-            <Link href="/tickets" prefetch={false} className="border-y border-[#c6a15a]/20 py-4 text-[12px] uppercase tracking-[0.22em] text-[#c6a15a]" onClick={() => setOpen(false)}>
-              Nov 18 · Black & Gold Soirée
+            <a href="#network" className="ix-menu-link" onClick={() => setOpen(false)}>Join</a>
+            <Link href="/tickets" prefetch={false} className="ix-menu-quiet" onClick={() => setOpen(false)}>
+              Nov 18 · Black &amp; Gold Soirée
             </Link>
           </div>
         </div>
       )}
 
       <main>
-        <section id="work" className="relative overflow-hidden px-4 pb-14 pt-5 md:px-8 md:pb-28 md:pt-14">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                'radial-gradient(ellipse 70% 55% at 78% 42%, rgba(198,161,90,0.16), transparent 62%), radial-gradient(ellipse 40% 30% at 8% 90%, rgba(198,161,90,0.08), transparent 70%)',
-            }}
-          />
-          <p aria-hidden className="pointer-events-none absolute -right-6 top-24 hidden font-display text-[18vw] italic leading-none text-[#c6a15a]/[0.06] md:block">
-            Influence
-          </p>
-          <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-6">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[#c6a15a]">The right influencer</p>
-              <h1 className="mt-3 font-display font-medium leading-[0.88] tracking-[-0.02em]">
-                <span className="md:hidden">
-                  <span className="sr-only">The right influencer, </span>
-                  <span className="ix-gold-text italic text-[clamp(52px,14vw,68px)]">For the room.</span>
-                </span>
-                <span className="hidden text-[clamp(40px,9.2vw,92px)] text-[#f6f1e7] md:block">
-                  The right
-                  <br />
-                  influencer,
-                  <br />
-                  <span className="ix-gold-text italic">for the room.</span>
-                </span>
+        <section id="reel" ref={heroRef} className="ix-hero" data-live={heroLive ? '1' : '0'}>
+          <div className="ix-grain" aria-hidden />
+          <div className="ix-motes" aria-hidden>
+            <span /><span /><span /><span /><span />
+          </div>
+          <div className="ix-hero-grid">
+            <div className="ix-hero-copy">
+              <p className="ix-kicker">Influence for venues</p>
+              <h1 className="ix-hero-title">
+                <Words text="The right influencer," />
+                <Words className="ix-hero-gold" text="for the room." start={280} />
               </h1>
-              <p className="mt-5 hidden max-w-md text-[17px] leading-relaxed text-[#f6f1e7]/72 md:block">
-                Influence is a network of influencers. We match restaurants, nightclubs, hotels, resorts, and lounges with creators who fit the niche. They shoot the skit. You get the content and the reach.
+              <p className="ix-hero-deck">
+                A network matched to the niche. They film the skit in the room. You keep the content and the reach.
               </p>
-              <p className="mt-4 hidden text-[13px] text-[#f6f1e7]/55 md:block">
-                Proof, on camera. Skits by{' '}
-                <a className="ix-link underline decoration-[#c6a15a]/50 underline-offset-4" href="https://www.instagram.com/itsdezmarie" target="_blank" rel="noopener noreferrer">
-                  Deseray Marie
-                </a>
-                .
-              </p>
-              <div className="mt-7 hidden flex-wrap gap-3 md:flex">
-                <a href="#book" className="inline-flex h-12 items-center bg-[#c6a15a] px-5 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1a1408]">
-                  Book influencers
-                </a>
-                <a href="#network" className="inline-flex h-12 items-center border border-[#c6a15a]/70 px-5 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#f3e6c4]">
-                  Join the network
-                </a>
-              </div>
             </div>
-            <div ref={phoneWrap} className="relative">
-              <SkitPhone ref={phoneRef} onIndexChange={onIndexChange} />
+            <div className="ix-hero-stage">
+              {phone('hero')}
+              <p className="ix-hero-caption" aria-live="polite">
+                <span>{reelClip.venue}</span>
+                {reelClip.caption}
+              </p>
             </div>
-            <div className="md:hidden">
-              <p className="text-[15px] leading-relaxed text-[#f6f1e7]/72">
-                Influence is a network of influencers. We match restaurants, nightclubs, hotels, resorts, and lounges with creators who fit the niche. They shoot the skit. You get the content and the reach.
-              </p>
-              <p className="mt-3 text-[13px] text-[#f6f1e7]/55">
-                Proof, on camera. Skits by{' '}
-                <a className="ix-link underline decoration-[#c6a15a]/50 underline-offset-4" href="https://www.instagram.com/itsdezmarie" target="_blank" rel="noopener noreferrer">
-                  Deseray Marie
-                </a>
-                .
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <a href="#book" className="inline-flex h-12 items-center bg-[#c6a15a] px-5 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#1a1408]">
-                  Book influencers
-                </a>
-                <a href="#network" className="inline-flex h-12 items-center border border-[#c6a15a]/70 px-5 text-[12px] font-semibold uppercase tracking-[0.18em] text-[#f3e6c4]">
-                  Join the network
-                </a>
-              </div>
+            <div className="ix-hero-actions">
+              <Magnet href="#book">Book influencers</Magnet>
+              <Magnet href="#network" variant="ghost">Join the network</Magnet>
             </div>
           </div>
         </section>
 
-        <section id="venues" className="border-t border-[#c6a15a]/20 px-4 py-16 md:px-8 md:py-28">
-          <div className="mx-auto max-w-6xl">
+        <section id="proof" className="ix-chapter">
+          <div className="ix-wrap">
             <Reveal>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[#c6a15a]">Venues we&apos;ve worked with</p>
-              <h2 className="mt-3 max-w-3xl font-display text-[clamp(36px,6vw,72px)] font-medium leading-[0.92] text-[#f6f1e7]">
-                Three rooms. The skits are the record.
-              </h2>
-              <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#f6f1e7]/65">
-                Prime Time. The DessertZ Food Truck. Oia, a Greek restaurant in Fort Lauderdale. Filmed by Deseray Marie.
+              <p className="ix-kicker">Proof</p>
+              <h2 className="ix-display">Three rooms. The skits are the record.</h2>
+              <p className="ix-lede">
+                Filmed by Deseray Marie. Prime Time. The DessertZ Food Truck. Oia, a Greek restaurant in Fort Lauderdale. Nothing else is claimed.
               </p>
             </Reveal>
-            <div className="mt-10 grid gap-4 md:grid-cols-3">
-              {VENUES.map((venue, venueIndex) => {
-                const selected = activeVenue === venue.id;
-                return (
-                  <Reveal key={venue.id} delay={venueIndex * 80}>
-                    <article className={`flex h-full flex-col border ${selected ? 'border-[#c6a15a]' : 'border-[#c6a15a]/25'} bg-[#0c0c09]`}>
-                      <img src={venue.poster} alt="" width={720} height={900} className="h-64 w-full object-cover md:h-72" />
-                      <div className="flex flex-1 flex-col p-5">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c6a15a]">{venue.detail}</p>
-                        <h3 className="mt-2 font-display text-4xl italic text-[#f6f1e7]">{venue.name}</h3>
-                        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#f6f1e7]/68">{venue.summary}</p>
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {venue.clips.map((clipIndex, clipNumber) => (
-                            <button
-                              key={clipIndex}
-                              type="button"
-                              onClick={() => watch(clipIndex)}
-                              className="h-11 border border-[#c6a15a]/40 px-3 text-[11px] uppercase tracking-[0.16em] text-[#f3e6c4]"
-                            >
-                              {venue.clips.length > 1 ? `Skit ${clipNumber + 1}` : 'Watch the skit'}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    </article>
-                  </Reveal>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        <section id="rooms" className="border-t border-[#c6a15a]/20 px-4 py-16 md:px-8 md:py-28">
-          <div className="mx-auto max-w-6xl">
-            <Reveal>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[#c6a15a]">Who we serve</p>
-              <h2 className="mt-3 max-w-3xl font-display text-[clamp(36px,6vw,72px)] font-medium leading-[0.92] text-[#f6f1e7]">
-                Rooms that already have a standard.
-              </h2>
-              <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-[#f6f1e7]/68">
-                A dining room on the order of Serena Pastificio in Mizner Park. A night at iPic. A hotel lobby, a resort path, a lounge with a dress code. These are skit concepts we can shoot for a room like yours.
-              </p>
-            </Reveal>
-            <div className="mt-12">
-              {ROOMS.map((room, roomIndex) => (
-                <Reveal key={room.id}>
-                  <article className="border-t border-[#c6a15a]/25 py-10 md:grid md:grid-cols-[0.7fr_1.3fr] md:gap-10 md:py-14">
-                    <div>
-                      <p className="font-display text-sm tracking-[0.28em] text-[#c6a15a]">0{roomIndex + 1}</p>
-                      <h3 className="mt-2 font-display text-[clamp(40px,6vw,68px)] italic leading-none text-[#f6f1e7]">{room.name}</h3>
-                      <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#f6f1e7]/65">{room.lede}</p>
+            <div className="ix-proof">
+              {VENUES.map((venue, venueIndex) => (
+                <Reveal key={venue.id} delay={venueIndex * 70}>
+                  <article className="ix-proof-card">
+                    <div className="ix-proof-frame">
+                      <img src={venue.poster} alt="" width={720} height={900} />
                     </div>
-                    <ul className="mt-8 space-y-6 md:mt-2">
-                      {room.concepts.map((concept) => (
-                        <li key={concept.title} className="border-l border-[#c6a15a]/40 pl-4">
-                          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#f3e6c4]">{concept.title}</p>
-                          <p className="mt-2 text-[15px] leading-relaxed text-[#f6f1e7]/75">{concept.text}</p>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="ix-proof-copy">
+                      <p className="ix-kicker">0{venueIndex + 1} — {venue.detail}</p>
+                      <h3>{venue.name}</h3>
+                      <p>{venue.summary}</p>
+                      <div className="ix-proof-actions">
+                        {venue.clips.map((clipIndex, clipNumber) => (
+                          <button key={clipIndex} type="button" onClick={() => watch(clipIndex)}>
+                            {venue.clips.length > 1 ? `Play skit ${clipNumber + 1}` : 'Play the skit'}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   </article>
                 </Reveal>
               ))}
@@ -304,73 +332,146 @@ export default function MarketplaceHome() {
           </div>
         </section>
 
-        <section id="method" className="border-t border-[#c6a15a]/20 px-4 py-16 md:px-8 md:py-28">
-          <div className="mx-auto max-w-6xl">
+        <section className="ix-standard">
+          <div className="ix-wrap">
             <Reveal>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[#c6a15a]">How it works</p>
-              <h2 className="mt-3 font-display text-[clamp(36px,6vw,72px)] font-medium leading-[0.92] text-[#f6f1e7]">
-                Four steps. Then the room is on camera.
-              </h2>
+              <p className="ix-kicker">The standard</p>
+              <h2 className="ix-display ix-display-sm">Rooms with a dress code already.</h2>
+              <p className="ix-lede">
+                Serena Pastificio in Mizner Park. A night at iPic. That is the standard we book toward. They are not clients on this page, and they are not footage.
+              </p>
             </Reveal>
-            <ol className="mt-12 grid gap-8 md:grid-cols-4 md:gap-6">
+          </div>
+        </section>
+
+        <section id="rooms" ref={storyRef} className={cinematic ? 'ix-story' : 'ix-story-stack'}>
+          {cinematic ? (
+            <div className="ix-story-pin">
+              <span ref={barRef} className="ix-story-bar" aria-hidden />
+              <div className="ix-story-grid">
+                <div className="ix-story-copy">
+                  <p className="ix-kicker">0{beat + 1} / 05 — scroll the room</p>
+                  <h2 key={room.id} className="ix-story-title ix-swap">{room.name}</h2>
+                  <p className="ix-story-lede">{room.lede}</p>
+                  <ul className="ix-concepts">
+                    {room.concepts.map((item, itemIndex) => (
+                      <li key={item.title} className="ix-concept" data-on={itemIndex === concept ? '1' : '0'}>
+                        <p className="ix-concept-title">{item.title}</p>
+                        <p className="ix-concept-body">{item.text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="ix-screen-note">{room.screen}</p>
+                </div>
+                <div className="ix-story-stage">
+                  {phone('story')}
+                  <p className="ix-story-concept" aria-live="polite">{activeConcept.title}</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="ix-wrap ix-stack-inner">
+              <p className="ix-kicker">Rooms</p>
+              <h2 className="ix-display">Five kinds of night.</h2>
+              <p className="ix-lede">Tap a room. Where a skit exists, it waits for a tap before it plays.</p>
+              <div className="ix-stack-phone">{phone('story')}</div>
+              <p className="ix-screen-note">{room.screen}</p>
+              <div className="ix-room-list">
+                {ROOMS.map((item, itemIndex) => (
+                  <article key={item.id} className={itemIndex === picked ? 'is-on' : ''}>
+                    <button type="button" onClick={() => setPicked(itemIndex)}>
+                      <span>0{itemIndex + 1}</span>
+                      {item.name}
+                    </button>
+                    <p>{item.lede}</p>
+                    <ul>
+                      {item.concepts.map((entry) => (
+                        <li key={entry.title}>
+                          <strong>{entry.title}</strong>
+                          {entry.text}
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+        </section>
+
+        <section id="method" className="ix-chapter">
+          <div className="ix-wrap">
+            <Reveal>
+              <p className="ix-kicker">How it works</p>
+              <h2 className="ix-display">Four steps. Then the room is on camera.</h2>
+            </Reveal>
+            <ol className="ix-steps">
               {STEPS.map((step, stepIndex) => (
-                <Reveal as="li" key={step.n} delay={stepIndex * 70} className="relative h-full border-t border-[#c6a15a] pt-5">
-                  <p className="font-display text-3xl italic text-[#c6a15a]">{step.n}</p>
-                  <h3 className="mt-3 font-display text-[28px] italic leading-tight text-[#f6f1e7]">{step.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#f6f1e7]/68">{step.text}</p>
+                <Reveal as="li" key={step.n} delay={stepIndex * 60}>
+                  <p>{step.n}</p>
+                  <h3>{step.title}</h3>
+                  <span>{step.text}</span>
                 </Reveal>
               ))}
             </ol>
           </div>
         </section>
 
-        <section className="border-t border-[#c6a15a]/20 px-4 py-16 md:px-8 md:py-28">
-          <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-2 lg:gap-20">
+        <section className="ix-close">
+          <div className="ix-wrap ix-close-grid">
             <div id="book">
               <Reveal>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[#c6a15a]">Book influencers</p>
-                <h2 className="mt-3 font-display text-[clamp(36px,5vw,60px)] italic leading-[0.92] text-[#f6f1e7]">Tell us the venue.</h2>
-                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#f6f1e7]/68">
-                  The niche decides the match. Send the room. We reply with the influencers who fit it.
-                </p>
-                <div className="relative mt-8">
+                <p className="ix-kicker">Book influencers</p>
+                <h2 className="ix-display ix-display-sm">Tell us the venue.</h2>
+                <p className="ix-lede">The niche decides the match. Send the room.</p>
+                <div className="mt-8">
                   <BookForm />
                 </div>
               </Reveal>
             </div>
             <div id="network">
               <Reveal>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[#c6a15a]">Join the network</p>
-                <h2 className="mt-3 font-display text-[clamp(36px,5vw,60px)] italic leading-[0.92] text-[#f6f1e7]">If you can hold a room.</h2>
-                <p className="mt-4 max-w-md text-[15px] leading-relaxed text-[#f6f1e7]/68">
-                  Creators who make skits for venues, not slideshows. Apply with the work. We book from this network.
-                </p>
-                <div className="relative mt-8">
+                <p className="ix-kicker">Join the network</p>
+                <h2 className="ix-display ix-display-sm">If you can hold a room.</h2>
+                <p className="ix-lede">Creators who make skits for venues. Apply with the work.</p>
+                <div className="mt-8">
                   <JoinForm />
                 </div>
               </Reveal>
             </div>
           </div>
         </section>
+
+        <section className="ix-soiree">
+          <div className="ix-wrap">
+            <p className="ix-kicker">Wednesday, November 18, 2026 · 4–7 PM ET</p>
+            <h2 className="ix-display ix-display-sm">Black &amp; Gold Soirée</h2>
+            <p className="ix-lede">
+              Influence Connect. Serena Pastificio, 301 Plaza Real, Mizner Park, Boca Raton. Hosted by Deseray Marie. Ladies free RSVP. Gentlemen $25.
+            </p>
+            <Link href="/tickets" prefetch={false} className="ix-btn ix-btn-solid mt-8">
+              Tickets
+            </Link>
+          </div>
+        </section>
       </main>
 
-      <footer className="border-t border-[#c6a15a]/20 px-4 pb-28 pt-12 md:px-8">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
+      <footer className="ix-foot">
+        <div className="ix-wrap ix-foot-grid">
           <div>
-            <p className="font-display text-[15px] uppercase tracking-[0.42em] text-[#f3e6c4]">Influence</p>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#f6f1e7]/55">
-              A network of influencers for restaurants, nightclubs, hotels, resorts, and lounges.
-            </p>
+            <p className="ix-logo">Influence</p>
+            <p>A network of influencers for restaurants, nightclubs, hotels, resorts, and lounges.</p>
           </div>
-          <div className="flex flex-col gap-3 text-[12px] uppercase tracking-[0.16em] text-[#f6f1e7]/60">
-            <a className="ix-link" href="tel:+15615520392">(561) 552-0392</a>
-            <a className="ix-link" href="mailto:influencemodelsagency@gmail.com">influencemodelsagency@gmail.com</a>
-            <a className="ix-link" href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <Link className="ix-link" href="/tickets" prefetch={false}>Nov 18 · Black & Gold Soirée</Link>
-            <Link className="ix-link" href="/terms">Terms</Link>
+          <div className="ix-foot-links">
+            <a href="tel:+15615520392">(561) 552-0392</a>
+            <a href="mailto:influencemodelsagency@gmail.com">influencemodelsagency@gmail.com</a>
+            <a href="https://www.instagram.com/itsdezmarie" target="_blank" rel="noopener noreferrer">Deseray Marie</a>
+            <Link href="/tickets" prefetch={false}>Nov 18 · Black &amp; Gold Soirée</Link>
+            <Link href="/talent">Talent roster</Link>
+            <Link href="/terms">Terms</Link>
           </div>
         </div>
-        <p className="mx-auto mt-10 max-w-6xl text-[11px] uppercase tracking-[0.18em] text-[#f6f1e7]/35">© {new Date().getFullYear()} Influence · South Florida</p>
+        <p className="ix-wrap ix-foot-note">© {new Date().getFullYear()} Influence · South Florida</p>
       </footer>
     </div>
   );

@@ -22,7 +22,7 @@ export default function MusicVideoBookingPage() {
       heroImage="/images/Shay/shay-1.jpg"
       heroImageAlt="Music video talent in Miami"
       primaryCta={{ text: 'Book Music Video Talent', href: '/model-booking?service=musicvideo' }}
-      secondaryCta={{ text: 'Browse Talent', href: '/marketplace' }}
+      secondaryCta={{ text: 'Browse Talent', href: '/talent' }}
       painPoints={[
         'You have a song ready but no one to cast for the video',
         'Instagram DMs are unreliable — girls don’t show up',
