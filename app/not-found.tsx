@@ -19,7 +19,7 @@ export default function NotFound() {
           Go Home
         </Link>
         <Link
-          href="/marketplace"
+          href="/talent"
           className="px-8 py-4 text-[12px] font-bold tracking-widest uppercase border border-white/10 text-white/60 hover:text-white hover:border-white/20 transition-all"
         >
           View Talent

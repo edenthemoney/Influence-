@@ -21,7 +21,7 @@ export default function ModelsForShootsPage() {
       heroImage="/images/AshleyM/ashleym-1.jpg"
       heroImageAlt="Model for photo shoot"
       primaryCta={{ text: 'Book a Model', href: '/model-booking?service=shoot' }}
-      secondaryCta={{ text: 'Browse Talent', href: '/marketplace' }}
+      secondaryCta={{ text: 'Browse Talent', href: '/talent' }}
       painPoints={[
         'You have a shoot planned but can’t find reliable talent',
         'Agency rates are too high for your budget',

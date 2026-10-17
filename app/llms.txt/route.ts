@@ -40,7 +40,7 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 ## Pages
 - Homepage: https://influencemodels.agency
 - Book Now: https://influencemodels.agency/model-booking
-- Marketplace: https://influencemodels.agency/marketplace
+- Marketplace: https://influencemodels.agency/talent
 - Services: https://influencemodels.agency/services
 - Pricing: https://influencemodels.agency/pricing
 - FAQ: https://influencemodels.agency/faq

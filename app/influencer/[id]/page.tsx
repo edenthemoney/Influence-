@@ -1319,7 +1319,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
       <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-white mb-4">Influencer Not Found</h1>
-          <Link href="/marketplace">
+          <Link href="/talent">
             <Button className="gold-gradient text-black">Browse All Talent</Button>
           </Link>
         </div>
@@ -1466,7 +1466,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
+              <Link href="/talent" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -1844,7 +1844,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
+                  <li><Link href="/talent" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
                   <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>

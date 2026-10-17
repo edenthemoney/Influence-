@@ -91,7 +91,7 @@ export default function InstagramModelsForHire() {
           <h2 className="text-2xl font-bold mb-3">Browse Our Instagram Models</h2>
           <p className="text-white/40 mb-6">View portfolios, see credits, and book directly. Starting at $100.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/marketplace" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
+            <Link href="/talent" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               View Talent Roster
             </Link>
             <Link href="/book" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase border border-white/10 hover:border-[#c9a96e]/50 transition-all text-center text-white/70 hover:text-white">

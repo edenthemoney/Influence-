@@ -44,18 +44,20 @@ export default function HomePage() {
         <div className="grid grid-cols-3 items-center h-16 md:h-24 px-6 md:px-14">
           <div className="flex items-center gap-4">
             <MobileNav />
-            <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
-              <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
-              <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
+            <div className="hidden md:flex items-center gap-3 lg:gap-6 xl:gap-10">
+              <Link href="/talent" className="whitespace-nowrap text-white/55 hover:text-white transition-colors duration-300 text-[10px] lg:text-[11px] tracking-[0.14em] lg:tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="whitespace-nowrap text-white/55 hover:text-white transition-colors duration-300 text-[10px] lg:text-[11px] tracking-[0.14em] lg:tracking-widest uppercase">Venues</Link>
+              <Link href="/services" className="whitespace-nowrap text-white/55 hover:text-white transition-colors duration-300 text-[10px] lg:text-[11px] tracking-[0.14em] lg:tracking-widest uppercase">Services</Link>
+              <Link href="/pricing" className="whitespace-nowrap text-white/55 hover:text-white transition-colors duration-300 text-[10px] lg:text-[11px] tracking-[0.14em] lg:tracking-widest uppercase">Pricing</Link>
             </div>
           </div>
           <div className="flex justify-center">
             <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
           </div>
-          <div className="flex items-center justify-end gap-3 md:gap-10">
-            <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
+          <div className="flex items-center justify-end gap-3 md:gap-4 xl:gap-10">
+            <Link href="/tickets" className="whitespace-nowrap text-[11px] tracking-widest uppercase hidden xl:block" style={{ color: '#c9a96e' }}>Nov 18</Link>
+            <Link href="/about" className="whitespace-nowrap text-white/55 hover:text-white transition-colors duration-300 text-[10px] lg:text-[11px] tracking-[0.14em] lg:tracking-widest uppercase hidden md:block">About</Link>
+            <Link href="/start" className="whitespace-nowrap text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
           </div>
         </div>
         <div className="overflow-hidden border-t border-white/[0.05]">
@@ -208,7 +210,7 @@ export default function HomePage() {
                 <p className="text-white text-sm font-medium mb-1">Song Promotion</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Instagram & TikTok music promo</p>
               </Link>
-              <Link href="/marketplace" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+              <Link href="/talent" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Browse Talent</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Verified models & influencers</p>
               </Link>
@@ -396,7 +398,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="py-10 px-8 md:px-16 border-t border-white/5">
-          <Link href="/marketplace" className="inline-flex items-center gap-3 px-10 py-5 text-[14px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+          <Link href="/talent" className="inline-flex items-center gap-3 px-10 py-5 text-[14px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
             <span>View Full Roster</span>
             <ChevronRight className="h-4 w-4" />
           </Link>
@@ -575,7 +577,8 @@ export default function HomePage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/talent" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">For Venues</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
                   <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
@@ -599,6 +602,7 @@ export default function HomePage() {
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/tickets" className="text-white/40 hover:text-white transition-colors text-sm">Nov 18 Soirée</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>
                 </ul>
               </div>

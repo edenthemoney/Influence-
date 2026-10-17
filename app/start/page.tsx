@@ -24,7 +24,7 @@ export default function StartPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/talent" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -90,7 +90,7 @@ export default function StartPage() {
             <Link href="/quote" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               <Phone className="h-4 w-4" /> Talk to a Rep
             </Link>
-            <Link href="/marketplace" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+            <Link href="/talent" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
               Browse Our Talent
             </Link>
           </div>
@@ -106,7 +106,7 @@ export default function StartPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/talent" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
                   <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>

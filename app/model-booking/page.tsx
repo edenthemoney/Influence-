@@ -571,7 +571,7 @@ function ModelBookingContent() {
           </p>
           <p className="text-white/25 text-sm mb-10">Our team will confirm model availability and reach out within 24 hours.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/marketplace" className="px-8 py-4 border border-white/10 text-sm font-bold tracking-widest uppercase text-white/50 hover:text-white hover:border-white/30 transition-all">
+            <Link href="/talent" className="px-8 py-4 border border-white/10 text-sm font-bold tracking-widest uppercase text-white/50 hover:text-white hover:border-white/30 transition-all">
               Browse Models
             </Link>
             <Link href="/" className="px-8 py-4 text-sm font-bold tracking-widest uppercase text-black" style={{ backgroundColor: gold }}>
@@ -598,7 +598,7 @@ function ModelBookingContent() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
+              <Link href="/talent" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -606,7 +606,7 @@ function ModelBookingContent() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/marketplace" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>View Creators</Link>
+            <Link href="/talent" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>View Creators</Link>
           </div>
         </div>
       </nav>
@@ -714,7 +714,7 @@ function ModelBookingContent() {
             ) : (
               <div className="mb-4 p-3 border border-[#c9a96e]/15 bg-[#c9a96e]/[0.03] flex items-center justify-between gap-3">
                 <p className="text-white/40 text-xs">Want a specific model? <span className="text-white/25">Browse the roster first.</span></p>
-                <Link href="/marketplace" className="text-[10px] font-bold tracking-widest uppercase shrink-0 hover:opacity-80 transition-opacity px-3 py-2" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Browse Creators →</Link>
+                <Link href="/talent" className="text-[10px] font-bold tracking-widest uppercase shrink-0 hover:opacity-80 transition-opacity px-3 py-2" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Browse Creators →</Link>
               </div>
             )}
 

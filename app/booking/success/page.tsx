@@ -18,7 +18,7 @@ export default function BookingSuccessPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/talent" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -68,7 +68,7 @@ export default function BookingSuccessPage() {
           <Link href="/model-booking" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold, color: '#000' }}>
             Book Another Service <ChevronRight className="h-4 w-4" />
           </Link>
-          <Link href="/marketplace" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase border border-white/10 text-white/50 hover:text-white hover:border-white/20 transition-all">
+          <Link href="/talent" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase border border-white/10 text-white/50 hover:text-white hover:border-white/20 transition-all">
             Browse Talent
           </Link>
         </div>
