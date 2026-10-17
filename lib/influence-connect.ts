@@ -24,10 +24,13 @@ export const INFLUENCE_CONNECT = {
   ladiesPerk: 'First drink free',
   gentlemenLabel: '$25 entry',
   gentlemenPerk: 'Apps on us',
+  dressCode: 'All black, touch of gold',
+  theme: 'Black & Gold Soirée',
+  // 4:00 PM America/New_York on Nov 18, 2026. DST has ended, so this is 21:00 UTC.
+  startsAt: '2026-11-18T21:00:00.000Z',
   mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Serena%20Pastificio%20301%20Plaza%20Real%20Boca%20Raton%20FL%2033432',
-  calendarUrl:
-    'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Influence%20Connect&dates=20261118T160000/20261118T190000&ctz=America/New_York&location=Serena%20Pastificio%2C%20301%20Plaza%20Real%2C%20Boca%20Raton%2C%20FL%2033432&details=Where%20Businesses%20Meet%20the%20Right%20Influencers.%20Hosted%20by%20Deseray%20Marie.',
+    'https://www.google.com/maps/search/?api=1&query=301%20Plaza%20Real%2C%20Boca%20Raton%2C%20FL%2033432',
+  calendarFile: '/influence-connect-nov18.ics',
 } as const;
 
 export type TicketTier = 'ladies' | 'gentlemen';

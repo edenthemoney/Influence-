@@ -3,12 +3,15 @@
 import Link from 'next/link';
 import { INFLUENCE_CONNECT } from '@/lib/influence-connect';
 import { useVerifiedTicket } from '../use-verified-ticket';
+import GoldConfetti from '../gold-confetti';
 
 export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
   const { status, ticket, sessionId } = useVerifiedTicket();
+  const celebrate = mode === 'success' && (status === 'rsvp' || status === 'paid');
 
   return (
-    <main className="min-h-dvh bg-[#050505] px-[max(10px,env(safe-area-inset-left))] pr-[max(10px,env(safe-area-inset-right))] pt-[max(10px,env(safe-area-inset-top))] text-[#f7f1e4]">
+    <main className="relative min-h-dvh overflow-hidden bg-[#050505] px-[max(10px,env(safe-area-inset-left))] pr-[max(10px,env(safe-area-inset-right))] pt-[max(10px,env(safe-area-inset-top))] text-[#f7f1e4]">
+      <GoldConfetti active={celebrate} />
       <div className="mx-auto flex min-h-[calc(100dvh-20px)] w-full max-w-[440px] flex-col border border-[#c8a95a] bg-[#050505] px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-8">
         <p className="text-[11px] font-bold uppercase tracking-[0.42em] text-[#c8a95a]">Influence</p>
         <p className="mt-3 font-display text-[40px] leading-[0.9] text-[#f7f1e4]">Influence Connect</p>
@@ -89,7 +92,8 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
           {(status === 'paid' || status === 'rsvp') && mode === 'success' && (
             <>
               <a
-                href={INFLUENCE_CONNECT.calendarUrl}
+                href={INFLUENCE_CONNECT.calendarFile}
+                download="influence-connect-nov18.ics"
                 className="flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c8a95a] px-4 text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#16140f]"
               >
                 Add to calendar

@@ -125,7 +125,7 @@ export default function TicketForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-6" noValidate>
+    <form id="rsvp" onSubmit={onSubmit} className="px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-6" noValidate>
       <fieldset>
         <legend className={labelClass}>Your ticket</legend>
         <div className="mt-3 grid gap-3">
@@ -268,16 +268,6 @@ export default function TicketForm() {
           ? 'Payment opens in this window on Stripe’s secure page.'
           : 'Ladies RSVP is free. Your name, email, phone, and Instagram are saved for the door list.'}
       </p>
-
-      <a
-        href={INFLUENCE_CONNECT.mapsUrl}
-        className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c8a95a]/70 px-4 text-center text-[13px] font-semibold uppercase tracking-[0.14em] text-[#e6d3a1]"
-      >
-        Directions to Serena Pastificio
-      </a>
-      <p className="mt-3 text-center text-[13px] leading-relaxed text-[#f7f1e4]/55">
-        {INFLUENCE_CONNECT.fullAddress}
-      </p>
     </form>
   );
 }
@@ -299,10 +289,8 @@ function TicketChoice({
 }) {
   return (
     <label
-      className={`flex min-h-[76px] cursor-pointer touch-manipulation items-center justify-between gap-3 border px-4 py-3 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#f3e5ab] ${
-        checked
-          ? 'border-[#c8a95a] bg-[#c8a95a] text-[#16140f]'
-          : 'border-[#c8a95a]/80 bg-transparent text-[#f7f1e4]'
+      className={`foil-card flex min-h-[88px] cursor-pointer touch-manipulation items-center justify-between gap-3 px-4 py-3 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#f3e5ab] ${
+        checked ? 'is-selected' : 'text-[#f7f1e4]'
       }`}
     >
       <input

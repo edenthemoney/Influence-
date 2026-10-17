@@ -1,5 +1,6 @@
 import type { Viewport } from 'next';
 import TicketBodyColor from './body-color';
+import './soiree.css';
 
 export const viewport: Viewport = {
   themeColor: '#050505',

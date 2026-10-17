@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Influence//Influence Connect//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:influence-connect-nov18@influencecreators.marketing
+DTSTAMP:20261017T000000Z
+DTSTART:20261118T210000Z
+DTEND:20261119T000000Z
+SUMMARY:Influence Connect
+DESCRIPTION:Where Businesses Meet the Right Influencers. Hosted by Deseray Marie. Dress code: All black\, touch of gold. Ladies RSVP is free\, first drink free. Gentlemen entry is $25\, apps on us.
+LOCATION:Serena Pastificio\, 301 Plaza Real\, Mizner Park\, Boca Raton\, FL 33432
+END:VEVENT
+END:VCALENDAR
