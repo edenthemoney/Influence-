@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond, Bebas_Neue } from "next/font/google";
 import { Suspense } from "react";
 import PostHogProvider, { PostHogPageView } from "./components/PostHogProvider";
@@ -29,11 +29,6 @@ export const metadata: Metadata = {
   },
   description: "South Florida influencer marketing agency. Book verified influencers for UGC content, music promotion, brand campaigns, event hosting & model bookings. Trusted by artists, brands & record labels. Based in Miami.",
   keywords: ["influencer marketing agency", "UGC content creation", "music promotion", "brand campaigns", "event models", "Miami marketing agency", "South Florida influencers", "social media marketing", "influencer campaigns"],
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -84,6 +79,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
 };
 
 const jsonLd = {
@@ -152,7 +154,6 @@ const jsonLd = {
         areaServed: ["US", "FL"],
       },
       openingHours: "Mo-Fr 09:00-18:00",
-      numberOfEmployees: { "@type": "QuantitativeValue", minValue: 20, maxValue: 30 },
       keywords: "hire model Miami, book influencer, UGC agency, music video models, influencer for hire, model booking agency, event models Miami",
       subOrganization: [
         {
@@ -343,51 +344,6 @@ const jsonLd = {
           openingHours: "Mo-Fr 09:00-18:00",
         },
       ],
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "5.0",
-        bestRating: "5",
-        worstRating: "1",
-        ratingCount: "47",
-        reviewCount: "47",
-      },
-      review: [
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Marcus T." },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: "Booked 3 models for my music video shoot in Miami. The whole process took under 10 minutes online and the talent showed up professional and ready. My video has been performing great.",
-          datePublished: "2026-04-12",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Priya S." },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: "Used the Business Content service for our salon. The model came in, created 8 reels in one session, and they got 10x the engagement of anything we had posted before. Worth every penny.",
-          datePublished: "2026-03-28",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "DJ Lucid" },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: "Ordered the Triple Pack for my new single. Got 3 reaction videos back within 5 days. Each one felt genuine and got solid engagement. Will definitely book again for my next drop.",
-          datePublished: "2026-05-01",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Sarah K." },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: "Hired models for our restaurant launch event in Wynwood. The talent was professional, engaging with guests, and created amazing content for our social media. Highly recommend!",
-          datePublished: "2026-06-15",
-        },
-        {
-          "@type": "Review",
-          author: { "@type": "Person", name: "Michael R." },
-          reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-          reviewBody: "Booked a UGC creator for our e-commerce brand. The content quality was exceptional and conversion rates increased by 40%. Best investment we made this quarter.",
-          datePublished: "2026-07-22",
-        },
-      ],
       offers: [
         {
           "@type": "Offer",
@@ -551,7 +507,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Google Ads conversion tracking */}
         {process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
           <>
