@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { sendOrderNotification, sendCustomerConfirmation } from '@/lib/email';
 import nodemailer from 'nodemailer';
+import { INFLUENCE_CONNECT } from '@/lib/influence-connect';
 
 // Simple in-memory storage for orders (replace with database in production)
 declare global {
@@ -10,6 +11,31 @@ declare global {
 
 if (!global.orders) {
   global.orders = [];
+}
+
+async function notifyInfluenceConnectTicket(session: any) {
+  if (session?.metadata?.eventSlug !== INFLUENCE_CONNECT.slug) return;
+  if (session.payment_status !== 'paid') return;
+  try {
+    const t = nodemailer.createTransport({
+      service: 'gmail',
+      auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
+    });
+    const meta = session.metadata || {};
+    const amount = session.amount_total ? (session.amount_total / 100).toFixed(2) : '0.00';
+    const email = session.customer_email || meta.clientEmail || 'N/A';
+    const name = session.customer_details?.name || meta.clientName || 'N/A';
+    const handle = meta.instagram ? `@${String(meta.instagram).replace(/^@/, '')}` : 'N/A';
+    await t.sendMail({
+      from: `"Influence Tickets" <${process.env.GMAIL_USER}>`,
+      to: `${process.env.GMAIL_USER}, alphatrustsolutions@gmail.com`,
+      replyTo: email !== 'N/A' ? email : undefined,
+      subject: `PAID — Influence Connect Nov 18 — ${String(name).replace(/[\r\n]/g, ' ').slice(0, 80)}`,
+      text: `Gentlemen entry paid for Influence Connect.\n\nName: ${name}\nEmail: ${email}\nPhone: ${meta.clientPhone || 'N/A'}\nInstagram: ${handle}\nQuantity: ${meta.quantity || '1'}\nAmount: $${amount}\nSession: ${session.id}\n\n${INFLUENCE_CONNECT.dateLong}, ${INFLUENCE_CONNECT.time}\n${INFLUENCE_CONNECT.venue}, ${INFLUENCE_CONNECT.fullAddress}`,
+    });
+  } catch (e) {
+    console.error('Influence Connect ticket email failed:', e);
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -112,6 +138,14 @@ export async function POST(req: NextRequest) {
         }
       }
 
+      await notifyInfluenceConnectTicket(session);
+
+      break;
+    }
+
+    case 'checkout.session.async_payment_succeeded': {
+      const session = event.data.object as any;
+      await notifyInfluenceConnectTicket(session);
       break;
     }
 
