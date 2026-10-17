@@ -265,13 +265,13 @@ const StagePhone = forwardRef<StagePhoneHandle, Props>(function StagePhone(
             </div>
           </div>
         </div>
-        <div className="ix-reflect" aria-hidden>
-          {poster ? (
-            <img src={poster} alt="" width={720} height={400} draggable={false} />
-          ) : (
-            <div className="ix-reflect-slate" />
-          )}
-        </div>
+      </div>
+      <div className="ix-reflect" aria-hidden>
+        {poster ? (
+          <img src={poster} alt="" width={720} height={400} draggable={false} />
+        ) : (
+          <div className="ix-reflect-slate" />
+        )}
       </div>
       {mode === 'reel' && (
         <div className="ix-ticks" role="tablist" aria-label="Skits">

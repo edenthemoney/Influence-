@@ -55,7 +55,7 @@ export default function HomePage() {
             <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
           </div>
           <div className="flex items-center justify-end gap-3 md:gap-4 xl:gap-10">
-            <Link href="/tickets" className="whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.14em] lg:tracking-widest uppercase hidden md:block" style={{ color: '#c9a96e' }}>Nov 18</Link>
+            <Link href="/tickets" className="whitespace-nowrap text-[11px] tracking-widest uppercase hidden xl:block" style={{ color: '#c9a96e' }}>Nov 18</Link>
             <Link href="/about" className="whitespace-nowrap text-white/55 hover:text-white transition-colors duration-300 text-[10px] lg:text-[11px] tracking-[0.14em] lg:tracking-widest uppercase hidden md:block">About</Link>
             <Link href="/start" className="whitespace-nowrap text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
           </div>

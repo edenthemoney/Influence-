@@ -191,7 +191,6 @@ export default function MarketplaceHome() {
   };
 
   const room = ROOMS[cinematic ? beat : picked];
-  const activeConcept = room.concepts[cinematic ? concept : 0];
   const reelClip = CLIPS[reel];
 
   const phone = (which: 'hero' | 'story') => (
@@ -361,11 +360,10 @@ export default function MarketplaceHome() {
                       </li>
                     ))}
                   </ul>
-                  <p className="ix-screen-note">{room.screen}</p>
                 </div>
                 <div className="ix-story-stage">
                   {phone('story')}
-                  <p className="ix-story-concept" aria-live="polite">{activeConcept.title}</p>
+                  <p className="ix-screen-note" aria-live="polite">{room.screen}</p>
                 </div>
               </div>
             </div>
