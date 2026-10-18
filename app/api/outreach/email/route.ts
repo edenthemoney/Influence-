@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+}
 
 // Email templates
 const emailTemplates = {
@@ -81,6 +85,14 @@ export async function POST(request: NextRequest) {
     location,
     artistName 
   } = body;
+
+  const resend = getResend();
+  if (!resend) {
+    return NextResponse.json(
+      { success: false, error: 'Email is not configured' },
+      { status: 503 }
+    );
+  }
 
   try {
     let htmlContent = '';
