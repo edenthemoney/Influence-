@@ -4,7 +4,7 @@ const content = `# Influence Models Agency
 > South Florida's premier influencer marketing and model booking agency. Miami, FL. Founded 2024.
 
 ## What We Do
-Influence Models Agency connects brands, artists, and businesses with verified models and influencers in South Florida. Services include UGC content creation, music video models, music reactions, business content, event models, bottle girls, photo shoots, and commercial productions. Pricing starts at $300. Book online at influencemodels.agency/model-booking.
+Influence Models Agency connects brands, artists, and businesses with verified models and influencers in South Florida. Services include UGC content creation, music video models, music reactions, business content, event models, bottle girls, photo shoots, and commercial productions. Pricing starts at $300. Book online at influencecreators.marketing/model-booking.
 
 ## Services
 - UGC & Branded Reels: Remote, from $300. Branded short-form video for brands and products.
@@ -20,7 +20,7 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 - Location: Miami / South Florida (serves Miami, Boca Raton, Fort Lauderdale, Orlando)
 - Talent roster: 30+ verified models and influencers
 - Celebrity credits: Sean Paul, Bryson Tiller, DaBaby, Trippie Redd, Kodak Black, Kai Cenat, Forbes, Fenty Beauty, Love & Hip Hop, VH1
-- Booking: Online self-serve at influencemodels.agency/model-booking or call (561) 552-0392
+- Booking: Online self-serve at influencecreators.marketing/model-booking or call (561) 287-7194
 - Lead talent: Deseray Marie (Co-Founder, 66K followers, Forbes, IMDB: nm13223076), Ty Nadia (124K followers, 17M+ views)
 - Founder: Eden Roy
 
@@ -31,21 +31,21 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 - All packages bookable online with Stripe checkout
 
 ## Contact
-- Website: https://influencemodels.agency
+- Website: https://influencecreators.marketing
 - Email: influencemodelsagency@gmail.com
-- Phone: (561) 552-0392
-- Instagram: @influencemodels.agency
+- Phone: (561) 287-7194
+- Instagram: @influencemodelsagency
 - TikTok: @influencemodelsagency
 
 ## Pages
-- Homepage: https://influencemodels.agency
-- Book Now: https://influencemodels.agency/model-booking
-- Marketplace: https://influencemodels.agency/marketplace
-- Services: https://influencemodels.agency/services
-- Pricing: https://influencemodels.agency/pricing
-- FAQ: https://influencemodels.agency/faq
-- Blog: https://influencemodels.agency/blog
-- Contact: https://influencemodels.agency/contact
+- Homepage: https://influencecreators.marketing
+- Book Now: https://influencecreators.marketing/model-booking
+- Marketplace: https://influencecreators.marketing/marketplace
+- Services: https://influencecreators.marketing/services
+- Pricing: https://influencecreators.marketing/pricing
+- FAQ: https://influencecreators.marketing/faq
+- Blog: https://influencecreators.marketing/blog
+- Contact: https://influencecreators.marketing/contact
 `;
 
 export async function GET() {

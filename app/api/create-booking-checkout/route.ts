@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
         product_data: {
           name: `${packageName} — ${serviceLabel}`,
           description,
-          images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencemodels.agency'}/logo_stripe.png`],
+          images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencecreators.marketing'}/logo_stripe.png`],
         },
         unit_amount: Math.round(packagePrice * 100),
         ...(isMonthly ? { recurring: { interval: 'month' } } : {}),

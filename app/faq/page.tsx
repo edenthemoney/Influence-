@@ -23,17 +23,17 @@ const faqItems: FAQItem[] = [
     answer: 'No! You can book directly with just your email address. No login, no account creation, no hassle. We keep it simple so you can launch campaigns instantly.'
   },
   {
-    category: 'Influencers & Talent',
+    category: 'Influencers & Creators',
     question: 'Are all influencers verified?',
     answer: 'Yes. Every influencer on our platform has authenticated follower counts, verified engagement rates, and proven campaign history. We only work with influencers who meet our quality standards.'
   },
   {
-    category: 'Influencers & Talent',
+    category: 'Influencers & Creators',
     question: 'Can I choose which influencer I work with?',
     answer: 'Absolutely! You browse our marketplace, view each influencer\'s profile, stats, and past work, then select the one that aligns with your brand. You have full control over who promotes your content.'
   },
   {
-    category: 'Influencers & Talent',
+    category: 'Influencers & Creators',
     question: 'What niches do you specialize in?',
     answer: 'We work across 12+ niches including Beauty & Skincare, Fashion & Luxury, Health & Wellness, Music & Entertainment, Tech, Food & Lifestyle, Business, Fitness, Travel, Gaming, Education, and Home & Lifestyle. Each influencer specializes in specific categories.'
   },
@@ -130,7 +130,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Location & Availability',
     question: 'Where is Influence located?',
-    answer: 'Influence is based in South Florida, serving the Miami, Fort Lauderdale, and Palm Beach areas for in-person services like event hosting, music video shoots, and model bookings. Our remote services — UGC content, music reactions, and social media campaigns — are available nationwide and internationally.'
+    answer: 'Influence is based in South Florida, serving the Miami, Fort Lauderdale, and Palm Beach areas for in-person services like event hosting, music video shoots, and content orderings. Our remote services — UGC content, music reactions, and social media campaigns — are available nationwide and internationally.'
   },
   {
     category: 'Location & Availability',
@@ -139,23 +139,23 @@ const faqItems: FAQItem[] = [
   },
   {
     category: 'Location & Availability',
-    question: 'What is the best influencer marketing agency in Miami?',
-    answer: 'Influence is a top-rated influencer marketing agency based in South Florida / Miami, specializing in UGC content creation, music promotion, event hosting, and brand campaigns. Founded by Eden Roy and Deseray Marie, we connect brands with verified influencers who deliver authentic engagement and measurable results. Our roster includes talent featured in Forbes, Fenty Beauty, and music videos with major artists.'
+    question: 'What is the best creator marketing marketplace in Miami?',
+    answer: 'Influence is a top-rated creator marketing marketplace based in South Florida / Miami, specializing in UGC content creation, music promotion, event hosting, and brand campaigns. Founded by Eden Roy and Deseray Marie, we connect brands with verified influencers who deliver authentic engagement and measurable results. Our network includes creators featured in Forbes, Fenty Beauty, and music videos with major artists.'
   },
   {
     category: 'Services',
     question: 'What services does Influence offer?',
-    answer: 'Influence offers five core services: (1) UGC Content Creation — models create Instagram reels, TikToks, and brand promotional videos. (2) Music Promotion — song reaction videos, album livestreams, and influencer-driven music campaigns. (3) Event Hosting & Model Booking — book professional models for parties, club nights, brand activations, and music video shoots in South Florida. (4) Bottle Girls & VIP Hostesses — professional bottle service girls and VIP hostesses for nightclubs, lounges, and premium venues. (5) Brand Campaign Management — full end-to-end influencer campaign strategy, execution, and performance analytics.'
+    answer: 'Influence offers five core services: (1) UGC Content Creation — creators create Instagram reels, TikToks, and brand promotional videos. (2) Music Promotion — song reaction videos, album livestreams, and influencer-driven music campaigns. (3) Event Hosting & Content Ordering — book professional creators for parties, club nights, brand activations, and music video shoots in South Florida. (4) Bottle Girls & VIP Hostesses — professional bottle service girls and VIP hostesses for nightclubs, lounges, and premium venues. (5) Brand Campaign Management — full end-to-end influencer campaign strategy, execution, and performance analytics.'
   },
   {
     category: 'Services',
     question: 'How much does it cost to hire an influencer?',
-    answer: 'Pricing at Influence starts at $300 for a single UGC video or music reaction, with packages scaling up based on the number of models, content pieces, and campaign scope. Event model bookings and bottle girl / VIP hostess bookings start at $400 (1 girl, 4hr shift at $100/girl/hr). Monthly subscription packages are also available at discounted rates. Visit our pricing page for a full breakdown of all tiers.'
+    answer: 'Pricing at Influence starts at $300 for a single UGC video or music reaction, with packages scaling up based on the number of models, content pieces, and campaign scope. Event content orderings and bottle girl / VIP hostess bookings start at $400 (1 girl, 4hr shift at $100/girl/hr). Monthly subscription packages are also available at discounted rates. Visit our pricing page for a full breakdown of all tiers.'
   },
   {
     category: 'Services',
-    question: 'Can I book models for a music video?',
-    answer: 'Yes! Influence provides professional models for music video shoots across South Florida. Our models have experience in music videos with major artists including Sean Paul, Bryson Tiller, DaBaby, Akon, and more. You can book individual models or full squads for your production.'
+    question: 'Can I book creators for a music video?',
+    answer: 'Yes! Influence provides professional creators for music video shoots across South Florida. Our creators have experience in music videos with major artists including Sean Paul, Bryson Tiller, DaBaby, Akon, and more. You can book individual models or full squads for your production.'
   },
   {
     category: 'Services',
@@ -169,13 +169,13 @@ const faqItems: FAQItem[] = [
   },
   {
     category: 'Events & In-Person',
-    question: 'Can I hire models for a party or event in Miami?',
-    answer: 'Absolutely. Influence provides professional event models and hosts for parties, club nights, brand activations, trade shows, and VIP events across South Florida and the Miami area. Our models are experienced in event hosting, brand ambassadorship, and nightlife promotion. Pricing starts at $400 for 1 girl / 4hr shift ($100/girl/hr). Volume pricing available for larger bookings.'
+    question: 'Can I hire creators for a party or event in Miami?',
+    answer: 'Absolutely. Influence provides professional event creators and hosts for parties, club nights, brand activations, trade shows, and VIP events across South Florida and the Miami area. Our creators are experienced in event hosting, brand ambassadorship, and nightlife promotion. Pricing starts at $400 for 1 girl / 4hr shift ($100/girl/hr). Volume pricing available for larger bookings.'
   },
   {
     category: 'Events & In-Person',
     question: 'Do you provide brand ambassadors for trade shows?',
-    answer: 'Yes. Our models serve as brand ambassadors for trade shows, product launches, grand openings, and experiential marketing events. We handle model selection, coordination, and logistics so you can focus on your event.'
+    answer: 'Yes. Our creators serve as brand ambassadors for trade shows, product launches, grand openings, and experiential marketing events. We handle model selection, coordination, and logistics so you can focus on your event.'
   },
   {
     category: 'Business Content',
@@ -184,13 +184,13 @@ const faqItems: FAQItem[] = [
   },
   {
     category: 'Business Content',
-    question: 'What type of content do models create at my business?',
-    answer: 'Models create short-form vertical video content including Instagram Reels, TikToks, Stories, and promotional clips. They showcase your products, services, atmosphere, and brand in a natural, scroll-stopping way. All content is shot on professional-grade phone cameras and delivered ready to post.'
+    question: 'What type of content do creators create at my business?',
+    answer: 'Creators create short-form vertical video content including Instagram Reels, TikToks, Stories, and promotional clips. They showcase your products, services, atmosphere, and brand in a natural, scroll-stopping way. All content is shot on professional-grade phone cameras and delivered ready to post.'
   },
   {
     category: 'Business Content',
     question: 'How does business content help my social media?',
-    answer: 'Content featuring professional models consistently gets 3-5x more engagement than standard business posts. Higher engagement signals the algorithm to push your content to more people via Explore pages and For You feeds — meaning more potential customers discover your business organically.'
+    answer: 'Content featuring professional creators consistently gets 3-5x more engagement than standard business posts. Higher engagement signals the algorithm to push your content to more people via Explore pages and For You feeds — meaning more potential customers discover your business organically.'
   },
   {
     category: 'About the Agency',
@@ -199,8 +199,8 @@ const faqItems: FAQItem[] = [
   },
   {
     category: 'About the Agency',
-    question: 'What makes Influence different from other influencer agencies?',
-    answer: 'Influence stands out because we combine real industry credibility with accessible pricing. Our co-founder Deseray Marie has worked with A-list celebrities and major brands, and our roster reflects that caliber. Unlike big agencies that charge enterprise prices, we offer packages starting at $300 — making professional influencer marketing accessible to independent artists, small businesses, and growing brands. We also handle everything in-house: no middlemen, no hidden fees, fast turnaround.'
+    question: 'What makes Influence different from other creator marketplaces?',
+    answer: 'Influence stands out because we combine real industry credibility with accessible pricing. Our co-founder Deseray Marie has worked with A-list celebrities and major brands, and our network reflects that caliber. Unlike big agencies that charge enterprise prices, we offer packages starting at $300 — making professional creator marketing accessible to independent artists, small businesses, and growing brands. We also handle everything in-house: no middlemen, no hidden fees, fast turnaround.'
   },
 ];
 
@@ -238,7 +238,7 @@ export default function FAQPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -246,7 +246,7 @@ export default function FAQPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -332,7 +332,7 @@ export default function FAQPage() {
           <p className="text-white/50 text-lg mb-8">
             Can’t find the answer you’re looking for? Reach out to our team.
           </p>
-          <Link href="/model-booking" className="inline-block px-10 py-5 text-black text-lg font-bold tracking-wider uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e' }}>
+          <Link href="/start" className="inline-block px-10 py-5 text-black text-lg font-bold tracking-wider uppercase transition-all hover:opacity-80" style={{ backgroundColor: '#c9a96e' }}>
             Get Started
           </Link>
         </div>
@@ -346,10 +346,10 @@ export default function FAQPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -359,8 +359,8 @@ export default function FAQPage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
-                  <li><Link href="/model-booking?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
+                  <li><Link href="/start?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
                 </ul>
               </div>
               <div>
@@ -369,14 +369,14 @@ export default function FAQPage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

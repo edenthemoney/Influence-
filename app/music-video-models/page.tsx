@@ -7,8 +7,8 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'Music Video Models for Hire — Miami, South Florida',
   description: 'Professional music video models in Miami with credits including Sean Paul, Trippie Redd, Kodak Black, DaBaby, and French Montana. Book for music video productions in South Florida. Starting at $500.',
-  url: 'https://influencemodels.agency/music-video-models',
-  provider: { '@type': 'Organization', name: 'Influence Models Agency', url: 'https://influencemodels.agency' },
+  url: 'https://influencecreators.marketing/music-video-models',
+  provider: { '@type': 'Organization', name: 'Influence Marketing', url: 'https://influencecreators.marketing' },
   areaServed: [{ '@type': 'City', name: 'Miami' }, { '@type': 'State', name: 'Florida' }],
   serviceType: 'Music Video Model Booking',
   offers: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Music Video Models for Hire | Influence Models Agency',
     description: 'Professional music video models with credits including Sean Paul, Trippie Redd, Kodak Black. Starting at $100.',
-    url: 'https://influencemodels.agency/music-video-models',
+    url: 'https://influencecreators.marketing/music-video-models',
   },
 };
 

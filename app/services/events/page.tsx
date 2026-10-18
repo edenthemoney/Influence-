@@ -7,24 +7,24 @@ import MobileNav from '../../components/MobileNav';
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
-  title: 'Event Models Miami — Party Models & Event Hosting Florida | Influence',
-  description: 'Miami event models. Book professional models for events, clubs, parties, brand activations in Miami, Fort Lauderdale, Boca Raton, Palm Beach. Same-week booking available.',
+  title: 'Event Creators Miami — Party Creators & Event Hosting Florida | Influence',
+  description: 'Miami event creators. Book professional creators for events, clubs, parties, brand activations in Miami, Fort Lauderdale, Boca Raton, Palm Beach. Same-week booking available.',
   openGraph: {
-    title: 'Event Models Miami — Party Models & Event Hosting Florida',
-    description: 'Miami event models for clubs, parties, brand activations. Serving South Florida.',
-    url: 'https://influencemodels.agency/services/events',
+    title: 'Event Creators Miami — Party Creators & Event Hosting Florida',
+    description: 'Miami event creators for clubs, parties, brand activations. Serving South Florida.',
+    url: 'https://influencecreators.marketing/services/events',
   },
 };
 
 const eventModelsSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: 'Event Models & Hosting',
-  description: 'Professional models for events, club nights, brand activations, and parties in South Florida. From $400/girl. Same-week booking available.',
+  name: 'Event Creators & Hosting',
+  description: 'Professional creators for events, club nights, brand activations, and parties in South Florida. From $400/girl. Same-week booking available.',
   provider: {
     '@type': 'Organization',
-    name: 'Influence Models Agency',
-    url: 'https://influencemodels.agency',
+    name: 'Influence',
+    url: 'https://influencecreators.marketing',
   },
   areaServed: ['Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach', 'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach', 'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach'],
   offers: {
@@ -49,7 +49,7 @@ export default function EventsPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -57,14 +57,14 @@ export default function EventsPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking?service=event" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Event Models</Link>
+            <Link href="/start?service=event" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Event Creators</Link>
           </div>
         </div>
       </nav>
 
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
-        <Image src="/images/Des/des-5.jpg" alt="Event Models" fill priority className="object-cover object-top" />
+        <Image src="/images/Des/des-5.jpg" alt="Event Creators" fill priority className="object-cover object-top" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
         <div className="relative z-10 px-8 md:px-16 pb-16 md:pb-24 max-w-4xl">
@@ -73,13 +73,13 @@ export default function EventsPage() {
             Beautiful Models<br />At Your Event.
           </h1>
           <p className="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-            Professional models show up to your club night, brand activation, party, or launch event — on time, dressed to impress, and ready to elevate your entire vibe.
+            Professional creators show up to your club night, brand activation, party, or launch event — on time, dressed to impress, and ready to elevate your entire vibe.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/model-booking?service=event" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
-              Book Event Models <ChevronRight className="h-4 w-4" />
+            <Link href="/start?service=event" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+              Book Event Creators <ChevronRight className="h-4 w-4" />
             </Link>
-            <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+            <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
               <Phone className="h-4 w-4" /> Call Us
             </a>
           </div>
@@ -112,8 +112,8 @@ export default function EventsPage() {
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl">
           {[
             { num: '01', title: 'Tell Us About Your Event', desc: 'Date, venue, vibe, how many girls you need. We handle the rest — matching, scheduling, and coordinating.' },
-            { num: '02', title: 'Models Show Up Ready', desc: 'Professional, on-time, dressed to match your event. They know how to work a room, create content, and attract attention.' },
-            { num: '03', title: 'Your Event Stands Out', desc: 'More energy, more photos, more buzz. Our models generate organic content and social proof that extends beyond the night.' },
+            { num: '02', title: 'Creators Show Up Ready', desc: 'Professional, on-time, dressed to match your event. They know how to work a room, create content, and attract attention.' },
+            { num: '03', title: 'Your Event Stands Out', desc: 'More energy, more photos, more buzz. Our creators generate organic content and social proof that extends beyond the night.' },
           ].map(({ num, title, desc }) => (
             <div key={num} className="border border-white/[0.06] p-8">
               <p className="font-display font-bold italic text-4xl mb-4" style={{ color: gold }}>{num}</p>
@@ -133,10 +133,10 @@ export default function EventsPage() {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { icon: Users, title: 'Hand-Picked Models', desc: 'We match models to your event type, dress code, and audience. Club night? Brand launch? Private party? We have the right girls.' },
-              { icon: Clock, title: '3–4 Hour Standard Block', desc: 'Models arrive on-time for a 3–4 hour appearance. Need more time? Extended and full-night add-ons available.' },
-              { icon: Star, title: 'Social Media Content', desc: 'Models post stories, reels, and content from your event — giving you organic social proof and reach to their followers.' },
-              { icon: Shield, title: 'Professional & Reliable', desc: 'Vetted, experienced, and professional. Our models show up ready to work, not party. Your event is their priority.' },
+              { icon: Users, title: 'Hand-Picked Creators', desc: 'We match creators to your event type, dress code, and audience. Club night? Brand launch? Private party? We have the right girls.' },
+              { icon: Clock, title: '3–4 Hour Standard Block', desc: 'Creators arrive on-time for a 3–4 hour appearance. Need more time? Extended and full-night add-ons available.' },
+              { icon: Star, title: 'Social Media Content', desc: 'Creators post stories, reels, and content from your event — giving you organic social proof and reach to their followers.' },
+              { icon: Shield, title: 'Professional & Reliable', desc: 'Vetted, experienced, and professional. Our creators show up ready to work, not party. Your event is their priority.' },
               { icon: MapPin, title: 'All of South Florida', desc: 'Miami, Fort Lauderdale, Boca Raton, Palm Beach, and everywhere in between. We cover the entire South Florida region.' },
               { icon: Phone, title: 'Dedicated Coordinator', desc: 'For groups of 5+, you get a dedicated coordinator who handles arrivals, communication, and any on-site needs.' },
             ].map(({ icon: Icon, title, desc }) => (
@@ -189,7 +189,7 @@ export default function EventsPage() {
           South Florida Event Coverage
         </h2>
         <p className="text-white/45 text-lg max-w-2xl mb-12 leading-relaxed">
-          Our event models and hosting services cover the entire South Florida region. From Miami nightlife to Palm Beach galas, Fort Lauderdale events to Boca Raton parties, we provide professional models for any occasion.
+          Our event creators and hosting services cover the entire South Florida region. From Miami nightlife to Palm Beach galas, Fort Lauderdale events to Boca Raton parties, we provide professional creators for any occasion.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
           {[
@@ -214,8 +214,8 @@ export default function EventsPage() {
           </h2>
           <p className="text-black/50 text-lg mb-10 max-w-lg">Flat rate per girl. More girls = better rate. Same-week booking available for most events.</p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/model-booking?service=event" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
-              Book Event Models <ChevronRight className="h-4 w-4" />
+            <Link href="/start?service=event" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+              Book Event Creators <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
               <span>✓ South Florida</span>
@@ -241,17 +241,17 @@ export default function EventsPage() {
             </Link>
             <Link href="/services/business" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
               <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Business Content & Brand Ambassadors</h3>
-              <p className="text-white/35 text-sm leading-relaxed">Models visit your business to create authentic on-location content for restaurants, salons, retail stores, and more.</p>
+              <p className="text-white/35 text-sm leading-relaxed">Creators visit your business to create authentic on-location content for restaurants, salons, retail stores, and more.</p>
               <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
             </Link>
             <Link href="/services/shoots" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
               <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Shoots & Music Videos</h3>
-              <p className="text-white/35 text-sm leading-relaxed">Book models for photo shoots, music videos, commercials, and professional video productions.</p>
+              <p className="text-white/35 text-sm leading-relaxed">Book creators for photo shoots, music videos, commercials, and professional video productions.</p>
               <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
             </Link>
             <Link href="/services/commercials" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
               <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Commercials & Speaking Roles</h3>
-              <p className="text-white/35 text-sm leading-relaxed">Professional talent for TV commercials, speaking roles, and brand campaigns.</p>
+              <p className="text-white/35 text-sm leading-relaxed">Professional creators for TV commercials, speaking roles, and brand campaigns.</p>
               <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
             </Link>
           </div>
@@ -267,10 +267,10 @@ export default function EventsPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -280,7 +280,7 @@ export default function EventsPage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
                 </ul>
               </div>
               <div>
@@ -289,14 +289,14 @@ export default function EventsPage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

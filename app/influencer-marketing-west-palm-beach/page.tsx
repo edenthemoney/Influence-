@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   keywords: "marketing agency Boca Raton,creator marketplace,UGC content creation,music promotion,brand campaigns,Boca Raton marketing,South Florida creators,social media marketing,influencer campaigns",
   alternates: { canonical: "https://influencecreators.marketing/influencer-marketing-west-palm-beach" },
   openGraph: {
+    locale: "en_US",
+    siteName: "Influence",
+    type: "website",
     title: "Creator Marketing Marketplace West Palm Beach \u2014 Story Reposts, Collab Posts & UGC",
     description: "West Palm Beach premier creator marketing marketplace. Celebrity-connected creators, story reposts, collab posts, UGC, transparent pricing for brands and businesses.",
     url: "https://influencecreators.marketing/influencer-marketing-west-palm-beach",

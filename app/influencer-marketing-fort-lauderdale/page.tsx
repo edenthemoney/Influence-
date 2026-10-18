@@ -6,35 +6,35 @@ import MobileNav from '../components/MobileNav';
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
-  title: 'Influencer Marketing Agency Fort Lauderdale — Story Reposts, Collab Posts, UGC & Models | Influence',
-  description: 'Fort Lauderdale influencer marketing agency. Book celebrity-connected creators for story reposts, collab posts, UGC content, business promotion, events, and music videos. Serving Broward County.',
+  title: 'Creator Marketing Marketplace Fort Lauderdale — Story Reposts, Collab Posts, UGC & Creators | Influence',
+  description: 'Fort Lauderdale creator marketing marketplace. Book celebrity-connected creators for story reposts, collab posts, UGC content, business promotion, events, and music videos. Serving Broward County.',
   alternates: {
-    canonical: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
+    canonical: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
   },
   openGraph: {
     locale: 'en_US',
-    siteName: 'Influence Models Agency',
-    title: 'Influencer Marketing Agency Fort Lauderdale — Story Reposts, Collab Posts & UGC',
-    description: 'Fort Lauderdale\'s premier influencer marketing agency. Celebrity-connected talent, story reposts, collab posts, UGC, transparent pricing for brands and events.',
-    url: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
+    siteName: 'Influence',
+    title: 'Creator Marketing Marketplace Fort Lauderdale — Story Reposts, Collab Posts & UGC',
+    description: 'Fort Lauderdale\'s premier creator marketing marketplace. Celebrity-connected creators, story reposts, collab posts, UGC, transparent pricing for brands and events.',
+    url: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
     type: 'website',
   },
   twitter: {
-    creator: '@influencemodels.agency',
-    site: '@influencemodels.agency',
+    creator: '@influencecreators.marketing',
+    site: '@influencecreators.marketing',
     card: 'summary_large_image',
-    title: 'Influencer Marketing Agency Fort Lauderdale — Story Reposts, Collab Posts & UGC',
-    description: 'Fort Lauderdale\'s premier influencer marketing agency. Celebrity-connected talent, story reposts, collab posts, UGC, transparent pricing for brands and events.',
+    title: 'Creator Marketing Marketplace Fort Lauderdale — Story Reposts, Collab Posts & UGC',
+    description: 'Fort Lauderdale\'s premier creator marketing marketplace. Celebrity-connected creators, story reposts, collab posts, UGC, transparent pricing for brands and events.',
   },
 };
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'ServiceAreaBusiness',
-  name: 'Influence Models Agency - Fort Lauderdale',
-  description: 'Fort Lauderdale influencer marketing agency. Book celebrity-connected influencers for story reposts, collab posts, UGC content, business promotion, events, and model bookings.',
-  url: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
-  telephone: '+15615520392',
+  name: 'Influence - Fort Lauderdale',
+  description: 'Fort Lauderdale creator marketing marketplace. Book celebrity-connected influencers for story reposts, collab posts, UGC content, business promotion, events, and content orderings.',
+  url: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
+  telephone: '+15612877194',
   email: 'influencemodelsagency@gmail.com',
   address: {
     '@type': 'PostalAddress',
@@ -66,16 +66,16 @@ const localBusinessSchema = {
     'Story Reposts',
     'Collab Posts',
     'UGC Content Creation',
-    'Influencer Marketing',
-    'Model Booking',
+    'Creator Marketing',
+    'Content Ordering',
     'Event Hosting',
     'Music Video Production',
   ],
   sameAs: [
-    'https://instagram.com/influencemodels.agency',
-    'https://twitter.com/influencemodels.agency',
-    'https://facebook.com/influencemodels.agency',
-    'https://www.instagram.com/influencemodels.agency',
+    'https://instagram.com/influencecreators.marketing',
+    'https://twitter.com/influencecreators.marketing',
+    'https://facebook.com/influencecreators.marketing',
+    'https://www.instagram.com/influencecreators.marketing',
     'https://www.tiktok.com/@influencemodelsagency',
   ],
 };
@@ -86,10 +86,10 @@ const faqSchema = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How much does influencer marketing cost in Fort Lauderdale?',
+      name: 'How much does creator marketing cost in Fort Lauderdale?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Fort Lauderdale influencer marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $500. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
+        text: 'Fort Lauderdale creator marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $500. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
       },
     },
     {
@@ -97,7 +97,7 @@ const faqSchema = {
       name: 'Do you work with Fort Lauderdale-based influencers only?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We work with both Fort Lauderdale-based influencers and nationwide talent. For on-site bookings in Broward County, we prioritize local influencers. For remote UGC content, we can work with influencers anywhere in the US.',
+        text: 'We work with both Fort Lauderdale-based influencers and nationwide creators. For on-site bookings in Broward County, we prioritize local influencers. For remote UGC content, we can work with influencers anywhere in the US.',
       },
     },
     {
@@ -127,13 +127,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://influencemodels.agency',
+      item: 'https://influencecreators.marketing',
     },
     {
       '@type': 'ListItem',
       position: 2,
-      name: 'Fort Lauderdale Influencer Marketing',
-      item: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
+      name: 'Fort Lauderdale Creator Marketing',
+      item: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
     },
   ],
 };
@@ -160,7 +160,7 @@ export default function FortLauderdalePage() {
             <div className="flex items-center gap-4">
               <MobileNav />
               <div className="hidden md:flex items-center gap-10">
-                <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+                <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
                 <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
                 <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
               </div>
@@ -168,7 +168,7 @@ export default function FortLauderdalePage() {
             <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
             <div className="flex items-center gap-10">
               <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-              <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
+              <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
             </div>
           </div>
         </nav>
@@ -177,19 +177,19 @@ export default function FortLauderdalePage() {
         <section className="relative min-h-[85vh] flex items-end overflow-hidden pt-20">
           <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-black/50 to-[#080808]" />
           <div className="relative z-10 px-8 md:px-16 pb-16 md:pb-24 max-w-4xl">
-            <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Fort Lauderdale Influencer Marketing</p>
+            <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Fort Lauderdale Creator Marketing</p>
             <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 96px)' }}>
-              Fort Lauderdale<br />Influencer Agency
+              Fort Lauderdale<br />Influencer Marketplace
             </h1>
             <p className="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-              Verified models and influencers for UGC content, business promotion, events, and music videos. Serving Fort Lauderdale, Hollywood, Pompano Beach, and Broward County.
+              Verified creators and influencers for UGC content, business promotion, events, and music videos. Serving Fort Lauderdale, Hollywood, Pompano Beach, and Broward County.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/model-booking" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+              <Link href="/start" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Fort Lauderdale Influencers <ChevronRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
-                <Phone className="h-4 w-4" /> (561) 552-0392
+              <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+                <Phone className="h-4 w-4" /> (561) 287-7194
               </a>
             </div>
           </div>
@@ -228,9 +228,9 @@ export default function FortLauderdalePage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
                 { name: 'Business Content', price: 'From $300', desc: 'On-site content for Fort Lauderdale restaurants and businesses.' },
-                { name: 'Event Models', price: 'From $400/girl', desc: 'Professional models for Fort Lauderdale events and parties.' },
+                { name: 'Event Creators', price: 'From $400/girl', desc: 'Professional creators for Fort Lauderdale events and parties.' },
                 { name: 'UGC Content', price: 'From $300', desc: 'Remote content creation for Fort Lauderdale brands.' },
-                { name: 'Music Video Models', price: 'From $500', desc: 'Talent for Fort Lauderdale music video productions.' },
+                { name: 'Music Video Creators', price: 'From $500', desc: 'Creators for Fort Lauderdale music video productions.' },
                 { name: 'Commercial Production', price: 'From $599', desc: 'Scripted commercials and speaking roles.' },
                 { name: 'Music Promotion', price: 'From $300', desc: 'Song reaction videos for Fort Lauderdale artists.' },
               ].map(({ name, price, desc }) => (
@@ -254,7 +254,7 @@ export default function FortLauderdalePage() {
             <div className="space-y-6">
               {[
                 { title: 'Broward County Knowledge', desc: 'We know Fort Lauderdale and Broward County. From Las Olas to Hollywood Beach, we understand the local market.' },
-                { title: 'Verified Local Talent', desc: 'Our roster includes models and influencers based in Fort Lauderdale with authentic local followings.' },
+                { title: 'Verified Local Creators', desc: 'Our network includes creators and influencers based in Fort Lauderdale with authentic local followings.' },
                 { title: 'Event Expertise', desc: 'Experience with Fort Lauderdale venues, beach clubs, restaurants, and event spaces for on-site content creation.' },
                 { title: 'Fast Local Response', desc: 'Same-day response for Fort Lauderdale bookings. Our team is ready to mobilize across Broward County.' },
               ].map(({ title, desc }) => (
@@ -306,7 +306,7 @@ export default function FortLauderdalePage() {
             </h2>
             <p className="text-black/50 text-lg mb-10 max-w-lg">Book Fort Lauderdale influencers for your next campaign. From $300.</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/model-booking" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+              <Link href="/start" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Fort Lauderdale Influencers <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
@@ -319,15 +319,15 @@ export default function FortLauderdalePage() {
             <div className="flex flex-col md:flex-row justify-between gap-16 mb-16">
               <div>
                 <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '17px', color: gold }}>Influence</Link>
-                <p className="text-white/40 text-sm mt-4 mb-2">Influence Models Agency</p>
+                <p className="text-white/40 text-sm mt-4 mb-2">Influence</p>
                 <p className="text-white/30 text-xs mb-1">Fort Lauderdale, FL 33301</p>
-                <p className="text-white/30 text-xs mb-1">(561) 552-0392</p>
+                <p className="text-white/30 text-xs mb-1">(561) 287-7194</p>
                 <p className="text-white/30 text-xs">influencemodelsagency@gmail.com</p>
               </div>
             </div>
             <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-              <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+              <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
               <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
             </div>
           </div>

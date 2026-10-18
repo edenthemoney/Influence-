@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Book Actress Models in Miami — Acting & Casting | Influence',
     description: 'Professional actress models with on-camera, commercial, and film experience. From $599.',
-    url: 'https://influencemodels.agency/actress-models-miami',
+    url: 'https://influencecreators.marketing/actress-models-miami',
   },
 };
 
@@ -23,7 +23,7 @@ export default function ActressModelsMiamiPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -31,7 +31,7 @@ export default function ActressModelsMiamiPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking?service=commercial" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
+            <Link href="/start?service=commercial" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -49,7 +49,7 @@ export default function ActressModelsMiamiPage() {
             Book actress-ready models for commercials, TV, film, casting calls, and speaking roles. Our South Florida roster includes talent with Netflix, Audible, and major production credits — from Deseray Marie’s film work to voiceover artists ready for your next campaign.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/model-booking?service=commercial" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+            <Link href="/start?service=commercial" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Book Actress Talent <ChevronRight className="h-4 w-4" />
             </Link>
             <Link href="/marketplace" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
@@ -92,7 +92,7 @@ export default function ActressModelsMiamiPage() {
             Cast your next{'\n'}project.
           </h2>
           <p className="text-black/50 text-lg mb-10 max-w-lg">Book actress models and voiceover talent with real production experience. South Florida and nationwide remote options.</p>
-          <Link href="/model-booking?service=commercial" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+          <Link href="/start?service=commercial" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
             Book Actress Models <ChevronRight className="h-4 w-4" />
           </Link>
         </div>
@@ -106,17 +106,17 @@ export default function ActressModelsMiamiPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
                 <p className="text-white/20 text-[9px] tracking-widest uppercase mb-6">Services</p>
                 <ul className="space-y-3">
-                  <li><Link href="/actress-models-miami" className="text-white/40 hover:text-white transition-colors text-sm">Actress Models</Link></li>
-                  <li><Link href="/casting-agency-miami" className="text-white/40 hover:text-white transition-colors text-sm">Casting Agency</Link></li>
-                  <li><Link href="/voiceover-talent-miami" className="text-white/40 hover:text-white transition-colors text-sm">Voiceover Talent</Link></li>
+                  <li><Link href="/actress-creators-miami" className="text-white/40 hover:text-white transition-colors text-sm">Actress Models</Link></li>
+                  <li><Link href="/casting-network-miami" className="text-white/40 hover:text-white transition-colors text-sm">Casting Agency</Link></li>
+                  <li><Link href="/voiceover-creators-miami" className="text-white/40 hover:text-white transition-colors text-sm">Voiceover Talent</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
                 </ul>
               </div>
@@ -132,7 +132,7 @@ export default function ActressModelsMiamiPage() {
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

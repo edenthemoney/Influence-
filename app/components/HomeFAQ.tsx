@@ -7,20 +7,20 @@ const gold = '#c9a96e';
 
 const faqs = [
   {
-    question: 'What is Influence Models Agency?',
-    answer: 'Influence Models Agency is a South Florida influencer marketing agency based in Miami. We connect artists, brands, record labels, and local businesses with verified influencers and models for UGC content, music videos, event hosting, commercial shoots, and brand campaigns.',
+    question: 'What is Influence?',
+    answer: 'Influence is a South Florida creator marketing marketplace based in Miami. We connect artists, brands, record labels, and local businesses with verified influencers and creators for UGC content, music videos, event hosting, commercial shoots, and brand campaigns.',
   },
   {
-    question: 'How do I book a model or influencer in Miami?',
-    answer: 'You can book directly through our website using the model booking form. Select your service type, choose your preferred talent, and tell us the details. Most bookings are confirmed within 24-48 hours with same-week availability for South Florida shoots.',
+    question: 'How do I book a creator or influencer in Miami?',
+    answer: 'You can book directly through our website using the content ordering form. Select your service type, choose your preferred creator, and tell us the details. Most bookings are confirmed within 24-48 hours with same-week availability for South Florida shoots.',
   },
   {
     question: 'What services do you offer for music artists?',
-    answer: 'We provide music video models, TikTok and Instagram music promotion, song reaction videos, viral challenge creators, album release livestreams, and influencer campaigns designed to increase streams and visibility for independent and signed artists.',
+    answer: 'We provide music video creators, TikTok and Instagram music promotion, song reaction videos, viral challenge creators, album release livestreams, and influencer campaigns designed to increase streams and visibility for independent and signed artists.',
   },
   {
     question: 'Do you offer UGC content creation for businesses?',
-    answer: 'Yes. We send professional models and creators to your business location — restaurants, salons, gyms, retail stores, and more — to shoot reels, stories, and promotional content that you can use across your own social channels and ads.',
+    answer: 'Yes. We send professional creators and creators to your business location — restaurants, salons, gyms, retail stores, and more — to shoot reels, stories, and promotional content that you can use across your own social channels and ads.',
   },
   {
     question: 'How much does it cost to hire an influencer?',
@@ -28,11 +28,11 @@ const faqs = [
   },
   {
     question: 'Can I hire influencers outside of Miami?',
-    answer: 'Yes. While our in-person shoots are focused on South Florida, our remote UGC and social media content services are available nationwide. Talent creates content from their location and delivers it digitally.',
+    answer: 'Yes. While our in-person shoots are focused on South Florida, our remote UGC and social media content services are available nationwide. Creators create content from their location and delivers it digitally.',
   },
   {
-    question: 'What makes Influence different from other influencer agencies?',
-    answer: 'We are a minority and women-owned agency with a celebrity-connected roster, including talent featured in Forbes, Fenty Beauty, Meta campaigns, and music videos for major artists. Our talent is verified, professional, and campaign-ready.',
+    question: 'What makes Influence different from other creator marketplaces?',
+    answer: 'We are a minority and women-owned agency with a celebrity-connected roster, including creators featured in Forbes, Fenty Beauty, Meta campaigns, and music videos for major artists. Our creators is verified, professional, and campaign-ready.',
   },
 ];
 

@@ -6,25 +6,57 @@ import MobileNav from '../../components/MobileNav';
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
-  title: 'Brand Ambassadors — Models Come to Your Business | Influence Agency',
-  description: 'Book a brand ambassador for your business. An influencer shows up at your location and creates reels, stories, and promo content on-site. Perfect for restaurants, salons, gyms, retail, and more. South Florida.',
+  title: 'Brand Ambassadors Miami — Business Content & On-Site Creators Florida | Influence',
+  description: 'Miami brand ambassadors. Creators visit your business to create reels, stories, and promo content on-site. Serving Miami, Fort Lauderdale, Boca Raton, Palm Beach restaurants, salons, gyms, retail.',
   openGraph: {
-    title: 'Brand Ambassadors — Models at Your Location | Influence',
-    description: 'Book a brand ambassador for your business. Reels, stories, promos — all delivered same day. South Florida.',
-    url: 'https://influencemodels.agency/services/business',
+    title: 'Brand Ambassadors Miami — Business Content & On-Site Creators Florida',
+    description: 'Miami business content creation. Creators visit your location for reels, stories, promos. Serving South Florida.',
+    url: 'https://influencecreators.marketing/services/business',
   },
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Business Content & Brand Ambassadors",
+  "description": "Professional creators visit your business location and create reels, stories, and promo content on-site. Perfect for restaurants, salons, gyms, retail stores. South Florida. From $300.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Influence",
+    "url": "https://influencecreators.marketing"
+  },
+  "areaServed": [
+    "Miami",
+    "Fort Lauderdale",
+    "Boca Raton",
+    "Palm Beach",
+    "West Palm Beach",
+    "Delray Beach",
+    "Hollywood",
+    "Pompano Beach"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "300",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  }
 };
 
 export default function BusinessContentPage() {
   return (
     <div className="min-h-screen bg-[#080808]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Nav */}
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -32,7 +64,7 @@ export default function BusinessContentPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking?service=business" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book a Model</Link>
+            <Link href="/start?service=business" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book a Creator</Link>
           </div>
         </div>
       </nav>
@@ -51,10 +83,10 @@ export default function BusinessContentPage() {
             Pick a date. A professional model arrives at your business — your restaurant, salon, gym, store, whatever — and creates reels, stories, and promo content on the spot. You get everything delivered same day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/model-booking?service=business" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+            <Link href="/start?service=business" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Book a Brand Ambassador <ChevronRight className="h-4 w-4" />
             </Link>
-            <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+            <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
               <Phone className="h-4 w-4" /> Call Us
             </a>
           </div>
@@ -133,7 +165,7 @@ export default function BusinessContentPage() {
                   </div>
                 ))}
               </div>
-              <Link href="/model-booking?service=business" className="mt-auto flex items-center justify-center gap-2 py-4 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-85" style={{ backgroundColor: popular ? gold : 'transparent', color: popular ? '#000' : 'rgba(255,255,255,0.5)', border: popular ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
+              <Link href="/start?service=business" className="mt-auto flex items-center justify-center gap-2 py-4 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-85" style={{ backgroundColor: popular ? gold : 'transparent', color: popular ? '#000' : 'rgba(255,255,255,0.5)', border: popular ? 'none' : '1px solid rgba(255,255,255,0.1)' }}>
                 Book Now <ChevronRight className="h-3.5 w-3.5" />
               </Link>
             </div>
@@ -169,14 +201,14 @@ export default function BusinessContentPage() {
             The algorithm rewards<br />what stops the scroll.
           </h2>
           <p className="text-white/45 text-base max-w-xl mb-12 leading-relaxed">
-            Instagram, TikTok, Facebook, and YouTube Shorts all prioritize content that gets engagement. Professional models in your content = more likes, more shares, more saves, more reach. It&apos;s not a theory — it&apos;s how the algorithm works.
+            Instagram, TikTok, Facebook, and YouTube Shorts all prioritize content that gets engagement. Professional creators in your content = more likes, more shares, more saves, more reach. It&apos;s not a theory — it&apos;s how the algorithm works.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { icon: BarChart3, title: 'Higher Engagement Rate', desc: 'Content with attractive models gets 3–5x more engagement than standard business posts. More engagement = more algorithmic reach.' },
+              { icon: BarChart3, title: 'Higher Engagement Rate', desc: 'Content with attractive creators gets 3–5x more engagement than standard business posts. More engagement = more algorithmic reach.' },
               { icon: TrendingUp, title: 'Boosted Discovery', desc: 'When your reels get saves and shares, platforms push them to the Explore page and For You feed — reaching thousands of potential customers.' },
               { icon: Repeat, title: 'Content Library', desc: 'One 2-hour session produces 3–5+ pieces of content. That\'s weeks of posting material from a single visit.' },
-              { icon: Sparkles, title: 'Professional Quality', desc: 'No more phone photos. Our models know angles, lighting, and how to make your business look incredible on camera.' },
+              { icon: Sparkles, title: 'Professional Quality', desc: 'No more phone photos. Our creators know angles, lighting, and how to make your business look incredible on camera.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="flex gap-5 p-6 border border-white/[0.04] bg-white/[0.01]">
                 <div className="w-11 h-11 border border-white/10 flex items-center justify-center shrink-0">
@@ -199,7 +231,7 @@ export default function BusinessContentPage() {
           Serving South Florida Businesses
         </h2>
         <p className="text-white/45 text-lg max-w-2xl mb-12 leading-relaxed">
-          We bring professional models directly to your business location across South Florida. From Miami to Palm Beach, our brand ambassadors create on-site content that drives real results for local businesses.
+          We bring professional creators directly to your business location across South Florida. From Miami to Palm Beach, our brand ambassadors create on-site content that drives real results for local businesses.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
           {[
@@ -225,7 +257,7 @@ export default function BusinessContentPage() {
           </h2>
           <p className="text-black/50 text-lg mb-10 max-w-lg">One visit. Weeks of content. Real results for your social media.</p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/model-booking?service=business" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+            <Link href="/start?service=business" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Book a Brand Ambassador <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
@@ -233,6 +265,38 @@ export default function BusinessContentPage() {
               <span>✓ Same-week booking</span>
               <span>✓ Custom packages</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related Services */}
+      <section className="py-20 md:py-28 px-8 md:px-16 bg-[#060606] border-t border-white/[0.06]">
+        <div className="max-w-4xl">
+          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Related Services</p>
+          <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}>
+            Complete your<br />marketing stack.
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/services/content" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Social Media Content</h3>
+              <p className="text-white/35 text-sm leading-relaxed">UGC content creation including reaction videos, promo reels, and viral challenges for artists and brands.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/events" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Event Creators & Hosting</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Professional creators for events, parties, activations, and brand experiences in South Florida.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/shoots" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Shoots & Music Videos</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Book creators for photo shoots, music videos, commercials, and professional video productions.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
+            <Link href="/services/commercials" className="group border border-white/[0.06] p-8 hover:border-white/[0.15] transition-all duration-300">
+              <h3 className="text-white font-bold text-lg mb-3 group-hover:translate-x-1 transition-transform">Commercials & Speaking Roles</h3>
+              <p className="text-white/35 text-sm leading-relaxed">Professional creators for TV commercials, speaking roles, and brand campaigns.</p>
+              <p className="text-[10px] font-bold tracking-[0.2em] uppercase mt-4" style={{ color: gold }}>Learn More →</p>
+            </Link>
           </div>
         </div>
       </section>
@@ -246,10 +310,10 @@ export default function BusinessContentPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -259,7 +323,7 @@ export default function BusinessContentPage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
                 </ul>
               </div>
               <div>
@@ -268,14 +332,14 @@ export default function BusinessContentPage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

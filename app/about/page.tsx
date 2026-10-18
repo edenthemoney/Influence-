@@ -7,24 +7,108 @@ import { Target, Zap, Users, TrendingUp, Award, ChevronRight, Wine } from 'lucid
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
-  title: 'About Influence — South Florida Influencer Marketing Agency',
-  description: 'Meet the founders of Influence, a South Florida-based influencer marketing agency. Eden Roy and Deseray Marie connect brands, artists, and businesses with elite influencers for UGC content, music promotion, event hosting, and more.',
+  title: 'About Influence — South Florida Creator Marketing Marketplace',
+  description: 'Meet the founders of Influence, a South Florida-based creator marketing marketplace. Eden Roy and Deseray Marie connect brands, artists, and businesses with elite influencers for UGC content, music promotion, event hosting, and more.',
   openGraph: {
-    title: 'About Influence — South Florida Influencer Marketing Agency',
+    title: 'About Influence — South Florida Creator Marketing Marketplace',
     description: 'Meet Eden Roy and Deseray Marie — the founders behind Influence, connecting brands with elite influencers in South Florida and beyond.',
-    url: 'https://influencemodels.agency/about',
+    url: 'https://influencecreators.marketing/about',
   },
+};
+
+const aboutOrgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://influencecreators.marketing/#organization",
+  "name": "Influence",
+  "alternateName": [
+    "Influence",
+    "Influence Marketplace",
+    "Influence Models"
+  ],
+  "url": "https://influencecreators.marketing",
+  "logo": "https://influencecreators.marketing/favicon.svg",
+  "description": "South Florida's premier creator marketing marketplace. Book verified creators and influencers for music videos, UGC content, events, brand campaigns, and business promotions. Celebrity-connected creators with credits including Sean Paul, Bryson Tiller, Kai Cenat, Forbes, and Fenty Beauty.",
+  "knowsAbout": [
+    "creator marketing",
+    "UGC content creation",
+    "music video production",
+    "event hosting",
+    "brand ambassadors",
+    "Instagram marketing",
+    "TikTok marketing",
+    "music promotion",
+    "content ordering"
+  ],
+  "foundingDate": "2024",
+  "founders": [
+    {
+      "@type": "Person",
+      "@id": "https://www.wikidata.org/wiki/Q140179042",
+      "name": "Eden Roy",
+      "jobTitle": "Founder & CEO",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q140179042"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://influencecreators.marketing/influencer/des-001",
+      "name": "Deseray Marie",
+      "jobTitle": "Co-Founder, Lead Creator & Creative Director",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q140177827",
+        "https://www.imdb.com/name/nm13223076/",
+        "https://www.instagram.com/itsdezmarie"
+      ]
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Miami"
+    },
+    {
+      "@type": "City",
+      "name": "Boca Raton"
+    },
+    {
+      "@type": "State",
+      "name": "Florida"
+    },
+    {
+      "@type": "Country",
+      "name": "United States"
+    }
+  ],
+  "slogan": "Go Viral. Make an Influence.",
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q140179528",
+    "https://www.instagram.com/influencecreators.marketing",
+    "https://www.tiktok.com/@influencemodelsagency"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "influencemodelsagency@gmail.com",
+    "telephone": "+15612877194",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  }
 };
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#080808]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutOrgJsonLd) }}
+      />
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -32,7 +116,7 @@ export default function AboutPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -46,8 +130,7 @@ export default function AboutPage() {
             About <span style={{ color: gold }}>Influence</span>
           </h1>
           <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-            Influence is a South Florida-based influencer marketing agency connecting brands, artists, and businesses
-            with elite influencers who deliver authentic engagement, viral content, and real results.
+            Influence is a South Florida-based creator marketing marketplace connecting brands, artists, and businesses with elite influencers who deliver authentic engagement, viral content, and real results.
           </p>
         </div>
       </section>
@@ -107,7 +190,7 @@ export default function AboutPage() {
                   'Expert in SEO, digital marketing & organic growth strategy',
                   'Music management, record label & recording studio owner',
                   'Built Influence from the ground up — technology, operations & business development',
-                  'Focused on making influencer marketing accessible, transparent & results-driven',
+                  'Focused on making creator marketing accessible, transparent & results-driven',
                 ].map(item => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: gold }} />
@@ -137,17 +220,17 @@ export default function AboutPage() {
             What We Do
           </h2>
           <p className="text-white/55 text-[15px] leading-relaxed mb-12 max-w-2xl">
-            Influence is a full-service influencer marketing agency and talent management company. We connect brands with verified influencers across TikTok, Instagram, and YouTube — and manage everything from content creation to campaign analytics.
+            Influence is a full-service creator marketing marketplace and creator management company. We connect brands with verified influencers across TikTok, Instagram, and YouTube — and manage everything from content creation to campaign analytics.
           </p>
 
           <div className="grid md:grid-cols-2 gap-5">
             {[
-              { Icon: TrendingUp, title: 'Social Media Growth', desc: 'Organic follower growth, engagement, and reach through strategic influencer partnerships and viral UGC campaigns.', href: '/model-booking?service=ugc' },
-              { Icon: Users, title: 'Brand Marketing', desc: 'Product launches, brand awareness, and conversion-ready campaigns with niche-aligned influencers who move product.', href: '/model-booking?service=business' },
-              { Icon: Zap, title: 'Music Promotion', desc: 'Turn tracks into trending audio. Our influencers create viral content that puts your music in front of millions.', href: '/model-booking?service=reaction' },
-              { Icon: Award, title: 'Event Hosting & Appearances', desc: 'Book professional models for parties, club nights, brand activations, and music video shoots across South Florida.', href: '/model-booking?service=event' },
-              { Icon: Wine, title: 'Bottle Girls & VIP Hostesses', desc: 'Professional VIP bottle girls and hostesses for nightclubs, lounges, and premium venues. $100/girl/hr — models earn $50/hr.', href: '/model-booking?service=bottle' },
-              { Icon: Target, title: 'Business Content', desc: 'We send professional models to your business to create scroll-stopping reels and social content on-site. Perfect for restaurants, salons, gyms, and retail.', href: '/model-booking?service=business' },
+              { Icon: TrendingUp, title: 'Social Media Growth', desc: 'Organic follower growth, engagement, and reach through strategic influencer partnerships and viral UGC campaigns.', href: '/start?service=ugc' },
+              { Icon: Users, title: 'Brand Marketing', desc: 'Product launches, brand awareness, and conversion-ready campaigns with niche-aligned influencers who move product.', href: '/start?service=business' },
+              { Icon: Zap, title: 'Music Promotion', desc: 'Turn tracks into trending audio. Our influencers create viral content that puts your music in front of millions.', href: '/start?service=reaction' },
+              { Icon: Award, title: 'Event Hosting & Appearances', desc: 'Book professional creators for parties, club nights, brand activations, and music video shoots across South Florida.', href: '/start?service=event' },
+              { Icon: Wine, title: 'Bottle Girls & VIP Hostesses', desc: 'Professional VIP hostesses and brand ambassadors for nightclubs, lounges, and premium venues. $100/girl/hr — creators earn $50/hr.', href: '/start?service=bottle' },
+              { Icon: Target, title: 'Business Content', desc: 'We send professional creators to your business to create scroll-stopping reels and social content on-site. Perfect for restaurants, salons, gyms, and retail.', href: '/start?service=business' },
             ].map(({ Icon, title, desc, href }) => (
               <Link key={title} href={href} className="p-6 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.02] hover:border-[#c9a96e]/20 transition-all group">
                 <div className="flex items-center gap-3 mb-3">
@@ -171,7 +254,7 @@ export default function AboutPage() {
             <p className="text-white font-bold text-lg sm:text-xl mb-1">Ready to see what we can do for you?</p>
             <p className="text-white/40 text-sm">Pick a service, choose your budget, book in 2 minutes.</p>
           </div>
-          <Link href="/model-booking" className="px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-80 transition-all shrink-0" style={{ backgroundColor: gold, color: '#000' }}>
+          <Link href="/start" className="px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-80 transition-all shrink-0" style={{ backgroundColor: gold, color: '#000' }}>
             Book Now →
           </Link>
         </div>
@@ -196,7 +279,7 @@ export default function AboutPage() {
               ))}
             </div>
             <p className="text-white/25 text-xs text-center italic">
-              Stats reflect aggregate published work across our verified talent roster.
+              Stats reflect aggregate published work across our verified creators roster.
             </p>
           </div>
         </div>
@@ -234,9 +317,9 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-6">
             {[
-              { title: 'Minority & Women-Owned', desc: 'Black, Latino, and women-owned agency. We proudly represent underrepresented founders building in South Florida.' },
-              { title: 'Diverse Models, All Backgrounds', desc: 'Our roster includes talent of all ethnicities, body types, and styles. Representation matters in every campaign we run.' },
-              { title: 'Celebrity-Connected Talent', desc: 'Our models have worked alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine, Bossman Dlow, Kai Cenat, Bryson Tiller, Akon & more.' },
+              { title: 'Minority & Women-Owned', desc: 'Black, Latino, and women-owned marketplace. We proudly represent underrepresented founders building in South Florida.' },
+              { title: 'Diverse Creators, All Backgrounds', desc: 'Our network includes creators of all ethnicities, body types, and styles. Representation matters in every campaign we run.' },
+              { title: 'Celebrity-Connected Creators', desc: 'Our creators have worked alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine, Bossman Dlow, Kai Cenat, Bryson Tiller, Akon & more.' },
               { title: 'Verified Influencers', desc: 'Authenticated metrics, real engagement, proven track records — no fake followers, no bots.' },
               { title: 'Fast Turnaround', desc: 'Most content delivered within 48 hours. Full campaigns complete in 7–14 days.' },
               { title: 'Transparent Pricing', desc: 'No hidden fees. Clear packages with detailed breakdowns at every tier. Starting at $300.' },
@@ -267,11 +350,11 @@ export default function AboutPage() {
             Pick a service, choose your package, and checkout in under 2 minutes. Starting at $300.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/model-booking" className="px-12 py-5 text-black text-[14px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold }}>
+            <Link href="/start" className="px-12 py-5 text-black text-[14px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold }}>
               Book Now →
             </Link>
             <Link href="/marketplace" className="px-10 py-5 border border-white/15 text-white text-[13px] font-bold tracking-widest uppercase hover:border-white/30 transition-all">
-              Browse Talent First
+              Browse Creators First
             </Link>
           </div>
           <div className="flex items-center justify-center gap-6 mt-6 text-white/30 text-xs">
@@ -290,10 +373,10 @@ export default function AboutPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -303,8 +386,8 @@ export default function AboutPage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
-                  <li><Link href="/model-booking?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
+                  <li><Link href="/start?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
                 </ul>
               </div>
               <div>
@@ -313,14 +396,14 @@ export default function AboutPage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

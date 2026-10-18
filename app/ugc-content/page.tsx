@@ -1,12 +1,12 @@
 import PersonaLanding from '../components/PersonaLanding';
 
 export const metadata = {
-  title: 'Paid Instagram Shoutouts & Social Media Promo | UGC Creators — Influence Agency',
+  title: 'Paid Instagram Shoutouts & Social Media Promo | UGC Creators — Influence Marketplace',
   description: 'Get paid Instagram shoutouts, social media promo, and authentic UGC content from verified creators. Product reviews, testimonial videos, and branded reels. From $300.',
   openGraph: {
     title: 'Paid Instagram Shoutouts & Social Media Promo',
     description: 'Get paid Instagram shoutouts, UGC content, and creator reviews. From $300.',
-    url: 'https://influencemodels.agency/ugc-content',
+    url: 'https://influencecreators.marketing/ugc-content',
   },
 };
 
@@ -20,7 +20,7 @@ export default function UgcContentPage() {
       subheadline="Verified creators make reels, reviews, and testimonial videos for your brand. You get HD content delivered to your inbox — ready to post or run as ads."
       heroImage="/images/Ferrari/ferrari-1.jpg"
       heroImageAlt="UGC content creator"
-      primaryCta={{ text: 'Get My First Reel', href: '/model-booking?service=ugc' }}
+      primaryCta={{ text: 'Get My First Reel', href: '/start?service=ugc' }}
       secondaryCta={{ text: 'See All Packages', href: '/pricing' }}
       painPoints={[
         'You need content but don’t have time to create it',
@@ -43,7 +43,7 @@ export default function UgcContentPage() {
           tagline: 'Start Here',
           features: ['1x 30-second Reel or TikTok', 'Professional editing & trending audio', 'Single platform posting', '3-day delivery', '1 revision included'],
           cta: 'Order Reel',
-          href: '/model-booking?service=ugc&package=single-ugc',
+          href: '/start?service=ugc&package=single-ugc',
         },
         {
           name: 'Dual Reel',
@@ -51,7 +51,7 @@ export default function UgcContentPage() {
           tagline: 'Most Popular',
           features: ['2x 30-second reels (IG + TikTok)', 'Dual platform posting', 'Professional editing & transitions', '3-day delivery', '2 revisions included'],
           cta: 'Order Dual Reel',
-          href: '/model-booking?service=ugc&package=double-ugc',
+          href: '/start?service=ugc&package=double-ugc',
           popular: true,
         },
         {
@@ -60,7 +60,7 @@ export default function UgcContentPage() {
           tagline: 'Scale Up',
           features: ['5x premium reels', 'Multi-platform distribution', 'Custom captions & CTAs', '5-day delivery', '3 revisions included'],
           cta: 'Order 5-Reel Pack',
-          href: '/model-booking?service=ugc&package=five-ugc',
+          href: '/start?service=ugc&package=five-ugc',
         },
       ]}
       trustBadges={['Nationwide', '3–5 Day Delivery', 'Usage Rights Included']}
@@ -76,10 +76,10 @@ export default function UgcContentPage() {
         { q: 'Can I use UGC videos as paid ads?', a: 'Yes. All UGC packages include usage rights for organic posting and paid advertising on Instagram, TikTok, YouTube, and Facebook.' },
         { q: 'How do I grow followers with social media promo?', a: 'The fastest way to grow followers is consistent creator content, paid shoutouts, and trending reels. Our creators produce authentic content that drives engagement and follows.' },
         { q: 'How do I choose the right creator?', a: 'You can browse the marketplace or let us match you based on your brand, audience, and content goals.' },
-        { q: 'Where do I find social media influencers for my brand?', a: 'Influence Agency has a curated network of verified creators. You can browse by niche, location, and follower count, or let us match you.' },
+        { q: 'Where do I find social media influencers for my brand?', a: 'Influence Marketplace has a curated network of verified creators. You can browse by niche, location, and follower count, or let us match you.' },
         { q: 'What if I don’t like the UGC content?', a: 'Every package includes revisions. We work with the creator until you’re happy with the final cut.' },
       ]}
-      finalCta={{ text: 'Get My First Reel', href: '/model-booking?service=ugc' }}
+      finalCta={{ text: 'Get My First Reel', href: '/start?service=ugc' }}
       hidePackagePrices
     />
   );

@@ -145,7 +145,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/lp/social-media-content-creator-for-small-business', priority: 0.6, changeFrequency: 'monthly' },
     { route: '/lp/social-media-influencer-marketplace', priority: 0.6, changeFrequency: 'monthly' },
     { route: '/lp/social-media-influencer-marketing', priority: 0.6, changeFrequency: 'monthly' },
-    { route: '/lp/social-media-influencer-marketing-agency', priority: 0.6, changeFrequency: 'monthly' },
+    { route: '/lp/social-media-influencer-marketing', priority: 0.6, changeFrequency: 'monthly' },
     { route: '/lp/social-media-creator-network', priority: 0.6, changeFrequency: 'monthly' },
     { route: '/lp/social-media-video-creator', priority: 0.6, changeFrequency: 'monthly' },
     { route: '/lp/tiktok-influencers-for-hire', priority: 0.6, changeFrequency: 'monthly' },

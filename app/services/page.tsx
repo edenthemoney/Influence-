@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ChevronRight, MapPin, Play, Camera, Sparkles, Headphones, TrendingUp, Film, Wine, Music, Clapperboard } from 'lucide-react';
+import { ChevronRight, MapPin, Play, Camera, Sparkles, Headphones, TrendingUp, Film, Wine, Music, Clapperboard, RefreshCcw, Users } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
 
 const gold = '#c9a96e';
@@ -8,12 +8,12 @@ const gold = '#c9a96e';
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Influencer Marketing Services",
-  description: "Book verified influencers for UGC content, music promotion, brand campaigns, event hosting, and model bookings in South Florida.",
+  name: "Creator Marketing Services",
+  description: "Book verified influencers for UGC content, music promotion, brand campaigns, event hosting, and content orderings in South Florida.",
   provider: {
     "@type": "Organization",
-    name: "Influence Models Agency",
-    url: "https://influencemodels.agency",
+    name: "Influence",
+    url: "https://influencecreators.marketing",
   },
   areaServed: [
     { "@type": "City", name: "Miami" },
@@ -34,104 +34,126 @@ const serviceSchema = {
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Influencer Marketing Services",
+    name: "Creator Marketing Services",
     itemListElement: [
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "UGC Content Creation", description: "User-generated content videos, Instagram reels, TikToks, and brand promotional content created by verified influencers." } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Music Promotion", description: "Song reaction videos, album livestreams, and music content promotion across TikTok and Instagram by influencers." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Event Hosting & Model Booking", description: "Book professional models for event hosting, party promotions, club appearances, and brand activations in South Florida." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Content Creation", description: "Professional models visit your business location to create reels, stories, and promotional content on-site." } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Production", description: "Professional models and actresses for scripted commercial productions, national campaigns, and broadcast-quality content." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Event Hosting & Content Ordering", description: "Book professional creators for event hosting, party promotions, club appearances, and brand activations in South Florida." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Content Creation", description: "Professional creators visit your business location to create reels, stories, and promotional content on-site." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial Production", description: "Professional creators and actresses for scripted commercial productions, national campaigns, and broadcast-quality content." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Story Reposts", description: "Creators post your content to their Instagram Stories with swipe-up links for 24-hour visibility and conversions." } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Collab Posts", description: "Creators co-author posts with your brand that appear on both feeds for dual audience reach and shared engagement." } },
     ],
   },
 };
 
 export const metadata: Metadata = {
-  title: 'Services — Influence Agency | Models, Content, Commercials & Events',
-  description: 'Book professional models for social media content, music reactions, business promos, video shoots, TV commercials, and events across South Florida.',
+  title: 'Services — Influence Marketplace | Creators, Content, Commercials & Events',
+  description: 'Book professional creators for social media content, music reactions, business promos, video shoots, TV commercials, and events across South Florida.',
   openGraph: {
-    title: 'Services — Influence Agency',
+    title: 'Services — Influence Marketplace',
     description: 'Social media content, music reactions, business visits, shoots, commercials, and events.',
-    url: 'https://influencemodels.agency/services',
+    url: 'https://influencecreators.marketing/services',
   },
 };
 
 const services = [
   {
-    href: '/model-booking?service=ugc',
+    href: '/start?service=ugc',
     tag: 'Remote · Nationwide',
     category: 'Social Media Campaigns',
-    title: 'UGC, Reels & Music Reactions',
-    desc: 'Models create branded content, react to your music, launch viral challenges, and produce scroll-stopping reels — all delivered to your inbox. Perfect for artists, brands, labels, and businesses.',
+    title: 'Premium UGC, Reels & Music Reactions',
+    desc: 'Celebrity-connected creators produce branded content, react to your music, launch viral challenges, and produce scroll-stopping reels — major label quality at indie budget. Perfect for artists, brands, labels, and businesses.',
     items: ['Music Reactions', 'UGC Reels & TikToks', 'Viral Challenges & Trends', 'Multi-Model Campaigns'],
     cta: 'Book Now',
     icon: Play,
   },
   {
-    href: '/model-booking?service=business',
+    href: '/start?service=storyreposts',
+    tag: 'Remote · Nationwide',
+    category: 'Story Reposts',
+    title: 'Premium Instagram Story Reposts',
+    desc: 'Celebrity-connected creators post your content to their Instagram Stories with swipe-up links. 24-hour visibility with full narrative arcs (hook → showcase → CTA) for maximum conversions. Major label quality at indie budget.',
+    items: ['Single Story Frames', '3-5 Frame Story Sets', 'Swipe-Up Links', 'Multi-Model Story Campaigns'],
+    cta: 'Book Now',
+    icon: RefreshCcw,
+  },
+  {
+    href: '/start?service=collabreposts',
+    tag: 'Remote · Nationwide',
+    category: 'Collab Posts',
+    title: 'Premium Instagram Collab Posts',
+    desc: 'Celebrity-connected creators co-author posts with your brand that appear on both feeds simultaneously. Dual audience reach, shared engagement metrics, and algorithm boost for maximum exposure. Major label quality at indie budget.',
+    items: ['Single Collab Posts', 'Collab Reels', 'Dual-Feed Campaigns', 'Multi-Model Collabs'],
+    cta: 'Book Now',
+    icon: Users,
+  },
+  {
+    href: '/start?service=business',
     tag: 'In-Person · South Florida',
     category: 'Brand Ambassadors',
-    title: 'Models at Your Business',
-    desc: 'A model visits your restaurant, salon, gym, or store and creates reels, stories, and promo content on-site — like having your own brand ambassador. Delivered same day.',
+    title: 'Celebrity-Connected Brand Ambassadors',
+    desc: 'Celebrity-connected creators visit your restaurant, salon, gym, or store and create reels, stories, and promo content on-site — like having your own premium brand ambassador. Delivered same day.',
     items: ['On-Site Content Creation', '3–12+ Content Pieces', 'Recurring Monthly Plans', 'Same-Week Booking'],
     cta: 'Book Now',
     icon: TrendingUp,
   },
   {
-    href: '/model-booking?service=musicvideo',
+    href: '/start?service=musicvideo',
     tag: 'In-Person · South Florida',
     category: 'Music Videos',
     title: 'Creators for Your Music Video',
-    desc: 'Book creators specifically for your music video — from solo featured roles to full 50+ talent productions. Our creators have credits with Sean Paul, Bryson Tiller, Trippie Redd, Kodak Black, and more.',
+    desc: 'Book creators specifically for your music video — from solo featured roles to full 50+ creator productions. Our creators have credits with Sean Paul, Bryson Tiller, Trippie Redd, Kodak Black, and more.',
     items: ['Solo Features', 'Duo/Trio Leads', 'Squad Scenes (5+)', 'Full Video Cast (10-50)'],
     cta: 'Book Now',
     icon: Music,
   },
   {
-    href: '/model-booking?service=shoot',
+    href: '/start?service=shoot',
     tag: 'In-Person · South Florida',
     category: 'Photo Shoots',
-    title: 'Talent for Your Production',
-    desc: 'Professional talent for brand shoots, fashion editorials, lookbooks, and non-speaking productions. We handle casting — you focus on the creative.',
+    title: 'Creators for Your Production',
+    desc: 'Professional creators for brand shoots, fashion editorials, lookbooks, and non-speaking productions. We handle casting — you focus on the creative.',
     items: ['Brand Shoots', 'Fashion Editorials', 'Lookbooks', 'E-commerce'],
     cta: 'Book Now',
     icon: Camera,
   },
   {
-    href: '/model-booking?service=commercial',
+    href: '/start?service=commercial',
     tag: 'In-Person · South Florida',
     category: 'Commercials & Speaking Roles',
-    title: 'Talent Who Can Act & Speak',
-    desc: 'Book professional creators/actresses for TV commercials, web ads, brand spots, and any production requiring script reading, dialogue, or voiceover.',
+    title: 'Premium Acting & Speaking Creators',
+    desc: 'Book celebrity-connected creators/actresses for TV commercials, web ads, brand spots, and any production requiring script reading, dialogue, or voiceover. Major label quality at indie budget.',
     items: ['Script Reading & Delivery', 'Dialogue & Acting', 'TV & Web Commercials', 'Monthly Subscription Available'],
     cta: 'Book Now',
     icon: Film,
   },
   {
-    href: '/model-booking?service=commercial',
-    tag: 'Talent Partner · Casting',
+    href: '/start?service=commercial',
+    tag: 'Creator Partner · Casting',
     category: 'Acting & Casting',
-    title: 'Actress Models, Casting & Voiceover',
-    desc: 'Cast professional models and actresses for film roles, TV, commercials, voiceover, audiobooks, and brand campaigns. Talent with Netflix, Audible, and major production credits.',
-    items: ['Actress Roles & Film Casting', 'Voiceover Talent', 'Audiobooks & Commercials', 'Casting Call Coordination'],
+    title: 'Actress Creators, Casting & Voiceover',
+    desc: 'Cast professional creators and actresses for film roles, TV, commercials, voiceover, audiobooks, and brand campaigns. Creators with Netflix, Audible, and major production credits.',
+    items: ['Actress Roles & Film Casting', 'Voiceover Creators', 'Audiobooks & Commercials', 'Casting Call Coordination'],
     cta: 'Book Now',
     icon: Clapperboard,
   },
   {
-    href: '/model-booking?service=event',
+    href: '/start?service=event',
     tag: 'In-Person · South Florida',
     category: 'Events & Hosting',
-    title: 'Talent at Your Event',
+    title: 'Creators at Your Event',
     desc: 'Book professional creators for club nights, brand activations, private parties, and grand openings.',
     items: ['Club Nights & Parties', 'Brand Activations', 'Private Events', 'Grand Openings'],
     cta: 'Book Now',
     icon: Sparkles,
   },
   {
-    href: '/model-booking?service=bottle',
+    href: '/start?service=bottle',
     tag: 'In-Person · South Florida',
     category: 'Bottle Girls / VIP Hostesses',
     title: 'VIP Bottle Service Girls',
-    desc: 'Professional VIP bottle girls and hostesses for nightclubs, lounges, and premium venues.',
+    desc: 'Professional VIP hostesses and brand ambassadors for nightclubs, lounges, and premium venues.',
     items: ['Nightclub Bottle Service', 'VIP Table Hostesses', 'Lounge & Bar Events', 'Monthly Venue Packages'],
     cta: 'Book Now',
     icon: Wine,
@@ -151,7 +173,7 @@ export default function ServicesPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -159,7 +181,7 @@ export default function ServicesPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -242,10 +264,10 @@ export default function ServicesPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -255,7 +277,9 @@ export default function ServicesPage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Brand Ambassadors</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
+                  <li><Link href="/start?service=storyreposts" className="text-white/40 hover:text-white transition-colors text-sm">Story Reposts</Link></li>
+                  <li><Link href="/start?service=collabreposts" className="text-white/40 hover:text-white transition-colors text-sm">Collab Posts</Link></li>
                 </ul>
               </div>
               <div>
@@ -264,14 +288,14 @@ export default function ServicesPage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/quote" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

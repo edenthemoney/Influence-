@@ -10,7 +10,7 @@ const gold = '#c9a96e';
 const articles = [
   {
     slug: 'why-influencer-marketing-is-dominating-2025',
-    title: 'Why Influencer Marketing Is Dominating 2025 (And It\'s Only Getting Bigger)',
+    title: 'Why Creator Marketing Is Dominating 2025 (And It\'s Only Getting Bigger)',
     excerpt: 'Brands are shifting billions from traditional advertising to influencer partnerships. Here\'s the data behind the explosion — and why it matters for your business.',
     category: 'Industry',
     readTime: '7 min read',
@@ -20,7 +20,7 @@ const articles = [
   },
   {
     slug: 'roi-of-influencer-marketing-vs-traditional-ads',
-    title: 'Influencer Marketing ROI: 11x Returns vs. Traditional Advertising',
+    title: 'Creator Marketing ROI: 11x Returns vs. Traditional Advertising',
     excerpt: 'The numbers don\'t lie. Dollar for dollar, influencer campaigns outperform TV, billboard, and paid social. We break down exactly why.',
     category: 'Data',
     readTime: '5 min read',
@@ -31,7 +31,7 @@ const articles = [
   {
     slug: 'how-miami-brands-are-winning-with-local-influencers',
     title: 'How Miami Brands Are Winning Big With Local Influencers',
-    excerpt: 'Restaurants, nightclubs, and fashion labels in Miami are seeing 3-5x more engagement using local talent over celebrity endorsements. Here\'s their playbook.',
+    excerpt: 'Restaurants, nightclubs, and fashion labels in Miami are seeing 3-5x more engagement using local creators over celebrity endorsements. Here\'s their playbook.',
     category: 'Case Study',
     readTime: '6 min read',
     date: 'May 2025',
@@ -50,8 +50,8 @@ const articles = [
   },
   {
     slug: 'music-video-models-the-secret-weapon-for-viral-videos',
-    title: 'Music Video Models: The Secret Weapon Behind Every Viral Video',
-    excerpt: 'From Trippie Redd to Sean Paul — why professional models make or break a music video\'s performance. Plus: what it costs.',
+    title: 'Music Video Creators: The Secret Weapon Behind Every Viral Video',
+    excerpt: 'From Trippie Redd to Sean Paul — why professional creators make or break a music video\'s performance. Plus: what it costs.',
     category: 'Music',
     readTime: '8 min read',
     date: 'May 2025',
@@ -72,7 +72,7 @@ export default function BlogPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
               <Link href="/blog" className="text-white transition-colors duration-300 text-[11px] tracking-widest uppercase" style={{ color: gold }}>Journal</Link>
@@ -103,7 +103,7 @@ export default function BlogPage() {
             <span style={{ color: gold }}>Creator Economy</span>
           </h1>
           <p className="text-white/40 text-lg max-w-xl">
-            Data, strategy, and stories from the front lines of influencer marketing.
+            Data, strategy, and stories from the front lines of creator marketing.
           </p>
         </div>
 
@@ -157,8 +157,8 @@ export default function BlogPage() {
 
         {/* CTA */}
         <div className="max-w-5xl mx-auto mt-20 text-center border border-white/[0.06] p-12">
-          <h2 className="text-2xl font-bold text-white mb-3">Ready to Leverage Influencer Marketing?</h2>
-          <p className="text-white/40 mb-6">Book a model or launch a campaign today.</p>
+          <h2 className="text-2xl font-bold text-white mb-3">Ready to Leverage Creator Marketing?</h2>
+          <p className="text-white/40 mb-6">Book a creator or launch a campaign today.</p>
           <Link href="/book" className="inline-block px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
             Get Started
           </Link>

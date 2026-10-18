@@ -50,7 +50,7 @@ export default function ChatFunnel() {
   }, [messages]);
 
   // Hide on booking page so it doesn't overlap the sticky checkout button
-  if (pathname === '/model-booking') return null;
+  if (pathname === '/start') return null;
 
   const addMessage = (from: 'bot' | 'user', text: string) => {
     setMessages(prev => [...prev, { from, text }]);
@@ -130,7 +130,7 @@ export default function ChatFunnel() {
 
   const getResult = (budgetRange: string): Result => {
     const svc = PURPOSE_TO_SERVICE[purpose];
-    const bookLink = svc ? `/model-booking?service=${svc}` : '/start';
+    const bookLink = svc ? `/start?service=${svc}` : '/start';
     if (location === 'remote') {
       if (budgetRange === 'Just one to start') {
         return { title: 'Starter Content', description: 'A Starter pack is your move — a creator makes a reel or reaction for you. Quick and effective. Your packages are ready on the next screen.', link: bookLink, cta: 'See My Options' };

@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
             product_data: {
               name: selectedPackage.name,
               description: selectedPackage.description,
-              images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencemodels.agency'}/logo_stripe.png`],
+              images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencecreators.marketing'}/logo_stripe.png`],
             },
             unit_amount: selectedPackage.price,
           },

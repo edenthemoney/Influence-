@@ -7,8 +7,8 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'UGC Content Creation — Florida',
   description: 'Professional UGC creators in Florida produce branded short-form video content for TikTok and Instagram Reels. Authentic, high-converting content starting at $300 per reel. Available remotely nationwide.',
-  url: 'https://influencemodels.agency/ugc-creators-florida',
-  provider: { '@type': 'Organization', name: 'Influence Models Agency', url: 'https://influencemodels.agency' },
+  url: 'https://influencecreators.marketing/ugc-creators-florida',
+  provider: { '@type': 'Organization', name: 'Influence', url: 'https://influencecreators.marketing' },
   areaServed: [{ '@type': 'State', name: 'Florida' }, { '@type': 'Country', name: 'United States' }],
   serviceType: 'UGC Content Creation',
   offers: [
@@ -19,13 +19,13 @@ const serviceSchema = {
 };
 
 export const metadata: Metadata = {
-  title: 'UGC Creators in Florida | Hire UGC Content Creators | Influence Models Agency',
+  title: 'UGC Creators in Florida | Hire UGC Content Creators | Influence',
   description: 'Hire professional UGC creators in Florida for TikTok, Instagram Reels, and brand content. Authentic, high-converting content that outperforms traditional ads. From $100.',
   keywords: 'UGC creators Florida, hire UGC creator, UGC content creator Miami, user generated content Florida, TikTok creators Florida',
   openGraph: {
-    title: 'UGC Creators in Florida | Influence Models Agency',
+    title: 'UGC Creators in Florida | Influence',
     description: 'Professional UGC creators for authentic, high-converting brand content. Starting at $100.',
-    url: 'https://influencemodels.agency/ugc-creators-florida',
+    url: 'https://influencecreators.marketing/ugc-creators-florida',
   },
 };
 
@@ -68,7 +68,7 @@ export default function UGCCreatorsFlorida() {
         <div className="space-y-4 mb-16">
           {[
             { title: 'Product Reviews & Unboxings', desc: 'Authentic on-camera reactions to your product. Perfect for e-commerce brands.' },
-            { title: 'Lifestyle Reels', desc: 'Models showcasing your product or service in natural, aspirational settings.' },
+            { title: 'Lifestyle Reels', desc: 'Creators showcasing your product or service in natural, aspirational settings.' },
             { title: 'Testimonial-Style Content', desc: 'First-person "talking head" content that builds trust and drives conversions.' },
             { title: 'TikTok & Instagram Reels', desc: 'Trend-aware short-form video optimized for platform algorithms.' },
             { title: 'Before & After Content', desc: 'Transformation content perfect for beauty, fitness, and wellness brands.' },

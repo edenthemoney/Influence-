@@ -30,7 +30,7 @@ Would you be open to seeing a few influencer profiles that match your brand aest
 
 Best,
 Influence Models Agency
-561-552-0392
+561-287-7194
 `,
   
   restaurant: (brandName: string, contactName: string, location: string) => `
@@ -50,7 +50,7 @@ Would you be interested in seeing some sample content we could create for ${bran
 
 Best,
 Influence Models Agency
-561-552-0392
+561-287-7194
 `,
   
   music: (artistName: string, contactName: string) => `
@@ -70,7 +70,7 @@ Would you be open to discussing a music promotion campaign for your next release
 
 Best,
 Influence Models Agency
-561-552-0392
+561-287-7194
 `
 };
 
@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await resend.emails.send({
-      from: 'Influence Models Agency <influencemodelsagency@gmail.com>',
+      from: 'Influence <influencemodelsagency@gmail.com>',
       to: [to],
       subject: subject,
       html: `<p>${htmlContent.replace(/\n/g, '<br>')}</p>`,
