@@ -1,7 +1,7 @@
 // Public event copy and ticket rules for Influence Connect.
 // The Stripe account id is an allowlist, not a credential. Secret keys stay in env.
 
-export const STRIPE_TICKET_ACCOUNT_ID = 'acct_1TKqbVGhgSxrSipt';
+export const STRIPE_TICKET_ACCOUNT_ID = 'acct_1TOWINLibar2Zpvv';
 
 export const INFLUENCE_CONNECT = {
   slug: 'influence-connect-nov18',
