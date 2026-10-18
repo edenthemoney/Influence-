@@ -68,7 +68,7 @@ export function PostBookingForm() {
         <ShieldX className="h-8 w-8 mx-auto mb-4 text-red-400/70" />
         <p className="text-red-300/80 font-bold text-sm mb-2">No valid payment found</p>
         <p className="text-white/40 text-xs mb-6">This page is only accessible after completing a booking payment.</p>
-        <Link href="/model-booking" className="inline-flex items-center justify-center px-8 py-4 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold, color: '#000' }}>
+        <Link href="/start" className="inline-flex items-center justify-center px-8 py-4 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold, color: '#000' }}>
           Book Now
         </Link>
       </div>

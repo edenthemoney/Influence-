@@ -186,7 +186,7 @@ export default function ShopPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
               <Link href="/blog" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Journal</Link>
@@ -270,7 +270,7 @@ export default function ShopPage() {
             THE <span style={{ color: gold }}>INFLUENCE</span> COLLECTION
           </h1>
           <p className="text-white/35 text-sm max-w-lg mx-auto mb-8">
-            Exclusive, limited-run pieces. Once they're gone, they're gone. Worn by our models. Designed for you.
+            Exclusive, limited-run pieces. Once they're gone, they're gone. Worn by our creators. Designed for you.
           </p>
 
           {/* Filters — hidden until drop goes live
@@ -298,10 +298,9 @@ export default function ShopPage() {
           <Flame className="w-8 h-8 mx-auto mb-4" style={{ color: gold }} />
           <h2 className="text-2xl font-bold text-white mb-3">Drop 001 — Coming Soon</h2>
           <p className="text-white/35 text-sm mb-6 leading-relaxed">
-            The first INFLUENCE collection is in production. Crop tops, hoodies, biker shorts, and more — 
-            worn by our models, designed for you. Extremely limited quantities.
+            The first INFLUENCE collection is in production. Crop tops, hoodies, biker shorts, and more — worn by our creators, designed for you. Extremely limited quantities.
           </p>
-          <p className="text-white/20 text-xs tracking-widest uppercase">Follow @influencemodels.agency for the drop date</p>
+          <p className="text-white/20 text-xs tracking-widest uppercase">Follow @influencecreators.marketing for the drop date</p>
         </div>
 
         {/* Info Section */}

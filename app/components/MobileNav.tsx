@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 
 const GOLD = '#c9a96e';
 const links = [
-  { href: '/marketplace', label: 'Talent' },
+  { href: '/marketplace', label: 'Creators' },
   { href: '/services', label: 'Services' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/about', label: 'About' },

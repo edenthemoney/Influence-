@@ -18,7 +18,7 @@ export default function BookingSuccessPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -26,7 +26,7 @@ export default function BookingSuccessPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Again</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Again</Link>
           </div>
         </div>
       </nav>
@@ -52,7 +52,7 @@ export default function BookingSuccessPage() {
           <div className="space-y-5">
             {[
               { num: '01', text: 'Confirmation email sent to your inbox with all booking details' },
-              { num: '02', text: 'Our team matches you with the right model or influencer' },
+              { num: '02', text: 'Our team matches you with the right creator or influencer' },
               { num: '03', text: 'You provide your creative brief and any campaign direction' },
               { num: '04', text: 'Content is created and delivered for your approval' },
             ].map(({ num, text }) => (
@@ -65,18 +65,18 @@ export default function BookingSuccessPage() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          <Link href="/model-booking" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold, color: '#000' }}>
+          <Link href="/start" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold, color: '#000' }}>
             Book Another Service <ChevronRight className="h-4 w-4" />
           </Link>
           <Link href="/marketplace" className="inline-flex items-center justify-center gap-2 px-10 py-5 text-[12px] font-bold tracking-widest uppercase border border-white/10 text-white/50 hover:text-white hover:border-white/20 transition-all">
-            Browse Talent
+            Browse Creators
           </Link>
         </div>
 
         <div className="border-t border-white/[0.06] pt-8">
           <div className="flex items-center justify-center gap-3 text-white/35 text-sm">
             <Crown className="h-4 w-4" style={{ color: gold }} />
-            <span>Need help? <a href="mailto:influencemodelsagency@gmail.com" className="underline hover:text-white transition-colors" style={{ color: gold }}>influencemodelsagency@gmail.com</a> or <a href="tel:+15615520392" className="underline hover:text-white transition-colors" style={{ color: gold }}>(561) 552-0392</a></span>
+            <span>Need help? <a href="mailto:influencemodelsagency@gmail.com" className="underline hover:text-white transition-colors" style={{ color: gold }}>influencemodelsagency@gmail.com</a> or <a href="tel:+15612877194" className="underline hover:text-white transition-colors" style={{ color: gold }}>(561) 287-7194</a></span>
           </div>
         </div>
       </div>

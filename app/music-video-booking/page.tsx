@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Hire Models for Music Video | Miami Music Video Girls',
     description: 'Hire verified models for music video shoots in Miami. Same-week availability. From $500.',
-    url: 'https://influencemodels.agency/music-video-booking',
+    url: 'https://influencecreators.marketing/music-video-booking',
   },
 };
 
@@ -21,8 +21,8 @@ export default function MusicVideoBookingPage() {
       subheadline="Verified talent for your video — from solo features to full squads. No casting headaches. No flakey DMs. Just professional creators on set, on time."
       heroImage="/images/Shay/shay-1.jpg"
       heroImageAlt="Music video talent in Miami"
-      primaryCta={{ text: 'Book Music Video Talent', href: '/model-booking?service=musicvideo' }}
-      secondaryCta={{ text: 'Browse Talent', href: '/marketplace' }}
+      primaryCta={{ text: 'Book Music Video Talent', href: '/start?service=musicvideo' }}
+      secondaryCta={{ text: 'Browse Creators', href: '/marketplace' }}
       painPoints={[
         'You have a song ready but no one to cast for the video',
         'Instagram DMs are unreliable — girls don’t show up',
@@ -44,7 +44,7 @@ export default function MusicVideoBookingPage() {
           tagline: 'Solo Feature',
           features: ['1 featured model · 4 hours', 'Multiple scenes & looks', 'South Florida location', 'Styled & camera-ready'],
           cta: 'Book 1 Girl',
-          href: '/model-booking?service=musicvideo&package=mv-solo',
+          href: '/start?service=musicvideo&package=mv-solo',
         },
         {
           name: '2 Girls',
@@ -52,7 +52,7 @@ export default function MusicVideoBookingPage() {
           tagline: 'Duo Feature',
           features: ['2 coordinated models · 4 hours', 'Multiple scenes together', 'Styled ensemble looks', 'On-set coordinator'],
           cta: 'Book 2 Girls',
-          href: '/model-booking?service=musicvideo&package=mv-duo',
+          href: '/start?service=musicvideo&package=mv-duo',
           popular: true,
         },
         {
@@ -61,10 +61,10 @@ export default function MusicVideoBookingPage() {
           tagline: 'Trio Feature',
           features: ['3 full-feature models · 4 hours', 'Full video cast energy', 'Multiple scenes & interactions', 'Dedicated model coordinator'],
           cta: 'Book 3 Girls',
-          href: '/model-booking?service=musicvideo&package=mv-trio',
+          href: '/start?service=musicvideo&package=mv-trio',
         },
       ]}
-      trustBadges={['Verified Talent', 'Same-Week Booking', 'No Flakes']}
+      trustBadges={['Verified Creators', 'Same-Week Booking', 'No Flakes']}
       socialProof={[
         { stat: '40M+', label: 'Music Video Views' },
         { stat: '500+', label: 'Videos Cast' },
@@ -79,7 +79,7 @@ export default function MusicVideoBookingPage() {
         { q: 'What if someone cancels on my music video shoot?', a: 'We maintain backup talent for every shoot. If a confirmed creator can’t make it, we provide a replacement so your video stays on schedule.' },
         { q: 'Where can I find music video models near me?', a: 'Influence Agency has verified music video models in Miami and South Florida. You can book directly online or browse our marketplace.' },
       ]}
-      finalCta={{ text: 'Book Music Video Talent', href: '/model-booking?service=musicvideo' }}
+      finalCta={{ text: 'Book Music Video Talent', href: '/start?service=musicvideo' }}
       bookingSection={<SimpleHeadcountBooking />}
       hidePackagePrices
     />

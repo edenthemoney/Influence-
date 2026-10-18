@@ -73,7 +73,7 @@ export default function SimpleHeadcountBooking() {
       5: 'mv-squad',
       10: 'mv-ten',
     };
-    router.push(`/model-booking?service=musicvideo&package=${pkgMap[selected.count]}`);
+    router.push(`/start?service=musicvideo&package=${pkgMap[selected.count]}`);
   };
 
   return (
@@ -161,10 +161,10 @@ export default function SimpleHeadcountBooking() {
                 {submitting ? 'Sending...' : 'Continue to Booking'} <ArrowRight className="h-4 w-4" />
               </button>
               <a
-                href="tel:+15615520392"
+                href="tel:+15612877194"
                 className="inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-white/40 hover:text-white transition-colors"
               >
-                <Phone className="h-4 w-4" /> Call (561) 552-0392
+                <Phone className="h-4 w-4" /> Call (561) 287-7194
               </a>
             </div>
           </form>

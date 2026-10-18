@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import HeroBooking from './components/HeroBooking';
@@ -10,11 +11,11 @@ import HomeFAQ from './components/HomeFAQ';
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Influence Models Agency',
+  name: 'Influence',
   alternateName: 'Influence',
-  url: 'https://influencemodels.agency',
-  logo: 'https://influencemodels.agency/favicon.svg',
-  description: 'South Florida influencer marketing agency providing UGC content, music promotion, brand campaigns, and event hosting services.',
+  url: 'https://influencecreators.marketing',
+  logo: 'https://influencecreators.marketing/favicon.svg',
+  description: 'South Florida creator marketplace and creator marketing platform. Connect with independent creators and influencers for UGC, music promotion, brand campaigns, event activations, and creator-led social media campaigns.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Miami',
@@ -23,13 +24,23 @@ const organizationSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+1-561-552-0392',
+    telephone: '+1-561-287-7194',
     contactType: 'sales',
   },
   sameAs: [
-    'https://www.instagram.com/influencemodels.agency',
+    'https://www.instagram.com/influencecreators.marketing',
   ],
-  serviceType: ['Influencer Marketing', 'UGC Content Creation', 'Music Promotion', 'Brand Campaigns', 'Event Marketing'],
+  serviceType: ['Creator Marketplace', 'Creator Marketing', 'UGC Content Creation', 'Music Promotion', 'Brand Campaigns', 'Event Marketing', 'Social Media Campaigns'],
+};
+
+export const metadata: Metadata = {
+  title: { absolute: "Miami Creator Marketplace & Creator Marketing Platform | Influence" },
+  description: "South Florida creator marketplace and creator marketing platform. Connect with independent creators and influencers for UGC, music videos, brand campaigns, events, and social media campaigns in Miami, Fort Lauderdale, Boca Raton, Palm Beach.",
+  openGraph: {
+    title: "Miami Creator Marketplace & Creator Marketing Platform",
+    description: "South Florida creator marketplace and creator marketing platform. Connect with creators for UGC, music videos, brand campaigns, events, and social media campaigns.",
+    url: "https://influencecreators.marketing",
+  },
 };
 
 export default function HomePage() {
@@ -45,7 +56,7 @@ export default function HomePage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -55,7 +66,7 @@ export default function HomePage() {
           </div>
           <div className="flex items-center justify-end gap-3 md:gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Start a Campaign</Link>
           </div>
         </div>
         <div className="overflow-hidden border-t border-white/[0.05]">
@@ -77,7 +88,7 @@ export default function HomePage() {
         {/* Top-left eyebrow */}
         <div className="absolute top-28 md:top-48 left-8 md:left-16 flex items-center gap-4">
           <div className="w-8 h-px" style={{ backgroundColor: '#c9a96e' }} />
-          <p className="text-white/60 text-[11px] tracking-[0.4em] uppercase font-medium">Influencer Marketing Agency</p>
+          <p className="text-white/60 text-[11px] tracking-[0.4em] uppercase font-medium">Creator Marketplace & Creator Marketing</p>
         </div>
 
         {/* Bottom — two column */}
@@ -85,7 +96,7 @@ export default function HomePage() {
           {/* Left: Headline */}
           <div className="shrink-0">
             <h1 className="sr-only">
-              Miami Influencer Marketing Agency — Book Models, Actresses, Casting & Voiceover Talent in South Florida
+              Miami Creator Marketplace & Creator Marketing Platform — Connect with Creators, Influencers & On-Camera Creators in South Florida
             </h1>
             <p className="font-display font-bold italic text-white leading-[0.85]" style={{ fontSize: 'clamp(44px, 10vw, 140px)' }}>
               Go Viral.<br />
@@ -94,7 +105,7 @@ export default function HomePage() {
             </p>
             <div className="mt-6 flex items-center gap-4 md:hidden">
               <Link href="/start" className="inline-flex items-center gap-3 px-8 py-4 text-[13px] font-bold tracking-widest uppercase" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
-                Book Now <ChevronRight className="h-4 w-4" />
+                Start a Campaign <ChevronRight className="h-4 w-4" />
               </Link>
               <span className="text-white/30 text-xs">Same-week availability</span>
             </div>
@@ -113,7 +124,7 @@ export default function HomePage() {
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
           <p className="text-green-400/80 text-[11px] font-semibold">Same-week availability</p>
         </div>
-        <p className="text-white/25 text-[10px] tracking-widest uppercase">Book in 2 min</p>
+        <p className="text-white/25 text-[10px] tracking-widest uppercase">Launch in 2 min</p>
       </div>
       <section className="md:hidden bg-[#0a0a0a] px-6 pt-8 pb-12">
         <div className="flex items-center gap-3 mb-6">
@@ -158,7 +169,7 @@ export default function HomePage() {
         <h2 className="font-display font-bold italic text-white leading-[0.9]" style={{ fontSize: 'clamp(44px, 12vw, 172px)' }}>We Influence.</h2>
         <div className="flex items-end justify-between mt-8 md:mt-14 pt-6 md:pt-8 border-t border-white/[0.08]">
           <p className="text-white/65 text-[15px] font-light max-w-md leading-relaxed">
-            Influence is a South Florida influencer marketing agency connecting artists, brands, business owners, and labels with verified models for content creation, music promotion, on-site shoots, event hosting, acting roles, casting, voiceover work, commercials, and full campaigns.
+            Influence is South Florida's creator marketplace and creator marketing platform. We connect artists, brands, business owners, and labels with independent creators and influencers for UGC campaigns, music promotion, on-site shoots, event activations, acting and casting support, voiceover work, commercials, and full-scale social media campaigns.
           </p>
           <p className="text-white/35 text-[10px] tracking-[0.5em] uppercase hidden md:block">Est. 2024 · Miami, FL</p>
         </div>
@@ -170,9 +181,9 @@ export default function HomePage() {
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: '#c9a96e' }}>What We Do</p>
           <div className="grid md:grid-cols-2 gap-8 md:gap-12">
             <div>
-              <h3 className="font-display font-bold italic text-white text-2xl md:text-3xl mb-4">Influencer Marketing & Talent Services</h3>
+              <h3 className="font-display font-bold italic text-white text-2xl md:text-3xl mb-4">Creator Marketplace & Creator Marketing Platform</h3>
               <p className="text-white/55 text-sm md:text-[15px] leading-relaxed mb-6">
-                Influence is a Miami-based influencer marketing agency and talent partner that connects brands and artists with verified creators for UGC content, music promotion, commercials, acting roles, casting, voiceover work, and business campaigns. We serve South Florida — Miami, Fort Lauderdale, Boca Raton, and Orlando — and offer nationwide remote content creation.
+                Influence is a Miami-based creator marketplace that connects brands and artists with independent creators and influencers for UGC campaigns, music promotion, commercials, acting and casting support, voiceover work, and brand activations. We serve South Florida — Miami, Fort Lauderdale, Boca Raton, and Orlando — and offer nationwide remote creator campaigns.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -180,37 +191,37 @@ export default function HomePage() {
                 <p className="text-white text-sm font-medium mb-1">UGC Content</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Reels, TikToks, and branded posts</p>
               </Link>
-              <Link href="/music-video-models" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+              <Link href="/music-video-creators" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Music Video Creators</p>
-                <p className="text-white/35 text-[10px] leading-relaxed">Talent for shoots & videos</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">On-camera creators for shoots & videos</p>
               </Link>
               <Link href="/services/business" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Business Content</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">On-site creators for local brands</p>
               </Link>
               <Link href="/services/events" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
-                <p className="text-white text-sm font-medium mb-1">Event Talent</p>
-                <p className="text-white/35 text-[10px] leading-relaxed">Hosting, parties, activations</p>
+                <p className="text-white text-sm font-medium mb-1">Event Marketing</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Hosting, activations & brand experiences</p>
               </Link>
-              <Link href="/actress-models-miami" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+              <Link href="/actress-creators-miami" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Acting & Casting</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Actress roles, casting & voiceover</p>
               </Link>
-              <Link href="/model-booking?service=storyreposts" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+              <Link href="/start?service=storyreposts" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Story Reposts</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Instagram story amplification</p>
               </Link>
-              <Link href="/model-booking?service=collabreposts" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+              <Link href="/start?service=collabreposts" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Collab Posts</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Dual-feed co-authored posts</p>
               </Link>
-              <Link href="/model-booking?service=reaction" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
+              <Link href="/start?service=reaction" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
                 <p className="text-white text-sm font-medium mb-1">Song Promotion</p>
                 <p className="text-white/35 text-[10px] leading-relaxed">Instagram & TikTok music promo</p>
               </Link>
               <Link href="/marketplace" className="block border border-white/[0.06] p-4 hover:border-[#c9a96e]/30 hover:bg-white/[0.02] transition-all">
-                <p className="text-white text-sm font-medium mb-1">Browse Talent</p>
-                <p className="text-white/35 text-[10px] leading-relaxed">Verified models & influencers</p>
+                <p className="text-white text-sm font-medium mb-1">Browse Creators</p>
+                <p className="text-white/35 text-[10px] leading-relaxed">Verified creators & influencers</p>
               </Link>
             </div>
           </div>
@@ -223,16 +234,16 @@ export default function HomePage() {
         <h2 className="font-display font-bold italic text-white text-center mb-12 md:mb-16 leading-tight" style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}>What Are You Looking For?</h2>
         <div className="grid md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
           {/* Music Artists */}
-          <Link href="/model-booking?service=reaction" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+          <Link href="/start?service=reaction" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
             <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Artists & Labels</p>
             <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Music Promotion</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">Song reactions, story reposts, collab posts, and music video talent to get your music heard.</p>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Song reactions, story reposts, collab posts, and music video creators to get your music heard.</p>
             <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
               Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>
           {/* Brands */}
-          <Link href="/model-booking?service=storyreposts" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+          <Link href="/start?service=storyreposts" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
             <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Brands & Products</p>
             <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Brand Visibility</h3>
             <p className="text-white/50 text-sm leading-relaxed mb-6">Story reposts, collab posts, UGC content, and brand ambassadors for maximum reach.</p>
@@ -241,7 +252,7 @@ export default function HomePage() {
             </span>
           </Link>
           {/* Local Businesses */}
-          <Link href="/model-booking?service=business" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+          <Link href="/start?service=business" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
             <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Local Businesses</p>
             <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">On-Site Content</h3>
             <p className="text-white/50 text-sm leading-relaxed mb-6">Brand ambassadors visit your location to create reels, stories, and promo content same-day.</p>
@@ -250,19 +261,19 @@ export default function HomePage() {
             </span>
           </Link>
           {/* Events */}
-          <Link href="/model-booking?service=event" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+          <Link href="/start?service=event" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
             <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Events & Venues</p>
-            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Event Talent</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">Event hosting, brand activations, bottle girls, and VIP hostesses for your venue.</p>
+            <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Event Marketing</h3>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Event hosting, brand activations, and VIP hostesses to amplify your venue or launch.</p>
             <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
               Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
           </Link>
           {/* Production */}
-          <Link href="/model-booking?service=commercial" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
+          <Link href="/start?service=commercial" className="group relative border border-white/[0.08] p-6 md:p-10 transition-all hover:border-[#c9a96e]/30 hover:bg-white/[0.02]">
             <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-white/30 mb-4">For Productions</p>
             <h3 className="font-display font-bold text-white text-xl md:text-2xl mb-3">Acting & Casting</h3>
-            <p className="text-white/50 text-sm leading-relaxed mb-6">Commercials, speaking roles, voiceover talent, and casting for TV/web productions.</p>
+            <p className="text-white/50 text-sm leading-relaxed mb-6">Commercials, speaking roles, voiceover creators, and casting support for TV/web productions.</p>
             <span className="inline-flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase transition-colors" style={{ color: '#c9a96e' }}>
               Get Started <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </span>
@@ -325,7 +336,7 @@ export default function HomePage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
           {[
             { label: 'Minority & Women-Owned', desc: 'Black, Latina & women-led agency proudly serving all communities' },
-            { label: 'Celebrity-Connected', desc: 'Talent with credits alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine & more' },
+            { label: 'Celebrity-Connected', desc: 'Creators with credits alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine & more' },
             { label: 'Diverse Roster', desc: 'Models of all backgrounds, ethnicities, and styles — representation matters' },
             { label: 'Latino & Black Owned', desc: 'Supporting underrepresented founders building in South Florida' },
           ].map(({ label, desc }) => (
@@ -342,7 +353,7 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto text-center mb-12">
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: '#c9a96e' }}>Why Clients Trust Us</p>
           <h2 className="font-display font-bold italic text-white leading-[0.9]" style={{ fontSize: 'clamp(32px, 6vw, 72px)' }}>
-            Rated South Florida&apos;s #1 Premium Model Agency
+            Rated South Florida&apos;s #1 Influencer Marketplace
           </h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -431,7 +442,7 @@ export default function HomePage() {
 
         <div className="grid md:grid-cols-2 border-t border-white/[0.06]">
           {/* ─── Social Media Campaigns (Remote) ─── */}
-          <Link href="/model-booking?service=ugc" className="group border-r border-white/[0.06] py-14 md:py-20 px-8 md:px-14 flex flex-col hover:bg-white/[0.015] transition-all duration-300 relative">
+          <Link href="/start?service=ugc" className="group border-r border-white/[0.06] py-14 md:py-20 px-8 md:px-14 flex flex-col hover:bg-white/[0.015] transition-all duration-300 relative">
             <div className="absolute top-6 right-6 md:top-8 md:right-10">
               <span className="text-[9px] font-bold tracking-[0.3em] uppercase px-3 py-1.5" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Remote · Nationwide</span>
             </div>
@@ -439,7 +450,7 @@ export default function HomePage() {
             <p className="text-[10px] tracking-[0.4em] uppercase mb-6 font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">Social Media Campaigns</p>
             <h3 className="font-display font-bold italic text-white leading-tight mb-4" style={{ fontSize: 'clamp(32px, 4vw, 52px)' }}>Content<br/>Delivered to You</h3>
             <p className="text-white/50 text-[15px] leading-relaxed mb-8 max-w-sm">
-              Models create content remotely and deliver it straight to you — ready to post on any platform. Perfect for artists, brands, and businesses who need scroll-stopping content.
+              Creators create content remotely and deliver it straight to you — ready to post on any platform. Perfect for artists, brands, and businesses who need scroll-stopping content.
             </p>
 
             <div className="space-y-3 mb-10">
@@ -471,7 +482,7 @@ export default function HomePage() {
           </Link>
 
           {/* ─── In-Person (Shoots, Events & Business Content) ─── */}
-          <Link href="/model-booking?service=business" className="group py-14 md:py-20 px-8 md:px-14 flex flex-col hover:bg-white/[0.015] transition-all duration-300 relative">
+          <Link href="/start?service=business" className="group py-14 md:py-20 px-8 md:px-14 flex flex-col hover:bg-white/[0.015] transition-all duration-300 relative">
             <div className="absolute top-6 right-6 md:top-8 md:right-10">
               <span className="text-[9px] font-bold tracking-[0.3em] uppercase px-3 py-1.5 border border-white/20 text-white/50">South Florida</span>
             </div>
@@ -485,9 +496,9 @@ export default function HomePage() {
             <div className="space-y-3 mb-10">
               {[
                 'Models at Your Business \u2014 on-site content & brand ambassador visits',
-                'Music Videos — professional models for your visual production',
+                'Music Videos — professional creators for your visual production',
                 'Brand & Fashion Shoots — styled shoots for your brand or product',
-                'Acting & Casting — actress roles, commercials, voiceover talent, and casting calls',
+                'Acting & Casting — actress roles, commercials, voiceover creators, and casting calls',
                 'Event Hosting — club nights, brand activations, parties',
                 'Bottle Girls & VIP Hostesses — nightclubs, lounges & premium venues',
                 'Monthly Packages — recurring content visits, shoots, or event hosting',
@@ -532,7 +543,7 @@ export default function HomePage() {
             <Link key={location.name} href={location.href} className="group border-r border-b border-white/[0.06] p-8 hover:bg-white/[0.015] transition-all duration-300">
               <p className="text-[10px] tracking-[0.3em] uppercase mb-3 font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">{location.desc}</p>
               <h3 className="font-display font-bold italic text-white leading-tight mb-2" style={{ fontSize: 'clamp(24px, 3vw, 36px)' }}>{location.name}</h3>
-              <p className="text-white/45 text-xs">Influencer Marketing</p>
+              <p className="text-white/45 text-xs">Creator Marketing</p>
             </Link>
           ))}
         </div>
@@ -554,7 +565,7 @@ export default function HomePage() {
               <div className="flex items-center gap-6">
                 <span>✓ Secure Stripe checkout</span>
                 <span>✓ Delivered in 48hrs</span>
-                <span>✓ Verified talent</span>
+                <span>✓ Verified creators</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -575,7 +586,7 @@ export default function HomePage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
                   <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
@@ -588,8 +599,8 @@ export default function HomePage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Brand Ambassadors</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
-                  <li><Link href="/model-booking?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
+                  <li><Link href="/start?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
                 </ul>
               </div>
               <div>
@@ -598,7 +609,7 @@ export default function HomePage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>
                 </ul>
               </div>
@@ -606,7 +617,7 @@ export default function HomePage() {
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

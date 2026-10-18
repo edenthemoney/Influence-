@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #fff; padding: 32px; border-radius: 4px;">
           <h2 style="color: #c9a96e; margin-bottom: 4px;">New Model Application</h2>
-          <p style="color: #888; font-size: 13px; margin-bottom: 28px;">Submitted via influencemodels.agency/join</p>
+          <p style="color: #888; font-size: 13px; margin-bottom: 28px;">Submitted via influencecreators.marketing/join</p>
 
           <table style="width: 100%; border-collapse: collapse;">
             <tr><td style="padding: 10px 0; border-bottom: 1px solid #1a1a1a; color: #888; font-size: 12px; width: 140px;">Name</td><td style="padding: 10px 0; border-bottom: 1px solid #1a1a1a; color: #fff;">${name}</td></tr>
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 
           ${message ? `<div style="margin-top: 20px; padding: 16px; background: #111; border-left: 3px solid #c9a96e;"><p style="color: #888; font-size: 11px; margin-bottom: 6px;">NOTES</p><p style="color: #ccc; font-size: 14px; line-height: 1.6;">${message}</p></div>` : ''}
 
-          <p style="margin-top: 28px; color: #555; font-size: 11px;">Influence · influencemodels.agency</p>
+          <p style="margin-top: 28px; color: #555; font-size: 11px;">Influence · influencecreators.marketing</p>
         </div>
       `,
     });

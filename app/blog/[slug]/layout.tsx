@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-const BASE = 'https://influencemodels.agency';
+const BASE = 'https://influencecreators.marketing';
 
 const meta: Record<string, { title: string; description: string; date: string; image: string }> = {
   'why-influencer-marketing-is-dominating-2025': { title: 'Why Influencer Marketing Is Dominating 2025', description: 'The influencer marketing industry hits $32.5B in 2025. Why brands shift budgets and how Miami influencers deliver 11x ROI.', date: '2025-05-19', image: '/images/Des/des-2.jpg' },
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${a.title} | Influence Journal`,
     description: a.description,
-    openGraph: { title: a.title, description: a.description, url: `${BASE}/blog/${slug}`, type: 'article', publishedTime: a.date, authors: ['Influence Models Agency'], images: [{ url: `${BASE}${a.image}`, width: 1200, height: 630 }] },
+    openGraph: { title: a.title, description: a.description, url: `${BASE}/blog/${slug}`, type: 'article', publishedTime: a.date, authors: ['Influence'], images: [{ url: `${BASE}${a.image}`, width: 1200, height: 630 }] },
     alternates: { canonical: `${BASE}/blog/${slug}` },
   };
 }

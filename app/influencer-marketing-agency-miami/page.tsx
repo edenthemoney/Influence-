@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Influencer Marketing Agency Miami | Influence Models Agency',
     description: 'Full-service influencer marketing from Miami\'s top talent agency. Campaigns, content, and results.',
-    url: 'https://influencemodels.agency/influencer-marketing-agency-miami',
+    url: 'https://influencecreators.marketing/influencer-marketing-agency-miami',
   },
 };
 
@@ -23,7 +23,7 @@ export default function InfluencerMarketingAgencyMiami() {
           <span className="text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: gold }}>Full-Service Agency</span>
         </div>
         <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Influencer Marketing<br />Agency in <span style={{ color: gold }}>Miami</span>
+          Creator Marketing<br />Agency in <span style={{ color: gold }}>Miami</span>
         </h1>
         <p className="text-white/50 text-lg mb-12 max-w-2xl">
           Influence Models Agency is Miami's full-service influencer marketing platform. We connect brands with professional, vetted talent for campaigns that actually convert — not just impressions, but real business results.
@@ -55,7 +55,7 @@ export default function InfluencerMarketingAgencyMiami() {
         <h2 className="text-2xl font-bold mb-6">Our Services</h2>
         <div className="space-y-4 mb-16">
           {[
-            { title: 'Music Video Talent', desc: 'Professional models for hip-hop, R&B, pop, and Latin music videos. Lead roles and featured appearances.', link: '/music-video-models' },
+            { title: 'Music Video Talent', desc: 'Professional models for hip-hop, R&B, pop, and Latin music videos. Lead roles and featured appearances.', link: '/music-video-creators' },
             { title: 'UGC & Reels', desc: 'Authentic short-form content for TikTok, Instagram, and YouTube Shorts. Content that converts.', link: '/ugc-creators-florida' },
             { title: 'Brand Campaigns', desc: 'Full influencer campaigns — product launches, brand partnerships, and sponsored content across platforms.', link: '/services/business' },
             { title: 'Event Appearances', desc: 'Model hosting, promotional appearances, and VIP event activation across South Florida.', link: '/services/events' },
@@ -101,7 +101,7 @@ export default function InfluencerMarketingAgencyMiami() {
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">Miami Influencer Marketing Agency</h3>
-          <p>Influence Models Agency operates out of Miami, Florida, serving clients across South Florida, the United States, and internationally. Our talent roster is based primarily in Miami, Fort Lauderdale, Hollywood, and Orlando, with availability for travel. We specialize in influencer marketing, talent booking, content creation, and brand partnerships. Contact us at influencemodelsagency@gmail.com or visit influencemodels.agency.</p>
+          <p>Influence Models Agency operates out of Miami, Florida, serving clients across South Florida, the United States, and internationally. Our talent roster is based primarily in Miami, Fort Lauderdale, Hollywood, and Orlando, with availability for travel. We specialize in influencer marketing, talent booking, content creation, and brand partnerships. Contact us at influencemodelsagency@gmail.com or visit influencecreators.marketing.</p>
         </div>
       </div>
     </div>

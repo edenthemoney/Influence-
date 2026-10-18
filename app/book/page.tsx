@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
 
 export default function BookPage() {
-  redirect('/model-booking');
+  redirect('/start');
 }

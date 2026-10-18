@@ -10,12 +10,12 @@ const gold = '#c9a96e';
 
 const projectTypes = [
   { id: 'campaign', label: 'Influencer Campaign', icon: TrendingUp, desc: '3+ creators, coordinated launch' },
-  { id: 'label', label: 'Label / Big-Budget Video', icon: Music, desc: '10+ talent, full production' },
+  { id: 'label', label: 'Label / Big-Budget Video', icon: Music, desc: '10+ creators, full production' },
   { id: 'musicvideo', label: 'Music Video', icon: Music, desc: '1–10 girls for your video' },
   { id: 'event', label: 'Event / VIP / Bottle Service', icon: Sparkles, desc: 'Hostesses for your venue or party' },
-  { id: 'shoot', label: 'Photo / Video Shoot', icon: Camera, desc: 'Models for shoots & editorials' },
+  { id: 'shoot', label: 'Photo / Video Shoot', icon: Camera, desc: 'Creators for shoots & editorials' },
   { id: 'ugc', label: 'UGC Content / Reviews', icon: Play, desc: 'Creator content for your brand' },
-  { id: 'commercial', label: 'Commercial / Speaking Role', icon: Film, desc: 'Scripted talent for ads' },
+  { id: 'commercial', label: 'Commercial / Speaking Role', icon: Film, desc: 'Scripted creators for ads' },
   { id: 'other', label: 'Something Else', icon: Wine, desc: 'Tell us what you need' },
 ];
 
@@ -96,7 +96,7 @@ function QuoteForm() {
               Back to Home
             </Link>
             <Link href="/marketplace" className="px-8 py-4 border border-white/10 text-sm font-bold tracking-widest uppercase text-white/50 hover:text-white hover:border-white/30 transition-all">
-              Browse Talent
+              Browse Creators
             </Link>
           </div>
         </div>
@@ -112,7 +112,7 @@ function QuoteForm() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -120,7 +120,7 @@ function QuoteForm() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -240,10 +240,10 @@ function QuoteForm() {
                 {sending ? 'Sending...' : 'Get My Quote'} <ArrowRight className="h-4 w-4" />
               </button>
               <a
-                href="tel:+15615520392"
+                href="tel:+15612877194"
                 className="inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-white/40 hover:text-white transition-colors"
               >
-                <Phone className="h-4 w-4" /> Prefer to call? (561) 552-0392
+                <Phone className="h-4 w-4" /> Prefer to call? (561) 287-7194
               </a>
             </div>
           </form>
@@ -253,7 +253,7 @@ function QuoteForm() {
       {/* Trust Bar */}
       <section className="border-t border-white/[0.06] bg-[#060606] py-12 md:py-16 px-8 md:px-16">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-8 md:gap-12">
-          {['Verified Talent', '24-Hour Response', 'No Obligation', 'Label-Ready', 'South Florida'].map((badge) => (
+          {['Verified Creators', '24-Hour Response', 'No Obligation', 'Label-Ready', 'South Florida'].map((badge) => (
             <span key={badge} className="text-white/30 text-[10px] tracking-widest uppercase flex items-center gap-2">
               <Check className="h-3 w-3" style={{ color: gold }} /> {badge}
             </span>
@@ -270,7 +270,7 @@ function QuoteForm() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
                   <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
@@ -279,10 +279,10 @@ function QuoteForm() {
               <div>
                 <p className="text-white/20 text-[9px] tracking-widest uppercase mb-6">Services</p>
                 <ul className="space-y-3">
-                  <li><Link href="/music-video-booking" className="text-white/40 hover:text-white transition-colors text-sm">Music Video Talent</Link></li>
+                  <li><Link href="/music-video-booking" className="text-white/40 hover:text-white transition-colors text-sm">Music Video Creators</Link></li>
                   <li><Link href="/ugc-content" className="text-white/40 hover:text-white transition-colors text-sm">UGC Content</Link></li>
-                  <li><Link href="/event-talent" className="text-white/40 hover:text-white transition-colors text-sm">Event Talent</Link></li>
-                  <li><Link href="/models-for-shoots" className="text-white/40 hover:text-white transition-colors text-sm">Models for Shoots</Link></li>
+                  <li><Link href="/event-creators" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
+                  <li><Link href="/creators-for-shoots" className="text-white/40 hover:text-white transition-colors text-sm">Models for Shoots</Link></li>
                 </ul>
               </div>
               <div>
@@ -298,7 +298,7 @@ function QuoteForm() {
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

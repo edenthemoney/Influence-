@@ -39,7 +39,7 @@ export default function LogoPreviewPage() {
               <div className="max-w-7xl mx-auto px-6 flex justify-center md:justify-between items-center h-20">
                 <img src="/concepts/wordmark.svg" alt="Header logo" className="h-12" />
                 <div className="flex items-center space-x-6 text-sm text-white/70">
-                  <span>Talent</span>
+                  <span>Creators</span>
                   <span className="px-6 py-2 bg-yellow-500 text-black font-bold tracking-wider uppercase text-xs">Book Now</span>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export default function LogoPreviewPage() {
               <img src="/concepts/monogram.svg" alt="IG avatar" className="w-16 h-16 rounded-full ring-2 ring-pink-500" style={{ background: 'black' }} />
               <div>
                 <p className="text-white font-semibold">influencemodelsagency</p>
-                <p className="text-white/50 text-sm">Influence Models Agency</p>
+                <p className="text-white/50 text-sm">Influence</p>
               </div>
             </div>
           </div>

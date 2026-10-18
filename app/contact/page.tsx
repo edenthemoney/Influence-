@@ -5,27 +5,62 @@ import ContactForm from './ContactForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact Influence — South Florida Influencer Marketing Agency',
-  description: 'Get in touch with Influence, a South Florida influencer marketing agency based in Miami and Boca Raton. Reach out for bookings, partnerships, or questions about UGC content, music promotion, and event hosting.',
+  title: 'Contact Influence — South Florida Creator Marketing Marketplace',
+  description: 'Get in touch with Influence, a South Florida creator marketing marketplace based in Miami and Boca Raton. Reach out for bookings, partnerships, or questions about UGC content, music promotion, and event hosting.',
   openGraph: {
-    title: 'Contact Influence — South Florida Influencer Marketing Agency',
+    title: 'Contact Influence — South Florida Creator Marketing Marketplace',
     description: 'Reach out for bookings, partnerships, or questions. Based in Miami & Boca Raton, FL.',
-    url: 'https://influencemodels.agency/contact',
+    url: 'https://influencecreators.marketing/contact',
   },
   alternates: {
-    canonical: 'https://influencemodels.agency/contact',
+    canonical: 'https://influencecreators.marketing/contact',
   },
+};
+
+const contactJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPoint",
+  "@id": "https://influencecreators.marketing/#contact",
+  "telephone": "+15612877194",
+  "email": "influencemodelsagency@gmail.com",
+  "contactType": "customer service",
+  "areaServed": [
+    "Miami",
+    "Fort Lauderdale",
+    "Boca Raton",
+    "Palm Beach",
+    "West Palm Beach",
+    "Delray Beach",
+    "Hollywood",
+    "Florida"
+  ],
+  "availableLanguage": [
+    "English"
+  ],
+  "hoursAvailable": "Mo-Su 00:00-23:59",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "4756 NW 2nd Ave",
+    "addressLocality": "Boca Raton",
+    "addressRegion": "FL",
+    "postalCode": "33431",
+    "addressCountry": "US"
+  }
 };
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#080808]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -33,7 +68,7 @@ export default function ContactPage() {
           <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
           <div className="flex items-center gap-10">
             <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-            <Link href="/model-booking" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Book Now</Link>
           </div>
         </div>
       </nav>
@@ -46,7 +81,7 @@ export default function ContactPage() {
             Have a question about our services, need a custom quote, or want to discuss a partnership? We&apos;d love to hear from you.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/model-booking" className="inline-flex items-center gap-3 px-10 py-4 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+            <Link href="/start" className="inline-flex items-center gap-3 px-10 py-4 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
               Book Now — Skip the Line <ChevronRight className="h-4 w-4" />
             </Link>
             <span className="text-white/25 text-xs">or scroll down to message us</span>
@@ -67,22 +102,22 @@ export default function ContactPage() {
             <MapPin className="h-8 w-8 mb-4" style={{ color: '#c9a96e' }} />
             <h2 className="text-white font-bold text-xl mb-2">Location</h2>
             <p className="text-white/40 text-sm mb-4">In-person services available in South Florida.</p>
-            <p className="text-white/60 text-sm font-medium">Miami &middot; Boca Raton, FL</p>
+            <p className="text-white/60 text-sm font-medium">4756 NW 2nd Ave<br />Boca Raton, FL 33431</p>
           </div>
 
           {/* Phone */}
-          <a href="tel:+15615520392" className="border border-white/[0.06] p-8 hover:bg-white/[0.02] transition-all group">
+          <a href="tel:+15612877194" className="border border-white/[0.06] p-8 hover:bg-white/[0.02] transition-all group">
             <Phone className="h-8 w-8 mb-4" style={{ color: '#c9a96e' }} />
             <h2 className="text-white font-bold text-xl mb-2">Call Us</h2>
             <p className="text-white/40 text-sm mb-4">For urgent bookings or quick questions.</p>
-            <p className="font-bold text-sm group-hover:underline" style={{ color: '#c9a96e' }}>(561) 552-0392</p>
+            <p className="font-bold text-sm group-hover:underline" style={{ color: '#c9a96e' }}>(561) 287-7194</p>
           </a>
 
           {/* For Models */}
           <Link href="/join" className="border border-white/[0.06] p-8 hover:bg-white/[0.02] transition-all group">
             <Crown className="h-8 w-8 mb-4" style={{ color: '#c9a96e' }} />
-            <h2 className="text-white font-bold text-xl mb-2">Want to Join Our Roster?</h2>
-            <p className="text-white/40 text-sm mb-4">We&apos;re always looking for new talent.</p>
+            <h2 className="text-white font-bold text-xl mb-2">Want to Join Our Network?</h2>
+            <p className="text-white/40 text-sm mb-4">We&apos;re always looking for new creators.</p>
             <p className="font-bold text-sm flex items-center gap-2 group-hover:gap-3 transition-all" style={{ color: '#c9a96e' }}>Apply Now <ChevronRight className="h-4 w-4" /></p>
           </Link>
         </div>
@@ -97,11 +132,11 @@ export default function ContactPage() {
           <h2 className="text-white font-bold text-2xl mb-6 text-center">Looking to Book?</h2>
           <p className="text-white/40 text-center text-sm mb-8 max-w-lg mx-auto">Skip the email — book directly through our platform in under 2 minutes.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/model-booking" className="px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-80 transition-all" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+            <Link href="/start" className="px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-80 transition-all" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
               Start Booking
             </Link>
             <Link href="/marketplace" className="px-10 py-5 border border-white/15 text-white text-[13px] font-bold tracking-widest uppercase hover:border-white/30 transition-all">
-              Browse Talent
+              Browse Creators
             </Link>
           </div>
         </div>
@@ -115,10 +150,10 @@ export default function ContactPage() {
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -128,7 +163,7 @@ export default function ContactPage() {
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Models</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
                 </ul>
               </div>
               <div>
@@ -137,14 +172,14 @@ export default function ContactPage() {
                   <li><Link href="/about" className="text-white/40 hover:text-white transition-colors text-sm">About</Link></li>
                   <li><Link href="/faq" className="text-white/40 hover:text-white transition-colors text-sm">FAQ</Link></li>
                   <li><Link href="/contact" className="text-white/40 hover:text-white transition-colors text-sm">Contact</Link></li>
-                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Roster</Link></li>
+                  <li><Link href="/join" className="text-white/40 hover:text-white transition-colors text-sm">Join Our Network</Link></li>
                   <li><Link href="/terms" className="text-white/40 hover:text-white transition-colors text-sm">Terms</Link></li>                </ul>
               </div>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

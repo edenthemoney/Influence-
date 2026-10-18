@@ -12,13 +12,13 @@ const PITCHES: Record<string, (data: any) => string> = {
   music_reactions: (d) => `Write a cold Instagram DM or email to a ${d.genre} artist named ${d.artist_name} who just released a track called "${d.track_name}". 
 The track has ${d.energy}% energy, is ${d.mood} in tone, and runs at ${d.tempo} BPM.
 Pitch them on booking a Miami model to do a first-listen reaction video to their song — posted to her social media pages to drive streams and discovery.
-Service starts at $300. Agency is called Influence Agency (influencemodels.agency). Contact: influencemodelsagency@gmail.com or (561) 552-0392.
+Service starts at $300. Agency is called Influence Agency (influencecreators.marketing). Contact: influencemodelsagency@gmail.com or (561) 287-7194.
 Tone: direct, real, music industry insider. No fluff.`,
 
   business_content: (d) => `Write a cold outreach email to the owner of a ${d.business_type} called "${d.business_name}" located in ${d.business_location}.
 Their Instagram has only ${d.ig_followers || 'a small'} followers and their content looks low quality.
 Pitch them on booking a professional model to visit their location and create reels, stories, and promo content on-site.
-Service starts at $300 for a 2hr visit. Agency is called Influence Agency (influencemodels.agency).
+Service starts at $300 for a 2hr visit. Agency is called Influence Agency (influencecreators.marketing).
 Tone: friendly, local, peer-to-peer. Keep it short. One specific observation about their business type.`,
 
   events: (d) => `Write a cold outreach message to an event promoter named ${d.promoter_name} who is running an event called "${d.event_name}" on ${d.event_date} in ${d.event_location || 'Miami'}.

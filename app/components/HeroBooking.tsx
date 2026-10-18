@@ -60,7 +60,7 @@ export default function HeroBooking() {
     } catch {}
     setLoading(false);
     setSubmitted(true);
-    setTimeout(() => { window.location.href = `/model-booking?service=${svc}`; }, 600);
+    setTimeout(() => { window.location.href = `/start?service=${svc}`; }, 600);
   };
 
   const activePersona = personas.find(p => p.id === persona);
@@ -74,7 +74,7 @@ export default function HeroBooking() {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <span className="w-2.5 h-2.5 rounded-full animate-pulse inline-block" style={{ backgroundColor: G }} />
-          <p className="text-[13px] tracking-[0.3em] uppercase font-bold" style={{ color: G }}>Book Your Models</p>
+          <p className="text-[13px] tracking-[0.3em] uppercase font-bold" style={{ color: G }}>Book Your Creators</p>
         </div>
         {step !== 'persona' && (
           <button
@@ -180,14 +180,14 @@ export default function HeroBooking() {
                 </button>
               </form>
               <button
-                onClick={() => { window.location.href = `/model-booking?service=${svc}`; }}
+                onClick={() => { window.location.href = `/start?service=${svc}`; }}
                 className="w-full mt-2 text-center text-white/25 hover:text-white/50 text-[11px] transition-colors"
               >
                 Skip → go straight to booking
               </button>
               <div className="flex items-center justify-center gap-2 mt-3">
-                <a href="tel:+15615520392" className="flex items-center gap-2 text-white/30 hover:text-white/60 text-[11px] transition-colors">
-                  <Phone className="h-3 w-3" /> Prefer to call? (561) 552-0392
+                <a href="tel:+15612877194" className="flex items-center gap-2 text-white/30 hover:text-white/60 text-[11px] transition-colors">
+                  <Phone className="h-3 w-3" /> Prefer to call? (561) 287-7194
                 </a>
               </div>
             </>

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Hire Influencers For Marketing for Your Brand | Influence Models Agency',
+  title: 'Hire Influencers For Marketing for Your Brand | Influence',
   description: 'Verified creators deliver scroll-stopping content — reels, reviews & campaigns — ready to post in 48 hours.',
 };
 
@@ -11,7 +11,7 @@ export default function LandingPage_hire_influencers_for_marketing() {
 
       {/* Hero */}
       <section className="relative px-6 pt-20 pb-16 text-center max-w-4xl mx-auto">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-[#c9a96e] mb-4">Influence Models Agency</p>
+        <p className="text-[11px] tracking-[0.3em] uppercase text-[#c9a96e] mb-4">Influence</p>
         <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
           Hire Influencers For Marketing for Your Brand
         </h1>
@@ -61,7 +61,7 @@ export default function LandingPage_hire_influencers_for_marketing() {
           <div className="border border-white/[0.08] bg-[#0a0a0a] p-8">
             <div className="text-3xl mb-4">📸</div>
             <h3 className="text-xl font-bold mb-3">Photo & Brand Shoots</h3>
-            <p className="text-white/50 text-sm leading-relaxed">Camera-ready models for lookbooks, e-comm, editorials and product campaigns.</p>
+            <p className="text-white/50 text-sm leading-relaxed">Camera-ready creators for lookbooks, e-comm, editorials and product campaigns.</p>
           </div>
         </div>
       </section>
@@ -79,7 +79,7 @@ export default function LandingPage_hire_influencers_for_marketing() {
       {/* CTA */}
       <section className="bg-[#0a0a0a] border-t border-white/[0.06] py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Get Started?</h2>
-        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. South Florida&apos;s top talent agency.</p>
+        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. South Florida&apos;s top creator network.</p>
         <Link
           href="/quote"
           className="inline-block px-10 py-5 text-black font-bold text-sm tracking-widest uppercase"
