@@ -8,6 +8,11 @@ const nextConfig = {
   },
   staticPageGenerationTimeout: 180,
   productionBrowserSourceMaps: false,
+  async redirects() {
+    return [
+      { source: '/nov18', destination: '/tickets', permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;

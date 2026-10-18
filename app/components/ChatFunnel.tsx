@@ -49,8 +49,8 @@ export default function ChatFunnel() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Hide on booking page so it doesn't overlap the sticky checkout button
-  if (pathname === '/model-booking') return null;
+  // Keep the floating chat off ticket and booking flows so it does not cover the main button.
+  if (pathname === '/model-booking' || pathname === '/nov18' || pathname === '/tickets' || pathname?.startsWith('/tickets/')) return null;
 
   const addMessage = (from: 'bot' | 'user', text: string) => {
     setMessages(prev => [...prev, { from, text }]);

@@ -12,12 +12,18 @@ export async function GET(req: NextRequest) {
     const paid = session.payment_status === 'paid';
     const meta = session.metadata || {};
 
+    const quantity = Number(meta.quantity);
     return NextResponse.json({
       valid: paid,
       customerEmail: session.customer_email || meta.clientEmail || '',
-      customerName: meta.clientName || '',
-      customerPhone: meta.clientPhone || '',
+      customerName: meta.clientName || session.customer_details?.name || '',
+      customerPhone: meta.clientPhone || session.customer_details?.phone || '',
       amountTotal: session.amount_total ? session.amount_total / 100 : 0,
+      paymentStatus: session.payment_status,
+      eventSlug: meta.eventSlug || '',
+      ticketType: meta.ticketType || '',
+      instagram: meta.instagram || '',
+      ...(Number.isInteger(quantity) && quantity > 0 ? { quantity } : {}),
     });
   } catch (e: any) {
     return NextResponse.json({ valid: false, error: e.message }, { status: 400 });
