@@ -1,44 +1,59 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { X, Phone, ChevronRight, Lock, MessageCircle } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { X, Phone, ChevronRight } from 'lucide-react';
 
 const gold = '#c9a96e';
+const SEEN_KEY = 'lead_popup_seen';
 
 export default function LeadCapturePopup() {
   const [visible, setVisible] = useState(false);
-  const [stickyVisible, setStickyVisible] = useState(false);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const shown = useRef(false);
 
   useEffect(() => {
-    const dismissed = sessionStorage.getItem('lead_popup_dismissed');
-    if (dismissed) {
-      // Even if dismissed, show sticky bar after 3s unless they already submitted
-      const alreadySubmitted = sessionStorage.getItem('lead_popup_submitted');
-      if (!alreadySubmitted) {
-        const stickyTimer = setTimeout(() => setStickyVisible(true), 3000);
-        return () => clearTimeout(stickyTimer);
-      }
+    if (typeof window === 'undefined') return;
+    if (sessionStorage.getItem(SEEN_KEY) || sessionStorage.getItem('lead_popup_submitted') || sessionStorage.getItem('lead_popup_dismissed')) {
       return;
     }
-    // Show popup after 4 seconds on the page
-    const timer = setTimeout(() => setVisible(true), 4000);
-    return () => clearTimeout(timer);
+
+    const show = () => {
+      if (shown.current) return;
+      if (sessionStorage.getItem(SEEN_KEY)) return;
+      shown.current = true;
+      sessionStorage.setItem(SEEN_KEY, '1');
+      setVisible(true);
+    };
+
+    const onScroll = () => {
+      if (window.scrollY < 48) return;
+      const root = document.documentElement;
+      const depth = (window.scrollY + window.innerHeight) / root.scrollHeight;
+      if (depth >= 0.5) show();
+    };
+
+    const onMouseOut = (event: MouseEvent) => {
+      if (event.clientY > 8) return;
+      if (event.relatedTarget) return;
+      show();
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.documentElement.addEventListener('mouseout', onMouseOut);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      document.documentElement.removeEventListener('mouseout', onMouseOut);
+    };
   }, []);
 
   const dismiss = () => {
     setVisible(false);
     sessionStorage.setItem('lead_popup_dismissed', '1');
-    // Show sticky bar after 2s as fallback
-    setTimeout(() => setStickyVisible(true), 2000);
-  };
-
-  const dismissSticky = () => {
-    setStickyVisible(false);
+    sessionStorage.setItem(SEEN_KEY, '1');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -51,124 +66,90 @@ export default function LeadCapturePopup() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, phone, email, source: 'marketplace_popup' }),
       });
-      // Save to session so booking form is pre-filled
       sessionStorage.setItem('lead_name', name);
       sessionStorage.setItem('lead_phone', phone);
       sessionStorage.setItem('lead_email', email);
       sessionStorage.setItem('lead_popup_submitted', '1');
       sessionStorage.setItem('lead_popup_dismissed', '1');
-    } catch {}
+      sessionStorage.setItem(SEEN_KEY, '1');
+    } catch {
+      // Keep the form open if the network call fails.
+      setLoading(false);
+      return;
+    }
     setSubmitted(true);
-    setStickyVisible(false);
     setLoading(false);
     setTimeout(() => {
       setVisible(false);
     }, 2500);
   };
 
+  if (!visible) return null;
+
   return (
-    <>
-      {/* Main popup */}
-      {visible && (
-        <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-4" style={{ backgroundColor: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(4px)' }}>
-          <div className="w-full max-w-md bg-[#0e0e0e] border border-white/10 p-8 relative">
-            <button onClick={dismiss} className="absolute top-4 right-4 text-white/30 hover:text-white transition-colors">
-              <X className="h-4 w-4" />
-            </button>
+    <div className="fixed inset-0 z-[9999] flex items-end sm:items-center justify-center p-4" style={{ backgroundColor: 'rgba(0,0,0,0.72)' }}>
+      <div className="w-full max-w-md bg-[#0e0e0e] border border-white/10 p-6 sm:p-8 relative" role="dialog" aria-labelledby="lead-popup-title">
+        <button onClick={dismiss} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors" aria-label="Close">
+          <X className="h-5 w-5" />
+        </button>
 
-            {!submitted ? (
-              <>
-                <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-3" style={{ color: gold }}>Exclusive Access</p>
-                <h2 className="font-display font-bold italic text-white text-2xl leading-tight mb-2">
-                  Book Miami's Top Models
-                </h2>
-                <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                  Drop your number and we'll reach out with availability, pricing, and first access to new talent.
-                </p>
+        {!submitted ? (
+          <>
+            <p className="text-[13px] font-semibold tracking-[0.18em] uppercase mb-3" style={{ color: gold }}>Influence</p>
+            <h2 id="lead-popup-title" className="font-display font-semibold text-white text-[28px] leading-[1.1] mb-3">
+              Planning a night or a campaign?
+            </h2>
+            <p className="text-[#f6f1e7] text-[16px] mb-6 leading-relaxed">
+              Leave a number. We&apos;ll follow up with availability.
+            </p>
 
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Phone Number *"
-                    value={phone}
-                    onChange={e => setPhone(e.target.value)}
-                    required
-                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email (optional)"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
-                  />
-                  <button
-                    type="submit"
-                    disabled={loading || !phone}
-                    className="w-full py-4 text-[12px] font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50"
-                    style={{ backgroundColor: gold, color: '#000' }}
-                  >
-                    {loading ? 'Sending...' : (<>Get Access <ChevronRight className="h-4 w-4" /></>)}
-                  </button>
-                </form>
-
-                <div className="flex items-center gap-2 mt-4">
-                  <Lock className="h-3 w-3 text-white/20" />
-                  <p className="text-white/20 text-[10px]">No spam. We only reach out about bookings & availability.</p>
-                </div>
-              </>
-            ) : (
-              <div className="text-center py-4">
-                <div className="w-12 h-12 border border-[#c9a96e]/40 flex items-center justify-center mx-auto mb-4">
-                  <Phone className="h-5 w-5" style={{ color: gold }} />
-                </div>
-                <p className="font-display font-bold italic text-white text-xl mb-2">You're on the list!</p>
-                <p className="text-white/40 text-sm">We'll be in touch shortly.</p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Sticky bottom bar — shows after popup is dismissed */}
-      {stickyVisible && !visible && (
-        <div className="fixed bottom-0 left-0 right-0 z-[9998] border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl px-4 py-3 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-w-0">
-            <MessageCircle className="h-4 w-4 flex-shrink-0" style={{ color: gold }} />
-            <p className="text-white/70 text-xs truncate">Get pricing & availability — drop your number</p>
-          </div>
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <form onSubmit={handleSubmit} className="flex items-center gap-2">
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <input
+                type="text"
+                placeholder="Your name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                className="w-full bg-white/[0.04] border border-white/15 px-4 py-3 text-white text-[16px] placeholder-white/40 focus:outline-none focus:border-[#c9a96e] transition-colors"
+              />
               <input
                 type="tel"
-                placeholder="Your phone"
+                placeholder="Phone number"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 required
-                className="w-32 sm:w-40 bg-white/[0.06] border border-white/15 px-3 py-2 text-white text-xs placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
+                aria-label="Phone number"
+                className="w-full bg-white/[0.04] border border-white/15 px-4 py-3 text-white text-[16px] placeholder-white/40 focus:outline-none focus:border-[#c9a96e] transition-colors"
+              />
+              <input
+                type="email"
+                placeholder="Email, if you prefer"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                aria-label="Email"
+                className="w-full bg-white/[0.04] border border-white/15 px-4 py-3 text-white text-[16px] placeholder-white/40 focus:outline-none focus:border-[#c9a96e] transition-colors"
               />
               <button
                 type="submit"
                 disabled={loading || !phone}
-                className="px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-90 disabled:opacity-40 flex-shrink-0"
-                style={{ backgroundColor: gold, color: '#000' }}
+                className="w-full min-h-12 py-3 text-[16px] font-semibold tracking-[0.08em] uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50"
+                style={{ backgroundColor: gold, color: '#0c0c0c' }}
               >
-                {loading ? '...' : 'Go'}
+                {loading ? 'Sending...' : (<>Request a call <ChevronRight className="h-4 w-4" /></>)}
               </button>
             </form>
-            <button onClick={dismissSticky} className="text-white/20 hover:text-white/60 transition-colors ml-1">
-              <X className="h-4 w-4" />
-            </button>
+
+            <p className="text-[#f6f1e7]/70 text-[13px] mt-4 leading-relaxed">We only write about bookings and availability.</p>
+          </>
+        ) : (
+          <div className="text-center py-6">
+            <div className="w-12 h-12 border border-[#c9a96e]/40 flex items-center justify-center mx-auto mb-4">
+              <Phone className="h-5 w-5" style={{ color: gold }} />
+            </div>
+            <p className="font-display font-semibold text-white text-[24px] mb-2">You&apos;re on the list.</p>
+            <p className="text-[#f6f1e7] text-[16px]">We&apos;ll be in touch.</p>
           </div>
-        </div>
-      )}
-    </>
+        )}
+      </div>
+    </div>
   );
 }

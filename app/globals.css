@@ -250,3 +250,124 @@ input[type='range']::-moz-range-thumb {
   background: rgba(255,255,255,0.12);
   border-radius: 2px;
 }
+
+/* Shared studio chrome for inner pages. Homepage brings its own header. */
+.site-page {
+  overflow-x: clip;
+}
+
+.site-page-body {
+  overflow-x: clip;
+  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+}
+
+.site-page-body nav[class*="fixed"],
+.site-page-body footer {
+  display: none !important;
+}
+
+.site-page-body [class*="pt-32"],
+.site-page-body [class*="pt-40"],
+.site-page-body [class*="pt-44"] {
+  padding-top: 3.5rem !important;
+}
+
+.site-page-body [class*="text-[8px]"],
+.site-page-body [class*="text-[9px]"],
+.site-page-body [class*="text-[10px]"],
+.site-page-body [class*="text-[11px]"],
+.site-page-body [class*="text-[12px]"],
+.site-page-body .text-xs {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+.site-page-body [class~="bg-[#080808]"],
+.site-page-body [class~="bg-[#0a0a0a]"],
+.site-page-body [class~="bg-[#060606]"],
+.site-page-body [class~="bg-black"],
+.site-page-body [class~="bg-zinc-900"] {
+  background-color: #f6f1e7 !important;
+  color: #0c0c0c;
+}
+
+.site-page-body [class*="text-white"] {
+  color: rgba(12, 12, 12, 0.78) !important;
+}
+
+.site-page-body [class~="text-white"] {
+  color: #0c0c0c !important;
+}
+
+.site-page-body [class*="border-white"] {
+  border-color: rgba(12, 12, 12, 0.12) !important;
+}
+
+.site-page-body [style*="#c9a96e"] {
+  color: #0c0c0c !important;
+}
+
+.site-page-body a[style*="background"],
+.site-page-body button[style*="background"] {
+  color: #0c0c0c !important;
+}
+
+.site-page-body section:has(video) [class*="text-white"],
+.site-page-body section:has(img.absolute) [class*="text-white"],
+.site-page-body section:has(img[class*="absolute"]) [class*="text-white"] {
+  color: #f6f1e7 !important;
+}
+
+.site-page-body section:has(video),
+.site-page-body section:has(img.absolute),
+.site-page-body section:has(img[class*="absolute"]) {
+  background-color: #0c0c0c !important;
+}
+
+.site-page-body section:has(video) [style*="#c9a96e"],
+.site-page-body section:has(img.absolute) [style*="#c9a96e"],
+.site-page-body section:has(img[class*="absolute"]) [style*="#c9a96e"] {
+  color: #c9a96e !important;
+}
+
+.site-page-body section:has(video) a[style*="background"],
+.site-page-body section:has(img.absolute) a[style*="background"],
+.site-page-body section:has(img[class*="absolute"]) a[style*="background"] {
+  color: #0c0c0c !important;
+}
+
+.site-page h1,
+.site-page h2,
+.site-page .font-display {
+  font-family: var(--font-display), Georgia, serif;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.site-page-body section:not(:has(img)):not(:has(video)) [class*="bg-gradient"] {
+  background-image: none !important;
+}
+
+.site-page-body .truncate {
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
+}
+
+.site-page-body input,
+.site-page-body textarea,
+.site-page-body select {
+  background-color: #fff !important;
+  color: #0c0c0c !important;
+  border-color: rgba(12, 12, 12, 0.22) !important;
+  font-size: 16px !important;
+}
+
+.site-page-body input::placeholder,
+.site-page-body textarea::placeholder {
+  color: rgba(12, 12, 12, 0.45) !important;
+}
+
+html:not(.show-chat) [data-chat-button] {
+  display: none !important;
+}

@@ -38,10 +38,8 @@ export default function LandingPage_event_advertising() {
       {/* Trust Badges */}
       <section className="border-y border-white/[0.06] py-6">
         <div className="max-w-4xl mx-auto px-6 flex flex-wrap justify-center gap-8">
-          <span className="text-white/40 text-[12px] tracking-widest uppercase">Top South FL Venues</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Palm Beach to Miami</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Vetted Professionals</span>
-          <span className="text-white/40 text-[12px] tracking-widest uppercase">Book in 24 Hrs</span>
         </div>
       </section>
 
@@ -66,20 +64,10 @@ export default function LandingPage_event_advertising() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="border-t border-white/[0.06] py-16 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xl text-white/80 italic leading-relaxed mb-6">
-            &ldquo;Best agency I've worked with. Showed up early, looked amazing, and kept the VIP section popping all night.&rdquo;
-          </p>
-          <p className="text-[#c9a96e] text-sm font-bold tracking-widest uppercase">Event Promoter, Boca Raton FL</p>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="bg-[#0a0a0a] border-t border-white/[0.06] py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Get Started?</h2>
-        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. South Florida&apos;s top creator network.</p>
+        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. Based in South Florida.</p>
         <Link
           href="/quote"
           className="inline-block px-10 py-5 text-black font-bold text-sm tracking-widest uppercase"

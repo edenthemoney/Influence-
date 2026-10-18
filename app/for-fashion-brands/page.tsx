@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ChevronRight, Check, Shirt, Camera, Star, Play, Instagram, Package } from 'lucide-react';
+import { ChevronRight, Check, Shirt, Camera, Play, Instagram, Package } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
 
 const gold = '#c9a96e';
@@ -100,7 +100,10 @@ const stats = [
   { value: '3–5x', label: 'More Engagement', desc: 'Content featuring creators in your clothing vs. standard product shots.' },
   { value: '48hrs', label: 'Delivery', desc: 'UGC content in your inbox within 48 hours of approval — ready to post or run as ads.' },
   { value: '$300', label: 'Starting Price', desc: 'The most affordable way to get professional creator content for your clothing brand.' },
-];
+].filter((item) => {
+  const blob = `${item.value} ${item.label}`;
+  return blob !== '3–5x More Engagement' && blob !== '48hrs Delivery';
+});
 
 export default function ForFashionBrandsPage() {
   return (
@@ -250,19 +253,6 @@ export default function ForFashionBrandsPage() {
               <p className="text-white/35 text-[13px] leading-relaxed">{desc}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Testimonial / Social Proof */}
-      <section className="py-16 px-8 md:px-16 border-t border-white/[0.06]">
-        <div className="max-w-3xl">
-          <div className="flex gap-1 mb-4">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" style={{ color: gold }} />)}
-          </div>
-          <p className="text-white/55 text-lg md:text-xl italic leading-relaxed mb-6">
-            &ldquo;We sent over 3 pieces and got back 6 reels within 48 hours. Our TikTok views went from 200 to 40,000 on the first post. This is exactly what our brand needed.&rdquo;
-          </p>
-          <p className="text-white/25 text-[11px] tracking-widest uppercase">— Fashion Brand Client · Miami, FL</p>
         </div>
       </section>
 

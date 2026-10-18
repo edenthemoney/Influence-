@@ -7,8 +7,9 @@ const GOLD = '#c9a96e';
 const links = [
   { href: '/marketplace', label: 'Creators' },
   { href: '/services', label: 'Services' },
-  { href: '/pricing', label: 'Pricing' },
+  { href: '/tickets', label: 'Events' },
   { href: '/about', label: 'About' },
+  { href: '/join', label: 'Join' },
   { href: '/contact', label: 'Contact' },
   { href: '/faq', label: 'FAQ' },
 ];
@@ -43,11 +44,11 @@ export default function MobileNav() {
                 key={href}
                 href={href}
                 onClick={() => setOpen(false)}
-                className="font-display font-light italic text-white border-b border-white/[0.06] py-6 flex items-center justify-between group"
+                className="font-display font-semibold text-[#f6f1e7] border-b border-white/[0.06] py-6 flex items-center justify-between group"
                 style={{ fontSize: 'clamp(38px, 11vw, 58px)' }}
               >
                 <span>{label}</span>
-                <span className="text-white/30 text-[11px] tracking-widest uppercase not-italic font-sans group-hover:text-white/60 transition-colors">→</span>
+                <span className="text-white/50 text-[13px] tracking-widest uppercase not-italic font-sans group-hover:text-white/80 transition-colors">→</span>
               </Link>
             ))}
           </nav>
