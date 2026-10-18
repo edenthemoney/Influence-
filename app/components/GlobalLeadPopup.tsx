@@ -12,6 +12,8 @@ const EXCLUDED = [
   '/booking/success',
   '/shop/success',
   '/admin',
+  '/tickets',
+  '/nov18',
 ];
 
 export default function GlobalLeadPopup() {

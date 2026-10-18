@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Check, Phone } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
 import StartSelector from './StartSelector';
+import VerifiedPartners from '../components/VerifiedPartners';
 
 const gold = '#c9a96e';
 
@@ -51,15 +52,7 @@ export default function StartPage() {
         </div>
       </section>
 
-      {/* Social proof credits */}
-      <section className="px-8 md:px-16 pb-10 md:pb-14">
-        <p className="text-center text-white/20 text-[10px] tracking-[0.3em] uppercase mb-5">Our creators has worked with</p>
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 max-w-4xl mx-auto">
-          {['Sean Paul', 'Kai Cenat', 'Bryson Tiller', 'Moneybagg Yo', 'Forbes', 'Fenty Beauty', 'Netflix', 'Miami Swim Week'].map((name) => (
-            <span key={name} className="font-display font-light italic text-white/30 text-base md:text-xl">{name}</span>
-          ))}
-        </div>
-      </section>
+      <VerifiedPartners />
 
       {/* Two-step selector */}
       <section className="px-8 md:px-16 pb-16 md:pb-24">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cormorant_Garamond, Bebas_Neue } from "next/font/google";
+import { Inter, Bodoni_Moda, Bebas_Neue } from "next/font/google";
 import { Suspense } from "react";
 import PostHogProvider, { PostHogPageView } from "./components/PostHogProvider";
 import ChatFunnel from './components/ChatFunnel';
@@ -7,9 +7,9 @@ import GlobalLeadPopup from './components/GlobalLeadPopup';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: 'swap' });
-const cormorant = Cormorant_Garamond({
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
   variable: "--font-display",
   display: 'swap',
@@ -850,7 +850,7 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className={`${inter.variable} ${cormorant.variable} ${bebas.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${bodoni.variable} ${bebas.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

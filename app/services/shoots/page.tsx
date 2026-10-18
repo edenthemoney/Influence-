@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, Phone, Camera, Film, Users, Star, Clock, Palette } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
+import VerifiedPartners from '../../components/VerifiedPartners';
 
 const gold = '#c9a96e';
 
@@ -101,15 +102,7 @@ export default function ShootsPage() {
         </div>
       </section>
 
-      {/* Credits */}
-      <section className="border-t border-white/[0.06] bg-[#060606] py-10 md:py-14 px-8 md:px-16">
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {['Sean Paul', 'Bryson Tiller', 'DaBaby', 'Kai Cenat', 'Forbes', 'Fenty Beauty', 'Miami Swim Week'].map(name => (
-            <span key={name} className="font-display font-light italic text-white/25 text-lg md:text-2xl">{name}</span>
-          ))}
-        </div>
-        <p className="text-center text-white/15 text-[10px] tracking-widest uppercase mt-4">Our creators have worked alongside</p>
-      </section>
+      <VerifiedPartners />
 
       {/* Packages */}
       <section className="py-20 md:py-28 px-8 md:px-16 border-t border-white/[0.06]">
