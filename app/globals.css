@@ -272,6 +272,7 @@ input[type='range']::-moz-range-thumb {
   padding-top: 3.5rem !important;
 }
 
+.site-page-body [class*="text-[8px]"],
 .site-page-body [class*="text-[9px]"],
 .site-page-body [class*="text-[10px]"],
 .site-page-body [class*="text-[11px]"],
@@ -365,4 +366,8 @@ input[type='range']::-moz-range-thumb {
 .site-page-body input::placeholder,
 .site-page-body textarea::placeholder {
   color: rgba(12, 12, 12, 0.45) !important;
+}
+
+html:not(.show-chat) [data-chat-button] {
+  display: none !important;
 }

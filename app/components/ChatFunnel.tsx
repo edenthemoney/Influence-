@@ -44,27 +44,23 @@ export default function ChatFunnel() {
   ]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   useEffect(() => {
-    let frame = 0;
     const measure = () => {
       const hero = document.querySelector('[data-hero]');
       const anchor = hero || document.querySelector('main h1')?.closest('section') || document.querySelector('h1');
       const pastHero = anchor
         ? anchor.getBoundingClientRect().bottom < 8
         : window.scrollY > window.innerHeight * 0.85;
-      const safe = 20;
-      const size = 56;
       const box = {
-        left: window.innerWidth - safe - size,
-        right: window.innerWidth - safe,
-        top: window.innerHeight - safe - size,
-        bottom: window.innerHeight - safe,
+        left: window.innerWidth - 112,
+        right: window.innerWidth - 8,
+        top: window.innerHeight - 112,
+        bottom: window.innerHeight - 8,
       };
       let hitsCopy = false;
       if (pastHero) {
@@ -90,21 +86,19 @@ export default function ChatFunnel() {
           node = walker.nextNode();
         }
       }
-      setShowButton(pastHero && !hitsCopy);
-    };
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(measure);
+      document.documentElement.classList.toggle('show-chat', pastHero && !hitsCopy);
     };
     measure();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('scroll', measure, { passive: true });
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure, true);
     return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      document.documentElement.classList.remove('show-chat');
+      window.removeEventListener('scroll', measure);
+      window.removeEventListener('resize', measure);
+      window.removeEventListener('load', measure, true);
     };
-  }, [pathname]);
+  }, [pathname, open]);
 
   // Hide on booking page so it doesn't overlap the sticky checkout button
   if (pathname === '/start') return null;
@@ -224,8 +218,9 @@ export default function ChatFunnel() {
   return (
     <div data-chat-root>
       {/* Floating Button */}
-      {!open && showButton && (
+      {!open && (
         <button
+          data-chat-button
           onClick={() => setOpen(true)}
           className="fixed right-5 z-[60] flex h-14 w-14 items-center justify-center shadow-2xl transition-transform hover:scale-105"
           style={{ backgroundColor: gold, bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
