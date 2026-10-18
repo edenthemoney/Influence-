@@ -10,12 +10,12 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
   const celebrate = mode === 'success' && (status === 'rsvp' || status === 'paid');
 
   return (
-    <main className="relative min-h-dvh overflow-hidden bg-[#050505] px-[max(10px,env(safe-area-inset-left))] pr-[max(10px,env(safe-area-inset-right))] pt-[max(10px,env(safe-area-inset-top))] text-[#f7f1e4]">
+    <main className="relative min-h-dvh overflow-hidden bg-[#000000] px-[max(10px,env(safe-area-inset-left))] pr-[max(10px,env(safe-area-inset-right))] pt-[max(10px,env(safe-area-inset-top))] text-[#f4efe6]">
       <GoldConfetti active={celebrate} />
-      <div className="mx-auto flex min-h-[calc(100dvh-20px)] w-full max-w-[440px] flex-col border border-[#c8a95a] bg-[#050505] px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-8">
-        <p className="text-[11px] font-bold uppercase tracking-[0.42em] text-[#c8a95a]">Influence</p>
-        <p className="mt-3 font-display text-[40px] leading-[0.9] text-[#f7f1e4]">Influence Connect</p>
-        <p className="mt-3 text-[14px] text-[#f7f1e4]/70">
+      <div className="mx-auto flex min-h-[calc(100dvh-20px)] w-full max-w-[440px] flex-col bg-[#000000] px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-8">
+        <p className="font-display text-[52px] font-bold leading-none tracking-[0.04em] text-[#c9a96e]">INFLUENCE</p>
+        <p className="mt-2 text-[14px] font-black uppercase tracking-[0.13em] text-[#c9a96e]">Influencer Networking Event</p>
+        <p className="mt-3 text-[16px] text-[#f4efe6]/85">
           {INFLUENCE_CONNECT.dateLong}
           <br />
           {INFLUENCE_CONNECT.time}
@@ -24,12 +24,12 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
         </p>
 
         <div className="mt-8 flex-1">
-          {status === 'loading' && <p className="text-[17px] text-[#e6d3a1]">Checking your ticket…</p>}
+          {status === 'loading' && <p className="text-[17px] text-[#c9a96e]">Checking your ticket…</p>}
 
           {mode === 'success' && status === 'rsvp' && (
             <>
-              <h1 className="font-display text-[46px] leading-none">You&apos;re on the list.</h1>
-              <p className="mt-4 text-[16px] leading-relaxed text-[#f7f1e4]/80">
+              <h1 className="font-display text-[44px] font-bold leading-none">You&apos;re on the list.</h1>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#f4efe6]/80">
                 Your ladies RSVP is saved. First drink is free. Show your name at the door.
               </p>
             </>
@@ -37,8 +37,8 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
 
           {mode === 'success' && status === 'paid' && (
             <>
-              <h1 className="font-display text-[46px] leading-none">You&apos;re in.</h1>
-              <p className="mt-4 text-[16px] leading-relaxed text-[#f7f1e4]/80">
+              <h1 className="font-display text-[44px] font-bold leading-none">You&apos;re in.</h1>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#f4efe6]/80">
                 Payment confirmed
                 {typeof ticket?.amountTotal === 'number' ? ` for $${ticket.amountTotal.toFixed(2)}` : ''}.
                 {ticket?.quantity ? ` ${ticket.quantity} ${ticket.quantity === 1 ? 'entry' : 'entries'}.` : ''}
@@ -53,8 +53,8 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
 
           {mode === 'success' && status === 'unpaid' && (
             <>
-              <h1 className="font-display text-[46px] leading-none">Payment not confirmed.</h1>
-              <p className="mt-4 text-[16px] leading-relaxed text-[#f7f1e4]/80">
+              <h1 className="font-display text-[44px] font-bold leading-none">Payment not confirmed.</h1>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#f4efe6]/80">
                 We could not verify a paid ticket for this link. If money left your account, keep your receipt and contact us.
               </p>
             </>
@@ -62,15 +62,15 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
 
           {mode === 'cancel' && status === 'paid' && (
             <>
-              <h1 className="font-display text-[46px] leading-none">Payment already went through.</h1>
-              <p className="mt-4 text-[16px] leading-relaxed text-[#f7f1e4]/80">
+              <h1 className="font-display text-[44px] font-bold leading-none">Payment already went through.</h1>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#f4efe6]/80">
                 This checkout was paid
                 {typeof ticket?.amountTotal === 'number' ? ` ($${ticket.amountTotal.toFixed(2)})` : ''}.
               </p>
               {sessionId && (
                 <Link
                   href={`/tickets/success?session_id=${encodeURIComponent(sessionId)}`}
-                  className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c8a95a] px-4 text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#16140f]"
+                  className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#0b0a08]"
                 >
                   View your ticket
                 </Link>
@@ -80,8 +80,8 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
 
           {mode === 'cancel' && status !== 'loading' && status !== 'paid' && (
             <>
-              <h1 className="font-display text-[46px] leading-none">Checkout canceled.</h1>
-              <p className="mt-4 text-[16px] leading-relaxed text-[#f7f1e4]/80">
+              <h1 className="font-display text-[44px] font-bold leading-none">Checkout canceled.</h1>
+              <p className="mt-4 text-[16px] leading-relaxed text-[#f4efe6]/80">
                 No completed payment was found. If you left before paying, you were not charged.
               </p>
             </>
@@ -94,13 +94,13 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
               <a
                 href={INFLUENCE_CONNECT.calendarFile}
                 download="influence-connect-nov18.ics"
-                className="flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c8a95a] px-4 text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#16140f]"
+                className="flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#0b0a08]"
               >
                 Add to calendar
               </a>
               <a
                 href={INFLUENCE_CONNECT.mapsUrl}
-                className="flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c8a95a]/70 px-4 text-center text-[14px] font-semibold uppercase tracking-[0.14em] text-[#e6d3a1]"
+                className="flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c9a96e]/70 px-4 text-center text-[14px] font-semibold uppercase tracking-[0.14em] text-[#c9a96e]"
               >
                 Directions
               </a>
@@ -108,7 +108,7 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
           )}
           <Link
             href="/tickets"
-            className="flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c8a95a]/70 px-4 text-center text-[14px] font-semibold uppercase tracking-[0.14em] text-[#e6d3a1]"
+            className="flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c9a96e]/70 px-4 text-center text-[14px] font-semibold uppercase tracking-[0.14em] text-[#c9a96e]"
           >
             Back to tickets
           </Link>
@@ -120,8 +120,8 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
 
 function Detail({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between gap-4 border-b border-[#c8a95a]/25 py-2">
-      <dt className="text-[#e6d3a1]">{label}</dt>
+    <div className="flex justify-between gap-4 border-b border-[#c9a96e]/25 py-2">
+      <dt className="text-[#c9a96e]">{label}</dt>
       <dd className="text-right">{value}</dd>
     </div>
   );

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-const COLORS = ['#c8a95a', '#f3e5ab', '#fff6d8', '#8a6a2f', '#f7f1e4'];
+const COLORS = ['#c9a96e', '#f4efe6'];
 
 export default function GoldConfetti({ active }: { active: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);

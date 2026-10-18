@@ -12,9 +12,9 @@ import {
 } from '@/lib/influence-connect';
 
 const inputClass =
-  'mt-2 w-full min-h-14 border border-[#c8a95a]/55 bg-black px-4 text-base text-[#f7f1e4] outline-none appearance-none shadow-none focus:border-[#f3e5ab]';
+  'mt-2 w-full min-h-14 rounded-none border border-[#c9a96e]/60 bg-[#0a0908] px-4 text-[17px] font-medium normal-case tracking-normal text-[#f4efe6] outline-none appearance-none shadow-none placeholder:text-[#f4efe6]/45 focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e]';
 
-const labelClass = 'block text-[12px] font-semibold uppercase tracking-[0.18em] text-[#e6d3a1]';
+const labelClass = 'block text-[13px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]';
 
 export default function TicketForm() {
   const router = useRouter();
@@ -125,9 +125,9 @@ export default function TicketForm() {
   }
 
   return (
-    <form id="rsvp" onSubmit={onSubmit} className="px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-6" noValidate>
+    <form id="rsvp" onSubmit={onSubmit} className="scroll-mt-4 px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-8" noValidate>
       <fieldset>
-        <legend className={labelClass}>Your ticket</legend>
+        <legend className="font-display text-[30px] font-bold leading-tight text-[#f4efe6]">Get Tickets</legend>
         <div className="mt-3 grid gap-3">
           <TicketChoice
             value="ladies"
@@ -153,22 +153,22 @@ export default function TicketForm() {
           <p className={labelClass} id="entry-count-label">
             Number of entries
           </p>
-          <div className="mt-2 flex items-stretch border border-[#c8a95a]/55" role="group" aria-labelledby="entry-count-label">
+          <div className="mt-2 flex items-stretch border border-[#c9a96e]/60" role="group" aria-labelledby="entry-count-label">
             <button
               type="button"
-              className="min-h-14 min-w-14 touch-manipulation text-2xl text-[#f3e5ab] disabled:opacity-40"
+              className="min-h-14 min-w-14 touch-manipulation text-2xl text-[#c9a96e] disabled:opacity-40"
               onClick={() => setQuantity((current) => Math.max(1, current - 1))}
               disabled={quantity <= 1 || submitting}
               aria-label="Fewer entries"
             >
               −
             </button>
-            <div className="flex min-h-14 flex-1 items-center justify-center text-base text-[#f7f1e4]">
+            <div className="flex min-h-14 flex-1 items-center justify-center text-[17px] font-medium text-[#f4efe6]">
               {quantity} × $25
             </div>
             <button
               type="button"
-              className="min-h-14 min-w-14 touch-manipulation text-2xl text-[#f3e5ab] disabled:opacity-40"
+              className="min-h-14 min-w-14 touch-manipulation text-2xl text-[#c9a96e] disabled:opacity-40"
               onClick={() => setQuantity((current) => Math.min(INFLUENCE_CONNECT.maxGentlemenQuantity, current + 1))}
               disabled={quantity >= INFLUENCE_CONNECT.maxGentlemenQuantity || submitting}
               aria-label="More entries"
@@ -242,7 +242,7 @@ export default function TicketForm() {
       </div>
 
       {error && (
-        <p role="alert" className="mt-4 text-[15px] leading-snug text-[#f3e5ab]">
+        <p role="alert" className="mt-4 text-[16px] font-medium leading-snug text-[#f4efe6]">
           {error}
         </p>
       )}
@@ -250,7 +250,7 @@ export default function TicketForm() {
       <button
         type="submit"
         disabled={submitting}
-        className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c8a95a] px-4 text-[15px] font-bold uppercase tracking-[0.16em] text-[#16140f] disabled:opacity-60"
+        className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-[16px] font-black uppercase tracking-[0.14em] text-[#0b0a08] disabled:opacity-60"
       >
         {submitting
           ? tier === 'gentlemen'
@@ -263,7 +263,7 @@ export default function TicketForm() {
               : 'Continue'}
       </button>
 
-      <p className="mt-3 text-center text-[13px] leading-relaxed text-[#f7f1e4]/60">
+      <p className="mt-3 text-center text-[14px] leading-relaxed text-[#f4efe6]/75">
         {tier === 'gentlemen'
           ? 'Payment opens in this window on Stripe’s secure page.'
           : 'Ladies RSVP is free. Your name, email, phone, and Instagram are saved for the door list.'}
@@ -289,8 +289,8 @@ function TicketChoice({
 }) {
   return (
     <label
-      className={`foil-card flex min-h-[88px] cursor-pointer touch-manipulation items-center justify-between gap-3 px-4 py-3 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#f3e5ab] ${
-        checked ? 'is-selected' : 'text-[#f7f1e4]'
+      className={`ic-choice flex min-h-[88px] cursor-pointer touch-manipulation items-center justify-between gap-3 px-4 py-3 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-[#f4efe6] ${
+        checked ? 'is-selected' : 'text-[#f4efe6]'
       }`}
     >
       <input
@@ -302,10 +302,10 @@ function TicketChoice({
         className="sr-only"
       />
       <span>
-        <span className="block text-[12px] font-bold uppercase tracking-[0.2em]">{kicker}</span>
-        <span className={`mt-1 block text-[14px] ${checked ? 'text-[#16140f]/80' : 'text-[#f7f1e4]/70'}`}>{detail}</span>
+        <span className="block text-[14px] font-black uppercase tracking-[0.16em]">{kicker}</span>
+        <span className={`mt-1 block text-[16px] font-medium ${checked ? 'text-[#0b0a08]' : 'text-[#f4efe6]/85'}`}>{detail}</span>
       </span>
-      <span className="text-right font-display text-[26px] leading-none">{title}</span>
+      <span className="text-right font-display text-[26px] font-bold leading-none">{title}</span>
     </label>
   );
 }

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function TicketCancelPage() {
   return (
-    <Suspense fallback={<div className="min-h-dvh bg-[#050505]" />}>
+    <Suspense fallback={<div className="min-h-dvh bg-[#000000]" />}>
       <TicketResult mode="cancel" />
     </Suspense>
   );
