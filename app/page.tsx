@@ -46,38 +46,44 @@ const roster = [
   {
     id: 'genesis-003',
     name: 'Genesis Bravo',
-    image: '/images/Genesis/genesis-1.jpg',
-    position: 'center 20%',
-    meta: 'Featured · @genesis.bravoo',
+    image: '/images/GenesisBravo/genesis-1.jpg',
+    position: 'center 18%',
+    meta: 'Brand Ambassador',
   },
   {
     id: 'seahra-026',
     name: 'Seahra Raquel',
-    image: '/images/Seahra/seahra-1.jpg',
-    position: 'center 15%',
-    meta: 'Featured · @seahraraquel',
+    image: '/images/Seahra/seahra-2.jpg',
+    position: 'center 42%',
+    meta: 'Brand Ambassador',
   },
   {
     id: 'kat-051',
     name: 'Kat',
-    image: '/images/Kat/kat-3.jpg',
-    position: 'center 20%',
-    meta: 'Roster · @whois.kat',
+    image: '/images/Kat/kat-6.jpg',
+    position: 'center 35%',
+    meta: 'Brand Ambassador',
   },
   {
     id: 'ferrari-004',
     name: 'Ferrari',
     image: '/images/Ferrari/ferrari-2.jpg',
-    position: 'center 15%',
-    meta: 'Roster · @ferrarii_red',
+    position: 'center 10%',
+    meta: 'Brand Ambassador',
   },
   {
     id: 'alisha-023',
     name: 'Alisha',
-    image: '/images/Alisha/alisha-2.jpg',
-    position: 'center 18%',
-    meta: 'Roster · @sunnyydaze_',
+    image: '/images/Alisha/alisha-5.jpg',
+    position: 'center 16%',
+    meta: 'Brand Ambassador',
   },
+];
+
+const venueStills = [
+  { src: '/tickets/drink-espresso-martini.webp', alt: 'Espresso martini at Serena Pastificio' },
+  { src: '/tickets/drink-smoked-old-fashioned.webp', alt: 'Smoked old fashioned at Serena Pastificio' },
+  { src: '/tickets/serena-dining-room.webp', alt: 'Serena Pastificio dining room in Boca Raton' },
 ];
 
 const services: {
@@ -159,21 +165,22 @@ function Portrait({
   className?: string;
 }) {
   return (
-    <Link href={href} className={`group block ${className}`}>
-      <div className={`relative overflow-hidden bg-[#e7e0d4] ${host ? 'border-2' : 'border border-black/10'}`} style={host ? { borderColor: gold } : undefined}>
-        <div className={host ? 'relative h-[460px] md:h-full md:min-h-[640px]' : 'relative h-[420px] md:h-[300px]'}>
-          <Image
-            src={image}
-            alt={name}
-            fill
-            sizes={host ? '(min-width: 768px) 40vw, 82vw' : '(min-width: 768px) 18vw, 70vw'}
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-            style={{ objectPosition: position }}
-          />
-        </div>
+    <Link href={href} className={`group flex flex-col ${className}`}>
+      <div
+        className={`relative aspect-[4/5] overflow-hidden bg-[#ece7dc] ${host ? 'border-2' : 'border border-black/10'}`}
+        style={host ? { borderColor: gold } : undefined}
+      >
+        <Image
+          src={image}
+          alt={name}
+          fill
+          sizes={host ? '(min-width: 768px) 50vw, 78vw' : '(min-width: 768px) 22vw, 64vw'}
+          className="object-cover"
+          style={{ objectPosition: position }}
+        />
       </div>
-      <p className="mt-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0c0c0c]">{meta}</p>
-      <p className="mt-1 font-display text-[26px] font-semibold leading-none text-[#0c0c0c] md:text-[28px]">{name}</p>
+      <p className="mt-3 text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0c0c0c]">{meta}</p>
+      <p className="mt-1 font-display text-[26px] font-semibold leading-none text-[#0c0c0c] md:text-[30px]">{name}</p>
     </Link>
   );
 }
@@ -222,17 +229,17 @@ export default function HomePage() {
 
       <main>
         <section className="bg-[#f6f1e7] text-[#0c0c0c] md:grid md:grid-cols-2 md:min-h-[calc(100vh-4.5rem)]">
-          <div className="relative h-[360px] sm:h-[460px] md:h-auto md:min-h-[720px]">
+          <div className="relative order-1 h-[340px] sm:h-[420px] md:order-2 md:h-auto md:min-h-[640px]">
             <Image
-              src="/images/Des/des-2.jpg"
-              alt="Deseray Marie, host of Influence"
+              src="/tickets/patio-hero.webp"
+              alt="Serena Pastificio patio under string lights, Boca Raton"
               fill
               priority
               sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover object-[center_18%]"
+              className="object-cover object-center"
             />
           </div>
-          <div className="flex flex-col justify-center px-5 py-10 md:px-14 md:py-16 lg:px-16">
+          <div className="order-2 flex flex-col justify-center px-5 py-10 md:order-1 md:px-14 md:py-16 lg:px-16">
             <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0c0c0c]">
               South Florida
             </p>
@@ -260,7 +267,31 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="bg-[#f6f1e7] text-[#0c0c0c] px-5 pb-16 pt-4 md:px-14 md:pb-24" aria-label="Brand Ambassadors">
+        <section className="bg-[#f6f1e7] px-5 pb-12 text-[#0c0c0c] md:px-14 md:pb-16" aria-label="Credibility">
+          <div className="grid gap-8 border-t border-black/10 pt-8 md:grid-cols-[1.15fr_0.85fr] md:items-end">
+            <div>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0c0c0c]">On the books</p>
+              <Link href="/tickets" className="mt-3 block font-display text-[28px] font-semibold leading-[1.1] underline decoration-[#c9a96e] underline-offset-4 md:text-[40px]">
+                Serena Pastificio · Nov 18 Networking Night
+              </Link>
+            </div>
+            <p className="text-[16px] leading-relaxed text-[#0c0c0c]/80 md:text-[18px]">
+              Restaurant film Des has shot on site: the dining room, the table, and the plate.
+            </p>
+          </div>
+          <ul className="mt-8 grid grid-cols-3 gap-2 md:gap-4">
+            {venueStills.map((still) => (
+              <li key={still.src}>
+                <div className="relative aspect-[4/5] overflow-hidden bg-[#ece7dc]">
+                  <Image src={still.src} alt={still.alt} fill className="object-cover object-center" sizes="(min-width: 768px) 30vw, 33vw" />
+                </div>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[16px] text-[#0c0c0c]/75">Serena Pastificio, Boca Raton.</p>
+        </section>
+
+        <section className="bg-[#f6f1e7] text-[#0c0c0c] px-5 pb-16 pt-2 md:px-14 md:pb-24" aria-label="Brand Ambassadors">
           <div className="mb-8 flex items-end justify-between gap-6 border-t border-black/10 pt-8">
             <div>
               <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0c0c0c]">The roster</p>
@@ -271,43 +302,44 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="md:hidden -mx-5 overflow-x-auto pb-2">
-            <div className="flex w-max gap-4 px-5">
-              <Portrait
-                href="/influencer/des-001"
-                name="Deseray Marie"
-                image="/images/Des/des-5.jpg"
-                position="center top"
-                meta="Host"
-                host
-                className="w-[82vw] max-w-[340px] shrink-0 snap-start"
-              />
-              {roster.map((person) => (
-                <Portrait
-                  key={person.id}
-                  href={`/influencer/${person.id}`}
-                  {...person}
-                  className="w-[70vw] max-w-[280px] shrink-0 snap-start"
-                />
-              ))}
-            </div>
-          </div>
-
-          <div className="hidden md:grid md:grid-cols-[minmax(280px,0.9fr)_1.4fr] md:items-stretch md:gap-4">
+          <div className="-mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-2 md:hidden">
             <Portrait
               href="/influencer/des-001"
               name="Deseray Marie"
-              image="/images/Des/des-5.jpg"
-              position="center top"
-              meta="Host · Miami"
+              image="/images/Des/IMG_3412.JPG"
+              position="center 15%"
+              meta="HOST"
               host
-              className="h-full"
+              className="w-[78vw] max-w-[420px] shrink-0 snap-start"
             />
-            <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
-              {roster.map((person) => (
+            {roster.map((person) => (
+              <Portrait
+                key={person.id}
+                href={`/influencer/${person.id}`}
+                {...person}
+                className="w-[64vw] max-w-[300px] shrink-0 snap-start"
+              />
+            ))}
+          </div>
+
+          <div className="hidden md:grid md:grid-cols-3 md:items-start md:gap-5">
+            <Portrait
+              href="/influencer/des-001"
+              name="Deseray Marie"
+              image="/images/Des/IMG_3412.JPG"
+              position="center 15%"
+              meta="HOST"
+              host
+              className="col-span-2"
+            />
+            <div className="grid gap-5">
+              {roster.slice(0, 2).map((person) => (
                 <Portrait key={person.id} href={`/influencer/${person.id}`} {...person} />
               ))}
             </div>
+            {roster.slice(2).map((person) => (
+              <Portrait key={person.id} href={`/influencer/${person.id}`} {...person} />
+            ))}
           </div>
         </section>
 
