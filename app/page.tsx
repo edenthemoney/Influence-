@@ -2,8 +2,11 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Calendar, Camera, Clapperboard, Compass, Megaphone, Users } from 'lucide-react';
-import MobileNav from './components/MobileNav';
 import VerifiedPartners from './components/VerifiedPartners';
+import SiteHeader from './components/SiteHeader';
+import SiteFooter from './components/SiteFooter';
+import RosterPreload from './components/RosterPreload';
+import portraitBlur from '@/data/portrait-blur.json';
 
 const gold = '#c9a96e';
 const ink = '#0c0c0c';
@@ -154,6 +157,8 @@ function Portrait({
   position,
   meta,
   host = false,
+  priority = false,
+  frame = 'ratio',
   className = '',
 }: {
   href: string;
@@ -162,19 +167,25 @@ function Portrait({
   position: string;
   meta: string;
   host?: boolean;
+  priority?: boolean;
+  frame?: 'ratio' | 'fill';
   className?: string;
 }) {
+  const blur = portraitBlur[image as keyof typeof portraitBlur];
   return (
-    <Link href={href} className={`group flex flex-col ${className}`}>
+    <Link href={href} className={`group flex h-full min-h-0 flex-col ${className}`}>
       <div
-        className={`relative aspect-[4/5] overflow-hidden bg-[#ece7dc] ${host ? 'border-2' : 'border border-black/10'}`}
-        style={host ? { borderColor: gold } : undefined}
+        className={`relative overflow-hidden ${frame === 'fill' ? 'min-h-[140px] flex-1' : 'aspect-[4/5]'} ${host ? 'border-2' : 'border border-black/10'}`}
+        style={{ backgroundColor: blur?.color || '#ece7dc', ...(host ? { borderColor: gold } : {}) }}
       >
         <Image
           src={image}
           alt={name}
           fill
-          sizes={host ? '(min-width: 768px) 50vw, 78vw' : '(min-width: 768px) 22vw, 64vw'}
+          priority={priority}
+          placeholder={blur ? 'blur' : 'empty'}
+          blurDataURL={blur?.blur}
+          sizes={host ? '(min-width: 768px) 60vw, 78vw' : '(min-width: 768px) 30vw, 64vw'}
           className="object-cover"
           style={{ objectPosition: position }}
         />
@@ -193,42 +204,11 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
-      <header className="relative z-20 bg-[#0c0c0c]">
-        <div className="flex items-center justify-between gap-3 h-16 px-4 md:h-[4.5rem] md:px-10">
-          <div className="flex items-center gap-3">
-            <MobileNav />
-            <Link
-              href="/"
-              className="shrink-0 whitespace-nowrap font-display font-semibold uppercase text-[#c9a96e] text-[16px] tracking-[0.14em] md:text-[20px] md:tracking-[0.28em]"
-            >
-              INFLUENCE
-            </Link>
-          </div>
-          <nav className="hidden xl:flex items-center gap-8 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#f6f1e7]">
-            <Link href="/marketplace" className="hover:text-[#c9a96e]">Creators</Link>
-            <Link href="/services" className="hover:text-[#c9a96e]">Services</Link>
-            <Link href="/tickets" className="hover:text-[#c9a96e]">Events</Link>
-            <Link href="/about" className="hover:text-[#c9a96e]">About</Link>
-          </nav>
-          <div className="flex shrink-0 items-center gap-2">
-            <Link href="/join" className="hidden md:inline-flex items-center min-h-11 px-3 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#f6f1e7] hover:text-[#c9a96e]">
-              Join
-            </Link>
-            <Link
-              href="/start"
-              className="inline-flex items-center justify-center min-h-11 px-3 md:px-5 text-[13px] font-semibold uppercase tracking-[0.12em]"
-              style={{ backgroundColor: gold, color: ink }}
-            >
-              <span className="md:hidden">Start</span>
-              <span className="hidden md:inline">Start a Campaign</span>
-            </Link>
-          </div>
-        </div>
-        <div className="h-px w-full" style={{ backgroundColor: gold }} />
-      </header>
+      <SiteHeader />
 
-      <main>
-        <section className="bg-[#f6f1e7] text-[#0c0c0c] md:grid md:grid-cols-2 md:min-h-[calc(100vh-4.5rem)]">
+      <main className="pb-[calc(5.5rem+env(safe-area-inset-bottom))]">
+        <RosterPreload srcs={roster.slice(2).map((person) => person.image)} />
+        <section data-hero className="bg-[#f6f1e7] text-[#0c0c0c] md:grid md:grid-cols-2 md:min-h-[calc(100vh-4.5rem)]">
           <div className="relative order-1 h-[340px] sm:h-[420px] md:order-2 md:h-auto md:min-h-[640px]">
             <Image
               src="/tickets/patio-hero.webp"
@@ -292,17 +272,20 @@ export default function HomePage() {
         </section>
 
         <section className="bg-[#f6f1e7] text-[#0c0c0c] px-5 pb-16 pt-2 md:px-14 md:pb-24" aria-label="Brand Ambassadors">
-          <div className="mb-8 flex items-end justify-between gap-6 border-t border-black/10 pt-8">
+          <div className="mb-8 flex flex-col items-start gap-4 border-t border-black/10 pt-8 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-[#0c0c0c]">The roster</p>
               <h2 className="mt-2 font-display text-[40px] font-semibold leading-none md:text-[64px]">Brand Ambassadors</h2>
             </div>
-            <Link href="/marketplace" className="shrink-0 text-[16px] font-semibold underline decoration-[#c9a96e] underline-offset-4">
+            <Link href="/marketplace" className="text-[16px] font-semibold underline decoration-[#c9a96e] underline-offset-4">
               View the roster
             </Link>
           </div>
 
-          <div className="-mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-2 md:hidden">
+          <div
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 scroll-px-5 md:hidden"
+            style={{ marginInline: '-1.25rem', scrollPaddingInline: '1.25rem' }}
+          >
             <Portrait
               href="/influencer/des-001"
               name="Deseray Marie"
@@ -310,19 +293,21 @@ export default function HomePage() {
               position="center 15%"
               meta="HOST"
               host
+              priority
               className="w-[78vw] max-w-[420px] shrink-0 snap-start"
             />
-            {roster.map((person) => (
+            {roster.map((person, index) => (
               <Portrait
                 key={person.id}
                 href={`/influencer/${person.id}`}
                 {...person}
+                priority={index < 2}
                 className="w-[64vw] max-w-[300px] shrink-0 snap-start"
               />
             ))}
           </div>
 
-          <div className="hidden md:grid md:grid-cols-3 md:items-start md:gap-5">
+          <div className="hidden md:grid md:grid-cols-3 md:items-stretch md:gap-5">
             <Portrait
               href="/influencer/des-001"
               name="Deseray Marie"
@@ -330,13 +315,16 @@ export default function HomePage() {
               position="center 15%"
               meta="HOST"
               host
+              priority
               className="col-span-2"
             />
-            <div className="grid gap-5">
-              {roster.slice(0, 2).map((person) => (
-                <Portrait key={person.id} href={`/influencer/${person.id}`} {...person} />
+            <div className="grid h-full grid-rows-2 gap-5">
+              {roster.slice(0, 2).map((person, index) => (
+                <Portrait key={person.id} href={`/influencer/${person.id}`} {...person} priority={index === 0} frame="fill" className="min-h-0" />
               ))}
             </div>
+          </div>
+          <div className="mt-5 hidden md:grid md:grid-cols-3 md:items-stretch md:gap-5">
             {roster.slice(2).map((person) => (
               <Portrait key={person.id} href={`/influencer/${person.id}`} {...person} />
             ))}
@@ -421,53 +409,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 px-5 py-12 md:px-14 md:py-16">
-        <div className="flex flex-col gap-10 md:flex-row md:justify-between">
-          <div>
-            <Link href="/" className="font-display text-[18px] font-semibold uppercase tracking-[0.22em]" style={{ color: gold }}>
-              INFLUENCE
-            </Link>
-            <p className="mt-4 max-w-xs text-[16px] leading-relaxed text-[#f6f1e7]/80">
-              Brand ambassadors and influencer marketing for South Florida.
-            </p>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 md:gap-16">
-            <div>
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: gold }}>Contact</p>
-              <ul className="mt-4 space-y-2 text-[16px]">
-                <li><a href="tel:+15612877194" className="hover:text-[#c9a96e]">(561) 287-7194</a></li>
-                <li><a href="mailto:influencemodelsagency@gmail.com" className="hover:text-[#c9a96e]">influencemodelsagency@gmail.com</a></li>
-                <li>4756 NW 2nd Ave<br />Boca Raton, FL 33431</li>
-                <li>
-                  <a href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="hover:text-[#c9a96e]">
-                    Instagram
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: gold }}>Work</p>
-              <ul className="mt-4 space-y-2 text-[16px]">
-                <li><Link href="/marketplace" className="hover:text-[#c9a96e]">Creators</Link></li>
-                <li><Link href="/services" className="hover:text-[#c9a96e]">Services</Link></li>
-                <li><Link href="/tickets" className="hover:text-[#c9a96e]">Events</Link></li>
-                <li><Link href="/start" className="hover:text-[#c9a96e]">Start a campaign</Link></li>
-              </ul>
-            </div>
-            <div>
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: gold }}>Studio</p>
-              <ul className="mt-4 space-y-2 text-[16px]">
-                <li><Link href="/about" className="hover:text-[#c9a96e]">About</Link></li>
-                <li><Link href="/join" className="hover:text-[#c9a96e]">Join</Link></li>
-                <li><Link href="/contact" className="hover:text-[#c9a96e]">Contact</Link></li>
-                <li><Link href="/faq" className="hover:text-[#c9a96e]">FAQ</Link></li>
-                <li><Link href="/terms" className="hover:text-[#c9a96e]">Terms</Link></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <p className="mt-12 text-[13px] text-[#f6f1e7]/70">© 2026 Influence · Miami &amp; Boca Raton, FL</p>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

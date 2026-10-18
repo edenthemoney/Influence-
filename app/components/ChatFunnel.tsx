@@ -44,10 +44,67 @@ export default function ChatFunnel() {
   ]);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  useEffect(() => {
+    let frame = 0;
+    const measure = () => {
+      const hero = document.querySelector('[data-hero]');
+      const anchor = hero || document.querySelector('main h1')?.closest('section') || document.querySelector('h1');
+      const pastHero = anchor
+        ? anchor.getBoundingClientRect().bottom < 8
+        : window.scrollY > window.innerHeight * 0.85;
+      const safe = 20;
+      const size = 56;
+      const box = {
+        left: window.innerWidth - safe - size,
+        right: window.innerWidth - safe,
+        top: window.innerHeight - safe - size,
+        bottom: window.innerHeight - safe,
+      };
+      let hitsCopy = false;
+      if (pastHero) {
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node = walker.nextNode();
+        while (node) {
+          const value = node.textContent?.trim();
+          const parent = node.parentElement;
+          if (value && parent && !parent.closest('[data-chat-root]')) {
+            const range = document.createRange();
+            range.selectNodeContents(node);
+            const rects = range.getClientRects();
+            for (let i = 0; i < rects.length; i++) {
+              const rect = rects[i];
+              if (rect.width < 1 || rect.height < 1) continue;
+              if (box.left < rect.right && box.right > rect.left && box.top < rect.bottom && box.bottom > rect.top) {
+                hitsCopy = true;
+                break;
+              }
+            }
+          }
+          if (hitsCopy) break;
+          node = walker.nextNode();
+        }
+      }
+      setShowButton(pastHero && !hitsCopy);
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [pathname]);
 
   // Hide on booking page so it doesn't overlap the sticky checkout button
   if (pathname === '/start') return null;
@@ -165,13 +222,13 @@ export default function ChatFunnel() {
   const result = step === 'result' ? getResult(budget) : null;
 
   return (
-    <>
+    <div data-chat-root>
       {/* Floating Button */}
-      {!open && (
+      {!open && showButton && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-[60] w-14 h-14 flex items-center justify-center shadow-2xl transition-transform hover:scale-105"
-          style={{ backgroundColor: gold }}
+          className="fixed right-5 z-[60] flex h-14 w-14 items-center justify-center shadow-2xl transition-transform hover:scale-105"
+          style={{ backgroundColor: gold, bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}
           aria-label="Open chat"
         >
           <MessageCircle className="w-6 h-6 text-black" />
@@ -180,7 +237,7 @@ export default function ChatFunnel() {
 
       {/* Chat Panel */}
       {open && (
-        <div className="fixed bottom-6 right-6 z-[60] w-[360px] max-w-[calc(100vw-3rem)] bg-[#111] border border-white/10 shadow-2xl flex flex-col" style={{ height: '520px', maxHeight: 'calc(100vh - 6rem)' }}>
+        <div className="fixed right-5 z-[60] flex w-[360px] max-w-[calc(100vw-2.5rem)] flex-col border border-white/10 bg-[#111] shadow-2xl" style={{ height: '520px', maxHeight: 'calc(100vh - 6rem)', bottom: 'calc(1.25rem + env(safe-area-inset-bottom))' }}>
           {/* Header */}
           <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
             <div className="flex items-center gap-3">
@@ -189,7 +246,7 @@ export default function ChatFunnel() {
               </div>
               <div>
                 <p className="text-white text-sm font-bold">Influence</p>
-                <p className="text-white/40 text-[10px]">Usually replies instantly</p>
+                <p className="text-[13px] text-white/70">Usually replies instantly</p>
               </div>
             </div>
             <button onClick={() => setOpen(false)} className="text-white/40 hover:text-white transition-colors">
@@ -221,12 +278,12 @@ export default function ChatFunnel() {
                 <div className="max-w-[85%]">
                   <Link
                     href={result.link}
-                    className="inline-flex items-center gap-2 px-5 py-3 text-[11px] font-bold tracking-widest uppercase mt-2 transition-all hover:opacity-80"
+                    className="inline-flex items-center gap-2 px-5 py-3 text-[13px] font-bold tracking-widest uppercase mt-2 transition-all hover:opacity-80"
                     style={{ backgroundColor: gold, color: '#000' }}
                   >
                     {result.cta} <ChevronRight className="w-3.5 h-3.5" />
                   </Link>
-                  <button onClick={reset} className="block text-white/30 text-[10px] tracking-wider uppercase mt-3 hover:text-white/50 transition-colors">
+                  <button onClick={reset} className="block text-[13px] tracking-wider uppercase mt-3 text-white/70 hover:text-white transition-colors">
                     Start over
                   </button>
                 </div>
@@ -322,21 +379,21 @@ export default function ChatFunnel() {
                 <button
                   type="submit"
                   disabled={submitting || !name.trim() || !phone.trim()}
-                  className="w-full px-4 py-3 text-[11px] font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50"
+                  className="w-full px-4 py-3 text-[13px] font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50"
                   style={{ backgroundColor: gold, color: '#000' }}
                 >
                   {submitting ? 'Sending...' : (<>Show My Match <ChevronRight className="w-3.5 h-3.5" /></>)}
                 </button>
-                <p className="text-white/20 text-[9px] text-center">No spam — we only reach out about your booking.</p>
+                <p className="text-white/60 text-[13px] text-center">No spam — we only reach out about your booking.</p>
               </form>
             )}
 
             {step === 'result' && (
-              <p className="text-white/20 text-[10px] tracking-wider uppercase text-center">Chat complete — tap the button above ↑</p>
+              <p className="text-white/60 text-[13px] tracking-wider uppercase text-center">Chat complete — tap the button above ↑</p>
             )}
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

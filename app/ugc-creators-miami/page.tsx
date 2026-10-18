@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, Video, TrendingUp, Users, Phone } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
+import { showBadge } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -166,14 +167,14 @@ export default function MiamiUGCCreatorsPage() {
               Authentic content<br />that converts.
             </h2>
             <p className="text-white/45 text-base max-w-xl mb-14 leading-relaxed">
-              User-generated content (UGC) is content created by real people, not polished brand ads. Miami UGC creators produce authentic, relatable videos that drive 4.5x more engagement than traditional advertising.
+              User-generated content (UGC) is content created by real people, not polished brand ads. Miami UGC creators produce authentic, relatable videos for brands.
             </p>
             <div className="grid md:grid-cols-3 gap-6">
               {[
                 { icon: Video, stat: '4.5x', label: 'Higher Engagement', desc: 'UGC gets significantly more engagement than polished brand content.' },
                 { icon: TrendingUp, stat: '60%', label: 'Lower Cost', desc: 'UGC campaigns cost 60% less than traditional ad production.' },
                 { icon: Users, stat: '3x', label: 'Better Conversion', desc: 'UGC drives 3x higher conversion rates than traditional ads.' },
-              ].map(({ icon: Icon, stat, label, desc }) => (
+              ].filter(({ stat, label }) => showBadge(stat, label)).map(({ icon: Icon, stat, label, desc }) => (
                 <div key={label} className="border border-white/[0.06] p-7 text-center">
                   <Icon className="h-6 w-6 mx-auto mb-4" style={{ color: gold }} />
                   <p className="font-display font-bold italic text-3xl text-white mb-1">{stat}</p>

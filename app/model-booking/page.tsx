@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import MobileNav from '../components/MobileNav';
+import { showBadge } from '@/data/partners';
 import posthog from 'posthog-js';
 import { Camera, Sparkles, CalendarDays, RefreshCcw, Users, ChevronRight, ChevronLeft, Check, MapPin, TrendingUp, Zap, Play, ArrowUpRight, Headphones, Music, Phone, Lock, ShieldCheck, Film, Wine } from 'lucide-react';
 
@@ -917,7 +918,7 @@ function ModelBookingContent() {
                 { stat: '500+', label: 'Clients Booked' },
                 { stat: '★ 5.0', label: 'Average Rating' },
                 { stat: '48hr', label: 'Avg. Response' },
-              ].map(({ stat, label }) => (
+              ].filter(({ stat, label }) => showBadge(stat, label)).map(({ stat, label }) => (
                 <div key={label} className="border border-white/[0.06] p-3 text-center">
                   <p className="font-bold text-sm mb-0.5" style={{ color: gold }}>{stat}</p>
                   <p className="text-white/30 text-[10px] leading-tight">{label}</p>

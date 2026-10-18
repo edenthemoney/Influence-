@@ -1,6 +1,7 @@
 'use client';
 
 import { Crown, Sparkles } from 'lucide-react';
+import { verifiedPartners } from '@/data/partners';
 
 interface LuxuryBrandBannerProps {
   brands: string[];
@@ -8,7 +9,9 @@ interface LuxuryBrandBannerProps {
 }
 
 export default function LuxuryBrandBanner({ brands, className = '' }: LuxuryBrandBannerProps) {
-  if (!brands || brands.length === 0) return null;
+  const allowed = new Set(verifiedPartners.map((partner) => partner.name.toLowerCase()));
+  const shown = (brands || []).filter((brand) => allowed.has(brand.toLowerCase()));
+  if (shown.length === 0) return null;
 
   return (
     <div className={`relative ${className}`}>
@@ -32,7 +35,7 @@ export default function LuxuryBrandBanner({ brands, className = '' }: LuxuryBran
         
         {/* Brand Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {brands.map((brand, index) => (
+          {shown.map((brand, index) => (
             <div 
               key={`${brand}-${index}`}
               className="flex items-center justify-center px-4 py-3 bg-white/5 border border-white/10 rounded-md hover:border-[#c9a96e]/50 transition-colors"

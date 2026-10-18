@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import PostHogProvider, { PostHogPageView } from "./components/PostHogProvider";
 import ChatFunnel from './components/ChatFunnel';
 import GlobalLeadPopup from './components/GlobalLeadPopup';
+import SiteChrome from './components/SiteChrome';
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans", display: 'swap' });
@@ -857,7 +858,7 @@ export default function RootLayout({
         />
         <PostHogProvider>
           <Suspense fallback={null}><PostHogPageView /></Suspense>
-          {children}
+          <SiteChrome>{children}</SiteChrome>
           <ChatFunnel />
           <GlobalLeadPopup />
         </PostHogProvider>

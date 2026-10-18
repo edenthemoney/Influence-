@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { verifiedPartners } from '@/data/partners';
 
 interface BrandLogoMarqueeProps {
   brands: string[];
@@ -10,9 +11,11 @@ interface BrandLogoMarqueeProps {
 
 export default function BrandLogoMarquee({ brands, speed = 30, className = '' }: BrandLogoMarqueeProps) {
   const [isPaused, setIsPaused] = useState(false);
+  const allowed = new Set(verifiedPartners.map((partner) => partner.name.toLowerCase()));
+  const shown = brands.filter((brand) => allowed.has(brand.toLowerCase()));
+  if (shown.length === 0) return null;
 
-  // Duplicate brands for seamless infinite scroll
-  const displayBrands = [...brands, ...brands, ...brands];
+  const displayBrands = [...shown, ...shown, ...shown];
 
   return (
     <div className={`relative overflow-hidden w-full max-w-full ${className}`}>

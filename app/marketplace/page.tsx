@@ -626,42 +626,15 @@ export default function MarketplacePage() {
         </div>
       </nav>
 
-      {/* Hero with Group Video */}
-      <section className="relative pt-32 md:pt-40 pb-16 md:pb-24 px-6 md:px-14 overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/videos/group-shot.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative max-w-5xl mx-auto text-center">
-          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: gold }}>Our Network</p>
-          <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 88px)' }}>
-            Meet the <span style={{ color: gold }}>Creators</span>
-          </h1>
-          <p className="text-white/45 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Hand-selected influencers with verified metrics, A-list credentials, and proven campaign results.
-            Perfect for <span className="text-white/70">music videos · UGC · brand campaigns · events · social content</span>
-          </p>
-        </div>
+      <section data-hero className="bg-[#f6f1e7] px-5 pb-10 pt-10 text-[#0c0c0c] md:px-14 md:pb-14 md:pt-16">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.18em]">The roster</p>
+        <h1 className="mt-3 max-w-4xl font-display text-[44px] font-semibold leading-[1.02] text-[#0c0c0c] md:text-[72px]">
+          Meet the creators.
+        </h1>
+        <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-[#0c0c0c]/80 md:text-[18px]">
+          Brand ambassadors for music videos, UGC, brand campaigns, events, and social content.
+        </p>
       </section>
-
-      {/* Trust Bar */}
-      <div className="border-y border-white/[0.05] py-4 px-6 md:px-14 mb-12 md:mb-16">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[10px] tracking-[0.2em] uppercase text-white/25">
-          <span>★★★★★ Rated #1 in South Florida</span>
-          <span className="hidden md:inline">·</span>
-          <span>Celebrity-Connected Creators</span>
-          <span className="hidden md:inline">·</span>
-          <span>Content Delivered in 48hrs</span>
-          <span className="hidden md:inline">·</span>
-          <span>Verified Network</span>
-        </div>
-      </div>
 
       {/* Creator Grid - Sorted by follower count after featured */}
       <section className="px-4 md:px-14 pb-20">
@@ -679,89 +652,28 @@ export default function MarketplacePage() {
             });
             return [...featured, ...rest];
           })().map((inf) => (
-            <div
+            <Link
               key={inf.id}
-              className="group relative overflow-hidden bg-[#0a0a0a] border border-white/[0.04] hover:border-white/[0.12] transition-all duration-500"
+              href={`/influencer/${inf.id}`}
+              className="flex flex-col bg-[#f6f1e7] text-[#0c0c0c]"
             >
-              {/* Stretched profile link — makes the whole card clickable */}
-              <Link
-                href={`/influencer/${inf.id}`}
-                className="absolute inset-0 z-10"
-                aria-label={`View ${inf.name}'s profile`}
-              />
-              {/* Image */}
-              <div className={`${inf.id === 'des-001' ? 'aspect-square' : 'aspect-[3/4]'} overflow-hidden relative`}>
+              <div className="relative aspect-[4/5] overflow-hidden border border-black/10 bg-[#ece7dc]">
                 <Image
                   src={inf.image}
                   alt={inf.name}
                   fill
-                  style={{ objectFit: 'cover', objectPosition: 'center' }}
-                  className="group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                  className="object-cover object-center"
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   quality={85}
                 />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               </div>
-
-              {/* Verified badge */}
-              {inf.verified && (
-                <div className="absolute top-3 right-3 w-6 h-6 flex items-center justify-center" style={{ backgroundColor: gold }}>
-                  <span className="text-black text-[9px] font-black">✓</span>
-                </div>
-              )}
-              
-              {/* Top Creator badge for 50K+ followers */}
-              {(() => {
-                const parseFollowers = (f: string) => {
-                  if (f.includes('M')) return parseFloat(f) * 1000000;
-                  if (f.includes('K')) return parseFloat(f) * 1000;
-                  return parseFloat(f);
-                };
-                return parseFollowers(inf.followers) >= 50000;
-              })() && (
-                <div className="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm border border-[#c9a96e]/50">
-                  <span className="text-[#c9a96e] text-[9px] font-bold tracking-wider uppercase">Top Creator</span>
-                </div>
-              )}
-
-              {/* Info overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-white font-bold text-sm md:text-base truncate">{inf.name}</h3>
-                  <span className="text-[10px] font-bold shrink-0 ml-2" style={{ color: gold }}>Verified</span>
-                </div>
-                <p className="text-white/35 text-[10px] tracking-wider uppercase mb-2">{inf.title}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-[10px] text-white/30">
-                    <span>{inf.location}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-xs font-bold" style={{ color: gold }}>{inf.followers}</span>
-                    <span className="text-[9px] text-white/40 ml-1">followers</span>
-                  </div>
-                </div>
-                {inf.credits.length > 0 && (
-                  <p className="text-[9px] tracking-wider uppercase mt-2 truncate" style={{ color: gold }}>
-                    {inf.credits.slice(0, 3).join(' · ')}
-                  </p>
-                )}
-              </div>
-
-              {/* Hover action */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 backdrop-blur-[2px] pointer-events-none">
-                <span className="text-[11px] font-bold tracking-widest uppercase text-white border border-white/30 px-5 py-2.5">
-                  View Profile
-                </span>
-                <Link
-                  href={`/start?model=${encodeURIComponent(inf.name)}`}
-                  className="relative z-20 pointer-events-auto text-[11px] font-bold tracking-widest uppercase px-5 py-2.5"
-                  style={{ backgroundColor: '#c9a96e', color: '#000' }}
-                >
-                  Book Now
-                </Link>
-              </div>
-            </div>
+              <p className="mt-3 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#0c0c0c]">
+                {inf.categories[0] || 'Brand Ambassador'}
+              </p>
+              <p className="mt-1 font-display text-[26px] font-semibold leading-tight text-[#0c0c0c] md:text-[30px]">
+                {inf.name}
+              </p>
+            </Link>
           ))}
         </div>
       </section>

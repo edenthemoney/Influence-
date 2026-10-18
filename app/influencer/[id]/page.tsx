@@ -9,6 +9,7 @@ import AnimatedCounter from '../../components/AnimatedCounter';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
+import { publicBio, showBadge, verifiedPartners } from '@/data/partners';
 
 // SEO metadata for Deseray Marie - helps Google Knowledge Panel
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
@@ -1556,34 +1557,22 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                   <BadgeCheck className="h-6 w-6 text-[#c9a96e] fill-[#c9a96e]/20" />
                 )}
               </div>
-              {influencer.celebrityCredits && (
+              {influencer.celebrityCredits && verifiedPartners.length > 0 && (
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <Film className="h-3.5 w-3.5 text-[#c9a96e]" />
-                  <p className="text-[#c9a96e] text-xs font-bold tracking-[0.2em] uppercase">Celebrity Collaborator</p>
+                  <p className="text-[#c9a96e] text-[13px] font-bold tracking-[0.2em] uppercase">Celebrity Collaborator</p>
                 </div>
               )}
               <p className="text-white/60 text-center mb-6">{influencer.location}</p>
 
-              <div className="grid grid-cols-2 gap-4 mb-6 text-center">
-                <div>
-                  <p className="text-2xl font-bold text-white">
-                    <AnimatedCounter 
-                      value={influencer.followers >= 1000000 ? (influencer.followers / 1000000).toFixed(1) + 'M' : (influencer.followers / 1000).toFixed(0) + 'K'} 
-                      duration={1500}
-                    />
-                  </p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">Followers</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">★★★★★</p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">5 Stars</p>
-                </div>
-              </div>
-
-              <div className="bg-[#c9a96e]/10 border border-[#c9a96e]/30 p-3 text-center mb-6">
-                <p className="text-[9px] text-[#c9a96e]/60 uppercase tracking-[0.2em] mb-1">Guarantee</p>
-                <p className="text-[#c9a96e] font-black text-base">10K+</p>
-                <p className="text-[#c9a96e]/60 text-xs">Views / Reel</p>
+              <div className="mb-6 text-center">
+                <p className="text-2xl font-bold text-white">
+                  <AnimatedCounter 
+                    value={influencer.followers >= 1000000 ? (influencer.followers / 1000000).toFixed(1) + 'M' : (influencer.followers / 1000).toFixed(0) + 'K'} 
+                    duration={1500}
+                  />
+                </p>
+                <p className="text-[13px] text-white/70 uppercase tracking-wider">Followers</p>
               </div>
 
               {/* Availability Badge */}
@@ -1619,13 +1608,13 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">About</h2>
-              <p className="text-white/70 text-lg leading-relaxed">{influencer.description}</p>
+              <p className="text-white/70 text-lg leading-relaxed">{publicBio(influencer.description || '')}</p>
             </div>
 
             {/* Stats Strip — By the Numbers */}
-            {influencer.stats && influencer.stats.length > 0 && (
+            {influencer.stats && influencer.stats.filter((stat: { value: string; label: string }) => showBadge(stat.value, stat.label)).length > 0 && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[#c9a96e]/20 md:border-x-0">
-                {influencer.stats.map((stat: any, idx: number) => (
+                {influencer.stats.filter((stat: { value: string; label: string }) => showBadge(stat.value, stat.label)).map((stat: any, idx: number) => (
                   <div
                     key={idx}
                     className={`py-6 px-4 text-center ${idx !== 0 ? 'md:border-l border-[#c9a96e]/10' : ''}`}
@@ -1652,14 +1641,14 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
             )}
 
             {/* Featured In — celebrity / notable collaborations */}
-            {influencer.featuredIn && influencer.featuredIn.length > 0 && (
+            {influencer.featuredIn && influencer.featuredIn.some((credit: { title: string }) => verifiedPartners.some((partner) => credit.title.toLowerCase().includes(partner.name.toLowerCase()))) && (
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Award className="h-5 w-5 text-[#c9a96e]" />
                   <h2 className="text-xl font-bold text-white">Featured In</h2>
                 </div>
                 <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                  {influencer.featuredIn.map((credit: any, idx: number) => (
+                  {influencer.featuredIn.filter((credit: { title: string }) => verifiedPartners.some((partner) => credit.title.toLowerCase().includes(partner.name.toLowerCase()))).map((credit: any, idx: number) => (
                     <div
                       key={idx}
                       className="flex-shrink-0 bg-zinc-900 border border-white/10 px-4 py-3 rounded-lg hover:border-[#c9a96e]/30 transition-colors"
@@ -1702,11 +1691,11 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               </div>
             )}
 
-            {/* Brand Partnerships Marquee */}
-            {influencer.pastBrands && influencer.pastBrands.length > 0 && (
+            {/* Brand Partnerships Marquee — hidden until a partner is verified */}
+            {influencer.pastBrands && influencer.pastBrands.some((brand: string) => verifiedPartners.some((partner) => partner.name.toLowerCase() === brand.toLowerCase())) && (
               <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-10 overflow-hidden border-y border-white/[0.04]">
                 <div className="text-center mb-6">
-                  <p className="text-[#c9a96e] text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Trusted By</p>
+                  <p className="text-[#c9a96e] text-[13px] font-bold tracking-[0.3em] uppercase mb-2">Trusted By</p>
                   <h2 className="text-xl font-bold text-white">Brand Partnerships</h2>
                 </div>
                 <BrandLogoMarquee brands={influencer.pastBrands} speed={40} />
@@ -1786,14 +1775,14 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               </div>
             )}
 
-            {influencer.pastBrands && influencer.pastBrands.length > 0 && (
+            {influencer.pastBrands && influencer.pastBrands.some((brand: string) => verifiedPartners.some((partner) => partner.name.toLowerCase() === brand.toLowerCase())) && (
               influencer.celebrityCredits ? (
                 <LuxuryBrandBanner brands={influencer.pastBrands} />
               ) : (
                 <div>
                   <h2 className="text-2xl font-bold text-white mb-4">Past Collaborations</h2>
                   <div className="flex flex-wrap gap-3">
-                    {influencer.pastBrands.map((brand: string) => (
+                    {influencer.pastBrands.filter((brand: string) => verifiedPartners.some((partner) => partner.name.toLowerCase() === brand.toLowerCase())).map((brand: string) => (
                       <div key={brand} className="bg-zinc-900 px-6 py-3 border border-white/10">
                         <span className="text-white/80 font-medium">{brand}</span>
                       </div>

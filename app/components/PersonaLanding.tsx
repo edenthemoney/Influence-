@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Check, ChevronRight, Phone, ArrowRight } from 'lucide-react';
 import MobileNav from './MobileNav';
+import { hideCopy, showBadge } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -59,6 +60,8 @@ export default function PersonaLanding({
   bookingSection,
   hidePackagePrices,
 }: PersonaLandingProps) {
+  const badges = trustBadges.filter((badge) => !hideCopy(badge));
+  const proof = socialProof.filter((item) => showBadge(item.stat, item.label));
   return (
     <div className="min-h-screen bg-[#080808]">
       {/* Nav */}
@@ -105,13 +108,15 @@ export default function PersonaLanding({
               </Link>
             )}
           </div>
-          <div className="flex flex-wrap gap-6 mt-10">
-            {trustBadges.map((badge) => (
-              <span key={badge} className="text-white/30 text-[10px] tracking-widest uppercase flex items-center gap-2">
-                <Check className="h-3 w-3" style={{ color: gold }} /> {badge}
-              </span>
-            ))}
-          </div>
+          {badges.length > 0 && (
+            <div className="flex flex-wrap gap-6 mt-10">
+              {badges.map((badge) => (
+                <span key={badge} className="text-white/80 text-[13px] tracking-widest uppercase flex items-center gap-2">
+                  <Check className="h-3 w-3" style={{ color: gold }} /> {badge}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -191,7 +196,7 @@ export default function PersonaLanding({
                   </div>
                 )}
                 <ul className={`space-y-2.5 mb-8 flex-1 ${hidePackagePrices ? 'mt-4' : ''}`}>
-                  {pkg.features.map((feature) => (
+                  {pkg.features.filter((feature) => !hideCopy(feature)).map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <Check className="h-3.5 w-3.5 text-[#c9a96e]/70 flex-shrink-0 mt-0.5" />
                       <span className="text-white/50 text-[12px] leading-snug">{feature}</span>
@@ -207,19 +212,20 @@ export default function PersonaLanding({
         </div>
       </section>
 
-      {/* Social Proof */}
+      {proof.length > 0 && (
       <section className="border-t border-white/[0.06] py-16 md:py-24 px-8 md:px-16">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {socialProof.map((item) => (
+            {proof.map((item) => (
               <div key={item.label} className="text-center">
-                <p className="font-display font-bold italic text-4xl md:text-5xl mb-2" style={{ color: gold }}>{item.stat}</p>
-                <p className="text-white/30 text-[10px] tracking-widest uppercase">{item.label}</p>
+                <p className="font-display font-bold text-4xl md:text-5xl mb-2 text-[#0c0c0c]">{item.stat}</p>
+                <p className="text-[13px] tracking-widest uppercase text-[#0c0c0c]/70">{item.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+      )}
 
       {/* FAQ */}
       <section className="bg-[#060606] border-t border-white/[0.06] py-20 md:py-28 px-8 md:px-16">

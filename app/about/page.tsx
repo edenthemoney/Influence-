@@ -3,6 +3,7 @@ import Image from 'next/image';
 import MobileNav from '../components/MobileNav';
 import type { Metadata } from 'next';
 import { Target, Zap, Users, TrendingUp, Award, ChevronRight, Wine } from 'lucide-react';
+import { hideCopy } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -157,12 +158,11 @@ export default function AboutPage() {
               </p>
               <div className="space-y-2 mb-8">
                 {[
-                  'Featured in Forbes, Fenty Beauty, SavageXFenty & Meta Ray-Ban',
                   'Music videos with Sean Paul, Bryson Tiller, DaBaby, Akon, Moneybagg Yo, Lil Pump, 6ix9ine, Bossman Dlow & Young Thug',
                   'Celebrity work with Kai Cenat, AMP, Mike Tyson, Tyra Banks & Keke Palmer',
                   'TV: Love & Hip Hop · Films: Sacrifice, Spanish Fly',
                   '20+ magazine features · 10+ fashion show walks across 4 countries',
-                ].map(item => (
+                ].filter((item) => !hideCopy(item)).map(item => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: gold }} />
                     <p className="text-white/45 text-sm leading-relaxed">{item}</p>
@@ -260,31 +260,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Credentials ── */}
-      <section className="border-t border-white/[0.06] bg-[#0a0a0a] py-20 px-6 md:px-14">
-        <div className="max-w-5xl mx-auto">
-          <div className="border border-white/[0.06] p-8 md:p-12">
-            <p className="text-[10px] font-bold tracking-[0.3em] uppercase mb-8 text-center" style={{ color: gold }}>Roster Credentials</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-              {[
-                { stat: '20+', label: 'Magazine Features' },
-                { stat: '10+', label: 'Fashion Show Walks' },
-                { stat: '4', label: 'Countries' },
-                { stat: '50K+', label: 'Combined Reach' },
-              ].map(({ stat, label }) => (
-                <div key={label} className="text-center">
-                  <p className="font-display font-bold italic mb-1" style={{ fontSize: 'clamp(32px, 4vw, 48px)', color: gold }}>{stat}</p>
-                  <p className="text-[10px] md:text-xs text-white/40 tracking-[0.2em] uppercase font-semibold">{label}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-white/25 text-xs text-center italic">
-              Stats reflect aggregate published work across our verified creators roster.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ── Niches ── */}
       <section className="border-t border-white/[0.06] bg-[#080808] py-20 px-6 md:px-14">
         <div className="max-w-5xl mx-auto">
@@ -319,9 +294,7 @@ export default function AboutPage() {
             {[
               { title: 'Minority & Women-Owned', desc: 'Black, Latino, and women-owned marketplace. We proudly represent underrepresented founders building in South Florida.' },
               { title: 'Diverse Creators, All Backgrounds', desc: 'Our network includes creators of all ethnicities, body types, and styles. Representation matters in every campaign we run.' },
-              { title: 'Celebrity-Connected Creators', desc: 'Our creators have worked alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine, Bossman Dlow, Kai Cenat, Bryson Tiller, Akon & more.' },
               { title: 'Verified Influencers', desc: 'Authenticated metrics, real engagement, proven track records — no fake followers, no bots.' },
-              { title: 'Fast Turnaround', desc: 'Most content delivered within 48 hours. Full campaigns complete in 7–14 days.' },
               { title: 'Transparent Pricing', desc: 'No hidden fees. Clear packages with detailed breakdowns at every tier. Starting at $300.' },
             ].map(({ title, desc }) => (
               <div key={title} className="flex items-start gap-4">
@@ -359,7 +332,6 @@ export default function AboutPage() {
           </div>
           <div className="flex items-center justify-center gap-6 mt-6 text-white/30 text-xs">
             <span>✓ Secure Stripe checkout</span>
-            <span>✓ Content in 48hrs</span>
             <span>✓ From $300</span>
           </div>
         </div>
