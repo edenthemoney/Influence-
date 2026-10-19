@@ -15,11 +15,11 @@ const personas: { id: PersonaId; Icon: React.ElementType; label: string; sub: st
 ];
 
 const allServices: Record<ServiceId, { Icon: React.ElementType; label: string; sub: string; badge: string }> = {
-  reaction:   { Icon: Headphones, label: 'Music Reactions',    sub: 'Models react to your songs on camera',                    badge: 'Remote' },
+  reaction:   { Icon: Headphones, label: 'Music Reactions',    sub: 'Creators react to your songs on camera',                    badge: 'Remote' },
   ugc:        { Icon: Play,       label: 'UGC & Reels',        sub: 'Branded skits, promos & short-form content',              badge: 'Remote' },
   business:   { Icon: TrendingUp, label: 'Business Content',   sub: 'Influencer visits your location, creates reels on-site',  badge: 'In-Person' },
-  musicvideo: { Icon: Music,      label: 'Music Videos',       sub: 'Book models for your music video production',             badge: 'In-Person' },
-  shoot:      { Icon: Camera,     label: 'Photo Shoots',       sub: 'Models for brand shoots, fashion, editorials',            badge: 'In-Person' },
+  musicvideo: { Icon: Music,      label: 'Music Videos',       sub: 'Book creators for your music video production',             badge: 'In-Person' },
+  shoot:      { Icon: Camera,     label: 'Photo Shoots',       sub: 'Creators for brand shoots, fashion, editorials',            badge: 'In-Person' },
   commercial: { Icon: Film,       label: 'Commercials',        sub: 'Script reading, dialogue & acting for commercials',       badge: 'In-Person' },
   event:      { Icon: Sparkles,   label: 'Events & Hosting',   sub: 'Models for parties, activations & brand events',          badge: 'In-Person' },
   bottle:     { Icon: Wine,       label: 'Bottle Girls / VIP', sub: 'VIP hostesses for clubs, lounges & nightlife',            badge: 'In-Person' },

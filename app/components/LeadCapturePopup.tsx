@@ -142,7 +142,7 @@ export default function LeadCapturePopup() {
         <div className="fixed bottom-0 left-0 right-0 z-[9998] border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl px-4 py-3 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <MessageCircle className="h-4 w-4 flex-shrink-0" style={{ color: gold }} />
-            <p className="text-white/70 text-xs truncate">Get pricing & availability — drop your number</p>
+            <p className="text-white/70 text-xs truncate">Story reposts, collab posts & more — get pricing</p>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             <form onSubmit={handleSubmit} className="flex items-center gap-2">
