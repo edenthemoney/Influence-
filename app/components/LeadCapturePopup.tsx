@@ -80,10 +80,10 @@ export default function LeadCapturePopup() {
               <>
                 <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-3" style={{ color: gold }}>Exclusive Access</p>
                 <h2 className="font-display font-bold italic text-white text-2xl leading-tight mb-2">
-                  Book Miami's Top Models
+                  Book Miami's Top Influencers
                 </h2>
                 <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                  Drop your number and we'll reach out with availability, pricing, and first access to new talent.
+                  Story reposts, collab posts, UGC, brand ambassadors, events &amp; more. Drop your number and we'll reach out with availability and pricing.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
