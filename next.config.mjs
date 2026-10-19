@@ -10,6 +10,23 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   async redirects() {
     return [
+      // Nov 18 event: short links to the ticket page
+      { source: '/tickets', destination: '/nov18', statusCode: 301 },
+      { source: '/tickets/success', destination: '/nov18/success', statusCode: 301 },
+      { source: '/tickets/:path*', destination: '/nov18', statusCode: 301 },
+      { source: '/t', destination: '/nov18', statusCode: 301 },
+      // Retired pages (no source) -> closest live page
+      { source: '/events/miami-influencer-summit-2026', destination: '/events', statusCode: 301 },
+      { source: '/best-creator-marketplaces-miami', destination: '/marketplace', statusCode: 301 },
+      { source: '/hire-influencers-for-restaurant', destination: '/hire-influencer-miami', statusCode: 301 },
+      { source: '/how-to-promote-song-on-tiktok', destination: '/music-video-creators', statusCode: 301 },
+      { source: '/influencer-marketing-brickell', destination: '/influencer-marketing-miami', statusCode: 301 },
+      { source: '/influencer-marketing-coral-gables', destination: '/influencer-marketing-miami', statusCode: 301 },
+      { source: '/influencer-marketing-miami-es', destination: '/influencer-marketing-miami', statusCode: 301 },
+      { source: '/influencer-marketing-south-beach', destination: '/influencer-marketing-miami', statusCode: 301 },
+      { source: '/influencer-marketing-wynwood', destination: '/influencer-marketing-miami', statusCode: 301 },
+      { source: '/music-video-creators-miami', destination: '/music-video-creators', statusCode: 301 },
+      { source: '/ugc-vs-traditional-ads', destination: '/ugc-content', statusCode: 301 },
       { source: '/book', destination: '/start', permanent: true },
       { source: '/pricing', destination: '/start', permanent: true },
       { source: '/pricing-guide', destination: '/start', permanent: true },
