@@ -1,8 +1,35 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
+import { redirect } from 'next/navigation';
 import { Check, Phone } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
 import StartSelector from './StartSelector';
+import { ModelBookingContent } from '../model-booking/page';
 import { hideCopy, verifiedPartners } from '@/data/partners';
+
+const BOOKING_SERVICES = new Set([
+  'shoot',
+  'musicvideo',
+  'event',
+  'reaction',
+  'ugc',
+  'business',
+  'commercial',
+  'bottle',
+  'storyreposts',
+  'collabreposts',
+]);
+
+const SERVICE_ALIASES: Record<string, string> = {
+  'music-video': 'musicvideo',
+  photoshoot: 'shoot',
+  'photo-shoot': 'shoot',
+  'story-reposts': 'storyreposts',
+  'collab-reposts': 'collabreposts',
+  collab: 'collabreposts',
+  stories: 'storyreposts',
+  vip: 'bottle',
+};
 
 const gold = '#c9a96e';
 
@@ -16,7 +43,26 @@ export const metadata = {
   },
 };
 
-export default function StartPage() {
+export default function StartPage({ searchParams }: { searchParams?: Record<string, string | string[] | undefined> }) {
+  const rawValue = searchParams?.service;
+  const raw = Array.isArray(rawValue) ? rawValue[0] : rawValue || '';
+  const canonical = SERVICE_ALIASES[raw] || raw;
+  if (raw && SERVICE_ALIASES[raw]) {
+    const next = new URLSearchParams();
+    Object.entries(searchParams || {}).forEach(([key, value]) => {
+      if (Array.isArray(value)) value.forEach((item) => next.append(key, item));
+      else if (value) next.set(key, value);
+    });
+    next.set('service', canonical);
+    redirect(`/start?${next.toString()}`);
+  }
+  if (BOOKING_SERVICES.has(canonical)) {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#080808]" />}>
+        <ModelBookingContent />
+      </Suspense>
+    );
+  }
   return (
     <div className="min-h-screen bg-[#080808]">
       {/* Nav */}

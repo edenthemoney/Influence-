@@ -185,7 +185,7 @@ export default function AboutPage() {
               <h3 className="font-display font-bold italic text-white mb-2" style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>Eden Roy</h3>
               <p className="text-white/30 text-xs tracking-widest uppercase mb-6">Agency Owner &middot; Entrepreneur</p>
               <p className="text-white/60 text-[15px] leading-relaxed mb-6">
-                Eden Roy is a businessman and entrepreneur with a background in Business and Technology from Florida Atlantic University. He specializes in SEO marketing, digital strategy, and building systems that drive measurable growth for artists and brands.
+                A businessman and entrepreneur with a background in Business and Technology from Florida Atlantic University. He specializes in SEO marketing, digital strategy, and building systems that drive measurable growth for artists and brands.
               </p>
               <div className="space-y-2">
                 {[
@@ -210,7 +210,6 @@ export default function AboutPage() {
                   <div className="mx-auto mb-6 flex h-36 w-36 items-center justify-center border border-[#c9a96e] bg-[#c9a96e]">
                     <span className="font-display text-7xl font-bold italic leading-none text-black">E</span>
                   </div>
-                  <p className="font-display text-3xl font-bold italic text-white">Eden Roy</p>
                   <p className="mt-2 text-[13px] font-semibold uppercase tracking-[0.22em]" style={{ color: gold }}>Founder &amp; CEO</p>
                 </div>
               )}

@@ -7,6 +7,9 @@ export type ServiceItem = {
 export type ServiceGroup = {
   id: string;
   label: string;
+  line: string;
+  image: string;
+  imagePosition?: string;
   items: ServiceItem[];
 };
 
@@ -15,6 +18,9 @@ export const serviceLineup: ServiceGroup[] = [
   {
     id: 'venues',
     label: 'For Venues & Brands',
+    line: 'Ambassadors and creators for venues, brands, and launches.',
+    image: '/images/Des/des-21.jpg',
+    imagePosition: 'center 20%',
     items: [
       {
         title: 'Brand Ambassadors',
@@ -46,6 +52,9 @@ export const serviceLineup: ServiceGroup[] = [
   {
     id: 'talent',
     label: 'Talent & Production',
+    line: 'Models, shoots, commercials, casting, and voiceover.',
+    image: '/images/GenesisBravo/genesis-1.jpg',
+    imagePosition: 'center 18%',
     items: [
       {
         title: 'Model booking',
@@ -53,19 +62,9 @@ export const serviceLineup: ServiceGroup[] = [
         href: '/model-booking',
       },
       {
-        title: 'Photo and brand shoots',
-        line: 'Editorials, lookbooks, e-commerce, and brand shoots.',
+        title: 'Photo & brand shoots',
+        line: 'Editorials, lookbooks, e-commerce, brand shoots, and on-set creators.',
         href: '/services/shoots',
-      },
-      {
-        title: 'Creators for a photoshoot',
-        line: 'Hire creators to be on set for a photoshoot.',
-        href: '/creators-for-photoshoot',
-      },
-      {
-        title: 'Shoot bookings',
-        line: 'Book creators by headcount for a photo or brand shoot.',
-        href: '/creators-for-shoots',
       },
       {
         title: 'Commercials',
@@ -74,13 +73,8 @@ export const serviceLineup: ServiceGroup[] = [
       },
       {
         title: 'Actress creators',
-        line: 'Actresses for film, television, commercials, and campaigns.',
+        line: 'Actresses and models for film, television, commercials, and on-camera roles.',
         href: '/actress-creators-miami',
-      },
-      {
-        title: 'Actress models',
-        line: 'Models for acting jobs and on-camera roles.',
-        href: '/actress-models-miami',
       },
       {
         title: 'Casting',
@@ -97,6 +91,9 @@ export const serviceLineup: ServiceGroup[] = [
   {
     id: 'content',
     label: 'Content & Social',
+    line: 'Reels, remote posts, stories, and collabs you can publish.',
+    image: '/images/Seahra/seahra-2.jpg',
+    imagePosition: 'center 42%',
     items: [
       {
         title: 'UGC and content',
@@ -128,21 +125,14 @@ export const serviceLineup: ServiceGroup[] = [
   {
     id: 'music',
     label: 'Music & Entertainment',
+    line: 'Music video talent and promotion for a release.',
+    image: '/images/Ferrari/ferrari-2.jpg',
+    imagePosition: 'center 10%',
     items: [
       {
-        title: 'Music video creators',
-        line: 'On-camera creators for a music video.',
+        title: 'Music video talent',
+        line: 'On-camera talent for a music video, from a featured role to a full cast.',
         href: '/music-video-creators',
-      },
-      {
-        title: 'Music video models',
-        line: 'Models booked onto a music video shoot.',
-        href: '/music-video-models',
-      },
-      {
-        title: 'Music video booking',
-        line: 'Tell us the headcount and the shoot date.',
-        href: '/music-video-booking',
       },
       {
         title: 'Song and music promotion',
@@ -154,6 +144,9 @@ export const serviceLineup: ServiceGroup[] = [
   {
     id: 'events',
     label: 'Events',
+    line: 'Hosts, VIP bottle service, and creator meetups.',
+    image: '/images/Kat/kat-6.jpg',
+    imagePosition: 'center 35%',
     items: [
       {
         title: 'Event staffing',

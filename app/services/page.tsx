@@ -91,41 +91,44 @@ export default function ServicesPage() {
           What we book.
         </h1>
         <p className="text-white text-[16px] md:text-[18px] max-w-xl">
-          Talent, content, music, venues, and events. Every service we still book is listed here.
+          Talent, content, music, venues, and events. Every service we book is listed here.
         </p>
       </section>
 
       {serviceLineup.map((group) => (
-        <section key={group.id} id={group.id} className="border-t border-white/[0.06] px-5 py-14 md:px-16 md:py-20">
+        <section key={group.id} id={group.id} className="border-t border-white/[0.06] px-5 py-12 md:px-16 md:py-16">
           <h2 className="font-display font-bold italic text-white leading-tight" style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}>{group.label}</h2>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <p className="mt-3 max-w-2xl text-[16px] leading-relaxed text-white/85">{group.line}</p>
+          <ul className="mt-6 divide-y divide-white/10 border-y border-white/10">
             {group.items.map((service) => (
-              <Link key={service.title} href={service.href} className="flex flex-col border border-white/10 p-6 hover:border-[#c9a96e]/50">
-                <h3 className="font-display text-[26px] font-semibold leading-tight text-white">{service.title}</h3>
-                <p className="mt-3 text-[16px] leading-relaxed text-white/85">{service.line}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.14em]" style={{ color: gold }}>
-                  Book <ChevronRight className="h-4 w-4" />
-                </span>
-              </Link>
+              <li key={service.title}>
+                <Link href={service.href} className="block max-w-3xl py-5">
+                  <h3 className="font-display text-[24px] font-semibold leading-tight text-white">{service.title}</h3>
+                  <p className="mt-2 text-[16px] leading-relaxed text-white/85">{service.line}</p>
+                  <span className="mt-3 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.14em]" style={{ color: gold }}>
+                    Book <ChevronRight className="h-4 w-4" />
+                  </span>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       ))}
 
       {/* CTA */}
-      <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">
+      <section className="border-t border-white/10 bg-[#080808] py-20 md:py-32 px-8 md:px-16">
         <div className="max-w-3xl">
-          <p className="text-black/40 text-[10px] tracking-[0.5em] uppercase mb-8 font-semibold">Not Sure Which Service?</p>
-          <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
+          <p className="text-[13px] font-semibold uppercase tracking-[0.18em] mb-8" style={{ color: gold }}>Not sure which service?</p>
+          <h2 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
             Tell us your goal.<br />We&apos;ll recommend the rest.
           </h2>
-          <p className="text-black/50 text-lg mb-10 max-w-lg">Our booking flow asks who you are and matches you to the perfect service. No calls needed — checkout in under 2 minutes.</p>
+          <p className="text-white/85 text-[16px] mb-10 max-w-lg">The booking flow asks who you are and matches you to a service.</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/start" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
-              Find Your Service <ChevronRight className="h-4 w-4" />
+              Find your service <ChevronRight className="h-4 w-4" />
             </Link>
-            <Link href="/quote" className="inline-flex items-center justify-center gap-3 px-10 py-6 text-[14px] font-bold tracking-widest uppercase border border-black/15 text-black/60 hover:text-black hover:border-black/30 transition-all">
-              Talk to a Rep
+            <Link href="/quote" className="inline-flex items-center justify-center gap-3 px-10 py-6 text-[14px] font-bold tracking-widest uppercase border border-white/30 text-white hover:border-[#c9a96e] transition-all">
+              Talk to a rep
             </Link>
           </div>
         </div>

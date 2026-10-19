@@ -31,11 +31,11 @@ export default function Page() {
             {"Music Video Creators"}
           </span>
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          {"Music Video"}
+        <h1 className="font-display font-bold italic text-4xl md:text-6xl mb-6 leading-tight">
+          Book Models for
           <br />
           <span style={{ color: "#c9a96e" }}>
-            {"Models for Hire"}
+            Your Music Video
           </span>
         </h1>
         <p className="text-white/50 text-lg mb-12 max-w-2xl">

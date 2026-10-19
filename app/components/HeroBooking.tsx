@@ -11,7 +11,7 @@ type PersonaId = 'brands' | 'music' | 'nightlife';
 const personas: { id: PersonaId; Icon: React.ElementType; label: string; sub: string; services: ServiceId[] }[] = [
   { id: 'brands',    Icon: TrendingUp, label: 'Brands & Businesses', sub: 'UGC, reels, business content & commercials', services: ['business', 'ugc', 'commercial'] },
   { id: 'music',     Icon: Music,      label: 'Artists & Music',     sub: 'Music videos, reactions & photo shoots',     services: ['musicvideo', 'reaction', 'shoot'] },
-  { id: 'nightlife', Icon: Sparkles,   label: 'Events & Nightlife',  sub: 'Event models, hosting & bottle girls',       services: ['event', 'bottle'] },
+  { id: 'nightlife', Icon: Sparkles,   label: 'Events & Nightlife',  sub: 'Event hosts, VIP & bottle service ambassadors', services: ['event', 'bottle'] },
 ];
 
 const allServices: Record<ServiceId, { Icon: React.ElementType; label: string; sub: string; badge: string }> = {
@@ -22,7 +22,7 @@ const allServices: Record<ServiceId, { Icon: React.ElementType; label: string; s
   shoot:      { Icon: Camera,     label: 'Photo Shoots',       sub: 'Models for brand shoots, fashion, editorials',            badge: 'In-Person' },
   commercial: { Icon: Film,       label: 'Commercials',        sub: 'Script reading, dialogue & acting for commercials',       badge: 'In-Person' },
   event:      { Icon: Sparkles,   label: 'Events & Hosting',   sub: 'Models for parties, activations & brand events',          badge: 'In-Person' },
-  bottle:     { Icon: Wine,       label: 'Bottle Girls / VIP', sub: 'VIP hostesses for clubs, lounges & nightlife',            badge: 'In-Person' },
+  bottle:     { Icon: Wine,       label: 'VIP & bottle service', sub: 'Ambassadors for clubs, lounges, and nightlife',            badge: 'In-Person' },
 };
 
 export default function HeroBooking() {

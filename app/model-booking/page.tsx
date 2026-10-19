@@ -354,7 +354,7 @@ const SERVICE_GROUPS: { label: string; services: ServiceType[]; category: Servic
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
-function ModelBookingContent() {
+export function ModelBookingContent() {
   const searchParams = useSearchParams();
   const [step,        setStep]        = useState(0);
   const [serviceType, setServiceType] = useState<ServiceType | null>(null);
@@ -626,7 +626,7 @@ function ModelBookingContent() {
           ) : serviceType === 'event' ? (
             <><Sparkles className="h-3 w-3" /> Events & Hosting</>
           ) : serviceType === 'bottle' ? (
-            <><Wine className="h-3 w-3" /> Bottle Girls / VIP Hostesses</>
+            <><Wine className="h-3 w-3" /> VIP &amp; bottle service ambassadors</>
           ) : serviceType === 'shoot' ? (
             <><Camera className="h-3 w-3" /> Shoots & Videos</>
           ) : (
@@ -634,7 +634,7 @@ function ModelBookingContent() {
           )}
         </p>
         <h1 className="font-display font-light italic text-white mb-2" style={{ fontSize: 'clamp(24px, 4vw, 48px)' }}>
-          {selectedModel ? `Book ${selectedModel}` : serviceType === 'reaction' ? 'Get Your Music Heard' : serviceType === 'ugc' ? 'Get Content Created' : serviceType === 'business' ? 'Models at Your Business' : serviceType === 'commercial' ? 'Book Your Commercial' : serviceType === 'event' ? 'Book Event Creators' : serviceType === 'bottle' ? 'Book Bottle Girls / VIP Hostesses' : serviceType === 'shoot' ? 'Book Your Shoot' : 'What Do You Need?'}
+          {selectedModel ? `Book ${selectedModel}` : serviceType === 'reaction' ? 'Get Your Music Heard' : serviceType === 'ugc' ? 'Get Content Created' : serviceType === 'business' ? 'Models at Your Business' : serviceType === 'commercial' ? 'Book Your Commercial' : serviceType === 'event' ? 'Book Event Creators' : serviceType === 'bottle' ? 'Book VIP & bottle service ambassadors' : serviceType === 'shoot' ? 'Book Your Shoot' : 'What Do You Need?'}
         </h1>
         {selectedModel && (
           <div className="flex items-center gap-3 mb-3">

@@ -95,22 +95,22 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-black/40" />
 
-        <div className="absolute top-16 md:top-20 left-0 right-0 z-20 overflow-hidden border-y border-white/10 bg-[#080808]">
-          <div className="flex whitespace-nowrap py-2" style={{ animation: 'ticker-left 50s linear infinite' }}>
-            {[...Array(6)].map((_, i) => (
-              <span key={i} className="shrink-0 text-white font-heading tracking-[0.12em] pr-10 text-[18px]">
-                {tickerItems.join('  ·  ')}&nbsp;&nbsp;·&nbsp;&nbsp;
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="absolute top-32 md:top-44 left-5 md:left-16 flex items-center gap-4 max-w-[90%]">
+        <div className="absolute top-20 md:top-28 left-5 md:left-16 flex items-center gap-4 max-w-[90%]">
           <div className="w-8 h-px shrink-0" style={{ backgroundColor: '#c9a96e' }} />
           <p className="text-white text-[13px] tracking-[0.18em] uppercase font-semibold">For venues, brands, and creators</p>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 px-5 md:px-16 pb-8 md:pb-14 flex items-end justify-between gap-8">
+        <div className="absolute bottom-0 left-0 right-0">
+          <div className="overflow-hidden border-y border-white/10 bg-[#080808]">
+            <div className="flex whitespace-nowrap py-2" style={{ animation: 'ticker-left 50s linear infinite' }}>
+              {[...Array(6)].map((_, i) => (
+                <span key={i} className="shrink-0 text-white font-heading tracking-[0.12em] pr-10 text-[18px]">
+                  {tickerItems.join('  ·  ')}&nbsp;&nbsp;·&nbsp;&nbsp;
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="px-5 md:px-16 pb-8 md:pb-14 pt-6 flex items-end justify-between gap-8">
           <div className="min-w-0 max-w-3xl">
             <h1 className="sr-only">
               Go Viral. Make an Influence. We match venues and brands with Brand Ambassadors and influencers.
@@ -136,6 +136,7 @@ export default function HomePage() {
           <div className="w-full md:w-[420px] shrink-0 hidden lg:block">
             <HeroBooking />
           </div>
+          </div>
         </div>
       </section>
 
@@ -150,31 +151,41 @@ export default function HomePage() {
           </Link>
         </div>
         <div
-          className="flex snap-x snap-mandatory items-end gap-4 overflow-x-auto px-5 pb-2 -mx-5 scroll-px-5 md:mx-0 md:grid md:w-full md:grid-cols-7 md:items-end md:gap-4 md:overflow-visible md:px-0"
+          className="flex snap-x snap-mandatory items-end gap-4 overflow-x-auto px-5 pb-2 -mx-5 scroll-px-5 md:mx-0 md:grid md:w-full md:grid-cols-4 md:items-stretch md:gap-4 md:overflow-visible md:px-0"
           style={{ scrollPaddingInline: '20px' }}
         >
-          {ambassadors.map((person) => {
+          {ambassadors.map((person, index) => {
             const blur = blurs[person.image];
+            const place = person.host
+              ? 'md:col-span-2 md:row-span-2'
+              : index === ambassadors.length - 1
+                ? 'md:col-span-4'
+                : '';
             return (
               <Link
                 key={person.name}
                 href="/marketplace"
-                className={`snap-start shrink-0 ${person.host ? 'w-[78vw] max-w-[420px] md:col-span-2 md:w-auto md:max-w-none' : 'w-[64vw] max-w-[280px] md:col-span-1 md:w-auto md:max-w-none'}`}
+                className={`snap-start shrink-0 ${person.host ? 'w-[78vw] max-w-[420px]' : 'w-[64vw] max-w-[280px]'} md:w-auto md:max-w-none ${place}`}
               >
-                <div className="relative aspect-[4/5] overflow-hidden border border-white/10" style={{ backgroundColor: blur?.color || '#1a1a1a', borderColor: person.host ? '#c9a96e' : undefined }}>
+                <div className={`relative overflow-hidden border border-white/10 ${person.host ? 'aspect-[4/5] md:aspect-auto md:h-full' : index === ambassadors.length - 1 ? 'aspect-[4/5] md:aspect-[16/5]' : 'aspect-[4/5]'}`} style={{ backgroundColor: blur?.color || '#1a1a1a', borderColor: person.host ? '#c9a96e' : undefined }}>
                   <Image
                     src={person.image}
                     alt={person.name}
                     fill
+                    priority={index < 4}
                     placeholder={blur ? 'blur' : 'empty'}
                     blurDataURL={blur?.blur}
                     className="object-cover"
                     style={{ objectPosition: person.position }}
-                    sizes={person.host ? '(min-width: 768px) 34vw, 78vw' : '(min-width: 768px) 16vw, 64vw'}
+                    sizes={person.host ? '(min-width: 768px) 50vw, 78vw' : '(min-width: 768px) 25vw, 64vw'}
                   />
+                  <div className="absolute inset-x-0 bottom-0 hidden bg-gradient-to-t from-black via-black/70 to-transparent px-4 pb-4 pt-16 md:block">
+                    <p className="text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: '#c9a96e' }}>{person.meta}</p>
+                    <p className="mt-1 font-display text-[26px] font-semibold leading-none text-white">{person.name}</p>
+                  </div>
                 </div>
-                <p className="mt-3 text-[13px] font-semibold uppercase tracking-[0.16em]" style={{ color: '#c9a96e' }}>{person.meta}</p>
-                <p className="mt-1 font-display text-[22px] font-semibold leading-none text-white md:text-[26px]">{person.name}</p>
+                <p className="mt-3 text-[13px] font-semibold uppercase tracking-[0.16em] md:hidden" style={{ color: '#c9a96e' }}>{person.meta}</p>
+                <p className="mt-1 font-display text-[22px] font-semibold leading-none text-white md:hidden">{person.name}</p>
               </Link>
             );
           })}
@@ -187,24 +198,24 @@ export default function HomePage() {
           Everything we book.
         </h2>
         <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-white/85">
-          The full lineup: talent, content, music, venues, and events.
+          Five ways in. The full list is on the services page.
         </p>
-        <div className="mt-12 space-y-12">
+        <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-5">
           {serviceLineup.map((group) => (
-            <div key={group.id}>
-              <h3 className="font-display text-[22px] font-semibold italic text-[#c9a96e] md:text-[28px]">{group.label}</h3>
-              <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-                {group.items.map((service) => (
-                  <Link key={service.title} href={service.href} className="flex flex-col border border-white/10 p-6 hover:border-[#c9a96e]/50">
-                    <h4 className="font-display text-[24px] font-semibold leading-tight text-white">{service.title}</h4>
-                    <p className="mt-3 text-[16px] leading-relaxed text-white/85">{service.line}</p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.14em]" style={{ color: '#c9a96e' }}>
-                      Book <ChevronRight className="h-4 w-4" />
-                    </span>
-                  </Link>
-                ))}
+            <Link key={group.id} href={`/services#${group.id}`} className="group flex flex-col border border-white/10 bg-[#080808] hover:border-[#c9a96e]/50">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image src={group.image} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.03]" style={{ objectPosition: group.imagePosition || 'center' }} sizes="(min-width: 1280px) 18vw, (min-width: 768px) 45vw, 90vw" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
               </div>
-            </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="font-display text-[26px] font-semibold italic leading-tight text-white">{group.label}</h3>
+                <p className="mt-3 text-[16px] leading-relaxed text-white/85">{group.line}</p>
+                <p className="mt-4 text-[13px] leading-relaxed text-white/85">{group.items.slice(0, 4).map((item) => item.title).join(' · ')}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.14em]" style={{ color: '#c9a96e' }}>
+                  See services <ChevronRight className="h-4 w-4" />
+                </span>
+              </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -279,16 +290,16 @@ export default function HomePage() {
         </Link>
       </section>
 
-      <section className="border-t border-black/10 bg-white px-5 py-16 md:px-16 md:py-28">
-        <p className="text-[13px] font-semibold uppercase tracking-[0.18em] text-black/80">Ready to book?</p>
-        <h2 className="mt-6 font-display font-bold italic leading-[0.9] text-black" style={{ fontSize: 'clamp(44px, 8vw, 88px)' }}>
+      <section className="border-t border-white/10 bg-[#080808] px-5 py-16 md:px-16 md:py-28">
+        <p className="text-[13px] font-semibold uppercase tracking-[0.18em]" style={{ color: '#c9a96e' }}>Ready to book?</p>
+        <h2 className="mt-6 font-display font-bold italic leading-[0.9] text-white" style={{ fontSize: 'clamp(44px, 8vw, 88px)' }}>
           Start with the service you need.
         </h2>
-        <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-black/80">Pick a service and tell us the date. Call if you want a person on the line.</p>
+        <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-white/85">Pick a service and tell us the date. Call if you want a person on the line.</p>
         <Link href="/start" className="mt-8 inline-flex items-center gap-3 px-8 py-4 text-[16px] font-bold uppercase tracking-[0.08em]" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
           Start a booking <ChevronRight className="h-4 w-4" />
         </Link>
-        <p className="mt-4 text-[16px] text-black/80">Stripe checkout. South Florida.</p>
+        <p className="mt-4 text-[16px] text-white/85">Stripe checkout. South Florida.</p>
       </section>
 
 
