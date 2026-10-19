@@ -108,7 +108,7 @@ export default function HomePage() {
         </div>
       </nav>
 
-      <section className="h-[78vh] md:h-screen relative overflow-hidden">
+      <section data-hero className="h-[78vh] md:h-screen relative overflow-hidden">
         <HeroVideo />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-black/40" />
@@ -148,12 +148,12 @@ export default function HomePage() {
       </section>
 
       <section className="bg-[#080808] border-t border-white/10 px-5 py-12 md:px-16 md:py-16" aria-label="Brand Ambassadors">
-        <div className="mb-8 flex items-end justify-between gap-4">
+        <div className="mb-8 flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-[13px] font-semibold uppercase tracking-[0.18em]" style={{ color: '#c9a96e' }}>The roster</p>
             <h2 className="mt-2 font-display font-bold italic text-white leading-none" style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}>Brand Ambassadors</h2>
           </div>
-          <Link href="/marketplace" className="shrink-0 text-[16px] font-semibold text-white underline decoration-[#c9a96e] underline-offset-4">
+          <Link href="/marketplace" className="text-[16px] font-semibold text-white underline decoration-[#c9a96e] underline-offset-4">
             View the roster
           </Link>
         </div>
