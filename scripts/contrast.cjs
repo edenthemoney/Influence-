@@ -81,8 +81,18 @@ async function collect(page, checkSize) {
       const tag = el.tagName;
       if (['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'OPTION'].includes(tag)) continue;
       if (el.closest('[data-claim-hidden], [aria-hidden="true"]')) continue;
+      let hidden = false;
+      let node = el;
+      while (node && node !== document.body) {
+        const style = getComputedStyle(node);
+        if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) {
+          hidden = true;
+          break;
+        }
+        node = node.parentElement;
+      }
+      if (hidden) continue;
       const style = getComputedStyle(el);
-      if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) continue;
       const rect = el.getBoundingClientRect();
       if (rect.width < 4 || rect.height < 4) continue;
       const fontSize = parseFloat(style.fontSize);
@@ -122,9 +132,21 @@ async function scanViewport(browser, width, height, checkSize) {
     }
     await page.waitForTimeout(400);
     const nodes = await collect(page, checkSize);
-    await page.addStyleTag({
-      content: 'body * { color: transparent !important; text-shadow: none !important; -webkit-text-fill-color: transparent !important; }',
+    await page.evaluate(() => {
+      document.querySelectorAll('body *').forEach((el) => {
+        el.style.setProperty('transition', 'none', 'important');
+        el.style.setProperty('animation', 'none', 'important');
+      });
     });
+    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    await page.evaluate(() => {
+      document.querySelectorAll('body *').forEach((el) => {
+        el.style.setProperty('color', 'transparent', 'important');
+        el.style.setProperty('-webkit-text-fill-color', 'transparent', 'important');
+        el.style.setProperty('text-shadow', 'none', 'important');
+      });
+    });
+    await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     const file = path.join(outDir, `${width}-${route.replace(/[^a-z0-9]+/gi, '_') || 'home'}.png`);
     await page.screenshot({ path: file, fullPage: true });
     const image = sharp(file);

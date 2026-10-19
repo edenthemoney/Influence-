@@ -1612,7 +1612,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
 
               <div className="flex flex-wrap gap-2 justify-center mb-6">
                 {influencer.categories.map((cat: string) => (
-                  <Badge key={cat} className="bg-[#c9a96e]/10 border-[#c9a96e]/30" style={{ color: '#c9a96e' }}>
+                  <Badge key={cat} variant="secondary" className="border-[#c9a96e]/40 text-[#c9a96e]">
                     {cat}
                   </Badge>
                 ))}
@@ -1836,7 +1836,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                 ))}
               </div>
               <div className="mt-4 text-center">
-                <Link href={`/start?model=${encodeURIComponent(influencer.name)}`} className="text-[#c9a96e]/60 hover:text-[#c9a96e] text-xs tracking-widest uppercase font-semibold transition-colors">
+                <Link href={`/start?model=${encodeURIComponent(influencer.name)}`} className="text-[#c9a96e] hover:opacity-80 text-[13px] tracking-widest uppercase font-semibold transition-colors">
                   Browse All Packages →
                 </Link>
               </div>

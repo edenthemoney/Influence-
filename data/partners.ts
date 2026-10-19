@@ -249,6 +249,7 @@ export function scrubCopy(text: string): string {
     .replace(/\s*[·|]\s*/g, ' · ')
     .split(' · ')
     .map((part) => part.trim())
+    .filter((part) => part && !/^\d[\d.,]*\s*[kKmM]\+?$/.test(part))
     .filter((part) => part && !names.some((name) => name.toLowerCase() === part.toLowerCase()))
     .filter((part) => !hideCopy(part))
     .join(' · ');

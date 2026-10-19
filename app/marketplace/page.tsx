@@ -638,7 +638,7 @@ export default function MarketplacePage() {
         >
           <source src="/videos/group-shot.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-black/85" />
         <div className="relative max-w-5xl mx-auto text-center">
           <p className="text-[13px] font-bold tracking-[0.18em] uppercase mb-5" style={{ color: gold }}>The roster</p>
           <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 88px)' }}>
@@ -702,7 +702,7 @@ export default function MarketplacePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-black/80">
                 <h3 className="text-white font-bold text-sm md:text-base truncate mb-1">{inf.name}</h3>
                 {scrubCopy(inf.title) && (
                   <p className="text-white/85 text-[13px] tracking-wider uppercase mb-2">{scrubCopy(inf.title)}</p>

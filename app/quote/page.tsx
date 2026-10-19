@@ -234,7 +234,7 @@ function QuoteForm() {
               <button
                 type="submit"
                 disabled={sending || !type}
-                className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all disabled:opacity-50"
+                className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all disabled:cursor-not-allowed"
                 style={{ backgroundColor: gold, color: '#000' }}
               >
                 {sending ? 'Sending...' : 'Get My Quote'} <ArrowRight className="h-4 w-4" />
