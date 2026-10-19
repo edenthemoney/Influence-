@@ -95,7 +95,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-black/40" />
 
-        <div className="absolute top-16 md:top-20 left-0 right-0 z-20 overflow-hidden border-y border-white/10 bg-black/55">
+        <div className="absolute top-16 md:top-20 left-0 right-0 z-20 overflow-hidden border-y border-white/10 bg-[#080808]">
           <div className="flex whitespace-nowrap py-2" style={{ animation: 'ticker-left 50s linear infinite' }}>
             {[...Array(6)].map((_, i) => (
               <span key={i} className="shrink-0 text-white font-heading tracking-[0.12em] pr-10 text-[18px]">

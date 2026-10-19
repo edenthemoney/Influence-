@@ -30,7 +30,8 @@ export default function HideUnverifiedClaims() {
       const source = raw || (node.childElementCount <= 3 ? (node.innerText || '').replace(/\s+/g, ' ').trim() : '');
       if (!source || source.length > 320) return;
       const next = scrubCopy(source);
-      const blocked = !next || next !== source || hideCopy(source) || (source.length < 90 && /\b\d[\d.,]*\s*[kKmM]\+?\s*followers?\b/i.test(source));
+      const words = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '');
+      const blocked = !next || hideCopy(source) || words(next) !== words(source) || (source.length < 90 && /\b\d[\d.,]*\s*[kKmM]\+?\s*followers?\b/i.test(source));
       if (blocked) {
         node.dataset.claimHidden = '1';
         node.style.setProperty('display', 'none', 'important');
