@@ -327,7 +327,7 @@ const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: str
   reaction:      { title: 'Premium Music Reactions',                desc: 'Celebrity-connected creators react to your songs on camera — first-listen & livestreams.',           from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Headphones, category: 'remote-content' },
   shoot:         { title: 'Photo Shoots',                   desc: 'Creators for brand shoots, fashion editorials & lookbooks.',                     from: '$300',      tag: 'In-Person', hasMonthly: true,  Icon: Camera, category: 'in-person' },
   event:         { title: 'Events & Hosting',               desc: 'Creators for brand activations, parties & grand openings.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Sparkles, category: 'in-person' },
-  bottle:        { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Wine, category: 'in-person' },
+  bottle:        { title: 'VIP & bottle service ambassadors', desc: 'Hosts for clubs, lounges, and bottle service.',                         from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Wine, category: 'in-person' },
   storyreposts:  { title: 'Premium Story Reposts',                 desc: 'Celebrity-connected creators post your content to their Instagram Stories with swipe-up links.',      from: '$150',       tag: 'Remote',    hasMonthly: true,  Icon: RefreshCcw, category: 'story-reposts' },
   collabreposts: { title: 'Premium Collab Posts',                  desc: 'Celebrity-connected creators co-author posts with your brand — appears on both feeds for dual reach.', from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Users, category: 'collab-posts' },
 };
@@ -343,6 +343,19 @@ const MONTHLY_SAVINGS_PCT: Partial<Record<ServiceType, number>> = {
   business: 30,
   storyreposts: 25,
   collabreposts: 25,
+};
+
+const SERVICE_HEADINGS: Record<ServiceType, { eyebrow: string; title: string }> = {
+  reaction:      { eyebrow: 'Music Reactions', title: 'Get Your Music Heard' },
+  ugc:           { eyebrow: 'UGC & Reels', title: 'Get Content Created' },
+  business:      { eyebrow: 'Brand Ambassadors · Business Content', title: 'Models at Your Business' },
+  commercial:    { eyebrow: 'Commercials & Speaking Roles', title: 'Book Your Commercial' },
+  event:         { eyebrow: 'Events & Hosting', title: 'Book Event Creators' },
+  bottle:        { eyebrow: 'VIP & bottle service ambassadors', title: 'Book VIP & bottle service ambassadors' },
+  shoot:         { eyebrow: 'Photo & brand shoots', title: 'Book Your Shoot' },
+  musicvideo:    { eyebrow: 'Music Videos', title: 'Book Models for Your Music Video' },
+  storyreposts:  { eyebrow: 'Story Reposts', title: 'Book Story Reposts' },
+  collabreposts: { eyebrow: 'Collab Posts', title: 'Book Collab Posts' },
 };
 
 const SERVICE_GROUPS: { label: string; services: ServiceType[]; category: ServiceCategory }[] = [
@@ -615,26 +628,10 @@ export function ModelBookingContent() {
       {/* Header + Progress */}
       <div className="pt-16 px-6 md:px-14 py-3 border-b border-white/[0.06]">
         <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-2 flex items-center gap-2" style={{ color: gold }}>
-          {serviceType === 'reaction' ? (
-            <><Headphones className="h-3 w-3" /> Music Reactions</>
-          ) : serviceType === 'ugc' ? (
-            <><Play className="h-3 w-3" /> UGC & Reels</>
-          ) : serviceType === 'business' ? (
-            <><TrendingUp className="h-3 w-3" /> Brand Ambassadors · Business Content</>
-          ) : serviceType === 'commercial' ? (
-            <><Film className="h-3 w-3" /> Commercials & Speaking Roles</>
-          ) : serviceType === 'event' ? (
-            <><Sparkles className="h-3 w-3" /> Events & Hosting</>
-          ) : serviceType === 'bottle' ? (
-            <><Wine className="h-3 w-3" /> VIP &amp; bottle service ambassadors</>
-          ) : serviceType === 'shoot' ? (
-            <><Camera className="h-3 w-3" /> Shoots & Videos</>
-          ) : (
-            <><MapPin className="h-3 w-3" /> Influence Marketplace</>
-          )}
+          {serviceType ? SERVICE_HEADINGS[serviceType].eyebrow : 'Influence Marketplace'}
         </p>
         <h1 className="font-display font-light italic text-white mb-2" style={{ fontSize: 'clamp(24px, 4vw, 48px)' }}>
-          {selectedModel ? `Book ${selectedModel}` : serviceType === 'reaction' ? 'Get Your Music Heard' : serviceType === 'ugc' ? 'Get Content Created' : serviceType === 'business' ? 'Models at Your Business' : serviceType === 'commercial' ? 'Book Your Commercial' : serviceType === 'event' ? 'Book Event Creators' : serviceType === 'bottle' ? 'Book VIP & bottle service ambassadors' : serviceType === 'shoot' ? 'Book Your Shoot' : 'What Do You Need?'}
+          {selectedModel ? `Book ${selectedModel}` : serviceType ? SERVICE_HEADINGS[serviceType].title : 'What Do You Need?'}
         </h1>
         {selectedModel && (
           <div className="flex items-center gap-3 mb-3">
