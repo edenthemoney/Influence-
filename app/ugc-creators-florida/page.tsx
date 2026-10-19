@@ -43,24 +43,24 @@ export default function UGCCreatorsFlorida() {
           UGC Creators<br />in <span style={{ color: gold }}>Florida</span>
         </h1>
         <p className="text-white/50 text-lg mb-12 max-w-2xl">
-          User-generated content outperforms branded ads by 4x on engagement and 2.4x on conversions. Our Florida-based creators produce scroll-stopping UGC that looks organic but converts like a sales machine.
+          Florida creators film reels and photos that look like a person made them, then send you the files to post.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           <div className="border border-white/[0.06] p-6">
             <Zap className="w-5 h-5 mb-3" style={{ color: gold }} />
-            <h3 className="font-bold text-white mb-1">4x Engagement</h3>
-            <p className="text-white/40 text-sm">UGC gets 4x higher click-through than branded content</p>
+            <h3 className="font-display font-bold italic text-white mb-1">Native posts</h3>
+            <p className="text-white/85 text-sm">Creator-filmed posts sit in the feed next to content people already watch.</p>
           </div>
           <div className="border border-white/[0.06] p-6">
             <BarChart3 className="w-5 h-5 mb-3" style={{ color: gold }} />
-            <h3 className="font-bold text-white mb-1">2.4x Conversions</h3>
-            <p className="text-white/40 text-sm">UGC ads convert 2.4x better than traditional creative</p>
+            <h3 className="font-display font-bold italic text-white mb-1">Ready to post</h3>
+            <p className="text-white/85 text-sm">You get the files back and can post them or run them as ads.</p>
           </div>
           <div className="border border-white/[0.06] p-6">
             <Video className="w-5 h-5 mb-3" style={{ color: gold }} />
-            <h3 className="font-bold text-white mb-1">50% Lower CPA</h3>
-            <p className="text-white/40 text-sm">Cut your cost-per-acquisition in half with UGC</p>
+            <h3 className="font-display font-bold italic text-white mb-1">Made for ads</h3>
+            <p className="text-white/85 text-sm">Short clips you can test in an ad account without a full production.</p>
           </div>
         </div>
 

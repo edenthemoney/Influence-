@@ -2,12 +2,13 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, Phone, Camera, Film, Users, Star, Clock, Palette } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
+import { hideCopy, verifiedPartners } from '@/data/partners';
 
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Book Creators for Shoots & Music Videos — Influence Marketplace | South Florida',
-  description: 'Professional creators for music videos, brand shoots, fashion editorials, and commercial productions in South Florida. Same-week booking available.',
+  description: 'Professional creators for music videos, brand shoots, fashion editorials, and commercial productions in South Florida. .',
   openGraph: {
     title: 'Book Creators for Shoots & Music Videos — Influence Marketplace',
     description: 'Professional creators for your video or photo production. South Florida.',
@@ -101,15 +102,15 @@ export default function ShootsPage() {
         </div>
       </section>
 
-      {/* Credits */}
+      {verifiedPartners.length > 0 && (
       <section className="border-t border-white/[0.06] bg-[#060606] py-10 md:py-14 px-8 md:px-16">
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-          {['Sean Paul', 'Bryson Tiller', 'DaBaby', 'Kai Cenat', 'Forbes', 'Fenty Beauty', 'Miami Swim Week'].map(name => (
-            <span key={name} className="font-display font-light italic text-white/25 text-lg md:text-2xl">{name}</span>
+          {verifiedPartners.map((partner) => (
+            <span key={partner.name} className="font-display font-light italic text-white text-lg md:text-2xl">{partner.name}</span>
           ))}
         </div>
-        <p className="text-center text-white/15 text-[10px] tracking-widest uppercase mt-4">Our creators have worked alongside</p>
       </section>
+      )}
 
       {/* Packages */}
       <section className="py-20 md:py-28 px-8 md:px-16 border-t border-white/[0.06]">
@@ -134,7 +135,7 @@ export default function ShootsPage() {
             </div>
           ))}
         </div>
-        <p className="text-white/20 text-xs mt-6">All in-person bookings serve the South Florida / Greater Miami area. Same-week availability.</p>
+        <p className="text-white/20 text-xs mt-6">All in-person bookings serve the South Florida / Greater Miami area. </p>
       </section>
 
       {/* Use Cases */}
@@ -151,7 +152,7 @@ export default function ShootsPage() {
             { icon: Palette, title: 'Creative & Editorial', desc: 'Artistic shoots, magazine editorials, concept pieces. Creators with range who can embody your creative vision.' },
             { icon: Users, title: 'Group Productions', desc: 'Need 3, 5, or 10+ creators? We handle casting and coordination for large-scale productions.' },
             { icon: Clock, title: 'Same-Week Booking', desc: 'Last-minute shoot? We can often get creators booked within 48 hours for urgent productions.' },
-          ].map(({ icon: Icon, title, desc }) => (
+          ].filter(({ title, desc }) => !hideCopy(title) && !hideCopy(desc)).map(({ icon: Icon, title, desc }) => (
             <div key={title} className="flex gap-5 p-6 border border-white/[0.04] bg-white/[0.01]">
               <div className="w-11 h-11 border border-white/10 flex items-center justify-center shrink-0">
                 <Icon className="h-5 w-5" style={{ color: gold }} />
@@ -201,7 +202,7 @@ export default function ShootsPage() {
               Book Your Shoot <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
-              <span>✓ Same-week availability</span>
+              <span></span>
               <span>✓ Celebrity-level creators</span>
               <span>✓ Stripe checkout</span>
             </div>

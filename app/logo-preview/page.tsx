@@ -4,7 +4,7 @@ export default function LogoPreviewPage() {
       <div className="max-w-6xl mx-auto px-8 py-16 space-y-20">
 
         <header>
-          <p className="text-yellow-500/60 text-xs tracking-[0.3em] uppercase mb-3">Internal · Logo Concepts</p>
+          <p className="text-[#c9a96e] text-xs tracking-[0.3em] uppercase mb-3">Internal · Logo Concepts</p>
           <h1 className="text-5xl font-light text-white mb-2">Logo Preview</h1>
           <p className="text-white/50">Two new concepts side-by-side with current. View on different backgrounds, sizes, and contexts.</p>
         </header>
@@ -23,7 +23,7 @@ export default function LogoPreviewPage() {
         {/* Section: Concept B — Wordmark */}
         <section className="space-y-6">
           <div className="border-b border-white/10 pb-4">
-            <p className="text-yellow-500/60 text-xs tracking-[0.2em] uppercase">Concept B</p>
+            <p className="text-[#c9a96e] text-xs tracking-[0.2em] uppercase">Concept B</p>
             <h2 className="text-2xl text-white mt-1">Pure Serif Wordmark · Cartier-style</h2>
             <p className="text-white/50 text-sm mt-2">For website headers, email signatures, business cards, ads.</p>
           </div>
@@ -56,7 +56,7 @@ export default function LogoPreviewPage() {
         {/* Section: Concept A — Monogram */}
         <section className="space-y-6">
           <div className="border-b border-white/10 pb-4">
-            <p className="text-yellow-500/60 text-xs tracking-[0.2em] uppercase">Concept A</p>
+            <p className="text-[#c9a96e] text-xs tracking-[0.2em] uppercase">Concept A</p>
             <h2 className="text-2xl text-white mt-1">IM Monogram · Saint Laurent / Chanel-style</h2>
             <p className="text-white/50 text-sm mt-2">For favicon, social avatars, app icon, watermarks, business card backside.</p>
           </div>
@@ -97,7 +97,7 @@ export default function LogoPreviewPage() {
         {/* Section: Combined lockup */}
         <section className="space-y-6">
           <div className="border-b border-white/10 pb-4">
-            <p className="text-yellow-500/60 text-xs tracking-[0.2em] uppercase">Combined Lockup</p>
+            <p className="text-[#c9a96e] text-xs tracking-[0.2em] uppercase">Combined Lockup</p>
             <h2 className="text-2xl text-white mt-1">Monogram + Wordmark Together</h2>
             <p className="text-white/50 text-sm mt-2">For full-page hero sections, packaging, formal documents.</p>
           </div>

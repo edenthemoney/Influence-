@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { X, Phone, ChevronRight, Lock, MessageCircle } from 'lucide-react';
+import { X, Phone, ChevronRight, Lock } from 'lucide-react';
 
 const gold = '#c9a96e';
 
 export default function LeadCapturePopup() {
   const [visible, setVisible] = useState(false);
-  const [stickyVisible, setStickyVisible] = useState(false);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -15,30 +14,40 @@ export default function LeadCapturePopup() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const dismissed = sessionStorage.getItem('lead_popup_dismissed');
-    if (dismissed) {
-      // Even if dismissed, show sticky bar after 3s unless they already submitted
-      const alreadySubmitted = sessionStorage.getItem('lead_popup_submitted');
-      if (!alreadySubmitted) {
-        const stickyTimer = setTimeout(() => setStickyVisible(true), 3000);
-        return () => clearTimeout(stickyTimer);
-      }
+    if (
+      sessionStorage.getItem('lead_popup_seen') ||
+      sessionStorage.getItem('lead_popup_dismissed') ||
+      sessionStorage.getItem('lead_popup_submitted')
+    ) {
       return;
     }
-    // Show popup after 4 seconds on the page
-    const timer = setTimeout(() => setVisible(true), 4000);
-    return () => clearTimeout(timer);
+    let shown = false;
+    const show = () => {
+      if (shown) return;
+      shown = true;
+      sessionStorage.setItem('lead_popup_seen', '1');
+      setVisible(true);
+    };
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const depth = (window.scrollY + window.innerHeight) / Math.max(doc.scrollHeight, 1);
+      if (window.scrollY >= 48 && depth >= 0.45) show();
+    };
+    const onLeave = (event: MouseEvent) => {
+      if (event.clientY <= 8) show();
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('mouseout', onLeave);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('mouseout', onLeave);
+    };
   }, []);
 
   const dismiss = () => {
     setVisible(false);
+    sessionStorage.setItem('lead_popup_seen', '1');
     sessionStorage.setItem('lead_popup_dismissed', '1');
-    // Show sticky bar after 2s as fallback
-    setTimeout(() => setStickyVisible(true), 2000);
-  };
-
-  const dismissSticky = () => {
-    setStickyVisible(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -59,7 +68,6 @@ export default function LeadCapturePopup() {
       sessionStorage.setItem('lead_popup_dismissed', '1');
     } catch {}
     setSubmitted(true);
-    setStickyVisible(false);
     setLoading(false);
     setTimeout(() => {
       setVisible(false);
@@ -78,12 +86,12 @@ export default function LeadCapturePopup() {
 
             {!submitted ? (
               <>
-                <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-3" style={{ color: gold }}>Exclusive Access</p>
+                <p className="text-[13px] font-bold tracking-[0.22em] uppercase mb-3" style={{ color: gold }}>Booking</p>
                 <h2 className="font-display font-bold italic text-white text-2xl leading-tight mb-2">
-                  Book Miami's Top Models
+                  Get a quote for your event or campaign
                 </h2>
-                <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                  Drop your number and we'll reach out with availability, pricing, and first access to new talent.
+                <p className="text-white/85 text-[16px] mb-6 leading-relaxed">
+                  Leave your number. We reply with availability and pricing for venues, brands, and creators.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-3">
@@ -120,8 +128,8 @@ export default function LeadCapturePopup() {
                 </form>
 
                 <div className="flex items-center gap-2 mt-4">
-                  <Lock className="h-3 w-3 text-white/20" />
-                  <p className="text-white/20 text-[10px]">No spam. We only reach out about bookings & availability.</p>
+                  <Lock className="h-3.5 w-3.5 text-white/80" />
+                  <p className="text-white/80 text-[13px]">We only write about bookings.</p>
                 </div>
               </>
             ) : (
@@ -137,38 +145,6 @@ export default function LeadCapturePopup() {
         </div>
       )}
 
-      {/* Sticky bottom bar — shows after popup is dismissed */}
-      {stickyVisible && !visible && (
-        <div className="fixed bottom-0 left-0 right-0 z-[9998] border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl px-4 py-3 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-w-0">
-            <MessageCircle className="h-4 w-4 flex-shrink-0" style={{ color: gold }} />
-            <p className="text-white/70 text-xs truncate">Get pricing & availability — drop your number</p>
-          </div>
-          <div className="flex items-center gap-2 flex-shrink-0">
-            <form onSubmit={handleSubmit} className="flex items-center gap-2">
-              <input
-                type="tel"
-                placeholder="Your phone"
-                value={phone}
-                onChange={e => setPhone(e.target.value)}
-                required
-                className="w-32 sm:w-40 bg-white/[0.06] border border-white/15 px-3 py-2 text-white text-xs placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
-              />
-              <button
-                type="submit"
-                disabled={loading || !phone}
-                className="px-4 py-2 text-[10px] font-bold tracking-widest uppercase transition-all hover:opacity-90 disabled:opacity-40 flex-shrink-0"
-                style={{ backgroundColor: gold, color: '#000' }}
-              >
-                {loading ? '...' : 'Go'}
-              </button>
-            </form>
-            <button onClick={dismissSticky} className="text-white/20 hover:text-white/60 transition-colors ml-1">
-              <X className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      )}
     </>
   );
 }

@@ -3,10 +3,10 @@ import SimpleHeadcountBooking from '../components/SimpleHeadcountBooking';
 
 export const metadata = {
   title: 'Hire Models for Music Video | Miami Music Video Girls — Influence Agency',
-  description: 'Hire models for music video shoots in Miami. Book 1 girl, 2 girls, or 3 girls for your video. Same-week availability. Verified talent with major artist credits. From $500.',
+  description: 'Hire models for music video shoots in Miami. Book 1 girl, 2 girls, or 3 girls for your video.  Verified talent with major artist credits. From $500.',
   openGraph: {
     title: 'Hire Models for Music Video | Miami Music Video Girls',
-    description: 'Hire verified models for music video shoots in Miami. Same-week availability. From $500.',
+    description: 'Hire verified models for music video shoots in Miami.  From $500.',
     url: 'https://influencecreators.marketing/music-video-booking',
   },
 };
@@ -15,9 +15,9 @@ export default function MusicVideoBookingPage() {
   return (
     <PersonaLanding
       title="Book Music Video Talent in Miami"
-      description="Book 1 girl, 2 girls, or 3 girls for your music video. Same-week availability in Miami. Verified talent with major artist credits. From $500."
-      tagline="Miami · Same-Week Availability"
-      headline="Book Girls for\nYour Music Video."
+      description="Book 1 girl, 2 girls, or 3 girls for your music video. In Miami. Verified talent with major artist credits. From $500."
+      tagline="Music video talent in Miami"
+      headline="Book Models for\nYour Music Video."
       subheadline="Verified talent for your video — from solo features to full squads. No casting headaches. No flakey DMs. Just professional creators on set, on time."
       heroImage="/images/Shay/shay-1.jpg"
       heroImageAlt="Music video talent in Miami"
@@ -35,7 +35,7 @@ export default function MusicVideoBookingPage() {
         'Verified talent with major artist credits',
         '4-hour or full-day booking windows',
         'Styled & camera-ready on arrival',
-        'Same-week availability in South Florida',
+        'In South Florida',
       ]}
       packages={[
         {

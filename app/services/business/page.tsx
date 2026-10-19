@@ -127,9 +127,9 @@ export default function BusinessContentPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { num: '01', title: 'Pick a Date', desc: 'Choose when you want the model to come. Same-week booking available for most sessions.' },
+              { num: '01', title: 'Pick a Date', desc: 'Choose when you want the ambassador to come to the business.' },
               { num: '02', title: 'She Shows Up Ready', desc: 'Professional model arrives at your business — styled, on-time, and briefed on your brand. She creates reels, stories, and photos on-site.' },
-              { num: '03', title: 'Content Delivered', desc: 'You receive all the content within 24 hours. Ready to post on Instagram, TikTok, Facebook — everywhere.' },
+              { num: '03', title: 'Content Delivered', desc: 'You receive the files to post on Instagram, TikTok, and Facebook.' },
             ].map(({ num, title, desc }) => (
               <div key={num} className="border border-white/[0.06] p-8">
                 <p className="font-display font-bold italic text-4xl mb-4" style={{ color: gold }}>{num}</p>
@@ -171,7 +171,7 @@ export default function BusinessContentPage() {
             </div>
           ))}
         </div>
-        <p className="text-white/20 text-xs mt-6 max-w-xl">All business content visits serve the South Florida / Greater Miami area. Same-week availability.</p>
+        <p className="text-white/20 text-xs mt-6 max-w-xl">All business content visits serve the South Florida / Greater Miami area. </p>
       </section>
 
       {/* Who It's For */}
@@ -205,9 +205,9 @@ export default function BusinessContentPage() {
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { icon: BarChart3, title: 'Higher Engagement Rate', desc: 'Content with attractive creators gets 3–5x more engagement than standard business posts. More engagement = more algorithmic reach.' },
+              { icon: BarChart3, title: 'Higher Engagement Rate', desc: 'Posts with a creator in them tend to get more saves and shares than a plain product photo. Those signals are what the apps use to show the post to more people.' },
               { icon: TrendingUp, title: 'Boosted Discovery', desc: 'When your reels get saves and shares, platforms push them to the Explore page and For You feed — reaching thousands of potential customers.' },
-              { icon: Repeat, title: 'Content Library', desc: 'One 2-hour session produces 3–5+ pieces of content. That\'s weeks of posting material from a single visit.' },
+              { icon: Repeat, title: 'Content Library', desc: 'One visit can cover several posts, so you leave with material for more than a single day on the feed.' },
               { icon: Sparkles, title: 'Professional Quality', desc: 'No more phone photos. Our creators know angles, lighting, and how to make your business look incredible on camera.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="flex gap-5 p-6 border border-white/[0.04] bg-white/[0.01]">
@@ -262,7 +262,7 @@ export default function BusinessContentPage() {
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
               <span>✓ South Florida</span>
-              <span>✓ Same-week booking</span>
+              <span></span>
               <span>✓ Custom packages</span>
             </div>
           </div>

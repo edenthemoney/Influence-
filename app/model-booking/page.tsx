@@ -6,6 +6,7 @@ import Link from 'next/link';
 import MobileNav from '../components/MobileNav';
 import posthog from 'posthog-js';
 import { Camera, Sparkles, CalendarDays, RefreshCcw, Users, ChevronRight, ChevronLeft, Check, MapPin, TrendingUp, Zap, Play, ArrowUpRight, Headphones, Music, Phone, Lock, ShieldCheck, Film, Wine } from 'lucide-react';
+import { showBadge } from '@/data/partners';
 
 // ── Package Data ─────────────────────────────────────────────────────────────
 
@@ -326,7 +327,7 @@ const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: str
   reaction:      { title: 'Premium Music Reactions',                desc: 'Celebrity-connected creators react to your songs on camera — first-listen & livestreams.',           from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Headphones, category: 'remote-content' },
   shoot:         { title: 'Photo Shoots',                   desc: 'Creators for brand shoots, fashion editorials & lookbooks.',                     from: '$300',      tag: 'In-Person', hasMonthly: true,  Icon: Camera, category: 'in-person' },
   event:         { title: 'Events & Hosting',               desc: 'Creators for brand activations, parties & grand openings.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Sparkles, category: 'in-person' },
-  bottle:        { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Wine, category: 'in-person' },
+  bottle:        { title: 'VIP & bottle service ambassadors', desc: 'Hosts for clubs, lounges, and bottle service.',                         from: '$400/girl', tag: 'In-Person', hasMonthly: true,  Icon: Wine, category: 'in-person' },
   storyreposts:  { title: 'Premium Story Reposts',                 desc: 'Celebrity-connected creators post your content to their Instagram Stories with swipe-up links.',      from: '$150',       tag: 'Remote',    hasMonthly: true,  Icon: RefreshCcw, category: 'story-reposts' },
   collabreposts: { title: 'Premium Collab Posts',                  desc: 'Celebrity-connected creators co-author posts with your brand — appears on both feeds for dual reach.', from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Users, category: 'collab-posts' },
 };
@@ -344,6 +345,19 @@ const MONTHLY_SAVINGS_PCT: Partial<Record<ServiceType, number>> = {
   collabreposts: 25,
 };
 
+const SERVICE_HEADINGS: Record<ServiceType, { eyebrow: string; title: string }> = {
+  reaction:      { eyebrow: 'Music Reactions', title: 'Get Your Music Heard' },
+  ugc:           { eyebrow: 'UGC & Reels', title: 'Get Content Created' },
+  business:      { eyebrow: 'Brand Ambassadors · Business Content', title: 'Models at Your Business' },
+  commercial:    { eyebrow: 'Commercials & Speaking Roles', title: 'Book Your Commercial' },
+  event:         { eyebrow: 'Events & Hosting', title: 'Book Event Creators' },
+  bottle:        { eyebrow: 'VIP & bottle service ambassadors', title: 'Book VIP & bottle service ambassadors' },
+  shoot:         { eyebrow: 'Photo & brand shoots', title: 'Book Your Shoot' },
+  musicvideo:    { eyebrow: 'Music Videos', title: 'Book Models for Your Music Video' },
+  storyreposts:  { eyebrow: 'Story Reposts', title: 'Book Story Reposts' },
+  collabreposts: { eyebrow: 'Collab Posts', title: 'Book Collab Posts' },
+};
+
 const SERVICE_GROUPS: { label: string; services: ServiceType[]; category: ServiceCategory }[] = [
   { label: 'In-Person Services', services: ['business', 'commercial', 'musicvideo', 'shoot', 'event', 'bottle'], category: 'in-person' },
   { label: 'Remote Content Creation', services: ['ugc', 'reaction'], category: 'remote-content' },
@@ -353,7 +367,7 @@ const SERVICE_GROUPS: { label: string; services: ServiceType[]; category: Servic
 
 // ── Page ─────────────────────────────────────────────────────────────────────
 
-function ModelBookingContent() {
+export function ModelBookingContent() {
   const searchParams = useSearchParams();
   const [step,        setStep]        = useState(0);
   const [serviceType, setServiceType] = useState<ServiceType | null>(null);
@@ -614,26 +628,10 @@ function ModelBookingContent() {
       {/* Header + Progress */}
       <div className="pt-16 px-6 md:px-14 py-3 border-b border-white/[0.06]">
         <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-2 flex items-center gap-2" style={{ color: gold }}>
-          {serviceType === 'reaction' ? (
-            <><Headphones className="h-3 w-3" /> Music Reactions</>
-          ) : serviceType === 'ugc' ? (
-            <><Play className="h-3 w-3" /> UGC & Reels</>
-          ) : serviceType === 'business' ? (
-            <><TrendingUp className="h-3 w-3" /> Brand Ambassadors · Business Content</>
-          ) : serviceType === 'commercial' ? (
-            <><Film className="h-3 w-3" /> Commercials & Speaking Roles</>
-          ) : serviceType === 'event' ? (
-            <><Sparkles className="h-3 w-3" /> Events & Hosting</>
-          ) : serviceType === 'bottle' ? (
-            <><Wine className="h-3 w-3" /> Bottle Girls / VIP Hostesses</>
-          ) : serviceType === 'shoot' ? (
-            <><Camera className="h-3 w-3" /> Shoots & Videos</>
-          ) : (
-            <><MapPin className="h-3 w-3" /> Influence Marketplace</>
-          )}
+          {serviceType ? SERVICE_HEADINGS[serviceType].eyebrow : 'Influence Marketplace'}
         </p>
         <h1 className="font-display font-light italic text-white mb-2" style={{ fontSize: 'clamp(24px, 4vw, 48px)' }}>
-          {selectedModel ? `Book ${selectedModel}` : serviceType === 'reaction' ? 'Get Your Music Heard' : serviceType === 'ugc' ? 'Get Content Created' : serviceType === 'business' ? 'Models at Your Business' : serviceType === 'commercial' ? 'Book Your Commercial' : serviceType === 'event' ? 'Book Event Creators' : serviceType === 'bottle' ? 'Book Bottle Girls / VIP Hostesses' : serviceType === 'shoot' ? 'Book Your Shoot' : 'What Do You Need?'}
+          {selectedModel ? `Book ${selectedModel}` : serviceType ? SERVICE_HEADINGS[serviceType].title : 'What Do You Need?'}
         </h1>
         {selectedModel && (
           <div className="flex items-center gap-3 mb-3">
@@ -911,19 +909,24 @@ function ModelBookingContent() {
             <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">Where do we send your confirmation?</h2>
             <p className="text-white/35 text-sm mb-5">Name, phone &amp; email — then straight to secure checkout.</p>
 
-            {/* Social proof strip */}
+            {[
+              { stat: '500+', label: 'Clients Booked' },
+              { stat: '★ 5.0', label: 'Average Rating' },
+              { stat: '48hr', label: 'Avg. Response' },
+            ].filter(({ stat, label }) => showBadge(stat, label)).length > 0 && (
             <div className="grid grid-cols-3 gap-3 mb-6">
               {[
                 { stat: '500+', label: 'Clients Booked' },
                 { stat: '★ 5.0', label: 'Average Rating' },
                 { stat: '48hr', label: 'Avg. Response' },
-              ].map(({ stat, label }) => (
+              ].filter(({ stat, label }) => showBadge(stat, label)).map(({ stat, label }) => (
                 <div key={label} className="border border-white/[0.06] p-3 text-center">
                   <p className="font-bold text-sm mb-0.5" style={{ color: gold }}>{stat}</p>
-                  <p className="text-white/30 text-[10px] leading-tight">{label}</p>
+                  <p className="text-white/85 text-[13px] leading-tight">{label}</p>
                 </div>
               ))}
             </div>
+            )}
 
             <div className="flex items-center gap-2 mb-6 px-3 py-2 border border-green-500/15 bg-green-500/[0.03]">
               <Check className="h-3.5 w-3.5 text-green-400/70 flex-shrink-0" />
@@ -1044,12 +1047,12 @@ function ModelBookingContent() {
                         <option value="Shay">Shay (25K · Kodak · Lil Baby · DJ Khaled)</option>
                         <option value="Kady">Kady (11K · Tekashi · Lil Pump · Love &amp; Hip Hop)</option>
                         <option value="Peach">Peach (23K · Buju Banton · Vybz Kartel · Peacock)</option>
-                        <option value="Breanna Banks">Breanna Banks (45K · Celeb Features)</option>
+                        <option value="Breanna Banks">Breanna Banks (Music videos)</option>
                         <option value="Scarlet">Scarlet (12K · LA Fashion Week · Bossman Dlow)</option>
                         <option value="Grace Jenn">Grace Jenn (20K · Coulda Been Love S2 · Druski)</option>
                       </optgroup>
                       <optgroup label="UGC &amp; Content Creators">
-                        <option value="Kiki">Kiki (15K · 7-8M Viral Views · Skits)</option>
+                        <option value="Kiki">Kiki (Skits)</option>
                         <option value="Malibu">Malibu (35K · Skits &amp; Brand Content)</option>
                         <option value="Nysia">Nysia (60K · Beauty &amp; Lifestyle)</option>
                         <option value="Jas Healer">Jas Healer (16K · YouTuber)</option>
@@ -1071,8 +1074,8 @@ function ModelBookingContent() {
                         <option value="Maria">Maria (13.9K · Lifestyle &amp; Fashion)</option>
                         <option value="Genesis Bravo">Genesis Bravo (13.9K · Fashion)</option>
                         <option value="Aliyana Vasquez">Aliyana Vasquez (5K · Miami Swim Week · Runway)</option>
-                        <option value="Gabriela">Gabriela (Savage X Fenty · Dez Beauty)</option>
-                        <option value="Seahra Raquel">Seahra Raquel (15K · Florida)</option>
+                        <option value="Gabriela">Gabriela (Fashion and beauty)</option>
+                        <option value="Seahra Raquel">Seahra Raquel (Florida)</option>
                         <option value="Krystle">Krystle (10K · Miami Fashion)</option>
                         <option value="Kendra">Kendra (10K · Florida)</option>
                       </optgroup>

@@ -3,6 +3,9 @@ import Image from 'next/image';
 import MobileNav from '../components/MobileNav';
 import type { Metadata } from 'next';
 import { Target, Zap, Users, TrendingUp, Award, ChevronRight, Wine } from 'lucide-react';
+import { hideCopy } from '@/data/partners';
+
+const edenPortrait = '';
 
 const gold = '#c9a96e';
 
@@ -151,7 +154,7 @@ export default function AboutPage() {
             <div className="p-8 md:p-14 flex flex-col justify-center">
               <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-3" style={{ color: gold }}>Co-Founder &amp; Creative Director</p>
               <h3 className="font-display font-bold italic text-white mb-2" style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>Deseray Marie</h3>
-              <p className="text-white/30 text-xs tracking-widest uppercase mb-6">@itsdezmarie &middot; 62K Followers</p>
+              <p className="text-white/85 text-[13px] tracking-widest uppercase mb-6">@itsdezmarie</p>
               <p className="text-white/60 text-[15px] leading-relaxed mb-6">
                 Deseray Marie is a professional model, actress, and content creator based in South Florida with a career spanning fashion, film, music, and brand partnerships at the highest level.
               </p>
@@ -162,7 +165,7 @@ export default function AboutPage() {
                   'Celebrity work with Kai Cenat, AMP, Mike Tyson, Tyra Banks & Keke Palmer',
                   'TV: Love & Hip Hop · Films: Sacrifice, Spanish Fly',
                   '20+ magazine features · 10+ fashion show walks across 4 countries',
-                ].map(item => (
+                ].filter((item) => !hideCopy(item)).map(item => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: gold }} />
                     <p className="text-white/45 text-sm leading-relaxed">{item}</p>
@@ -182,7 +185,7 @@ export default function AboutPage() {
               <h3 className="font-display font-bold italic text-white mb-2" style={{ fontSize: 'clamp(28px, 4vw, 48px)' }}>Eden Roy</h3>
               <p className="text-white/30 text-xs tracking-widest uppercase mb-6">Agency Owner &middot; Entrepreneur</p>
               <p className="text-white/60 text-[15px] leading-relaxed mb-6">
-                Eden Roy is a businessman and entrepreneur with a background in Business and Technology from Florida Atlantic University. He specializes in SEO marketing, digital strategy, and building systems that drive measurable growth for artists and brands.
+                A businessman and entrepreneur with a background in Business and Technology from Florida Atlantic University. He specializes in SEO marketing, digital strategy, and building systems that drive measurable growth for artists and brands.
               </p>
               <div className="space-y-2">
                 {[
@@ -199,14 +202,17 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-            <div className="relative h-[50vh] md:h-auto overflow-hidden order-1 md:order-2 bg-[#0d0d0d] flex items-center justify-center">
-              <div className="text-center p-14">
-                <div className="w-28 h-28 mx-auto mb-6 border border-white/[0.08] flex items-center justify-center" style={{ backgroundColor: '#0d0d0d' }}>
-                  <span className="font-display font-bold italic text-white" style={{ fontSize: '48px' }}>E</span>
+            <div className="relative h-[50vh] md:h-auto min-h-[420px] overflow-hidden order-1 md:order-2 bg-[#080808] flex items-center justify-center border-l border-[#c9a96e]/40">
+              {edenPortrait ? (
+                <Image src={edenPortrait} alt="Eden Roy, Founder and CEO" fill className="object-cover object-top" />
+              ) : (
+                <div className="text-center px-10">
+                  <div className="mx-auto mb-6 flex h-36 w-36 items-center justify-center border border-[#c9a96e] bg-[#c9a96e]">
+                    <span className="font-display text-7xl font-bold italic leading-none text-black">E</span>
+                  </div>
+                  <p className="mt-2 text-[13px] font-semibold uppercase tracking-[0.22em]" style={{ color: gold }}>Founder &amp; CEO</p>
                 </div>
-                <p className="font-display font-bold italic text-white text-2xl mb-1">Eden Roy</p>
-                <p className="text-white/30 text-xs tracking-widest uppercase">Founder &amp; CEO</p>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -220,17 +226,17 @@ export default function AboutPage() {
             What We Do
           </h2>
           <p className="text-white/55 text-[15px] leading-relaxed mb-12 max-w-2xl">
-            Influence is a full-service creator marketing marketplace and creator management company. We connect brands with verified influencers across TikTok, Instagram, and YouTube — and manage everything from content creation to campaign analytics.
+            We match venues and brands with Brand Ambassadors and influencers for events, campaigns, and content.
           </p>
 
           <div className="grid md:grid-cols-2 gap-5">
             {[
               { Icon: TrendingUp, title: 'Social Media Growth', desc: 'Organic follower growth, engagement, and reach through strategic influencer partnerships and viral UGC campaigns.', href: '/start?service=ugc' },
               { Icon: Users, title: 'Brand Marketing', desc: 'Product launches, brand awareness, and conversion-ready campaigns with niche-aligned influencers who move product.', href: '/start?service=business' },
-              { Icon: Zap, title: 'Music Promotion', desc: 'Turn tracks into trending audio. Our influencers create viral content that puts your music in front of millions.', href: '/start?service=reaction' },
+              { Icon: Zap, title: 'Music Promotion', desc: 'Creators film a reaction or post your song on TikTok and Instagram.', href: '/start?service=reaction' },
               { Icon: Award, title: 'Event Hosting & Appearances', desc: 'Book professional creators for parties, club nights, brand activations, and music video shoots across South Florida.', href: '/start?service=event' },
               { Icon: Wine, title: 'Bottle Girls & VIP Hostesses', desc: 'Professional VIP hostesses and brand ambassadors for nightclubs, lounges, and premium venues. $100/girl/hr — creators earn $50/hr.', href: '/start?service=bottle' },
-              { Icon: Target, title: 'Business Content', desc: 'We send professional creators to your business to create scroll-stopping reels and social content on-site. Perfect for restaurants, salons, gyms, and retail.', href: '/start?service=business' },
+              { Icon: Target, title: 'Business Content', desc: 'An ambassador comes to the restaurant, salon, gym, or store and films content you can post.', href: '/start?service=business' },
             ].map(({ Icon, title, desc, href }) => (
               <Link key={title} href={href} className="p-6 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.02] hover:border-[#c9a96e]/20 transition-all group">
                 <div className="flex items-center gap-3 mb-3">
@@ -319,9 +325,7 @@ export default function AboutPage() {
             {[
               { title: 'Minority & Women-Owned', desc: 'Black, Latino, and women-owned marketplace. We proudly represent underrepresented founders building in South Florida.' },
               { title: 'Diverse Creators, All Backgrounds', desc: 'Our network includes creators of all ethnicities, body types, and styles. Representation matters in every campaign we run.' },
-              { title: 'Celebrity-Connected Creators', desc: 'Our creators have worked alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine, Bossman Dlow, Kai Cenat, Bryson Tiller, Akon & more.' },
-              { title: 'Verified Influencers', desc: 'Authenticated metrics, real engagement, proven track records — no fake followers, no bots.' },
-              { title: 'Fast Turnaround', desc: 'Most content delivered within 48 hours. Full campaigns complete in 7–14 days.' },
+              { title: 'Booked for the job', desc: 'We match Brand Ambassadors and influencers to the venue, brand, or campaign.' },
               { title: 'Transparent Pricing', desc: 'No hidden fees. Clear packages with detailed breakdowns at every tier. Starting at $300.' },
             ].map(({ title, desc }) => (
               <div key={title} className="flex items-start gap-4">
@@ -341,11 +345,7 @@ export default function AboutPage() {
       {/* ── CTA ── */}
       <section className="border-t border-white/[0.06] bg-[#060606] py-20 md:py-28 px-6 md:px-14">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 border border-green-500/20 bg-green-500/5">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-green-400/80 text-[11px] font-semibold">Same-week availability · Book in 2 min</span>
-          </div>
-          <h2 className="font-display font-bold italic text-white mb-4" style={{ fontSize: 'clamp(36px, 6vw, 64px)' }}>Ready to Book?</h2>
+          <h2 className="font-display font-bold italic text-white mb-4" style={{ fontSize: 'clamp(36px, 6vw, 64px)' }}>Ready to book?</h2>
           <p className="text-white/50 text-lg mb-10 max-w-md mx-auto">
             Pick a service, choose your package, and checkout in under 2 minutes. Starting at $300.
           </p>
@@ -358,9 +358,8 @@ export default function AboutPage() {
             </Link>
           </div>
           <div className="flex items-center justify-center gap-6 mt-6 text-white/30 text-xs">
-            <span>✓ Secure Stripe checkout</span>
-            <span>✓ Content in 48hrs</span>
-            <span>✓ From $300</span>
+            <span>Stripe checkout</span>
+            <span>From $300</span>
           </div>
         </div>
       </section>

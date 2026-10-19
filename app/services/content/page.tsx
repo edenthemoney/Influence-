@@ -3,6 +3,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, Phone, Play, Headphones, TrendingUp, Share2, BarChart3, Globe, Zap, Instagram, Youtube } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
+import { showBadge } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -206,10 +207,10 @@ export default function ContentPage() {
         <div className="max-w-4xl">
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Why It Works</p>
           <h2 className="font-display font-bold italic text-white leading-[0.9] mb-8" style={{ fontSize: 'clamp(32px, 5vw, 64px)' }}>
-            Beautiful creators +<br />your brand = virality.
+            Reels and photos<br />for your brand.
           </h2>
-          <p className="text-white/45 text-base max-w-xl mb-14 leading-relaxed">
-            Every platform&apos;s algorithm rewards content that gets engagement. Attractive models in your content naturally get more likes, shares, saves, and comments — which means more reach, more followers, and more customers.
+          <p className="text-white/85 text-[16px] max-w-xl mb-14 leading-relaxed">
+            Creators film reels, TikToks, and photos for your brand. You get the files to post.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -217,7 +218,7 @@ export default function ContentPage() {
               { icon: BarChart3, stat: '3–5x', label: 'More Engagement', desc: 'Content with professional creators consistently outperforms standard posts across every platform.' },
               { icon: Globe, stat: '10x', label: 'More Reach', desc: 'Higher engagement signals tell the algorithm to push your content to Explore and For You pages.' },
               { icon: Share2, stat: '48hrs', label: 'Delivery Time', desc: 'Order today, have professional content in your inbox within 48 hours. Ready to post immediately.' },
-            ].map(({ icon: Icon, stat, label, desc }) => (
+            ].filter(({ stat, label }) => showBadge(stat, label)).map(({ icon: Icon, stat, label, desc }) => (
               <div key={label} className="border border-white/[0.06] p-7 text-center">
                 <Icon className="h-6 w-6 mx-auto mb-4" style={{ color: gold }} />
                 <p className="font-display font-bold italic text-3xl text-white mb-1">{stat}</p>
@@ -233,7 +234,7 @@ export default function ContentPage() {
       <section className="py-20 md:py-28 px-8 md:px-16 border-t border-white/[0.06]">
         <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Who It&apos;s For</p>
         <h2 className="font-display font-bold italic text-white leading-[0.9] mb-14" style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}>
-          Artists. Brands. Labels.<br />Anyone who wants to win online.
+          Artists, brands, and labels.
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl">
           {[

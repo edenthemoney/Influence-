@@ -111,7 +111,7 @@ export default function MusicVideoModels() {
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Book a Music Video Model</h2>
-          <p className="text-white/40 mb-6">Same-week availability. Professional talent. Starting at $100.</p>
+          <p className="text-white/40 mb-6"> Professional talent. Starting at $100.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/marketplace" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               Browse Models

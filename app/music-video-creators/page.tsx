@@ -31,11 +31,11 @@ export default function Page() {
             {"Music Video Creators"}
           </span>
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          {"Music Video"}
+        <h1 className="font-display font-bold italic text-4xl md:text-6xl mb-6 leading-tight">
+          Book Models for
           <br />
           <span style={{ color: "#c9a96e" }}>
-            {"Models for Hire"}
+            Your Music Video
           </span>
         </h1>
         <p className="text-white/50 text-lg mb-12 max-w-2xl">
@@ -306,7 +306,7 @@ export default function Page() {
             {"Book a Music Video Model"}
           </h2>
           <p className="text-white/40 mb-6">
-            {"Same-week availability. Professional creators. Starting at $100."}
+            {" Professional creators. Starting at $100."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: "#c9a96e", color: "#000" }} href="/marketplace">

@@ -19,8 +19,8 @@ export default function FloatingBooking() {
 
   return (
     <>
-      {/* ═══ MOBILE: Fixed bottom buttons ═══ */}
-      {scrolled && !open && (
+      {/* The bottom bar covered the page on iPhone. Booking stays in the page. */}
+      {false && scrolled && !open && (
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-[60] safe-area-bottom">
           <div className="flex gap-0">
             <a

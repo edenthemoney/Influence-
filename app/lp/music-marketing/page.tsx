@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Music Marketing Marketplace — Cast & Promote Fast | Influence',
-  description: 'Book verified creators for your music video and get creators to promote your song on TikTok & Instagram.',
+  title: 'Music Marketing Marketplace | Influence',
+  description: 'Book creators for your music video and to post the song on TikTok and Instagram.',
 };
 
 export default function LandingPage_music_marketing_agency() {
@@ -13,10 +13,10 @@ export default function LandingPage_music_marketing_agency() {
       <section className="relative px-6 pt-20 pb-16 text-center max-w-4xl mx-auto">
         <p className="text-[11px] tracking-[0.3em] uppercase text-[#c9a96e] mb-4">Influence</p>
         <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
-          Music Marketing Marketplace — Cast & Promote Fast
+          Music Marketing Marketplace
         </h1>
         <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-          Book verified creators for your music video and get creators to promote your song on TikTok & Instagram.
+          Book creators for your music video and to post the song on TikTok and Instagram.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
@@ -66,20 +66,10 @@ export default function LandingPage_music_marketing_agency() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="border-t border-white/[0.06] py-16 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xl text-white/80 italic leading-relaxed mb-6">
-            &ldquo;Booked a full cast for my music video in less than 24 hours. Professional, on time, and the content was 🔥&rdquo;
-          </p>
-          <p className="text-[#c9a96e] text-sm font-bold tracking-widest uppercase">Independent Artist, Miami FL</p>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="bg-[#0a0a0a] border-t border-white/[0.06] py-20 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Get Started?</h2>
-        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. South Florida&apos;s top creator network.</p>
+        <h2 className="text-3xl md:text-4xl font-black mb-4">Book a creator</h2>
+        <p className="text-white/50 mb-10 max-w-xl mx-auto">Tell us the date and what you need. We match Brand Ambassadors and influencers in South Florida.</p>
         <Link
           href="/music-video-booking"
           className="inline-block px-10 py-5 text-black font-bold text-sm tracking-widest uppercase"

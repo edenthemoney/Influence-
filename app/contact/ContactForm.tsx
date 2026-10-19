@@ -157,7 +157,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={submitting || !name.trim() || !phone.trim()}
-          className="w-full py-4 text-[12px] font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:opacity-50"
+          className="w-full py-4 text-[13px] font-bold tracking-widest uppercase flex items-center justify-center gap-2 transition-all hover:opacity-90 disabled:cursor-not-allowed"
           style={{ backgroundColor: gold, color: '#000' }}
         >
           {submitting ? 'Sending...' : (<>Send Message <ChevronRight className="h-4 w-4" /></>)}

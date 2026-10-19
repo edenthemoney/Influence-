@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check, Users, Star, MapPin, Clock, Sparkles } from 'lucide-react';
+import { hideCopy } from '@/data/partners';
 
 export const metadata: Metadata = {
   title: 'Event Creators for Hire in Miami | Promo Girls & Party Creators',
@@ -26,7 +27,7 @@ export default function EventModelsMiami() {
           Event Creators &<br />Promo Girls in <span style={{ color: gold }}>Miami</span>
         </h1>
         <p className="text-white/50 text-lg mb-12 max-w-2xl">
-          Book professional event creators and promotional girls for your club night, brand activation, private party, grand opening, or VIP event. Flat rate per girl — more girls, better rate. Same-week availability across South Florida.
+          Book Brand Ambassadors for your club night, brand activation, private party, grand opening, or VIP event. A flat rate per ambassador. Larger bookings, a better rate. Across South Florida.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mb-16">
@@ -40,11 +41,13 @@ export default function EventModelsMiami() {
             <h3 className="font-bold text-white mb-1">South Florida</h3>
             <p className="text-white/40 text-sm">Miami, Fort Lauderdale, Boca Raton, West Palm Beach & more</p>
           </div>
+          {!hideCopy('Same-Week Booking') && !hideCopy('Last-minute events? We can book within 48 hours') && (
           <div className="border border-white/[0.06] p-6">
             <Clock className="w-5 h-5 mb-3" style={{ color: gold }} />
             <h3 className="font-bold text-white mb-1">Same-Week Booking</h3>
-            <p className="text-white/40 text-sm">Last-minute events? We can book within 48 hours</p>
+            <p className="text-white/85 text-[16px]">Last-minute events? We can book within 48 hours</p>
           </div>
+          )}
         </div>
 
         <h2 className="text-2xl font-bold mb-6">What We Cover</h2>
@@ -99,7 +102,7 @@ export default function EventModelsMiami() {
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">Serving All of South Florida</h3>
-          <p>Influence provides professional event creators, promo girls, and party creators across Miami, Miami Beach, Fort Lauderdale, Hollywood, Boca Raton, West Palm Beach, and all of South Florida. Same-week and last-minute availability for most events. All models are event-ready, styled, and professionally briefed.</p>
+          <p>Influence books Brand Ambassadors for events across Miami, Miami Beach, Fort Lauderdale, Hollywood, Boca Raton, West Palm Beach, and the rest of South Florida. They arrive styled and briefed.</p>
         </div>
       </div>
     </div>

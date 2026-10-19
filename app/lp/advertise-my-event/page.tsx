@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Advertise My Event — Book in 24 Hours | Influence',
-  description: 'Professional bottle girls, hostesses and VIP creators for clubs, private events and brand activations across South Florida.',
+  title: 'Advertise My Event | Influence',
+  description: 'Book Brand Ambassadors and hostesses for clubs, private events, and activations in South Florida.',
 };
 
 export default function LandingPage_advertise_my_event() {
@@ -13,10 +13,10 @@ export default function LandingPage_advertise_my_event() {
       <section className="relative px-6 pt-20 pb-16 text-center max-w-4xl mx-auto">
         <p className="text-[11px] tracking-[0.3em] uppercase text-[#c9a96e] mb-4">Influence</p>
         <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
-          Advertise My Event — Book in 24 Hours
+          Advertise My Event
         </h1>
         <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-          Professional bottle girls, hostesses and VIP creators for clubs, private events and brand activations across South Florida.
+          Book Brand Ambassadors and hostesses for clubs, private events, and activations in South Florida.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
@@ -41,7 +41,6 @@ export default function LandingPage_advertise_my_event() {
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Top South FL Venues</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Palm Beach to Miami</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Vetted Professionals</span>
-          <span className="text-white/40 text-[12px] tracking-widest uppercase">Book in 24 Hrs</span>
         </div>
       </section>
 
@@ -66,20 +65,10 @@ export default function LandingPage_advertise_my_event() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="border-t border-white/[0.06] py-16 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xl text-white/80 italic leading-relaxed mb-6">
-            &ldquo;Best agency I've worked with. Showed up early, looked amazing, and kept the VIP section popping all night.&rdquo;
-          </p>
-          <p className="text-[#c9a96e] text-sm font-bold tracking-widest uppercase">Event Promoter, Boca Raton FL</p>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="bg-[#0a0a0a] border-t border-white/[0.06] py-20 px-6 text-center">
-        <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Get Started?</h2>
-        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. South Florida&apos;s top creator network.</p>
+        <h2 className="text-3xl md:text-4xl font-black mb-4">Book a creator</h2>
+        <p className="text-white/50 mb-10 max-w-xl mx-auto">Tell us the date and what you need. We match Brand Ambassadors and influencers in South Florida.</p>
         <Link
           href="/quote"
           className="inline-block px-10 py-5 text-black font-bold text-sm tracking-widest uppercase"

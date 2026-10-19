@@ -86,7 +86,7 @@ export default function Page() {
           <p className="text-white/60 text-lg leading-relaxed mb-8">
             {"Miami is one of the most vibrant creator marketing markets in the country. With its unique blend of luxury lifestyle, nightlife, beach culture, and multicultural diversity, Miami offers unparalleled opportunities for brands to connect with audiences through influencer partnerships."}
           </p>
-          <h2 className="text-white font-bold text-2xl mt-12 mb-6">
+          <h2 className="font-display font-bold italic text-white text-2xl mt-12 mb-6">
             {"Why Miami Creator Marketing Works"}
           </h2>
           <p className="text-white/60 leading-relaxed mb-6">
@@ -130,7 +130,7 @@ export default function Page() {
               </span>
             </li>
           </ul>
-          <h2 className="text-white font-bold text-2xl mt-12 mb-6">
+          <h2 className="font-display font-bold italic text-white text-2xl mt-12 mb-6">
             {"Miami Venue Partnerships"}
           </h2>
           <p className="text-white/60 leading-relaxed mb-6">
@@ -138,7 +138,7 @@ export default function Page() {
           </p>
           <div className="space-y-4 mb-8">
             <div className="border border-white/[0.06] p-5">
-              <h3 className="text-white font-bold text-lg mb-1">
+              <h3 className="font-display font-bold italic text-white text-lg mb-1">
                 {"South Beach"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: "#c9a96e" }}>
@@ -149,7 +149,7 @@ export default function Page() {
               </p>
             </div>
             <div className="border border-white/[0.06] p-5">
-              <h3 className="text-white font-bold text-lg mb-1">
+              <h3 className="font-display font-bold italic text-white text-lg mb-1">
                 {"Wynwood"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: "#c9a96e" }}>
@@ -160,7 +160,7 @@ export default function Page() {
               </p>
             </div>
             <div className="border border-white/[0.06] p-5">
-              <h3 className="text-white font-bold text-lg mb-1">
+              <h3 className="font-display font-bold italic text-white text-lg mb-1">
                 {"Design District"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: "#c9a96e" }}>
@@ -171,7 +171,7 @@ export default function Page() {
               </p>
             </div>
             <div className="border border-white/[0.06] p-5">
-              <h3 className="text-white font-bold text-lg mb-1">
+              <h3 className="font-display font-bold italic text-white text-lg mb-1">
                 {"Brickell"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: "#c9a96e" }}>
@@ -182,7 +182,7 @@ export default function Page() {
               </p>
             </div>
             <div className="border border-white/[0.06] p-5">
-              <h3 className="text-white font-bold text-lg mb-1">
+              <h3 className="font-display font-bold italic text-white text-lg mb-1">
                 {"Little Havana"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: "#c9a96e" }}>
@@ -193,7 +193,7 @@ export default function Page() {
               </p>
             </div>
           </div>
-          <h2 className="text-white font-bold text-2xl mt-12 mb-6">
+          <h2 className="font-display font-bold italic text-white text-2xl mt-12 mb-6">
             {"Miami-Specific Platforms"}
           </h2>
           <p className="text-white/60 leading-relaxed mb-6">
@@ -234,7 +234,7 @@ export default function Page() {
               </span>
             </li>
           </ul>
-          <h2 className="text-white font-bold text-2xl mt-12 mb-6">
+          <h2 className="font-display font-bold italic text-white text-2xl mt-12 mb-6">
             {"Working with Miami Influencers"}
           </h2>
           <p className="text-white/60 leading-relaxed mb-6">
@@ -275,7 +275,7 @@ export default function Page() {
               </span>
             </li>
           </ul>
-          <h2 className="text-white font-bold text-2xl mt-12 mb-6">
+          <h2 className="font-display font-bold italic text-white text-2xl mt-12 mb-6">
             {"Getting Started"}
           </h2>
           <p className="text-white/60 leading-relaxed mb-8">

@@ -9,6 +9,7 @@ import AnimatedCounter from '../../components/AnimatedCounter';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
+import { publicBio, showBadge, verifiedPartners } from '@/data/partners';
 
 // SEO metadata for Deseray Marie - helps Google Knowledge Panel
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
@@ -1495,8 +1496,8 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               {influencer.verified && (
                 <BadgeCheck className="h-6 w-6 text-[#c9a96e] fill-[#c9a96e]/20" />
               )}
-              {influencer.celebrityCredits && (
-                <span className="px-3 py-1 bg-[#c9a96e]/20 border border-[#c9a96e]/40 text-[#c9a96e] text-[10px] font-bold tracking-[0.2em] uppercase rounded-full">
+              {influencer.celebrityCredits && showBadge('Celebrity Collaborator') && (
+                <span className="px-3 py-1 bg-[#c9a96e]/20 border border-[#c9a96e]/40 text-[#c9a96e] text-[13px] font-bold tracking-[0.2em] uppercase rounded-full">
                   Celebrity Collaborator
                 </span>
               )}
@@ -1556,15 +1557,17 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                   <BadgeCheck className="h-6 w-6 text-[#c9a96e] fill-[#c9a96e]/20" />
                 )}
               </div>
-              {influencer.celebrityCredits && (
+              {influencer.celebrityCredits && showBadge('Celebrity Collaborator') && (
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <Film className="h-3.5 w-3.5 text-[#c9a96e]" />
-                  <p className="text-[#c9a96e] text-xs font-bold tracking-[0.2em] uppercase">Celebrity Collaborator</p>
+                  <p className="text-[#c9a96e] text-[13px] font-bold tracking-[0.2em] uppercase">Celebrity Collaborator</p>
                 </div>
               )}
-              <p className="text-white/60 text-center mb-6">{influencer.location}</p>
+              <p className="text-white/90 text-center mb-6">{influencer.location}</p>
 
+              {(showBadge('Followers') || showBadge('★★★★★') || showBadge('5 Stars')) && (
               <div className="grid grid-cols-2 gap-4 mb-6 text-center">
+                {showBadge('Followers') && (
                 <div>
                   <p className="text-2xl font-bold text-white">
                     <AnimatedCounter 
@@ -1572,28 +1575,35 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                       duration={1500}
                     />
                   </p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">Followers</p>
+                  <p className="text-[13px] text-white/85 uppercase tracking-wider">Followers</p>
                 </div>
+                )}
+                {showBadge('5 Stars') && showBadge('★★★★★') && (
                 <div>
                   <p className="text-2xl font-bold text-white">★★★★★</p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">5 Stars</p>
+                  <p className="text-[13px] text-white/85 uppercase tracking-wider">5 Stars</p>
                 </div>
+                )}
               </div>
+              )}
 
+              {showBadge('10K+', 'Views / Reel') && (
               <div className="bg-[#c9a96e]/10 border border-[#c9a96e]/30 p-3 text-center mb-6">
-                <p className="text-[9px] text-[#c9a96e]/60 uppercase tracking-[0.2em] mb-1">Guarantee</p>
+                <p className="text-[13px] text-[#c9a96e] uppercase tracking-[0.2em] mb-1">Guarantee</p>
                 <p className="text-[#c9a96e] font-black text-base">10K+</p>
-                <p className="text-[#c9a96e]/60 text-xs">Views / Reel</p>
+                <p className="text-[#c9a96e] text-[13px]">Views / Reel</p>
               </div>
+              )}
 
-              {/* Availability Badge */}
+              {showBadge('Available This Week') && (
               <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <div className="flex items-center justify-center gap-2 mb-1">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <p className="text-green-400 text-xs font-bold tracking-[0.2em] uppercase">Available This Week</p>
+                  <p className="text-green-400 text-[13px] font-bold tracking-[0.2em] uppercase">Available This Week</p>
                 </div>
-                <p className="text-white/50 text-[10px] text-center">Same-week booking available</p>
+                <p className="text-white/85 text-[13px] text-center"></p>
               </div>
+              )}
 
               <a href={`https://instagram.com/${influencer.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center space-x-2 mb-6 hover:opacity-80 transition-opacity">
                 <Instagram className="h-5 w-5" style={{ color: '#c9a96e' }} />
@@ -1602,7 +1612,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
 
               <div className="flex flex-wrap gap-2 justify-center mb-6">
                 {influencer.categories.map((cat: string) => (
-                  <Badge key={cat} className="bg-[#c9a96e]/10 border-[#c9a96e]/30" style={{ color: '#c9a96e' }}>
+                  <Badge key={cat} variant="secondary" className="border-[#c9a96e]/40 text-[#c9a96e]">
                     {cat}
                   </Badge>
                 ))}
@@ -1619,13 +1629,13 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
           <div className="lg:col-span-2 space-y-8">
             <div>
               <h2 className="text-2xl font-bold text-white mb-4">About</h2>
-              <p className="text-white/70 text-lg leading-relaxed">{influencer.description}</p>
+              <p className="text-white/90 text-lg leading-relaxed">{publicBio(influencer.description || '')}</p>
             </div>
 
             {/* Stats Strip — By the Numbers */}
-            {influencer.stats && influencer.stats.length > 0 && (
+            {influencer.stats && influencer.stats.filter((stat: { value: string; label: string }) => showBadge(stat.value, stat.label)).length > 0 && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[#c9a96e]/20 md:border-x-0">
-                {influencer.stats.map((stat: any, idx: number) => (
+                {influencer.stats.filter((stat: { value: string; label: string }) => showBadge(stat.value, stat.label)).map((stat: any, idx: number) => (
                   <div
                     key={idx}
                     className={`py-6 px-4 text-center ${idx !== 0 ? 'md:border-l border-[#c9a96e]/10' : ''}`}
@@ -1652,14 +1662,14 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
             )}
 
             {/* Featured In — celebrity / notable collaborations */}
-            {influencer.featuredIn && influencer.featuredIn.length > 0 && (
+            {influencer.featuredIn && influencer.featuredIn.some((credit: { title: string }) => verifiedPartners.some((partner) => credit.title.toLowerCase().includes(partner.name.toLowerCase()))) && (
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <Award className="h-5 w-5 text-[#c9a96e]" />
                   <h2 className="text-xl font-bold text-white">Featured In</h2>
                 </div>
                 <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                  {influencer.featuredIn.map((credit: any, idx: number) => (
+                  {influencer.featuredIn.filter((credit: { title: string }) => verifiedPartners.some((partner) => credit.title.toLowerCase().includes(partner.name.toLowerCase()))).map((credit: any, idx: number) => (
                     <div
                       key={idx}
                       className="flex-shrink-0 bg-zinc-900 border border-white/10 px-4 py-3 rounded-lg hover:border-[#c9a96e]/30 transition-colors"
@@ -1684,7 +1694,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                   <div className="text-center mb-2">
                     <p className="text-[#c9a96e] text-[11px] font-bold tracking-[0.3em] uppercase">As Seen On Your Feed</p>
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-2 text-center">Content That Stops The Scroll</h2>
+                  <h2 className="text-2xl font-bold text-white mb-2 text-center">Sample posts and reels</h2>
                   <p className="text-white/40 text-sm mb-10 text-center max-w-lg mx-auto">
                     Scroll-ready reels and posts — delivered exactly how they&apos;ll look on Instagram &amp; TikTok.
                   </p>
@@ -1703,7 +1713,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
             )}
 
             {/* Brand Partnerships Marquee */}
-            {influencer.pastBrands && influencer.pastBrands.length > 0 && (
+            {influencer.pastBrands && influencer.pastBrands.some((brand: string) => verifiedPartners.some((partner) => partner.name.toLowerCase() === brand.toLowerCase())) && (
               <div className="relative -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-10 overflow-hidden border-y border-white/[0.04]">
                 <div className="text-center mb-6">
                   <p className="text-[#c9a96e] text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Trusted By</p>
@@ -1743,12 +1753,12 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
             )}
 
             {/* UGC Content Formats */}
-            {influencer.ugcFormats && influencer.ugcFormats.length > 0 && (
+            {influencer.ugcFormats && influencer.ugcFormats.filter((fmt: string) => showBadge(fmt)).length > 0 && (
               <div>
                 <h2 className="text-2xl font-bold text-white mb-1">Content Formats</h2>
                 <p className="text-white/35 text-sm mb-4">Types of content she creates for brands</p>
                 <div className="flex flex-wrap gap-2">
-                  {influencer.ugcFormats.map((fmt: string) => (
+                  {influencer.ugcFormats.filter((fmt: string) => showBadge(fmt)).map((fmt: string) => (
                     <span key={fmt} className="px-4 py-2 text-xs font-bold tracking-widest uppercase border border-[#c9a96e]/30 bg-[#c9a96e]/5" style={{ color: '#c9a96e' }}>
                       {fmt}
                     </span>
@@ -1786,14 +1796,14 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               </div>
             )}
 
-            {influencer.pastBrands && influencer.pastBrands.length > 0 && (
+            {influencer.pastBrands && influencer.pastBrands.some((brand: string) => verifiedPartners.some((partner) => partner.name.toLowerCase() === brand.toLowerCase())) && (
               influencer.celebrityCredits ? (
                 <LuxuryBrandBanner brands={influencer.pastBrands} />
               ) : (
                 <div>
                   <h2 className="text-2xl font-bold text-white mb-4">Past Collaborations</h2>
                   <div className="flex flex-wrap gap-3">
-                    {influencer.pastBrands.map((brand: string) => (
+                    {influencer.pastBrands.filter((brand: string) => verifiedPartners.some((partner) => partner.name.toLowerCase() === brand.toLowerCase())).map((brand: string) => (
                       <div key={brand} className="bg-zinc-900 px-6 py-3 border border-white/10">
                         <span className="text-white/80 font-medium">{brand}</span>
                       </div>
@@ -1826,7 +1836,7 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
                 ))}
               </div>
               <div className="mt-4 text-center">
-                <Link href={`/start?model=${encodeURIComponent(influencer.name)}`} className="text-[#c9a96e]/60 hover:text-[#c9a96e] text-xs tracking-widest uppercase font-semibold transition-colors">
+                <Link href={`/start?model=${encodeURIComponent(influencer.name)}`} className="text-[#c9a96e] hover:opacity-80 text-[13px] tracking-widest uppercase font-semibold transition-colors">
                   Browse All Packages →
                 </Link>
               </div>

@@ -49,6 +49,71 @@ export default function ChatFunnel() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  useEffect(() => {
+    let frame = 0;
+    const measure = () => {
+      const hero = document.querySelector('[data-hero]');
+      const anchor = hero || document.querySelector('main h1')?.closest('section') || document.querySelector('h1');
+      const pastHero = anchor
+        ? anchor.getBoundingClientRect().bottom < 8
+        : window.scrollY > window.innerHeight * 0.85;
+      const box = {
+        left: window.innerWidth - 112,
+        right: window.innerWidth - 8,
+        top: window.innerHeight - 112,
+        bottom: window.innerHeight - 8,
+      };
+      const hits = (rect: DOMRect) =>
+        rect.width > 1 &&
+        rect.height > 1 &&
+        box.left < rect.right &&
+        box.right > rect.left &&
+        box.top < rect.bottom &&
+        box.bottom > rect.top;
+      let blocked = false;
+      if (pastHero) {
+        document.querySelectorAll('a, button').forEach((el) => {
+          if (blocked || el.closest('[data-chat-root]')) return;
+          const style = getComputedStyle(el);
+          if (style.display === 'none' || style.visibility === 'hidden' || Number(style.opacity) === 0) return;
+          if (hits(el.getBoundingClientRect())) blocked = true;
+        });
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node = walker.nextNode();
+        while (node && !blocked) {
+          const value = node.textContent?.trim();
+          const parent = node.parentElement;
+          if (value && parent && !parent.closest('[data-chat-root]') && !['SCRIPT', 'STYLE', 'NOSCRIPT'].includes(parent.tagName)) {
+            const range = document.createRange();
+            range.selectNodeContents(node);
+            const rects = range.getClientRects();
+            for (let i = 0; i < rects.length; i++) {
+              if (hits(rects[i])) {
+                blocked = true;
+                break;
+              }
+            }
+          }
+          node = walker.nextNode();
+        }
+      }
+      document.documentElement.classList.toggle('show-chat', pastHero && !blocked);
+    };
+    const onScroll = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    };
+    measure();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.documentElement.classList.remove('show-chat');
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [pathname, open]);
+
   // Hide on booking page so it doesn't overlap the sticky checkout button
   if (pathname === '/start') return null;
 
@@ -165,10 +230,11 @@ export default function ChatFunnel() {
   const result = step === 'result' ? getResult(budget) : null;
 
   return (
-    <>
+    <div data-chat-root className="contents">
       {/* Floating Button */}
       {!open && (
         <button
+          data-chat-button
           onClick={() => setOpen(true)}
           className="fixed bottom-6 right-6 z-[60] w-14 h-14 flex items-center justify-center shadow-2xl transition-transform hover:scale-105"
           style={{ backgroundColor: gold }}
@@ -337,6 +403,6 @@ export default function ChatFunnel() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
