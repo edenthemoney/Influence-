@@ -69,7 +69,7 @@ export default function HireInfluencerMiami() {
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Ready to Book Miami Creators?</h2>
-          <p className="text-white/40 mb-6">Browse our network and book directly. Same-week availability.</p>
+          <p className="text-white/40 mb-6">Browse our network and book directly. </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/marketplace" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               Browse Creators

@@ -250,3 +250,29 @@ input[type='range']::-moz-range-thumb {
   background: rgba(255,255,255,0.12);
   border-radius: 2px;
 }
+
+/* Keep the black/gold site. Lift type that is under 13px or under 4.5:1. */
+[class*="text-[8px]"],
+[class*="text-[9px]"],
+[class*="text-[10px]"],
+[class*="text-[11px]"],
+[class*="text-[12px]"],
+.text-xs {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+
+[class*="text-white/1"],
+[class*="text-white/2"],
+[class*="text-white/3"],
+[class*="text-white/4"],
+[class*="text-white/[0."] {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+[class*="text-black/2"],
+[class*="text-black/3"],
+[class*="text-black/4"],
+[class*="text-black/5"] {
+  color: rgba(12, 12, 12, 0.84) !important;
+}

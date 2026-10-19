@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: 'How do I book a creator or influencer in Miami?',
-    answer: 'You can book directly through our website using the content ordering form. Select your service type, choose your preferred creator, and tell us the details. Most bookings are confirmed within 24-48 hours with same-week availability for South Florida shoots.',
+    answer: 'Book on the site. Choose the service, tell us the date and the job, and we reply with availability and a price for venues, brands, and creators.',
   },
   {
     question: 'What services do you offer for music artists?',
@@ -32,7 +32,7 @@ const faqs = [
   },
   {
     question: 'What makes Influence different from other creator marketplaces?',
-    answer: 'We are a minority and women-owned agency with a celebrity-connected roster, including creators featured in Forbes, Fenty Beauty, Meta campaigns, and music videos for major artists. Our creators is verified, professional, and campaign-ready.',
+    answer: 'We are a minority and women-owned marketplace in South Florida. We match venues and brands with Brand Ambassadors and influencers for events, campaigns, and content.',
   },
 ];
 

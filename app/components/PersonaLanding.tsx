@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Check, ChevronRight, Phone, ArrowRight } from 'lucide-react';
 import MobileNav from './MobileNav';
+import { hideCopy, scrubCopy, showBadge } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -59,6 +60,12 @@ export default function PersonaLanding({
   bookingSection,
   hidePackagePrices,
 }: PersonaLandingProps) {
+  const badges = trustBadges.filter((badge) => !hideCopy(badge) && showBadge(badge));
+  const proof = socialProof.filter((item) => showBadge(item.stat, item.label));
+  const eyebrow = scrubCopy(tagline);
+  const questions = faq
+    .map((item) => ({ ...item, a: scrubCopy(item.a) }))
+    .filter((item) => item.a.length > 40);
   return (
     <div className="min-h-screen bg-[#080808]">
       {/* Nav */}
@@ -88,7 +95,7 @@ export default function PersonaLanding({
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         <div className="relative z-10 px-8 md:px-16 pb-20 md:pb-28 max-w-4xl">
-          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>{tagline}</p>
+          {eyebrow && <p className="text-[13px] font-bold tracking-[0.18em] uppercase mb-6" style={{ color: gold }}>{eyebrow}</p>}
           <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 96px)' }}>
             {headline.split('\n').map((line, i) => <span key={i}>{line}<br /></span>)}
           </h1>
@@ -106,7 +113,7 @@ export default function PersonaLanding({
             )}
           </div>
           <div className="flex flex-wrap gap-6 mt-10">
-            {trustBadges.map((badge) => (
+            {badges.map((badge) => (
               <span key={badge} className="text-white/30 text-[10px] tracking-widest uppercase flex items-center gap-2">
                 <Check className="h-3 w-3" style={{ color: gold }} /> {badge}
               </span>
@@ -191,7 +198,7 @@ export default function PersonaLanding({
                   </div>
                 )}
                 <ul className={`space-y-2.5 mb-8 flex-1 ${hidePackagePrices ? 'mt-4' : ''}`}>
-                  {pkg.features.map((feature) => (
+                  {pkg.features.filter((feature) => !hideCopy(feature)).map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <Check className="h-3.5 w-3.5 text-[#c9a96e]/70 flex-shrink-0 mt-0.5" />
                       <span className="text-white/50 text-[12px] leading-snug">{feature}</span>
@@ -207,11 +214,11 @@ export default function PersonaLanding({
         </div>
       </section>
 
-      {/* Social Proof */}
+      {proof.length > 0 && (
       <section className="border-t border-white/[0.06] py-16 md:py-24 px-8 md:px-16">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {socialProof.map((item) => (
+            {proof.map((item) => (
               <div key={item.label} className="text-center">
                 <p className="font-display font-bold italic text-4xl md:text-5xl mb-2" style={{ color: gold }}>{item.stat}</p>
                 <p className="text-white/30 text-[10px] tracking-widest uppercase">{item.label}</p>
@@ -220,8 +227,9 @@ export default function PersonaLanding({
           </div>
         </div>
       </section>
+      )}
 
-      {/* FAQ */}
+      {questions.length > 0 && (
       <section className="bg-[#060606] border-t border-white/[0.06] py-20 md:py-28 px-8 md:px-16">
         <div className="max-w-3xl mx-auto">
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-8 text-center" style={{ color: gold }}>Questions</p>
@@ -229,15 +237,16 @@ export default function PersonaLanding({
             What You Need to Know.
           </h2>
           <div className="space-y-5">
-            {faq.map(({ q, a }) => (
+            {questions.map(({ q, a }) => (
               <div key={q} className="border border-white/[0.06] p-6 md:p-8">
                 <h3 className="text-white font-bold text-lg mb-3">{q}</h3>
-                <p className="text-white/45 text-[14px] leading-relaxed">{a}</p>
+                <p className="text-white/85 text-[16px] leading-relaxed">{a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
+      )}
 
       {/* Inline Booking Widget */}
       {bookingSection && (
@@ -255,7 +264,7 @@ export default function PersonaLanding({
             Ready to Book?
           </h2>
           <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Same-week availability. Verified creators. Professional results. Start your project today.
+            Tell us the date and the job. We match Brand Ambassadors and influencers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={finalCta.href} className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>

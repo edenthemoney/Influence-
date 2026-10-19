@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check, Users, Star, Camera, Clock, Palette } from 'lucide-react';
+import { hideCopy } from '@/data/partners';
 
 export const metadata: Metadata = {
   title: 'Hire Creators for Photoshoot | Professional Photo & Fashion Creators | Miami',
-  description: 'Book professional creators for your photoshoot in South Florida. Fashion, product, lifestyle, editorial, and brand photography. From $300. Same-week availability.',
+  description: 'Book professional creators for your photoshoot in South Florida. Fashion, product, lifestyle, editorial, and brand photography. From $300. ',
   keywords: 'hire creators for photoshoot, photoshoot creators miami, creators for photography, fashion creators for hire, product photoshoot creators, book creator for shoot',
   openGraph: {
     title: 'Hire Creators for Photoshoot | Professional Photo & Fashion Creators',
@@ -40,11 +41,13 @@ export default function ModelsForPhotoshoot() {
             <h3 className="font-bold text-white mb-1">Pro Experience</h3>
             <p className="text-white/40 text-sm">Creators with editorial, commercial, and fashion credits</p>
           </div>
+          {!hideCopy('Same-Week Booking') && !hideCopy('Need models fast? Most shoots booked within 48 hours') && (
           <div className="border border-white/[0.06] p-6">
             <Clock className="w-5 h-5 mb-3" style={{ color: gold }} />
             <h3 className="font-bold text-white mb-1">Same-Week Booking</h3>
-            <p className="text-white/40 text-sm">Need models fast? Most shoots booked within 48 hours</p>
+            <p className="text-white/85 text-[16px]">Need models fast? Most shoots booked within 48 hours</p>
           </div>
+          )}
         </div>
 
         <h2 className="text-2xl font-bold mb-6">Photoshoot Types We Cover</h2>
@@ -99,7 +102,7 @@ export default function ModelsForPhotoshoot() {
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">Serving All of South Florida</h3>
-          <p>Influence provides professional photoshoot creators across Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Hollywood, and all of South Florida. Our creators are available for studio shoots, on-location sessions, and will travel for the right projects. Same-week availability for most bookings.</p>
+          <p>Influence provides professional photoshoot creators across Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Hollywood, and all of South Florida. Our creators are available for studio shoots, on-location sessions, and will travel for the right projects. .</p>
         </div>
       </div>
     </div>

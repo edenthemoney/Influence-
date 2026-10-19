@@ -34,7 +34,7 @@ export default function EventTalentPage() {
         'Bottle girls, hostesses, and brand ambassadors',
         '4-hour standard shifts or custom timing',
         'Styled & event-ready on arrival',
-        'Same-week availability in South Florida',
+        'In South Florida',
       ]}
       packages={[
         {

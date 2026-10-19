@@ -34,7 +34,7 @@ export default function ModelsForShootsPage() {
         'Fashion, editorial, and e-commerce experience',
         '4-hour or full-day booking windows',
         'Camera-ready hair, makeup, and wardrobe',
-        'Same-week availability in South Florida',
+        'In South Florida',
       ]}
       packages={[
         {

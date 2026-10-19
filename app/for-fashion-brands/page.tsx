@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, Shirt, Camera, Star, Play, Instagram, Package } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
+import { hideCopy, showBadge } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -161,7 +162,7 @@ export default function ForFashionBrandsPage() {
       {/* Stats */}
       <section className="py-16 md:py-20 px-8 md:px-16 border-t border-white/[0.06]">
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl">
-          {stats.map(({ value, label, desc }) => (
+          {stats.filter(({ value, label, desc }) => showBadge(value, label) && !hideCopy(desc)).map(({ value, label, desc }) => (
             <div key={label} className="border border-white/[0.06] p-7 text-center">
               <p className="font-display font-bold italic text-4xl text-white mb-1">{value}</p>
               <p className="text-[10px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color: gold }}>{label}</p>
@@ -253,18 +254,19 @@ export default function ForFashionBrandsPage() {
         </div>
       </section>
 
-      {/* Testimonial / Social Proof */}
+      {!hideCopy('We sent over 3 pieces and got back 6 reels within 48 hours. Our TikTok views went from 200 to 40,000 on the first post. This is exactly what our brand needed.') && (
       <section className="py-16 px-8 md:px-16 border-t border-white/[0.06]">
         <div className="max-w-3xl">
           <div className="flex gap-1 mb-4">
             {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 fill-current" style={{ color: gold }} />)}
           </div>
-          <p className="text-white/55 text-lg md:text-xl italic leading-relaxed mb-6">
+          <p className="text-white text-[16px] md:text-[18px] italic leading-relaxed mb-6">
             &ldquo;We sent over 3 pieces and got back 6 reels within 48 hours. Our TikTok views went from 200 to 40,000 on the first post. This is exactly what our brand needed.&rdquo;
           </p>
-          <p className="text-white/25 text-[11px] tracking-widest uppercase">— Fashion Brand Client · Miami, FL</p>
+          <p className="text-white/85 text-[13px] tracking-widest uppercase">— Fashion Brand Client · Miami, FL</p>
         </div>
       </section>
+      )}
 
       {/* CTA */}
       <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">

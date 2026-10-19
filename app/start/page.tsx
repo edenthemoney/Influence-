@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Check, Phone } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
 import StartSelector from './StartSelector';
+import { hideCopy, verifiedPartners } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -41,25 +42,26 @@ export default function StartPage() {
       <section className="relative pt-32 md:pt-44 pb-12 md:pb-16 px-8 md:px-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#c9a96e]/[0.07] to-transparent" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Verified Creators · South Florida & Nationwide</p>
+          <p className="text-[13px] font-bold tracking-[0.18em] uppercase mb-6" style={{ color: gold }}>Venues, brands, and creators</p>
           <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(44px, 8vw, 96px)' }}>
-            What Do You<br />Want to Create?
+            What do you<br />need booked?
           </h1>
-          <p className="text-white/55 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Whether you&apos;re a brand, an artist, or a venue — pick what you need below and we&apos;ll match you with verified creators and models, then tailor a quote to your project.
+          <p className="text-white text-[16px] md:text-[18px] max-w-2xl mx-auto leading-relaxed">
+            Pick the job. We match Brand Ambassadors and influencers, then send a price.
           </p>
         </div>
       </section>
 
-      {/* Social proof credits */}
+      {verifiedPartners.length > 0 && (
       <section className="px-8 md:px-16 pb-10 md:pb-14">
-        <p className="text-center text-white/20 text-[10px] tracking-[0.3em] uppercase mb-5">Our creators has worked with</p>
+        <p className="text-center text-white/85 text-[13px] tracking-[0.18em] uppercase mb-5">Partners</p>
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 max-w-4xl mx-auto">
-          {['Sean Paul', 'Kai Cenat', 'Bryson Tiller', 'Moneybagg Yo', 'Forbes', 'Fenty Beauty', 'Netflix', 'Miami Swim Week'].map((name) => (
-            <span key={name} className="font-display font-light italic text-white/30 text-base md:text-xl">{name}</span>
+          {verifiedPartners.map((partner) => (
+            <span key={partner.name} className="font-display font-light italic text-white text-base md:text-xl">{partner.name}</span>
           ))}
         </div>
       </section>
+      )}
 
       {/* Two-step selector */}
       <section className="px-8 md:px-16 pb-16 md:pb-24">
@@ -69,7 +71,7 @@ export default function StartPage() {
       {/* Trust Bar */}
       <section className="border-t border-white/[0.06] bg-[#060606] py-12 md:py-16 px-8 md:px-16">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-8 md:gap-12">
-          {['Verified Creators', 'Same-Week Booking', 'No Flakes', 'HD Content Delivered', 'South Florida'].map((badge) => (
+          {['Verified Creators', 'Same-Week Booking', 'No Flakes', 'HD Content Delivered', 'South Florida'].filter((badge) => !hideCopy(badge)).map((badge) => (
             <span key={badge} className="text-white/30 text-[10px] tracking-widest uppercase flex items-center gap-2">
               <Check className="h-3 w-3" style={{ color: gold }} /> {badge}
             </span>

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ChevronRight, MapPin, Play, Camera, Sparkles, Headphones, TrendingUp, Film, Wine, Music, Clapperboard, RefreshCcw, Users } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
+import { hideCopy, scrubCopy } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -190,10 +191,10 @@ export default function ServicesPage() {
       <section className="pt-32 md:pt-44 pb-16 md:pb-24 px-8 md:px-16">
         <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-6" style={{ color: gold }}>Our Services</p>
         <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(44px, 8vw, 100px)' }}>
-          What We Do.
+          What we book.
         </h1>
-        <p className="text-white/45 text-lg max-w-xl">
-          Remote content delivery or in-person at your location. Creators, content, shoots, events — everything your brand needs to dominate social media and grow your business.
+        <p className="text-white text-[16px] md:text-[18px] max-w-xl">
+          Remote content, or Brand Ambassadors and influencers at your venue in South Florida.
         </p>
       </section>
 
@@ -217,11 +218,11 @@ export default function ServicesPage() {
                   </div>
                   <p className="text-[10px] tracking-[0.4em] uppercase font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">{category}</p>
                 </div>
-                <h2 className="font-display font-bold italic text-white leading-tight mb-4" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>{title}</h2>
-                <p className="text-white/45 text-[15px] leading-relaxed max-w-lg mb-6">{desc}</p>
+                <h2 className="font-display font-bold italic text-white leading-tight mb-4" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>{scrubCopy(title) || title}</h2>
+                {scrubCopy(desc) && <p className="text-white/85 text-[16px] leading-relaxed max-w-lg mb-6">{scrubCopy(desc)}</p>}
                 <div className="flex flex-wrap gap-3">
-                  {items.map(item => (
-                    <span key={item} className="text-white/25 text-[11px] font-medium px-3 py-1.5 border border-white/[0.06]">{item}</span>
+                  {items.filter((item) => !hideCopy(item)).map(item => (
+                    <span key={item} className="text-white/85 text-[13px] font-medium px-3 py-1.5 border border-white/[0.06]">{item}</span>
                   ))}
                 </div>
               </div>

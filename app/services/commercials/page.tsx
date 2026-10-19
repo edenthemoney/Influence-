@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { ChevronRight, Film, Mic, Users, Star, Clock, Clapperboard, Check } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
+import { hideCopy } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -154,7 +155,7 @@ export default function CommercialsPage() {
             { icon: Star, title: 'Product Demos', desc: 'Creators who demonstrate products while speaking naturally.' },
             { icon: Users, title: 'Multi-Person Scenes', desc: 'Scripted interactions — conversations, scenarios, storylines.' },
             { icon: Clock, title: 'Rush & Same-Week', desc: 'Commercial-ready creators booked within 48 hours.' },
-          ].map(({ icon: Icon, title, desc }) => (
+          ].filter(({ title, desc }) => !hideCopy(`${title} ${desc}`) && !hideCopy(desc)).map(({ icon: Icon, title, desc }) => (
             <div key={title} className="flex gap-5 p-6 border border-white/[0.04] bg-white/[0.01]">
               <div className="w-11 h-11 border border-white/10 flex items-center justify-center shrink-0">
                 <Icon className="h-5 w-5" style={{ color: gold }} />

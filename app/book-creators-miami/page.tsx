@@ -4,7 +4,7 @@ import { Check, Users, Star, MapPin, Camera, Sparkles, Film, Play } from 'lucide
 
 export const metadata: Metadata = {
   title: 'Book Creators in Miami | Hire a Creator for Any Project | Influence Marketplace',
-  description: 'Book professional creators in Miami for music videos, photoshoots, events, commercials, UGC, and brand campaigns. From $150. Same-week availability across South Florida.',
+  description: 'Book professional creators in Miami for music videos, photoshoots, events, commercials, UGC, and brand campaigns. From $150. Across South Florida.',
   keywords: 'book creators miami, hire creators miami, creators for hire miami, hire a creator, book a creator, miami creators, book creator south florida',
   openGraph: {
     title: 'Book Creators in Miami | Hire a Creator for Any Project',
@@ -69,7 +69,7 @@ export default function BookModelsMiami() {
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Ready to Book?</h2>
-          <p className="text-white/40 mb-6">Pick your service, get a custom quote, and checkout in under 2 minutes. Same-week availability.</p>
+          <p className="text-white/40 mb-6">Pick your service, get a custom quote, and checkout in under 2 minutes. </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/start" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               Find Your Service
@@ -82,7 +82,7 @@ export default function BookModelsMiami() {
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">Serving All of South Florida</h3>
-          <p>Influence is the fastest way to book professional creators in Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Hollywood, and all of South Florida. Whether you need a model for a music video, a photoshoot, a commercial, or an event — we handle casting, coordination, and booking so you can focus on your project. Same-week availability for most services.</p>
+          <p>Influence is the fastest way to book professional creators in Miami, Fort Lauderdale, Boca Raton, West Palm Beach, Hollywood, and all of South Florida. Whether you need a model for a music video, a photoshoot, a commercial, or an event — we handle casting, coordination, and booking so you can focus on your project. .</p>
         </div>
       </div>
     </div>

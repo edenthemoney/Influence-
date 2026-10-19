@@ -6,6 +6,7 @@ import Link from 'next/link';
 import MobileNav from '../components/MobileNav';
 import posthog from 'posthog-js';
 import { Camera, Sparkles, CalendarDays, RefreshCcw, Users, ChevronRight, ChevronLeft, Check, MapPin, TrendingUp, Zap, Play, ArrowUpRight, Headphones, Music, Phone, Lock, ShieldCheck, Film, Wine } from 'lucide-react';
+import { showBadge } from '@/data/partners';
 
 // ── Package Data ─────────────────────────────────────────────────────────────
 
@@ -911,19 +912,24 @@ function ModelBookingContent() {
             <h2 className="font-display font-light italic text-white text-3xl md:text-4xl mb-2">Where do we send your confirmation?</h2>
             <p className="text-white/35 text-sm mb-5">Name, phone &amp; email — then straight to secure checkout.</p>
 
-            {/* Social proof strip */}
+            {[
+              { stat: '500+', label: 'Clients Booked' },
+              { stat: '★ 5.0', label: 'Average Rating' },
+              { stat: '48hr', label: 'Avg. Response' },
+            ].filter(({ stat, label }) => showBadge(stat, label)).length > 0 && (
             <div className="grid grid-cols-3 gap-3 mb-6">
               {[
                 { stat: '500+', label: 'Clients Booked' },
                 { stat: '★ 5.0', label: 'Average Rating' },
                 { stat: '48hr', label: 'Avg. Response' },
-              ].map(({ stat, label }) => (
+              ].filter(({ stat, label }) => showBadge(stat, label)).map(({ stat, label }) => (
                 <div key={label} className="border border-white/[0.06] p-3 text-center">
                   <p className="font-bold text-sm mb-0.5" style={{ color: gold }}>{stat}</p>
-                  <p className="text-white/30 text-[10px] leading-tight">{label}</p>
+                  <p className="text-white/85 text-[13px] leading-tight">{label}</p>
                 </div>
               ))}
             </div>
+            )}
 
             <div className="flex items-center gap-2 mb-6 px-3 py-2 border border-green-500/15 bg-green-500/[0.03]">
               <Check className="h-3.5 w-3.5 text-green-400/70 flex-shrink-0" />

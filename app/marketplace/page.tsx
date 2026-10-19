@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
+import { hideCopy, partners, scrubCopy } from '@/data/partners';
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
@@ -639,29 +640,26 @@ export default function MarketplacePage() {
         </video>
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative max-w-5xl mx-auto text-center">
-          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: gold }}>Our Network</p>
+          <p className="text-[13px] font-bold tracking-[0.18em] uppercase mb-5" style={{ color: gold }}>The roster</p>
           <h1 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 88px)' }}>
             Meet the <span style={{ color: gold }}>Creators</span>
           </h1>
-          <p className="text-white/45 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
-            Hand-selected influencers with verified metrics, A-list credentials, and proven campaign results.
-            Perfect for <span className="text-white/70">music videos · UGC · brand campaigns · events · social content</span>
+          <p className="text-white text-[16px] md:text-[18px] max-w-2xl mx-auto leading-relaxed">
+            Brand Ambassadors and influencers for events, campaigns, and content.
           </p>
         </div>
       </section>
 
       {/* Trust Bar */}
+      {['★★★★★ Rated #1 in South Florida', 'Celebrity-Connected Creators', 'Content Delivered in 48hrs', 'Verified Network'].some((item) => !hideCopy(item)) && (
       <div className="border-y border-white/[0.05] py-4 px-6 md:px-14 mb-12 md:mb-16">
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[10px] tracking-[0.2em] uppercase text-white/25">
-          <span>★★★★★ Rated #1 in South Florida</span>
-          <span className="hidden md:inline">·</span>
-          <span>Celebrity-Connected Creators</span>
-          <span className="hidden md:inline">·</span>
-          <span>Content Delivered in 48hrs</span>
-          <span className="hidden md:inline">·</span>
-          <span>Verified Network</span>
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13px] tracking-[0.14em] uppercase text-white/85">
+          {['★★★★★ Rated #1 in South Florida', 'Celebrity-Connected Creators', 'Content Delivered in 48hrs', 'Verified Network'].filter((item) => !hideCopy(item)).map((item) => (
+            <span key={item}>{item}</span>
+          ))}
         </div>
       </div>
+      )}
 
       {/* Creator Grid - Sorted by follower count after featured */}
       <section className="px-4 md:px-14 pb-20">
@@ -704,46 +702,15 @@ export default function MarketplacePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               </div>
 
-              {/* Verified badge */}
-              {inf.verified && (
-                <div className="absolute top-3 right-3 w-6 h-6 flex items-center justify-center" style={{ backgroundColor: gold }}>
-                  <span className="text-black text-[9px] font-black">✓</span>
-                </div>
-              )}
-              
-              {/* Top Creator badge for 50K+ followers */}
-              {(() => {
-                const parseFollowers = (f: string) => {
-                  if (f.includes('M')) return parseFloat(f) * 1000000;
-                  if (f.includes('K')) return parseFloat(f) * 1000;
-                  return parseFloat(f);
-                };
-                return parseFollowers(inf.followers) >= 50000;
-              })() && (
-                <div className="absolute top-3 left-3 px-2 py-1 bg-black/80 backdrop-blur-sm border border-[#c9a96e]/50">
-                  <span className="text-[#c9a96e] text-[9px] font-bold tracking-wider uppercase">Top Creator</span>
-                </div>
-              )}
-
-              {/* Info overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-white font-bold text-sm md:text-base truncate">{inf.name}</h3>
-                  <span className="text-[10px] font-bold shrink-0 ml-2" style={{ color: gold }}>Verified</span>
-                </div>
-                <p className="text-white/35 text-[10px] tracking-wider uppercase mb-2">{inf.title}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3 text-[10px] text-white/30">
-                    <span>{inf.location}</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-xs font-bold" style={{ color: gold }}>{inf.followers}</span>
-                    <span className="text-[9px] text-white/40 ml-1">followers</span>
-                  </div>
-                </div>
-                {inf.credits.length > 0 && (
-                  <p className="text-[9px] tracking-wider uppercase mt-2 truncate" style={{ color: gold }}>
-                    {inf.credits.slice(0, 3).join(' · ')}
+                <h3 className="text-white font-bold text-sm md:text-base truncate mb-1">{inf.name}</h3>
+                {scrubCopy(inf.title) && (
+                  <p className="text-white/85 text-[13px] tracking-wider uppercase mb-2">{scrubCopy(inf.title)}</p>
+                )}
+                <p className="text-[13px] text-white/85">{inf.location}</p>
+                {inf.credits.filter((credit) => !hideCopy(credit) && !partners.some((partner) => !partner.verified && credit.toLowerCase().includes(partner.name.toLowerCase()))).length > 0 && (
+                  <p className="text-[13px] tracking-wider uppercase mt-2 truncate" style={{ color: gold }}>
+                    {inf.credits.filter((credit) => !hideCopy(credit) && !partners.some((partner) => !partner.verified && credit.toLowerCase().includes(partner.name.toLowerCase()))).slice(0, 3).join(' · ')}
                   </p>
                 )}
               </div>
@@ -769,17 +736,13 @@ export default function MarketplacePage() {
       {/* Bottom CTA */}
       <section className="border-t border-white/[0.05] py-16 md:py-24 px-6 md:px-14">
         <div className="max-w-3xl mx-auto text-center">
-          <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-4" style={{ color: gold }}>Ready to Start?</p>
+          <p className="text-[13px] font-bold tracking-[0.18em] uppercase mb-4" style={{ color: gold }}>Book</p>
           <h2 className="font-display font-bold italic text-white mb-4" style={{ fontSize: 'clamp(28px, 5vw, 56px)' }}>
-            Book Your Campaign Today
+            Book a campaign
           </h2>
-          <p className="text-white/35 text-sm mb-8 max-w-lg mx-auto">
-            Choose your service, pick a package, and launch in under 2 minutes. Custom quotes available for every campaign.
+          <p className="text-white/85 text-[16px] mb-8 max-w-lg mx-auto">
+            Choose a service and tell us the date. We match Brand Ambassadors and influencers.
           </p>
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 border border-green-500/20 bg-green-500/[0.04]">
-            <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-green-400/80 text-[11px] font-semibold">Same-week availability · Book in 2 min</span>
-          </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/start"
@@ -796,9 +759,8 @@ export default function MarketplacePage() {
             </Link>
           </div>
           <div className="flex items-center justify-center gap-6 mt-5 text-white/25 text-xs">
-            <span>✓ Secure Stripe checkout</span>
-            <span>✓ Same-week availability</span>
-            <span>✓ Verified creators</span>
+            <span>Stripe checkout</span>
+            <span>South Florida</span>
           </div>
         </div>
       </section>

@@ -8,7 +8,7 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Event Creators Miami — Party Creators & Event Hosting Florida | Influence',
-  description: 'Miami event creators. Book professional creators for events, clubs, parties, brand activations in Miami, Fort Lauderdale, Boca Raton, Palm Beach. Same-week booking available.',
+  description: 'Miami event creators. Book professional creators for events, clubs, parties, brand activations in Miami, Fort Lauderdale, Boca Raton, Palm Beach. .',
   openGraph: {
     title: 'Event Creators Miami — Party Creators & Event Hosting Florida',
     description: 'Miami event creators for clubs, parties, brand activations. Serving South Florida.',
@@ -20,7 +20,7 @@ const eventModelsSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Event Creators & Hosting',
-  description: 'Professional creators for events, club nights, brand activations, and parties in South Florida. From $400/girl. Same-week booking available.',
+  description: 'Professional creators for events, club nights, brand activations, and parties in South Florida. From $400/girl. .',
   provider: {
     '@type': 'Organization',
     name: 'Influence',
@@ -210,17 +210,16 @@ export default function EventsPage() {
         <div className="max-w-3xl">
           <p className="text-black/40 text-[10px] tracking-[0.5em] uppercase mb-8 font-semibold">Ready to Book?</p>
           <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
-            Make your next event unforgettable.
+            Book ambassadors for your event.
           </h2>
-          <p className="text-black/50 text-lg mb-10 max-w-lg">Flat rate per girl. More girls = better rate. Same-week booking available for most events.</p>
+          <p className="text-black/80 text-lg mb-10 max-w-lg">A flat rate per ambassador. Larger bookings, a better rate.</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/start?service=event" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Book Event Creators <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
-              <span>✓ South Florida</span>
-              <span>✓ Same-week booking</span>
-              <span>✓ Stripe checkout</span>
+              <span>South Florida</span>
+              <span>Stripe checkout</span>
             </div>
           </div>
         </div>
