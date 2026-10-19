@@ -15,7 +15,7 @@ export default function ModelsForShootsPage() {
     <PersonaLanding
       title="Book Models for Photo Shoots"
       description="Book professional models for brand shoots, fashion editorials, lookbooks, and e-commerce in South Florida. From $300."
-      tagline="South Florida · Same-Week Availability"
+      tagline="Photo and brand shoots in South Florida"
       headline="Models for Your\nNext Shoot."
       subheadline="Professional creators for brand campaigns, fashion editorials, lookbooks, and e-commerce shoots. Camera-ready, on time, and matched to your creative direction."
       heroImage="/images/AshleyM/ashleym-1.jpg"

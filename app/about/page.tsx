@@ -3,7 +3,9 @@ import Image from 'next/image';
 import MobileNav from '../components/MobileNav';
 import type { Metadata } from 'next';
 import { Target, Zap, Users, TrendingUp, Award, ChevronRight, Wine } from 'lucide-react';
-import { hideCopy, scrubCopy } from '@/data/partners';
+import { hideCopy } from '@/data/partners';
+
+const edenPortrait = '';
 
 const gold = '#c9a96e';
 
@@ -163,7 +165,7 @@ export default function AboutPage() {
                   'Celebrity work with Kai Cenat, AMP, Mike Tyson, Tyra Banks & Keke Palmer',
                   'TV: Love & Hip Hop · Films: Sacrifice, Spanish Fly',
                   '20+ magazine features · 10+ fashion show walks across 4 countries',
-                ].filter((item) => !hideCopy(item) && scrubCopy(item)).map(item => (
+                ].filter((item) => !hideCopy(item)).map(item => (
                   <div key={item} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: gold }} />
                     <p className="text-white/45 text-sm leading-relaxed">{item}</p>
@@ -200,14 +202,18 @@ export default function AboutPage() {
                 ))}
               </div>
             </div>
-            <div className="relative h-[50vh] md:h-auto overflow-hidden order-1 md:order-2 bg-[#0d0d0d] flex items-center justify-center">
-              <div className="text-center p-14">
-                <div className="w-28 h-28 mx-auto mb-6 border border-white/[0.08] flex items-center justify-center" style={{ backgroundColor: '#0d0d0d' }}>
-                  <span className="font-display font-bold italic text-white" style={{ fontSize: '48px' }}>E</span>
+            <div className="relative h-[50vh] md:h-auto min-h-[420px] overflow-hidden order-1 md:order-2 bg-[#080808] flex items-center justify-center border-l border-[#c9a96e]/40">
+              {edenPortrait ? (
+                <Image src={edenPortrait} alt="Eden Roy, Founder and CEO" fill className="object-cover object-top" />
+              ) : (
+                <div className="text-center px-10">
+                  <div className="mx-auto mb-6 flex h-36 w-36 items-center justify-center border border-[#c9a96e] bg-[#c9a96e]">
+                    <span className="font-display text-7xl font-bold italic leading-none text-black">E</span>
+                  </div>
+                  <p className="font-display text-3xl font-bold italic text-white">Eden Roy</p>
+                  <p className="mt-2 text-[13px] font-semibold uppercase tracking-[0.22em]" style={{ color: gold }}>Founder &amp; CEO</p>
                 </div>
-                <p className="font-display font-bold italic text-white text-2xl mb-1">Eden Roy</p>
-                <p className="text-white/30 text-xs tracking-widest uppercase">Founder &amp; CEO</p>
-              </div>
+              )}
             </div>
           </div>
         </div>

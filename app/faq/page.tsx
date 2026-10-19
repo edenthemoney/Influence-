@@ -190,7 +190,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Business Content',
     question: 'How does business content help my social media?',
-    answer: 'Content featuring professional creators consistently gets 3-5x more engagement than standard business posts. Higher engagement signals the algorithm to push your content to more people via Explore pages and For You feeds — meaning more potential customers discover your business organically.'
+    answer: 'Posts with a creator in them tend to earn more saves and shares than a plain product photo. Those signals are what Instagram and TikTok use when they decide who else sees the post, which is how new customers find the business.'
   },
   {
     category: 'About the Agency',

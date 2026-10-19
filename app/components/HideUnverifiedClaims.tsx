@@ -30,13 +30,12 @@ export default function HideUnverifiedClaims() {
       const source = raw || (node.childElementCount <= 3 ? (node.innerText || '').replace(/\s+/g, ' ').trim() : '');
       if (!source || source.length > 320) return;
       const next = scrubCopy(source);
-      const blocked = !next || hideCopy(source) || (source.length < 90 && /\b\d[\d.,]*\s*[kKmM]\+?\s*followers?\b/i.test(source));
+      const blocked = !next || next !== source || hideCopy(source) || (source.length < 90 && /\b\d[\d.,]*\s*[kKmM]\+?\s*followers?\b/i.test(source));
       if (blocked) {
         node.dataset.claimHidden = '1';
         node.style.setProperty('display', 'none', 'important');
         return;
       }
-      if (next !== source && node.childElementCount === 0) node.textContent = next;
     });
 
     for (let pass = 0; pass < 4; pass += 1) {

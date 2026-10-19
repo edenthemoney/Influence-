@@ -20,8 +20,8 @@ const articles = [
   },
   {
     slug: 'roi-of-influencer-marketing-vs-traditional-ads',
-    title: 'Creator Marketing ROI: 11x Returns vs. Traditional Advertising',
-    excerpt: 'The numbers don\'t lie. Dollar for dollar, influencer campaigns outperform TV, billboard, and paid social. We break down exactly why.',
+    title: 'Creator Marketing Compared With Traditional Advertising',
+    excerpt: 'How creator campaigns compare with TV, billboards, and paid social, and what to look at before you book.',
     category: 'Data',
     readTime: '5 min read',
     date: 'May 2025',
@@ -31,7 +31,7 @@ const articles = [
   {
     slug: 'how-miami-brands-are-winning-with-local-influencers',
     title: 'How Miami Brands Are Winning Big With Local Influencers',
-    excerpt: 'Restaurants, nightclubs, and fashion labels in Miami are seeing 3-5x more engagement using local creators over celebrity endorsements. Here\'s their playbook.',
+    excerpt: 'Restaurants, nightclubs, and fashion labels in Miami use local creators to reach people who already go out in the city.',
     category: 'Case Study',
     readTime: '6 min read',
     date: 'May 2025',
@@ -41,7 +41,7 @@ const articles = [
   {
     slug: 'ugc-vs-branded-content-what-converts-better',
     title: 'UGC vs. Branded Content: What Actually Converts Better in 2025',
-    excerpt: 'User-generated content outperforms polished brand ads by 4x on engagement and 2.4x on conversions. Here\'s how to use it.',
+    excerpt: 'Creator-filmed posts often feel more native than a polished brand ad. Here is how to brief them.',
     category: 'Strategy',
     readTime: '5 min read',
     date: 'May 2025',
@@ -51,7 +51,7 @@ const articles = [
   {
     slug: 'music-video-models-the-secret-weapon-for-viral-videos',
     title: 'Music Video Creators: The Secret Weapon Behind Every Viral Video',
-    excerpt: 'From Trippie Redd to Sean Paul — why professional creators make or break a music video\'s performance. Plus: what it costs.',
+    excerpt: 'Why the people on camera change how a music video lands, and what it costs to book them.',
     category: 'Music',
     readTime: '8 min read',
     date: 'May 2025',
@@ -98,7 +98,7 @@ export default function BlogPage() {
             <TrendingUp className="w-4 h-4" style={{ color: gold }} />
             <span className="text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: gold }}>The Influence Journal</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+          <h1 className="font-display font-bold italic text-4xl md:text-6xl text-white mb-4 leading-tight">
             Insights on the<br />
             <span style={{ color: gold }}>Creator Economy</span>
           </h1>
@@ -121,7 +121,7 @@ export default function BlogPage() {
                     <span className="px-3 py-1 text-[9px] font-bold tracking-widest uppercase border" style={{ borderColor: gold, color: gold }}>{featured.category}</span>
                     <span className="text-white/30 text-xs flex items-center gap-1"><Clock className="w-3 h-3" />{featured.readTime}</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-[#c9a96e] transition-colors leading-tight">{featured.title}</h2>
+                  <h2 className="font-display font-bold italic text-2xl md:text-3xl text-white mb-4 group-hover:text-[#c9a96e] transition-colors leading-tight">{featured.title}</h2>
                   <p className="text-white/40 text-sm leading-relaxed mb-6">{featured.excerpt}</p>
                   <div className="flex items-center gap-2 text-[11px] font-bold tracking-widest uppercase" style={{ color: gold }}>
                     Read Article <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
@@ -144,7 +144,7 @@ export default function BlogPage() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#c9a96e] transition-colors leading-snug">{article.title}</h3>
+                <h3 className="font-display font-bold italic text-xl text-white mb-2 group-hover:text-[#c9a96e] transition-colors leading-snug">{article.title}</h3>
                 <p className="text-white/35 text-sm leading-relaxed mb-4">{article.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-white/20 text-xs">{article.date}</span>
@@ -157,7 +157,7 @@ export default function BlogPage() {
 
         {/* CTA */}
         <div className="max-w-5xl mx-auto mt-20 text-center border border-white/[0.06] p-12">
-          <h2 className="text-2xl font-bold text-white mb-3">Ready to Leverage Creator Marketing?</h2>
+          <h2 className="font-display font-bold italic text-3xl text-white mb-3">Ready to book a creator?</h2>
           <p className="text-white/40 mb-6">Book a creator or launch a campaign today.</p>
           <Link href="/book" className="inline-block px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
             Get Started

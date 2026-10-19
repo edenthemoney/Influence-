@@ -26,7 +26,7 @@ export default function ArticleView({ slug }: { slug: string }) {
     return (
       <div className="min-h-screen bg-[#080808] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-white mb-4">Article not found</h1>
+          <h1 className="font-display font-bold italic text-2xl text-white mb-4">Article not found</h1>
           <Link href="/blog" className="text-sm" style={{ color: gold }}>
             ← Back to Journal
           </Link>
@@ -104,7 +104,7 @@ export default function ArticleView({ slug }: { slug: string }) {
             </span>
             <span className="text-white/20 text-xs">{article.date}</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">{article.title}</h1>
+          <h1 className="font-display font-bold italic text-3xl md:text-5xl text-white mb-6 leading-tight">{article.title}</h1>
           <div className="flex items-center justify-between border-b border-white/[0.06] pb-6 mb-10">
             <span className="text-white/30 text-sm">By {article.author}</span>
           </div>
@@ -112,7 +112,7 @@ export default function ArticleView({ slug }: { slug: string }) {
             {article.content.map((block, index) => {
               if (block.type === 'heading') {
                 return (
-                  <h2 key={index} className="text-xl md:text-2xl font-bold text-white mt-10 mb-2">
+                  <h2 key={index} className="font-display font-bold italic text-xl md:text-2xl text-white mt-10 mb-2">
                     {block.value}
                   </h2>
                 );

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
-import { hideCopy, partners, scrubCopy } from '@/data/partners';
+import { hideCopy } from '@/data/partners';
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
@@ -687,32 +687,21 @@ export default function MarketplacePage() {
                 className="absolute inset-0 z-10"
                 aria-label={`View ${inf.name}'s profile`}
               />
-              {/* Image */}
-              <div className={`${inf.id === 'des-001' ? 'aspect-square' : 'aspect-[3/4]'} overflow-hidden relative`}>
+              <div className="aspect-[4/5] overflow-hidden relative">
                 <Image
                   src={inf.image}
                   alt={inf.name}
                   fill
-                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
                   className="group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                   sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   quality={85}
                 />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5 bg-black/80">
-                <h3 className="text-white font-bold text-sm md:text-base truncate mb-1">{inf.name}</h3>
-                {scrubCopy(inf.title) && (
-                  <p className="text-white/85 text-[13px] tracking-wider uppercase mb-2">{scrubCopy(inf.title)}</p>
-                )}
-                <p className="text-[13px] text-white/85">{inf.location}</p>
-                {inf.credits.filter((credit) => !hideCopy(credit) && !partners.some((partner) => !partner.verified && credit.toLowerCase().includes(partner.name.toLowerCase()))).length > 0 && (
-                  <p className="text-[13px] tracking-wider uppercase mt-2 truncate" style={{ color: gold }}>
-                    {inf.credits.filter((credit) => !hideCopy(credit) && !partners.some((partner) => !partner.verified && credit.toLowerCase().includes(partner.name.toLowerCase()))).slice(0, 3).join(' · ')}
-                  </p>
-                )}
+              <div className="px-3 py-3 md:px-4 md:py-4 bg-[#080808]">
+                <h3 className="text-white font-semibold text-[15px] md:text-[16px] leading-tight truncate">{inf.name}</h3>
+                <p className="mt-1 text-[13px] text-white/85 truncate">{inf.location}</p>
               </div>
 
               {/* Hover action */}

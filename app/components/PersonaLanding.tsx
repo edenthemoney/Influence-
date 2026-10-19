@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Check, ChevronRight, Phone, ArrowRight } from 'lucide-react';
 import MobileNav from './MobileNav';
-import { hideCopy, scrubCopy, showBadge } from '@/data/partners';
+import { hideCopy, showBadge } from '@/data/partners';
 
 const gold = '#c9a96e';
 
@@ -62,10 +62,8 @@ export default function PersonaLanding({
 }: PersonaLandingProps) {
   const badges = trustBadges.filter((badge) => !hideCopy(badge) && showBadge(badge));
   const proof = socialProof.filter((item) => showBadge(item.stat, item.label));
-  const eyebrow = scrubCopy(tagline);
-  const questions = faq
-    .map((item) => ({ ...item, a: scrubCopy(item.a) }))
-    .filter((item) => item.a.length > 40);
+  const eyebrow = hideCopy(tagline) ? '' : tagline;
+  const questions = faq.filter((item) => item.a.length > 40 && !hideCopy(item.a));
   return (
     <div className="min-h-screen bg-[#080808]">
       {/* Nav */}

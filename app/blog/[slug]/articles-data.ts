@@ -42,7 +42,7 @@ export const articles: Record<string, Article> = {
     ],
   },
   "roi-of-influencer-marketing-vs-traditional-ads": {
-    title: "Creator Marketing ROI: 11x Returns vs. Traditional Advertising",
+    title: "Creator Marketing Compared With Traditional Advertising",
     category: "Data",
     readTime: "5 min read",
     date: "May 18, 2025",

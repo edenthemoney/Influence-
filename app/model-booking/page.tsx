@@ -1050,12 +1050,12 @@ function ModelBookingContent() {
                         <option value="Shay">Shay (25K · Kodak · Lil Baby · DJ Khaled)</option>
                         <option value="Kady">Kady (11K · Tekashi · Lil Pump · Love &amp; Hip Hop)</option>
                         <option value="Peach">Peach (23K · Buju Banton · Vybz Kartel · Peacock)</option>
-                        <option value="Breanna Banks">Breanna Banks (45K · Celeb Features)</option>
+                        <option value="Breanna Banks">Breanna Banks (Music videos)</option>
                         <option value="Scarlet">Scarlet (12K · LA Fashion Week · Bossman Dlow)</option>
                         <option value="Grace Jenn">Grace Jenn (20K · Coulda Been Love S2 · Druski)</option>
                       </optgroup>
                       <optgroup label="UGC &amp; Content Creators">
-                        <option value="Kiki">Kiki (15K · 7-8M Viral Views · Skits)</option>
+                        <option value="Kiki">Kiki (Skits)</option>
                         <option value="Malibu">Malibu (35K · Skits &amp; Brand Content)</option>
                         <option value="Nysia">Nysia (60K · Beauty &amp; Lifestyle)</option>
                         <option value="Jas Healer">Jas Healer (16K · YouTuber)</option>
@@ -1077,8 +1077,8 @@ function ModelBookingContent() {
                         <option value="Maria">Maria (13.9K · Lifestyle &amp; Fashion)</option>
                         <option value="Genesis Bravo">Genesis Bravo (13.9K · Fashion)</option>
                         <option value="Aliyana Vasquez">Aliyana Vasquez (5K · Miami Swim Week · Runway)</option>
-                        <option value="Gabriela">Gabriela (Savage X Fenty · Dez Beauty)</option>
-                        <option value="Seahra Raquel">Seahra Raquel (15K · Florida)</option>
+                        <option value="Gabriela">Gabriela (Fashion and beauty)</option>
+                        <option value="Seahra Raquel">Seahra Raquel (Florida)</option>
                         <option value="Krystle">Krystle (10K · Miami Fashion)</option>
                         <option value="Kendra">Kendra (10K · Florida)</option>
                       </optgroup>

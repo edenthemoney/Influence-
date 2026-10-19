@@ -205,9 +205,9 @@ export default function BusinessContentPage() {
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { icon: BarChart3, title: 'Higher Engagement Rate', desc: 'Content with attractive creators gets 3–5x more engagement than standard business posts. More engagement = more algorithmic reach.' },
+              { icon: BarChart3, title: 'Higher Engagement Rate', desc: 'Posts with a creator in them tend to get more saves and shares than a plain product photo. Those signals are what the apps use to show the post to more people.' },
               { icon: TrendingUp, title: 'Boosted Discovery', desc: 'When your reels get saves and shares, platforms push them to the Explore page and For You feed — reaching thousands of potential customers.' },
-              { icon: Repeat, title: 'Content Library', desc: 'One 2-hour session produces 3–5+ pieces of content. That\'s weeks of posting material from a single visit.' },
+              { icon: Repeat, title: 'Content Library', desc: 'One visit can cover several posts, so you leave with material for more than a single day on the feed.' },
               { icon: Sparkles, title: 'Professional Quality', desc: 'No more phone photos. Our creators know angles, lighting, and how to make your business look incredible on camera.' },
             ].map(({ icon: Icon, title, desc }) => (
               <div key={title} className="flex gap-5 p-6 border border-white/[0.04] bg-white/[0.01]">

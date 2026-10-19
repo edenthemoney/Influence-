@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
-import { ChevronRight, MapPin, Play, Camera, Sparkles, Headphones, TrendingUp, Film, Wine, Music, Clapperboard, RefreshCcw, Users } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
-import { hideCopy, scrubCopy } from '@/data/partners';
+import { serviceLineup } from '@/data/service-lineup';
 
 const gold = '#c9a96e';
 
@@ -58,109 +58,6 @@ export const metadata: Metadata = {
   },
 };
 
-const services = [
-  {
-    href: '/start?service=ugc',
-    tag: 'Remote · Nationwide',
-    category: 'Social Media Campaigns',
-    title: 'Premium UGC, Reels & Music Reactions',
-    desc: 'Celebrity-connected creators produce branded content, react to your music, launch viral challenges, and produce scroll-stopping reels — major label quality at indie budget. Perfect for artists, brands, labels, and businesses.',
-    items: ['Music Reactions', 'UGC Reels & TikToks', 'Viral Challenges & Trends', 'Multi-Model Campaigns'],
-    cta: 'Book Now',
-    icon: Play,
-  },
-  {
-    href: '/start?service=storyreposts',
-    tag: 'Remote · Nationwide',
-    category: 'Story Reposts',
-    title: 'Premium Instagram Story Reposts',
-    desc: 'Celebrity-connected creators post your content to their Instagram Stories with swipe-up links. 24-hour visibility with full narrative arcs (hook → showcase → CTA) for maximum conversions. Major label quality at indie budget.',
-    items: ['Single Story Frames', '3-5 Frame Story Sets', 'Swipe-Up Links', 'Multi-Model Story Campaigns'],
-    cta: 'Book Now',
-    icon: RefreshCcw,
-  },
-  {
-    href: '/start?service=collabreposts',
-    tag: 'Remote · Nationwide',
-    category: 'Collab Posts',
-    title: 'Premium Instagram Collab Posts',
-    desc: 'Celebrity-connected creators co-author posts with your brand that appear on both feeds simultaneously. Dual audience reach, shared engagement metrics, and algorithm boost for maximum exposure. Major label quality at indie budget.',
-    items: ['Single Collab Posts', 'Collab Reels', 'Dual-Feed Campaigns', 'Multi-Model Collabs'],
-    cta: 'Book Now',
-    icon: Users,
-  },
-  {
-    href: '/start?service=business',
-    tag: 'In-Person · South Florida',
-    category: 'Brand Ambassadors',
-    title: 'Celebrity-Connected Brand Ambassadors',
-    desc: 'Celebrity-connected creators visit your restaurant, salon, gym, or store and create reels, stories, and promo content on-site — like having your own premium brand ambassador. Delivered same day.',
-    items: ['On-Site Content Creation', '3–12+ Content Pieces', 'Recurring Monthly Plans', 'Same-Week Booking'],
-    cta: 'Book Now',
-    icon: TrendingUp,
-  },
-  {
-    href: '/start?service=musicvideo',
-    tag: 'In-Person · South Florida',
-    category: 'Music Videos',
-    title: 'Creators for Your Music Video',
-    desc: 'Book creators specifically for your music video — from solo featured roles to full 50+ creator productions. Our creators have credits with Sean Paul, Bryson Tiller, Trippie Redd, Kodak Black, and more.',
-    items: ['Solo Features', 'Duo/Trio Leads', 'Squad Scenes (5+)', 'Full Video Cast (10-50)'],
-    cta: 'Book Now',
-    icon: Music,
-  },
-  {
-    href: '/start?service=shoot',
-    tag: 'In-Person · South Florida',
-    category: 'Photo Shoots',
-    title: 'Creators for Your Production',
-    desc: 'Professional creators for brand shoots, fashion editorials, lookbooks, and non-speaking productions. We handle casting — you focus on the creative.',
-    items: ['Brand Shoots', 'Fashion Editorials', 'Lookbooks', 'E-commerce'],
-    cta: 'Book Now',
-    icon: Camera,
-  },
-  {
-    href: '/start?service=commercial',
-    tag: 'In-Person · South Florida',
-    category: 'Commercials & Speaking Roles',
-    title: 'Premium Acting & Speaking Creators',
-    desc: 'Book celebrity-connected creators/actresses for TV commercials, web ads, brand spots, and any production requiring script reading, dialogue, or voiceover. Major label quality at indie budget.',
-    items: ['Script Reading & Delivery', 'Dialogue & Acting', 'TV & Web Commercials', 'Monthly Subscription Available'],
-    cta: 'Book Now',
-    icon: Film,
-  },
-  {
-    href: '/start?service=commercial',
-    tag: 'Creator Partner · Casting',
-    category: 'Acting & Casting',
-    title: 'Actress Creators, Casting & Voiceover',
-    desc: 'Cast professional creators and actresses for film roles, TV, commercials, voiceover, audiobooks, and brand campaigns. Creators with Netflix, Audible, and major production credits.',
-    items: ['Actress Roles & Film Casting', 'Voiceover Creators', 'Audiobooks & Commercials', 'Casting Call Coordination'],
-    cta: 'Book Now',
-    icon: Clapperboard,
-  },
-  {
-    href: '/start?service=event',
-    tag: 'In-Person · South Florida',
-    category: 'Events & Hosting',
-    title: 'Creators at Your Event',
-    desc: 'Book professional creators for club nights, brand activations, private parties, and grand openings.',
-    items: ['Club Nights & Parties', 'Brand Activations', 'Private Events', 'Grand Openings'],
-    cta: 'Book Now',
-    icon: Sparkles,
-  },
-  {
-    href: '/start?service=bottle',
-    tag: 'In-Person · South Florida',
-    category: 'Bottle Girls / VIP Hostesses',
-    title: 'VIP Bottle Service Girls',
-    desc: 'Professional VIP hostesses and brand ambassadors for nightclubs, lounges, and premium venues.',
-    items: ['Nightclub Bottle Service', 'VIP Table Hostesses', 'Lounge & Bar Events', 'Monthly Venue Packages'],
-    cta: 'Book Now',
-    icon: Wine,
-  },
-];
-
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-[#080808]">
@@ -194,48 +91,26 @@ export default function ServicesPage() {
           What we book.
         </h1>
         <p className="text-white text-[16px] md:text-[18px] max-w-xl">
-          Remote content, or Brand Ambassadors and influencers at your venue in South Florida.
+          Talent, content, music, venues, and events. Every service we still book is listed here.
         </p>
       </section>
 
-      {/* Services */}
-      <section className="border-t border-white/[0.06]">
-        {services.map(({ href, tag, category, title, desc, items, cta, icon: Icon }, i) => (
-          <Link
-            key={href}
-            href={href}
-            className="group block border-b border-white/[0.06] py-14 md:py-20 px-8 md:px-16 hover:bg-white/[0.015] transition-all duration-300 relative"
-          >
-            <div className="absolute top-6 right-6 md:top-8 md:right-16">
-              <span className="text-[9px] font-bold tracking-[0.3em] uppercase px-3 py-1.5 border border-white/15 text-white/40">{tag}</span>
-            </div>
-
-            <div className="flex flex-col md:flex-row md:items-start gap-8 md:gap-16 max-w-6xl">
-              <div className="flex-1">
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-12 h-12 border border-white/10 flex items-center justify-center group-hover:border-[#c9a96e]/40 transition-colors">
-                    <Icon className="h-5 w-5 text-white/25 group-hover:text-[#c9a96e] transition-colors" />
-                  </div>
-                  <p className="text-[10px] tracking-[0.4em] uppercase font-bold text-white/30 group-hover:text-[#c9a96e] transition-colors">{category}</p>
-                </div>
-                <h2 className="font-display font-bold italic text-white leading-tight mb-4" style={{ fontSize: 'clamp(28px, 3.5vw, 44px)' }}>{scrubCopy(title) || title}</h2>
-                {scrubCopy(desc) && <p className="text-white/85 text-[16px] leading-relaxed max-w-lg mb-6">{scrubCopy(desc)}</p>}
-                <div className="flex flex-wrap gap-3">
-                  {items.filter((item) => !hideCopy(item)).map(item => (
-                    <span key={item} className="text-white/85 text-[13px] font-medium px-3 py-1.5 border border-white/[0.06]">{item}</span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="md:text-right shrink-0 md:pt-12">
-                <span className="text-[11px] font-bold tracking-widest uppercase text-white/25 group-hover:text-[#c9a96e] flex items-center gap-2 md:justify-end transition-colors">
-                  {cta} <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+      {serviceLineup.map((group) => (
+        <section key={group.id} id={group.id} className="border-t border-white/[0.06] px-5 py-14 md:px-16 md:py-20">
+          <h2 className="font-display font-bold italic text-white leading-tight" style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}>{group.label}</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {group.items.map((service) => (
+              <Link key={service.title} href={service.href} className="flex flex-col border border-white/10 p-6 hover:border-[#c9a96e]/50">
+                <h3 className="font-display text-[26px] font-semibold leading-tight text-white">{service.title}</h3>
+                <p className="mt-3 text-[16px] leading-relaxed text-white/85">{service.line}</p>
+                <span className="mt-6 inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.14em]" style={{ color: gold }}>
+                  Book <ChevronRight className="h-4 w-4" />
                 </span>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </section>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ))}
 
       {/* CTA */}
       <section className="py-20 md:py-32 px-8 md:px-16 bg-white border-t border-black/10">

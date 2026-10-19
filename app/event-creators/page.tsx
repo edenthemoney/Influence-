@@ -15,7 +15,7 @@ export default function EventTalentPage() {
     <PersonaLanding
       title="Event Talent & VIP Hostesses"
       description="Book professional event talent, bottle girls, and VIP hostesses for clubs, parties, and brand activations in South Florida. From $400."
-      tagline="South Florida · Same-Week Availability"
+      tagline="Event staffing in South Florida"
       headline="Elevate Your\nEvent."
       subheadline="Professional event creators, bottle girls, and hostesses for clubs, parties, grand openings, and brand activations in Miami, Fort Lauderdale, and Boca Raton."
       heroImage="/images/Des/des-21.jpg"

@@ -16,7 +16,7 @@ export default function MusicVideoBookingPage() {
     <PersonaLanding
       title="Book Music Video Talent in Miami"
       description="Book 1 girl, 2 girls, or 3 girls for your music video. In Miami. Verified talent with major artist credits. From $500."
-      tagline="Miami · Same-Week Availability"
+      tagline="Music video talent in Miami"
       headline="Book Girls for\nYour Music Video."
       subheadline="Verified talent for your video — from solo features to full squads. No casting headaches. No flakey DMs. Just professional creators on set, on time."
       heroImage="/images/Shay/shay-1.jpg"
