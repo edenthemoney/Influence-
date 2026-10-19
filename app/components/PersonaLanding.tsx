@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Check, ChevronRight, Phone, ArrowRight } from 'lucide-react';
 import MobileNav from './MobileNav';
 
@@ -84,7 +85,7 @@ export default function PersonaLanding({
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-end overflow-hidden">
-        <img src={heroImage} alt={heroImageAlt} className="absolute inset-0 w-full h-full object-cover object-top" />
+        <Image src={heroImage} alt={heroImageAlt} fill priority quality={90} sizes="100vw" className="object-cover object-top" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         <div className="relative z-10 px-8 md:px-16 pb-20 md:pb-28 max-w-4xl">
@@ -248,7 +249,7 @@ export default function PersonaLanding({
 
       {/* Final CTA */}
       <section className="relative py-24 md:py-36 px-8 md:px-16 overflow-hidden">
-        <img src={heroImage} alt={heroImageAlt} className="absolute inset-0 w-full h-full object-cover opacity-20" />
+        <Image src={heroImage} alt={heroImageAlt} fill quality={85} sizes="100vw" className="object-cover opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/90 to-[#080808]/70" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}>

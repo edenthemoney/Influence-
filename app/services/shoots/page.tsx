@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { ChevronRight, Check, Phone, Camera, Film, Users, Star, Clock, Palette } from 'lucide-react';
 import MobileNav from '../../components/MobileNav';
@@ -79,7 +80,7 @@ export default function ShootsPage() {
 
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-end overflow-hidden">
-        <img src="/images/Genesis/genesis-1.jpg" alt="Shoots & Videos" className="absolute inset-0 w-full h-full object-cover object-top" />
+        <Image src="/images/Genesis/genesis-1.jpg" alt="Shoots & Videos" fill priority quality={90} sizes="100vw" className="object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent" />
         <div className="relative z-10 px-8 md:px-16 pb-16 md:pb-24 max-w-4xl">

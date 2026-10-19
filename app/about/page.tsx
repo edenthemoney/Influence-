@@ -146,7 +146,7 @@ export default function AboutPage() {
           {/* Deseray */}
           <div className="grid md:grid-cols-2 gap-0 mb-0 border border-white/[0.06]">
             <div className="relative h-[50vh] md:h-auto overflow-hidden">
-              <Image src="/images/Des/des-5.jpg" alt="Deseray Marie — Co-Founder of Influence" fill className="object-cover object-top" />
+              <Image src="/images/Des/des-5.jpg" alt="Deseray Marie — Co-Founder of Influence" fill quality={90} sizes="(max-width: 768px) 100vw, 50vw" className="object-cover object-center" />
             </div>
             <div className="p-8 md:p-14 flex flex-col justify-center">
               <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-3" style={{ color: gold }}>Co-Founder &amp; Creative Director</p>
