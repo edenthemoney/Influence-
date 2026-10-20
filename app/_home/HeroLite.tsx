@@ -7,7 +7,7 @@ const V = 'v=5'; // cache-bust: new mobile hero files (hero-m2*)
 // The <video> is written as raw HTML so the server-rendered markup already carries
 // muted / playsinline / webkit-playsinline / autoplay / loop (React drops `muted` from SSR HTML),
 // and the sources are chosen by the browser at parse time (no src swap after hydration).
-const HTML = `<video muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture aria-hidden="true"
+const HTML = `<video muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"
   poster="/images/stage/hero-m2-poster.webp?${V}"
   class="absolute inset-0 h-full w-full translate-y-32 object-cover object-top md:translate-y-20">
   <source media="(min-width: 768px)" src="/images/stage/hero-d.mp4?${V}" type="video/mp4">

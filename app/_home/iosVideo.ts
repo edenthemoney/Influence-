@@ -11,8 +11,18 @@ export function prime(v: HTMLVideoElement | null) {
   v.setAttribute('muted', '');
   v.setAttribute('playsinline', '');
   v.setAttribute('webkit-playsinline', '');
+  v.removeAttribute('controls');
+  v.controls = false;
+  v.setAttribute('disablepictureinpicture', '');
+  v.setAttribute('disableremoteplayback', '');
+  ensureKbStyle();
+  if (!v.dataset.luxPlaying) {
+    v.dataset.luxPlaying = '1';
+    v.addEventListener('playing', () => { delete v.dataset.refused; fallback(v, false); });
+  }
 }
 
+const EV = ['touchstart', 'touchend', 'click', 'scroll', 'keydown'];
 const waiting = new Set<HTMLVideoElement>();
 let armed = false;
 function arm() {
@@ -22,9 +32,9 @@ function arm() {
     waiting.forEach((v) => { if (v.isConnected && v.dataset.want === 'play') v.play().catch(() => {}); });
     waiting.clear();
     armed = false;
-    removeEventListener('touchend', go); removeEventListener('click', go);
+    EV.forEach((e) => removeEventListener(e, go));
   };
-  addEventListener('touchend', go, { passive: true }); addEventListener('click', go);
+  EV.forEach((e) => addEventListener(e, go, { passive: true }));
 }
 
 export function kick(v: HTMLVideoElement | null) {
@@ -32,7 +42,14 @@ export function kick(v: HTMLVideoElement | null) {
   prime(v);
   v.dataset.want = 'play';
   const p = v.play();
-  if (p) p.catch(() => { waiting.add(v); arm(); });
+  if (p) p.catch((err) => {
+    // Autoplay refused (Low Power Mode etc.): keep the video invisible so no native play glyph can
+    // show, put the sharp poster up with a slow Ken Burns, and retry on the first gesture.
+    if (err && err.name === 'AbortError') return;
+    v.dataset.refused = 'true';
+    fallback(v, true);
+    waiting.add(v); arm();
+  });
 }
 
 export function halt(v: HTMLVideoElement | null, unload = false) {
@@ -55,24 +72,38 @@ function ensureKbStyle() {
   st.textContent = `@keyframes luxKB{from{scale:1.02}to{scale:1.1}}
 .lux-kb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;transition:opacity .6s ease}
 .lux-kb[data-on="true"]{opacity:1;animation:luxKB 9s ease-in-out infinite alternate}
-@media (prefers-reduced-motion: reduce){.lux-kb[data-on="true"]{animation:none}}`;
+@media (prefers-reduced-motion: reduce){.lux-kb[data-on="true"]{animation:none}}
+video{transition:opacity .5s ease}
+video[data-refused="true"]{opacity:0!important}
+video::-webkit-media-controls-start-playback-button,video::-webkit-media-controls,video::-webkit-media-controls-panel,video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none!important;opacity:0!important}`;
   document.head.appendChild(st);
 }
 
-export function watch(v: HTMLVideoElement): () => void {
-  if (typeof window === 'undefined') return () => {};
+const KB = new WeakMap<HTMLVideoElement, HTMLImageElement>();
+/** Show/hide the Ken Burns poster layer that sits right after a video. */
+export function fallback(v: HTMLVideoElement, on: boolean) {
+  if (typeof document === 'undefined') return;
   ensureKbStyle();
-  let last = v.currentTime, still = 0, retried = false, kb: HTMLImageElement | null = null;
-  const showKb = (on: boolean) => {
-    if (on && !kb && v.poster && v.parentElement) {
+  let kb = KB.get(v);
+  if (on && v.poster && v.parentElement) {
+    if (!kb || !kb.isConnected) {
       kb = document.createElement('img');
       kb.className = `lux-kb ${v.className}`.trim();
       kb.alt = ''; kb.setAttribute('aria-hidden', 'true'); kb.decoding = 'async';
       kb.src = v.poster;
       v.insertAdjacentElement('afterend', kb);
-      requestAnimationFrame(() => { if (kb) kb.dataset.on = 'true'; });
-    } else if (!on && kb) { kb.dataset.on = 'false'; }
-  };
+      KB.set(v, kb);
+    }
+    const k = kb;
+    requestAnimationFrame(() => { k.dataset.on = 'true'; });
+  } else if (!on && kb) { kb.dataset.on = 'false'; }
+}
+
+export function watch(v: HTMLVideoElement): () => void {
+  if (typeof window === 'undefined') return () => {};
+  ensureKbStyle();
+  let last = v.currentTime, still = 0, retried = false;
+  const showKb = (on: boolean) => fallback(v, on);
   const t = window.setInterval(() => {
     const want = v.dataset.want === 'play' && !document.hidden && v.isConnected;
     if (!want) { still = 0; last = v.currentTime; return; }
@@ -83,5 +114,5 @@ export function watch(v: HTMLVideoElement): () => void {
     if (still >= 1200 && !retried) { retried = true; try { v.load(); } catch { /* ignore */ } v.play().catch(() => {}); }
     else if (still >= 2700) showKb(true);
   }, 300);
-  return () => { clearInterval(t); kb?.remove(); kb = null; };
+  return () => { clearInterval(t); KB.get(v)?.remove(); KB.delete(v); };
 }
