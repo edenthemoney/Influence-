@@ -7,8 +7,7 @@ const V = 'v=8'; // cache-bust: new mobile hero files (hero-m2*)
 // The <video> is written as raw HTML so the server-rendered markup already carries
 // muted / playsinline / webkit-playsinline / autoplay / loop (React drops `muted` from SSR HTML),
 // and the sources are chosen by the browser at parse time (no src swap after hydration).
-// Mobile: Des sits low so the headline just veils her eyes (Eden). Desktop unchanged (headline left, Des right).
-const CLS = 'absolute inset-0 h-full w-full translate-y-[310px] object-cover object-top md:translate-y-20';
+const CLS = 'absolute inset-0 h-full w-full translate-y-32 object-cover object-top md:translate-y-20';
 // Motion layer under the video: animated WebP (runs in Low Power Mode). The video starts hidden
 // (data-refused) and is revealed only after currentTime is seen advancing.
 const HTML = `<picture><source media="(min-width: 768px)" srcset="/images/stage/hero-d-anim.webp?${V}"><img src="/images/stage/hero-m2-anim.webp?${V}" alt="" aria-hidden="true" decoding="async" fetchpriority="high" class="${CLS}"></picture><video data-refused="true" muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"
@@ -17,7 +16,7 @@ const HTML = `<picture><source media="(min-width: 768px)" srcset="/images/stage/
   <source media="(min-width: 768px)" src="/images/stage/hero-d.mp4?${V}" type="video/mp4">
   <source src="/images/stage/hero-m2-hevc.mp4?${V}" type='video/mp4; codecs="hvc1"'>
   <source src="/images/stage/hero-m2.mp4?${V}" type="video/mp4">
-</video><div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-[580px] bg-[linear-gradient(to_bottom,#000_0%,#000_53%,rgba(0,0,0,0.75)_68%,rgba(0,0,0,0.3)_85%,rgba(0,0,0,0)_100%)] md:hidden"></div>`;
+</video>`;
 
 /** Hero loop for /preview/home-e: portrait HQ encode on phones, 720p on desktop; paused off screen; iOS-safe autoplay. */
 export default function HeroLite() {

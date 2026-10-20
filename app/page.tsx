@@ -65,7 +65,7 @@ export default function HomePage() {
             <span className="h-px w-8 shrink-0" style={{ backgroundColor: GOLD }} />
             <p className="text-[13px] font-semibold uppercase tracking-[0.18em]">For venues, brands, and creators</p>
           </div>
-          <div className="mt-auto max-w-3xl">
+          <div className="mt-[calc(17.6svh-18px)] max-w-3xl md:mt-auto">
             <h1 className="sr-only">Go Viral. Make an Influence. We match venues and brands with Brand Ambassadors and influencers.</h1>
             <p aria-hidden className="font-display font-bold italic leading-[0.85]" style={{ fontSize: 'clamp(50px, 9vw, 128px)' }}>
               Go Viral.<br />Make an<br /><span style={{ color: GOLD }}>Influence.</span>
