@@ -1,9 +1,9 @@
 'use client';
 
 import { useLayoutEffect, useRef } from 'react';
-import { fallback, halt, hold, kick, watch } from './iosVideo';
+import { fallback, halt, hold, kick, touch, watch } from './iosVideo';
 
-const V = 'v=5'; // cache-bust: short-GOP H.264 + HEVC re-encodes
+const V = 'v=6'; // cache-bust: short-GOP H.264 + HEVC re-encodes
 
 /**
  * Phone-screen clip built imperatively so iOS sees muted/autoplay/playsinline BEFORE any source is
@@ -25,7 +25,7 @@ export default function IosClip({ anim, src, poster, className, onEl, active = t
     v.setAttribute('preload', 'auto');
     v.setAttribute('aria-hidden', 'true');
     v.poster = poster;
-    if (anim) v.dataset.anim = anim;
+    v.dataset.anim = anim || `${src.replace(/\.mp4$/, '-anim.webp')}?${V}`;
     if (className) v.className = className;
     const hevc = document.createElement('source');
     hevc.src = `${src.replace(/\.mp4$/, '-hevc.mp4')}?${V}`; hevc.type = 'video/mp4; codecs="hvc1"';
@@ -38,7 +38,7 @@ export default function IosClip({ anim, src, poster, className, onEl, active = t
     if (active) onEl?.(v);
     // Start covered by the sharp poster (Ken Burns); the video fades in only once frames advance,
     // so a refused (Low Power Mode) or stalled first clip never shows a frozen frame or play glyph.
-    if (active) hold(v);
+    if (active || touch()) hold(v); // touch: animated WebP by default; video shows only once it really plays
     const unwatch = watch(v);
     const go = () => { if (!document.hidden && act.current) kick(v); };
     v.addEventListener('loadeddata', go);
@@ -64,7 +64,7 @@ export default function IosClip({ anim, src, poster, className, onEl, active = t
     const v = vid.current;
     if (!v) return;
     v.style.opacity = active ? '1' : '0';
-    if (active) { onEl?.(v); hold(v); kick(v); } else { halt(v); delete v.dataset.refused; fallback(v, false); }
+    if (active) { onEl?.(v); hold(v); kick(v); } else { halt(v); if (!touch()) { delete v.dataset.refused; fallback(v, false); } }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
   return <span ref={host} className="contents" />;

@@ -3,13 +3,16 @@
 import { useEffect, useRef } from 'react';
 import { halt, hold, kick, prime, watch } from './iosVideo';
 
-const V = 'v=5'; // cache-bust: new mobile hero files (hero-m2*)
+const V = 'v=6'; // cache-bust: new mobile hero files (hero-m2*)
 // The <video> is written as raw HTML so the server-rendered markup already carries
 // muted / playsinline / webkit-playsinline / autoplay / loop (React drops `muted` from SSR HTML),
 // and the sources are chosen by the browser at parse time (no src swap after hydration).
-const HTML = `<video muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"
+const CLS = 'absolute inset-0 h-full w-full translate-y-32 object-cover object-top md:translate-y-20';
+// Motion layer under the video: animated WebP (runs in Low Power Mode). The video starts hidden
+// (data-refused) and is revealed only after currentTime is seen advancing.
+const HTML = `<picture><source media="(min-width: 768px)" srcset="/images/stage/hero-d-anim.webp?${V}"><img src="/images/stage/hero-m2-anim.webp?${V}" alt="" aria-hidden="true" decoding="async" fetchpriority="high" class="${CLS}"></picture><video data-refused="true" muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"
   poster="/images/stage/hero-m2-poster.webp?${V}"
-  class="absolute inset-0 h-full w-full translate-y-32 object-cover object-top md:translate-y-20">
+  class="${CLS}">
   <source media="(min-width: 768px)" src="/images/stage/hero-d.mp4?${V}" type="video/mp4">
   <source src="/images/stage/hero-m2-hevc.mp4?${V}" type='video/mp4; codecs="hvc1"'>
   <source src="/images/stage/hero-m2.mp4?${V}" type="video/mp4">
@@ -22,9 +25,11 @@ export default function HeroLite() {
     const v = box.current?.querySelector('video');
     if (!v) return;
     prime(v);
-    if (window.matchMedia('(min-width: 768px)').matches) v.poster = '/images/stage/hero-d-poster.webp';
+    const desk = window.matchMedia('(min-width: 768px)').matches;
+    if (desk) v.poster = '/images/stage/hero-d-poster.webp';
+    v.dataset.anim = `/images/stage/${desk ? 'hero-d' : 'hero-m2'}-anim.webp?${V}`; // motion fallback (animates in Low Power Mode)
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { halt(v); return; }
-    if (v.paused || v.currentTime < 0.05) hold(v); // poster + Ken Burns until frames advance
+    hold(v); // poster + Ken Burns until frames advance
     const unwatch = watch(v);
     let visible = true;
     const sync = () => { if (visible && !document.hidden) kick(v); else halt(v); };

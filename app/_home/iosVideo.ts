@@ -3,6 +3,17 @@
  * video may autoplay from the attribute at load time, so set it (and playsinline) before any src.
  * If autoplay is still refused (Low Power Mode), retry on the visitor's first tap.
  */
+/** Touch devices (iPhone): phone-mockup and tile videos show an animated WebP by default (it animates in Low Power Mode). */
+// Autoplay is never assumed on any device: every clip shows its animated WebP until frames are proven to advance.
+export const touch = () => typeof window !== 'undefined';
+/** Animated WebP for a stage clip: /images/stage/<id>(-hevc).mp4 -> /images/stage/<id>-anim.webp?v=6 */
+export function animFor(v: HTMLVideoElement): string | null {
+  if (v.dataset.anim) return v.dataset.anim;
+  const src = v.dataset.src || v.querySelector('source:last-of-type')?.getAttribute('src') || v.currentSrc || '';
+  const m = src.match(/(\/images\/stage\/(?!hero)[\w-]+?)(-hevc)?\.mp4/);
+  return m ? `${m[1]}-anim.webp?v=6` : null;
+}
+
 export function prime(v: HTMLVideoElement | null) {
   if (!v) return;
   v.muted = true;
@@ -22,7 +33,7 @@ export function prime(v: HTMLVideoElement | null) {
     v.addEventListener('timeupdate', () => {
       if (v.dataset.refused !== 'true') return;
       const t0 = Number(v.dataset.t0 || 0);
-      if (v.currentTime > t0 + 0.15 && !v.paused) { delete v.dataset.refused; fallback(v, false); }
+      if (v.currentTime > t0 + 0.3 && !v.paused) { delete v.dataset.refused; fallback(v, false); }
     });
   }
 }
@@ -62,6 +73,7 @@ export function halt(v: HTMLVideoElement | null, unload = false) {
   if (!v) return;
   v.dataset.want = 'pause';
   v.pause();
+  if (touch() && animFor(v)) hold(v); // never leave a static poster/frame on a touch device
   if (unload && v.getAttribute('src')) { v.removeAttribute('src'); v.load(); }
 }
 
@@ -98,17 +110,21 @@ export function fallback(v: HTMLVideoElement, on: boolean) {
   if (typeof document === 'undefined') return;
   ensureKbStyle();
   let kb = KB.get(v);
-  if (on && v.poster && v.parentElement) {
+  if (on && (v.poster || animFor(v)) && v.parentElement) {
     if (!kb || !kb.isConnected) {
       kb = document.createElement('img');
       kb.className = `lux-kb ${v.className}`.trim();
       kb.alt = ''; kb.setAttribute('aria-hidden', 'true'); kb.decoding = 'async';
-      kb.src = v.poster;
+      const a = touch() ? animFor(v) : null;
+      kb.src = a || v.poster;
+      if (a) { kb.dataset.anim = '1'; kb.style.transition = 'none'; kb.dataset.on = 'true'; }
+      kb.onerror = () => { if (kb && v.poster && kb.src !== v.poster) kb.src = v.poster; };
       v.insertAdjacentElement('afterend', kb);
       KB.set(v, kb);
     }
     // Refused or stalled for real: swap in the animated WebP (image animation still runs in Low Power Mode).
-    if (v.dataset.hard === '1' && v.dataset.anim && !kb.src.includes(v.dataset.anim)) kb.src = v.dataset.anim;
+    const a = v.dataset.hard === '1' || touch() ? animFor(v) : null;
+    if (a && !kb.dataset.anim) { kb.dataset.anim = '1'; kb.src = a; }
     const k = kb;
     requestAnimationFrame(() => { k.dataset.on = 'true'; });
   } else if (!on && kb) { kb.dataset.on = 'false'; }

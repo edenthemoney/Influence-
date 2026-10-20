@@ -74,7 +74,7 @@ function Profile({ c, name, handle }: { c: Campaign; name: string; handle: strin
       <div className={s.grid}>
         {c.grid.map((t, i) => (
           <div key={t.src + i} className={s.tile}>
-            <img src={t.src} alt="" width={240} height={240} loading="lazy" decoding="async" />
+            <img src={t.reel ? `${t.src.replace(/-sq-[ab]\.webp$/, '-sq-anim.webp')}?v=6` : t.src} alt="" width={240} height={240} loading="lazy" decoding="async" />
             {t.reel && <span className={s.tileReel}>{I.reel}</span>}
           </div>
         ))}
@@ -114,6 +114,8 @@ export default function BusinessStage() {
   const [lockGone, setLockGone] = useState<'no' | 'true' | 'hide'>('no');
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
+  // Every device: video slides and reel thumbnails render their animated WebP by default (never a static frame).
+  const animOf = (video?: string) => (video ? `${video.replace(/\.mp4$/, '-anim.webp')}?v=6` : null);
   // Preload the first clip's sharp poster (default campaign, first slide after the lock screen:
   // px-dine-room) so its Ken Burns fallback is ready the moment the phone scrolls in.
   useEffect(() => {
@@ -344,7 +346,7 @@ export default function BusinessStage() {
     const ms = durOf(x);
     if (x.kind === 'story') return (
       <>
-        <img className={s.fill} src={x.bg} alt="" loading="lazy" decoding="async" />
+        <img className={x.video ? s.fill : `${s.fill} kb-still`} src={animOf(x.video) || x.bg} alt="" loading="lazy" decoding="async" />
         {x.video && ((on && videoOn) || pre) ? <IosClip key={`${type}-${i}`} onEl={setVideo} className={s.fill} src={x.video} poster={x.bg} anim={x.anim} active={on && videoOn} /> : null}
         <div className={s.shade} />
         <Bars count={storyCount(x.beat)} index={storyIndex(i)} run={on && playing && inView} ms={ms} />
@@ -358,7 +360,7 @@ export default function BusinessStage() {
     );
     if (x.kind === 'reel') return (
       <>
-        <img className={s.fill} src={x.poster} alt="" loading="lazy" decoding="async" />
+        <img className={s.fill} src={animOf(x.video) || x.poster} alt="" loading="lazy" decoding="async" />
         {(on && videoOn) || pre ? <IosClip key={`${type}-${i}`} onEl={setVideo} className={s.fill} src={x.video} poster={x.poster} active={on && videoOn} /> : null}
         <div className={s.shade} />
         <span className={s.reelTag}>{x.label ?? 'Reels'}</span>

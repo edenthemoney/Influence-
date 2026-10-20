@@ -250,3 +250,11 @@ input[type='range']::-moz-range-thumb {
   background: rgba(255,255,255,0.12);
   border-radius: 2px;
 }
+
+/* Videos stay hidden until frames are proven to advance (iosVideo.ts); the motion fallback shows underneath. */
+video[data-refused="true"] { opacity: 0 !important; }
+video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+/* Photo-only stories drift slowly (never read as a frozen video). */
+@keyframes kbStill { from { transform: scale(1.02) translate3d(0,0,0); } to { transform: scale(1.12) translate3d(-2%,-1.5%,0); } }
+.kb-still { animation: kbStill 5s ease-in-out infinite alternate; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .kb-still { animation: none; } }

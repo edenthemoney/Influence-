@@ -12,7 +12,7 @@ import { serviceLineup } from '@/data/service-lineup';
 import { BOOK_HREF } from './Chrome';
 import { dimensionMeta } from './Sections';
 import L from './Luxe.module.css';
-import { halt, kick, prime, watch } from './iosVideo';
+import { halt, hold, kick, prime, watch } from './iosVideo';
 
 const S = '/images/stage';
 const M = '/images/mag';
@@ -27,7 +27,7 @@ function playOnly(v: HTMLVideoElement) {
   if (current && current !== v) halt(current, true);
   current = v;
   prime(v);
-  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=5`;
+  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=6`;
   if (!v.dataset.watched) { v.dataset.watched = '1'; watch(v); }
   kick(v);
 }
@@ -178,7 +178,7 @@ export function ScrubScene() {
           <span className="mt-3 block font-display text-[clamp(34px,6vw,72px)] font-bold italic leading-[0.95]">The room is set.<br />Now the feed.</span>
         </p>
         <div className={L.scenePhone} aria-hidden>
-          <img src={`${S}/lounge-poster.webp`} alt="" decoding="async" loading="lazy" />
+          <img src={`${S}/martini-anim.webp?v=6`} alt="" decoding="async" loading="lazy" />
         </div>
       </div>
     </section>
@@ -186,7 +186,7 @@ export function ScrubScene() {
 }
 
 const TILE_HREF: Record<string, string> = { venues: '/start', talent: '/start?service=shoot', content: '/start?service=ugc', music: '/start?service=musicvideo', events: '/start?service=event' };
-const TILE_CLIP: Record<string, string> = { venues: 'dinner', talent: 'editorial', content: 'dance', music: 'party', events: 'lounge' };
+const TILE_CLIP: Record<string, string> = { venues: 'martini', talent: 'editorial', content: 'dance', music: 'bathtub', events: 'pool-shoot' };
 
 /** Five live service tiles: poster by default; the most-visible tile plays on mobile, hover plays on desktop. */
 export function LiveTiles() {
@@ -195,6 +195,7 @@ export function LiveTiles() {
     const root = box.current;
     if (!root || reduced() || isOff('tiles')) return;
     const vids = Array.from(root.querySelectorAll('video'));
+    vids.forEach((v) => hold(v)); // every device: animated WebP until the tile's video really plays
     if (desktop()) {
       const offs = vids.map((v) => {
         const card = v.closest('article')!;
@@ -238,7 +239,7 @@ export function LiveTiles() {
   );
 }
 
-const BAND = ['beach', 'yacht', 'pool-shoot', 'martini', 'bathtub', 'lounge2', 'editorial', 'dance'];
+const BAND = ['beach', 'yacht', 'pool-shoot', 'martini', 'bathtub', 'editorial', 'dance'];
 
 /** Full-bleed highlight reel: posters drift slowly (one transform animation), paused off screen. No text. */
 export function ReelBand() {
@@ -379,8 +380,8 @@ export function VideoWordmark() {
   return (
     <div ref={ref} className={L.wordWrap} role="img" aria-label="Influence">
       {mode === 'video'
-        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp`} data-src={`${clip}.mp4`} aria-hidden />
-        : <img className={L.wordMedia} src={`${clip}-poster.webp`} alt="" loading="lazy" decoding="async" />}
+        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp`} data-src={`${clip}.mp4`} data-anim={`${clip}-anim.webp?v=6`} aria-hidden />
+        : <img className={L.wordMedia} src={`${clip}-anim.webp?v=6`} alt="" loading="lazy" decoding="async" />}
     </div>
   );
 }
