@@ -11,7 +11,7 @@ const V = 'v=5'; // cache-bust: short-GOP H.264 + HEVC re-encodes
  * Mounted only when its slide is active, then play() is called explicitly, and again on
  * loadeddata / canplay / tab return / first touch.
  */
-export default function IosClip({ src, poster, className, onEl, active = true }: { src: string; poster: string; className?: string; onEl?: (v: HTMLVideoElement | null) => void; active?: boolean }) {
+export default function IosClip({ anim, src, poster, className, onEl, active = true }: { anim?: string; src: string; poster: string; className?: string; onEl?: (v: HTMLVideoElement | null) => void; active?: boolean }) {
   const host = useRef<HTMLSpanElement>(null);
   const vid = useRef<HTMLVideoElement | null>(null);
   const act = useRef(active);
@@ -25,6 +25,7 @@ export default function IosClip({ src, poster, className, onEl, active = true }:
     v.setAttribute('preload', 'auto');
     v.setAttribute('aria-hidden', 'true');
     v.poster = poster;
+    if (anim) v.dataset.anim = anim;
     if (className) v.className = className;
     const hevc = document.createElement('source');
     hevc.src = `${src.replace(/\.mp4$/, '-hevc.mp4')}?${V}`; hevc.type = 'video/mp4; codecs="hvc1"';
@@ -44,13 +45,13 @@ export default function IosClip({ src, poster, className, onEl, active = true }:
     v.addEventListener('canplay', go);
     document.addEventListener('visibilitychange', go);
     window.addEventListener('pageshow', go);
-    window.addEventListener('touchstart', go, { passive: true });
+    window.addEventListener('touchend', go, { passive: true });
     if (active) kick(v); else { v.dataset.want = 'pause'; v.load(); } // next slide: buffered, not playing
     return () => {
       unwatch();
       v.removeEventListener('loadeddata', go); v.removeEventListener('canplay', go);
       document.removeEventListener('visibilitychange', go); window.removeEventListener('pageshow', go);
-      window.removeEventListener('touchstart', go);
+      window.removeEventListener('touchend', go);
       if (act.current) onEl?.(null);
       vid.current = null;
       halt(v);

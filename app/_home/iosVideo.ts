@@ -27,7 +27,8 @@ export function prime(v: HTMLVideoElement | null) {
   }
 }
 
-const EV = ['touchstart', 'touchend', 'click', 'scroll', 'keydown'];
+// iOS only unlocks play() inside touchend / click (touchstart and scroll are not activation gestures).
+const EV = ['touchend', 'click', 'keydown'];
 const waiting = new Set<HTMLVideoElement>();
 let armed = false;
 function arm() {
@@ -51,6 +52,7 @@ export function kick(v: HTMLVideoElement | null) {
     // Autoplay refused (Low Power Mode etc.): keep the video invisible so no native play glyph can
     // show, put the sharp poster up with a slow Ken Burns, and retry on the first gesture.
     if (err && err.name === 'AbortError') return;
+    v.dataset.hard = '1';
     hold(v);
     waiting.add(v); arm();
   });
@@ -73,9 +75,9 @@ function ensureKbStyle() {
   if (kbStyle || typeof document === 'undefined') return;
   kbStyle = true;
   const st = document.createElement('style');
-  st.textContent = `@keyframes luxKB{from{scale:1.02}to{scale:1.1}}
+  st.textContent = `@keyframes luxKB{from{scale:1;translate:0 0}to{scale:1.12;translate:-2.5% -1.5%}}
 .lux-kb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;transition:opacity .6s ease}
-.lux-kb[data-on="true"]{opacity:1;animation:luxKB 9s ease-in-out infinite alternate}
+.lux-kb[data-on="true"]{opacity:1;animation:luxKB 6s ease-in-out infinite alternate}
 @media (prefers-reduced-motion: reduce){.lux-kb[data-on="true"]{animation:none}}
 video{transition:opacity .5s ease}
 video[data-refused="true"]{opacity:0!important}
@@ -105,6 +107,8 @@ export function fallback(v: HTMLVideoElement, on: boolean) {
       v.insertAdjacentElement('afterend', kb);
       KB.set(v, kb);
     }
+    // Refused or stalled for real: swap in the animated WebP (image animation still runs in Low Power Mode).
+    if (v.dataset.hard === '1' && v.dataset.anim && !kb.src.includes(v.dataset.anim)) kb.src = v.dataset.anim;
     const k = kb;
     requestAnimationFrame(() => { k.dataset.on = 'true'; });
   } else if (!on && kb) { kb.dataset.on = 'false'; }
@@ -123,7 +127,7 @@ export function watch(v: HTMLVideoElement): () => void {
     if (r.bottom < 0 || r.top > innerHeight || r.width === 0) { still = 0; return; }
     if (Math.abs(v.currentTime - last) > 0.01) { last = v.currentTime; still = 0; retried = false; if (v.dataset.refused !== 'true') showKb(false); return; }
     still += 300;
-    if (still >= 900 && v.dataset.refused !== 'true') hold(v); // stalled: cover the frozen frame right away
+    if (still >= 900 && v.dataset.hard !== '1') { v.dataset.hard = '1'; hold(v); } // stalled: cover the frozen frame right away
     if (still >= 1200 && !retried) { retried = true; try { v.load(); } catch { /* ignore */ } v.play().catch(() => {}); }
   }, 300);
   return () => { clearInterval(t); KB.get(v)?.remove(); KB.delete(v); };

@@ -167,14 +167,15 @@ export default function ChatFunnel() {
   return (
     <>
       {/* Floating Button */}
-      {!open && (
+      {/* Hidden on the homepage (it has its own booking widget and Book buttons). */}
+      {!open && pathname !== '/' && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-[60] w-14 h-14 flex items-center justify-center shadow-2xl transition-transform hover:scale-105"
+          className="fixed bottom-6 right-6 z-[60] w-14 h-14 p-0 leading-none grid place-items-center shadow-2xl transition-transform hover:scale-105"
           style={{ backgroundColor: gold }}
           aria-label="Open chat"
         >
-          <MessageCircle className="w-6 h-6 text-black" />
+          <MessageCircle className="block w-6 h-6 shrink-0 text-black" />
         </button>
       )}
 

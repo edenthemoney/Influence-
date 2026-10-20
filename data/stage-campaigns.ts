@@ -10,7 +10,7 @@ export type BizType = 'restaurant' | 'nightclub' | 'hotel' | 'brand' | 'artist' 
 type N = (name: string) => string;
 
 export type Screen =
-  | { kind: 'story'; beat: number; bg: string; video?: string; title: N; sub: N; notif: N; ticket?: boolean }
+  | { kind: 'story'; beat: number; bg: string; video?: string; anim?: string; title: N; sub: N; notif: N; ticket?: boolean }
   | { kind: 'reel'; beat: number; video: string; poster: string; caption: N; notif: N; audio?: N; label?: string }
   | { kind: 'post'; beat: number; image: string; caption: N; notif: N }
   | { kind: 'carousel'; beat: number; images: string[]; caption: N; notif: N }
@@ -46,7 +46,7 @@ const v = (id: string) => ({ video: `${S}/${id}.mp4`, poster: `${S}/${id}-poster
 // Venue B-roll (stories and profile tiles only, never the talent reels). Some venue footage via Pexels
 // (free Pexels License); sources and creators in /workspace/pexels/credits.md. Stock venues are atmosphere,
 // not Influence clients: no stock place is named, tagged or captioned as a client.
-const px = (id: string) => ({ bg: `${S}/px-${id}-poster.webp`, video: `${S}/px-${id}.mp4` });
+const px = (id: string) => ({ bg: `${S}/px-${id}-poster.webp`, video: `${S}/px-${id}.mp4`, anim: `${S}/px-${id}-anim.webp` });
 const pxSq = (id: string) => ({ src: `${S}/px-${id}-sq.webp` });
 const STD: [string, string, string, string] = ['Announcement story', 'Night-of reels', 'Collab post', 'Story reposts'];
 

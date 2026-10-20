@@ -13,7 +13,7 @@ const PROFILE_MS = 3400;
 const RECAP_MS = 7000;
 const IDLE_MS = 6000; // autoplay resumes this long after a swipe or tap
 const TALENT_FRAME_MS = 2800;
-const durOf = (x: Screen) => (x.kind === 'reel' ? 4600 : x.kind === 'carousel' ? 5600 : x.kind === 'story' ? 4000 : 4200);
+const durOf = (x: Screen) => (x.kind === 'reel' ? 3800 : x.kind === 'carousel' ? 5600 : x.kind === 'story' ? 3000 : 4200);
 
 const I = {
   heart: <svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z" /></svg>,
@@ -117,8 +117,8 @@ export default function BusinessStage() {
   // Preload the first clip's sharp poster (default campaign, first slide after the lock screen:
   // px-dine-room) so its Ken Burns fallback is ready the moment the phone scrolls in.
   useEffect(() => {
-    const first = campaigns[0].screens.find((x) => x.kind === 'story' && 'bg' in x) as { bg?: string } | undefined;
-    if (first?.bg) { const im = new Image(); im.decoding = 'async'; im.src = first.bg; }
+    const first = campaigns[0].screens.find((x) => x.kind === 'story' && 'bg' in x) as { bg?: string; anim?: string } | undefined;
+    for (const u of [first?.bg, first?.anim]) if (u) { const im = new Image(); im.decoding = 'async'; im.src = u; }
   }, []);
   const [reduced, setReduced] = useState(false);
   const [cycle, setCycle] = useState(0);
@@ -345,7 +345,7 @@ export default function BusinessStage() {
     if (x.kind === 'story') return (
       <>
         <img className={s.fill} src={x.bg} alt="" loading="lazy" decoding="async" />
-        {x.video && ((on && videoOn) || pre) ? <IosClip key={`${type}-${i}`} onEl={setVideo} className={s.fill} src={x.video} poster={x.bg} active={on && videoOn} /> : null}
+        {x.video && ((on && videoOn) || pre) ? <IosClip key={`${type}-${i}`} onEl={setVideo} className={s.fill} src={x.video} poster={x.bg} anim={x.anim} active={on && videoOn} /> : null}
         <div className={s.shade} />
         <Bars count={storyCount(x.beat)} index={storyIndex(i)} run={on && playing && inView} ms={ms} />
         <div className={s.storyHead}><span className={s.miniAv}>{initial(name)}</span><span>{handle}</span></div>

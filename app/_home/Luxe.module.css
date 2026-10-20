@@ -123,11 +123,13 @@
 /* Phones: the venue scene is static (no pin, no scroll-driven transforms); the phone fades up once. */
 @media (max-width: 767px) {
   .scene { height: auto; }
-  .pin { position: relative; height: 88vh; height: 88svh; }
+  /* Flow layout: headline first, phone below it, so the phone never covers the copy at any phone height. */
+  .pin { position: relative; height: auto; min-height: 88svh; display: flex; flex-direction: column; align-items: center; padding: 96px 20px 44px; box-sizing: border-box; }
   .sceneBg { transform: none; will-change: auto; }
-  .sceneCopy { opacity: 1; transform: none; }
-  .scenePhone { opacity: 0; transform: translate3d(-50%, 6vh, 0); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.1, 1); }
-  .scene[data-in='true'] .scenePhone { opacity: 1; transform: translate3d(-50%, 0, 0); }
+  .sceneCopy { position: relative; left: auto; right: auto; top: auto; width: 100%; opacity: 1; transform: none; z-index: 1; }
+  .scenePhone { position: relative; left: auto; bottom: auto; margin-top: 28px; width: min(56vw, 230px); flex: none;
+    opacity: 0; transform: translate3d(0, 6vh, 0); transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.1, 1); }
+  .scene[data-in='true'] .scenePhone { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -156,3 +158,5 @@
 /* Hero readability overlay. Phones: lighter (face stays clearly visible), dark only behind the headline at the bottom. */
 .heroShade { background: linear-gradient(to bottom, #000 0%, #000 15%, rgba(0,0,0,0.2) 21%, transparent 27%), linear-gradient(to top, #000 0%, rgba(0,0,0,0.55) 26%, rgba(0,0,0,0.1) 50%, transparent 66%), linear-gradient(to right, rgba(0,0,0,0.4), transparent 60%); }
 @media (min-width: 768px) { .heroShade { background: linear-gradient(to top, #000 0%, rgba(0,0,0,.45) 50%, transparent 100%), linear-gradient(to right, rgba(0,0,0,.75), rgba(0,0,0,.25) 50%, rgba(0,0,0,.4)); } }
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) { .scenePhone { transform: none; } }

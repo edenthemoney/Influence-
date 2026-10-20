@@ -35,7 +35,7 @@ export default function HeroLite() {
     v.addEventListener('canplay', sync, { once: true });
     document.addEventListener('visibilitychange', sync);
     window.addEventListener('pageshow', sync);
-    window.addEventListener('touchstart', touch, { passive: true });
+    window.addEventListener('touchend', touch, { passive: true });
     sync();
     return () => {
       unwatch();
@@ -43,7 +43,7 @@ export default function HeroLite() {
       v.removeEventListener('loadedmetadata', sync);
       document.removeEventListener('visibilitychange', sync);
       window.removeEventListener('pageshow', sync);
-      window.removeEventListener('touchstart', touch);
+      window.removeEventListener('touchend', touch);
     };
   }, []);
   return <div ref={box} className="contents" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: HTML }} />;
