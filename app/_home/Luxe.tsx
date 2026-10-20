@@ -28,7 +28,7 @@ function playOnly(v: HTMLVideoElement) {
   if (current && current !== v) halt(current, true);
   current = v;
   prime(v);
-  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=7`;
+  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=8`;
   if (!v.dataset.watched) { v.dataset.watched = '1'; watch(v); }
   kick(v);
 }
@@ -381,8 +381,8 @@ export function VideoWordmark() {
   return (
     <div ref={ref} className={L.wordWrap} role="img" aria-label="Influence">
       {mode === 'video'
-        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp`} data-src={`${clip}.mp4`} data-anim={`${clip}-anim.webp?v=7`} aria-hidden />
-        : <img className={L.wordMedia} src={`${clip}-anim.webp?v=7`} alt="" loading="lazy" decoding="async" />}
+        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp`} data-src={`${clip}.mp4`} data-anim={`${clip}-anim.webp?v=8`} aria-hidden />
+        : <img className={L.wordMedia} src={`${clip}-anim.webp?v=8`} alt="" loading="lazy" decoding="async" />}
     </div>
   );
 }
