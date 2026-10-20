@@ -124,7 +124,7 @@ function ShareOverlay({ mode, copied, onClose, onCopy, onReshare }: { mode: Mode
     : <>Link copied ✓ <b className="text-[#c9a96e]">{LINK_TEXT}</b></>;
   return (
     <div role="dialog" aria-modal="true" aria-label="Share to your story" data-testid="share-overlay" data-mode={mode}
-      className="fixed inset-0 z-[70] overflow-y-auto bg-black/95 px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] text-[#f4efe6]">
+      className="fixed inset-0 z-[70] overflow-y-auto bg-black px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1rem,env(safe-area-inset-top))] text-[#f4efe6]">
       <div className="mx-auto w-full max-w-[440px]">
         <div className="flex items-center justify-between">
           <p className="text-[13px] font-bold uppercase tracking-[0.2em] text-[#c9a96e]">Share to my story</p>
