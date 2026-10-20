@@ -15,6 +15,7 @@ const nextConfig = {
       { source: '/tickets/success', destination: '/nov18/success', statusCode: 301 },
       { source: '/tickets/:path*', destination: '/nov18', statusCode: 301 },
       { source: '/t', destination: '/nov18', statusCode: 301 },
+      { source: '/share', destination: '/nov18/share', statusCode: 301 },
       // Retired pages (no source) -> closest live page
       { source: '/events/miami-influencer-summit-2026', destination: '/events', statusCode: 301 },
       { source: '/best-creator-marketplaces-miami', destination: '/marketplace', statusCode: 301 },
