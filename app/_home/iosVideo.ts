@@ -18,7 +18,12 @@ export function prime(v: HTMLVideoElement | null) {
   ensureKbStyle();
   if (!v.dataset.luxPlaying) {
     v.dataset.luxPlaying = '1';
-    v.addEventListener('playing', () => { delete v.dataset.refused; fallback(v, false); });
+    // Reveal only once frames really advance ('playing' can fire on a stalled iOS video).
+    v.addEventListener('timeupdate', () => {
+      if (v.dataset.refused !== 'true') return;
+      const t0 = Number(v.dataset.t0 || 0);
+      if (v.currentTime > t0 + 0.15 && !v.paused) { delete v.dataset.refused; fallback(v, false); }
+    });
   }
 }
 
@@ -46,8 +51,7 @@ export function kick(v: HTMLVideoElement | null) {
     // Autoplay refused (Low Power Mode etc.): keep the video invisible so no native play glyph can
     // show, put the sharp poster up with a slow Ken Burns, and retry on the first gesture.
     if (err && err.name === 'AbortError') return;
-    v.dataset.refused = 'true';
-    fallback(v, true);
+    hold(v);
     waiting.add(v); arm();
   });
 }
@@ -79,6 +83,13 @@ video::-webkit-media-controls-start-playback-button,video::-webkit-media-control
   document.head.appendChild(st);
 }
 
+/** Hide the video (no frozen frame, no native glyph) and show its poster with Ken Burns until frames advance. */
+export function hold(v: HTMLVideoElement) {
+  v.dataset.t0 = String(v.currentTime || 0);
+  v.dataset.refused = 'true';
+  fallback(v, true);
+}
+
 const KB = new WeakMap<HTMLVideoElement, HTMLImageElement>();
 /** Show/hide the Ken Burns poster layer that sits right after a video. */
 export function fallback(v: HTMLVideoElement, on: boolean) {
@@ -104,15 +115,16 @@ export function watch(v: HTMLVideoElement): () => void {
   ensureKbStyle();
   let last = v.currentTime, still = 0, retried = false;
   const showKb = (on: boolean) => fallback(v, on);
+  void showKb;
   const t = window.setInterval(() => {
     const want = v.dataset.want === 'play' && !document.hidden && v.isConnected;
     if (!want) { still = 0; last = v.currentTime; return; }
     const r = v.getBoundingClientRect();
     if (r.bottom < 0 || r.top > innerHeight || r.width === 0) { still = 0; return; }
-    if (Math.abs(v.currentTime - last) > 0.01) { last = v.currentTime; still = 0; retried = false; showKb(false); return; }
+    if (Math.abs(v.currentTime - last) > 0.01) { last = v.currentTime; still = 0; retried = false; if (v.dataset.refused !== 'true') showKb(false); return; }
     still += 300;
+    if (still >= 900 && v.dataset.refused !== 'true') hold(v); // stalled: cover the frozen frame right away
     if (still >= 1200 && !retried) { retried = true; try { v.load(); } catch { /* ignore */ } v.play().catch(() => {}); }
-    else if (still >= 2700) showKb(true);
   }, 300);
   return () => { clearInterval(t); KB.get(v)?.remove(); KB.delete(v); };
 }

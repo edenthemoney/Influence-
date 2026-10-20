@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { halt, kick, prime, watch } from './iosVideo';
+import { halt, hold, kick, prime, watch } from './iosVideo';
 
 const V = 'v=5'; // cache-bust: new mobile hero files (hero-m2*)
 // The <video> is written as raw HTML so the server-rendered markup already carries
@@ -24,6 +24,7 @@ export default function HeroLite() {
     prime(v);
     if (window.matchMedia('(min-width: 768px)').matches) v.poster = '/images/stage/hero-d-poster.webp';
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { halt(v); return; }
+    if (v.paused || v.currentTime < 0.05) hold(v); // poster + Ken Burns until frames advance
     const unwatch = watch(v);
     let visible = true;
     const sync = () => { if (visible && !document.hidden) kick(v); else halt(v); };

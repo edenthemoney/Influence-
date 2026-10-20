@@ -114,6 +114,12 @@ export default function BusinessStage() {
   const [lockGone, setLockGone] = useState<'no' | 'true' | 'hide'>('no');
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
+  // Preload the first clip's sharp poster (default campaign, first slide after the lock screen:
+  // px-dine-room) so its Ken Burns fallback is ready the moment the phone scrolls in.
+  useEffect(() => {
+    const first = campaigns[0].screens.find((x) => x.kind === 'story' && 'bg' in x) as { bg?: string } | undefined;
+    if (first?.bg) { const im = new Image(); im.decoding = 'async'; im.src = first.bg; }
+  }, []);
   const [reduced, setReduced] = useState(false);
   const [cycle, setCycle] = useState(0);
   const [hold, setHold] = useState(0);

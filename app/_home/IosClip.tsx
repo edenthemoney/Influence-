@@ -1,7 +1,7 @@
 'use client';
 
 import { useLayoutEffect, useRef } from 'react';
-import { halt, kick, watch } from './iosVideo';
+import { fallback, halt, hold, kick, watch } from './iosVideo';
 
 const V = 'v=5'; // cache-bust: short-GOP H.264 + HEVC re-encodes
 
@@ -35,6 +35,9 @@ export default function IosClip({ src, poster, className, onEl, active = true }:
     h.appendChild(v);
     vid.current = v;
     if (active) onEl?.(v);
+    // Start covered by the sharp poster (Ken Burns); the video fades in only once frames advance,
+    // so a refused (Low Power Mode) or stalled first clip never shows a frozen frame or play glyph.
+    if (active) hold(v);
     const unwatch = watch(v);
     const go = () => { if (!document.hidden && act.current) kick(v); };
     v.addEventListener('loadeddata', go);
@@ -60,7 +63,7 @@ export default function IosClip({ src, poster, className, onEl, active = true }:
     const v = vid.current;
     if (!v) return;
     v.style.opacity = active ? '1' : '0';
-    if (active) { onEl?.(v); kick(v); } else halt(v);
+    if (active) { onEl?.(v); hold(v); kick(v); } else { halt(v); delete v.dataset.refused; fallback(v, false); }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
   return <span ref={host} className="contents" />;
