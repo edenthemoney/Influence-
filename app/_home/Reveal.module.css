@@ -1,0 +1,15 @@
+/* Phone rises and settles when its section scrolls into view. Transform/opacity only. */
+.rise { transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.9s ease-out; will-change: transform; }
+.rise[data-armed='true'] { transform: translate3d(0, 22%, 0) scale(0.92); opacity: 0; }
+.rise[data-armed='true'][data-in='true'] { transform: none; opacity: 1; }
+.fade { transition: opacity 0.9s ease-out 0.45s, transform 0.9s ease-out 0.45s; }
+.fade[data-armed='true'] { opacity: 0; transform: translate3d(0, 14px, 0); }
+.fade[data-armed='true'][data-in='true'] { opacity: 1; transform: none; }
+
+.cue { animation: cue 2.4s ease-in-out infinite; }
+@keyframes cue { 0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.55; } 50% { transform: translate3d(0, 7px, 0); opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise, .fade { transition: none !important; transform: none !important; opacity: 1 !important; }
+  .cue { animation: none; }
+}
