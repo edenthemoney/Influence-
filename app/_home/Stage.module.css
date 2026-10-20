@@ -307,3 +307,5 @@
   .layer, .layer[data-on='true'], .backdrop { transition: none !important; transform: none !important; animation: none !important; }
   .storyBars i[data-run='true'] b { transform: scaleX(0.5); }
 }
+
+@media (max-width: 767px) { .glowBack { left: -6%; right: -6%; } }
