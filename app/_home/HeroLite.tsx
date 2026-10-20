@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { halt, hold, kick, prime, watch } from './iosVideo';
 
-const V = 'v=6'; // cache-bust: new mobile hero files (hero-m2*)
+const V = 'v=7'; // cache-bust: new mobile hero files (hero-m2*)
 // The <video> is written as raw HTML so the server-rendered markup already carries
 // muted / playsinline / webkit-playsinline / autoplay / loop (React drops `muted` from SSR HTML),
 // and the sources are chosen by the browser at parse time (no src swap after hydration).

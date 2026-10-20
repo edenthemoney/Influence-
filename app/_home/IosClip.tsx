@@ -1,9 +1,10 @@
 'use client';
 
 import { useLayoutEffect, useRef } from 'react';
+import { posOf } from '@/data/clip-pos';
 import { fallback, halt, hold, kick, touch, watch } from './iosVideo';
 
-const V = 'v=6'; // cache-bust: short-GOP H.264 + HEVC re-encodes
+const V = 'v=7'; // cache-bust: short-GOP H.264 + HEVC re-encodes
 
 /**
  * Phone-screen clip built imperatively so iOS sees muted/autoplay/playsinline BEFORE any source is
@@ -27,6 +28,7 @@ export default function IosClip({ anim, src, poster, className, onEl, active = t
     v.poster = poster;
     v.dataset.anim = anim || `${src.replace(/\.mp4$/, '-anim.webp')}?${V}`;
     if (className) v.className = className;
+    v.style.objectPosition = posOf(src);
     const hevc = document.createElement('source');
     hevc.src = `${src.replace(/\.mp4$/, '-hevc.mp4')}?${V}`; hevc.type = 'video/mp4; codecs="hvc1"';
     const avc = document.createElement('source');

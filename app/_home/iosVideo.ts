@@ -11,7 +11,7 @@ export function animFor(v: HTMLVideoElement): string | null {
   if (v.dataset.anim) return v.dataset.anim;
   const src = v.dataset.src || v.querySelector('source:last-of-type')?.getAttribute('src') || v.currentSrc || '';
   const m = src.match(/(\/images\/stage\/(?!hero)[\w-]+?)(-hevc)?\.mp4/);
-  return m ? `${m[1]}-anim.webp?v=6` : null;
+  return m ? `${m[1]}-anim.webp?v=7` : null;
 }
 
 export function prime(v: HTMLVideoElement | null) {
@@ -115,6 +115,7 @@ export function fallback(v: HTMLVideoElement, on: boolean) {
       kb = document.createElement('img');
       kb.className = `lux-kb ${v.className}`.trim();
       kb.alt = ''; kb.setAttribute('aria-hidden', 'true'); kb.decoding = 'async';
+      kb.style.objectPosition = v.style.objectPosition || getComputedStyle(v).objectPosition;
       const a = touch() ? animFor(v) : null;
       kb.src = a || v.poster;
       if (a) { kb.dataset.anim = '1'; kb.style.transition = 'none'; kb.dataset.on = 'true'; }

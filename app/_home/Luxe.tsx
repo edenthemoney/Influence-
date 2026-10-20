@@ -13,6 +13,7 @@ import { BOOK_HREF } from './Chrome';
 import { dimensionMeta } from './Sections';
 import L from './Luxe.module.css';
 import { halt, hold, kick, prime, watch } from './iosVideo';
+import { posOf } from '@/data/clip-pos';
 
 const S = '/images/stage';
 const M = '/images/mag';
@@ -27,7 +28,7 @@ function playOnly(v: HTMLVideoElement) {
   if (current && current !== v) halt(current, true);
   current = v;
   prime(v);
-  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=6`;
+  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=7`;
   if (!v.dataset.watched) { v.dataset.watched = '1'; watch(v); }
   kick(v);
 }
@@ -178,7 +179,7 @@ export function ScrubScene() {
           <span className="mt-3 block font-display text-[clamp(34px,6vw,72px)] font-bold italic leading-[0.95]">The room is set.<br />Now the feed.</span>
         </p>
         <div className={L.scenePhone} aria-hidden>
-          <img src={`${S}/martini-anim.webp?v=6`} alt="" decoding="async" loading="lazy" />
+          <img src={`${S}/martini-anim.webp?v=7`} style={{ objectPosition: posOf('/stage/martini.mp4') }} alt="" decoding="async" loading="lazy" />
         </div>
       </div>
     </section>
@@ -225,7 +226,7 @@ export function LiveTiles() {
           <article key={g.id} className="w-[58vw] max-w-[260px] shrink-0 snap-start md:w-auto md:max-w-none" data-cursor="Play">
             <Link href={TILE_HREF[g.id] || BOOK_HREF} className="group block" data-curtain>
               <div className={L.tile}>
-                <video muted loop playsInline preload="none" poster={`${S}/${clip}-poster.webp`} data-src={`${S}/${clip}.mp4`} aria-hidden />
+                <video muted loop playsInline preload="none" poster={`${S}/${clip}-poster.webp`} data-src={`${S}/${clip}.mp4`} style={{ objectPosition: posOf(clip ? `${S}/${clip}.mp4` : '') }} aria-hidden />
                 <div className={L.tileShade} />
                 <h3 className="absolute bottom-3 left-3 right-3 font-display text-[24px] font-bold italic leading-[0.95] text-white md:text-[26px]">{meta.short}</h3>
               </div>
@@ -380,8 +381,8 @@ export function VideoWordmark() {
   return (
     <div ref={ref} className={L.wordWrap} role="img" aria-label="Influence">
       {mode === 'video'
-        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp`} data-src={`${clip}.mp4`} data-anim={`${clip}-anim.webp?v=6`} aria-hidden />
-        : <img className={L.wordMedia} src={`${clip}-anim.webp?v=6`} alt="" loading="lazy" decoding="async" />}
+        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp`} data-src={`${clip}.mp4`} data-anim={`${clip}-anim.webp?v=7`} aria-hidden />
+        : <img className={L.wordMedia} src={`${clip}-anim.webp?v=7`} alt="" loading="lazy" decoding="async" />}
     </div>
   );
 }
