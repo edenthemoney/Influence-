@@ -21,7 +21,12 @@ export async function POST(req: NextRequest) {
     const crewAddon: any = crewReq && crewReq.id ? CREW_ADDONS.find((a: any) => a.id === crewReq.id) || null : null;
 
     const isMonthly = bookingType === 'monthly';
-    const serviceLabel = serviceType === 'shoot' ? 'Video / Photo Shoot' : serviceType === 'reaction' ? 'Music Reaction' : serviceType === 'ugc' ? 'UGC & Branded Content' : serviceType === 'business' ? 'Business Content' : serviceType === 'commercial' ? 'Commercial Production' : serviceType === 'bottle' ? 'Bottle Girls / VIP Hostesses' : 'Event Hosting & Promo';
+    const SERVICE_LABELS: Record<string, string> = {
+      shoot: 'Photo / Commercial Shoot', musicvideo: 'Music Video Models', reaction: 'Music Reaction', ugc: 'UGC & Branded Content',
+      business: 'Brand Ambassador Visit', commercial: 'Actors & Voiceover', bottle: 'Bottle Girls / VIP Hostesses', event: 'Event Hosting & Promo',
+      storyreposts: 'Story Reposts', collabreposts: 'Collab Posts',
+    };
+    const serviceLabel = SERVICE_LABELS[String(serviceType)] || 'Influence Booking';
     const description = `${packageTagline} — ${serviceLabel}${isMonthly ? ' (Monthly)' : ''}`;
 
     const lineItem: any = {
