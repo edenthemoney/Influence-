@@ -229,7 +229,7 @@ export default function AboutPage() {
               { Icon: Users, title: 'Brand Marketing', desc: 'Product launches, brand awareness, and conversion-ready campaigns with niche-aligned influencers who move product.', href: '/start?service=business' },
               { Icon: Zap, title: 'Music Promotion', desc: 'Turn tracks into trending audio. Our influencers create viral content that puts your music in front of millions.', href: '/start?service=reaction' },
               { Icon: Award, title: 'Event Hosting & Appearances', desc: 'Book professional creators for parties, club nights, brand activations, and music video shoots across South Florida.', href: '/start?service=event' },
-              { Icon: Wine, title: 'Bottle Girls & VIP Hostesses', desc: 'Professional VIP hostesses and brand ambassadors for nightclubs, lounges, and premium venues. $100/girl/hr — creators earn $50/hr.', href: '/start?service=bottle' },
+              { Icon: Wine, title: 'Bottle Girls & VIP Hostesses', desc: 'Professional VIP hostesses and brand ambassadors for nightclubs, lounges, and premium venues. $95/hr per hostess, 4-hour minimum.', href: '/start?service=bottle' },
               { Icon: Target, title: 'Business Content', desc: 'We send professional creators to your business to create scroll-stopping reels and social content on-site. Perfect for restaurants, salons, gyms, and retail.', href: '/start?service=business' },
             ].map(({ Icon, title, desc, href }) => (
               <Link key={title} href={href} className="p-6 border border-white/[0.06] bg-white/[0.01] hover:bg-white/[0.02] hover:border-[#c9a96e]/20 transition-all group">

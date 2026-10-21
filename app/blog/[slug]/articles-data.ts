@@ -89,7 +89,7 @@ export const articles: Record<string, Article> = {
       { type: 'text', lead: "Fashion & Retail", value: "Fashion & Retail — Miami's fashion scene is internationally recognized. Local boutiques and designers partnering with Miami creators and influencers are seeing direct-to-consumer sales spike after every collaboration." },
       { type: 'text', lead: "Music & Entertainment", value: "Music & Entertainment — Artists launching music in Miami know that local model and influencer support can make or break a video's performance. Our creators has appeared in videos that have collectively generated over 50 million views." },
       { type: 'heading', value: "How to Get Started" },
-      { type: 'text', value: "You don't need a massive budget. Our UGC reels start at $300. For businesses serious about sustained growth, our monthly retainer packages provide consistent content and guaranteed reach — starting at $1,500/month." },
+      { type: 'text', value: "You don't need a massive budget. Our UGC reels start at $300. For businesses serious about sustained growth, our monthly retainer packages provide consistent content every month, starting at $840/month for 4 UGC videos." },
       { type: 'cta', text: "Browse our Miami creator network and find your perfect match.", href: "/start", label: "Book Now" },
     ],
   },
@@ -137,11 +137,11 @@ export const articles: Record<string, Article> = {
       { type: 'text', value: "Our newest addition, Ty Nadia, brings an equally impressive resume — lead model roles in videos for Trippie Redd (\"Stay The Same\"), Kodak Black, and Chicken P (17M+ YouTube views). Additional credits include French Montana, Sukihana, Sexyy Red, and Cash Cobain. She's also a skilled contortionist and flexibility artist, adding a unique visual element that directors love." },
       { type: 'heading', value: "What It Costs" },
       { type: 'text', value: "Here's the part that surprises most artists: professional music video creators are more affordable than you think." },
-      { type: 'text', lead: "Solo Shoot ($300)", value: "Solo Shoot ($300) — 1 model, 4 hours on set. Perfect for music video scenes or brand visuals." },
-      { type: 'text', lead: "Duo Shoot ($550)", value: "Duo Shoot ($550) — 2 models, 4 hours. Great for a full music video with coordinated model shots." },
-      { type: 'text', lead: "Trio Shoot ($650)", value: "Trio Shoot ($650) — 3 creators, 4 hours, styled production. Full music video coverage with multiple looks." },
-      { type: 'text', lead: "Full Day ($1,500+)", value: "Full Day ($1,500+) — 6–8 hours, multi-scene, multiple looks. The full treatment — wardrobe changes, multiple setups, behind-the-scenes content included." },
-      { type: 'text', value: "For artists serious about their visual brand, our monthly retainer packages provide consistent model creators for ongoing content — music videos, social media, promotional shoots — starting at $1,500/month." },
+      { type: 'text', lead: "Cameo ($199)", value: "Cameo ($199) — 1 model, up to 2 hours on set. Great for a featured scene." },
+      { type: 'text', lead: "Featured ($450)", value: "Featured ($450) — 1 model, half day (up to 5 hours)." },
+      { type: 'text', lead: "Lead ($950)", value: "Lead ($950) — 1 lead model, full day (up to 10 hours), multiple looks and scenes." },
+      { type: 'text', lead: "Ensemble (from $1,950)", value: "Ensemble (from $1,950) — 3 models, full day, +$550 per extra model." },
+      { type: 'text', value: "For artists serious about their visual brand, our monthly retainer packages provide consistent model creators for ongoing content — music videos, social media, promotional shoots — starting at $1,680/month." },
       { type: 'heading', value: "How to Book" },
       { type: 'text', value: "Browse our creators roster, pick the model that fits your visual direction, select your package, and book directly through our platform. We handle the logistics — you focus on the music." },
       { type: 'cta', text: "Browse our creators and book a music video model today.", href: "/start", label: "Book Now" },
@@ -301,11 +301,11 @@ export const articles: Record<string, Article> = {
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Des/des-4.jpg",
-  "description": "Event models in Miami are $400 per model for a 3-4 hour appearance at Influence. How booking works and what to ask.",
+  "description": "Event models in Miami are $95/hr per model with a 4-hour minimum ($380) at Influence. How booking works and what to ask.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: Influence event models and promo girls are $400 per model for a 3-4 hour appearance. Send the date, venue and type of event, and we confirm the lineup."
+      "value": "Short answer: Influence event models and promo girls are $95/hr per model with a 4-hour minimum ($380). Send the date, venue and type of event, and we confirm the lineup."
     },
     {
       "type": "heading",
@@ -356,7 +356,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much do promo models cost in Miami?",
-      "a": "At Influence, $400 per model for a 3-4 hour appearance."
+      "a": "At Influence, $95/hr per model with a 4-hour minimum ($380)."
     },
     {
       "q": "How far ahead should I book?",
@@ -396,7 +396,7 @@ export const articles: Record<string, Article> = {
     },
     {
       "type": "text",
-      "value": "Ensemble: from $1,950. 3+ models, full day, custom quote."
+      "value": "Ensemble: from $1,950. 3 models, full day, +$550 per extra model."
     },
     {
       "type": "heading",
@@ -610,11 +610,11 @@ export const articles: Record<string, Article> = {
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Des/des-3.jpg",
-  "description": "Commercial production at Influence starts from $599. How casting and voiceover work in South Florida.",
+  "description": "Commercial work at Influence starts at $250 for voiceover and $750 for an on-camera actor. How casting and voiceover work in South Florida.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: Influence commercial production starts from $599. Send your script and we cast actors, speaking talent or voiceover to match."
+      "value": "Short answer: Commercial work at Influence starts at $250 for voiceover and $750 for an on-camera actor. Send your script and we cast actors, speaking talent or voiceover to match."
     },
     {
       "type": "heading",
@@ -670,7 +670,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much does a commercial cost?",
-      "a": "At Influence, commercial production starts from $599. The final price depends on the script, talent and shoot."
+      "a": "At Influence, commercial work starts at $250 for voiceover and $750 for an on-camera actor. The final price depends on the script, talent and shoot."
     },
     {
       "q": "Do you provide voiceover talent?",
@@ -679,18 +679,18 @@ export const articles: Record<string, Article> = {
   ]
 },
   "brand-ambassador-visits-for-local-businesses": {
-  "title": "Brand Ambassador Visits for Local Businesses: What You Get for $300+",
+  "title": "Brand Ambassador Visits for Local Businesses: What You Get for $350+",
   "category": "Business",
   "readTime": "5 min read",
   "date": "Oct 21, 2026",
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Des/des-2.jpg",
-  "description": "Brand ambassador visits at Influence start from $300: Solo Visit, Content Day and Full Production packages.",
+  "description": "Brand ambassador visits at Influence start from $350: Solo Visit, Content Day and Full Production packages.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: Influence brand ambassador visits start from $300. A creator comes to your business and makes reels and stories on site."
+      "value": "Short answer: Influence brand ambassador visits start from $350. A creator comes to your business and makes reels and stories on site."
     },
     {
       "type": "heading",
@@ -733,7 +733,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much does an influencer visit cost?",
-      "a": "Brand ambassador visits start from $300 at Influence."
+      "a": "Brand ambassador visits start from $350 at Influence."
     },
     {
       "q": "What do I get?",

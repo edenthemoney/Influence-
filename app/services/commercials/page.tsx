@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Commercials & Speaking Roles",
-  "description": "Professional creators and actresses for TV commercials, web ads, brand spots, and speaking roles. Script reading, dialogue, voiceover. South Florida. From $599.",
+  "description": "Professional creators and actresses for TV commercials, web ads, brand spots, and speaking roles. Script reading, dialogue, voiceover. South Florida. From $750.",
   "provider": {
     "@type": "Organization",
     "name": "Influence",

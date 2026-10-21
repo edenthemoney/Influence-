@@ -54,9 +54,9 @@ const props: GeoPageProps = {
       "desc": "Creator reacts to your song on camera."
     },
     {
-      "name": "Premium reactions",
+      "name": "High-reach reactions",
       "price": "From $500",
-      "desc": "Reaction packages by celebrity-connected creators."
+      "desc": "Reaction posted by a higher-reach creator."
     },
     {
       "name": "Story reposts",
@@ -67,6 +67,16 @@ const props: GeoPageProps = {
       "name": "Collab posts",
       "price": "From $500",
       "desc": "One co-authored post on both feeds."
+    },
+    {
+      "name": "Launch bundle",
+      "price": "$750",
+      "desc": "1 reaction video + 3 story reposts."
+    },
+    {
+      "name": "Push bundle",
+      "price": "$1,750",
+      "desc": "3 reaction videos + 1 collab post + 5 story reposts."
     }
   ],
   "faqs": [

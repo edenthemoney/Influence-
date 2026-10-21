@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://influencecreators.marketing" },
   openGraph: {
     title: "Book Actress Creators in Miami \u2014 Acting & Casting | Influence",
-    description: "Professional actress creators with on-camera, commercial, and film experience. From $599.",
+    description: "Professional actress creators with on-camera, commercial, and film experience. From $750.",
     url: "https://influencecreators.marketing/actress-creators-miami",
   },
   twitter: {

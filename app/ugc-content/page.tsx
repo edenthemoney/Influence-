@@ -38,32 +38,32 @@ export default function UgcContentPage() {
       ]}
       packages={[
         {
-          name: 'Single Reel',
+          name: 'Single Video',
           price: 300,
           tagline: 'Start Here',
-          features: ['1x 30-second Reel or TikTok', 'Professional editing & trending audio', 'Single platform posting', '3-day delivery', '1 revision included'],
-          cta: 'Order Reel',
-          href: '/start?service=ugc&package=single-ugc',
+          features: ['1 UGC video (15–60s) to your brief', 'Professional editing & trending audio', '2 revisions', 'Organic usage on your site & social', 'Paid-ad rights +30% (90 days)'],
+          cta: 'Order 1 Video',
+          href: '/start?service=ugc&package=ugc-single',
         },
         {
-          name: 'Dual Reel',
-          price: 500,
+          name: '3-Pack',
+          price: 750,
           tagline: 'Most Popular',
-          features: ['2x 30-second reels (IG + TikTok)', 'Dual platform posting', 'Professional editing & transitions', '3-day delivery', '2 revisions included'],
-          cta: 'Order Dual Reel',
-          href: '/start?service=ugc&package=double-ugc',
+          features: ['3 UGC videos ($250 each)', 'Different hooks & angles', '2 revisions each', 'Organic usage on your site & social', 'Paid-ad rights +30% (90 days)'],
+          cta: 'Order 3-Pack',
+          href: '/start?service=ugc&package=ugc-3pack',
           popular: true,
         },
         {
-          name: '5-Reel Pack',
-          price: 1200,
+          name: '10-Pack',
+          price: 2250,
           tagline: 'Scale Up',
-          features: ['5x premium reels', 'Multi-platform distribution', 'Custom captions & CTAs', '5-day delivery', '3 revisions included'],
-          cta: 'Order 5-Reel Pack',
-          href: '/start?service=ugc&package=five-ugc',
+          features: ['10 UGC videos ($225 each)', 'Up to 3 creators', 'Built for ad testing', 'Organic usage on your site & social', 'Paid-ad rights +30% (90 days)'],
+          cta: 'Order 10-Pack',
+          href: '/start?service=ugc&package=ugc-10pack',
         },
       ]}
-      trustBadges={['Nationwide', '3–5 Day Delivery', 'Usage Rights Included']}
+      trustBadges={['Nationwide', '3–5 Day Delivery', 'Organic Usage Included']}
       socialProof={[
         { stat: '10K+', label: 'Reels Delivered' },
         { stat: '300+', label: 'Brand Clients' },

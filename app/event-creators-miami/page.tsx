@@ -5,11 +5,11 @@ import { Check, Users, Star, MapPin, Clock, Sparkles } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Event Creators for Hire in Miami | Promo Girls & Party Creators',
-  description: 'Hire event creators and promo girls in Miami for club nights, brand activations, parties, grand openings, and VIP events. $400/girl (4hr shift). Same-week booking.',
+  description: 'Hire event creators and promo girls in Miami for club nights, brand activations, parties, grand openings, and VIP events. $95/hr per model (4-hour minimum). Same-week booking.',
   keywords: 'event creators for hire, hire creators for event, hire creators for party, promo girls miami, event creators miami, party creators miami, promotional creators florida',
   openGraph: {
     title: 'Event Creators for Hire in Miami | Promo Girls & Party Creators',
-    description: 'Professional event creators and promo girls for parties, clubs, brand activations, and VIP events. $400/girl (4hr shift). Miami & South Florida.',
+    description: 'Professional event creators and promo girls for parties, clubs, brand activations, and VIP events. $95/hr per model (4-hour minimum). Miami & South Florida.',
     url: 'https://influencecreators.marketing/event-creators-miami',
   },
 };
@@ -71,10 +71,10 @@ export default function EventModelsMiami() {
         <h2 className="text-2xl font-bold mb-6">Event Model Pricing</h2>
         <div className="grid md:grid-cols-4 gap-0 border border-white/[0.06] mb-6">
           {[
-            { name: '1 Girl', price: '$400', desc: '$400/girl' },
-            { name: '3 Girls', price: '$1,200', desc: '$400/girl', highlight: true },
-            { name: '5 Girls', price: '$2,000', desc: '$400/girl' },
-            { name: '10 Girls', price: '$4,000', desc: '$400/girl' },
+            { name: '1 Model', price: '$380', desc: '$95/hr · 4hr min' },
+            { name: '3 Models', price: '$1,140', desc: '$95/hr · 4hr min', highlight: true },
+            { name: '5 Models', price: '$1,900', desc: '$95/hr · 4hr min' },
+            { name: '10 Models', price: '$3,800', desc: '$95/hr · 4hr min' },
           ].map((pkg, i) => (
             <div key={i} className={`p-6 text-center ${pkg.highlight ? 'bg-[#c9a96e]/[0.04]' : ''} ${i > 0 ? 'border-l border-white/[0.06]' : ''}`}>
               <p className="text-white/30 text-[9px] tracking-widest uppercase mb-1">{pkg.name}</p>
@@ -98,9 +98,9 @@ export default function EventModelsMiami() {
           </div>
         </div>
 
-        <AnswerFaq id="/event-creators-miami" title="Event creators in Miami: quick answers" service={{ name: 'Event Creators & Promo Models, Miami', serviceType: 'Event creators and promo models', description: 'Event creators and promo models for club nights, parties, brand activations and launches in Miami and South Florida. $400 per creator.' }} items={[
+        <AnswerFaq id="/event-creators-miami" title="Event creators in Miami: quick answers" service={{ name: 'Event Creators & Promo Models, Miami', serviceType: 'Event creators and promo models', description: 'Event creators and promo models for club nights, parties, brand activations and launches in Miami and South Florida. $380 per creator (4 hours at $95/hr).' }} items={[
           { q: 'What are event creators?', a: 'Event creators and promo models appear at your club night, party, brand activation or launch to bring energy and visibility.' },
-          { q: 'How much do event creators cost?', a: '$400 per creator for an appearance. See the package options on this page.' },
+          { q: 'How much do event creators cost?', a: '$380 per creator (4 hours at $95/hr). See the package options on this page.' },
           { q: 'How far ahead should I book?', a: 'As early as you can. Same-week bookings depend on availability.' },
           { q: 'Which areas do you cover?', a: 'Miami and all of South Florida.' },
         ]} />

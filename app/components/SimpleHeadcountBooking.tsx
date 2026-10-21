@@ -17,7 +17,7 @@ const musicVideoOptions: Option[] = [
   { count: 1, label: 'Cameo · 1 model, up to 2 hrs', price: 199, id: 'mv-cameo' },
   { count: 2, label: 'Featured · 1 model, half day', price: 450, id: 'mv-featured' },
   { count: 3, label: 'Lead · 1 lead model, full day', price: 950, id: 'mv-lead' },
-  { count: 4, label: 'Ensemble · 3+ models, full day', price: 1950, id: 'mv-ensemble' },
+  { count: 4, label: 'Ensemble · 3 models, full day (+$550/extra)', price: 1950, id: 'mv-ensemble' },
 ];
 
 export default function SimpleHeadcountBooking() {

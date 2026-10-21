@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: { absolute: "Bottle Girls & VIP Hostesses in Miami | Influence" },
-  description: "Book bottle girls and VIP hostesses for Miami nightclubs and lounges: $400 per hostess for a 4-hour shift.",
+  description: "Book bottle girls and VIP hostesses for Miami nightclubs and lounges: $95/hr per hostess with a 4-hour minimum ($380).",
   alternates: { canonical: 'https://influencecreators.marketing/bottle-girls-miami' },
 };
 
@@ -11,10 +11,10 @@ const props: GeoPageProps = {
   "path": "/bottle-girls-miami",
   "eyebrow": "Nightlife \u00b7 VIP Hostesses",
   "h1": "Bottle Girls and VIP Hostesses for Miami Venues",
-  "intro": "Influence books bottle girls and VIP hostesses for nightclubs, lounges and private events in South Florida. $400 per hostess for a 4-hour shift.",
+  "intro": "Influence books bottle girls and VIP hostesses for nightclubs, lounges and private events in South Florida. $95/hr per hostess with a 4-hour minimum ($380).",
   "serviceName": "Bottle girls and VIP hostesses",
   "serviceType": "VIP hostess booking",
-  "serviceDescription": "Bottle girls and VIP hostesses for nightclubs, lounges and events in Miami and South Florida. $400 per hostess, 4-hour shift.",
+  "serviceDescription": "Bottle girls and VIP hostesses for nightclubs, lounges and events in Miami and South Florida. $95/hr per hostess, 4-hour minimum.",
   "cta": {
     "label": "Book VIP hostesses",
     "href": "/start?service=bottle"
@@ -46,29 +46,29 @@ const props: GeoPageProps = {
   "prices": [
     {
       "name": "1 hostess",
-      "price": "$400",
+      "price": "$380",
       "desc": "4-hour shift."
     },
     {
       "name": "3 hostesses",
-      "price": "$1,200",
+      "price": "$1,140",
       "desc": "4-hour shift."
     },
     {
       "name": "5 hostesses",
-      "price": "$2,000",
+      "price": "$1,900",
       "desc": "4-hour shift."
     },
     {
       "name": "8 hostesses",
-      "price": "$3,200",
+      "price": "$3,040",
       "desc": "4-hour shift."
     }
   ],
   "faqs": [
     {
       "q": "How much are bottle girls in Miami?",
-      "a": "$400 per hostess for a 4-hour shift."
+      "a": "$95/hr per hostess with a 4-hour minimum ($380)."
     },
     {
       "q": "Can I book for a private event?",

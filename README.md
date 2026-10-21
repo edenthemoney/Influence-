@@ -6,7 +6,7 @@ An all-in-one model agency web application connecting businesses with elite cont
 
 ### For Businesses
 - **Browse Influencer Marketplace** - Search and filter verified influencers by niche, followers, engagement rate
-- **Multiple Package Tiers** - From $50 starter packages to premium clip farming campaigns
+- **Package Tiers** - From $199 (music video cameo); see Pricing below
 - **Secure Payments** - Stripe integration with escrow and automated commission splits
 - **Campaign Management** - Track deliverables, request revisions, approve content
 - **Analytics Dashboard** - Monitor campaign performance and ROI
@@ -25,15 +25,19 @@ An all-in-one model agency web application connecting businesses with elite cont
 - **Real-time Messaging** - Direct communication between clients and influencers
 - **Admin Dashboard** - Platform management and analytics
 
-## 📦 Package Tiers
+## 📦 Pricing (Oct 2026)
 
-| Tier | Price | Deliverables | Delivery Time |
-|------|-------|--------------|---------------|
-| **Starter** | $50 | 1x 15-second reel | 48 hours |
-| **Growth** | $150 | 2x 30-second reels | 72 hours |
-| **Pro** | $250 | 3x 30-second reels | 5 days |
-| **Premium** | $500 | 5x 30-second reels + strategy | 7 days |
-| **Clip Farming** | $750+ | 10+ micro-content pieces | 14 days |
+| Service | Price |
+|---------|-------|
+| Music video models | Cameo $199 (≤2 hrs) · Featured $450 (half day) · Lead $950 (full day) · Ensemble from $1,950 (+$550/extra model) |
+| Commercial / print models | $600 half day · $1,200 full day (paid ads/broadcast usage +50%) |
+| Event hosts / bottle girls | $95/hr per person, 4-hour minimum ($380) |
+| Brand ambassador visits | From $350 · Opening night $1,500 (3 creators) · Monthly campaign $2,500/mo |
+| UGC | $300 single · $750 for 3 · $2,250 for 10 · paid-ad rights +30% |
+| Music promotion | Reactions from $300 ($500 high-reach) · Story reposts from $150 · Collab posts from $500 · Launch $750 · Push $1,750 |
+| Actors / voiceover | Actors $750 half day / $1,250 full day · Voiceover $250 web / $450 broadcast (13 wk) |
+
+Source of truth for checkout prices: `lib/booking-packages.ts` (server re-prices every checkout from it). Research: Oct 2026 price sheet.
 
 ## 🛠 Tech Stack
 

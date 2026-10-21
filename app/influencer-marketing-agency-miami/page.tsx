@@ -60,7 +60,7 @@ export default function InfluencerMarketingAgencyMiami() {
             { title: 'Brand Campaigns', desc: 'Full influencer campaigns — product launches, brand partnerships, and sponsored content across platforms.', link: '/services/business' },
             { title: 'Event Appearances', desc: 'Model hosting, promotional appearances, and VIP event activation across South Florida.', link: '/services/events' },
             { title: 'Photo Shoots', desc: 'Lifestyle, fashion, editorial, and commercial photo shoots with professional models.', link: '/services/shoots' },
-            { title: 'Monthly Retainers', desc: 'Ongoing influencer partnerships with guaranteed content output, reach, and engagement. From $1,500/mo.', link: '/pricing' },
+            { title: 'Monthly Retainers', desc: 'Ongoing creator partnerships with a set monthly content output. From $840/mo.', link: '/pricing' },
           ].map((item, i) => (
             <Link key={i} href={item.link} className="flex items-start gap-3 border border-white/[0.06] p-5 hover:border-[#c9a96e]/30 transition-all group">
               <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: gold }} />

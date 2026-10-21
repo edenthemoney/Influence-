@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Hire professional actress models in Miami for commercials, TV, film, casting calls, speaking roles, and brand campaigns. Our talent includes models with Netflix, Audible, and major production credits. South Florida.',
   openGraph: {
     title: 'Book Actress Models in Miami — Acting & Casting | Influence',
-    description: 'Professional actress models with on-camera, commercial, and film experience. From $599.',
+    description: 'Professional actress models with on-camera, commercial, and film experience. From $750.',
     url: 'https://influencecreators.marketing/actress-models-miami',
   },
 };

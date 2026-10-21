@@ -8,7 +8,7 @@
 
 ✅ **Homepage** - Beautiful landing page with gradient design and clear CTAs
 ✅ **Influencer Marketplace** - Browse verified creators with filters and search
-✅ **Pricing Page** - 5 package tiers from $50 to $750+
+✅ **Pricing** - see README pricing table (from $199)
 ✅ **Database Schema** - Complete PostgreSQL schema with Prisma ORM
 ✅ **UI Components** - Modern, accessible components with TailwindCSS
 ✅ **Responsive Design** - Mobile-first approach with beautiful gradients
@@ -30,15 +30,7 @@ The platform is currently running at: **http://localhost:3001**
 
 ### Package Tiers
 
-| Package | Price | Deliverables | Commission Split |
-|---------|-------|--------------|------------------|
-| Starter | $50 | 1x 15s reel | Agency: $15 / Creator: $35 |
-| Growth | $150 | 2x 30s reels | Agency: $45 / Creator: $105 |
-| Pro | $250 | 3x 30s reels | Agency: $75 / Creator: $175 |
-| Premium | $500 | 5x 30s reels | Agency: $150 / Creator: $350 |
-| Clip Farming | $750+ | 10+ pieces | Agency: $225+ / Creator: $525+ |
-
-**Commission Structure:** 30% platform / 70% creator
+See the pricing table in README.md. Prices live in `lib/booking-packages.ts`.
 
 ## 🛠 Tech Stack
 

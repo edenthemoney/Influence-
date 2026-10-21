@@ -12,10 +12,10 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 - Music Reactions: Remote, from $300. Models react to your songs for TikTok/Instagram promotion.
 - Business Content: In-person, from $300. Model visits your business, creates reels on-site.
 - Photo & Video Shoots: In-person, from $300. 1-8 models for brand shoots and editorials.
-- Event Models & Hosting: In-person, from $400/girl. South Florida events and brand activations.
-- Bottle Girls / VIP Hostesses: In-person, from $400/girl. Miami clubs and lounges.
-- Commercial Productions: In-person, from $599. Scripted commercials and testimonial videos.
-- Brand Ambassadors: content visits from $300, event appearances $400 per model. https://influencecreators.marketing/brand-ambassadors-miami
+- Event Models & Hosting: In-person, from $95/hr. South Florida events and brand activations.
+- Bottle Girls / VIP Hostesses: In-person, from $95/hr. Miami clubs and lounges.
+- Commercial Productions: actors from $750, voiceover from $250. Scripted commercials and testimonial videos.
+- Brand Ambassadors: content visits from $350, event appearances $380 per model (4 hours at $95/hr). https://influencecreators.marketing/brand-ambassadors-miami
 - Music Promotion: reactions from $300, story reposts from $150, collab posts from $500. Real creators, no bots. https://influencecreators.marketing/music-promotion
 - Niche pages: restaurants https://influencecreators.marketing/restaurant-influencer-marketing-miami ; nightclubs and lounges https://influencecreators.marketing/nightclub-influencer-marketing-miami ; hotels https://influencecreators.marketing/hotel-influencer-marketing-miami ; bottle girls https://influencecreators.marketing/bottle-girls-miami
 - Cost guide: https://influencecreators.marketing/influencer-cost-guide
@@ -29,8 +29,13 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 - Founder: Eden Roy
 
 ## Pricing
-- Single model, 2-4hr: $300-$500
-- Multi-model packages: $500-$3,500+
+- Music video models: Cameo $199 (≤2 hrs), Featured $450 (half day), Lead $950 (full day), Ensemble from $1,950 (+$550/extra model)
+- Commercial & print models: $600 half day, $1,200 full day
+- Event hosts / bottle girls: $95/hr per person, 4-hour minimum
+- Brand ambassador visits: from $350; opening night $1,500 (3 creators); monthly campaigns from $2,500/mo
+- UGC: $300 single, $750 for 3, $2,250 for 10; paid-ad rights +30%
+- Music: reactions from $300 ($500 high-reach), story reposts from $150, collab posts from $500, Launch bundle $750, Push bundle $1,750
+- Actors: $750 half day, $1,250 full day; voiceover from $250 (web) / $450 (broadcast, 13 weeks)
 - Monthly retainers: available for UGC and music reactions
 - All packages bookable online with Stripe checkout
 

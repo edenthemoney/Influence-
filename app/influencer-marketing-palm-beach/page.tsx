@@ -91,7 +91,7 @@ const faqSchema = {
       "name": "How much does creator marketing cost in Palm Beach?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Palm Beach creator marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $199. Pricing varies based on the influencer's following, content type, and campaign scope."
+        "text": "Palm Beach creator marketing starts at $300 for UGC content. Event models are $95/hr (4-hour minimum). Music video models start at $199. Pricing varies based on the influencer's following, content type, and campaign scope."
       }
     },
     {
@@ -227,11 +227,11 @@ export default function PalmBeachPage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { name: 'Event Creators', price: 'From $400/girl', desc: 'Professional creators for Palm Beach luxury events and galas.' },
-                { name: 'Business Content', price: 'From $300', desc: 'On-site content for Palm Beach restaurants and businesses.' },
+                { name: 'Event Creators', price: 'From $95/hr', desc: 'Professional creators for Palm Beach luxury events and galas.' },
+                { name: 'Business Content', price: 'From $350', desc: 'On-site content for Palm Beach restaurants and businesses.' },
                 { name: 'UGC Content', price: 'From $300', desc: 'Remote content creation for Palm Beach luxury brands.' },
                 { name: 'Music Video Creators', price: 'From $199', desc: 'Creators for Palm Beach music video productions.' },
-                { name: 'Commercial Production', price: 'From $599', desc: 'Scripted commercials and speaking roles.' },
+                { name: 'Commercial Production', price: 'From $750', desc: 'Scripted commercials and speaking roles.' },
                 { name: 'Music Promotion', price: 'From $300', desc: 'Song reaction videos for Palm Beach artists.' },
               ].map(({ name, price, desc }) => (
                 <div key={name} className="border border-white/[0.06] p-6">

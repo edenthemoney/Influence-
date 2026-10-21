@@ -13,7 +13,7 @@ const categories = [
 ];
 
 const packages = [
-  { min: 0,    max: 500,   name: 'Starter', price: '$100–$499',    desc: 'Single influencer, 1–2 posts',  reach: '50K–100K',   budgetTier: 'testing' },
+  { min: 0,    max: 500,   name: 'Starter', price: '$199–$499',    desc: 'Single influencer, 1–2 posts',  reach: '50K–100K',   budgetTier: 'testing' },
   { min: 500,  max: 1500,  name: 'Growth',  price: '$500–$1,499',  desc: '1 influencer, 4–6 posts',      reach: '200K–300K',  budgetTier: 'scaling' },
   { min: 1500, max: 5000,  name: 'Pro',     price: '$1,500–$4,999', desc: 'Multi-influencer rollout',     reach: '300K–700K',  budgetTier: 'scaling' },
   { min: 5000, max: 99999, name: 'Elite',   price: '$5,000+',      desc: '10–100+ influencers, full team', reach: '1M+',          budgetTier: 'enterprise' },

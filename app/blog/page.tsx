@@ -21,7 +21,7 @@ const articles = [
   {
     slug: "how-to-book-event-models-miami",
     title: "How to Book Event Models and Promo Girls in Miami (Rates, Timing, What to Ask)",
-    excerpt: "Event models in Miami are $400 per model for a 3-4 hour appearance at Influence. How booking works and what to ask.",
+    excerpt: "Event models in Miami are $95/hr per model with a 4-hour minimum ($380) at Influence. How booking works and what to ask.",
     category: "Events",
     readTime: "5 min read",
     date: 'Oct 2026',
@@ -61,7 +61,7 @@ const articles = [
   {
     slug: "hiring-actors-and-voiceover-for-commercials-south-florida",
     title: "Hiring Actors and Voiceover Talent for Commercials in South Florida",
-    excerpt: "Commercial production at Influence starts from $599. How casting and voiceover work in South Florida.",
+    excerpt: "Commercial work at Influence starts at $250 for voiceover and $750 for an on-camera actor. How casting and voiceover work in South Florida.",
     category: "Commercials",
     readTime: "5 min read",
     date: 'Oct 2026',
@@ -70,8 +70,8 @@ const articles = [
   },
   {
     slug: "brand-ambassador-visits-for-local-businesses",
-    title: "Brand Ambassador Visits for Local Businesses: What You Get for $300+",
-    excerpt: "Brand ambassador visits at Influence start from $300: Solo Visit, Content Day and Full Production packages.",
+    title: "Brand Ambassador Visits for Local Businesses: What You Get for $350+",
+    excerpt: "Brand ambassador visits at Influence start from $350: Solo Visit, Content Day and Full Production packages.",
     category: "Business",
     readTime: "5 min read",
     date: 'Oct 2026',

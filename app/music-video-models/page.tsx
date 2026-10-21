@@ -15,7 +15,7 @@ const serviceSchema = {
     { '@type': 'Offer', name: 'Cameo', price: '199', priceCurrency: 'USD', description: '1 model, up to 2 hrs on set. From $199.' },
     { '@type': 'Offer', name: 'Featured', price: '450', priceCurrency: 'USD', description: '1 model, half day (up to 5 hrs). From $450.' },
     { '@type': 'Offer', name: 'Lead', price: '950', priceCurrency: 'USD', description: '1 lead model, full day (up to 10 hrs). From $950.' },
-    { '@type': 'Offer', name: 'Ensemble', price: '1950', priceCurrency: 'USD', description: '3+ models, full day. From $1,950 (custom quote).' },
+    { '@type': 'Offer', name: 'Ensemble', price: '1950', priceCurrency: 'USD', description: '3+ models, full day. From $1,950, +$550 per extra model.' },
   ],
 };
 

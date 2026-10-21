@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: { absolute: "Brand Ambassadors in Miami & South Florida | Influence" },
-  description: "Book brand ambassadors in Miami for business content visits (from $300) and event appearances ($400 per model). How it works, packages and FAQs.",
+  description: "Book brand ambassadors in Miami for business content visits (from $350) and event appearances ($380 per model, 4 hours at $95/hr). How it works, packages and FAQs.",
   alternates: { canonical: 'https://influencecreators.marketing/brand-ambassadors-miami' },
 };
 
@@ -11,10 +11,10 @@ const props: GeoPageProps = {
   "path": "/brand-ambassadors-miami",
   "eyebrow": "Brand Ambassadors \u00b7 South Florida",
   "h1": "Brand Ambassadors for Miami Businesses and Events",
-  "intro": "Influence books brand ambassadors who visit your business to make content, or appear at your event to represent your brand. Content visits start from $300; event appearances are $400 per model.",
+  "intro": "Influence books brand ambassadors who visit your business to make content, or appear at your event to represent your brand. Content visits start from $350; event appearances are $380 per model (4 hours at $95/hr).",
   "serviceName": "Brand Ambassadors, Miami & South Florida",
   "serviceType": "Brand ambassador booking",
-  "serviceDescription": "Brand ambassadors for on-site business content (from $300) and event appearances ($400 per model) in Miami and South Florida.",
+  "serviceDescription": "Brand ambassadors for on-site business content (from $350) and event appearances ($380 per model, 4 hours at $95/hr) in Miami and South Florida.",
   "cta": {
     "label": "Book a brand ambassador",
     "href": "/start?service=business"
@@ -52,30 +52,30 @@ const props: GeoPageProps = {
   "prices": [
     {
       "name": "Solo Visit",
-      "price": "From $300",
-      "desc": "1 model, 2-hour session, 3-5 reels and stories."
+      "price": "From $350",
+      "desc": "1 creator, 2-hour session, 1 Reel + 3 Stories posted."
     },
     {
-      "name": "Content Day",
-      "price": "Package",
-      "desc": "1 model, 4-hour session, 8-12 content pieces."
+      "name": "Half-Day Visit",
+      "price": "$600",
+      "desc": "1 creator, 4-hour session, multiple setups, 1 Reel + 3 Stories posted plus raw clips."
     },
     {
-      "name": "Full Production",
-      "price": "Package",
-      "desc": "2 models, 4-hour session, 12-20 content pieces."
+      "name": "Opening Night",
+      "price": "$1,500",
+      "desc": "3 creators, up to 4 hours, each posts 1 Reel + 3 Stories."
     },
     {
       "name": "Event appearance",
-      "price": "$400 per model",
+      "price": "$380 per model (4 hours at $95/hr)",
       "desc": "Promo model or ambassador at your event."
     }
   ],
-  "pricesNote": "Content Day and Full Production prices are shown when you book on the business content page.",
+  "pricesNote": "Monthly campaigns start at $2,500/mo (2 creators, 5 visits a month).",
   "faqs": [
     {
       "q": "How much does a brand ambassador cost in Miami?",
-      "a": "Content visits start from $300. Event appearances are $400 per model."
+      "a": "Content visits start from $350. Event appearances are $380 per model (4 hours at $95/hr)."
     },
     {
       "q": "Is a brand ambassador the same as an influencer?",

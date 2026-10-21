@@ -4,11 +4,11 @@ import { Check, Users, Star, Camera, Clock, Palette } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Hire Creators for Photoshoot | Professional Photo & Fashion Creators | Miami',
-  description: 'Book professional creators for your photoshoot in South Florida. Fashion, product, lifestyle, editorial, and brand photography. From $300. Same-week availability.',
+  description: 'Book professional creators for your photoshoot in South Florida. Fashion, product, lifestyle, editorial, and brand photography. From $600. Same-week availability.',
   keywords: 'hire creators for photoshoot, photoshoot creators miami, creators for photography, fashion creators for hire, product photoshoot creators, book creator for shoot',
   openGraph: {
     title: 'Hire Creators for Photoshoot | Professional Photo & Fashion Creators',
-    description: 'Professional creators for fashion, product, lifestyle, and editorial photoshoots. From $300. South Florida.',
+    description: 'Professional creators for fashion, product, lifestyle, and editorial photoshoots. From $600. South Florida.',
     url: 'https://influencecreators.marketing/creators-for-photoshoot',
   },
 };
@@ -70,10 +70,10 @@ export default function ModelsForPhotoshoot() {
         <h2 className="text-2xl font-bold mb-6">Photoshoot Pricing</h2>
         <div className="grid md:grid-cols-4 gap-0 border border-white/[0.06] mb-6">
           {[
-            { name: 'Solo', price: '$300', desc: '1 model · 4hr' },
-            { name: 'Duo', price: '$450', desc: '2 models · 4hr' },
-            { name: 'Trio', price: '$650', desc: '3 creators · 4hr', highlight: true },
-            { name: 'Full Day', price: '$500+', desc: '1 model · 6–8hr' },
+            { name: 'Half Day', price: '$600', desc: '1 model · up to 5hr' },
+            { name: 'Half Day Duo', price: '$1,150', desc: '2 models · up to 5hr' },
+            { name: 'Full Day', price: '$1,200', desc: '1 model · up to 10hr', highlight: true },
+            { name: 'Half Day Trio', price: '$1,700', desc: '3 models · up to 5hr' },
           ].map((pkg, i) => (
             <div key={i} className={`p-6 text-center ${pkg.highlight ? 'bg-[#c9a96e]/[0.04]' : ''} ${i > 0 ? 'border-l border-white/[0.06]' : ''}`}>
               <p className="text-white/30 text-[9px] tracking-widest uppercase mb-1">{pkg.name}</p>
@@ -82,7 +82,7 @@ export default function ModelsForPhotoshoot() {
             </div>
           ))}
         </div>
-        <p className="text-white/20 text-xs mb-16">Need 5–50+ models? Volume packages available. Add a photographer/videographer from $300. Monthly retainers for recurring shoots.</p>
+        <p className="text-white/20 text-xs mb-16">Need 5–50+ models? Volume packages available. Add a photographer from $250 or videographer from $300. Monthly retainers for recurring shoots.</p>
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Book Photoshoot Models</h2>

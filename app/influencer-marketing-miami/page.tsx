@@ -80,7 +80,7 @@ const faqSchema = {
       name: 'How much does creator marketing cost in Miami?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Miami creator marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $199. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
+        text: 'Miami creator marketing starts at $300 for UGC content. Event models are $95/hr (4-hour minimum). Music video models start at $199. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
       },
     },
     {
@@ -231,10 +231,10 @@ export default function MiamiPage() {
               {[
                 { name: 'UGC Content Creation', price: 'From $300', desc: 'Remote content creation for Miami brands nationwide.' },
                 { name: 'Music Promotion', price: 'From $300', desc: 'Song reaction videos for Miami artists and labels.' },
-                { name: 'Business Content', price: 'From $300', desc: 'On-site content for Miami restaurants and businesses.' },
-                { name: 'Event Creators', price: 'From $400/girl', desc: 'Professional creators for Miami events and parties.' },
+                { name: 'Business Content', price: 'From $350', desc: 'On-site content for Miami restaurants and businesses.' },
+                { name: 'Event Creators', price: 'From $95/hr', desc: 'Professional creators for Miami events and parties.' },
                 { name: 'Music Video Creators', price: 'From $199', desc: 'Creators for Miami music video productions.' },
-                { name: 'Commercial Production', price: 'From $599', desc: 'Scripted commercials and speaking roles.' },
+                { name: 'Commercial Production', price: 'From $750', desc: 'Scripted commercials and speaking roles.' },
               ].map(({ name, price, desc }) => (
                 <div key={name} className="border border-white/[0.06] p-6">
                   <h3 className="text-white font-bold text-sm mb-1">{name}</h3>

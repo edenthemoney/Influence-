@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: 'How Much Does It Cost to Hire an Influencer? | Influence',
-  description: 'How much it costs to hire an influencer: Influence campaigns start at $300, event creators $400 per creator. What drives the price, explained plainly.',
+  description: 'How much it costs to hire an influencer: Influence campaigns start at $300, event creators $380 per creator (4 hours at $95/hr). What drives the price, explained plainly.',
   alternates: { canonical: 'https://influencecreators.marketing/influencer-cost-guide' },
 };
 
@@ -19,7 +19,7 @@ const props: GeoPageProps = {
   sections: [
     {
       heading: 'How much does it cost to hire an influencer?',
-      answer: 'At Influence, campaigns start at $300. Event creators are $400 per creator and commercial production starts at $599. Anything custom is quoted on scope. Across the industry, rates vary widely, so contact us for a number on your exact project.',
+      answer: 'At Influence, campaigns start at $300. Event creators are $380 per creator (4 hours at $95/hr), and commercial work starts at $250 for voiceover and $750 for an on-camera actor. Anything custom is quoted on scope. Across the industry, rates vary widely, so contact us for a number on your exact project.',
     },
     {
       heading: 'What drives the price',
@@ -37,8 +37,8 @@ const props: GeoPageProps = {
       answer: 'These are the starting prices currently listed on our service pages.',
       bullets: [
         'Campaigns: start at $300',
-        'Event creators: $400 per creator (see Event Creators)',
-        'Commercials: from $599 (see Commercials)',
+        'Event creators: $380 per creator, 4 hours at $95/hr (see Event Creators)',
+        'Commercials: voiceover from $250, actors from $750 (see Commercials)',
         'UGC reels: see the UGC creators page for current packages',
       ],
     },

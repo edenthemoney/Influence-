@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Models for Shoots & Music Videos",
-  "description": "Professional creators for music videos, brand shoots, fashion editorials, and commercial productions in South Florida. From $300.",
+  "description": "Professional creators for music videos, brand shoots, fashion editorials, and commercial productions in South Florida. From $600.",
   "provider": {
     "@type": "Organization",
     "name": "Influence",

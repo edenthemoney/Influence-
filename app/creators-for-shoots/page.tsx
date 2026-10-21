@@ -2,10 +2,10 @@ import PersonaLanding from '../components/PersonaLanding';
 
 export const metadata = {
   title: 'Creators for Photoshoot | Hire Creators for Shoots Miami — Influence Marketplace',
-  description: 'Hire creators for photoshoots, fashion editorials, lookbooks, and e-commerce in South Florida. Professional creators for brand shoots and creative projects. From $300.',
+  description: 'Hire creators for photoshoots, fashion editorials, lookbooks, and e-commerce in South Florida. Professional creators for brand shoots and creative projects. From $600.',
   openGraph: {
     title: 'Creators for Photoshoot | Hire Creators for Shoots Miami',
-    description: 'Hire professional creators for photoshoots, editorials, and e-commerce in South Florida. From $300.',
+    description: 'Hire professional creators for photoshoots, editorials, and e-commerce in South Florida. From $600.',
     url: 'https://influencecreators.marketing/creators-for-shoots',
   },
 };
@@ -14,7 +14,7 @@ export default function ModelsForShootsPage() {
   return (
     <PersonaLanding
       title="Book Models for Photo Shoots"
-      description="Book professional models for brand shoots, fashion editorials, lookbooks, and e-commerce in South Florida. From $300."
+      description="Book professional models for brand shoots, fashion editorials, lookbooks, and e-commerce in South Florida. From $600."
       tagline="South Florida · Same-Week Availability"
       headline="Models for Your\nNext Shoot."
       subheadline="Professional creators for brand campaigns, fashion editorials, lookbooks, and e-commerce shoots. Camera-ready, on time, and matched to your creative direction."
@@ -38,29 +38,29 @@ export default function ModelsForShootsPage() {
       ]}
       packages={[
         {
-          name: '1 Model',
-          price: 300,
-          tagline: 'Solo Shoot',
-          features: ['1 professional model · 4 hours', 'Camera-ready & styled', 'Multiple looks', 'South Florida location'],
-          cta: 'Book 1 Model',
-          href: '/start?service=shoot&package=solo',
+          name: 'Half Day',
+          price: 600,
+          tagline: '1 Model',
+          features: ['1 professional model · up to 5 hours', 'Camera-ready & styled', 'Web & social usage included', 'Paid ads / broadcast usage +50%'],
+          cta: 'Book Half Day',
+          href: '/start?service=shoot&package=shoot-1-half',
         },
         {
-          name: '2 Models',
-          price: 550,
+          name: 'Full Day',
+          price: 1200,
           tagline: 'Most Popular',
-          features: ['2 professional creators · 4 hours', 'Coordinated looks', 'Multiple setups', 'South Florida location'],
-          cta: 'Book 2 Models',
-          href: '/start?service=shoot&package=duo',
+          features: ['1 professional model · up to 10 hours', 'Multiple looks & scenes', 'Web & social usage included', 'Paid ads / broadcast usage +50%'],
+          cta: 'Book Full Day',
+          href: '/start?service=shoot&package=shoot-1-full',
           popular: true,
         },
         {
-          name: '3 Models',
-          price: 650,
-          tagline: 'Trio Shoot',
-          features: ['3 professional creators · 4 hours', 'Styled ensemble looks', 'Full-cast energy', 'South Florida location'],
-          cta: 'Book 3 Models',
-          href: '/start?service=shoot&package=trio',
+          name: '2 Models · Half Day',
+          price: 1150,
+          tagline: 'Duo Shoot',
+          features: ['2 professional models · up to 5 hours', 'Coordinated looks', 'Web & social usage included', 'Paid ads / broadcast usage +50%'],
+          cta: 'Book 2 Models',
+          href: '/start?service=shoot&package=shoot-2-half',
         },
       ]}
       trustBadges={['Verified Models', 'Same-Week Booking', 'Camera-Ready']}
@@ -76,7 +76,7 @@ export default function ModelsForShootsPage() {
         { q: 'Are models styled when they arrive for the shoot?', a: 'Yes. Creators arrive camera-ready with hair and makeup done. You can provide wardrobe direction in advance.' },
         { q: 'Do you book creators for e-commerce shoots?', a: 'Yes. We regularly book creators for e-commerce, product photography, and catalog shoots.' },
         { q: 'Can I book a creator for a full-day shoot?', a: 'Yes. Full-day bookings are available for 6–8 hour shoots and larger productions.' },
-        { q: 'How much does it cost to hire a creator for a photoshoot?', a: 'Creators for shoots start at $300 for a 4-hour session. Duo, trio, and full-day options are available at higher rates.' },
+        { q: 'How much does it cost to hire a creator for a photoshoot?', a: 'Creators for shoots start at $600 for a half day (up to 5 hours). Multi-model and full-day ($1,200) options are available at higher rates.' },
       ]}
       finalCta={{ text: 'Book a Creator', href: '/start?service=shoot' }}
       hidePackagePrices

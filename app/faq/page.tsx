@@ -55,7 +55,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Pricing & Packages',
     question: 'What are your package tiers?',
-    answer: 'We offer 11 packages ranging from Single Reel ($300) to Influencer Network ($100,000+). Packages are organized into three budget tiers — Single Influencer, Influencer Campaign, and Platform Takeover — covering everything from a quick test post to full-scale agency rollouts. View our Pricing page for the full breakdown.'
+    answer: 'Prices start at $199 for a music video cameo and $300 for a single UGC video or reaction. UGC packs are $750 for 3 and $2,250 for 10. Event hosts are $95/hr with a 4-hour minimum, brand ambassador visits start at $350, commercial models are $600 half day / $1,200 full day, actors $750 / $1,250, and voiceover starts at $250. Larger campaigns are quoted on scope.'
   },
   {
     category: 'Pricing & Packages',
@@ -150,7 +150,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Services',
     question: 'How much does it cost to hire an influencer?',
-    answer: 'Pricing at Influence starts at $300 for a single UGC video or music reaction, with packages scaling up based on the number of models, content pieces, and campaign scope. Event content orderings and bottle girl / VIP hostess bookings start at $400 (1 girl, 4hr shift at $100/girl/hr). Monthly subscription packages are also available at discounted rates. Visit our pricing page for a full breakdown of all tiers.'
+    answer: 'Pricing at Influence starts at $300 for a single UGC video or music reaction, with packages scaling up based on the number of models, content pieces, and campaign scope. Event content orderings and bottle girl / VIP hostess bookings start at $380 (1 model, 4-hour minimum at $95/hr). Monthly subscription packages are also available at discounted rates. Visit our pricing page for a full breakdown of all tiers.'
   },
   {
     category: 'Services',
@@ -170,7 +170,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Events & In-Person',
     question: 'Can I hire creators for a party or event in Miami?',
-    answer: 'Absolutely. Influence provides professional event creators and hosts for parties, club nights, brand activations, trade shows, and VIP events across South Florida and the Miami area. Our creators are experienced in event hosting, brand ambassadorship, and nightlife promotion. Pricing starts at $400 for 1 girl / 4hr shift ($100/girl/hr). Volume pricing available for larger bookings.'
+    answer: 'Absolutely. Influence provides professional event creators and hosts for parties, club nights, brand activations, trade shows, and VIP events across South Florida and the Miami area. Our creators are experienced in event hosting, brand ambassadorship, and nightlife promotion. Pricing starts at $380 for 1 model, 4-hour minimum ($95/hr). Volume pricing available for larger bookings.'
   },
   {
     category: 'Events & In-Person',
@@ -180,7 +180,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Business Content',
     question: 'Can you send a model to my business to create content?',
-    answer: 'Yes! Our Business Content service sends a professional model directly to your business — restaurant, salon, gym, retail store, or any location in South Florida. She creates reels, stories, and promotional content on-site, all delivered within 24 hours. Sessions start at $300 for a 2-hour visit.'
+    answer: 'Yes! Our Business Content service sends a professional model directly to your business — restaurant, salon, gym, retail store, or any location in South Florida. She creates reels, stories, and promotional content on-site, all delivered within 24 hours. Sessions start at $350 for a 2-hour visit.'
   },
   {
     category: 'Business Content',

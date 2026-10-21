@@ -34,7 +34,6 @@ export function BookingButton({
 
   const getPackagePrice = (tier: string): number => {
     const prices: Record<string, number> = {
-      'TEST': 1,
       'SAMPLE': 300,
       'GIFTED': 400,
       'TESTIMONIAL': 400,

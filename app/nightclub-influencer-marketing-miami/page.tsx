@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: { absolute: "Nightclub & Lounge Influencer Marketing in Miami | Influence" },
-  description: "Promote your Miami nightclub or lounge with event creators ($400 each), VIP hostesses ($400 per 4-hour shift), story reposts and collab posts.",
+  description: "Promote your Miami nightclub or lounge with event creators and VIP hostesses ($95/hr each, 4-hour minimum), story reposts and collab posts.",
   alternates: { canonical: 'https://influencecreators.marketing/nightclub-influencer-marketing-miami' },
 };
 
@@ -46,12 +46,12 @@ const props: GeoPageProps = {
   "prices": [
     {
       "name": "Event creators",
-      "price": "$400 per creator",
+      "price": "$380 per creator (4 hours at $95/hr)",
       "desc": "Appearance at your night."
     },
     {
       "name": "VIP hostesses",
-      "price": "$400 per hostess",
+      "price": "$380 per hostess (4 hours at $95/hr)",
       "desc": "4-hour shift."
     },
     {
@@ -68,7 +68,7 @@ const props: GeoPageProps = {
   "faqs": [
     {
       "q": "How much does it cost to have creators at my club?",
-      "a": "$400 per creator for an appearance."
+      "a": "$380 per creator (4 hours at $95/hr)."
     },
     {
       "q": "Can creators post from the venue?",

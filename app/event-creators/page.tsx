@@ -2,10 +2,10 @@ import PersonaLanding from '../components/PersonaLanding';
 
 export const metadata = {
   title: 'Bottle Girls Miami | Event Hostesses & Creators for Events — Influence Marketplace',
-  description: 'Book bottle girls, event hostesses, and creators for events in Miami, Fort Lauderdale, and Boca Raton. Clubs, parties, brand activations, and VIP bottle service. From $400.',
+  description: 'Book bottle girls, event hostesses, and creators for events in Miami, Fort Lauderdale, and Boca Raton. Clubs, parties, brand activations, and VIP bottle service. From $95/hr.',
   openGraph: {
     title: 'Bottle Girls Miami | Event Hostesses & Creators for Events',
-    description: 'Book bottle girls and event hostesses in Miami. Verified creators for clubs, parties, and activations. From $400.',
+    description: 'Book bottle girls and event hostesses in Miami. Verified creators for clubs, parties, and activations. From $95/hr.',
     url: 'https://influencecreators.marketing/event-creators',
   },
 };
@@ -14,7 +14,7 @@ export default function EventTalentPage() {
   return (
     <PersonaLanding
       title="Event Talent & VIP Hostesses"
-      description="Book professional event talent, bottle girls, and VIP hostesses for clubs, parties, and brand activations in South Florida. From $400."
+      description="Book professional event talent, bottle girls, and VIP hostesses for clubs, parties, and brand activations in South Florida. From $95/hr."
       tagline="South Florida · Same-Week Availability"
       headline="Elevate Your\nEvent."
       subheadline="Professional event creators, bottle girls, and hostesses for clubs, parties, grand openings, and brand activations in Miami, Fort Lauderdale, and Boca Raton."
@@ -38,28 +38,28 @@ export default function EventTalentPage() {
       ]}
       packages={[
         {
-          name: '1 Girl',
-          price: 400,
+          name: '1 Model',
+          price: 380,
           tagline: 'Solo Hostess',
-          features: ['1 professional hostess · 4 hours', 'VIP table or party presence', 'Event-ready styling', 'South Florida'],
-          cta: 'Book 1 Girl',
+          features: ['1 professional hostess · 4 hours', '$95/hr, 4-hour minimum', 'Event-ready styling', 'South Florida'],
+          cta: 'Book 1 Model',
           href: '/start?service=event&package=1-girl',
         },
         {
-          name: '3 Girls',
-          price: 1200,
+          name: '3 Models',
+          price: 1140,
           tagline: 'Most Popular',
-          features: ['3 professional hostesses · 4 hours', 'VIP section coverage', 'Coordinated looks & energy', 'Dedicated on-site lead'],
-          cta: 'Book 3 Girls',
+          features: ['3 professional hostesses · 4 hours', '$95/hr each, 4-hour minimum', 'Coordinated looks & energy', 'VIP section coverage'],
+          cta: 'Book 3 Models',
           href: '/start?service=event&package=3-girls',
           popular: true,
         },
         {
-          name: '5 Girls',
-          price: 2000,
+          name: '5 Models',
+          price: 1900,
           tagline: 'Squad Takeover',
-          features: ['5 professional hostesses · 4 hours', 'Full venue presence', 'Multiple VIP tables', 'On-site coordinator included'],
-          cta: 'Book 5 Girls',
+          features: ['5 professional hostesses · 4 hours', '$95/hr each, 4-hour minimum', 'Full venue presence', 'Multiple VIP tables'],
+          cta: 'Book 5 Models',
           href: '/start?service=event&package=5-girls',
         },
       ]}

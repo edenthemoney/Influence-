@@ -67,7 +67,7 @@ const services = [
     name: 'Instagram Shoutout',
     subtitle: 'Verified influencer posts your brand',
     desc: 'A verified influencer posts your clothing to their engaged following — feed post or Story with your link/caption. Fast turnaround, real reach, no production required.',
-    from: '$100',
+    from: '$150',
     href: '/start?service=ugc',
     cta: 'Get a Shoutout',
     checks: [
