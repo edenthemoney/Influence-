@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://influencecreators.marketing" },
   openGraph: {
     title: "Music Video Creators for Hire | Influence",
-    description: "Professional music video creators with credits including Sean Paul, Trippie Redd, Kodak Black. Starting at $100.",
+    description: "Professional music video creators with credits including Sean Paul, Trippie Redd, Kodak Black. From $199.",
     url: "https://influencecreators.marketing/music-video-creators",
   },
   twitter: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="min-h-screen bg-[#080808] text-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"name\":\"Music Video Creators for Hire \u2014 Miami, South Florida\",\"description\":\"Professional music video creators in Miami with credits including Sean Paul, Trippie Redd, Kodak Black, DaBaby, and French Montana. Book for music video productions in South Florida. Starting at $500.\",\"url\":\"https://influencecreators.marketing/music-video-creators\",\"provider\":{\"@type\":\"Organization\",\"name\":\"Influence\",\"url\":\"https://influencecreators.marketing\"},\"areaServed\":[{\"@type\":\"City\",\"name\":\"Miami\"},{\"@type\":\"State\",\"name\":\"Florida\"}],\"serviceType\":\"Music Video Content Ordering\",\"offers\":[{\"@type\":\"Offer\",\"name\":\"Solo Feature\",\"price\":\"500\",\"priceCurrency\":\"USD\",\"description\":\"1 model, 4hr, featured scenes.\"},{\"@type\":\"Offer\",\"name\":\"Trio Feature\",\"price\":\"1200\",\"priceCurrency\":\"USD\",\"description\":\"3 creators, 4hr, full video cast.\"},{\"@type\":\"Offer\",\"name\":\"Big Production\",\"price\":\"3500\",\"priceCurrency\":\"USD\",\"description\":\"10-50 creators, full music video production.\"}]}" }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"name\":\"Music Video Creators for Hire \u2014 Miami, South Florida\",\"description\":\"Professional music video creators in Miami with credits including Sean Paul, Trippie Redd, Kodak Black, DaBaby, and French Montana. Book for music video productions in South Florida. Starting at $500.\",\"url\":\"https://influencecreators.marketing/music-video-creators\",\"provider\":{\"@type\":\"Organization\",\"name\":\"Influence\",\"url\":\"https://influencecreators.marketing\"},\"areaServed\":[{\"@type\":\"City\",\"name\":\"Miami\"},{\"@type\":\"State\",\"name\":\"Florida\"}],\"serviceType\":\"Music Video Content Ordering\",\"offers\":[{\"@type\":\"Offer\",\"name\":\"Cameo\",\"price\":\"199\",\"priceCurrency\":\"USD\",\"description\":\"1 model, up to 2 hrs on set.\"},{\"@type\":\"Offer\",\"name\":\"Featured\",\"price\":\"450\",\"priceCurrency\":\"USD\",\"description\":\"1 model, half day (up to 5 hrs).\"},{\"@type\":\"Offer\",\"name\":\"Lead\",\"price\":\"950\",\"priceCurrency\":\"USD\",\"description\":\"1 lead model, full day (up to 10 hrs).\"},{\"@type\":\"Offer\",\"name\":\"Ensemble\",\"price\":\"1950\",\"priceCurrency\":\"USD\",\"description\":\"3+ models, full day. From $1,950, custom quote.\"}]}" }} />
       <div className="max-w-4xl mx-auto px-6 py-24">
         <div className="mb-4">
           <span className="text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: "#c9a96e" }}>
@@ -213,7 +213,7 @@ export default function Page() {
           <div className="flex items-center gap-3">
             <Check className="w-4 h-4 flex-shrink-0" style={{ color: "#c9a96e" }} />
             <p className="text-white/50 text-sm">
-              {"Behind-the-scenes social media coverage included with Pro packages"}
+              {"Ask about behind-the-scenes coverage when you book"}
             </p>
           </div>
         </div>
@@ -225,79 +225,79 @@ export default function Page() {
             <div>
               <div className="flex items-center gap-3 mb-1">
                 <h3 className="font-bold text-white">
-                  {"Sample"}
+                  {"Cameo"}
                 </h3>
               </div>
               <p className="text-white/40 text-sm">
-                {"1 model, 1 scene/reel. Perfect for a teaser or social clip."}
+                {"1 model, up to 2 hrs on set."}
               </p>
               <p className="text-white/20 text-xs mt-1">
                 {"Best for: "}
-                {"Emerging artists"}
+                {"Quick scenes"}
               </p>
             </div>
             <p className="text-2xl font-bold flex-shrink-0 ml-6" style={{ color: "#c9a96e" }}>
-              {"$100"}
+              {"From $199"}
             </p>
           </div>
           <div className="border p-6 flex items-center justify-between border-white/[0.06]">
             <div>
               <div className="flex items-center gap-3 mb-1">
                 <h3 className="font-bold text-white">
-                  {"Starter"}
+                  {"Featured"}
                 </h3>
               </div>
               <p className="text-white/40 text-sm">
-                {"1 model, 2 scenes. Full music video with featured model."}
+                {"1 model, half day (up to 5 hrs)."}
               </p>
               <p className="text-white/20 text-xs mt-1">
                 {"Best for: "}
-                {"Independent artists"}
+                {"Most videos"}
               </p>
             </div>
             <p className="text-2xl font-bold flex-shrink-0 ml-6" style={{ color: "#c9a96e" }}>
-              {"$300"}
+              {"From $450"}
             </p>
           </div>
           <div className="border p-6 flex items-center justify-between border-[#c9a96e]/30 bg-[#c9a96e]/[0.04]">
             <div>
               <div className="flex items-center gap-3 mb-1">
                 <h3 className="font-bold text-white">
-                  {"Growth"}
+                  {"Lead"}
                 </h3>
                 <span className="px-2 py-0.5 text-[8px] font-bold tracking-widest uppercase" style={{ backgroundColor: "#c9a96e", color: "#000" }}>
                   {"Popular"}
                 </span>
               </div>
               <p className="text-white/40 text-sm">
-                {"1 model, 4 scenes. Multiple looks, outfits, and setups."}
+                {"1 lead model, full day (up to 10 hrs)."}
               </p>
               <p className="text-white/20 text-xs mt-1">
                 {"Best for: "}
-                {"Serious releases"}
+                {"Lead role"}
               </p>
             </div>
             <p className="text-2xl font-bold flex-shrink-0 ml-6" style={{ color: "#c9a96e" }}>
-              {"$500"}
+              {"From $950"}
             </p>
           </div>
           <div className="border p-6 flex items-center justify-between border-white/[0.06]">
             <div>
               <div className="flex items-center gap-3 mb-1">
                 <h3 className="font-bold text-white">
-                  {"Pro"}
+                  {"Ensemble"}
                 </h3>
               </div>
               <p className="text-white/40 text-sm">
-                {"1 model, 6 premium scenes. Full treatment with BTS content."}
+                {"3+ models, full day. Custom quote."}
               </p>
               <p className="text-white/20 text-xs mt-1">
                 {"Best for: "}
-                {"Label-quality visuals"}
+                {"Group scenes"}
               </p>
             </div>
             <p className="text-2xl font-bold flex-shrink-0 ml-6" style={{ color: "#c9a96e" }}>
-              {"$850"}
+              {"From $1,950"}
             </p>
           </div>
         </div>
@@ -306,7 +306,7 @@ export default function Page() {
             {"Book a Music Video Model"}
           </h2>
           <p className="text-white/40 mb-6">
-            {"Same-week availability. Professional creators. Starting at $100."}
+            {"Same-week availability. Professional creators. From $199."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: "#c9a96e", color: "#000" }} href="/marketplace">

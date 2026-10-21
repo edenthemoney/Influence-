@@ -36,7 +36,12 @@ export default function ArticleView({ slug }: { slug: string }) {
   }
 
   const description = article.content.find((block) => block.type === 'text' && !('lead' in block && block.lead));
-  const schemaDescription = description && description.type === 'text' ? description.value : article.title;
+  const schemaDescription = article.description || (description && description.type === 'text' ? description.value : article.title);
+  const faqSchema = article.faq && article.faq.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: article.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  } : null;
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -49,14 +54,15 @@ export default function ArticleView({ slug }: { slug: string }) {
       name: 'Influence',
       logo: { '@type': 'ImageObject', url: `${SITE}/favicon.svg` },
     },
-    datePublished: article.date,
-    dateModified: article.date,
+    datePublished: article.isoDate || article.date,
+    dateModified: article.isoDate || article.date,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/blog/${slug}` },
   };
 
   return (
     <div className="min-h-screen bg-[#080808]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
         <div className="flex items-center justify-between h-16 md:h-20 px-6 md:px-14">
           <div className="flex items-center gap-4">
@@ -139,9 +145,36 @@ export default function ArticleView({ slug }: { slug: string }) {
                   </div>
                 );
               }
+              if (block.type === 'link') {
+                const ext = block.href.startsWith('http');
+                return (
+                  <p key={index} className="text-white/50 text-base leading-relaxed">
+                    {block.before}
+                    {ext ? (
+                      <a href={block.href} target="_blank" rel="noopener" className="underline underline-offset-4 hover:text-white transition-colors" style={{ color: gold }}>{block.label}</a>
+                    ) : (
+                      <Link href={block.href} className="underline underline-offset-4 hover:text-white transition-colors" style={{ color: gold }}>{block.label}</Link>
+                    )}
+                    {block.after}
+                  </p>
+                );
+              }
               return <TextBlock key={index} block={block} />;
             })}
           </div>
+          {article.faq && article.faq.length > 0 && (
+            <section className="mt-14 border-t border-white/[0.06] pt-10">
+              <h2 className="text-xl md:text-2xl font-bold text-white mb-6">Questions</h2>
+              <div className="space-y-6">
+                {article.faq.map((f) => (
+                  <div key={f.q}>
+                    <h3 className="text-white font-semibold mb-2">{f.q}</h3>
+                    <p className="text-white/50 leading-relaxed">{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </article>
     </div>

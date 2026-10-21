@@ -3,10 +3,10 @@ import SimpleHeadcountBooking from '../components/SimpleHeadcountBooking';
 
 export const metadata = {
   title: 'Hire Models for Music Video | Miami Music Video Girls — Influence Agency',
-  description: 'Hire models for music video shoots in Miami. Book 1 girl, 2 girls, or 3 girls for your video. Same-week availability. Verified talent with major artist credits. From $500.',
+  description: 'Hire models for music video shoots in Miami. Cameo, Featured, Lead or Ensemble tiers. Same-week availability. Verified talent with major artist credits. From $199.',
   openGraph: {
     title: 'Hire Models for Music Video | Miami Music Video Girls',
-    description: 'Hire verified models for music video shoots in Miami. Same-week availability. From $500.',
+    description: 'Hire verified models for music video shoots in Miami. Same-week availability. From $199.',
     url: 'https://influencecreators.marketing/music-video-booking',
   },
 };
@@ -15,7 +15,7 @@ export default function MusicVideoBookingPage() {
   return (
     <PersonaLanding
       title="Book Music Video Talent in Miami"
-      description="Book 1 girl, 2 girls, or 3 girls for your music video. Same-week availability in Miami. Verified talent with major artist credits. From $500."
+      description="Cameo, Featured, Lead or Ensemble tiers for your music video. Same-week availability in Miami. Verified talent with major artist credits. From $199."
       tagline="Miami · Same-Week Availability"
       headline="Book Girls for\nYour Music Video."
       subheadline="Verified talent for your video — from solo features to full squads. No casting headaches. No flakey DMs. Just professional creators on set, on time."
@@ -39,29 +39,37 @@ export default function MusicVideoBookingPage() {
       ]}
       packages={[
         {
-          name: '1 Girl',
-          price: 500,
-          tagline: 'Solo Feature',
-          features: ['1 featured model · 4 hours', 'Multiple scenes & looks', 'South Florida location', 'Styled & camera-ready'],
-          cta: 'Book 1 Girl',
-          href: '/start?service=musicvideo&package=mv-solo',
+          name: 'Cameo',
+          price: 199,
+          tagline: '1 model · up to 2 hrs',
+          features: ['1 model', 'Up to 2 hours on set', 'Styled & camera-ready'],
+          cta: 'Book Cameo',
+          href: '/start?service=musicvideo&package=mv-cameo',
         },
         {
-          name: '2 Girls',
-          price: 900,
-          tagline: 'Duo Feature',
-          features: ['2 coordinated models · 4 hours', 'Multiple scenes together', 'Styled ensemble looks', 'On-set coordinator'],
-          cta: 'Book 2 Girls',
-          href: '/start?service=musicvideo&package=mv-duo',
+          name: 'Featured',
+          price: 450,
+          tagline: '1 model · half day',
+          features: ['1 model', 'Half day, up to 5 hours on set', 'Styled & camera-ready'],
+          cta: 'Book Featured',
+          href: '/start?service=musicvideo&package=mv-featured',
           popular: true,
         },
         {
-          name: '3 Girls',
-          price: 1200,
-          tagline: 'Trio Feature',
-          features: ['3 full-feature models · 4 hours', 'Full video cast energy', 'Multiple scenes & interactions', 'Dedicated model coordinator'],
-          cta: 'Book 3 Girls',
-          href: '/start?service=musicvideo&package=mv-trio',
+          name: 'Lead',
+          price: 950,
+          tagline: '1 lead model · full day',
+          features: ['1 lead model', 'Full day, up to 10 hours on set', 'Styled & camera-ready'],
+          cta: 'Book Lead',
+          href: '/start?service=musicvideo&package=mv-lead',
+        },
+        {
+          name: 'Ensemble',
+          price: 1950,
+          tagline: '3+ models · full day',
+          features: ['3+ models', 'Full day', 'Custom quote for larger casts'],
+          cta: 'Book Ensemble',
+          href: '/start?service=musicvideo&package=mv-ensemble',
         },
       ]}
       trustBadges={['Verified Creators', 'Same-Week Booking', 'No Flakes']}

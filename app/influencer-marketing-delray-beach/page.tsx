@@ -91,7 +91,7 @@ const faqSchema = {
       "name": "How much does creator marketing cost in Delray Beach?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Delray Beach creator marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $500. Pricing varies based on the influencer's following, content type, and campaign scope."
+        "text": "Delray Beach creator marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $199. Pricing varies based on the influencer's following, content type, and campaign scope."
       }
     },
     {
@@ -230,7 +230,7 @@ export default function DelrayBeachPage() {
                 { name: 'Business Content', price: 'From $300', desc: 'On-site content for Delray Beach restaurants and businesses.' },
                 { name: 'UGC Content', price: 'From $300', desc: 'Remote content creation for Delray Beach brands.' },
                 { name: 'Event Creators', price: 'From $400/girl', desc: 'Professional creators for Delray Beach events and parties.' },
-                { name: 'Music Video Creators', price: 'From $500', desc: 'Creators for Delray Beach music video productions.' },
+                { name: 'Music Video Creators', price: 'From $199', desc: 'Creators for Delray Beach music video productions.' },
                 { name: 'Commercial Production', price: 'From $599', desc: 'Scripted commercials and speaking roles.' },
                 { name: 'Music Promotion', price: 'From $300', desc: 'Song reaction videos for Delray Beach artists.' },
               ].map(({ name, price, desc }) => (

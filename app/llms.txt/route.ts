@@ -8,7 +8,7 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 
 ## Services
 - UGC & Branded Reels: Remote, from $300. Branded short-form video for brands and products.
-- Music Video Models: In-person, from $500. Talent with credits including Sean Paul, Bryson Tiller, DaBaby, Trippie Redd, Kodak Black.
+- Music Video Models: In-person, from $199 (Cameo $199, Featured $450, Lead $950, Ensemble from $1,950). Talent with credits including Sean Paul, Bryson Tiller, DaBaby, Trippie Redd, Kodak Black.
 - Music Reactions: Remote, from $300. Models react to your songs for TikTok/Instagram promotion.
 - Business Content: In-person, from $300. Model visits your business, creates reels on-site.
 - Photo & Video Shoots: In-person, from $300. 1-8 models for brand shoots and editorials.

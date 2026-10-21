@@ -353,14 +353,12 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto text-center mb-12">
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: '#c9a96e' }}>Why Clients Trust Us</p>
           <h2 className="font-display font-bold italic text-white leading-[0.9]" style={{ fontSize: 'clamp(32px, 6vw, 72px)' }}>
-            Rated South Florida&apos;s #1 Influencer Marketplace
+            South Florida&apos;s Creator Marketplace
           </h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
           {[
-            { stat: '★★★★★', label: 'Best Marketing Solution 2026' },
             { stat: '100s', label: 'Brands & Artists Served' },
-            { stat: '#1', label: 'South Florida Premium Agency' },
             { stat: '5.0', label: 'Record Label Trusted Rating' },
           ].map(({ stat, label }) => (
             <div key={label} className="text-center py-6">

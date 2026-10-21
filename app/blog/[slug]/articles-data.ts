@@ -2,7 +2,8 @@ export type ArticleBlock =
   | { type: 'text'; value: string; lead?: string }
   | { type: 'heading'; value: string }
   | { type: 'stat'; value: string; label: string }
-  | { type: 'cta'; text: string; href: string; label: string };
+  | { type: 'cta'; text: string; href: string; label: string }
+  | { type: 'link'; before: string; label: string; href: string; after?: string };
 
 export interface Article {
   title: string;
@@ -12,6 +13,9 @@ export interface Article {
   author: string;
   image: string;
   content: ArticleBlock[];
+  isoDate?: string;
+  description?: string;
+  faq?: { q: string; a: string }[];
 }
 
 export const articles: Record<string, Article> = {
@@ -61,7 +65,7 @@ export const articles: Record<string, Article> = {
       { type: 'heading', value: "The Cost of Doing Nothing" },
       { type: 'text', value: "Brands that haven't adopted creator marketing are watching their competitors eat their market share. In beauty, fashion, fitness, food, and entertainment — the top-performing brands in every category have influencer partnerships as a core strategy." },
       { type: 'text', value: "The barrier to entry has never been lower. You don't need a Kardashian. A micro-influencer with 10K-50K engaged followers in your niche will outperform a celebrity with 10M passive followers — at a fraction of the cost." },
-      { type: 'cta', text: "See our influencer packages starting at $100.", href: "/start", label: "Book Now" },
+      { type: 'cta', text: "See our influencer packages starting at $199.", href: "/start", label: "Book Now" },
     ],
   },
   "how-miami-brands-are-winning-with-local-influencers": {
@@ -85,7 +89,7 @@ export const articles: Record<string, Article> = {
       { type: 'text', lead: "Fashion & Retail", value: "Fashion & Retail — Miami's fashion scene is internationally recognized. Local boutiques and designers partnering with Miami creators and influencers are seeing direct-to-consumer sales spike after every collaboration." },
       { type: 'text', lead: "Music & Entertainment", value: "Music & Entertainment — Artists launching music in Miami know that local model and influencer support can make or break a video's performance. Our creators has appeared in videos that have collectively generated over 50 million views." },
       { type: 'heading', value: "How to Get Started" },
-      { type: 'text', value: "You don't need a massive budget. Our starter packages begin at $100 for a single reel. For businesses serious about sustained growth, our monthly retainer packages provide consistent content and guaranteed reach — starting at $1,500/month." },
+      { type: 'text', value: "You don't need a massive budget. Our UGC reels start at $300. For businesses serious about sustained growth, our monthly retainer packages provide consistent content and guaranteed reach — starting at $1,500/month." },
       { type: 'cta', text: "Browse our Miami creator network and find your perfect match.", href: "/start", label: "Book Now" },
     ],
   },
@@ -100,8 +104,6 @@ export const articles: Record<string, Article> = {
       { type: 'text', value: "Your brand just spent $20,000 on a professional video shoot. Studio lighting, professional makeup, scripted lines, multiple takes. The result is polished, beautiful — and it gets half the engagement of a 15-second reel shot on an iPhone by one of your customers." },
       { type: 'text', value: "Welcome to the UGC era." },
       { type: 'heading', value: "The Numbers Don't Lie" },
-      { type: 'stat', value: "4x", label: "Higher click-through rates for UGC vs. branded content" },
-      { type: 'stat', value: "2.4x", label: "More conversions from UGC ads vs. traditional ads" },
       { type: 'stat', value: "50%", label: "Lower cost-per-acquisition with UGC campaigns" },
       { type: 'text', value: "User-generated content works because it doesn't feel like an ad. The \"raw\" aesthetic signals authenticity to the viewer. Their guard drops. They engage instead of scroll. They click instead of ignore." },
       { type: 'heading', value: "The Sweet Spot: Professional UGC" },
@@ -113,7 +115,7 @@ export const articles: Record<string, Article> = {
       { type: 'text', lead: "Product Pages", value: "Product Pages — Replace one of your polished product photos with UGC showing the product in real use. Conversion rates increase an average of 29%." },
       { type: 'text', lead: "Email Marketing", value: "Email Marketing — UGC in emails generates 73% higher click-through rates than branded imagery." },
       { type: 'text', lead: "Social Proof", value: "Social Proof — Repost UGC on your own channels to show real people using and loving your product. This builds trust faster than any testimonial page." },
-      { type: 'cta', text: "Get professional UGC content for your brand — starting at $100 per reel.", href: "/start", label: "Book Now" },
+      { type: 'cta', text: "Get professional UGC content for your brand — starting at $300 per reel.", href: "/start", label: "Book Now" },
     ],
   },
   "music-video-models-the-secret-weapon-for-viral-videos": {
@@ -224,4 +226,585 @@ export const articles: Record<string, Article> = {
       { type: 'cta', text: "Promote your next release with our music reaction packages — from $300.", href: "/start", label: "Book Now" },
     ],
   },
+  "how-much-does-ugc-cost-miami": {
+  "title": "How Much Does UGC Cost in Miami? 2026 Price Guide",
+  "category": "Pricing",
+  "readTime": "5 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Des/des-5.jpg",
+  "description": "Influence UGC reels and campaigns start at $300. What changes the price of UGC in Miami.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: at Influence, UGC reels start at $300 per reel. The final price depends on how many videos you need, editing, and your timeline."
+    },
+    {
+      "type": "heading",
+      "value": "What you pay for"
+    },
+    {
+      "type": "text",
+      "value": "Number of videos: one reel costs less than a multi-reel pack."
+    },
+    {
+      "type": "text",
+      "value": "Editing: raw clips vs edited, captioned reels."
+    },
+    {
+      "type": "text",
+      "value": "Location: filmed in Florida on site, or remotely with your product shipped to the creator."
+    },
+    {
+      "type": "text",
+      "value": "Timeline: rush delivery depends on creator availability."
+    },
+    {
+      "type": "heading",
+      "value": "Is UGC worth it?"
+    },
+    {
+      "type": "text",
+      "value": "UGC gives you vertical videos made by real creators that you can post on your own pages. Whether it pays off depends on your product, your offer and how you use the content, so start small and test."
+    },
+    {
+      "type": "link",
+      "before": "See current packages on our ",
+      "label": "UGC creators page",
+      "href": "/ugc-creators-florida",
+      "after": "."
+    },
+    {
+      "type": "cta",
+      "text": "Tell us what you need and we will quote it.",
+      "href": "/start",
+      "label": "Get a Quote"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much do UGC creators charge per video?",
+      "a": "At Influence, UGC reels start at $300 per reel. Packs and campaigns are priced on scope."
+    },
+    {
+      "q": "Can UGC be filmed remotely?",
+      "a": "Yes. Creators can film in Florida or receive your product by mail and film remotely."
+    }
+  ]
+},
+  "how-to-book-event-models-miami": {
+  "title": "How to Book Event Models and Promo Girls in Miami (Rates, Timing, What to Ask)",
+  "category": "Events",
+  "readTime": "5 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Des/des-4.jpg",
+  "description": "Event models in Miami are $400 per model for a 3-4 hour appearance at Influence. How booking works and what to ask.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: Influence event models and promo girls are $400 per model for a 3-4 hour appearance. Send the date, venue and type of event, and we confirm the lineup."
+    },
+    {
+      "type": "heading",
+      "value": "How booking works"
+    },
+    {
+      "type": "text",
+      "value": "1. Send the date, time, venue and event type (club night, launch, activation, party)."
+    },
+    {
+      "type": "text",
+      "value": "2. Tell us how many models and what they should do: greet guests, promote a product, appear in photos and content."
+    },
+    {
+      "type": "text",
+      "value": "3. We confirm the models and details in writing before the event."
+    },
+    {
+      "type": "heading",
+      "value": "What to ask before you book"
+    },
+    {
+      "type": "text",
+      "value": "How long is the appearance? What is the dress code? Do you want them to post? Who is the contact on the night?"
+    },
+    {
+      "type": "heading",
+      "value": "Brand ambassador vs promo model"
+    },
+    {
+      "type": "text",
+      "value": "A promo model appears at your event for a set time. A brand ambassador visit focuses on making content for your business. We offer both."
+    },
+    {
+      "type": "link",
+      "before": "See packages on the ",
+      "label": "event creators page",
+      "href": "/event-creators-miami",
+      "after": "."
+    },
+    {
+      "type": "cta",
+      "text": "Book event models for your date.",
+      "href": "/start?service=event",
+      "label": "Book Event Creators"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much do promo models cost in Miami?",
+      "a": "At Influence, $400 per model for a 3-4 hour appearance."
+    },
+    {
+      "q": "How far ahead should I book?",
+      "a": "As early as you can. Same-week bookings depend on availability."
+    }
+  ]
+},
+  "how-to-cast-models-for-your-music-video": {
+  "title": "How to Cast Models for Your Music Video: A Step-by-Step Guide for Artists",
+  "category": "Music",
+  "readTime": "6 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Nadia/nadia-1.jpg",
+  "description": "Music video models at Influence start from $199: Cameo, Featured, Lead and Ensemble tiers. Step-by-step casting guide for artists.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: pick a tier, send your treatment, and confirm the shoot day. At Influence, music video models start from $199."
+    },
+    {
+      "type": "heading",
+      "value": "The tiers"
+    },
+    {
+      "type": "text",
+      "value": "Cameo: from $199. 1 model, up to 2 hrs on set."
+    },
+    {
+      "type": "text",
+      "value": "Featured: from $450. 1 model, half day (up to 5 hrs)."
+    },
+    {
+      "type": "text",
+      "value": "Lead: from $950. 1 lead model, full day (up to 10 hrs)."
+    },
+    {
+      "type": "text",
+      "value": "Ensemble: from $1,950. 3+ models, full day, custom quote."
+    },
+    {
+      "type": "heading",
+      "value": "Step by step"
+    },
+    {
+      "type": "text",
+      "value": "1. Share the song and treatment: mood, locations, wardrobe."
+    },
+    {
+      "type": "text",
+      "value": "2. Pick the tier that matches your shoot length and cast."
+    },
+    {
+      "type": "text",
+      "value": "3. Choose a model from the roster or let us match one."
+    },
+    {
+      "type": "text",
+      "value": "4. Confirm the date, call time and location in writing."
+    },
+    {
+      "type": "text",
+      "value": "5. Get a signed release that covers how the footage will be used."
+    },
+    {
+      "type": "heading",
+      "value": "Where to shoot"
+    },
+    {
+      "type": "link",
+      "before": "Need a space? Our studio partner is ",
+      "label": "The Vibe Music Studio",
+      "href": "https://thevibemusicstudio.org",
+      "after": " in Boca Raton."
+    },
+    {
+      "type": "heading",
+      "value": "Who is on the roster"
+    },
+    {
+      "type": "link",
+      "before": "Credits belong to the individual creators, not to Influence. For example, Grace Jenn appeared on Druski’s Coulda Been Love Season 2 (",
+      "label": "cast list",
+      "href": "https://thedirect.com/article/druski-coulda-been-love-season-2-cast-pictures",
+      "after": "), and Peach (Dejha Blackmon) appeared on Peacock’s Couple to Throuple."
+    },
+    {
+      "type": "link",
+      "before": "Source for Couple to Throuple: ",
+      "label": "USA Network cast guide",
+      "href": "https://www.usanetwork.com/usa-insider/meet-the-couple-to-throuple-cast-what-to-know",
+      "after": "."
+    },
+    {
+      "type": "link",
+      "before": "Browse ",
+      "label": "music video models",
+      "href": "/music-video-models",
+      "after": "."
+    },
+    {
+      "type": "cta",
+      "text": "Ready to cast your video?",
+      "href": "/music-video-models",
+      "label": "See Tiers"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does it cost to hire a model for a music video?",
+      "a": "From $199 at Influence: Cameo $199, Featured $450, Lead $950, Ensemble from $1,950."
+    },
+    {
+      "q": "Do I need a release form?",
+      "a": "Yes. Get a signed release that covers how the footage will be used before you publish."
+    }
+  ]
+},
+  "do-song-reaction-videos-help-your-music": {
+  "title": "Do Song Reaction Videos Actually Help Your Music? How They Work",
+  "category": "Music",
+  "readTime": "5 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Kady/kady-1.jpg",
+  "description": "How song reaction videos work on Instagram and TikTok, what they can and cannot do, and how to book them.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: reaction videos put your song in front of a creator’s audience. They can bring exposure and saves, but nobody can honestly guarantee streams or a viral moment."
+    },
+    {
+      "type": "heading",
+      "value": "How it works"
+    },
+    {
+      "type": "text",
+      "value": "You send the track. Creators record themselves reacting to it and post on Instagram or TikTok. You get the links."
+    },
+    {
+      "type": "heading",
+      "value": "What they can and cannot do"
+    },
+    {
+      "type": "text",
+      "value": "They can get your song heard by real people. They cannot guarantee streams, because results depend on the song, the content and the algorithm. We never use bots or bought views."
+    },
+    {
+      "type": "heading",
+      "value": "Getting the most from them"
+    },
+    {
+      "type": "text",
+      "value": "Pick the strongest 15-30 seconds of the track, time posts around your release, and repost the reactions on your own pages."
+    },
+    {
+      "type": "link",
+      "before": "See ",
+      "label": "our services",
+      "href": "/services",
+      "after": " for music promotion options."
+    },
+    {
+      "type": "cta",
+      "text": "Send us your track.",
+      "href": "/start",
+      "label": "Promote a Song"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Do reaction videos help songs?",
+      "a": "They add exposure from real creators. They do not guarantee streams."
+    },
+    {
+      "q": "Do you use bots?",
+      "a": "No. Every video is made by a real creator."
+    }
+  ]
+},
+  "instagram-story-reposts-vs-collab-posts": {
+  "title": "Instagram Story Reposts vs Collab Posts: Which Should You Buy?",
+  "category": "Strategy",
+  "readTime": "5 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Shay/shay-1.jpg",
+  "description": "Collab posts appear on both feeds and stay up; story reposts last 24 hours. How to choose.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: a collab post shows on both your feed and the creator’s and stays up. A story repost is quick exposure that disappears after 24 hours. Use collabs for lasting reach and stories for launch-day pushes."
+    },
+    {
+      "type": "heading",
+      "value": "Collab posts"
+    },
+    {
+      "type": "text",
+      "value": "One post appears on both profiles, with likes and comments shared. It stays on both feeds unless removed."
+    },
+    {
+      "type": "heading",
+      "value": "Story reposts"
+    },
+    {
+      "type": "text",
+      "value": "The creator shares your post or link to their story for 24 hours. Good for release days, events and drops."
+    },
+    {
+      "type": "heading",
+      "value": "Which to choose"
+    },
+    {
+      "type": "text",
+      "value": "Launching something today? Stories. Building something people can find later? Collabs. Many campaigns use both."
+    },
+    {
+      "type": "link",
+      "before": "See ",
+      "label": "our services",
+      "href": "/services",
+      "after": " for Instagram story reposts and collab posts."
+    },
+    {
+      "type": "cta",
+      "text": "Ask which fits your launch.",
+      "href": "/start",
+      "label": "Get Started"
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is an Instagram collab post?",
+      "a": "A single post that appears on two accounts’ feeds, with shared likes and comments."
+    },
+    {
+      "q": "How long does a story repost last?",
+      "a": "24 hours, unless the creator saves it to a highlight."
+    }
+  ]
+},
+  "hiring-actors-and-voiceover-for-commercials-south-florida": {
+  "title": "Hiring Actors and Voiceover Talent for Commercials in South Florida",
+  "category": "Commercials",
+  "readTime": "5 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Des/des-3.jpg",
+  "description": "Commercial production at Influence starts from $599. How casting and voiceover work in South Florida.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: Influence commercial production starts from $599. Send your script and we cast actors, speaking talent or voiceover to match."
+    },
+    {
+      "type": "heading",
+      "value": "What to send"
+    },
+    {
+      "type": "text",
+      "value": "Your script or concept, length, where it will run, and the look and voice you want."
+    },
+    {
+      "type": "heading",
+      "value": "Casting"
+    },
+    {
+      "type": "link",
+      "before": "We cast from our network of actresses and speaking creators. See ",
+      "label": "our casting network",
+      "href": "/casting-network-miami",
+      "after": "."
+    },
+    {
+      "type": "heading",
+      "value": "Voiceover"
+    },
+    {
+      "type": "link",
+      "before": "See ",
+      "label": "voiceover creators",
+      "href": "/voiceover-creators-miami",
+      "after": ". Voiceover can be recorded at our studio partner, "
+    },
+    {
+      "type": "link",
+      "before": "",
+      "label": "The Vibe Music Studio",
+      "href": "https://thevibemusicstudio.org",
+      "after": ", in Boca Raton."
+    },
+    {
+      "type": "link",
+      "before": "Details on ",
+      "label": "commercials",
+      "href": "/services/commercials",
+      "after": "."
+    },
+    {
+      "type": "cta",
+      "text": "Send your script.",
+      "href": "/start",
+      "label": "Get a Quote"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does a commercial cost?",
+      "a": "At Influence, commercial production starts from $599. The final price depends on the script, talent and shoot."
+    },
+    {
+      "q": "Do you provide voiceover talent?",
+      "a": "Yes, through our voiceover creators."
+    }
+  ]
+},
+  "brand-ambassador-visits-for-local-businesses": {
+  "title": "Brand Ambassador Visits for Local Businesses: What You Get for $300+",
+  "category": "Business",
+  "readTime": "5 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Des/des-2.jpg",
+  "description": "Brand ambassador visits at Influence start from $300: Solo Visit, Content Day and Full Production packages.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: Influence brand ambassador visits start from $300. A creator comes to your business and makes reels and stories on site."
+    },
+    {
+      "type": "heading",
+      "value": "Packages"
+    },
+    {
+      "type": "text",
+      "value": "Solo Visit: 1 model, 2-hour session, 3-5 reels and stories."
+    },
+    {
+      "type": "text",
+      "value": "Content Day: 1 model, 4-hour session, 8-12 content pieces."
+    },
+    {
+      "type": "text",
+      "value": "Full Production: 2 models, 4-hour session, 12-20 content pieces."
+    },
+    {
+      "type": "heading",
+      "value": "How it works"
+    },
+    {
+      "type": "text",
+      "value": "Pick a package, choose a date, and tell us what to feature. The creator visits, films, and you get the content."
+    },
+    {
+      "type": "link",
+      "before": "See ",
+      "label": "business content packages",
+      "href": "/services/business",
+      "after": "."
+    },
+    {
+      "type": "cta",
+      "text": "Book a visit.",
+      "href": "/start",
+      "label": "Book Now"
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much does an influencer visit cost?",
+      "a": "Brand ambassador visits start from $300 at Influence."
+    },
+    {
+      "q": "What do I get?",
+      "a": "Reels and stories filmed at your business; the number depends on the package."
+    }
+  ]
+},
+  "influencer-agency-vs-creator-marketplace": {
+  "title": "Influencer Agency vs Creator Marketplace: Which Is Right for Your Campaign?",
+  "category": "Strategy",
+  "readTime": "5 min read",
+  "date": "Oct 21, 2026",
+  "isoDate": "2026-10-21",
+  "author": "Influence",
+  "image": "/images/Nya/nya-1.jpg",
+  "description": "When to book creators directly on a marketplace and when to use a managed campaign.",
+  "content": [
+    {
+      "type": "text",
+      "value": "Short answer: book on a marketplace when you know what you want and can manage it. Use a managed campaign when you want someone to match creators, brief them and follow up."
+    },
+    {
+      "type": "heading",
+      "value": "Marketplace"
+    },
+    {
+      "type": "link",
+      "before": "You browse profiles and book directly. Fast and simple. See ",
+      "label": "the marketplace",
+      "href": "/marketplace",
+      "after": "."
+    },
+    {
+      "type": "heading",
+      "value": "Managed campaign"
+    },
+    {
+      "type": "text",
+      "value": "We match creators to your brief, handle scheduling and follow-up, and deliver the content."
+    },
+    {
+      "type": "heading",
+      "value": "How to vet creators either way"
+    },
+    {
+      "type": "text",
+      "value": "Look at recent posts, comments from real people and past work. Agree on deliverables and dates in writing. Paid posts must be disclosed, for example with #ad."
+    },
+    {
+      "type": "link",
+      "before": "Ready to book? Try ",
+      "label": "model booking",
+      "href": "/model-booking",
+      "after": "."
+    },
+    {
+      "type": "cta",
+      "text": "Not sure which fits? Ask us.",
+      "href": "/start",
+      "label": "Get Started"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Is a marketplace cheaper than an agency?",
+      "a": "It can be, because you handle the coordination yourself."
+    },
+    {
+      "q": "How do I hire influencers safely?",
+      "a": "Check real engagement, agree deliverables in writing, and make sure paid posts are disclosed."
+    }
+  ]
+},
 };

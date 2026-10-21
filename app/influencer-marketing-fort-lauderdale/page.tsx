@@ -89,7 +89,7 @@ const faqSchema = {
       name: 'How much does creator marketing cost in Fort Lauderdale?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Fort Lauderdale creator marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $500. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
+        text: 'Fort Lauderdale creator marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $199. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
       },
     },
     {
@@ -230,7 +230,7 @@ export default function FortLauderdalePage() {
                 { name: 'Business Content', price: 'From $300', desc: 'On-site content for Fort Lauderdale restaurants and businesses.' },
                 { name: 'Event Creators', price: 'From $400/girl', desc: 'Professional creators for Fort Lauderdale events and parties.' },
                 { name: 'UGC Content', price: 'From $300', desc: 'Remote content creation for Fort Lauderdale brands.' },
-                { name: 'Music Video Creators', price: 'From $500', desc: 'Creators for Fort Lauderdale music video productions.' },
+                { name: 'Music Video Creators', price: 'From $199', desc: 'Creators for Fort Lauderdale music video productions.' },
                 { name: 'Commercial Production', price: 'From $599', desc: 'Scripted commercials and speaking roles.' },
                 { name: 'Music Promotion', price: 'From $300', desc: 'Song reaction videos for Fort Lauderdale artists.' },
               ].map(({ name, price, desc }) => (

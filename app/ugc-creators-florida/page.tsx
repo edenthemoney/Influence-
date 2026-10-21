@@ -21,11 +21,11 @@ const serviceSchema = {
 
 export const metadata: Metadata = {
   title: 'UGC Creators in Florida | Hire UGC Content Creators | Influence',
-  description: 'Hire professional UGC creators in Florida for TikTok, Instagram Reels, and brand content. Authentic, high-converting content that outperforms traditional ads. From $100.',
+  description: 'Hire professional UGC creators in Florida for TikTok, Instagram Reels, and brand content. Authentic, high-converting content that outperforms traditional ads. From $300.',
   keywords: 'UGC creators Florida, hire UGC creator, UGC content creator Miami, user generated content Florida, TikTok creators Florida',
   openGraph: {
     title: 'UGC Creators in Florida | Influence',
-    description: 'Professional UGC creators for authentic, high-converting brand content. Starting at $100.',
+    description: 'Professional UGC creators for authentic, high-converting brand content. Starting at $300.',
     url: 'https://influencecreators.marketing/ugc-creators-florida',
   },
 };
@@ -44,24 +44,24 @@ export default function UGCCreatorsFlorida() {
           UGC Creators<br />in <span style={{ color: gold }}>Florida</span>
         </h1>
         <p className="text-white/50 text-lg mb-12 max-w-2xl">
-          User-generated content outperforms branded ads by 4x on engagement and 2.4x on conversions. Our Florida-based creators produce scroll-stopping UGC that looks organic but converts like a sales machine.
+          Our Florida-based creators produce UGC reels and branded content that looks native to TikTok and Instagram.
         </p>
 
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           <div className="border border-white/[0.06] p-6">
             <Zap className="w-5 h-5 mb-3" style={{ color: gold }} />
-            <h3 className="font-bold text-white mb-1">4x Engagement</h3>
-            <p className="text-white/40 text-sm">UGC gets 4x higher click-through than branded content</p>
+            <h3 className="font-bold text-white mb-1">Native-Looking Content</h3>
+            <p className="text-white/40 text-sm">Shot vertically by real creators, made for the feed</p>
           </div>
           <div className="border border-white/[0.06] p-6">
             <BarChart3 className="w-5 h-5 mb-3" style={{ color: gold }} />
-            <h3 className="font-bold text-white mb-1">2.4x Conversions</h3>
-            <p className="text-white/40 text-sm">UGC ads convert 2.4x better than traditional creative</p>
+            <h3 className="font-bold text-white mb-1">Built to Your Brief</h3>
+            <p className="text-white/40 text-sm">Your product, message and must-say points</p>
           </div>
           <div className="border border-white/[0.06] p-6">
             <Video className="w-5 h-5 mb-3" style={{ color: gold }} />
-            <h3 className="font-bold text-white mb-1">50% Lower CPA</h3>
-            <p className="text-white/40 text-sm">Cut your cost-per-acquisition in half with UGC</p>
+            <h3 className="font-bold text-white mb-1">Local or Remote</h3>
+            <p className="text-white/40 text-sm">Shot in Florida or with your product shipped to the creator</p>
           </div>
         </div>
 
@@ -96,7 +96,7 @@ export default function UGCCreatorsFlorida() {
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Get UGC Content That Converts</h2>
-          <p className="text-white/40 mb-6">15+ creators across Florida. Starting at $100 per reel.</p>
+          <p className="text-white/40 mb-6">15+ creators across Florida. Starting at $300 per reel.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/marketplace" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               Browse Creators

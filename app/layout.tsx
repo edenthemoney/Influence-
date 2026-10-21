@@ -1,3 +1,4 @@
+import Reveal from './components/Reveal';
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond, Bebas_Neue } from "next/font/google";
 import { Suspense } from "react";
@@ -501,7 +502,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           "name": "Music Video Creators",
-          "price": "500",
+          "price": "199",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://influencecreators.marketing/services/shoots"
@@ -778,6 +779,7 @@ export default function RootLayout({
         <PostHogProvider>
           <Suspense fallback={null}><PostHogPageView /></Suspense>
           {children}
+          <Reveal />
           <ChatFunnel />
           <GlobalLeadPopup />
         </PostHogProvider>

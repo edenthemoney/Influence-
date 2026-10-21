@@ -66,16 +66,6 @@ export default function LandingPage_social_media_influencer_marketing_agency() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="border-t border-white/[0.06] py-16 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xl text-white/80 italic leading-relaxed mb-6">
-            &ldquo;We saw a 4x increase in engagement within the first week. The content was exactly on-brand.&rdquo;
-          </p>
-          <p className="text-[#c9a96e] text-sm font-bold tracking-widest uppercase">Marketing Director, South FL Brand</p>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="bg-[#0a0a0a] border-t border-white/[0.06] py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Get Started?</h2>

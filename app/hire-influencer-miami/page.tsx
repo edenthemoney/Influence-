@@ -6,11 +6,11 @@ import { Check, ArrowRight, Star, MapPin, Users, TrendingUp } from 'lucide-react
 
 export const metadata: Metadata = {
   title: 'Hire an Influencer in Miami | Influence',
-  description: 'Book Miami-based influencers and creators for music videos, brand campaigns, UGC content, events, and more. Professional creators with celebrity-level credits. Starting at $100.',
+  description: 'Book Miami-based influencers and creators for music videos, brand campaigns, UGC content, events, and more. Professional creators with celebrity-level credits. From $199.',
   keywords: 'hire influencer Miami, Miami influencer marketplace, book influencer Miami, creator marketing Miami, Miami creators for hire',
   openGraph: {
     title: 'Hire an Influencer in Miami | Influence',
-    description: 'Professional Miami influencers for music videos, brand campaigns, UGC, and events. Starting at $100.',
+    description: 'Professional Miami influencers for music videos, brand campaigns, UGC, and events. From $199.',
     url: 'https://influencecreators.marketing/hire-influencer-miami',
   },
 };

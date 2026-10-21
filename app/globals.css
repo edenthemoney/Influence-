@@ -250,3 +250,18 @@ input[type='range']::-moz-range-thumb {
   background: rgba(255,255,255,0.12);
   border-radius: 2px;
 }
+
+/* ── Polish: reveal + transitions (respects reduced motion) ── */
+.rv { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.rv.rv-in { opacity: 1; transform: none; }
+a, button { transition: color .25s ease, background-color .25s ease, border-color .25s ease, opacity .25s ease, transform .25s ease, box-shadow .25s ease; }
+@media (hover: hover) {
+  a[class*="border"]:hover, a[class*="px-8"]:hover, button[class*="px-8"]:hover { transform: translateY(-2px); }
+  a[class*="border"]:hover { box-shadow: 0 10px 30px -12px rgba(201,169,110,.25); }
+}
+a:focus-visible, button:focus-visible { outline: 2px solid #c9a96e; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
+  a, button { transition: none !important; }
+  a:hover, button:hover { transform: none !important; }
+}

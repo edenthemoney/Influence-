@@ -55,7 +55,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Pricing & Packages',
     question: 'What are your package tiers?',
-    answer: 'We offer 11 packages ranging from Single Reel ($100) to Influencer Network ($100,000+). Packages are organized into three budget tiers — Single Influencer, Influencer Campaign, and Platform Takeover — covering everything from a quick test post to full-scale agency rollouts. View our Pricing page for the full breakdown.'
+    answer: 'We offer 11 packages ranging from Single Reel ($300) to Influencer Network ($100,000+). Packages are organized into three budget tiers — Single Influencer, Influencer Campaign, and Platform Takeover — covering everything from a quick test post to full-scale agency rollouts. View our Pricing page for the full breakdown.'
   },
   {
     category: 'Pricing & Packages',
