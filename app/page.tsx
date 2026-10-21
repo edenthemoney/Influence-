@@ -598,6 +598,12 @@ export default function HomePage() {
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots & Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
                   <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
+                  <li><Link href="/brand-ambassadors-miami" className="text-white/40 hover:text-white transition-colors text-sm">Brand Ambassadors</Link></li>
+                  <li><Link href="/music-promotion" className="text-white/40 hover:text-white transition-colors text-sm">Music Promotion</Link></li>
+                  <li><Link href="/bottle-girls-miami" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
+                  <li><Link href="/restaurant-influencer-marketing-miami" className="text-white/40 hover:text-white transition-colors text-sm">Restaurants</Link></li>
+                  <li><Link href="/nightclub-influencer-marketing-miami" className="text-white/40 hover:text-white transition-colors text-sm">Nightlife</Link></li>
+                  <li><Link href="/hotel-influencer-marketing-miami" className="text-white/40 hover:text-white transition-colors text-sm">Hotels</Link></li>
                   <li><Link href="/influencer-cost-guide" className="text-white/40 hover:text-white transition-colors text-sm">Influencer Cost Guide</Link></li>
                   <li><Link href="/start?service=bottle" className="text-white/40 hover:text-white transition-colors text-sm">Bottle Girls / VIP</Link></li>
                 </ul>

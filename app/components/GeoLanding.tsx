@@ -19,6 +19,9 @@ export type GeoPageProps = {
   sources?: { label: string; url: string }[];
   cta: { label: string; href: string };
   related: { label: string; href: string }[];
+  crumbs?: { label: string; href: string }[];
+  prices?: { name: string; price: string; desc: string }[];
+  pricesNote?: string;
 };
 
 export function geoSchema(p: GeoPageProps) {
@@ -40,6 +43,10 @@ export function geoSchema(p: GeoPageProps) {
           { '@type': 'AdministrativeArea', name: 'South Florida' },
         ],
       },
+      ...(p.crumbs ? [{
+        '@type': 'BreadcrumbList',
+        itemListElement: [{ label: 'Home', href: '/' }, ...p.crumbs].map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: `${BASE}${c.href}` })),
+      }] : []),
       {
         '@type': 'FAQPage',
         '@id': `${BASE}${p.path}#faq`,
@@ -76,6 +83,12 @@ export default function GeoLanding(p: GeoPageProps) {
         <header className="relative pt-32 md:pt-44 pb-14 md:pb-20 px-6 md:px-14 overflow-hidden">
           <div aria-hidden className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 70% 0%, rgba(201,169,110,0.16), transparent 60%)' }} />
           <div className="relative max-w-4xl mx-auto">
+            {p.crumbs && (
+              <nav aria-label="Breadcrumb" className="mb-6 text-[11px] tracking-widest uppercase text-white/40 flex flex-wrap gap-2">
+                <Link href="/" className="hover:text-white">Home</Link>
+                {p.crumbs.map((c) => (<span key={c.href} className="flex gap-2"><span>/</span><Link href={c.href} className="hover:text-white">{c.label}</Link></span>))}
+              </nav>
+            )}
             <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-5" style={{ color: gold }}>{p.eyebrow}</p>
             <h1 className="font-display font-bold italic leading-[0.95] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 88px)' }}>{p.h1}</h1>
             <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mb-9">{p.intro}</p>
@@ -99,6 +112,22 @@ export default function GeoLanding(p: GeoPageProps) {
                 )}
               </section>
             ))}
+
+            {p.prices && (
+              <section className="border-t border-white/[0.08] pt-10 md:pt-14">
+                <h2 className="font-display font-bold italic mb-6" style={{ fontSize: 'clamp(26px, 4vw, 42px)' }}>Prices</h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {p.prices.map((x) => (
+                    <div key={x.name} className="border border-white/[0.08] p-6 hover:border-[#c9a96e]/40 transition-colors">
+                      <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: gold }}>{x.price}</p>
+                      <p className="text-white font-semibold mb-1">{x.name}</p>
+                      <p className="text-white/55 text-sm leading-relaxed">{x.desc}</p>
+                    </div>
+                  ))}
+                </div>
+                {p.pricesNote && <p className="text-white/40 text-sm mt-4">{p.pricesNote}</p>}
+              </section>
+            )}
 
             <section className="border-t border-white/[0.08] pt-10 md:pt-14">
               <h2 className="font-display font-bold italic mb-6" style={{ fontSize: 'clamp(26px, 4vw, 42px)' }}>Questions</h2>

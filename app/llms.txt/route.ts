@@ -15,6 +15,10 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 - Event Models & Hosting: In-person, from $400/girl. South Florida events and brand activations.
 - Bottle Girls / VIP Hostesses: In-person, from $400/girl. Miami clubs and lounges.
 - Commercial Productions: In-person, from $599. Scripted commercials and testimonial videos.
+- Brand Ambassadors: content visits from $300, event appearances $400 per model. https://influencecreators.marketing/brand-ambassadors-miami
+- Music Promotion: reactions from $300, story reposts from $150, collab posts from $500. Real creators, no bots. https://influencecreators.marketing/music-promotion
+- Niche pages: restaurants https://influencecreators.marketing/restaurant-influencer-marketing-miami ; nightclubs and lounges https://influencecreators.marketing/nightclub-influencer-marketing-miami ; hotels https://influencecreators.marketing/hotel-influencer-marketing-miami ; bottle girls https://influencecreators.marketing/bottle-girls-miami
+- Cost guide: https://influencecreators.marketing/influencer-cost-guide
 
 ## Key Facts
 - Location: Miami / South Florida (serves Miami, Boca Raton, Fort Lauderdale, Orlando)
