@@ -455,13 +455,13 @@ export const articles: Record<string, Article> = {
       "type": "link",
       "before": "Browse ",
       "label": "music video models",
-      "href": "/music-video-models",
+      "href": "/music-video-creators",
       "after": "."
     },
     {
       "type": "cta",
       "text": "Ready to cast your video?",
-      "href": "/music-video-models",
+      "href": "/music-video-creators",
       "label": "See Tiers"
     }
   ],

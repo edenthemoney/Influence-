@@ -86,7 +86,7 @@ const props: GeoPageProps = {
   "related": [
     {
       "label": "Music video models",
-      "href": "/music-video-models"
+      "href": "/music-video-creators"
     },
     {
       "label": "Label campaigns",
