@@ -160,3 +160,34 @@
 @media (min-width: 768px) { .heroShade { background: linear-gradient(to top, #000 0%, rgba(0,0,0,.45) 50%, transparent 100%), linear-gradient(to right, rgba(0,0,0,.75), rgba(0,0,0,.25) 50%, rgba(0,0,0,.4)); } }
 
 @media (max-width: 767px) and (prefers-reduced-motion: reduce) { .scenePhone { transform: none; } }
+
+/* ---- Polish pass (restrained; transform/opacity/background-position only; off for reduced motion) ---- */
+/* Gold sheen that drifts across "Influence." every ~7s. */
+.goldSheen {
+  background: linear-gradient(100deg, #c9a96e 0%, #c9a96e 38%, #f3e2b8 48%, #c9a96e 58%, #c9a96e 100%);
+  background-size: 250% 100%; background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  animation: goldSheen 7s ease-in-out 1.6s infinite;
+}
+@keyframes goldSheen { 0%, 70% { background-position: 100% 0; } 100% { background-position: -50% 0; } }
+/* Hero copy: one soft fade-up on load, staggered. */
+.heroIn > * { opacity: 0; transform: translate3d(0, 14px, 0); animation: heroIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+.heroIn > *:nth-child(2) { animation-delay: 0.08s; }
+.heroIn > *:nth-child(3) { animation-delay: 0.22s; }
+.heroIn > *:nth-child(4) { animation-delay: 0.34s; }
+.heroIn > *:nth-child(5) { animation-delay: 0.44s; }
+@keyframes heroIn { to { opacity: 1; transform: none; } }
+/* Refined vignette over the hero video (static, one layer). */
+.heroVignette { background: radial-gradient(120% 90% at 55% 40%, transparent 55%, rgba(0, 0, 0, 0.45) 100%); pointer-events: none; }
+/* Gold button: soft inner highlight, warm glow on hover, gold focus ring. */
+.btnGold { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 6px 18px -10px rgba(201, 169, 110, 0.55); transition: transform 0.15s ease, box-shadow 0.3s ease, filter 0.3s ease; }
+@media (hover: hover) { .btnGold:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 10px 28px -10px rgba(201, 169, 110, 0.75); filter: brightness(1.04); } }
+.btnGhost { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.15s ease; }
+@media (hover: hover) { .btnGhost:hover { background-color: rgba(255, 255, 255, 0.06); border-color: #c9a96e; color: #f3e2b8; } }
+.btnGhost:active { transform: scale(0.98); }
+.btnGold:focus-visible, .btnGhost:focus-visible { outline: 2px solid #c9a96e; outline-offset: 3px; }
+.headTight { letter-spacing: -0.012em; }
+@media (prefers-reduced-motion: reduce) {
+  .goldSheen { animation: none; background-position: 100% 0; }
+  .heroIn > * { animation: none; opacity: 1; transform: none; }
+}

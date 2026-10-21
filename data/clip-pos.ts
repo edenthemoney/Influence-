@@ -1,17 +1,12 @@
 /**
- * Per-clip object-position (face/subject centre measured with face detection on the 720x1568 encodes).
- * The phone screen (~0.42) is narrower than the clips (0.459) and profile tiles are 0.72, so `cover`
- * trims the sides; these keep the subject centred instead of drifting off-frame.
+ * Per-clip object-position for the stage clips (subject centre on the 720x1568 encodes).
+ * `cover` trims the sides on narrower frames; these keep the subject centred.
  */
 const POS: Record<string, string> = {
-  beach: '35% 50%',
-  bathtub: '36% 45%',
-  martini: '54% 30%',
-  dance: '48% 45%',
-  editorial: '47% 0%',
-  'pool-shoot': '50% 64%',
+  'st-brand-boutique': '50% 30%',
+  'st-bar-cocktail': '50% 60%',
 };
-/** '/images/stage/beach-anim.webp?v=7' -> '35% 50%' (default centre). */
+/** '/images/stage/st-bar-cocktail-anim.webp?v=9' -> '50% 60%' (default centre). */
 export function posOf(src?: string | null): string {
   const m = (src || '').match(/\/stage\/([\w-]+?)(?:-hevc|-anim|-poster|-sq-anim|-sq-a|-sq-b)?\.(?:mp4|webp)/);
   return (m && POS[m[1]]) || '50% 50%';

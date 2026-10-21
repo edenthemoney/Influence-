@@ -85,7 +85,7 @@ function Profile({ c, name, handle }: { c: Campaign; name: string; handle: strin
       <div className={s.grid}>
         {c.grid.map((t, i) => (
           <div key={t.src + i} className={s.tile}>
-            <img src={t.reel ? `${t.src.replace(/-sq-[ab]\.webp$/, '-sq-anim.webp')}?v=7` : t.src} style={{ objectPosition: posOf(t.src) }} alt="" width={240} height={240} loading="lazy" decoding="async" />
+            <img src={t.reel ? `${t.src.replace(/-sq-[ab]\.webp$/, '-sq-anim.webp')}?v=9` : t.src} style={{ objectPosition: posOf(t.src) }} alt="" width={240} height={240} loading="lazy" decoding="async" />
             {t.reel && <span className={s.tileReel}>{I.reel}</span>}
           </div>
         ))}
@@ -126,7 +126,7 @@ export default function BusinessStage() {
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
   // Every device: video slides and reel thumbnails render their animated WebP by default (never a static frame).
-  const animOf = (video?: string) => (video ? `${video.replace(/\.mp4$/, '-anim.webp')}?v=7` : null);
+  const animOf = (video?: string) => (video ? `${video.replace(/\.mp4$/, '-anim.webp')}?v=9` : null);
   // Preload the first clip's sharp poster (default campaign, first slide after the lock screen:
   // px-dine-room) so its Ken Burns fallback is ready the moment the phone scrolls in.
   useEffect(() => {
@@ -336,7 +336,6 @@ export default function BusinessStage() {
     { id: 'des', side: s.bL, top: '9%', s: 42, d: 1.4 },
     { id: 'seahra', side: s.bR, top: '30%', s: 40, d: 0.8 },
     { id: 'kat', side: s.bL, top: '57%', s: 40, d: 1.1 },
-    { id: 'genesis', side: s.bR, top: '76%', s: 40, d: 1.7 },
   ], []);
 
   const label = !awake || phase === -1 ? <>Lock screen <span className="text-white/70">· new notifications</span></>

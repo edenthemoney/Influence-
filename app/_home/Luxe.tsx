@@ -28,7 +28,7 @@ function playOnly(v: HTMLVideoElement) {
   if (current && current !== v) halt(current, true);
   current = v;
   prime(v);
-  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=8`;
+  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=9`;
   if (!v.dataset.watched) { v.dataset.watched = '1'; watch(v); }
   kick(v);
 }
@@ -179,7 +179,7 @@ export function ScrubScene() {
           <span className="mt-3 block font-display text-[clamp(34px,6vw,72px)] font-bold italic leading-[0.95]">The room is set.<br />Now the feed.</span>
         </p>
         <div className={L.scenePhone} aria-hidden>
-          <img src={`${S}/martini-anim.webp?v=7`} style={{ objectPosition: posOf('/stage/martini.mp4') }} alt="" decoding="async" loading="lazy" />
+          <img src={`${S}/st-events-toast-anim.webp?v=9`} style={{ objectPosition: posOf('/stage/st-events-toast.mp4') }} alt="" decoding="async" loading="lazy" />
         </div>
       </div>
     </section>
@@ -187,7 +187,7 @@ export function ScrubScene() {
 }
 
 const TILE_HREF: Record<string, string> = { venues: '/start', talent: '/start?service=shoot', content: '/start?service=ugc', music: '/start?service=musicvideo', events: '/start?service=event' };
-const TILE_CLIP: Record<string, string> = { venues: 'martini', talent: 'editorial', content: 'dance', music: 'bathtub', events: 'pool-shoot' };
+const TILE_CLIP: Record<string, string> = { venues: 'st-venue-bar', talent: 'st-brand-boutique', content: 'st-content-studio', music: 'st-music-piano', events: 'st-events-toast' };
 
 /** Five live service tiles: poster by default; the most-visible tile plays on mobile, hover plays on desktop. */
 export function LiveTiles() {
@@ -240,7 +240,7 @@ export function LiveTiles() {
   );
 }
 
-const BAND = ['beach', 'yacht', 'pool-shoot', 'martini', 'bathtub', 'editorial', 'dance'];
+const BAND = ['st-venue-bar', 'st-hotel-room', 'st-brand-boutique', 'st-bar-cocktail', 'st-music-piano', 'st-events-toast', 'st-club-sparklers', 'st-hotel-champagne'];
 
 /** Full-bleed highlight reel: posters drift slowly (one transform animation), paused off screen. No text. */
 export function ReelBand() {

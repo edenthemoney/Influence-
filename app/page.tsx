@@ -60,24 +60,25 @@ export default function HomePage() {
         <HeroLite />
         {/* One plain overlay (two gradients, no blend modes or filters) so only one layer sits on the video. */}
         <div className={`absolute inset-0 ${L.heroShade}`} />
+        <div className={`absolute inset-0 ${L.heroVignette}`} />
         <div className="relative flex h-full flex-col px-5 pb-4 pt-20 md:px-16 md:pb-10 md:pt-28">
           <div className="flex items-center gap-4">
             <span className="h-px w-8 shrink-0" style={{ backgroundColor: GOLD }} />
             <p className="text-[13px] font-semibold uppercase tracking-[0.18em]">For venues, brands, and creators</p>
           </div>
-          <div className="mt-[calc(14svh-18px)] max-w-3xl md:mt-auto">
+          <div className={`mt-[calc(14svh-18px)] max-w-3xl md:mt-auto ${L.heroIn}`}>
             <h1 className="sr-only">Go Viral. Make an Influence. We match venues and brands with Brand Ambassadors and influencers.</h1>
-            <p aria-hidden className="font-display font-bold italic leading-[0.85]" style={{ fontSize: 'clamp(50px, 9vw, 128px)' }}>
-              Go Viral.<br />Make an<br /><span style={{ color: GOLD }}>Influence.</span>
+            <p aria-hidden className={`font-display font-bold italic leading-[0.85] ${L.headTight}`} style={{ fontSize: 'clamp(50px, 9vw, 128px)' }}>
+              Go Viral.<br />Make an<br /><span className={L.goldSheen} style={{ color: GOLD }}>Influence.</span>
             </p>
             <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white md:text-[19px]">
               We match venues and brands with Brand Ambassadors and influencers for events, campaigns, and content.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href={BOOK_HREF} data-magnet className={`${L.btn} inline-flex min-h-14 items-center justify-center px-7 text-[15px] font-bold uppercase tracking-[0.08em]`} style={{ backgroundColor: GOLD, color: '#000' }}>
+              <Link href={BOOK_HREF} data-magnet className={`${L.btn} ${L.btnGold} inline-flex min-h-14 items-center justify-center px-7 text-[15px] font-bold uppercase tracking-[0.08em]`} style={{ backgroundColor: GOLD, color: '#000' }}>
                 Book Talent
               </Link>
-              <Link href="/join" className="inline-flex min-h-14 items-center justify-center border border-white px-7 text-[15px] font-bold uppercase tracking-[0.08em] text-white">
+              <Link href="/join" className={`${L.btnGhost} inline-flex min-h-14 items-center justify-center border border-white px-7 text-[15px] font-bold uppercase tracking-[0.08em] text-white`}>
                 I&apos;m a Creator
               </Link>
             </div>
@@ -122,8 +123,8 @@ export default function HomePage() {
         <SectionHead n="04" eyebrow="Book talent" lines={['Tell us the date', 'and what you need.']} gold="and what you need." shader />
         <p className="relative mt-6 max-w-xl text-[17px] leading-relaxed text-white/85">Tell us the date, the city, and the kind of night or shoot. We reply by text or call.</p>
         <div className="relative mt-8 flex flex-col gap-3 sm:flex-row">
-          <Link href={BOOK_HREF} data-magnet className={`${L.btn} inline-flex min-h-14 items-center justify-center px-8 text-[15px] font-bold uppercase tracking-[0.1em]`} style={{ backgroundColor: GOLD, color: '#000' }}>Start a booking</Link>
-          <a href="tel:+15612877194" className={`${L.btn} inline-flex min-h-14 items-center justify-center border border-white/40 px-8 text-[15px] font-bold uppercase tracking-[0.1em] text-white`}>Call (561) 287-7194</a>
+          <Link href={BOOK_HREF} data-magnet className={`${L.btn} ${L.btnGold} inline-flex min-h-14 items-center justify-center px-8 text-[15px] font-bold uppercase tracking-[0.1em]`} style={{ backgroundColor: GOLD, color: '#000' }}>Start a booking</Link>
+          <a href="tel:+15612877194" className={`${L.btn} ${L.btnGold} inline-flex min-h-14 items-center justify-center border border-white/40 px-8 text-[15px] font-bold uppercase tracking-[0.1em] text-white`}>Call (561) 287-7194</a>
         </div>
         <div className="relative mt-12 max-w-xl"><HeroBooking /></div>
       </section>
