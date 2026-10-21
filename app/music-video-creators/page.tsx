@@ -317,6 +317,12 @@ export default function Page() {
             </a>
           </div>
         </div>
+        <p className="mt-16 text-white/50 text-sm leading-relaxed">
+          Studio partner: for music promotion, reaction videos and shoots, we work with{' '}
+          <a href="https://thevibemusicstudio.org" target="_blank" rel="noopener" className="underline hover:text-white" style={{ color: '#c9a96e' }}>Vibe Music Studio</a>{' '}
+          in Boca Raton.
+        </p>
+
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">
             {"Music Video Creators Across Florida"}

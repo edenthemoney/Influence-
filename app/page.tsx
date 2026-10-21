@@ -620,6 +620,7 @@ export default function HomePage() {
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
             <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
+            <a href="https://alphatrust.solutions" target="_blank" rel="noopener" className="text-white/25 hover:text-white/60 transition-colors text-[10px] tracking-widest uppercase">Marketing by Alpha Trust Solutions</a>
           </div>
         </div>
       </footer>
