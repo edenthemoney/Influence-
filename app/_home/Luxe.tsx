@@ -381,8 +381,8 @@ export function VideoWordmark() {
   return (
     <div ref={ref} className={L.wordWrap} role="img" aria-label="Influence">
       {mode === 'video'
-        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp`} data-src={`${clip}.mp4`} data-anim={`${clip}-anim.webp?v=8`} aria-hidden />
-        : <img className={L.wordMedia} src={`${clip}-anim.webp?v=8`} alt="" loading="lazy" decoding="async" />}
+        ? <video className={L.wordMedia} muted loop playsInline preload="none" poster={`${clip}-poster.webp?v=10`} data-src={`${clip}.mp4?v=10`} data-anim={`${clip}-anim.webp?v=10`} aria-hidden />
+        : <img className={L.wordMedia} src={`${clip}-anim.webp?v=10`} alt="" loading="lazy" decoding="async" />}
     </div>
   );
 }

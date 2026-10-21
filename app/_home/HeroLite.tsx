@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { halt, hold, kick, prime, watch } from './iosVideo';
 
-const V = 'v=8'; // cache-bust: new mobile hero files (hero-m2*)
+const V = 'v=10'; // cache-bust: 1080p desktop hero (H.264 + HEVC) from drone-clip-mid
 // The <video> is written as raw HTML so the server-rendered markup already carries
 // muted / playsinline / webkit-playsinline / autoplay / loop (React drops `muted` from SSR HTML),
 // and the sources are chosen by the browser at parse time (no src swap after hydration).
@@ -13,12 +13,13 @@ const CLS = 'absolute inset-0 h-full w-full translate-y-32 object-cover object-t
 const HTML = `<picture><source media="(min-width: 768px)" srcset="/images/stage/hero-d-anim.webp?${V}"><img src="/images/stage/hero-m2-anim.webp?${V}" alt="" aria-hidden="true" decoding="async" fetchpriority="high" class="${CLS}"></picture><video data-refused="true" muted autoplay loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-hidden="true"
   poster="/images/stage/hero-m2-poster.webp?${V}"
   class="${CLS}">
+  <source media="(min-width: 768px)" src="/images/stage/hero-d-hevc.mp4?${V}" type='video/mp4; codecs="hvc1"'>
   <source media="(min-width: 768px)" src="/images/stage/hero-d.mp4?${V}" type="video/mp4">
   <source src="/images/stage/hero-m2-hevc.mp4?${V}" type='video/mp4; codecs="hvc1"'>
   <source src="/images/stage/hero-m2.mp4?${V}" type="video/mp4">
 </video>`;
 
-/** Hero loop for /preview/home-e: portrait HQ encode on phones, 720p on desktop; paused off screen; iOS-safe autoplay. */
+/** Hero loop for /preview/home-e: portrait HQ encode on phones, 1080p on desktop; paused off screen; iOS-safe autoplay. */
 export default function HeroLite() {
   const box = useRef<HTMLDivElement>(null);
   useEffect(() => {

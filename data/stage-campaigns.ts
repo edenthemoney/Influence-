@@ -115,7 +115,7 @@ export const campaigns: Campaign[] = [
     ],
     beats: ['Announcement story', 'Weekend reels', 'Collab post', 'Story reposts'],
     screens: [
-      { kind: 'story', beat: 0, ...px('hotel-suite'), title: (n) => `This weekend at ${n}`, sub: () => 'Pool day with our creators · 1 PM', notif: (n) => `Deseray tagged ${n} in a story` },
+      { kind: 'story', beat: 0, ...px('hotel-suite'), title: (n) => `This weekend at ${n}`, sub: () => 'A suite stay with our creators', notif: (n) => `Deseray tagged ${n} in a story` },
       { kind: 'reel', beat: 1, ...v('st-hotel-room'), caption: (n) => `Check-in at ${n}.`, notif: (n) => `New reel tagged ${n}` },
       { kind: 'reel', beat: 1, ...v('st-hotel-champagne'), caption: (n) => `A weekend at ${n}.`, notif: (n) => `New reel tagged ${n}` },
       { kind: 'post', beat: 2, image: `${S}/des-skyline-45.webp`, caption: (n) => `${n} × Influence. Deseray's weekend, start to finish.`, notif: (n) => `${n} × Influence collab is live` },
