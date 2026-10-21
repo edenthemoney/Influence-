@@ -28,7 +28,7 @@ function playOnly(v: HTMLVideoElement) {
   if (current && current !== v) halt(current, true);
   current = v;
   prime(v);
-  if (!v.getAttribute('src') && v.dataset.src) v.src = `${v.dataset.src}?v=9`;
+  if (!v.getAttribute('src') && v.dataset.src) v.src = v.dataset.src.includes("?") ? v.dataset.src : `${v.dataset.src}?v=9`;
   if (!v.dataset.watched) { v.dataset.watched = '1'; watch(v); }
   kick(v);
 }
