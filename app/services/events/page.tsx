@@ -1,3 +1,4 @@
+import AnswerFaq from '../../components/AnswerFaq';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
@@ -259,6 +260,14 @@ export default function EventsPage() {
       </section>
 
       {/* Footer */}
+      <div className="max-w-4xl mx-auto px-6 md:px-14 pb-16">
+        <AnswerFaq id="/services/events" title="Event creators: quick answers" items={[
+            { q: 'What does the event creators service include?', a: 'Creators and promo models appear at your event, such as club nights, brand activations, parties and launches, in South Florida.' },
+            { q: 'How much does it cost?', a: 'From $400 per creator.' },
+            { q: 'How do I book?', a: 'Use the Book Event Creators button and send the date, venue and type of event.' },
+          ]} />
+
+      </div>
       <footer className="bg-[#080808] border-t border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 md:px-16 pt-16 pb-10">
           <div className="flex flex-col md:flex-row justify-between gap-16 mb-16">

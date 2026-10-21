@@ -1,3 +1,4 @@
+import AnswerFaq from '../components/AnswerFaq';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check, Video, Zap, BarChart3 } from 'lucide-react';
@@ -105,6 +106,13 @@ export default function UGCCreatorsFlorida() {
             </Link>
           </div>
         </div>
+
+        <AnswerFaq id="/ugc-creators-florida" title="UGC creators in Florida: quick answers" items={[
+          { q: 'What is UGC?', a: 'UGC (user-generated content) is short-form video a creator makes for your brand to post, such as reels and TikToks.' },
+          { q: 'What does Influence make?', a: 'UGC reels, branded skits and promos, and music reaction videos, made by creators in South Florida.' },
+          { q: 'Can creators film remotely?', a: 'Yes. Creators can shoot locally in Florida or receive your product by mail and film remotely.' },
+          { q: 'How much does UGC cost?', a: 'See the packages on this page, or request a quote through the booking form for custom scopes.' },
+        ]} />
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">UGC Creators Across Florida</h3>

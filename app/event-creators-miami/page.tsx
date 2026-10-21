@@ -1,3 +1,4 @@
+import AnswerFaq from '../components/AnswerFaq';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Check, Users, Star, MapPin, Clock, Sparkles } from 'lucide-react';
@@ -96,6 +97,13 @@ export default function EventModelsMiami() {
             </Link>
           </div>
         </div>
+
+        <AnswerFaq id="/event-creators-miami" title="Event creators in Miami: quick answers" service={{ name: 'Event Creators & Promo Models, Miami', serviceType: 'Event creators and promo models', description: 'Event creators and promo models for club nights, parties, brand activations and launches in Miami and South Florida. $400 per creator.' }} items={[
+          { q: 'What are event creators?', a: 'Event creators and promo models appear at your club night, party, brand activation or launch to bring energy and visibility.' },
+          { q: 'How much do event creators cost?', a: '$400 per creator for an appearance. See the package options on this page.' },
+          { q: 'How far ahead should I book?', a: 'As early as you can. Same-week bookings depend on availability.' },
+          { q: 'Which areas do you cover?', a: 'Miami and all of South Florida.' },
+        ]} />
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">Serving All of South Florida</h3>

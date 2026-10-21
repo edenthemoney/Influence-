@@ -34,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/blog/best-ways-to-promote-your-song-on-instagram', priority: 0.75, changeFrequency: 'monthly' },
     { route: '/blog/miami-influencer-marketing-guide-2026', priority: 0.8, changeFrequency: 'monthly' },
     { route: '/hire-influencer-miami', priority: 0.85, changeFrequency: 'monthly' },
+    { route: '/influencer-cost-guide', priority: 0.85, changeFrequency: 'monthly' },
     { route: '/influencer-marketing-miami', priority: 0.9, changeFrequency: 'monthly' },
     { route: '/influencer-marketing-fort-lauderdale', priority: 0.85, changeFrequency: 'monthly' },
     { route: '/influencer-marketing-boca-raton', priority: 0.85, changeFrequency: 'monthly' },

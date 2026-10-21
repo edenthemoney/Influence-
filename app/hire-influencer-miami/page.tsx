@@ -1,3 +1,4 @@
+import AnswerFaq from '../components/AnswerFaq';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -79,6 +80,13 @@ export default function HireInfluencerMiami() {
             </Link>
           </div>
         </div>
+
+        <AnswerFaq id="/hire-influencer-miami" title="Hiring an influencer in Miami: quick answers" service={{ name: 'Hire Influencers in Miami', serviceType: 'Influencer and creator booking', description: 'Book Miami creators for UGC, music videos, music reaction videos, brand content, commercials and events. Campaigns start at $300.' }} items={[
+          { q: 'How do I hire an influencer in Miami?', a: 'Browse creators on the marketplace or send your brief through the booking form. We match creators and confirm the booking.' },
+          { q: 'What can I hire creators for?', a: 'UGC and reels, music videos, music reaction videos, brand content, commercials, and event appearances.' },
+          { q: 'How much does it cost?', a: 'Our campaigns start at $300. The final price depends on the creator, deliverables and scope.' },
+          { q: 'Which areas do you cover?', a: 'Miami and South Florida, including Fort Lauderdale, Boca Raton and West Palm Beach.' },
+        ]} />
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">Serving All of South Florida</h3>
