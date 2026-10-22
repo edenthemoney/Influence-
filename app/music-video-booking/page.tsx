@@ -39,12 +39,20 @@ export default function MusicVideoBookingPage() {
       ]}
       packages={[
         {
-          name: 'Cameo',
+          name: 'Cameo · 1 Hour',
           price: 199,
+          tagline: '1 model · up to 1 hr',
+          features: ['1 model', 'Up to 1 hour on set', 'Styled & camera-ready'],
+          cta: 'Book Cameo 1 Hr',
+          href: '/start?service=musicvideo&package=mv-cameo',
+        },
+        {
+          name: 'Cameo · 2 Hours',
+          price: 249,
           tagline: '1 model · up to 2 hrs',
           features: ['1 model', 'Up to 2 hours on set', 'Styled & camera-ready'],
-          cta: 'Book Cameo',
-          href: '/start?service=musicvideo&package=mv-cameo',
+          cta: 'Book Cameo 2 Hrs',
+          href: '/start?service=musicvideo&package=mv-cameo-2',
         },
         {
           name: 'Featured',

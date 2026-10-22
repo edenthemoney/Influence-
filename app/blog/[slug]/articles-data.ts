@@ -137,7 +137,7 @@ export const articles: Record<string, Article> = {
       { type: 'text', value: "Our newest addition, Ty Nadia, brings an equally impressive resume — lead model roles in videos for Trippie Redd (\"Stay The Same\"), Kodak Black, and Chicken P (17M+ YouTube views). Additional credits include French Montana, Sukihana, Sexyy Red, and Cash Cobain. She's also a skilled contortionist and flexibility artist, adding a unique visual element that directors love." },
       { type: 'heading', value: "What It Costs" },
       { type: 'text', value: "Here's the part that surprises most artists: professional music video creators are more affordable than you think." },
-      { type: 'text', lead: "Cameo ($199)", value: "Cameo ($199) — 1 model, up to 2 hours on set. Great for a featured scene." },
+      { type: 'text', lead: "Cameo ($199 / $249)", value: "Cameo — 1 model, $199 for up to 1 hour or $249 for up to 2 hours on set. Great for a featured scene." },
       { type: 'text', lead: "Featured ($450)", value: "Featured ($450) — 1 model, half day (up to 5 hours)." },
       { type: 'text', lead: "Lead ($950)", value: "Lead ($950) — 1 lead model, full day (up to 10 hours), multiple looks and scenes." },
       { type: 'text', lead: "Ensemble (from $1,950)", value: "Ensemble (from $1,950) — 3 models, full day, +$550 per extra model." },
@@ -384,7 +384,7 @@ export const articles: Record<string, Article> = {
     },
     {
       "type": "text",
-      "value": "Cameo: from $199. 1 model, up to 2 hrs on set."
+      "value": "Cameo: $199 for 1 hour or $249 for 2 hours. 1 model on set."
     },
     {
       "type": "text",
@@ -468,7 +468,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much does it cost to hire a model for a music video?",
-      "a": "From $199 at Influence: Cameo $199, Featured $450, Lead $950, Ensemble from $1,950."
+      "a": "From $199 at Influence: Cameo $199 (1 hr) or $249 (2 hrs), Featured $450, Lead $950, Ensemble from $1,950."
     },
     {
       "q": "Do I need a release form?",

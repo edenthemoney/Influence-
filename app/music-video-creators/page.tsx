@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className="min-h-screen bg-[#080808] text-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"name\":\"Music Video Creators for Hire \u2014 Miami, South Florida\",\"description\":\"Professional music video creators in Miami with credits including Sean Paul, Trippie Redd, Kodak Black, DaBaby, and French Montana. Book for music video productions in South Florida. Starting at $199.\",\"url\":\"https://influencecreators.marketing/music-video-creators\",\"provider\":{\"@type\":\"Organization\",\"name\":\"Influence\",\"url\":\"https://influencecreators.marketing\"},\"areaServed\":[{\"@type\":\"City\",\"name\":\"Miami\"},{\"@type\":\"State\",\"name\":\"Florida\"}],\"serviceType\":\"Music Video Content Ordering\",\"offers\":[{\"@type\":\"Offer\",\"name\":\"Cameo\",\"price\":\"199\",\"priceCurrency\":\"USD\",\"description\":\"1 model, up to 2 hrs on set.\"},{\"@type\":\"Offer\",\"name\":\"Featured\",\"price\":\"450\",\"priceCurrency\":\"USD\",\"description\":\"1 model, half day (up to 5 hrs).\"},{\"@type\":\"Offer\",\"name\":\"Lead\",\"price\":\"950\",\"priceCurrency\":\"USD\",\"description\":\"1 lead model, full day (up to 10 hrs).\"},{\"@type\":\"Offer\",\"name\":\"Ensemble\",\"price\":\"1950\",\"priceCurrency\":\"USD\",\"description\":\"3+ models, full day. From $1,950, +$550 per extra model.\"}]}" }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"name\":\"Music Video Creators for Hire \u2014 Miami, South Florida\",\"description\":\"Professional music video creators in Miami with credits including Sean Paul, Trippie Redd, Kodak Black, DaBaby, and French Montana. Book for music video productions in South Florida. Starting at $199.\",\"url\":\"https://influencecreators.marketing/music-video-creators\",\"provider\":{\"@type\":\"Organization\",\"name\":\"Influence\",\"url\":\"https://influencecreators.marketing\"},\"areaServed\":[{\"@type\":\"City\",\"name\":\"Miami\"},{\"@type\":\"State\",\"name\":\"Florida\"}],\"serviceType\":\"Music Video Content Ordering\",\"offers\":[{\"@type\":\"Offer\",\"name\":\"Cameo (1 hour)\",\"price\":\"199\",\"priceCurrency\":\"USD\",\"description\":\"1 model, up to 1 hr on set.\"},{\"@type\":\"Offer\",\"name\":\"Cameo (2 hours)\",\"price\":\"249\",\"priceCurrency\":\"USD\",\"description\":\"1 model, up to 2 hrs on set.\"},{\"@type\":\"Offer\",\"name\":\"Featured\",\"price\":\"450\",\"priceCurrency\":\"USD\",\"description\":\"1 model, half day (up to 5 hrs).\"},{\"@type\":\"Offer\",\"name\":\"Lead\",\"price\":\"950\",\"priceCurrency\":\"USD\",\"description\":\"1 lead model, full day (up to 10 hrs).\"},{\"@type\":\"Offer\",\"name\":\"Ensemble\",\"price\":\"1950\",\"priceCurrency\":\"USD\",\"description\":\"3+ models, full day. From $1,950, +$550 per extra model.\"}]}" }} />
       <div className="max-w-4xl mx-auto px-6 py-24">
         <div className="mb-4">
           <span className="text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: "#c9a96e" }}>
@@ -225,11 +225,11 @@ export default function Page() {
             <div>
               <div className="flex items-center gap-3 mb-1">
                 <h3 className="font-bold text-white">
-                  {"Cameo"}
+                  {"Cameo · 1 Hour"}
                 </h3>
               </div>
               <p className="text-white/40 text-sm">
-                {"1 model, up to 2 hrs on set."}
+                {"1 model, up to 1 hr on set."}
               </p>
               <p className="text-white/20 text-xs mt-1">
                 {"Best for: "}
@@ -237,7 +237,26 @@ export default function Page() {
               </p>
             </div>
             <p className="text-2xl font-bold flex-shrink-0 ml-6" style={{ color: "#c9a96e" }}>
-              {"From $199"}
+              {"$199"}
+            </p>
+          </div>
+          <div className="border p-6 flex items-center justify-between border-white/[0.06]">
+            <div>
+              <div className="flex items-center gap-3 mb-1">
+                <h3 className="font-bold text-white">
+                  {"Cameo · 2 Hours"}
+                </h3>
+              </div>
+              <p className="text-white/40 text-sm">
+                {"1 model, up to 2 hrs on set."}
+              </p>
+              <p className="text-white/20 text-xs mt-1">
+                {"Best for: "}
+                {"A few scenes"}
+              </p>
+            </div>
+            <p className="text-2xl font-bold flex-shrink-0 ml-6" style={{ color: "#c9a96e" }}>
+              {"$249"}
             </p>
           </div>
           <div className="border p-6 flex items-center justify-between border-white/[0.06]">

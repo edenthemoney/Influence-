@@ -55,7 +55,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Pricing & Packages',
     question: 'What are your package tiers?',
-    answer: 'Prices start at $199 for a music video cameo and $300 for a single UGC video or reaction. UGC packs are $750 for 3 and $2,250 for 10. Event hosts are $95/hr with a 4-hour minimum, brand ambassador visits start at $350, commercial models are $600 half day / $1,200 full day, actors $750 / $1,250, and voiceover starts at $250. Larger campaigns are quoted on scope.'
+    answer: 'Prices start at $199 for a 1-hour music video cameo ($249 for 2 hours) and $300 for a single UGC video or reaction. UGC packs are $750 for 3 and $2,250 for 10. Event hosts are $95/hr with a 4-hour minimum, brand ambassador visits start at $350, commercial models are $600 half day / $1,200 full day, actors $750 / $1,250, and voiceover starts at $250. Larger campaigns are quoted on scope.'
   },
   {
     category: 'Pricing & Packages',

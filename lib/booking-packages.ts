@@ -1,7 +1,8 @@
 // Single source of truth for booking packages + prices (client UI and server checkout).
 // ── Music Videos (dedicated service for artists) ──
 export const MUSIC_VIDEO_OT = [
-  {"id": "mv-cameo", "name": "Cameo", "tagline": "1 model · up to 2 hrs on set", "models": 1, "price": 199, "popular": false, "perks": ["1 model", "Up to 2 hours on set", "Styled & camera-ready", "South Florida location"]},
+  {"id": "mv-cameo", "name": "Cameo · 1 Hour", "tagline": "1 model · up to 1 hr on set", "models": 1, "price": 199, "popular": false, "perks": ["1 model", "Up to 1 hour on set", "Styled & camera-ready", "South Florida location"]},
+  {"id": "mv-cameo-2", "name": "Cameo · 2 Hours", "tagline": "1 model · up to 2 hrs on set", "models": 1, "price": 249, "popular": false, "perks": ["1 model", "Up to 2 hours on set", "Styled & camera-ready", "South Florida location"]},
   {"id": "mv-featured", "name": "Featured", "tagline": "1 model · half day (up to 5 hrs)", "models": 1, "price": 450, "popular": true, "perks": ["1 model", "Half day, up to 5 hours on set", "Styled & camera-ready", "South Florida location"]},
   {"id": "mv-lead", "name": "Lead", "tagline": "1 lead model · full day (up to 10 hrs)", "models": 1, "price": 950, "popular": false, "perks": ["1 lead model", "Full day, up to 10 hours on set", "Styled & camera-ready", "South Florida location"]},
   {"id": "mv-ensemble", "name": "Ensemble", "tagline": "3 models · full day", "models": 3, "price": 1950, "popular": false, "perks": ["3 models", "Full day, up to 10 hours on set", "+$550 per extra model", "South Florida location"]},

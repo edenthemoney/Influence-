@@ -8,7 +8,7 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 
 ## Services
 - UGC & Branded Reels: Remote, from $300. Branded short-form video for brands and products.
-- Music Video Models: In-person, from $199 (Cameo $199, Featured $450, Lead $950, Ensemble from $1,950). Talent with credits including Sean Paul, Bryson Tiller, DaBaby, Trippie Redd, Kodak Black.
+- Music Video Models: In-person, from $199 (Cameo $199 for 1 hr / $249 for 2 hrs, Featured $450, Lead $950, Ensemble from $1,950). Talent with credits including Sean Paul, Bryson Tiller, DaBaby, Trippie Redd, Kodak Black.
 - Music Reactions: Remote, from $300. Models react to your songs for TikTok/Instagram promotion.
 - Business Content: In-person, from $300. Model visits your business, creates reels on-site.
 - Photo & Video Shoots: In-person, from $300. 1-8 models for brand shoots and editorials.
@@ -29,7 +29,7 @@ Influence Models Agency connects brands, artists, and businesses with verified m
 - Founder: Eden Roy
 
 ## Pricing
-- Music video models: Cameo $199 (≤2 hrs), Featured $450 (half day), Lead $950 (full day), Ensemble from $1,950 (+$550/extra model)
+- Music video models: Cameo $199 (1 hr) / $249 (2 hrs), Featured $450 (half day), Lead $950 (full day), Ensemble from $1,950 (+$550/extra model)
 - Commercial & print models: $600 half day, $1,200 full day
 - Event hosts / bottle girls: $95/hr per person, 4-hour minimum
 - Brand ambassador visits: from $350; opening night $1,500 (3 creators); monthly campaigns from $2,500/mo

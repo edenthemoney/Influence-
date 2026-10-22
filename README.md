@@ -29,7 +29,7 @@ An all-in-one model agency web application connecting businesses with elite cont
 
 | Service | Price |
 |---------|-------|
-| Music video models | Cameo $199 (≤2 hrs) · Featured $450 (half day) · Lead $950 (full day) · Ensemble from $1,950 (+$550/extra model) |
+| Music video models | Cameo $199 (1 hr) / $249 (2 hrs) · Featured $450 (half day) · Lead $950 (full day) · Ensemble from $1,950 (+$550/extra model) |
 | Commercial / print models | $600 half day · $1,200 full day (paid ads/broadcast usage +50%) |
 | Event hosts / bottle girls | $95/hr per person, 4-hour minimum ($380) |
 | Brand ambassador visits | From $350 · Opening night $1,500 (3 creators) · Monthly campaign $2,500/mo |

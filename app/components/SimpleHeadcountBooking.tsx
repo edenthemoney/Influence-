@@ -14,7 +14,8 @@ interface Option {
 }
 
 const musicVideoOptions: Option[] = [
-  { count: 1, label: 'Cameo · 1 model, up to 2 hrs', price: 199, id: 'mv-cameo' },
+  { count: 1, label: 'Cameo · 1 model, 1 hr', price: 199, id: 'mv-cameo' },
+  { count: 5, label: 'Cameo · 1 model, 2 hrs', price: 249, id: 'mv-cameo-2' },
   { count: 2, label: 'Featured · 1 model, half day', price: 450, id: 'mv-featured' },
   { count: 3, label: 'Lead · 1 lead model, full day', price: 950, id: 'mv-lead' },
   { count: 4, label: 'Ensemble · 3 models, full day (+$550/extra)', price: 1950, id: 'mv-ensemble' },
