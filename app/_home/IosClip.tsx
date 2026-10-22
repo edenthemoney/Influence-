@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from 'react';
 import { posOf } from '@/data/clip-pos';
 import { fallback, halt, hold, kick, touch, watch } from './iosVideo';
 
-const V = 'v=9'; // cache-bust: short-GOP H.264 + HEVC re-encodes
+const V = 'v=11'; // cache-bust: short-GOP H.264 + HEVC re-encodes
 
 /**
  * Phone-screen clip built imperatively so iOS sees muted/autoplay/playsinline BEFORE any source is

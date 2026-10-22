@@ -28,7 +28,7 @@ function playOnly(v: HTMLVideoElement) {
   if (current && current !== v) halt(current, true);
   current = v;
   prime(v);
-  if (!v.getAttribute('src') && v.dataset.src) v.src = v.dataset.src.includes("?") ? v.dataset.src : `${v.dataset.src}?v=9`;
+  if (!v.getAttribute('src') && v.dataset.src) v.src = v.dataset.src.includes("?") ? v.dataset.src : `${v.dataset.src}?v=11`;
   if (!v.dataset.watched) { v.dataset.watched = '1'; watch(v); }
   kick(v);
 }
@@ -179,7 +179,7 @@ export function ScrubScene() {
           <span className="mt-3 block font-display text-[clamp(34px,6vw,72px)] font-bold italic leading-[0.95]">The room is set.<br />Now the feed.</span>
         </p>
         <div className={L.scenePhone} aria-hidden>
-          <img src={`${S}/st-events-toast-anim.webp?v=9`} style={{ objectPosition: posOf('/stage/st-events-toast.mp4') }} alt="" decoding="async" loading="lazy" />
+          <img src={`${S}/og-lounge-toast-anim.webp?v=11`} style={{ objectPosition: posOf('/stage/og-lounge-toast.mp4') }} alt="" decoding="async" loading="lazy" />
         </div>
       </div>
     </section>
@@ -187,7 +187,7 @@ export function ScrubScene() {
 }
 
 const TILE_HREF: Record<string, string> = { venues: '/start', talent: '/start?service=shoot', content: '/start?service=ugc', music: '/start?service=musicvideo', events: '/start?service=event' };
-const TILE_CLIP: Record<string, string> = { venues: 'st-venue-bar', talent: 'st-brand-boutique', content: 'st-content-studio', music: 'st-music-piano', events: 'st-events-toast' };
+const TILE_CLIP: Record<string, string> = { venues: 'og-des-arrive', talent: 'og-des-arrive', content: 'og-dessertz-line', music: 'og-lounge-toast', events: 'og-lounge-toast' };
 
 /** Five live service tiles: poster by default; the most-visible tile plays on mobile, hover plays on desktop. */
 export function LiveTiles() {
@@ -240,12 +240,13 @@ export function LiveTiles() {
   );
 }
 
-const BAND = ['st-venue-bar', 'st-hotel-room', 'st-brand-boutique', 'st-bar-cocktail', 'st-music-piano', 'st-events-toast', 'st-club-sparklers', 'st-hotel-champagne'];
+// Original Influence footage posters + roster shoot stills (no stock).
+const BAND = ['og-des-arrive-poster', 'shoot-final-1', 'og-lounge-toast-poster', 'seahra-gold-45', 'og-dessertz-line-poster', 'shoot-final-3', 'des-skyline-45', 'shoot-final-2'];
 
 /** Full-bleed highlight reel: posters drift slowly (one transform animation), paused off screen. No text. */
 export function ReelBand() {
   const ref = useInView<HTMLDivElement>(0.3, false);
-  const row = BAND.map((id) => `${S}/${id}-poster.webp`);
+  const row = BAND.map((id) => `${S}/${id}.webp`);
   return (
     <div ref={ref} className={`${L.band} border-y border-[#c9a96e]/20 bg-black py-3`} aria-hidden>
       <div className={L.track}>
@@ -475,7 +476,7 @@ export function LuxeFooter() {
         <div className="mt-14 h-px bg-gradient-to-r from-transparent via-[#c9a96e]/60 to-transparent" />
       </div>
       <div className="px-3 pb-4 pt-8 md:px-8" data-cursor="Play"><VideoWordmark /></div>
-      <p className="px-6 pb-8 text-center text-[12px] tracking-[0.12em] text-white/55 md:px-16">© {new Date().getFullYear()} Influence · Miami &amp; Boca Raton, FL · Some venue footage via Pexels</p>
+      <p className="px-6 pb-8 text-center text-[12px] tracking-[0.12em] text-white/55 md:px-16">© {new Date().getFullYear()} Influence · Miami &amp; Boca Raton, FL</p>
       <p className="px-6 pb-8 -mt-4 text-center text-[11px] uppercase tracking-[0.2em] md:px-16"><a href="https://alphatrust.solutions" target="_blank" rel="noopener" className="text-white/40 hover:text-white/70">Marketing by Alpha Trust Solutions</a></p>
     </footer>
   );

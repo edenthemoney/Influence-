@@ -85,7 +85,7 @@ function Profile({ c, name, handle }: { c: Campaign; name: string; handle: strin
       <div className={s.grid}>
         {c.grid.map((t, i) => (
           <div key={t.src + i} className={s.tile}>
-            <img src={t.reel ? `${t.src.replace(/-sq-[ab]\.webp$/, '-sq-anim.webp')}?v=9` : t.src} style={{ objectPosition: posOf(t.src) }} alt="" width={240} height={240} loading="lazy" decoding="async" />
+            <img src={t.reel ? `${t.src.replace(/-sq-[ab]\.webp$/, '-sq-anim.webp')}?v=11` : t.src} style={{ objectPosition: posOf(t.src) }} alt="" width={240} height={240} loading="lazy" decoding="async" />
             {t.reel && <span className={s.tileReel}>{I.reel}</span>}
           </div>
         ))}
@@ -126,9 +126,9 @@ export default function BusinessStage() {
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
   // Every device: video slides and reel thumbnails render their animated WebP by default (never a static frame).
-  const animOf = (video?: string) => (video ? `${video.replace(/\.mp4$/, '-anim.webp')}?v=9` : null);
+  const animOf = (video?: string) => (video ? `${video.replace(/\.mp4$/, '-anim.webp')}?v=11` : null);
   // Preload the first clip's sharp poster (default campaign, first slide after the lock screen:
-  // px-dine-room) so its Ken Burns fallback is ready the moment the phone scrolls in.
+  // a photo story) so its Ken Burns fallback is ready the moment the phone scrolls in.
   useEffect(() => {
     const first = campaigns[0].screens.find((x) => x.kind === 'story' && 'bg' in x) as { bg?: string; anim?: string } | undefined;
     for (const u of [first?.bg, first?.anim]) if (u) { const im = new Image(); im.decoding = 'async'; im.src = u; }
@@ -622,7 +622,7 @@ export default function BusinessStage() {
             </p>
           )}
           <p className="mt-4 text-[14px] leading-relaxed text-white/75">
-            Example only: a placeholder account with real Influence talent. Some venue footage via Pexels; stock venues are not Influence clients. Service: {c.serviceLabel}.
+            Example only: a placeholder account with real Influence talent. Service: {c.serviceLabel}.
           </p>
         </div>
       </div>

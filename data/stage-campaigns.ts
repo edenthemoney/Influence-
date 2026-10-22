@@ -43,11 +43,10 @@ const AV = {
 };
 
 const v = (id: string) => ({ video: `${S}/${id}.mp4`, poster: `${S}/${id}-poster.webp` });
-// Venue B-roll (stories and profile tiles only, never the talent reels). Some venue footage via Pexels
-// (free Pexels License); sources and creators in /workspace/pexels/credits.md. Stock venues are atmosphere,
-// not Influence clients: no stock place is named, tagged or captioned as a client.
-const px = (id: string) => ({ bg: `${S}/px-${id}-poster.webp`, video: `${S}/px-${id}.mp4`, anim: `${S}/px-${id}-anim.webp` });
-const pxSq = (id: string) => ({ src: `${S}/px-${id}-sq.webp` });
+// All stage footage is original Influence material (og-* clips cut from @itsdezmarie reels in
+// /workspace/clips; build script /workspace/geo/og/build.py). No stock footage. Captions describe only
+// what each clip shows; the venue name is the visitor's own placeholder.
+const F = '/images/feed';
 const STD: [string, string, string, string] = ['Announcement story', 'Night-of reels', 'Collab post', 'Story reposts'];
 
 export const campaigns: Campaign[] = [
@@ -61,17 +60,16 @@ export const campaigns: Campaign[] = [
     serviceLabel: 'Brand Ambassadors',
     backdrop: `${S}/bg-restaurant.webp`,
     grid: [
-      { src: `${S}/st-bar-cocktail-sq-a.webp`, reel: true }, pxSq('bar-pour'), { src: `${S}/genesis-sq.webp` },
-      pxSq('dine-candle'), { src: `${S}/st-venue-bar-sq-a.webp` }, { src: `${S}/alisha-sq.webp` },
-      pxSq('champagne'), { src: `${S}/celeste-sq.webp` }, { src: `${S}/des-pink-sq.webp` },
+      { src: `${S}/og-des-arrive-sq-a.webp`, reel: true }, { src: `${S}/serena-oldfashioned-sq.webp` }, { src: `${S}/genesis-sq.webp` },
+      { src: `${S}/serena-dining-sq.webp` }, { src: `${S}/og-des-arrive-sq-b.webp` }, { src: `${S}/alisha-sq.webp` },
+      { src: `${S}/serena-martini-sq.webp` }, { src: `${S}/celeste-sq.webp` }, { src: `${S}/des-pink-sq.webp` },
     ],
     beats: STD,
     screens: [
-      { kind: 'story', beat: 0, ...px('dine-room'), title: (n) => `This Friday at ${n}`, sub: () => 'Brand Ambassador night · 8 PM', notif: (n) => `Your story for ${n} is live` },
-      { kind: 'story', beat: 0, ...px('dine-candle'), title: () => 'Tables set for Friday', sub: () => 'Dinner with our Brand Ambassadors', notif: (n) => `${n} added to your story` },
-      { kind: 'reel', beat: 1, ...v('st-bar-cocktail'), caption: (n) => `Friday night at ${n}. Cocktails first.`, notif: (n) => `New reel tagged ${n}` },
-      { kind: 'post', beat: 2, image: `${S}/st-venue-bar-45.webp`, caption: (n) => `${n} × Influence. Dinner with our Brand Ambassadors.`, notif: (n) => `${n} × Influence collab is live` },
-      { kind: 'repost', beat: 3, talent: 'Genesis', avatar: AV.genesis, image: `${S}/st-venue-bar-45.webp`, line: (n) => `Go see ${n}`, notif: () => 'Genesis shared your collab post' },
+      { kind: 'story', beat: 0, bg: `${F}/serena-dining-room.webp`, title: (n) => `This Friday at ${n}`, sub: () => 'Brand Ambassador night · 8 PM', notif: (n) => `Your story for ${n} is live` },
+      { kind: 'reel', beat: 1, ...v('og-des-arrive'), caption: (n) => `Just walked into ${n}. Hi!`, notif: (n) => `New reel tagged ${n}` },
+      { kind: 'post', beat: 2, image: `${S}/og-des-arrive-45.webp`, caption: (n) => `${n} × Influence. Friday night starts here.`, notif: (n) => `${n} × Influence collab is live` },
+      { kind: 'repost', beat: 3, talent: 'Deseray', avatar: AV.des, image: `${S}/og-des-arrive-45.webp`, line: (n) => `Go see ${n}`, notif: () => 'Deseray shared your collab post' },
     ],
     recap: { source: 'Brand Ambassadors · Premium package', items: ['1 creator · full half-day', '4-hour session · multiple setups', '8–12 reels, posts & stories', 'Wardrobe changes included'] },
   },
@@ -85,17 +83,16 @@ export const campaigns: Campaign[] = [
     serviceLabel: 'VIP hosts and bottle service',
     backdrop: `${S}/bg-nightclub.webp`,
     grid: [
-      { src: `${S}/st-club-sparklers-sq-a.webp`, reel: true }, pxSq('club-lasers'), { src: `${S}/genesis-sq.webp` },
-      pxSq('club-dj'), pxSq('champagne'), { src: `${S}/host-des-sq.webp` },
-      { src: `${S}/alisha-sq.webp` }, { src: `${S}/genesis-sq.webp` }, pxSq('bar-pour'),
+      { src: `${S}/og-lounge-toast-sq-a.webp`, reel: true }, { src: `${S}/serena-martini-sq.webp` }, { src: `${S}/genesis-sq.webp` },
+      { src: `${S}/og-lounge-toast-sq-b.webp` }, { src: `${S}/serena-oldfashioned-sq.webp` }, { src: `${S}/host-des-sq.webp` },
+      { src: `${S}/alisha-sq.webp` }, { src: `${S}/celeste-sq.webp` }, { src: `${S}/leila-sq.webp` },
     ],
     beats: STD,
     screens: [
-      { kind: 'story', beat: 0, ...px('club-lasers'), title: (n) => `This Friday at ${n}`, sub: () => 'VIP hosts all night · Doors at 10', notif: (n) => `Kat tagged ${n} in a story` },
-      { kind: 'story', beat: 0, ...px('club-dj'), title: (n) => `${n} after dark`, sub: () => 'Book a table with our VIP hosts', notif: (n) => `${n} added to your story` },
-      { kind: 'reel', beat: 1, ...v('st-club-sparklers'), caption: (n) => `Friday at ${n}. Bottles up.`, notif: (n) => `New reel tagged ${n}` },
-      { kind: 'post', beat: 2, image: `${S}/st-club-sparklers-45.webp`, caption: (n) => `${n} × Influence. VIP night with our hosts.`, notif: (n) => `${n} × Influence collab is live` },
-      { kind: 'repost', beat: 3, talent: 'Kat', avatar: AV.kat, image: `${S}/st-club-sparklers-45.webp`, line: (n) => `Tonight at ${n}`, notif: () => 'Kat shared your collab post' },
+      { kind: 'story', beat: 0, bg: `${F}/serena-drink-espresso-martini.webp`, title: (n) => `This Friday at ${n}`, sub: () => 'VIP hosts all night · Doors at 10', notif: (n) => `Kat tagged ${n} in a story` },
+      { kind: 'reel', beat: 1, ...v('og-lounge-toast'), caption: (n) => `Friday at ${n}. Glasses up.`, notif: (n) => `New reel tagged ${n}` },
+      { kind: 'post', beat: 2, image: `${S}/og-lounge-toast-45.webp`, caption: (n) => `${n} × Influence. Friday night, glasses up.`, notif: (n) => `${n} × Influence collab is live` },
+      { kind: 'repost', beat: 3, talent: 'Kat', avatar: AV.kat, image: `${S}/og-lounge-toast-45.webp`, line: (n) => `Tonight at ${n}`, notif: () => 'Kat shared your collab post' },
     ],
     recap: { source: 'VIP hosts and bottle service · 3 Bottle Girls package', items: ['3 VIP bottle girls / hostesses', '4-hour shift', 'Full VIP section coverage', 'South Florida'] },
   },
@@ -109,15 +106,14 @@ export const campaigns: Campaign[] = [
     serviceLabel: 'Venue activation',
     backdrop: `${S}/bg-hotel.webp`,
     grid: [
-      { src: `${S}/st-hotel-room-sq-a.webp`, reel: true }, pxSq('hotel-suite'), { src: `${S}/st-hotel-champagne-sq-a.webp`, reel: true },
-      pxSq('dine-candle'), { src: `${S}/ferrari-sq.webp` }, pxSq('dine-room'),
-      { src: `${S}/seahra-sunset-sq.webp` }, pxSq('champagne'), { src: `${S}/bianca-sq.webp` },
+      { src: `${S}/og-des-arrive-sq-a.webp`, reel: true }, { src: `${S}/des-skyline-sq.webp` }, { src: `${S}/serena-patio-sq.webp` },
+      { src: `${S}/serena-dining-sq.webp` }, { src: `${S}/ferrari-sq.webp` }, { src: `${S}/serena-martini-sq.webp` },
+      { src: `${S}/seahra-sunset-sq.webp` }, { src: `${S}/des-pink-sq.webp` }, { src: `${S}/bianca-sq.webp` },
     ],
     beats: ['Announcement story', 'Weekend reels', 'Collab post', 'Story reposts'],
     screens: [
-      { kind: 'story', beat: 0, ...px('hotel-suite'), title: (n) => `This weekend at ${n}`, sub: () => 'A suite stay with our creators', notif: (n) => `Deseray tagged ${n} in a story` },
-      { kind: 'reel', beat: 1, ...v('st-hotel-room'), caption: (n) => `Check-in at ${n}.`, notif: (n) => `New reel tagged ${n}` },
-      { kind: 'reel', beat: 1, ...v('st-hotel-champagne'), caption: (n) => `A weekend at ${n}.`, notif: (n) => `New reel tagged ${n}` },
+      { kind: 'story', beat: 0, bg: `${F}/des-skyline-lg.webp`, title: (n) => `This weekend at ${n}`, sub: () => 'A stay with our creators', notif: (n) => `Deseray tagged ${n} in a story` },
+      { kind: 'reel', beat: 1, ...v('og-des-arrive'), caption: (n) => `Dinner reservation at ${n}.`, notif: (n) => `New reel tagged ${n}` },
       { kind: 'post', beat: 2, image: `${S}/des-skyline-45.webp`, caption: (n) => `${n} × Influence. Deseray's weekend, start to finish.`, notif: (n) => `${n} × Influence collab is live` },
       { kind: 'repost', beat: 3, talent: 'Deseray', avatar: AV.des, image: `${S}/des-skyline-45.webp`, line: (n) => `Weekend at ${n}`, notif: () => 'Deseray shared your collab post' },
     ],
@@ -133,15 +129,14 @@ export const campaigns: Campaign[] = [
     serviceLabel: 'Collab posts',
     backdrop: `${S}/bg-brand.webp`,
     grid: [
-      { src: `${S}/st-brand-boutique-sq-a.webp`, reel: true }, { src: `${S}/st-brand-boutique-sq-b.webp`, reel: true }, { src: `${S}/seahra-gold-sq.webp` },
-      { src: `${S}/des-pink2-sq.webp` }, { src: `${S}/celeste-sq.webp` }, { src: `${S}/st-brand-boutique-sq-b.webp` },
+      { src: `${S}/og-dessertz-line-sq-a.webp`, reel: true }, { src: `${S}/seahra-gold-sq.webp` }, { src: `${S}/des-pink2-sq.webp` },
+      { src: `${S}/celeste-sq.webp` }, { src: `${S}/og-dessertz-line-sq-b.webp` }, { src: `${S}/des-pink4-sq.webp` },
       { src: `${S}/seahra-sunset-sq.webp` }, { src: `${S}/alisha-sq.webp` }, { src: `${S}/bianca-sq.webp` },
     ],
     beats: ['Launch story', 'Creator reels', 'Collab post', 'Story reposts'],
     screens: [
       { kind: 'story', beat: 0, bg: `${S}/story-brand.webp`, title: (n) => `This Friday: the ${n} drop`, sub: () => 'New pieces, worn by our creators', notif: (n) => `Seahra tagged ${n} in a story` },
-      { kind: 'reel', beat: 1, ...v('st-brand-boutique'), caption: (n) => `New season at ${n}.`, notif: () => 'New reel from the drop' },
-      { kind: 'reel', beat: 1, ...v('st-hotel-champagne'), caption: (n) => `Launch night for ${n}.`, notif: (n) => `New reel tagged ${n}` },
+      { kind: 'reel', beat: 1, ...v('og-dessertz-line'), caption: (n) => `Launch day for ${n}. The line is already out the door.`, notif: () => 'New reel from the drop' },
       { kind: 'post', beat: 2, image: `${S}/seahra-gold-45.webp`, caption: (n) => `${n} × Influence. Seahra in the new gold pieces.`, notif: (n) => `${n} × Influence collab is live` },
       { kind: 'repost', beat: 3, talent: 'Seahra', avatar: AV.seahra, image: `${S}/seahra-gold-45.webp`, line: (n) => `Wearing ${n}`, notif: () => 'Seahra shared your collab post' },
     ],
@@ -157,16 +152,15 @@ export const campaigns: Campaign[] = [
     serviceLabel: 'Song promotion',
     backdrop: `${S}/bg-artist.webp`,
     grid: [
-      { src: `${S}/st-music-piano-sq-a.webp`, reel: true }, { src: `${S}/st-music-mic-sq-a.webp`, reel: true }, { src: `${S}/des-studio-sq.webp` },
-      { src: `${S}/st-music-guitar-sq-a.webp`, reel: true }, { src: `${S}/leila-sq.webp` }, { src: `${S}/des-pink3-sq.webp` },
+      { src: `${S}/og-lounge-toast-sq-a.webp`, reel: true }, { src: `${S}/og-des-arrive-sq-a.webp`, reel: true }, { src: `${S}/des-studio-sq.webp` },
+      { src: `${S}/des-pink-sq.webp` }, { src: `${S}/leila-sq.webp` }, { src: `${S}/des-pink3-sq.webp` },
       { src: `${S}/bianca-sq.webp` }, { src: `${S}/celeste-sq.webp` }, { src: `${S}/ferrari-sq.webp` },
     ],
     beats: ['Release story', 'Audio reel', 'Creator reactions', 'Story reposts'],
     screens: [
       { kind: 'story', beat: 0, bg: `${S}/story-artist.webp`, title: () => "'Your Song'", sub: (n) => `New from ${n} · Out Friday`, notif: () => "Your release story for 'Your Song' is live" },
-      { kind: 'reel', beat: 1, ...v('st-music-piano'), label: 'Reels', caption: () => "Use this sound: 'Your Song'.", audio: (n) => `${n} · Your Song`, notif: () => "New reel with 'Your Song'" },
-      { kind: 'reel', beat: 2, ...v('st-music-mic'), label: 'Reaction', caption: () => "First listen: 'Your Song'.", audio: (n) => `${n} · Your Song`, notif: () => "New reaction to 'Your Song'" },
-      { kind: 'reel', beat: 2, ...v('st-music-guitar'), label: 'Reaction', caption: () => "The group chat heard 'Your Song'.", audio: (n) => `${n} · Your Song`, notif: (n) => `New reaction tagged ${n}` },
+      { kind: 'reel', beat: 1, ...v('og-lounge-toast'), label: 'Reels', caption: () => "Use this sound: 'Your Song'.", audio: (n) => `${n} · Your Song`, notif: () => "New reel with 'Your Song'" },
+      { kind: 'reel', beat: 2, ...v('og-des-arrive'), label: 'Reels', caption: () => "Friday night soundtrack: 'Your Song'.", audio: (n) => `${n} · Your Song`, notif: () => "New reel with 'Your Song'" },
       { kind: 'repost', beat: 3, talent: 'Deseray', avatar: AV.des, image: `${S}/des-skyline-45.webp`, line: () => 'Go stream Your Song', notif: () => "Deseray shared 'Your Song'", song: true },
     ],
     recap: { source: 'Song promotion · Premium package', items: ['3 song reactions', 'HD vertical videos', 'Ready for all platforms'] },
@@ -181,14 +175,14 @@ export const campaigns: Campaign[] = [
     serviceLabel: 'Photo and brand shoot',
     backdrop: `${S}/bg-shoot.webp`,
     grid: [
-      { src: `${S}/st-content-studio-sq-b.webp`, reel: true }, { src: `${S}/des-pink-sq.webp` }, { src: `${S}/st-content-studio-sq-a.webp`, reel: true },
+      { src: `${S}/og-dessertz-line-sq-a.webp`, reel: true }, { src: `${S}/des-pink-sq.webp` }, { src: `${S}/og-des-arrive-sq-b.webp`, reel: true },
       { src: `${S}/des-pink2-sq.webp` }, { src: `${S}/seahra-gold-sq.webp` }, { src: `${S}/des-pink3-sq.webp` },
-      { src: `${S}/st-content-studio-sq-b.webp` }, { src: `${S}/des-pink4-sq.webp` }, { src: `${S}/seahra-pyramid-sq.webp` },
+      { src: `${S}/des-studio-sq.webp` }, { src: `${S}/des-pink4-sq.webp` }, { src: `${S}/seahra-pyramid-sq.webp` },
     ],
     beats: ['Behind the scenes', 'On-set reel', 'Final photos', 'Brand post'],
     screens: [
-      { kind: 'story', beat: 0, bg: `${S}/st-content-studio-poster.webp`, title: (n) => `On set for ${n}`, sub: () => 'Behind the scenes', notif: (n) => `Deseray tagged ${n} in a story` },
-      { kind: 'reel', beat: 1, ...v('st-content-studio'), label: 'Reels', caption: (n) => `Behind the scenes of the ${n} shoot.`, notif: () => 'Behind-the-scenes reel is up' },
+      { kind: 'story', beat: 0, bg: `${S}/shoot-final-1.webp`, title: (n) => `On set for ${n}`, sub: () => 'Behind the scenes', notif: (n) => `Deseray tagged ${n} in a story` },
+      { kind: 'reel', beat: 1, ...v('og-des-arrive'), label: 'Reels', caption: (n) => `Content day for ${n}. Deseray on camera.`, notif: () => 'New reel is up' },
       { kind: 'carousel', beat: 2, images: [1, 2, 3, 4].map((i) => `${S}/shoot-final-${i}.webp`), caption: (n) => `${n}. The final selects.`, notif: () => 'Your final photos are ready' },
       { kind: 'post', beat: 3, image: `${S}/shoot-final-2.webp`, caption: (n) => `${n} × Influence. The new campaign, shot with Deseray.`, notif: (n) => `${n} × Influence post is live` },
     ],
@@ -205,15 +199,15 @@ export const campaigns: Campaign[] = [
     external: { href: '/tickets', label: 'Get networking night tickets' },
     backdrop: `${S}/bg-event.webp`,
     grid: [
-      { src: `${S}/serena-patio-sq.webp` }, { src: `${S}/st-events-toast-sq-a.webp`, reel: true }, { src: `${S}/serena-martini-sq.webp` },
+      { src: `${S}/serena-patio-sq.webp` }, { src: `${S}/og-lounge-toast-sq-a.webp`, reel: true }, { src: `${S}/serena-martini-sq.webp` },
       { src: `${S}/host-des-sq.webp` }, { src: `${S}/serena-dining-sq.webp` }, { src: `${S}/genesis-sq.webp` },
       { src: `${S}/serena-oldfashioned-sq.webp` }, { src: `${S}/leila-sq.webp` }, { src: `${S}/celeste-sq.webp` },
     ],
     beats: ['Invite story', 'Meet the roster', 'Collab post', 'Ticket story'],
     screens: [
       { kind: 'story', beat: 0, bg: `${S}/story-event.webp`, title: () => 'Influence Connect', sub: () => 'Wed Nov 18 · 4 – 7 PM · Boca Raton', notif: (n) => `${n} is on the guest list` },
-      { kind: 'story', beat: 0, ...px('champagne'), title: () => 'See you there', sub: () => 'Creators, brands and venues · one night', notif: () => 'Influence Connect added to your story' },
-      { kind: 'reel', beat: 1, ...v('st-events-toast'), label: 'Reels', caption: () => 'Influence Connect · Wed Nov 18.', notif: () => 'New reel: Influence Connect' },
+      { kind: 'story', beat: 0, bg: `${F}/serena-drink-smoked-old-fashioned.webp`, title: () => 'See you there', sub: () => 'Creators, brands and venues · one night', notif: () => 'Influence Connect added to your story' },
+      { kind: 'reel', beat: 1, ...v('og-lounge-toast'), label: 'Reels', caption: () => 'Influence Connect is Wed Nov 18. Glasses up.', notif: () => 'New reel: Influence Connect' },
       { kind: 'post', beat: 2, image: `${S}/event-45.webp`, caption: (n) => `${n} × Influence Connect. See you at Serena Pastificio.`, notif: (n) => `${n} × Influence collab is live` },
       { kind: 'repost', beat: 3, talent: 'Deseray', avatar: AV.des, image: `${S}/event-45.webp`, line: () => 'Get tickets', notif: () => 'Deseray shared the ticket link', song: false },
     ],

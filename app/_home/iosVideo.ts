@@ -11,7 +11,7 @@ export function animFor(v: HTMLVideoElement): string | null {
   if (v.dataset.anim) return v.dataset.anim;
   const src = v.dataset.src || v.querySelector('source:last-of-type')?.getAttribute('src') || v.currentSrc || '';
   const m = src.match(/(\/images\/stage\/(?!hero)[\w-]+?)(-hevc)?\.mp4/);
-  return m ? `${m[1]}-anim.webp?v=9` : null;
+  return m ? `${m[1]}-anim.webp?v=11` : null;
 }
 
 export function prime(v: HTMLVideoElement | null) {
