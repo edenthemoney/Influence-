@@ -265,3 +265,13 @@ a:focus-visible, button:focus-visible { outline: 2px solid #c9a96e; outline-offs
   a, button { transition: none !important; }
   a:hover, button:hover { transform: none !important; }
 }
+/* Videos stay hidden until frames are proven to advance (iosVideo.ts); the motion fallback shows underneath. */
+video[data-refused="true"] { opacity: 0 !important; }
+video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+/* Photo-only stories drift slowly (never read as a frozen video). */
+@keyframes kbStill { from { transform: scale(1.02) translate3d(0,0,0); } to { transform: scale(1.12) translate3d(-2%,-1.5%,0); } }
+.kb-still { animation: kbStill 5s ease-in-out infinite alternate; will-change: transform; }
+@media (prefers-reduced-motion: reduce) { .kb-still { animation: none; } }
+/* Phone slides: never show a half-decoded image (fades in once decoded). */
+img[data-ld="0"] { opacity: 0; }
+img[data-ld="1"] { opacity: 1; transition: opacity .25s ease; }

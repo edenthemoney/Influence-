@@ -25,9 +25,33 @@ export default function LeadCapturePopup() {
       }
       return;
     }
-    // Show popup after 4 seconds on the page
-    const timer = setTimeout(() => setVisible(true), 4000);
-    return () => clearTimeout(timer);
+    // Never on the first screen: open after 45s on the page, on exit intent (desktop), or past 60% scroll.
+    // At most once per session (marked as shown the moment it opens).
+    let done = false;
+    const open = () => {
+      if (done || sessionStorage.getItem('lead_popup_dismissed')) return;
+      if (window.scrollY < window.innerHeight * 0.9) return; // still on the first screen
+      done = true;
+      sessionStorage.setItem('lead_popup_dismissed', '1');
+      setVisible(true);
+      cleanup();
+    };
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= 0.6) open();
+    };
+    const onExit = (e: MouseEvent) => { if (!e.relatedTarget && e.clientY <= 0) open(); };
+    let timer = 0;
+    const tick = () => { timer = window.setTimeout(() => { if (window.scrollY < window.innerHeight * 0.9) tick(); else open(); }, timer ? 5000 : 45000); };
+    tick();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('mouseout', onExit);
+    function cleanup() {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('mouseout', onExit);
+    }
+    return cleanup;
   }, []);
 
   const dismiss = () => {
@@ -139,10 +163,10 @@ export default function LeadCapturePopup() {
 
       {/* Sticky bottom bar — shows after popup is dismissed */}
       {stickyVisible && !visible && (
-        <div className="fixed bottom-0 left-0 right-0 z-[9998] border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl px-4 py-3 flex items-center justify-between gap-3">
+        <div className="fixed bottom-0 left-0 right-0 z-[9998] border-t border-white/10 bg-[#0a0a0a] px-4 py-3 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <MessageCircle className="h-4 w-4 flex-shrink-0" style={{ color: gold }} />
-            <p className="text-white/70 text-xs truncate">Story reposts, collab posts & more — get pricing</p>
+            <p className="text-white/70 text-xs whitespace-nowrap">Get pricing in 1 minute</p>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
             <form onSubmit={handleSubmit} className="flex items-center gap-2">
