@@ -2,10 +2,11 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import HeroBooking from './components/HeroBooking';
 import HomeFAQ from './components/HomeFAQ';
-import HeroLite from './_home/HeroLite';
-import { BOOK_HREF, GOLD, PreviewNav } from './_home/Chrome';
+import { BOOK_HREF, GOLD } from './_home/Chrome';
+import { ChevronRight } from 'lucide-react';
+import MobileNav from './components/MobileNav';
+import HeroVideo from './components/HeroVideo';
 import { Ticker } from './_home/Sections';
-import { ScrollCue } from './_home/Reveal';
 import BusinessStage from './_home/BusinessStage';
 import { CurtainNav, Hair, LiveTiles, LuxCursor, LuxeBoot, LuxeFooter, ReelBand, RosterMag, ScrubScene, SectionHead, SplitBrandsCreators } from './_home/Luxe';
 import L from './_home/Luxe.module.css';
@@ -54,35 +55,70 @@ export default function HomePage() {
       <LuxeBoot />
       <CurtainNav />
       <LuxCursor />
-      <PreviewNav variant="E" />
-
-      <section data-hero className="relative h-[100svh] min-h-[600px] overflow-hidden">
-        <HeroLite />
-        {/* One plain overlay (two gradients, no blend modes or filters) so only one layer sits on the video. */}
-        <div className={`absolute inset-0 ${L.heroShade}`} />
-        <div className={`absolute inset-0 ${L.heroVignette}`} />
-        <div className="relative flex h-full flex-col px-5 pb-4 pt-20 md:px-16 md:pb-10 md:pt-28">
+      {/* Header + hero: identical to the live site (bb2d0d6). */}
+      <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
+        <div className="grid grid-cols-3 items-center h-16 md:h-24 px-6 md:px-14">
           <div className="flex items-center gap-4">
-            <span className="h-px w-8 shrink-0" style={{ backgroundColor: GOLD }} />
-            <p className="text-[13px] font-semibold uppercase tracking-[0.18em]">For venues, brands, and creators</p>
-          </div>
-          <div className={`mt-[calc(14svh-18px)] max-w-3xl md:mt-auto ${L.heroIn}`}>
-            <h1 className="sr-only">Go Viral. Make an Influence. We match venues and brands with Brand Ambassadors and influencers.</h1>
-            <p aria-hidden className={`font-display font-bold italic leading-[0.85] ${L.headTight}`} style={{ fontSize: 'clamp(50px, 9vw, 128px)' }}>
-              Go Viral.<br />Make an<br /><span className={L.goldSheen} style={{ color: GOLD }}>Influence.</span>
-            </p>
-            <p className="mt-5 max-w-xl text-[16px] leading-relaxed text-white md:text-[19px]">
-              We match venues and brands with Brand Ambassadors and influencers for events, campaigns, and content.
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link href={BOOK_HREF} data-magnet className={`${L.btn} ${L.btnGold} inline-flex min-h-14 items-center justify-center px-7 text-[15px] font-bold uppercase tracking-[0.08em]`} style={{ backgroundColor: GOLD, color: '#000' }}>
-                Book Talent
-              </Link>
-              <Link href="/join" className={`${L.btnGhost} inline-flex min-h-14 items-center justify-center border border-white px-7 text-[15px] font-bold uppercase tracking-[0.08em] text-white`}>
-                I&apos;m a Creator
-              </Link>
+            <MobileNav />
+            <div className="hidden md:flex items-center gap-10">
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
+              <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
+              <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
-            <div className="mt-2 flex justify-center md:justify-start"><ScrollCue href="#stage" label="See it on the feed" still /></div>
+          </div>
+          <div className="flex justify-center">
+            <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: '#c9a96e' }}>Influence</Link>
+          </div>
+          <div className="flex items-center justify-end gap-3 md:gap-10">
+            <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
+            <Link href="/start" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: '#c9a96e', color: '#000' }}>Start a Campaign</Link>
+          </div>
+        </div>
+        <div className="overflow-hidden border-t border-white/[0.05]">
+          <div className="flex whitespace-nowrap py-2 md:py-4" style={{ animation: 'ticker-left 50s linear infinite' }}>
+            {[...Array(6)].map((_, i) => (
+              <span key={i} className="shrink-0 text-white font-heading tracking-[0.15em] pr-10 md:pr-20" style={{ fontSize: 'clamp(20px, 5.5vw, 52px)' }}>
+                Sean Paul &nbsp;&middot;&nbsp; Kai Cenat &nbsp;&middot;&nbsp; Bryson Tiller &nbsp;&middot;&nbsp; Akon &nbsp;&middot;&nbsp; Moneybagg Yo &nbsp;&middot;&nbsp; Lil Pump &nbsp;&middot;&nbsp; 6ix9ine &nbsp;&middot;&nbsp; Bossman Dlow &nbsp;&middot;&nbsp; Vybz Kartel &nbsp;&middot;&nbsp; DaBaby &nbsp;&middot;&nbsp; Mike Tyson &nbsp;&middot;&nbsp; Forbes &nbsp;&middot;&nbsp; Fenty Beauty &nbsp;&middot;&nbsp; Tyra Banks &nbsp;&middot;&nbsp; Keke Palmer &nbsp;&middot;&nbsp; Netflix &nbsp;&middot;&nbsp; Audible &nbsp;&middot;&nbsp; Peacock &nbsp;&middot;&nbsp; Target &nbsp;&middot;&nbsp; Celsius &nbsp;&middot;&nbsp; Red Stripe &nbsp;&middot;&nbsp; Miami Swim Week &nbsp;
+              </span>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      <section className="h-[70vh] md:h-screen relative overflow-hidden">
+        <HeroVideo />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/10 to-black/50" />
+
+        {/* Top-left eyebrow */}
+        <div className="absolute top-28 md:top-48 left-8 md:left-16 flex items-center gap-4">
+          <div className="w-8 h-px" style={{ backgroundColor: '#c9a96e' }} />
+          <p className="text-white/60 text-[11px] tracking-[0.4em] uppercase font-medium">Creator Marketplace & Creator Marketing</p>
+        </div>
+
+        {/* Bottom — two column */}
+        <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 pb-10 md:pb-14 flex items-end justify-between gap-10">
+          {/* Left: Headline */}
+          <div className="shrink-0">
+            <h1 className="sr-only">
+              Miami Creator Marketplace & Creator Marketing Platform — Connect with Creators, Influencers & On-Camera Creators in South Florida
+            </h1>
+            <p className="font-display font-bold italic text-white leading-[0.85]" style={{ fontSize: 'clamp(44px, 10vw, 140px)' }}>
+              Go Viral.<br />
+              Make an<br />
+              <span style={{ color: '#c9a96e' }}>Influence.</span>
+            </p>
+            <div className="mt-6 flex items-center gap-4 md:hidden">
+              <Link href="/start" className="inline-flex items-center gap-3 px-8 py-4 text-[13px] font-bold tracking-widest uppercase" style={{ backgroundColor: '#c9a96e', color: '#000' }}>
+                Start a Campaign <ChevronRight className="h-4 w-4" />
+              </Link>
+              <span className="text-white/30 text-xs">Same-week availability</span>
+            </div>
+          </div>
+
+          {/* Right: Interactive booking widget */}
+          <div className="w-full md:w-[520px] shrink-0 hidden md:block">
+            <HeroBooking />
           </div>
         </div>
       </section>
