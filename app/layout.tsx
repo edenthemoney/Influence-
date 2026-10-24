@@ -4,6 +4,7 @@ import { Inter, Cormorant_Garamond, Bebas_Neue } from "next/font/google";
 import { Suspense } from "react";
 import PostHogProvider, { PostHogPageView } from "./components/PostHogProvider";
 import ChatFunnel from './components/ChatFunnel';
+import PolishFX from './components/PolishFX';
 import GlobalLeadPopup from './components/GlobalLeadPopup';
 import "./globals.css";
 
@@ -780,6 +781,7 @@ export default function RootLayout({
           <Suspense fallback={null}><PostHogPageView /></Suspense>
           {children}
           <Reveal />
+          <PolishFX />
           <ChatFunnel />
           <GlobalLeadPopup />
         </PostHogProvider>

@@ -37,7 +37,7 @@ export default function BgDrone({ d, m, opacity = 0.32 }: Props) {
   return (
     <div ref={wrap} aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
       {base && (
-        <div className="absolute inset-0" style={{ opacity }}>
+        <div data-parallax className="absolute inset-0 will-change-transform" style={{ opacity, transform: 'scale(1.14)' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`${base}.jpg?${V}`} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover" />
           {load && !still && (
