@@ -36,12 +36,17 @@
 .tile video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .tileShade { position: absolute; inset: auto 0 0 0; height: 45%; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); pointer-events: none; }
 
-/* Highlight reel band: one slow transform-only marquee of posters, paused off screen. */
+/* Highlight band: three calm stills, gold hairline frames, slow Ken Burns, single fade-in. */
 .band { overflow: hidden; }
-.track { display: flex; gap: 10px; width: max-content; animation: drift 70s linear infinite; animation-play-state: paused; }
-[data-in='true'] .track { animation-play-state: running; }
-.track img { height: clamp(220px, 40vw, 460px); aspect-ratio: 480 / 1046; object-fit: cover; display: block; }
-@keyframes drift { to { transform: translate3d(-50%, 0, 0); } }
+.track { display: grid; grid-auto-flow: column; grid-auto-columns: 72%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.track::-webkit-scrollbar { display: none; }
+@media (min-width: 768px) { .track { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); overflow: visible; gap: 24px; max-width: 1180px; margin: 0 auto; } }
+.still { margin: 0; scroll-snap-align: center; opacity: 0; transform: translate3d(0, 14px, 0); transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.2, 0.7, 0.1, 1); }
+[data-in='true'] .still { opacity: 1; transform: none; }
+.stillFrame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #0b0b0b; outline: 1px solid rgba(201,169,110,0.45); outline-offset: -8px; }
+.stillFrame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; animation: kb 24s ease-in-out infinite alternate; will-change: transform; }
+.stillFrame::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.35), transparent 40%); pointer-events: none; }
+@keyframes kb { from { transform: scale(1.02); } to { transform: scale(1.08) translate3d(-1%, -1%, 0); } }
 
 /* Roster magazine cards. */
 .mag { position: relative; aspect-ratio: 3 / 4; overflow: hidden; background: #111; }
@@ -150,7 +155,7 @@
 
   .page { animation: none; }
   .line > span { transform: none; transition: none; }
-  .track { animation: none; }
+  .stillFrame img { animation: none; } .still { opacity: 1; transform: none; transition: none; }
   .btn::after { display: none; }
   .mag img { transition: none; }
 }
@@ -158,7 +163,7 @@
 :global([data-off~='page']) .page { animation: none; }
 :global([data-off~='tex']) .tex::before, :global([data-off~='tex']) .tex::after { display: none; }
 
-:global([data-off~='band']) .track { animation: none; }
+:global([data-off~='band']) .stillFrame img { animation: none; }
 
 /* Hero readability overlay. Phones: lighter (face stays clearly visible), dark only behind the headline at the bottom. */
 .heroShade { background: linear-gradient(to bottom, #000 0%, #000 15%, rgba(0,0,0,0.2) 21%, transparent 27%), linear-gradient(to top, #000 0%, rgba(0,0,0,0.55) 26%, rgba(0,0,0,0.1) 50%, transparent 66%), linear-gradient(to right, rgba(0,0,0,0.4), transparent 60%); }

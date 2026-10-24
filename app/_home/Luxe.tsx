@@ -241,16 +241,26 @@ export function LiveTiles() {
 }
 
 // Original Influence footage posters + roster shoot stills (no stock).
-const BAND = ['og-des-arrive-poster', 'shoot-final-1', 'venue-lounge-phone', 'seahra-gold-45', 'og-dessertz-line-poster', 'shoot-final-3', 'des-skyline-45', 'shoot-final-2'];
+const BAND: { id: string; cap: string }[] = [
+  { id: 'og-des-arrive-poster', cap: 'Des \u00b7 Arrival' },
+  { id: 'hero-m2-poster', cap: 'Des \u00b7 Poolside' },
+  { id: 'venue-lounge-phone', cap: 'Mika \u00b7 Lounge' },
+];
 
-/** Full-bleed highlight reel: posters drift slowly (one transform animation), paused off screen. No text. */
+/* Highlight band: three sharp stills, still frames with a slow Ken Burns drift and one soft fade-in. No marquee, no swaps. */
 export function ReelBand() {
-  const ref = useInView<HTMLDivElement>(0.3, false);
-  const row = BAND.map((id) => `${S}/${id}.webp`);
+  const ref = useInView<HTMLDivElement>(0.2, true);
   return (
-    <div ref={ref} className={`${L.band} border-y border-[#c9a96e]/20 bg-black py-3`} aria-hidden>
+    <div ref={ref} className={`${L.band} border-y border-[#c9a96e]/20 bg-black px-5 py-10 md:px-16 md:py-14`}>
       <div className={L.track}>
-        {[...row, ...row].map((src, i) => <img key={i} src={src} alt="" loading="lazy" decoding="async" />)}
+        {BAND.map((b, i) => (
+          <figure key={b.id} className={L.still} style={{ transitionDelay: `${i * 180}ms` }}>
+            <div className={L.stillFrame}>
+              <img src={`${S}/${b.id}.webp`} alt="" loading="eager" decoding="async" style={{ animationDelay: `${i * -6}s` }} />
+            </div>
+            <figcaption className="mt-3 text-[11px] uppercase tracking-[0.28em] text-[#c9a96e]/80">{b.cap}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   );
