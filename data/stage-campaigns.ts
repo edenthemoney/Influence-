@@ -90,9 +90,9 @@ export const campaigns: Campaign[] = [
     beats: STD,
     screens: [
       { kind: 'story', beat: 0, bg: `${F}/serena-drink-espresso-martini.webp`, title: (n) => `This Friday at ${n}`, sub: () => 'VIP hosts all night · Doors at 10', notif: (n) => `Kat tagged ${n} in a story` },
-      { kind: 'reel', beat: 1, ...v('og-dessertz-line'), caption: (n) => `Friday at ${n}. Glasses up.`, notif: (n) => `New reel tagged ${n}` },
-      { kind: 'post', beat: 2, image: `${S}/des-skyline-45.webp`, caption: (n) => `${n} × Influence. Friday night, glasses up.`, notif: (n) => `${n} × Influence collab is live` },
-      { kind: 'repost', beat: 3, talent: 'Kat', avatar: AV.kat, image: `${S}/des-skyline-45.webp`, line: (n) => `Tonight at ${n}`, notif: () => 'Kat shared your collab post' },
+      { kind: 'reel', beat: 1, ...v('og-dessertz-line'), caption: (n) => `The line outside ${n}, Friday night.`, notif: (n) => `New reel tagged ${n}` },
+      { kind: 'post', beat: 2, image: `${S}/venue-lounge-45.webp`, caption: (n) => `${n} × Influence. Friday night, inside.`, notif: (n) => `${n} × Influence collab is live` },
+      { kind: 'repost', beat: 3, talent: 'Kat', avatar: AV.kat, image: `${S}/venue-lounge-45.webp`, line: (n) => `Tonight at ${n}`, notif: () => 'Kat shared your collab post' },
     ],
     recap: { source: 'VIP hosts and bottle service · 3 Bottle Girls package', items: ['3 VIP bottle girls / hostesses', '4-hour shift', 'Full VIP section coverage', 'South Florida'] },
   },
@@ -207,7 +207,7 @@ export const campaigns: Campaign[] = [
     screens: [
       { kind: 'story', beat: 0, bg: `${S}/story-event.webp`, title: () => 'Influence Connect', sub: () => 'Wed Nov 18 · 4 – 7 PM · Boca Raton', notif: (n) => `${n} is on the guest list` },
       { kind: 'story', beat: 0, bg: `${F}/serena-drink-smoked-old-fashioned.webp`, title: () => 'See you there', sub: () => 'Creators, brands and venues · one night', notif: () => 'Influence Connect added to your story' },
-      { kind: 'reel', beat: 1, ...v('og-dessertz-line'), label: 'Reels', caption: () => 'Influence Connect is Wed Nov 18. Glasses up.', notif: () => 'New reel: Influence Connect' },
+      { kind: 'reel', beat: 1, ...v('og-dessertz-line'), label: 'Reels', caption: () => 'Influence Connect is Wed Nov 18. Save the date.', notif: () => 'New reel: Influence Connect' },
       { kind: 'post', beat: 2, image: `${S}/event-45.webp`, caption: (n) => `${n} × Influence Connect. See you at Serena Pastificio.`, notif: (n) => `${n} × Influence collab is live` },
       { kind: 'repost', beat: 3, talent: 'Deseray', avatar: AV.des, image: `${S}/event-45.webp`, line: () => 'Get tickets', notif: () => 'Deseray shared the ticket link', song: false },
     ],

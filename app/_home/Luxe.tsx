@@ -179,7 +179,7 @@ export function ScrubScene() {
           <span className="mt-3 block font-display text-[clamp(34px,6vw,72px)] font-bold italic leading-[0.95]">The room is set.<br />Now the feed.</span>
         </p>
         <div className={L.scenePhone} aria-hidden>
-          <img className={L.kenBurns} src={`${S}/des-skyline-phone.webp?v=1`} width={1000} height={2179} alt="" decoding="async" loading="lazy" />
+          <img className={L.kenBurns} src={`${S}/venue-lounge-phone.webp?v=1`} width={1000} height={2179} alt="" decoding="async" loading="lazy" />
         </div>
       </div>
     </section>
@@ -241,7 +241,7 @@ export function LiveTiles() {
 }
 
 // Original Influence footage posters + roster shoot stills (no stock).
-const BAND = ['og-des-arrive-poster', 'shoot-final-1', 'des-skyline-phone', 'seahra-gold-45', 'og-dessertz-line-poster', 'shoot-final-3', 'des-skyline-45', 'shoot-final-2'];
+const BAND = ['og-des-arrive-poster', 'shoot-final-1', 'venue-lounge-phone', 'seahra-gold-45', 'og-dessertz-line-poster', 'shoot-final-3', 'des-skyline-45', 'shoot-final-2'];
 
 /** Full-bleed highlight reel: posters drift slowly (one transform animation), paused off screen. No text. */
 export function ReelBand() {
