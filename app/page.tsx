@@ -10,6 +10,7 @@ import { Ticker } from './_home/Sections';
 import BusinessStage from './_home/BusinessStage';
 import { CurtainNav, Hair, LiveTiles, LuxCursor, LuxeBoot, LuxeFooter, ReelBand, RosterMag, ScrubScene, SectionHead, SplitBrandsCreators } from './_home/Luxe';
 import L from './_home/Luxe.module.css';
+import BgDrone from './_home/BgDrone';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -134,6 +135,7 @@ export default function HomePage() {
       <ReelBand />
 
       <section id="what-we-book" className={`${L.tex} py-16 md:py-24`}>
+        <BgDrone d="brickell" />
         <div className="px-5 md:px-16"><SectionHead n="01" eyebrow="What we book" lines={['Five ways to work', 'with Influence.']} gold="with Influence." /></div>
         <LiveTiles />
       </section>
@@ -141,6 +143,7 @@ export default function HomePage() {
       <Hair />
 
       <section id="roster" className={`${L.tex} py-16 md:py-24`}>
+        <BgDrone d="pools" m="aptpool" opacity={0.26} />
         <div className="flex flex-col gap-5 px-5 md:flex-row md:items-end md:justify-between md:px-16">
           <div className="md:w-2/3"><SectionHead n="02" eyebrow="Brand Ambassadors & creators" lines={['The roster.']} gold="The roster." /></div>
           <Link href="/marketplace" className="self-start text-[14px] font-semibold uppercase tracking-[0.16em] text-white underline decoration-[#c9a96e] underline-offset-[6px] md:self-auto">See everyone</Link>
@@ -151,11 +154,13 @@ export default function HomePage() {
       <Hair />
 
       <section className={`${L.tex} px-5 pt-16 md:px-16 md:pt-24`}>
+        <BgDrone d="skyline" />
         <SectionHead n="03" eyebrow="Two sides of Influence" lines={['Brands book.', 'Creators get booked.']} />
       </section>
       <div className="mt-10"><SplitBrandsCreators /></div>
 
       <section className={`${L.tex} overflow-hidden px-5 py-16 md:px-16 md:py-28`}>
+        <BgDrone d="waterfront" opacity={0.36} />
         <SectionHead n="04" eyebrow="Book talent" lines={['Tell us the date', 'and what you need.']} gold="and what you need." shader />
         <p className="relative mt-6 max-w-xl text-[17px] leading-relaxed text-white/85">Tell us the date, the city, and the kind of night or shoot. We reply by text or call.</p>
         <div className="relative mt-8 flex flex-col gap-3 sm:flex-row">
