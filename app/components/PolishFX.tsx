@@ -18,6 +18,13 @@ export default function PolishFX() {
     const vh = innerHeight;
     const offs: (() => void)[] = [];
 
+    // 0. No Picture-in-Picture on decorative muted clips: iOS Safari otherwise stashes a PiP video as a grey tab on the left screen edge.
+    const noPip = (v: HTMLVideoElement) => { v.disablePictureInPicture = true; v.setAttribute('disablepictureinpicture', ''); v.setAttribute('autopictureinpicture', 'false'); };
+    document.querySelectorAll('video').forEach(noPip);
+    const onPlay = (e: Event) => { if (e.target instanceof HTMLVideoElement) noPip(e.target); };
+    document.addEventListener('play', onPlay, true);
+    offs.push(() => document.removeEventListener('play', onPlay, true));
+
     // 1. tag below-fold sections
     const secs = Array.from(document.querySelectorAll<HTMLElement>('main section, body > div section, footer'))
       .filter((s) => !s.closest('nav,header') && s.getBoundingClientRect().top + scrollY > vh * 0.95);

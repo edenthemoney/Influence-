@@ -84,6 +84,11 @@
   box-shadow: 0 0 0 1px rgba(201,169,110,0.5), 0 40px 80px rgba(0,0,0,0.6); overflow: hidden;
   transform: translate3d(-50%, calc((1 - var(--k)) * 75vh), 0) scale(calc(0.86 + var(--k) * 0.14)); opacity: calc(var(--k) * 2.2 - 0.2); }
 .scenePhone img { width: 100%; height: 100%; object-fit: cover; border-radius: 28px; display: block; }
+/* Gentle Ken Burns on the sharp still (transform only; the phone's overflow + radius clip it). */
+.scenePhone { isolation: isolate; }
+.kenBurns { transform-origin: 50% 35%; animation: kenBurns 16s ease-in-out infinite alternate; will-change: transform; }
+@keyframes kenBurns { from { transform: scale(1) translate3d(0, 0, 0); } to { transform: scale(1.08) translate3d(-1.5%, -1.5%, 0); } }
+@media (prefers-reduced-motion: reduce) { .kenBurns { animation: none; } }
 
 /* E. Roster tilt + glare (desktop), slow sway (mobile). */
 .magRow { perspective: 900px; }
@@ -124,7 +129,7 @@
 @media (max-width: 767px) {
   .scene { height: auto; }
   /* Flow layout: headline first, phone below it, so the phone never covers the copy at any phone height. */
-  .pin { position: relative; height: auto; min-height: 88svh; display: flex; flex-direction: column; align-items: center; padding: 96px 20px 44px; box-sizing: border-box; }
+  .pin { position: relative; height: auto; min-height: 88svh; display: flex; flex-direction: column; align-items: center; padding: 156px 20px 44px; box-sizing: border-box; }
   .sceneBg { transform: none; will-change: auto; }
   .sceneCopy { position: relative; left: auto; right: auto; top: auto; width: 100%; opacity: 1; transform: none; z-index: 1; }
   .scenePhone { position: relative; left: auto; bottom: auto; margin-top: 28px; width: min(56vw, 230px); flex: none;
