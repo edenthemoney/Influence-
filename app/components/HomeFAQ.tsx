@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: 'How much does it cost to hire an influencer?',
-    answer: 'Our campaigns start at $300. Pricing depends on the creator, deliverables, usage rights, and campaign scope. Visit our pricing page for package details or request a custom quote through the booking form.',
+    answer: 'Our campaigns start at $600. Pricing depends on the creator, deliverables, usage rights, and campaign scope. Visit our pricing page for package details or request a custom quote through the booking form.',
   },
   {
     question: 'Can I hire influencers outside of Miami?',

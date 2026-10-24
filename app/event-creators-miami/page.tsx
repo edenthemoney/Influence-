@@ -71,7 +71,7 @@ export default function EventModelsMiami() {
         <h2 className="text-2xl font-bold mb-6">Event Model Pricing</h2>
         <div className="grid md:grid-cols-4 gap-0 border border-white/[0.06] mb-6">
           {[
-            { name: '1 Model', price: '$380', desc: '$95/hr · 4hr min' },
+            { name: '2 Models', price: '$760', desc: '$95/hr · 4hr min · minimum booking' },
             { name: '3 Models', price: '$1,140', desc: '$95/hr · 4hr min', highlight: true },
             { name: '5 Models', price: '$1,900', desc: '$95/hr · 4hr min' },
             { name: '10 Models', price: '$3,800', desc: '$95/hr · 4hr min' },
@@ -98,9 +98,9 @@ export default function EventModelsMiami() {
           </div>
         </div>
 
-        <AnswerFaq id="/event-creators-miami" title="Event creators in Miami: quick answers" service={{ name: 'Event Creators & Promo Models, Miami', serviceType: 'Event creators and promo models', description: 'Event creators and promo models for club nights, parties, brand activations and launches in Miami and South Florida. $380 per creator (4 hours at $95/hr).' }} items={[
+        <AnswerFaq id="/event-creators-miami" title="Event creators in Miami: quick answers" service={{ name: 'Event Creators & Promo Models, Miami', serviceType: 'Event creators and promo models', description: 'Event creators and promo models for club nights, parties, brand activations and launches in Miami and South Florida. from $760 (2 creators × 4 hours at $95/hr).' }} items={[
           { q: 'What are event creators?', a: 'Event creators and promo models appear at your club night, party, brand activation or launch to bring energy and visibility.' },
-          { q: 'How much do event creators cost?', a: '$380 per creator (4 hours at $95/hr). See the package options on this page.' },
+          { q: 'How much do event creators cost?', a: 'from $760 (2 creators × 4 hours at $95/hr). See the package options on this page.' },
           { q: 'How far ahead should I book?', a: 'As early as you can. Same-week bookings depend on availability.' },
           { q: 'Which areas do you cover?', a: 'Miami and all of South Florida.' },
         ]} />

@@ -20,7 +20,7 @@ We have influencers who would be perfect for creating authentic UGC content for 
 - 10K-100K+ authentic followings
 - Professional content creation experience
 - Quick turnaround (48hrs)
-- Starting at $300 per content piece
+- Packages from $450
 
 ${influencerProfiles.map(profile => `
 - ${profile.name}: ${profile.followers} followers - ${profile.niche}

@@ -4,11 +4,11 @@ import { Check, Users, Star, MapPin, Camera, Sparkles, Film, Play } from 'lucide
 
 export const metadata: Metadata = {
   title: 'Book Creators in Miami | Hire a Creator for Any Project | Influence Marketplace',
-  description: 'Book professional creators in Miami for music videos, photoshoots, events, commercials, UGC, and brand campaigns. From $150. Same-week availability across South Florida.',
+  description: 'Book professional creators in Miami for music videos, photoshoots, events, commercials, UGC, and brand campaigns. From $450. Same-week availability across South Florida.',
   keywords: 'book creators miami, hire creators miami, creators for hire miami, hire a creator, book a creator, miami creators, book creator south florida',
   openGraph: {
     title: 'Book Creators in Miami | Hire a Creator for Any Project',
-    description: 'Professional creators for music videos, photoshoots, events, commercials & more. From $150. Miami & South Florida.',
+    description: 'Professional creators for music videos, photoshoots, events, commercials & more. From $450. Miami & South Florida.',
     url: 'https://influencecreators.marketing/book-creators-miami',
   },
 };

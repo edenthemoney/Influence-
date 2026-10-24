@@ -1,8 +1,6 @@
 // Single source of truth for booking packages + prices (client UI and server checkout).
 // ── Music Videos (dedicated service for artists) ──
 export const MUSIC_VIDEO_OT = [
-  {"id": "mv-cameo", "name": "Cameo · 1 Hour", "tagline": "1 model · up to 1 hr on set", "models": 1, "price": 199, "popular": false, "perks": ["1 model", "Up to 1 hour on set", "Styled & camera-ready", "South Florida location"]},
-  {"id": "mv-cameo-2", "name": "Cameo · 2 Hours", "tagline": "1 model · up to 2 hrs on set", "models": 1, "price": 249, "popular": false, "perks": ["1 model", "Up to 2 hours on set", "Styled & camera-ready", "South Florida location"]},
   {"id": "mv-featured", "name": "Featured", "tagline": "1 model · half day (up to 5 hrs)", "models": 1, "price": 450, "popular": true, "perks": ["1 model", "Half day, up to 5 hours on set", "Styled & camera-ready", "South Florida location"]},
   {"id": "mv-lead", "name": "Lead", "tagline": "1 lead model · full day (up to 10 hrs)", "models": 1, "price": 950, "popular": false, "perks": ["1 lead model", "Full day, up to 10 hours on set", "Styled & camera-ready", "South Florida location"]},
   {"id": "mv-ensemble", "name": "Ensemble", "tagline": "3 models · full day", "models": 3, "price": 1950, "popular": false, "perks": ["3 models", "Full day, up to 10 hours on set", "+$550 per extra model", "South Florida location"]},
@@ -25,9 +23,8 @@ export const SHOOT_OT = [
   {"id": "shoot-20-full", "name": "Full Day · 20 Models", "tagline": "20 models · full day (up to 10 hrs)", "models": 20, "price": 21000, "popular": false, "perks": ["20 professional models", "Full day (up to 10 hrs)", "Web & social usage included", "Paid ads / broadcast usage +50%", "Production coordinator"]},
 ];
 
-// Events: $95/hr per person, 4-hour minimum
+// Events: $95/hr per person, 4-hour minimum, 2-person minimum ($760)
 export const EVENT_OT = [
-  {"id": "1-girl", "name": "1 Model", "tagline": "1 model · 4hr appearance · $95/hr each", "models": 1, "price": 380, "popular": false, "perks": ["1 model", "4-hour minimum ($95/hr per person)", "Event-ready & styled", "South Florida"]},
   {"id": "2-girls", "name": "2 Models", "tagline": "2 models · 4hr appearance · $95/hr each", "models": 2, "price": 760, "popular": false, "perks": ["2 models", "4-hour minimum ($95/hr per person)", "Event-ready & styled", "South Florida"]},
   {"id": "3-girls", "name": "3 Models", "tagline": "3 models · 4hr appearance · $95/hr each", "models": 3, "price": 1140, "popular": true, "perks": ["3 models", "4-hour minimum ($95/hr per person)", "Event-ready & styled", "South Florida"]},
   {"id": "5-girls", "name": "5 Models", "tagline": "5 models · 4hr appearance · $95/hr each", "models": 5, "price": 1900, "popular": false, "perks": ["5 models", "4-hour minimum ($95/hr per person)", "Event-ready & styled", "South Florida"]},
@@ -61,9 +58,8 @@ export const EVENT_MO = [
 ];
 
 // ── Bottle Girls / VIP Hostess Service ──
-// $95/hr per hostess, 4-hour minimum
+// $95/hr per hostess, 4-hour minimum, 2-person minimum ($760)
 export const BOTTLE_OT = [
-  {"id": "bottle-1", "name": "1 Bottle Girl", "tagline": "1 VIP hostess · 4hr shift · $95/hr each", "models": 1, "price": 380, "popular": false, "perks": ["1 VIP hostess", "4-hour minimum ($95/hr per person)", "Bottle service & VIP table experience", "South Florida"]},
   {"id": "bottle-2", "name": "2 Bottle Girls", "tagline": "2 VIP hostesses · 4hr shift · $95/hr each", "models": 2, "price": 760, "popular": false, "perks": ["2 VIP hostesses", "4-hour minimum ($95/hr per person)", "Bottle service & VIP table experience", "South Florida"]},
   {"id": "bottle-3", "name": "3 Bottle Girls", "tagline": "3 VIP hostesses · 4hr shift · $95/hr each", "models": 3, "price": 1140, "popular": true, "perks": ["3 VIP hostesses", "4-hour minimum ($95/hr per person)", "Bottle service & VIP table experience", "South Florida"]},
   {"id": "bottle-5", "name": "5 Bottle Girls", "tagline": "5 VIP hostesses · 4hr shift · $95/hr each", "models": 5, "price": 1900, "popular": false, "perks": ["5 VIP hostesses", "4-hour minimum ($95/hr per person)", "Bottle service & VIP table experience", "South Florida"]},
@@ -82,7 +78,6 @@ export const BOTTLE_MO = [
 ];
 
 export const REACTION_OT = [
-  {"id": "essential-r", "name": "Reaction", "tagline": "1 song · 1 creator reaction · posted", "models": 1, "price": 300, "popular": false, "perks": ["1 creator reacts to your song on camera", "Genuine first-listen reaction", "Posted to the creator's account", "HD vertical video delivered"]},
   {"id": "highreach-r", "name": "High-Reach Reaction", "tagline": "1 song · higher-reach creator · posted", "models": 1, "price": 500, "popular": true, "perks": ["1 higher-reach creator reaction", "Posted to the creator's account", "HD vertical video delivered", "Ready for all platforms"]},
   {"id": "launch-bundle", "name": "Launch Bundle", "tagline": "1 reaction + 3 story reposts", "models": 1, "price": 750, "popular": false, "perks": ["1 posted reaction video", "3 Instagram Story reposts", "Swipe-up / link sticker to your song", "Real creators, no bots"]},
   {"id": "premium-r", "name": "3 Reactions", "tagline": "3 songs or 3 creators · posted", "models": 3, "price": 800, "popular": false, "perks": ["3 posted reaction videos", "HD vertical videos", "Bundle discount applied"]},
@@ -103,7 +98,6 @@ export const REACTION_MO = [
 ];
 
 export const UGC_OT = [
-  {"id": "ugc-single", "name": "Single Video", "tagline": "1 creator · 1 UGC video", "models": 1, "price": 300, "popular": false, "perks": ["1 short-form UGC video (15–60s)", "Shot to your brief", "2 revisions", "Usage on your own site & organic social", "Paid-ad usage rights +30% (90 days)", "Raw footage +$75 · extra hook +$75"]},
   {"id": "ugc-3pack", "name": "3-Pack", "tagline": "3 UGC videos · different hooks", "models": 1, "price": 750, "popular": true, "perks": ["3 UGC videos ($250 each)", "Different hooks & angles", "2 revisions each", "Usage on your own site & organic social", "Paid-ad usage rights +30% (90 days)", "Raw footage +$75 · extra hook +$75"]},
   {"id": "ugc-10pack", "name": "10-Pack", "tagline": "10 UGC videos · up to 3 creators", "models": 3, "price": 2250, "popular": false, "perks": ["10 UGC videos ($225 each)", "Up to 3 creators", "Built for ad testing", "Usage on your own site & organic social", "Paid-ad usage rights +30% (90 days)", "Raw footage +$75 · extra hook +$75"]},
   {"id": "ugc-20", "name": "20 Videos", "tagline": "20 UGC videos · up to 5 creators", "models": 5, "price": 4500, "popular": false, "perks": ["20 UGC videos ($225 each)", "Up to 5 creators", "Content calendar", "Usage on your own site & organic social", "Paid-ad usage rights +30% (90 days)", "Raw footage +$75 · extra hook +$75"]},
@@ -119,7 +113,6 @@ export const UGC_MO = [
 
 // ── Brand Ambassadors (model comes to your business, creates reels/promos on-site) ──
 export const BIZ_OT = [
-  {"id": "biz-visit", "name": "Content Visit", "tagline": "1 creator · 2hr on-site · 1 Reel + 3 Stories posted", "models": 1, "price": 350, "popular": false, "perks": ["1 creator at your location", "2-hour content session", "1 Reel + 3 Stories posted", "Restaurants, hotels, venues & shops"]},
   {"id": "biz-halfday", "name": "Half-Day Visit", "tagline": "1 creator · 4hr · multiple looks & scenes", "models": 1, "price": 600, "popular": false, "perks": ["1 creator · 4-hour session", "Multiple setups", "1 Reel + 3 Stories posted + raw clips"]},
   {"id": "biz-visit-2", "name": "Duo Visit", "tagline": "2 creators · 2hr on-site", "models": 2, "price": 650, "popular": false, "perks": ["2 creators at your location", "2-hour content session", "2 Reels + 6 Stories posted"]},
   {"id": "biz-opening", "name": "Opening Night", "tagline": "3 creators · up to 4hr · launch or event night", "models": 3, "price": 1500, "popular": true, "perks": ["3 creators at your opening or event", "Up to 4 hours", "Each posts 1 Reel + 3 Stories", "Restaurant, hotel & nightlife launches"]},
@@ -136,7 +129,6 @@ export const BIZ_MO = [
 
 // ── Commercial Productions (script reading, spoken roles, acting) ──
 export const COMMERCIAL_OT = [
-  {"id": "vo-web", "name": "Voiceover · Web & Social", "tagline": "1 voice · up to 60s spot · web/social usage", "models": 1, "price": 250, "popular": false, "perks": ["1 professional voice", "Up to 60-second spot", "Web & organic social usage", "2 revisions"]},
   {"id": "vo-broadcast", "name": "Voiceover · Broadcast", "tagline": "1 voice · local radio/TV · 13 weeks", "models": 1, "price": 450, "popular": false, "perks": ["1 professional voice", "Local radio or TV spot", "13-week usage (longer usage quoted)", "2 revisions"]},
   {"id": "comm-essential", "name": "Actor · Half Day", "tagline": "1 actor · half day · script & spoken role", "models": 1, "price": 750, "popular": true, "perks": ["1 on-camera actor", "Half day (up to 5 hours)", "Script reading & spoken delivery", "Web & social usage included", "Paid ads / broadcast usage quoted"]},
   {"id": "comm-elite", "name": "Actor · Full Day", "tagline": "1 actor · full day · multi-scene", "models": 1, "price": 1250, "popular": false, "perks": ["1 on-camera actor", "Full day (up to 10 hours)", "Multiple scenes & wardrobe changes", "Web & social usage included", "Paid ads / broadcast usage quoted"]},
@@ -167,9 +159,7 @@ export const CREW_ADDONS = [
 
 // ── Story Reposts (influencer posts brand content to their Stories) ──
 export const STORY_REPOSTS_OT = [
-  { id: 'story-essential',   name: 'Essential',     tagline: '1 celebrity-connected model · 1 story frame · 24hr visibility',     models: 1, price: 150,   popular: false, perks: ['1 celebrity-connected model posts your content to their Story', 'Single frame (15s)', '24-hour visibility', 'Swipe-up link available', 'Major label quality at indie budget'] },
-  { id: 'story-professional',      name: 'Professional',        tagline: '1 celebrity-connected model · 3-5 story frames · full narrative',  models: 1, price: 350,  popular: true,  perks: ['1 celebrity-connected model posts 3-5 Story frames', 'Full narrative arc (hook → showcase → CTA)', '24-hour visibility', 'Swipe-up link included', 'Best for conversions'] },
-  { id: 'story-premium',      name: 'Premium',    tagline: '2 celebrity-connected creators · 3-5 frames each · dual reach',       models: 2, price: 600,  popular: false, perks: ['2 celebrity-connected creators post Story sets', 'Dual audience reach', 'Coordinated messaging', 'Swipe-up links included'] },
+  { id: 'story-premium',      name: 'Premium',    tagline: '2 celebrity-connected creators · 3-5 frames each · dual reach',       models: 2, price: 600,  popular: true, perks: ['2 celebrity-connected creators post Story sets', 'Dual audience reach', 'Coordinated messaging', 'Swipe-up links included'] },
   { id: 'story-elite',     name: 'Elite',   tagline: '3 celebrity-connected creators · 3-5 frames each · wide reach',       models: 3, price: 900,  popular: false, perks: ['3 celebrity-connected creators post Story sets', 'Maximum Story reach', 'Coordinated campaign', 'Swipe-up links included'] },
   { id: 'story-vip',    name: 'VIP',      tagline: '5 celebrity-connected creators · 3-5 frames each · viral push',      models: 5, price: 1500,  popular: false, perks: ['5 celebrity-connected creators post Story sets', 'Viral Story campaign', 'Coordinated rollout', 'Swipe-up links included'] },
   { id: 'story-royal', name: 'Royal',   tagline: '10 celebrity-connected creators · 3-5 frames each · full takeover',    models: 10, price: 2800, popular: false, perks: ['10 celebrity-connected creators post Story sets', 'Full Story takeover', 'Dedicated coordinator', 'Swipe-up links included'] },
@@ -242,7 +232,19 @@ export const HYBRID_CAMPAIGNS = [
   { id: 'hybrid-viral',   name: 'Viral Takeover',     tagline: '10 models · multi-collab + intensive stories',     models: 10, price: 25000,  popular: false, perks: ['10 celebrity-connected creators', 'Multi-collab campaign', 'Intensive story schedule', 'Viral potential', 'Enterprise partnership'] },
 ];
 
+
+// ── Starter: single-unit options for solo artists & small creatives (one creator, one deliverable). ──
+// Lives only on /starter (not in main pricing / JSON-LD). Fixed scope: 1 creator, set duration, no paid-ad rights, no customization.
+export const STARTER_OT = [
+  {"id": "starter-story", "name": "Single Story Post", "tagline": "1 creator · 1 Story frame · 24hr", "models": 1, "price": 200, "popular": false, "perks": ["1 creator posts your content to their Story", "Single frame (15s), 24-hour visibility", "Link sticker to your song/page", "No paid-ad rights"]},
+  {"id": "starter-mv-1hr", "name": "Solo Model for Your Music Video · 1 Hour", "tagline": "1 model · up to 1 hr on set", "models": 1, "price": 249, "popular": false, "perks": ["1 model", "Up to 1 hour on set", "Styled & camera-ready", "South Florida location"]},
+  {"id": "starter-mv-2hr", "name": "Solo Model for Your Music Video · 2 Hours", "tagline": "1 model · up to 2 hrs on set", "models": 1, "price": 399, "popular": true, "perks": ["1 model", "Up to 2 hours on set", "Styled & camera-ready", "South Florida location"]},
+  {"id": "starter-reaction", "name": "Single Reaction Video", "tagline": "1 song · 1 creator reaction · posted", "models": 1, "price": 350, "popular": false, "perks": ["1 creator reacts to your song on camera", "Posted to the creator's account", "HD vertical video delivered", "No paid-ad rights"]},
+  {"id": "starter-ugc", "name": "Single UGC Video", "tagline": "1 creator · 1 UGC video", "models": 1, "price": 350, "popular": false, "perks": ["1 short-form video (15–60s)", "Shot to a simple brief", "1 revision", "Organic use only, no paid-ad rights"]},
+];
+
 export const PACKAGES: Record<string, any[]> = {
+  'starter-one-time':  STARTER_OT,
   'shoot-one-time':    SHOOT_OT,
   'musicvideo-one-time': MUSIC_VIDEO_OT,
   'event-one-time':    EVENT_OT,

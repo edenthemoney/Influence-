@@ -10,15 +10,15 @@ export const LEAD_TYPES: { id: LeadType; label: string }[] = [
 
 export type Svc = { id: string; label: string; from: string; pkg: string; href: string };
 const S: Record<string, Svc> = {
-  ambassador: { id: 'ambassador', label: 'Brand ambassador visit', from: '$350', pkg: 'Brand Ambassador visit (from $350)', href: '/brand-ambassadors-miami' },
-  hosts: { id: 'hosts', label: 'Event hosts / models', from: '$95/hr', pkg: 'Event models, 4-hr min at $95/hr each (3 models = $1,140)', href: '/event-creators' },
-  bottle: { id: 'bottle', label: 'Bottle girls / VIP hostesses', from: '$95/hr', pkg: 'VIP hostesses, 4-hr min at $95/hr each (3 = $1,140)', href: '/bottle-girls-miami' },
+  ambassador: { id: 'ambassador', label: 'Brand ambassador visit', from: '$600', pkg: 'Brand Ambassador Half-Day visit ($600)', href: '/brand-ambassadors-miami' },
+  hosts: { id: 'hosts', label: 'Event hosts / models', from: '$760', pkg: 'Event models, $95/hr each, 2-model 4-hr minimum ($760); 3 models = $1,140', href: '/event-creators' },
+  bottle: { id: 'bottle', label: 'Bottle girls / VIP hostesses', from: '$760', pkg: 'VIP hostesses, $95/hr each, 2-hostess 4-hr minimum ($760); 3 = $1,140', href: '/bottle-girls-miami' },
   venueMonthly: { id: 'venueMonthly', label: 'Monthly venue program', from: '$2,130/mo', pkg: 'Venue Starter, 2 models × 4 events/mo ($2,130/mo)', href: '/pricing' },
-  ugc: { id: 'ugc', label: 'UGC content', from: '$300', pkg: 'UGC content (from $300)', href: '/ugc-content' },
+  ugc: { id: 'ugc', label: 'UGC content', from: '$750', pkg: 'UGC 3-pack ($750)', href: '/ugc-content' },
   campaign: { id: 'campaign', label: 'Influencer campaign', from: '$2,500/mo', pkg: 'Influencer campaign (from $2,500/mo)', href: '/influencer-campaigns' },
   shoot: { id: 'shoot', label: 'Models for a photo/video shoot', from: '$600', pkg: 'Shoot model, half day ($600) / full day ($1,200)', href: '/creators-for-shoots' },
-  mv: { id: 'mv', label: 'Music video models', from: '$199', pkg: 'Music video models: Cameo $199 · Featured $450 · Ensemble (3) $1,950', href: '/music-video-booking' },
-  reaction: { id: 'reaction', label: 'Song reaction videos', from: '$300', pkg: 'Reaction $300 · High-Reach $500 · Launch Bundle $750', href: '/music-promotion' },
+  mv: { id: 'mv', label: 'Music video models', from: '$450', pkg: 'Music video models: Featured $450 · Lead $950 · Ensemble (3) $1,950', href: '/music-video-booking' },
+  reaction: { id: 'reaction', label: 'Song reaction videos', from: '$500', pkg: 'High-Reach Reaction $500 · Launch Bundle $750', href: '/music-promotion' },
   label: { id: 'label', label: 'Label / release campaign', from: '$2,500/mo', pkg: 'Label rollout campaign (from $2,500/mo)', href: '/label-campaigns' },
   notsure: { id: 'notsure', label: 'Not sure yet, advise me', from: '', pkg: 'Discovery call: recommend a starter package', href: '/pricing' },
 };
@@ -30,7 +30,16 @@ export const SERVICES_BY_TYPE: Record<LeadType, Svc[]> = {
   event: [S.hosts, S.bottle, S.ambassador, S.ugc, S.notsure],
   other: [S.ambassador, S.ugc, S.mv, S.hosts, S.campaign, S.shoot, S.notsure],
 };
-export const BUDGETS = ['$199–500', '$500–1.5K', '$1.5K–5K', '$5K+'] as const;
+export const STARTER_BUDGET = 'Under $450 (Starter)';
+export const BUDGETS = [STARTER_BUDGET, '$450–1.5K', '$1.5K–5K', '$5K+'] as const;
+
+// Starter (/starter): single-unit, one creator one deliverable. Only recommended for the lowest budget.
+const STARTER_PICK: Record<string, string> = {
+  mv: 'Starter: Solo Model for Your Music Video, 1 hr ($249) or 2 hrs ($399)',
+  reaction: 'Starter: Single Reaction Video ($350)',
+  ugc: 'Starter: Single UGC Video ($350)',
+};
+export const STARTER_HREF = '/starter';
 export const TIMINGS = ['This week', 'This month', 'Later'] as const;
 export const CITIES = ['Miami', 'Miami Beach', 'Brickell / Downtown', 'Wynwood', 'Fort Lauderdale', 'Hollywood', 'Boca Raton', 'Delray Beach', 'West Palm Beach', 'Palm Beach', 'Coral Gables', 'Doral', 'Other / outside S. Florida'];
 
@@ -51,6 +60,11 @@ export function recommend(a: LeadAnswers): { pkg: string; pitch: string } {
   const svcs = (a.services || []).map((id) => S[id]).filter(Boolean);
   const main = svcs.find((s) => s.id !== 'notsure') || (a.type ? SERVICES_BY_TYPE[a.type][0] : S.ambassador);
   const big = a.budget === '$1.5K–5K' || a.budget === '$5K+';
+  if (a.budget === STARTER_BUDGET) {
+    const pkg = STARTER_PICK[main.id] || 'Starter: Single Story Post ($200) or another single-deliverable option';
+    const who = a.business || a.ig || 'your project';
+    return { pkg: `${pkg} (see ${STARTER_HREF})`, pitch: `Hi! For ${who}, our Starter options are built for solo artists and small creatives: one creator, one deliverable, from $200. Here they are: https://influencecreators.marketing${STARTER_HREF}. Happy to help you pick.` };
+  }
   let pkg = main.pkg;
   if (a.type === 'venue' && big) pkg = `${S.venueMonthly.pkg}, or one-off ${main.label.toLowerCase()}`;
   if (a.type === 'artist' && main.id === 'mv' && big) pkg = 'Music video Ensemble: 3 models, full day ($1,950); add Reaction Launch Bundle ($750)';

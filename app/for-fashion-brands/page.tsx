@@ -7,7 +7,7 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Creator Marketing for Fashion & Clothing Brands — Influence Marketplace',
-  description: 'Book verified creators and influencers to wear and promote your clothing brand. UGC reels, product seeding, creator shoots, and Instagram shoutouts. Miami-based marketplace. From $150.',
+  description: 'Book verified creators and influencers to wear and promote your clothing brand. UGC reels, product seeding, creator shoots, and Instagram shoutouts. Miami-based marketplace. From $450.',
   keywords: [
     'creator marketing for fashion brands',
     'clothing brand influencer',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'Creator Marketing for Fashion & Clothing Brands — Influence',
-    description: 'Creators wear and promote your clothing brand. UGC reels, shoots, shoutouts & product seeding. From $150.',
+    description: 'Creators wear and promote your clothing brand. UGC reels, shoots, shoutouts & product seeding. From $450.',
     url: 'https://influencecreators.marketing/for-fashion-brands',
   },
 };
@@ -35,7 +35,7 @@ const services = [
     name: 'UGC Reels & TikToks',
     subtitle: 'Creator wears your clothing on camera',
     desc: 'Send us your pieces — a creator creates branded reels, try-on videos, outfit showcases, and lifestyle content to your brief. HD vertical video delivered ready to post or run as ads.',
-    from: '$300',
+    from: '$750',
     href: '/start?service=ugc',
     cta: 'Book UGC',
     checks: [
@@ -51,7 +51,7 @@ const services = [
     name: 'Photo & Video Shoot',
     subtitle: 'Professional creator in your clothing',
     desc: 'Book a professional Miami creator for a photo or video shoot wearing your brand. Get a full content library — product shots, lifestyle images, campaign content — in one session.',
-    from: '$300',
+    from: '$600',
     href: '/start?service=shoot',
     cta: 'Book a Shoot',
     checks: [
@@ -67,7 +67,7 @@ const services = [
     name: 'Instagram Shoutout',
     subtitle: 'Verified influencer posts your brand',
     desc: 'A verified influencer posts your clothing to their engaged following — feed post or Story with your link/caption. Fast turnaround, real reach, no production required.',
-    from: '$150',
+    from: '$600',
     href: '/start?service=ugc',
     cta: 'Get a Shoutout',
     checks: [
@@ -83,7 +83,7 @@ const services = [
     name: 'Gifted / Product Seeding',
     subtitle: 'Ship it — we post it',
     desc: "Send your clothing to one of our creators and they'll wear it, film an authentic unboxing or first-wear reaction, and post it. The most cost-effective way to get real content fast.",
-    from: '$300',
+    from: '$750',
     href: '/start?service=ugc',
     cta: 'Start Seeding',
     checks: [
@@ -99,7 +99,7 @@ const services = [
 const stats = [
   { value: '3–5x', label: 'More Engagement', desc: 'Content featuring creators in your clothing vs. standard product shots.' },
   { value: '48hrs', label: 'Delivery', desc: 'UGC content in your inbox within 48 hours of approval — ready to post or run as ads.' },
-  { value: '$300', label: 'Starting Price', desc: 'The most affordable way to get professional creator content for your clothing brand.' },
+  { value: '$450', label: 'Starting Price', desc: 'The most affordable way to get professional creator content for your clothing brand.' },
 ];
 
 export default function ForFashionBrandsPage() {
@@ -273,13 +273,13 @@ export default function ForFashionBrandsPage() {
           <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
             Your brand deserves<br />to be seen.
           </h2>
-          <p className="text-black/50 text-lg mb-10 max-w-lg">Real creators. Real content. Real reach. Start with a single reel or book a full shoot — we scale with you. From $150.</p>
+          <p className="text-black/50 text-lg mb-10 max-w-lg">Real creators. Real content. Real reach. Start with a UGC pack or book a full shoot — we scale with you. From $450.</p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/start?service=ugc" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Get Started <ChevronRight className="h-4 w-4" />
             </Link>
             <div className="flex items-center gap-6 text-black/40 text-xs self-center">
-              <span>✓ From $150</span>
+              <span>✓ From $450</span>
               <span>✓ 48hr delivery</span>
               <span>✓ Miami-based</span>
             </div>

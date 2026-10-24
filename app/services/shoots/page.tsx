@@ -46,7 +46,7 @@ const serviceSchema = {
   ],
   "offers": {
     "@type": "Offer",
-    "price": "300",
+    "price": "600",
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   }

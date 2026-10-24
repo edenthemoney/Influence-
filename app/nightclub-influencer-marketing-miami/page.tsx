@@ -46,17 +46,17 @@ const props: GeoPageProps = {
   "prices": [
     {
       "name": "Event creators",
-      "price": "$380 per creator (4 hours at $95/hr)",
+      "price": "from $760 (2 creators × 4 hours at $95/hr)",
       "desc": "Appearance at your night."
     },
     {
       "name": "VIP hostesses",
-      "price": "$380 per hostess (4 hours at $95/hr)",
+      "price": "from $760 (2 hostesses × 4 hours at $95/hr)",
       "desc": "4-hour shift."
     },
     {
       "name": "Story reposts",
-      "price": "From $150",
+      "price": "From $600",
       "desc": "24-hour story frames."
     },
     {
@@ -68,7 +68,7 @@ const props: GeoPageProps = {
   "faqs": [
     {
       "q": "How much does it cost to have creators at my club?",
-      "a": "$380 per creator (4 hours at $95/hr)."
+      "a": "from $760 (2 creators × 4 hours at $95/hr)."
     },
     {
       "q": "Can creators post from the venue?",

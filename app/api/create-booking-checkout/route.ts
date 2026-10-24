@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     const SERVICE_LABELS: Record<string, string> = {
       shoot: 'Photo / Commercial Shoot', musicvideo: 'Music Video Models', reaction: 'Music Reaction', ugc: 'UGC & Branded Content',
       business: 'Brand Ambassador Visit', commercial: 'Actors & Voiceover', bottle: 'Bottle Girls / VIP Hostesses', event: 'Event Hosting & Promo',
-      storyreposts: 'Story Reposts', collabreposts: 'Collab Posts',
+      storyreposts: 'Story Reposts', collabreposts: 'Collab Posts', starter: 'Starter (single creator)',
     };
     const serviceLabel = SERVICE_LABELS[String(serviceType)] || 'Influence Booking';
     const description = `${packageTagline} — ${serviceLabel}${isMonthly ? ' (Monthly)' : ''}`;
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
       line_items: lineItems,
       mode: isMonthly ? 'subscription' : 'payment',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/booking/success?session_id={CHECKOUT_SESSION_ID}&type=model-booking`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/model-booking`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}${serviceType === 'starter' ? '/starter' : '/model-booking'}`,
       ...(email ? { customer_email: email } : {}),
       metadata: {
         bookingSource: 'model-booking',

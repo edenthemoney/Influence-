@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: { absolute: "Hotel & Resort Influencer Content in Miami | Influence" },
-  description: "Creator content for Miami and South Florida hotels: on-site content visits from $350, photo and video shoots, and event creators for hotel events.",
+  description: "Creator content for Miami and South Florida hotels: on-site content visits from $600, photo and video shoots, and event creators for hotel events.",
   alternates: { canonical: 'https://influencecreators.marketing/hotel-influencer-marketing-miami' },
 };
 
@@ -46,7 +46,7 @@ const props: GeoPageProps = {
   "prices": [
     {
       "name": "Content visit",
-      "price": "From $350",
+      "price": "From $600",
       "desc": "1 creator, 2 hours on-site, 1 Reel + 3 Stories posted."
     },
     {
@@ -56,7 +56,7 @@ const props: GeoPageProps = {
     },
     {
       "name": "Event creators",
-      "price": "$380 per creator (4 hours at $95/hr)",
+      "price": "from $760 (2 creators × 4 hours at $95/hr)",
       "desc": "Hotel parties and launches."
     },
     {
@@ -73,7 +73,7 @@ const props: GeoPageProps = {
   "faqs": [
     {
       "q": "How much does hotel influencer content cost?",
-      "a": "Content visits start from $350. Opening nights are $1,500 for 3 creators and monthly campaigns are $2,500/mo."
+      "a": "Content visits start from $600. Opening nights are $1,500 for 3 creators and monthly campaigns are $2,500/mo."
     },
     {
       "q": "Can you work around guests?",

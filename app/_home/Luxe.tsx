@@ -470,7 +470,7 @@ export function LuxeFooter() {
           </div>
           {col('Book', [['Start a booking', BOOK_HREF], ['All services', '/services'], ['Browse the roster', '/marketplace'], ['Networking night', '/tickets']])}
           {col('Services', [['Music video models', '/music-video-creators'], ['Brand ambassadors', '/brand-ambassadors-miami'], ['Music promotion', '/music-promotion'], ['Bottle girls / VIP', '/bottle-girls-miami'], ['Restaurants', '/restaurant-influencer-marketing-miami'], ['Nightlife', '/nightclub-influencer-marketing-miami'], ['Hotels', '/hotel-influencer-marketing-miami'], ['Influencer cost guide', '/influencer-cost-guide']])}
-          {col('Creators', [['Join the roster', '/join'], ['FAQ', '/faq']])}
+          {col('Creators', [['Join the roster', '/join'], ['FAQ', '/faq'], ['Starter for independent creatives', '/starter']])}
           {col('Contact', [['(561) 287-7194', 'tel:+15612877194', true], ['Email us', 'mailto:influencemodelsagency@gmail.com', true], ['Instagram', 'https://instagram.com/influencecreators.marketing', true]])}
         </div>
         <div className="mt-14 h-px bg-gradient-to-r from-transparent via-[#c9a96e]/60 to-transparent" />

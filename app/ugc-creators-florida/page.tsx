@@ -7,13 +7,12 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'UGC Content Creation — Florida',
-  description: 'Professional UGC creators in Florida produce branded short-form video content for TikTok and Instagram Reels. Authentic, high-converting content starting at $300 per reel. Available remotely nationwide.',
+  description: 'Professional UGC creators in Florida produce branded short-form video content for TikTok and Instagram Reels. Authentic, high-converting content starting at $750 for a 3-reel pack. Available remotely nationwide.',
   url: 'https://influencecreators.marketing/ugc-creators-florida',
   provider: { '@type': 'Organization', name: 'Influence', url: 'https://influencecreators.marketing' },
   areaServed: [{ '@type': 'State', name: 'Florida' }, { '@type': 'Country', name: 'United States' }],
   serviceType: 'UGC Content Creation',
   offers: [
-    { '@type': 'Offer', name: 'Single Reel', price: '300', priceCurrency: 'USD', description: '1 branded reel or skit, to your brief.' },
     { '@type': 'Offer', name: '3-Reel Pack', price: '750', priceCurrency: 'USD', description: '3 branded reels, A/B test content.' },
     { '@type': 'Offer', name: 'Full Campaign', price: '2500', priceCurrency: 'USD', description: '5 creators, 10 videos, account manager.' },
   ],
@@ -21,11 +20,11 @@ const serviceSchema = {
 
 export const metadata: Metadata = {
   title: 'UGC Creators in Florida | Hire UGC Content Creators | Influence',
-  description: 'Hire professional UGC creators in Florida for TikTok, Instagram Reels, and brand content. Authentic, high-converting content that outperforms traditional ads. From $300.',
+  description: 'Hire professional UGC creators in Florida for TikTok, Instagram Reels, and brand content. Authentic, high-converting content that outperforms traditional ads. From $750.',
   keywords: 'UGC creators Florida, hire UGC creator, UGC content creator Miami, user generated content Florida, TikTok creators Florida',
   openGraph: {
     title: 'UGC Creators in Florida | Influence',
-    description: 'Professional UGC creators for authentic, high-converting brand content. Starting at $300.',
+    description: 'Professional UGC creators for authentic, high-converting brand content. Starting at $750.',
     url: 'https://influencecreators.marketing/ugc-creators-florida',
   },
 };
@@ -96,7 +95,7 @@ export default function UGCCreatorsFlorida() {
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Get UGC Content That Converts</h2>
-          <p className="text-white/40 mb-6">15+ creators across Florida. Starting at $300 per reel.</p>
+          <p className="text-white/40 mb-6">15+ creators across Florida. UGC packs from $750 (3 reels).</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/marketplace" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               Browse Creators

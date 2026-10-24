@@ -55,7 +55,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Pricing & Packages',
     question: 'What are your package tiers?',
-    answer: 'Prices start at $199 for a 1-hour music video cameo ($249 for 2 hours) and $300 for a single UGC video or reaction. UGC packs are $750 for 3 and $2,250 for 10. Event hosts are $95/hr with a 4-hour minimum, brand ambassador visits start at $350, commercial models are $600 half day / $1,200 full day, actors $750 / $1,250, and voiceover starts at $250. Larger campaigns are quoted on scope.'
+    answer: 'Main packages start at $450: music video models from $450 (Featured), reactions from $500, UGC packs $750 for 3 and $2,250 for 10. Event hosts are $95/hr per person with a 4-hour, 2-person minimum ($760), brand ambassador visits start at $600, commercial models are $600 half day / $1,200 full day, actors $750 / $1,250, and voiceover starts at $450. Larger campaigns are quoted on scope.'
   },
   {
     category: 'Pricing & Packages',
@@ -150,7 +150,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Services',
     question: 'How much does it cost to hire an influencer?',
-    answer: 'Pricing at Influence starts at $300 for a single UGC video or music reaction, with packages scaling up based on the number of models, content pieces, and campaign scope. Event content orderings and bottle girl / VIP hostess bookings start at $380 (1 model, 4-hour minimum at $95/hr). Monthly subscription packages are also available at discounted rates. Visit our pricing page for a full breakdown of all tiers.'
+    answer: 'Pricing at Influence starts at $450 (music video Featured), with reactions from $500 and UGC packs from $750, with packages scaling up based on the number of models, content pieces, and campaign scope. Event content orderings and bottle girl / VIP hostess bookings start at $760 (2-model, 4-hour minimum at $95/hr). Monthly subscription packages are also available at discounted rates. Visit our pricing page for a full breakdown of all tiers.'
   },
   {
     category: 'Services',
@@ -170,7 +170,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Events & In-Person',
     question: 'Can I hire creators for a party or event in Miami?',
-    answer: 'Absolutely. Influence provides professional event creators and hosts for parties, club nights, brand activations, trade shows, and VIP events across South Florida and the Miami area. Our creators are experienced in event hosting, brand ambassadorship, and nightlife promotion. Pricing starts at $380 for 1 model, 4-hour minimum ($95/hr). Volume pricing available for larger bookings.'
+    answer: 'Absolutely. Influence provides professional event creators and hosts for parties, club nights, brand activations, trade shows, and VIP events across South Florida and the Miami area. Our creators are experienced in event hosting, brand ambassadorship, and nightlife promotion. Pricing starts at $760: 2-model, 4-hour minimum at $95/hr per model. Volume pricing available for larger bookings.'
   },
   {
     category: 'Events & In-Person',
@@ -180,7 +180,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'Business Content',
     question: 'Can you send a model to my business to create content?',
-    answer: 'Yes! Our Business Content service sends a professional model directly to your business — restaurant, salon, gym, retail store, or any location in South Florida. She creates reels, stories, and promotional content on-site, all delivered within 24 hours. Sessions start at $350 for a 2-hour visit.'
+    answer: 'Yes! Our Business Content service sends a professional model directly to your business — restaurant, salon, gym, retail store, or any location in South Florida. She creates reels, stories, and promotional content on-site, all delivered within 24 hours. Sessions start at $600 for a half-day visit.'
   },
   {
     category: 'Business Content',
@@ -200,7 +200,7 @@ const faqItems: FAQItem[] = [
   {
     category: 'About the Agency',
     question: 'What makes Influence different from other creator marketplaces?',
-    answer: 'Influence stands out because we combine real industry credibility with accessible pricing. Our co-founder Deseray Marie has worked with A-list celebrities and major brands, and our network reflects that caliber. Unlike big agencies that charge enterprise prices, we offer packages starting at $300 — making professional creator marketing accessible to independent artists, small businesses, and growing brands. We also handle everything in-house: no middlemen, no hidden fees, fast turnaround.'
+    answer: 'Influence stands out because we combine real industry credibility with accessible pricing. Our co-founder Deseray Marie has worked with A-list celebrities and major brands, and our network reflects that caliber. Unlike big agencies that charge enterprise prices, we offer packages starting at $450 — making professional creator marketing accessible to independent artists, small businesses, and growing brands. We also handle everything in-house: no middlemen, no hidden fees, fast turnaround.'
   },
 ];
 

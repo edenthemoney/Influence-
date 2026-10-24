@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   keywords: 'Instagram creators for hire, book Instagram creator, IG creators Miami, Instagram influencer for hire, social media creators',
   openGraph: {
     title: 'Instagram Creators for Hire | Influence',
-    description: 'Professional Instagram creators for campaigns, shoots, events & content. From $199.',
+    description: 'Professional Instagram creators for campaigns, shoots, events & content. From $450.',
     url: 'https://influencecreators.marketing/instagram-creators-for-hire',
   },
 };
@@ -89,7 +89,7 @@ export default function InstagramModelsForHire() {
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Browse Our Instagram Creators</h2>
-          <p className="text-white/40 mb-6">View portfolios, see credits, and book directly. From $199.</p>
+          <p className="text-white/40 mb-6">View portfolios, see credits, and book directly. From $450.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/marketplace" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               View Creators Roster

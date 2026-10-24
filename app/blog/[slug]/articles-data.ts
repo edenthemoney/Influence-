@@ -65,7 +65,7 @@ export const articles: Record<string, Article> = {
       { type: 'heading', value: "The Cost of Doing Nothing" },
       { type: 'text', value: "Brands that haven't adopted creator marketing are watching their competitors eat their market share. In beauty, fashion, fitness, food, and entertainment — the top-performing brands in every category have influencer partnerships as a core strategy." },
       { type: 'text', value: "The barrier to entry has never been lower. You don't need a Kardashian. A micro-influencer with 10K-50K engaged followers in your niche will outperform a celebrity with 10M passive followers — at a fraction of the cost." },
-      { type: 'cta', text: "See our influencer packages starting at $199.", href: "/start", label: "Book Now" },
+      { type: 'cta', text: "See our influencer packages starting at $450.", href: "/start", label: "Book Now" },
     ],
   },
   "how-miami-brands-are-winning-with-local-influencers": {
@@ -89,7 +89,7 @@ export const articles: Record<string, Article> = {
       { type: 'text', lead: "Fashion & Retail", value: "Fashion & Retail — Miami's fashion scene is internationally recognized. Local boutiques and designers partnering with Miami creators and influencers are seeing direct-to-consumer sales spike after every collaboration." },
       { type: 'text', lead: "Music & Entertainment", value: "Music & Entertainment — Artists launching music in Miami know that local model and influencer support can make or break a video's performance. Our creators has appeared in videos that have collectively generated over 50 million views." },
       { type: 'heading', value: "How to Get Started" },
-      { type: 'text', value: "You don't need a massive budget. Our UGC reels start at $300. For businesses serious about sustained growth, our monthly retainer packages provide consistent content every month, starting at $840/month for 4 UGC videos." },
+      { type: 'text', value: "You don't need a massive budget. Our UGC reels start at $750. For businesses serious about sustained growth, our monthly retainer packages provide consistent content every month, starting at $840/month for 4 UGC videos." },
       { type: 'cta', text: "Browse our Miami creator network and find your perfect match.", href: "/start", label: "Book Now" },
     ],
   },
@@ -115,7 +115,7 @@ export const articles: Record<string, Article> = {
       { type: 'text', lead: "Product Pages", value: "Product Pages — Replace one of your polished product photos with UGC showing the product in real use. Conversion rates increase an average of 29%." },
       { type: 'text', lead: "Email Marketing", value: "Email Marketing — UGC in emails generates 73% higher click-through rates than branded imagery." },
       { type: 'text', lead: "Social Proof", value: "Social Proof — Repost UGC on your own channels to show real people using and loving your product. This builds trust faster than any testimonial page." },
-      { type: 'cta', text: "Get professional UGC content for your brand — starting at $300 per reel.", href: "/start", label: "Book Now" },
+      { type: 'cta', text: "Get professional UGC content for your brand — starting at $750 for a 3-reel pack.", href: "/start", label: "Book Now" },
     ],
   },
   "music-video-models-the-secret-weapon-for-viral-videos": {
@@ -137,7 +137,6 @@ export const articles: Record<string, Article> = {
       { type: 'text', value: "Our newest addition, Ty Nadia, brings an equally impressive resume — lead model roles in videos for Trippie Redd (\"Stay The Same\"), Kodak Black, and Chicken P (17M+ YouTube views). Additional credits include French Montana, Sukihana, Sexyy Red, and Cash Cobain. She's also a skilled contortionist and flexibility artist, adding a unique visual element that directors love." },
       { type: 'heading', value: "What It Costs" },
       { type: 'text', value: "Here's the part that surprises most artists: professional music video creators are more affordable than you think." },
-      { type: 'text', lead: "Cameo ($199 / $249)", value: "Cameo — 1 model, $199 for up to 1 hour or $249 for up to 2 hours on set. Great for a featured scene." },
       { type: 'text', lead: "Featured ($450)", value: "Featured ($450) — 1 model, half day (up to 5 hours)." },
       { type: 'text', lead: "Lead ($950)", value: "Lead ($950) — 1 lead model, full day (up to 10 hours), multiple looks and scenes." },
       { type: 'text', lead: "Ensemble (from $1,950)", value: "Ensemble (from $1,950) — 3 models, full day, +$550 per extra model." },
@@ -223,7 +222,7 @@ export const articles: Record<string, Article> = {
       { type: 'text', value: "The most powerful promotion strategy combines all of the above: multiple creators posting reactions, Reels, and Stories in a coordinated window around your release. This creates the perception of widespread buzz, triggers the algorithm, and generates genuine organic momentum. It's how independent artists compete with major label release rollouts." },
       { type: 'stat', value: "200B", label: "Instagram Reels plays per day — the opportunity is massive" },
       { type: 'stat', value: "3-5x", label: "More streams when a release has coordinated influencer support" },
-      { type: 'cta', text: "Promote your next release with our music reaction packages — from $300.", href: "/start", label: "Book Now" },
+      { type: 'cta', text: "Promote your next release with our music reaction packages — from $500.", href: "/start", label: "Book Now" },
     ],
   },
   "how-much-does-ugc-cost-miami": {
@@ -234,11 +233,11 @@ export const articles: Record<string, Article> = {
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Des/des-5.jpg",
-  "description": "Influence UGC reels and campaigns start at $300. What changes the price of UGC in Miami.",
+  "description": "Influence UGC reels and campaigns start at $750. What changes the price of UGC in Miami.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: at Influence, UGC reels start at $300 per reel. The final price depends on how many videos you need, editing, and your timeline."
+      "value": "Short answer: at Influence, UGC reels start at $750 for a 3-reel pack. The final price depends on how many videos you need, editing, and your timeline."
     },
     {
       "type": "heading",
@@ -285,7 +284,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much do UGC creators charge per video?",
-      "a": "At Influence, UGC reels start at $300 per reel. Packs and campaigns are priced on scope."
+      "a": "At Influence, UGC reels start at $750 for a 3-reel pack. Packs and campaigns are priced on scope."
     },
     {
       "q": "Can UGC be filmed remotely?",
@@ -301,11 +300,11 @@ export const articles: Record<string, Article> = {
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Des/des-4.jpg",
-  "description": "Event models in Miami are $95/hr per model with a 4-hour minimum ($380) at Influence. How booking works and what to ask.",
+  "description": "Event models in Miami are $95/hr per model with a 4-hour minimum, 2-person minimum ($760) at Influence. How booking works and what to ask.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: Influence event models and promo girls are $95/hr per model with a 4-hour minimum ($380). Send the date, venue and type of event, and we confirm the lineup."
+      "value": "Short answer: Influence event models and promo girls are $95/hr per model with a 4-hour minimum, 2-person minimum ($760). Send the date, venue and type of event, and we confirm the lineup."
     },
     {
       "type": "heading",
@@ -356,7 +355,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much do promo models cost in Miami?",
-      "a": "At Influence, $95/hr per model with a 4-hour minimum ($380)."
+      "a": "At Influence, $95/hr per model with a 4-hour minimum, 2-person minimum ($760)."
     },
     {
       "q": "How far ahead should I book?",
@@ -372,11 +371,11 @@ export const articles: Record<string, Article> = {
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Nadia/nadia-1.jpg",
-  "description": "Music video models at Influence start from $199: Cameo, Featured, Lead and Ensemble tiers. Step-by-step casting guide for artists.",
+  "description": "Music video models at Influence start from $450: Featured, Lead and Ensemble tiers. Step-by-step casting guide for artists.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: pick a tier, send your treatment, and confirm the shoot day. At Influence, music video models start from $199."
+      "value": "Short answer: pick a tier, send your treatment, and confirm the shoot day. At Influence, music video models start from $450."
     },
     {
       "type": "heading",
@@ -384,7 +383,7 @@ export const articles: Record<string, Article> = {
     },
     {
       "type": "text",
-      "value": "Cameo: $199 for 1 hour or $249 for 2 hours. 1 model on set."
+      "value": "Featured: $450 for a half day (up to 5 hours). 1 model on set."
     },
     {
       "type": "text",
@@ -468,7 +467,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much does it cost to hire a model for a music video?",
-      "a": "From $199 at Influence: Cameo $199 (1 hr) or $249 (2 hrs), Featured $450, Lead $950, Ensemble from $1,950."
+      "a": "From $450 at Influence: Featured $450, Lead $950, Ensemble from $1,950."
     },
     {
       "q": "Do I need a release form?",
@@ -610,11 +609,11 @@ export const articles: Record<string, Article> = {
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Des/des-3.jpg",
-  "description": "Commercial work at Influence starts at $250 for voiceover and $750 for an on-camera actor. How casting and voiceover work in South Florida.",
+  "description": "Commercial work at Influence starts at $450 for voiceover and $750 for an on-camera actor. How casting and voiceover work in South Florida.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: Commercial work at Influence starts at $250 for voiceover and $750 for an on-camera actor. Send your script and we cast actors, speaking talent or voiceover to match."
+      "value": "Short answer: Commercial work at Influence starts at $450 for voiceover and $750 for an on-camera actor. Send your script and we cast actors, speaking talent or voiceover to match."
     },
     {
       "type": "heading",
@@ -670,7 +669,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much does a commercial cost?",
-      "a": "At Influence, commercial work starts at $250 for voiceover and $750 for an on-camera actor. The final price depends on the script, talent and shoot."
+      "a": "At Influence, commercial work starts at $450 for voiceover and $750 for an on-camera actor. The final price depends on the script, talent and shoot."
     },
     {
       "q": "Do you provide voiceover talent?",
@@ -679,18 +678,18 @@ export const articles: Record<string, Article> = {
   ]
 },
   "brand-ambassador-visits-for-local-businesses": {
-  "title": "Brand Ambassador Visits for Local Businesses: What You Get for $350+",
+  "title": "Brand Ambassador Visits for Local Businesses: What You Get for $600+",
   "category": "Business",
   "readTime": "5 min read",
   "date": "Oct 21, 2026",
   "isoDate": "2026-10-21",
   "author": "Influence",
   "image": "/images/Des/des-2.jpg",
-  "description": "Brand ambassador visits at Influence start from $350: Solo Visit, Content Day and Full Production packages.",
+  "description": "Brand ambassador visits at Influence start from $600: Solo Visit, Content Day and Full Production packages.",
   "content": [
     {
       "type": "text",
-      "value": "Short answer: Influence brand ambassador visits start from $350. A creator comes to your business and makes reels and stories on site."
+      "value": "Short answer: Influence brand ambassador visits start from $600. A creator comes to your business and makes reels and stories on site."
     },
     {
       "type": "heading",
@@ -733,7 +732,7 @@ export const articles: Record<string, Article> = {
   "faq": [
     {
       "q": "How much does an influencer visit cost?",
-      "a": "Brand ambassador visits start from $350 at Influence."
+      "a": "Brand ambassador visits start from $600 at Influence."
     },
     {
       "q": "What do I get?",

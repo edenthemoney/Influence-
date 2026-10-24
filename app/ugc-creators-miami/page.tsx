@@ -7,7 +7,7 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'UGC Creators Miami — UGC Content Creation Marketplace | Influence',
-  description: 'Top UGC creators in Miami. Book verified influencers for authentic user-generated content, reels, TikToks, and brand videos. From $300.',
+  description: 'Top UGC creators in Miami. Book verified influencers for authentic user-generated content, reels, TikToks, and brand videos. From $750.',
   openGraph: {
     title: 'UGC Creators Miami — UGC Content Creation Marketplace',
     description: 'Miami\'s top UGC creators. Authentic content, verified influencers, transparent pricing for brands.',
@@ -36,7 +36,7 @@ const localBusinessSchema = {
     longitude: -80.19178,
   },
   openingHours: 'Mo-Su 00:00-23:59',
-  priceRange: '$300-$3,000',
+  priceRange: '$750-$3,000',
   sameAs: [
     'https://www.instagram.com/influencecreators.marketing',
     'https://www.tiktok.com/@influencemodelsagency',
@@ -52,7 +52,7 @@ const faqSchema = {
       name: 'How much does UGC content cost in Miami?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Miami UGC content starts at $300 per video. Package deals available for multiple videos. Pricing varies based on content type, complexity, and influencer tier.',
+        text: 'Miami UGC content starts at $750 for a 3-video pack. Package deals available for multiple videos. Pricing varies based on content type, complexity, and influencer tier.',
       },
     },
     {
@@ -145,7 +145,7 @@ export default function MiamiUGCCreatorsPage() {
               Miami's Top<br />UGC Creators
             </h1>
             <p className="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-              Verified Miami influencers creating authentic user-generated content for brands. Reels, TikToks, product demos, testimonials — all delivered remotely. From $300.
+              Verified Miami influencers creating authentic user-generated content for brands. Reels, TikToks, product demos, testimonials — all delivered remotely. From $750.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/start?service=ugc" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
@@ -194,12 +194,12 @@ export default function MiamiUGCCreatorsPage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { name: 'Product Demos', price: 'From $300', desc: 'Authentic product demonstrations and unboxing videos.' },
-                { name: 'Testimonials', price: 'From $300', desc: 'Genuine customer testimonials and reviews on camera.' },
-                { name: 'Lifestyle Content', price: 'From $300', desc: 'Lifestyle videos featuring your product in daily use.' },
-                { name: 'Brand Reels', price: 'From $300', desc: 'Branded Instagram reels and TikTok content.' },
-                { name: 'Trend Content', price: 'From $300', desc: 'Viral trend participation and challenge videos.' },
-                { name: 'GRWM Content', price: 'From $300', desc: 'Get Ready With Me style content with products.' },
+                { name: 'Product Demos', price: 'From $750', desc: 'Authentic product demonstrations and unboxing videos.' },
+                { name: 'Testimonials', price: 'From $750', desc: 'Genuine customer testimonials and reviews on camera.' },
+                { name: 'Lifestyle Content', price: 'From $750', desc: 'Lifestyle videos featuring your product in daily use.' },
+                { name: 'Brand Reels', price: 'From $750', desc: 'Branded Instagram reels and TikTok content.' },
+                { name: 'Trend Content', price: 'From $750', desc: 'Viral trend participation and challenge videos.' },
+                { name: 'GRWM Content', price: 'From $750', desc: 'Get Ready With Me style content with products.' },
               ].map(({ name, price, desc }) => (
                 <div key={name} className="border border-white/[0.06] p-6">
                   <h3 className="text-white font-bold text-sm mb-1">{name}</h3>
@@ -246,7 +246,7 @@ export default function MiamiUGCCreatorsPage() {
             <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
               Book Miami UGC<br />creators today.
             </h2>
-            <p className="text-black/50 text-lg mb-10 max-w-lg">Authentic content from verified Miami influencers. From $300. 3-7 day delivery.</p>
+            <p className="text-black/50 text-lg mb-10 max-w-lg">Authentic content from verified Miami influencers. From $750. 3-7 day delivery.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/start?service=ugc" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Miami UGC <ChevronRight className="h-4 w-4" />

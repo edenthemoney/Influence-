@@ -6,11 +6,11 @@ import { Check, ArrowRight, Star, MapPin, Users, TrendingUp } from 'lucide-react
 
 export const metadata: Metadata = {
   title: 'Hire an Influencer in Miami | Influence',
-  description: 'Book Miami-based influencers and creators for music videos, brand campaigns, UGC content, events, and more. Professional creators with celebrity-level credits. From $199.',
+  description: 'Book Miami-based influencers and creators for music videos, brand campaigns, UGC content, events, and more. Professional creators with celebrity-level credits. From $450.',
   keywords: 'hire influencer Miami, Miami influencer marketplace, book influencer Miami, creator marketing Miami, Miami creators for hire',
   openGraph: {
     title: 'Hire an Influencer in Miami | Influence',
-    description: 'Professional Miami influencers for music videos, brand campaigns, UGC, and events. From $199.',
+    description: 'Professional Miami influencers for music videos, brand campaigns, UGC, and events. From $450.',
     url: 'https://influencecreators.marketing/hire-influencer-miami',
   },
 };
@@ -81,10 +81,10 @@ export default function HireInfluencerMiami() {
           </div>
         </div>
 
-        <AnswerFaq id="/hire-influencer-miami" title="Hiring an influencer in Miami: quick answers" service={{ name: 'Hire Influencers in Miami', serviceType: 'Influencer and creator booking', description: 'Book Miami creators for UGC, music videos, music reaction videos, brand content, commercials and events. Campaigns start at $300.' }} items={[
+        <AnswerFaq id="/hire-influencer-miami" title="Hiring an influencer in Miami: quick answers" service={{ name: 'Hire Influencers in Miami', serviceType: 'Influencer and creator booking', description: 'Book Miami creators for UGC, music videos, music reaction videos, brand content, commercials and events. Campaigns start at $750.' }} items={[
           { q: 'How do I hire an influencer in Miami?', a: 'Browse creators on the marketplace or send your brief through the booking form. We match creators and confirm the booking.' },
           { q: 'What can I hire creators for?', a: 'UGC and reels, music videos, music reaction videos, brand content, commercials, and event appearances.' },
-          { q: 'How much does it cost?', a: 'Our campaigns start at $300. The final price depends on the creator, deliverables and scope.' },
+          { q: 'How much does it cost?', a: 'Our campaigns start at $450. The final price depends on the creator, deliverables and scope.' },
           { q: 'Which areas do you cover?', a: 'Miami and South Florida, including Fort Lauderdale, Boca Raton and West Palm Beach.' },
         ]} />
 

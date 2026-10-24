@@ -82,7 +82,7 @@ export default function ModelsForPhotoshoot() {
             </div>
           ))}
         </div>
-        <p className="text-white/20 text-xs mb-16">Need 5–50+ models? Volume packages available. Add a photographer from $250 or videographer from $300. Monthly retainers for recurring shoots.</p>
+        <p className="text-white/20 text-xs mb-16">Need 5–50+ models? Volume packages available. Add a photographer from $250 or videographer from $600. Monthly retainers for recurring shoots.</p>
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Book Photoshoot Models</h2>

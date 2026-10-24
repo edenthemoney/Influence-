@@ -11,7 +11,7 @@ const articles = [
   {
     slug: "how-much-does-ugc-cost-miami",
     title: "How Much Does UGC Cost in Miami? 2026 Price Guide",
-    excerpt: "Influence UGC reels and campaigns start at $300. What changes the price of UGC in Miami.",
+    excerpt: "Influence UGC reels and campaigns start at $750. What changes the price of UGC in Miami.",
     category: "Pricing",
     readTime: "5 min read",
     date: 'Oct 2026',
@@ -21,7 +21,7 @@ const articles = [
   {
     slug: "how-to-book-event-models-miami",
     title: "How to Book Event Models and Promo Girls in Miami (Rates, Timing, What to Ask)",
-    excerpt: "Event models in Miami are $95/hr per model with a 4-hour minimum ($380) at Influence. How booking works and what to ask.",
+    excerpt: "Event models in Miami are $95/hr per model with a 4-hour minimum, 2-person minimum ($760) at Influence. How booking works and what to ask.",
     category: "Events",
     readTime: "5 min read",
     date: 'Oct 2026',
@@ -31,7 +31,7 @@ const articles = [
   {
     slug: "how-to-cast-models-for-your-music-video",
     title: "How to Cast Models for Your Music Video: A Step-by-Step Guide for Artists",
-    excerpt: "Music video models at Influence start from $199: Cameo, Featured, Lead and Ensemble tiers. Step-by-step casting guide for artists.",
+    excerpt: "Music video models at Influence start from $450: Featured, Lead and Ensemble tiers. Step-by-step casting guide for artists.",
     category: "Music",
     readTime: "6 min read",
     date: 'Oct 2026',
@@ -61,7 +61,7 @@ const articles = [
   {
     slug: "hiring-actors-and-voiceover-for-commercials-south-florida",
     title: "Hiring Actors and Voiceover Talent for Commercials in South Florida",
-    excerpt: "Commercial work at Influence starts at $250 for voiceover and $750 for an on-camera actor. How casting and voiceover work in South Florida.",
+    excerpt: "Commercial work at Influence starts at $450 for voiceover and $750 for an on-camera actor. How casting and voiceover work in South Florida.",
     category: "Commercials",
     readTime: "5 min read",
     date: 'Oct 2026',
@@ -70,8 +70,8 @@ const articles = [
   },
   {
     slug: "brand-ambassador-visits-for-local-businesses",
-    title: "Brand Ambassador Visits for Local Businesses: What You Get for $350+",
-    excerpt: "Brand ambassador visits at Influence start from $350: Solo Visit, Content Day and Full Production packages.",
+    title: "Brand Ambassador Visits for Local Businesses: What You Get for $600+",
+    excerpt: "Brand ambassador visits at Influence start from $600: Solo Visit, Content Day and Full Production packages.",
     category: "Business",
     readTime: "5 min read",
     date: 'Oct 2026',

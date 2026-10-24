@@ -20,7 +20,7 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Business Content & Brand Ambassadors",
-  "description": "Professional creators visit your business location and create reels, stories, and promo content on-site. Perfect for restaurants, salons, gyms, retail stores. South Florida. From $350.",
+  "description": "Professional creators visit your business location and create reels, stories, and promo content on-site. Perfect for restaurants, salons, gyms, retail stores. South Florida. From $600.",
   "provider": {
     "@type": "Organization",
     "name": "Influence",
@@ -38,7 +38,7 @@ const serviceSchema = {
   ],
   "offers": {
     "@type": "Offer",
-    "price": "300",
+    "price": "600",
     "priceCurrency": "USD",
     "availability": "https://schema.org/InStock"
   }

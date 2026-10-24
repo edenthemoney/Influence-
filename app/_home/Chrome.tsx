@@ -55,6 +55,7 @@ export function PreviewFooter() {
               <ul className="space-y-3 text-[15px] text-white/85">
                 <li><Link href="/join">Join the roster</Link></li>
                 <li><Link href="/faq">FAQ</Link></li>
+                <li><Link href="/starter" className="text-white/60">Starter</Link></li>
               </ul>
             </div>
             <div>

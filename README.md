@@ -6,7 +6,7 @@ An all-in-one model agency web application connecting businesses with elite cont
 
 ### For Businesses
 - **Browse Influencer Marketplace** - Search and filter verified influencers by niche, followers, engagement rate
-- **Package Tiers** - From $199 (music video cameo); see Pricing below
+- **Package Tiers** - From $450 (music video Featured); see Pricing below
 - **Secure Payments** - Stripe integration with escrow and automated commission splits
 - **Campaign Management** - Track deliverables, request revisions, approve content
 - **Analytics Dashboard** - Monitor campaign performance and ROI
@@ -29,13 +29,13 @@ An all-in-one model agency web application connecting businesses with elite cont
 
 | Service | Price |
 |---------|-------|
-| Music video models | Cameo $199 (1 hr) / $249 (2 hrs) · Featured $450 (half day) · Lead $950 (full day) · Ensemble from $1,950 (+$550/extra model) |
+| Music video models | Featured $450 (half day) · Lead $950 (full day) · Ensemble from $1,950 (+$550/extra model) |
 | Commercial / print models | $600 half day · $1,200 full day (paid ads/broadcast usage +50%) |
-| Event hosts / bottle girls | $95/hr per person, 4-hour minimum ($380) |
-| Brand ambassador visits | From $350 · Opening night $1,500 (3 creators) · Monthly campaign $2,500/mo |
-| UGC | $300 single · $750 for 3 · $2,250 for 10 · paid-ad rights +30% |
-| Music promotion | Reactions from $300 ($500 high-reach) · Story reposts from $150 · Collab posts from $500 · Launch $750 · Push $1,750 |
-| Actors / voiceover | Actors $750 half day / $1,250 full day · Voiceover $250 web / $450 broadcast (13 wk) |
+| Event hosts / bottle girls | $95/hr per person, 4-hour minimum, 2-person minimum ($760) |
+| Brand ambassador visits | From $600 · Opening night $1,500 (3 creators) · Monthly campaign $2,500/mo |
+| UGC | $750 for 3 · $2,250 for 10 · paid-ad rights +30% |
+| Music promotion | Reactions from $500 · Story reposts from $600 · Collab posts from $500 · Launch $750 · Push $1,750 |
+| Actors / voiceover | Actors $750 half day / $1,250 full day · Voiceover $450 broadcast (13 wk) |
 
 Source of truth for checkout prices: `lib/booking-packages.ts` (server re-prices every checkout from it). Research: Oct 2026 price sheet.
 
@@ -123,9 +123,9 @@ influence-platform/
 - Platform fee: Included in commission
 
 **Example:**
-- Client pays $250 for Pro package
-- Agency receives: $75 (30%)
-- Influencer receives: $175 (70%)
+- Client pays $1,000 for a package
+- Agency receives: $300 (30%)
+- Influencer receives: $700 (70%)
 
 ## 🔐 Security Features
 

@@ -2,10 +2,10 @@ import PersonaLanding from '../components/PersonaLanding';
 
 export const metadata = {
   title: 'Paid Instagram Shoutouts & Social Media Promo | UGC Creators — Influence Marketplace',
-  description: 'Get paid Instagram shoutouts, social media promo, and authentic UGC content from verified creators. Product reviews, testimonial videos, and branded reels. From $300.',
+  description: 'Get paid Instagram shoutouts, social media promo, and authentic UGC content from verified creators. Product reviews, testimonial videos, and branded reels. From $750.',
   openGraph: {
     title: 'Paid Instagram Shoutouts & Social Media Promo',
-    description: 'Get paid Instagram shoutouts, UGC content, and creator reviews. From $300.',
+    description: 'Get paid Instagram shoutouts, UGC content, and creator reviews. From $750.',
     url: 'https://influencecreators.marketing/ugc-content',
   },
 };
@@ -14,7 +14,7 @@ export default function UgcContentPage() {
   return (
     <PersonaLanding
       title="UGC Content & Creator Reviews"
-      description="Get authentic UGC content, product reviews, and testimonial videos from verified creators. Delivered ready to post. Nationwide. From $300."
+      description="Get authentic UGC content, product reviews, and testimonial videos from verified creators. Delivered ready to post. Nationwide. From $750."
       tagline="Remote · Nationwide Delivery"
       headline="Get Creator Content\nThat Converts."
       subheadline="Verified creators make reels, reviews, and testimonial videos for your brand. You get HD content delivered to your inbox — ready to post or run as ads."
@@ -38,18 +38,10 @@ export default function UgcContentPage() {
       ]}
       packages={[
         {
-          name: 'Single Video',
-          price: 300,
-          tagline: 'Start Here',
-          features: ['1 UGC video (15–60s) to your brief', 'Professional editing & trending audio', '2 revisions', 'Organic usage on your site & social', 'Paid-ad rights +30% (90 days)'],
-          cta: 'Order 1 Video',
-          href: '/start?service=ugc&package=ugc-single',
-        },
-        {
           name: '3-Pack',
           price: 750,
-          tagline: 'Most Popular',
-          features: ['3 UGC videos ($250 each)', 'Different hooks & angles', '2 revisions each', 'Organic usage on your site & social', 'Paid-ad rights +30% (90 days)'],
+          tagline: 'Start Here',
+          features: ['3 UGC videos', 'Different hooks & angles', '2 revisions each', 'Organic usage on your site & social', 'Paid-ad rights +30% (90 days)'],
           cta: 'Order 3-Pack',
           href: '/start?service=ugc&package=ugc-3pack',
           popular: true,

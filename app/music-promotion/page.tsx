@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: { absolute: "Music Promotion with Real Creators | Reaction Videos & Reposts | Influence" },
-  description: "Promote your song with real creators: music reaction videos from $300, Instagram story reposts from $150, collab posts from $500. No bots.",
+  description: "Promote your song with real creators: music reaction videos from $500, Instagram story reposts from $600, collab posts from $500. No bots.",
   alternates: { canonical: 'https://influencecreators.marketing/music-promotion' },
 };
 
@@ -14,7 +14,7 @@ const props: GeoPageProps = {
   "intro": "Real creators react to your song, repost it to their stories, or co-post it to both feeds. No bots, no bought views, no fake streams.",
   "serviceName": "Music promotion with creators",
   "serviceType": "Music promotion",
-  "serviceDescription": "Song reaction videos, Instagram story reposts and collab posts by real creators. Reactions from $300, story reposts from $150, collab posts from $500.",
+  "serviceDescription": "Song reaction videos, Instagram story reposts and collab posts by real creators. Reactions from $500, story reposts from $600, collab posts from $500.",
   "cta": {
     "label": "Promote a song",
     "href": "/start?service=reaction"
@@ -44,13 +44,13 @@ const props: GeoPageProps = {
     },
     {
       "heading": "Need a music video too?",
-      "answer": "Book models for your video from $199, or record at our studio partner in Boca Raton."
+      "answer": "Book models for your video from $450, or record at our studio partner in Boca Raton."
     }
   ],
   "prices": [
     {
       "name": "Music reactions",
-      "price": "From $300",
+      "price": "From $450",
       "desc": "Creator reacts to your song on camera."
     },
     {
@@ -60,7 +60,7 @@ const props: GeoPageProps = {
     },
     {
       "name": "Story reposts",
-      "price": "From $150",
+      "price": "From $600",
       "desc": "Story frames with your link, 24-hour visibility."
     },
     {

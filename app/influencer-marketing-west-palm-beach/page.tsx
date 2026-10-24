@@ -27,8 +27,8 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"ServiceAreaBusiness\",\"name\":\"Influence - West Palm Beach\",\"description\":\"West Palm Beach creator marketing marketplace. Book celebrity-connected influencers for story reposts, collab posts, UGC content, business promotion, events, and content orderings.\",\"url\":\"https://influencecreators.marketing/influencer-marketing-west-palm-beach\",\"telephone\":\"+15612877194\",\"email\":\"influencemodelsagency@gmail.com\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"West Palm Beach\",\"addressRegion\":\"FL\",\"addressCountry\":\"US\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":26.7153,\"longitude\":-80.0534},\"serviceType\":[\"Story Reposts\",\"Collab Posts\",\"UGC Content Creation\",\"Creator Marketing\",\"Content Ordering\",\"Event Hosting\",\"Music Video Production\"],\"areaServed\":[{\"@type\":\"City\",\"name\":\"West Palm Beach\"},{\"@type\":\"City\",\"name\":\"Palm Beach Gardens\"},{\"@type\":\"City\",\"name\":\"Riviera Beach\"},{\"@type\":\"City\",\"name\":\"Lake Worth\"}],\"priceRange\":\"$300-$5,000\",\"openingHours\":\"Mo-Su 00:00-23:59\",\"sameAs\":[\"https://www.instagram.com/influencecreators.marketing\",\"https://www.tiktok.com/@influencemodelsagency\"]}" }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"How much does creator marketing cost in West Palm Beach?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"West Palm Beach creator marketing starts at $300 for UGC content. Event models are $95/hr (4-hour minimum). Music video models start at $199. Pricing varies based on the influencer's following, content type, and campaign scope.\"}},{\"@type\":\"Question\",\"name\":\"Do you work with West Palm Beach-based influencers only?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We work with both West Palm Beach-based influencers and nationwide creators. For on-site bookings in Palm Beach County, we prioritize local influencers. For remote UGC content, we can work with influencers anywhere in the US.\"}},{\"@type\":\"Question\",\"name\":\"How fast can you book West Palm Beach influencers?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We offer same-day response for West Palm Beach bookings. Most campaigns can be booked and scheduled within 24-48 hours. Remote UGC content is typically delivered within 3-7 days.\"}},{\"@type\":\"Question\",\"name\":\"What areas of Palm Beach County do you serve?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We serve all of Palm Beach County including West Palm Beach, Palm Beach Gardens, Riviera Beach, Lake Worth, Wellington, and surrounding areas.\"}}]}" }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"ServiceAreaBusiness\",\"name\":\"Influence - West Palm Beach\",\"description\":\"West Palm Beach creator marketing marketplace. Book celebrity-connected influencers for story reposts, collab posts, UGC content, business promotion, events, and content orderings.\",\"url\":\"https://influencecreators.marketing/influencer-marketing-west-palm-beach\",\"telephone\":\"+15612877194\",\"email\":\"influencemodelsagency@gmail.com\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"West Palm Beach\",\"addressRegion\":\"FL\",\"addressCountry\":\"US\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":26.7153,\"longitude\":-80.0534},\"serviceType\":[\"Story Reposts\",\"Collab Posts\",\"UGC Content Creation\",\"Creator Marketing\",\"Content Ordering\",\"Event Hosting\",\"Music Video Production\"],\"areaServed\":[{\"@type\":\"City\",\"name\":\"West Palm Beach\"},{\"@type\":\"City\",\"name\":\"Palm Beach Gardens\"},{\"@type\":\"City\",\"name\":\"Riviera Beach\"},{\"@type\":\"City\",\"name\":\"Lake Worth\"}],\"priceRange\":\"$450-$5,000\",\"openingHours\":\"Mo-Su 00:00-23:59\",\"sameAs\":[\"https://www.instagram.com/influencecreators.marketing\",\"https://www.tiktok.com/@influencemodelsagency\"]}" }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"How much does creator marketing cost in West Palm Beach?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"West Palm Beach creator marketing starts at $750 for UGC content. Event models are $95/hr per model with a 4-hour, 2-model minimum ($760). Music video models start at $450. Pricing varies based on the influencer's following, content type, and campaign scope.\"}},{\"@type\":\"Question\",\"name\":\"Do you work with West Palm Beach-based influencers only?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We work with both West Palm Beach-based influencers and nationwide creators. For on-site bookings in Palm Beach County, we prioritize local influencers. For remote UGC content, we can work with influencers anywhere in the US.\"}},{\"@type\":\"Question\",\"name\":\"How fast can you book West Palm Beach influencers?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We offer same-day response for West Palm Beach bookings. Most campaigns can be booked and scheduled within 24-48 hours. Remote UGC content is typically delivered within 3-7 days.\"}},{\"@type\":\"Question\",\"name\":\"What areas of Palm Beach County do you serve?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We serve all of Palm Beach County including West Palm Beach, Palm Beach Gardens, Riviera Beach, Lake Worth, Wellington, and surrounding areas.\"}}]}" }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: "{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://influencecreators.marketing\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"West Palm Beach Creator Marketing\",\"item\":\"https://influencecreators.marketing/influencer-marketing-west-palm-beach\"}]}" }} />
     <div className="min-h-screen bg-[#080808]">
       <nav className="border-b border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl fixed w-full z-50">
@@ -162,7 +162,7 @@ export default function Page() {
                 {"Business Content"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-3" style={{ color: "#c9a96e" }}>
-                {"From $300"}
+                {"From $450"}
               </p>
               <p className="text-white/40 text-[13px] leading-relaxed">
                 {"On-site content for West Palm Beach restaurants and businesses."}
@@ -173,7 +173,7 @@ export default function Page() {
                 {"UGC Content"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-3" style={{ color: "#c9a96e" }}>
-                {"From $300"}
+                {"From $450"}
               </p>
               <p className="text-white/40 text-[13px] leading-relaxed">
                 {"Remote content creation for West Palm Beach brands."}
@@ -195,7 +195,7 @@ export default function Page() {
                 {"Music Video Creators"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-3" style={{ color: "#c9a96e" }}>
-                {"From $199"}
+                {"From $450"}
               </p>
               <p className="text-white/40 text-[13px] leading-relaxed">
                 {"Creators for West Palm Beach music video productions."}
@@ -217,7 +217,7 @@ export default function Page() {
                 {"Music Promotion"}
               </h3>
               <p className="text-[10px] font-bold tracking-widest uppercase mb-3" style={{ color: "#c9a96e" }}>
-                {"From $300"}
+                {"From $450"}
               </p>
               <p className="text-white/40 text-[13px] leading-relaxed">
                 {"Song reaction videos for West Palm Beach artists."}
@@ -363,7 +363,7 @@ export default function Page() {
             {"in Palm Beach County."}
           </h2>
           <p className="text-black/50 text-lg mb-10 max-w-lg">
-            {"Book West Palm Beach influencers for your next campaign. From $300."}
+            {"Book West Palm Beach influencers for your next campaign. From $450."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: "#c9a96e", color: "#000" }} href="/start">

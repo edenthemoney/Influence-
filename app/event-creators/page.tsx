@@ -38,12 +38,12 @@ export default function EventTalentPage() {
       ]}
       packages={[
         {
-          name: '1 Model',
-          price: 380,
-          tagline: 'Solo Hostess',
-          features: ['1 professional hostess · 4 hours', '$95/hr, 4-hour minimum', 'Event-ready styling', 'South Florida'],
-          cta: 'Book 1 Model',
-          href: '/start?service=event&package=1-girl',
+          name: '2 Models',
+          price: 760,
+          tagline: 'Minimum Booking',
+          features: ['2 professional hostesses · 4 hours', '$95/hr each, 4-hour & 2-model minimum', 'Event-ready styling', 'South Florida'],
+          cta: 'Book 2 Models',
+          href: '/start?service=event&package=2-girls',
         },
         {
           name: '3 Models',

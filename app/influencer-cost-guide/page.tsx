@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: 'How Much Does It Cost to Hire an Influencer? | Influence',
-  description: 'How much it costs to hire an influencer: Influence campaigns start at $300, event creators $380 per creator (4 hours at $95/hr). What drives the price, explained plainly.',
+  description: 'How much it costs to hire an influencer: Influence campaigns start at $450, event creators from $760 (2 creators × 4 hours at $95/hr). What drives the price, explained plainly.',
   alternates: { canonical: 'https://influencecreators.marketing/influencer-cost-guide' },
 };
 
@@ -19,7 +19,7 @@ const props: GeoPageProps = {
   sections: [
     {
       heading: 'How much does it cost to hire an influencer?',
-      answer: 'At Influence, campaigns start at $300. Event creators are $380 per creator (4 hours at $95/hr), and commercial work starts at $250 for voiceover and $750 for an on-camera actor. Anything custom is quoted on scope. Across the industry, rates vary widely, so contact us for a number on your exact project.',
+      answer: 'At Influence, campaigns start at $450. Event creators start at $760 (2 creators × 4 hours at $95/hr), and commercial work starts at $450 for voiceover and $750 for an on-camera actor. Anything custom is quoted on scope. Across the industry, rates vary widely, so contact us for a number on your exact project.',
     },
     {
       heading: 'What drives the price',
@@ -36,9 +36,9 @@ const props: GeoPageProps = {
       heading: 'Influence prices published on this site',
       answer: 'These are the starting prices currently listed on our service pages.',
       bullets: [
-        'Campaigns: start at $300',
-        'Event creators: $380 per creator, 4 hours at $95/hr (see Event Creators)',
-        'Commercials: voiceover from $250, actors from $750 (see Commercials)',
+        'Campaigns: start at $450',
+        'Event creators: from $760 (2 creators × 4 hours at $95/hr) (see Event Creators)',
+        'Commercials: voiceover from $450, actors from $750 (see Commercials)',
         'UGC reels: see the UGC creators page for current packages',
       ],
     },
@@ -56,7 +56,7 @@ const props: GeoPageProps = {
     },
   ],
   faqs: [
-    { q: 'What is the cheapest way to start?', a: 'Our campaigns start at $300. Send your goals and budget and we tell you what fits.' },
+    { q: 'What is the cheapest way to start?', a: 'Our campaigns start at $450. Send your goals and budget and we tell you what fits.' },
     { q: 'Do you publish fixed rates?', a: 'Some services list starting prices on their service pages. Custom campaigns are quoted on scope.' },
   ],
   sources: [

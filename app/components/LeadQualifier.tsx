@@ -2,7 +2,7 @@
 /** One-tap qualifier shown right after ANY lead form saves contact info (event 'lead:qualify'). */
 import { useEffect, useState } from 'react';
 import { X, Check, ChevronLeft } from 'lucide-react';
-import { LEAD_TYPES, SERVICES_BY_TYPE, BUDGETS, TIMINGS, CITIES, type LeadType, type LeadAnswers } from '../../lib/leads';
+import { LEAD_TYPES, SERVICES_BY_TYPE, BUDGETS, STARTER_BUDGET, STARTER_HREF, TIMINGS, CITIES, type LeadType, type LeadAnswers } from '../../lib/leads';
 import { trackLanding, leadMeta, type LeadContact } from '../../lib/leadClient';
 
 const gold = '#c9a96e';
@@ -111,6 +111,9 @@ export default function LeadQualifier() {
             <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center border border-[#c9a96e]/50"><Check className="h-5 w-5" style={{ color: gold }} /></div>
             <p className="mb-2 font-display text-2xl font-bold italic text-white">Perfect. You&apos;re all set.</p>
             <p className="mb-6 text-sm text-white/50">A rep will text you options and pricing shortly.</p>
+            {a.budget === STARTER_BUDGET && (
+              <a href={STARTER_HREF} className="mb-3 flex min-h-[48px] w-full items-center justify-center text-[12px] font-bold uppercase tracking-widest" style={{ background: gold, color: '#000' }}>See Starter options</a>
+            )}
             <button onClick={() => setCtx(null)} className="min-h-[48px] w-full border border-white/20 text-[12px] font-bold uppercase tracking-widest text-white">Keep browsing</button>
           </div>
         )}

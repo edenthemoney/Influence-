@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: { absolute: "Influencer Marketing for Restaurants in Miami | Influence" },
-  description: "Restaurant influencer marketing in Miami: creator content visits from $350, opening nights from $1,500 (3 creators), monthly campaigns from $2,500/mo, story reposts and collab posts.",
+  description: "Restaurant influencer marketing in Miami: creator content visits from $600, opening nights from $1,500 (3 creators), monthly campaigns from $2,500/mo, story reposts and collab posts.",
   alternates: { canonical: 'https://influencecreators.marketing/restaurant-influencer-marketing-miami' },
 };
 
@@ -56,7 +56,7 @@ const props: GeoPageProps = {
   "prices": [
     {
       "name": "Content visit",
-      "price": "From $350",
+      "price": "From $600",
       "desc": "1 creator, 2 hours on-site, 1 Reel + 3 Stories posted."
     },
     {
@@ -71,7 +71,7 @@ const props: GeoPageProps = {
     },
     {
       "name": "Story reposts",
-      "price": "From $150",
+      "price": "From $600",
       "desc": "Story frames with your link."
     },
     {
@@ -83,7 +83,7 @@ const props: GeoPageProps = {
   "faqs": [
     {
       "q": "How much does restaurant influencer marketing cost?",
-      "a": "Content visits start from $350; opening nights are $1,500 for 3 creators; monthly campaigns are $2,500/mo."
+      "a": "Content visits start from $600; opening nights are $1,500 for 3 creators; monthly campaigns are $2,500/mo."
     },
     {
       "q": "Do creators have to post?",

@@ -30,7 +30,7 @@ const eventModelsSchema = {
   areaServed: ['Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach', 'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach', 'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach'],
   offers: {
     '@type': 'Offer',
-    price: '400',
+    price: '760',
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
   },
@@ -263,7 +263,7 @@ export default function EventsPage() {
       <div className="max-w-4xl mx-auto px-6 md:px-14 pb-16">
         <AnswerFaq id="/services/events" title="Event creators: quick answers" items={[
             { q: 'What does the event creators service include?', a: 'Creators and promo models appear at your event, such as club nights, brand activations, parties and launches, in South Florida.' },
-            { q: 'How much does it cost?', a: 'From $380 per creator (4 hours at $95/hr).' },
+            { q: 'How much does it cost?', a: 'From $760 (2 creators × 4 hours at $95/hr).' },
             { q: 'How do I book?', a: 'Use the Book Event Creators button and send the date, venue and type of event.' },
           ]} />
 

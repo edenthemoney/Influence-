@@ -49,7 +49,7 @@ const localBusinessSchema = {
     longitude: -80.13732,
   },
   openingHours: 'Mo-Su 00:00-23:59',
-  priceRange: '$300-$3,000',
+  priceRange: '$450-$3,000',
   areaServed: [
     'Fort Lauderdale',
     'Broward County',
@@ -89,7 +89,7 @@ const faqSchema = {
       name: 'How much does creator marketing cost in Fort Lauderdale?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Fort Lauderdale creator marketing starts at $300 for UGC content. Event models are $95/hr (4-hour minimum). Music video models start at $199. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
+        text: 'Fort Lauderdale creator marketing starts at $750 for UGC content. Event models are $95/hr per model with a 4-hour, 2-model minimum ($760). Music video models start at $450. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
       },
     },
     {
@@ -227,12 +227,12 @@ export default function FortLauderdalePage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { name: 'Business Content', price: 'From $350', desc: 'On-site content for Fort Lauderdale restaurants and businesses.' },
+                { name: 'Business Content', price: 'From $600', desc: 'On-site content for Fort Lauderdale restaurants and businesses.' },
                 { name: 'Event Creators', price: 'From $95/hr', desc: 'Professional creators for Fort Lauderdale events and parties.' },
-                { name: 'UGC Content', price: 'From $300', desc: 'Remote content creation for Fort Lauderdale brands.' },
-                { name: 'Music Video Creators', price: 'From $199', desc: 'Creators for Fort Lauderdale music video productions.' },
+                { name: 'UGC Content', price: 'From $750', desc: 'Remote content creation for Fort Lauderdale brands.' },
+                { name: 'Music Video Creators', price: 'From $450', desc: 'Creators for Fort Lauderdale music video productions.' },
                 { name: 'Commercial Production', price: 'From $750', desc: 'Scripted commercials and speaking roles.' },
-                { name: 'Music Promotion', price: 'From $300', desc: 'Song reaction videos for Fort Lauderdale artists.' },
+                { name: 'Music Promotion', price: 'From $500', desc: 'Song reaction videos for Fort Lauderdale artists.' },
               ].map(({ name, price, desc }) => (
                 <div key={name} className="border border-white/[0.06] p-6">
                   <h3 className="text-white font-bold text-sm mb-1">{name}</h3>
@@ -304,7 +304,7 @@ export default function FortLauderdalePage() {
             <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
               Grow your brand<br />in Broward County.
             </h2>
-            <p className="text-black/50 text-lg mb-10 max-w-lg">Book Fort Lauderdale influencers for your next campaign. From $300.</p>
+            <p className="text-black/50 text-lg mb-10 max-w-lg">Book Fort Lauderdale influencers for your next campaign. From $450.</p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/start" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Fort Lauderdale Influencers <ChevronRight className="h-4 w-4" />

@@ -8,7 +8,7 @@ const gold = '#c9a96e';
 
 export const metadata: Metadata = {
   title: 'Social Media Content & Music Reactions Miami — UGC Marketplace Florida | Influence',
-  description: 'Miami UGC marketplace. Beautiful creators create branded reels, TikToks, and music reactions. Serving Miami, Fort Lauderdale, Boca Raton, Palm Beach, and nationwide. From $300.',
+  description: 'Miami UGC marketplace. Beautiful creators create branded reels, TikToks, and music reactions. Serving Miami, Fort Lauderdale, Boca Raton, Palm Beach, and nationwide. From $750.',
   openGraph: {
     title: 'Social Media Content & Music Reactions Miami — UGC Marketplace Florida',
     description: 'Miami UGC content creation. Creators create scroll-stopping content for brands and music. Serving South Florida and nationwide.',
@@ -20,7 +20,7 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'UGC & Branded Reels',
-  description: 'Beautiful creators create branded short-form video content for brands and products. Remote service available nationwide. From $300.',
+  description: 'Beautiful creators create branded short-form video content for brands and products. Remote service available nationwide. From $750.',
   provider: {
     '@type': 'Organization',
     name: 'Influence',
@@ -29,7 +29,7 @@ const serviceSchema = {
   areaServed: ['United States', 'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach'],
   offers: {
     '@type': 'Offer',
-    price: '300',
+    price: '750',
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
   },
@@ -39,7 +39,7 @@ const musicReactionSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Music Reactions',
-  description: 'Creators react to your songs on camera for TikTok and Instagram promotion. Remote service available nationwide. From $300.',
+  description: 'Creators react to your songs on camera for TikTok and Instagram promotion. Remote service available nationwide. From $500.',
   provider: {
     '@type': 'Organization',
     name: 'Influence',
@@ -48,7 +48,7 @@ const musicReactionSchema = {
   areaServed: ['United States'],
   offers: {
     '@type': 'Offer',
-    price: '300',
+    price: '500',
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
   },

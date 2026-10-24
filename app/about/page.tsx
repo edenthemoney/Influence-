@@ -322,7 +322,7 @@ export default function AboutPage() {
               { title: 'Celebrity-Connected Creators', desc: 'Our creators have worked alongside Sean Paul, Moneybagg Yo, Lil Pump, 6ix9ine, Bossman Dlow, Kai Cenat, Bryson Tiller, Akon & more.' },
               { title: 'Verified Influencers', desc: 'Authenticated metrics, real engagement, proven track records — no fake followers, no bots.' },
               { title: 'Fast Turnaround', desc: 'Most content delivered within 48 hours. Full campaigns complete in 7–14 days.' },
-              { title: 'Transparent Pricing', desc: 'No hidden fees. Clear packages with detailed breakdowns at every tier. Starting at $300.' },
+              { title: 'Transparent Pricing', desc: 'No hidden fees. Clear packages with detailed breakdowns at every tier. Starting at $450.' },
             ].map(({ title, desc }) => (
               <div key={title} className="flex items-start gap-4">
                 <div className="w-7 h-7 flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: gold }}>
@@ -347,7 +347,7 @@ export default function AboutPage() {
           </div>
           <h2 className="font-display font-bold italic text-white mb-4" style={{ fontSize: 'clamp(36px, 6vw, 64px)' }}>Ready to Book?</h2>
           <p className="text-white/50 text-lg mb-10 max-w-md mx-auto">
-            Pick a service, choose your package, and checkout in under 2 minutes. Starting at $300.
+            Pick a service, choose your package, and checkout in under 2 minutes. Starting at $450.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/start" className="px-12 py-5 text-black text-[14px] font-bold tracking-widest uppercase transition-all hover:opacity-80" style={{ backgroundColor: gold }}>
@@ -360,7 +360,7 @@ export default function AboutPage() {
           <div className="flex items-center justify-center gap-6 mt-6 text-white/30 text-xs">
             <span>✓ Secure Stripe checkout</span>
             <span>✓ Content in 48hrs</span>
-            <span>✓ From $300</span>
+            <span>✓ From $450</span>
           </div>
         </div>
       </section>

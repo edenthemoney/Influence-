@@ -3,7 +3,7 @@ import GeoLanding, { type GeoPageProps } from '../components/GeoLanding';
 
 export const metadata: Metadata = {
   title: { absolute: "Bottle Girls & VIP Hostesses in Miami | Influence" },
-  description: "Book bottle girls and VIP hostesses for Miami nightclubs and lounges: $95/hr per hostess with a 4-hour minimum ($380).",
+  description: "Book bottle girls and VIP hostesses for Miami nightclubs and lounges: $95/hr per hostess with a 4-hour minimum, 2-person minimum ($760).",
   alternates: { canonical: 'https://influencecreators.marketing/bottle-girls-miami' },
 };
 
@@ -11,7 +11,7 @@ const props: GeoPageProps = {
   "path": "/bottle-girls-miami",
   "eyebrow": "Nightlife \u00b7 VIP Hostesses",
   "h1": "Bottle Girls and VIP Hostesses for Miami Venues",
-  "intro": "Influence books bottle girls and VIP hostesses for nightclubs, lounges and private events in South Florida. $95/hr per hostess with a 4-hour minimum ($380).",
+  "intro": "Influence books bottle girls and VIP hostesses for nightclubs, lounges and private events in South Florida. $95/hr per hostess with a 4-hour minimum, 2-person minimum ($760).",
   "serviceName": "Bottle girls and VIP hostesses",
   "serviceType": "VIP hostess booking",
   "serviceDescription": "Bottle girls and VIP hostesses for nightclubs, lounges and events in Miami and South Florida. $95/hr per hostess, 4-hour minimum.",
@@ -45,9 +45,9 @@ const props: GeoPageProps = {
   ],
   "prices": [
     {
-      "name": "1 hostess",
-      "price": "$380",
-      "desc": "4-hour shift."
+      "name": "2 hostesses (minimum)",
+      "price": "$760",
+      "desc": "4-hour shift, 2-hostess minimum."
     },
     {
       "name": "3 hostesses",
@@ -68,7 +68,7 @@ const props: GeoPageProps = {
   "faqs": [
     {
       "q": "How much are bottle girls in Miami?",
-      "a": "$95/hr per hostess with a 4-hour minimum ($380)."
+      "a": "$95/hr per hostess with a 4-hour minimum, 2-person minimum ($760)."
     },
     {
       "q": "Can I book for a private event?",

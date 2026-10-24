@@ -17,7 +17,7 @@ import { PACKAGES, CREW_ADDONS } from '@/lib/booking-packages';
 // Step 1: Packages — frequency toggle + curated cards + custom card
 // Step 2: Contact details → lead save → Stripe checkout
 
-type ServiceType = 'shoot' | 'musicvideo' | 'event' | 'reaction' | 'ugc' | 'business' | 'commercial' | 'bottle' | 'storyreposts' | 'collabreposts';
+type ServiceType = 'shoot' | 'musicvideo' | 'event' | 'reaction' | 'ugc' | 'business' | 'commercial' | 'bottle' | 'storyreposts' | 'collabreposts' | 'starter';
 
 type ServiceCategory = 'in-person' | 'remote-content' | 'story-reposts' | 'collab-posts';
 
@@ -29,15 +29,16 @@ const SELF_SERVE_MAX = 6000;
 const CURATED_COUNT = 4;
 
 const SERVICE_INFO: Record<ServiceType, { title: string; desc: string; from: string; tag: 'In-Person' | 'Remote'; hasMonthly: boolean; Icon: React.ElementType; category: ServiceCategory }> = {
-  business:      { title: 'Celebrity-Connected Brand Ambassadors',        desc: 'Celebrity-connected creators visit your location, create reels & promo content on-site.',        from: '$350',      tag: 'In-Person', hasMonthly: true,  Icon: TrendingUp, category: 'in-person' },
-  ugc:           { title: 'Premium UGC & Branded Reels',            desc: 'Celebrity-connected creators create branded skits, promos & short-form content to your brief.',      from: '$300',      tag: 'Remote',    hasMonthly: true,  Icon: Play, category: 'remote-content' },
-  commercial:    { title: 'Actors & Voiceover for Commercials',   desc: 'On-camera actors and voiceover for TV, radio, web & brand ads.',                   from: '$250',      tag: 'In-Person', hasMonthly: true,  Icon: Film, category: 'in-person' },
-  musicvideo:    { title: 'Music Videos',                   desc: 'Featured creators for your video — cameo, featured, lead or ensemble.',              from: '$199',      tag: 'In-Person', hasMonthly: false, Icon: Music, category: 'in-person' },
-  reaction:      { title: 'Premium Music Reactions',                desc: 'Celebrity-connected creators react to your songs on camera — first-listen & livestreams.',           from: '$300',      tag: 'Remote',    hasMonthly: true,  Icon: Headphones, category: 'remote-content' },
+  business:      { title: 'Celebrity-Connected Brand Ambassadors',        desc: 'Celebrity-connected creators visit your location, create reels & promo content on-site.',        from: '$600',      tag: 'In-Person', hasMonthly: true,  Icon: TrendingUp, category: 'in-person' },
+  ugc:           { title: 'Premium UGC & Branded Reels',            desc: 'Celebrity-connected creators create branded skits, promos & short-form content to your brief.',      from: '$750',      tag: 'Remote',    hasMonthly: true,  Icon: Play, category: 'remote-content' },
+  commercial:    { title: 'Actors & Voiceover for Commercials',   desc: 'On-camera actors and voiceover for TV, radio, web & brand ads.',                   from: '$450',      tag: 'In-Person', hasMonthly: true,  Icon: Film, category: 'in-person' },
+  musicvideo:    { title: 'Music Videos',                   desc: 'Featured creators for your video — featured, lead or ensemble.',              from: '$450',      tag: 'In-Person', hasMonthly: false, Icon: Music, category: 'in-person' },
+  reaction:      { title: 'Premium Music Reactions',                desc: 'Celebrity-connected creators react to your songs on camera — first-listen & livestreams.',           from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Headphones, category: 'remote-content' },
   shoot:         { title: 'Photo Shoots',                   desc: 'Commercial & print models for brand shoots, editorials & lookbooks.',                     from: '$600',      tag: 'In-Person', hasMonthly: true,  Icon: Camera, category: 'in-person' },
-  event:         { title: 'Events & Hosting',               desc: 'Creators for brand activations, parties & grand openings.',                      from: '$95/hr', tag: 'In-Person', hasMonthly: true,  Icon: Sparkles, category: 'in-person' },
-  bottle:        { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$95/hr', tag: 'In-Person', hasMonthly: true,  Icon: Wine, category: 'in-person' },
-  storyreposts:  { title: 'Premium Story Reposts',                 desc: 'Celebrity-connected creators post your content to their Instagram Stories with swipe-up links.',      from: '$150',       tag: 'Remote',    hasMonthly: true,  Icon: RefreshCcw, category: 'story-reposts' },
+  event:         { title: 'Events & Hosting',               desc: 'Creators for brand activations, parties & grand openings.',                      from: '$760', tag: 'In-Person', hasMonthly: true,  Icon: Sparkles, category: 'in-person' },
+  bottle:        { title: 'Bottle Girls / VIP Hostesses',   desc: 'VIP hostesses for nightclubs, lounges & bottle service.',                      from: '$760', tag: 'In-Person', hasMonthly: true,  Icon: Wine, category: 'in-person' },
+  storyreposts:  { title: 'Premium Story Reposts',                 desc: 'Celebrity-connected creators post your content to their Instagram Stories with swipe-up links.',      from: '$600',       tag: 'Remote',    hasMonthly: true,  Icon: RefreshCcw, category: 'story-reposts' },
+  starter:       { title: 'Starter · One Creator, One Deliverable', desc: 'Single-unit options for solo artists and small creatives.', from: '$200', tag: 'Remote', hasMonthly: false, Icon: Sparkles, category: 'remote-content' },
   collabreposts: { title: 'Premium Collab Posts',                  desc: 'Celebrity-connected creators co-author posts with your brand — appears on both feeds for dual reach.', from: '$500',      tag: 'Remote',    hasMonthly: true,  Icon: Users, category: 'collab-posts' },
 };
 

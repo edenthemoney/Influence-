@@ -3,10 +3,10 @@ import SimpleHeadcountBooking from '../components/SimpleHeadcountBooking';
 
 export const metadata = {
   title: 'Hire Models for Music Video | Miami Music Video Girls — Influence Agency',
-  description: 'Hire models for music video shoots in Miami. Cameo, Featured, Lead or Ensemble tiers. Same-week availability. Verified talent with major artist credits. From $199.',
+  description: 'Hire models for music video shoots in Miami. Featured, Lead or Ensemble tiers. Same-week availability. Verified talent with major artist credits. From $450.',
   openGraph: {
     title: 'Hire Models for Music Video | Miami Music Video Girls',
-    description: 'Hire verified models for music video shoots in Miami. Same-week availability. From $199.',
+    description: 'Hire verified models for music video shoots in Miami. Same-week availability. From $450.',
     url: 'https://influencecreators.marketing/music-video-booking',
   },
 };
@@ -15,7 +15,7 @@ export default function MusicVideoBookingPage() {
   return (
     <PersonaLanding
       title="Book Music Video Talent in Miami"
-      description="Cameo, Featured, Lead or Ensemble tiers for your music video. Same-week availability in Miami. Verified talent with major artist credits. From $199."
+      description="Featured, Lead or Ensemble tiers for your music video. Same-week availability in Miami. Verified talent with major artist credits. From $450."
       tagline="Miami · Same-Week Availability"
       headline="Book Girls for\nYour Music Video."
       subheadline="Verified talent for your video — from solo features to full squads. No casting headaches. No flakey DMs. Just professional creators on set, on time."
@@ -38,22 +38,6 @@ export default function MusicVideoBookingPage() {
         'Same-week availability in South Florida',
       ]}
       packages={[
-        {
-          name: 'Cameo · 1 Hour',
-          price: 199,
-          tagline: '1 model · up to 1 hr',
-          features: ['1 model', 'Up to 1 hour on set', 'Styled & camera-ready'],
-          cta: 'Book Cameo 1 Hr',
-          href: '/start?service=musicvideo&package=mv-cameo',
-        },
-        {
-          name: 'Cameo · 2 Hours',
-          price: 249,
-          tagline: '1 model · up to 2 hrs',
-          features: ['1 model', 'Up to 2 hours on set', 'Styled & camera-ready'],
-          cta: 'Book Cameo 2 Hrs',
-          href: '/start?service=musicvideo&package=mv-cameo-2',
-        },
         {
           name: 'Featured',
           price: 450,

@@ -480,7 +480,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           "name": "UGC Content Creation",
-          "price": "300",
+          "price": "750",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://influencecreators.marketing/services/content"
@@ -488,7 +488,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           "name": "Business Content & Brand Ambassadors",
-          "price": "300",
+          "price": "600",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://influencecreators.marketing/services/business"
@@ -496,7 +496,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           "name": "Event Creators & Hosting",
-          "price": "400",
+          "price": "760",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://influencecreators.marketing/services/events"
@@ -504,7 +504,7 @@ const jsonLd = {
         {
           "@type": "Offer",
           "name": "Music Video Creators",
-          "price": "199",
+          "price": "450",
           "priceCurrency": "USD",
           "availability": "https://schema.org/InStock",
           "url": "https://influencecreators.marketing/services/shoots"
@@ -610,7 +610,7 @@ const jsonLd = {
         "opens": "00:00",
         "closes": "23:59"
       },
-      "priceRange": "$300-$5,000",
+      "priceRange": "$450-$5,000",
       "paymentAccepted": [
         "Credit Card",
         "Debit Card",
