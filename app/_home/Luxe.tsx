@@ -187,7 +187,7 @@ export function ScrubScene() {
 }
 
 const TILE_HREF: Record<string, string> = { venues: '/start', talent: '/start?service=shoot', content: '/start?service=ugc', music: '/start?service=musicvideo', events: '/start?service=event' };
-const TILE_STILL: Record<string, string> = { content: '/images/feed/des-skyline-lg.webp', music: '/images/feed/alisha-lg.webp' };
+const TILE_STILL: Record<string, string> = { venues: '/images/feed/kat-lg.webp', talent: '/images/feed/genesis-lg.webp', content: '/images/feed/des-skyline-lg.webp', music: '/images/feed/alisha-lg.webp', events: '/images/stage/venue-lounge-45.webp' };
 const TILE_CLIP: Record<string, string> = { venues: 'og-des-arrive', talent: 'og-des-arrive', content: 'og-dessertz-line', music: 'og-dessertz-line', events: 'og-des-arrive' };
 
 /** Five live service tiles: poster by default; the most-visible tile plays on mobile, hover plays on desktop. */
@@ -228,7 +228,7 @@ export function LiveTiles() {
             <Link href={TILE_HREF[g.id] || BOOK_HREF} className="group block" data-curtain>
               <div className={L.tile}>
                 {TILE_STILL[g.id]
-                  ? <img src={TILE_STILL[g.id]} alt="" loading="lazy" decoding="async" className={L.tileStill} aria-hidden />
+                  ? <img src={TILE_STILL[g.id]} alt="" loading="eager" decoding="async" className={L.tileStill} style={{ animationDelay: `${(Object.keys(TILE_STILL).indexOf(g.id)) * -5}s` }} aria-hidden />
                   : <video muted loop playsInline disablePictureInPicture preload="none" poster={`${S}/${clip}-poster.webp`} data-src={`${S}/${clip}.mp4`} style={{ objectPosition: posOf(clip ? `${S}/${clip}.mp4` : '') }} aria-hidden />}
                 <div className={L.tileShade} />
                 <h3 className="absolute bottom-3 left-3 right-3 font-display text-[24px] font-bold italic leading-[0.95] text-white md:text-[26px]">{meta.short}</h3>
