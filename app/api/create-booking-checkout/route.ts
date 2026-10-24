@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     }
 
     const isMonthly = bookingType === 'monthly';
-    const serviceLabel = serviceType === 'shoot' ? 'Video / Photo Shoot' : serviceType === 'reaction' ? 'Music Reaction' : serviceType === 'ugc' ? 'UGC & Branded Content' : serviceType === 'business' ? 'Business Content' : serviceType === 'commercial' ? 'Commercial Production' : serviceType === 'bottle' ? 'Bottle Girls / VIP Hostesses' : 'Event Hosting & Promo';
+    const serviceLabel = serviceType === 'shoot' ? 'Video / Photo Shoot' : serviceType === 'reaction' ? 'Music Reaction' : serviceType === 'ugc' ? 'UGC & Branded Content' : serviceType === 'residency' ? 'Influence Residency' : serviceType === 'business' ? 'Business Content' : serviceType === 'commercial' ? 'Commercial Production' : serviceType === 'bottle' ? 'Bottle Girls / VIP Hostesses' : 'Event Hosting & Promo';
     const description = `${packageTagline} — ${serviceLabel}${isMonthly ? ' (Monthly)' : ''}`;
 
     const lineItem: any = {
@@ -30,7 +30,6 @@ export async function POST(req: NextRequest) {
 
     const lineItems: any[] = [lineItem];
 
-    // Add crew addon as separate line item if selected
     if (crewAddon && crewAddon.price && !isMonthly) {
       lineItems.push({
         price_data: {
