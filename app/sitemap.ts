@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: '/services/commercials', priority: 0.85, changeFrequency: 'monthly' },
     { route: '/services/events', priority: 0.85, changeFrequency: 'monthly' },
     { route: '/start', priority: 0.9, changeFrequency: 'monthly' },
+    { route: '/starter', priority: 0.7, changeFrequency: 'monthly' },
+    { route: '/music-video-creators', priority: 0.85, changeFrequency: 'monthly' },
     { route: '/about', priority: 0.7, changeFrequency: 'monthly' },
     { route: '/contact', priority: 0.7, changeFrequency: 'monthly' },
     { route: '/faq', priority: 0.75, changeFrequency: 'monthly' },

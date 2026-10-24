@@ -187,6 +187,7 @@ export function ScrubScene() {
 }
 
 const TILE_HREF: Record<string, string> = { venues: '/start', talent: '/start?service=shoot', content: '/start?service=ugc', music: '/start?service=musicvideo', events: '/start?service=event' };
+const TILE_STILL: Record<string, string> = { content: '/images/feed/des-skyline-lg.webp', music: '/images/feed/alisha-lg.webp' };
 const TILE_CLIP: Record<string, string> = { venues: 'og-des-arrive', talent: 'og-des-arrive', content: 'og-dessertz-line', music: 'og-dessertz-line', events: 'og-des-arrive' };
 
 /** Five live service tiles: poster by default; the most-visible tile plays on mobile, hover plays on desktop. */
@@ -226,7 +227,9 @@ export function LiveTiles() {
           <article key={g.id} className="w-[58vw] max-w-[260px] shrink-0 snap-start md:w-auto md:max-w-none" data-cursor="Play">
             <Link href={TILE_HREF[g.id] || BOOK_HREF} className="group block" data-curtain>
               <div className={L.tile}>
-                <video muted loop playsInline preload="none" poster={`${S}/${clip}-poster.webp`} data-src={`${S}/${clip}.mp4`} style={{ objectPosition: posOf(clip ? `${S}/${clip}.mp4` : '') }} aria-hidden />
+                {TILE_STILL[g.id]
+                  ? <img src={TILE_STILL[g.id]} alt="" loading="lazy" decoding="async" className={L.tileStill} aria-hidden />
+                  : <video muted loop playsInline disablePictureInPicture preload="none" poster={`${S}/${clip}-poster.webp`} data-src={`${S}/${clip}.mp4`} style={{ objectPosition: posOf(clip ? `${S}/${clip}.mp4` : '') }} aria-hidden />}
                 <div className={L.tileShade} />
                 <h3 className="absolute bottom-3 left-3 right-3 font-display text-[24px] font-bold italic leading-[0.95] text-white md:text-[26px]">{meta.short}</h3>
               </div>
@@ -241,10 +244,10 @@ export function LiveTiles() {
 }
 
 // Original Influence footage posters + roster shoot stills (no stock).
-const BAND: { id: string; cap: string }[] = [
-  { id: 'og-des-arrive-poster', cap: 'Des \u00b7 Arrival' },
-  { id: 'hero-m2-poster', cap: 'Des \u00b7 Poolside' },
-  { id: 'venue-lounge-phone', cap: 'Mika \u00b7 Lounge' },
+const BAND: { src: string; cap: string }[] = [
+  { src: '/images/feed/seahra-gold-lg.webp', cap: 'Seahra \u00b7 Editorial' },
+  { src: '/images/feed/seahra-pyramid-lg.webp', cap: 'Seahra \u00b7 Giza' },
+  { src: '/images/feed/leila-lg.webp', cap: 'Leila \u00b7 Campaign' },
 ];
 
 /* Highlight band: three sharp stills, still frames with a slow Ken Burns drift and one soft fade-in. No marquee, no swaps. */
@@ -254,9 +257,9 @@ export function ReelBand() {
     <div ref={ref} className={`${L.band} border-y border-[#c9a96e]/20 bg-black px-5 py-10 md:px-16 md:py-14`}>
       <div className={L.track}>
         {BAND.map((b, i) => (
-          <figure key={b.id} className={L.still} style={{ transitionDelay: `${i * 180}ms` }}>
+          <figure key={b.src} className={L.still} style={{ transitionDelay: `${i * 180}ms` }}>
             <div className={L.stillFrame}>
-              <img src={`${S}/${b.id}.webp`} alt="" loading="eager" decoding="async" style={{ animationDelay: `${i * -6}s` }} />
+              <img src={b.src} alt="" loading="eager" decoding="async" style={{ animationDelay: `${i * -6}s` }} />
             </div>
             <figcaption className="mt-3 text-[11px] uppercase tracking-[0.28em] text-[#c9a96e]/80">{b.cap}</figcaption>
           </figure>
