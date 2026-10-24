@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Check, ChevronRight, Phone, ArrowRight } from 'lucide-react';
 import MobileNav from './MobileNav';
+import QuickLead from './QuickLead';
 
 const gold = '#c9a96e';
 
@@ -246,6 +247,10 @@ export default function PersonaLanding({
           <div className="max-w-5xl mx-auto">{bookingSection}</div>
         </section>
       )}
+
+      <section className="px-5 md:px-16 py-14 md:py-20 border-t border-white/[0.06]">
+        <QuickLead source="persona_page" />
+      </section>
 
       {/* Final CTA */}
       <section className="relative py-24 md:py-36 px-8 md:px-16 overflow-hidden">

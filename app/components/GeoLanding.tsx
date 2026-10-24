@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import MobileNav from './MobileNav';
+import QuickLead from './QuickLead';
 
 const gold = '#c9a96e';
 const BASE = 'https://influencecreators.marketing';
@@ -157,6 +158,7 @@ export default function GeoLanding(p: GeoPageProps) {
                 <Link href={p.cta.href} className="px-8 py-4 text-[12px] font-bold tracking-widest uppercase hover:opacity-85" style={{ backgroundColor: gold, color: '#000' }}>{p.cta.label}</Link>
                 <Link href="/contact" className="px-8 py-4 text-[12px] font-bold tracking-widest uppercase border border-white/20 hover:border-white/50">Contact</Link>
               </div>
+              <div className="mt-8 text-left"><QuickLead source="niche_page" /></div>
             </section>
 
             <nav aria-label="Related" className="flex flex-wrap gap-x-6 gap-y-3 text-sm">

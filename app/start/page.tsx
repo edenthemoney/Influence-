@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Check, Phone } from 'lucide-react';
 import MobileNav from '../components/MobileNav';
 import StartSelector from './StartSelector';
+import QuickLead from '../components/QuickLead';
 
 const gold = '#c9a96e';
 
@@ -64,6 +65,10 @@ export default function StartPage() {
       {/* Two-step selector */}
       <section className="px-8 md:px-16 pb-16 md:pb-24">
         <StartSelector />
+      </section>
+
+      <section className="px-5 md:px-16 pb-16 md:pb-24">
+        <QuickLead source="start_page" title="Not sure what to pick? Get options by text" sub="Leave your number. We'll text options and pricing that fit." />
       </section>
 
       {/* Trust Bar */}

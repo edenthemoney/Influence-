@@ -1,89 +1,73 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { randomUUID } from 'crypto';
+import { buildLeadEmail, type LeadPayload } from '../../../lib/leadEmail';
+import { vendorFlags, scoreLead, recommend } from '../../../lib/leads';
 
-const GOLD = '#c9a96e';
+/**
+ * POST  = save contact immediately (email + Make webhook), returns { leadId }.
+ * PATCH = same lead, adds qualifier answers; sends a follow-up email threaded to the first one.
+ * Recipients/env are unchanged from the original route.
+ */
+function flagsFor(body: any): string[] {
+  const f = vendorFlags({ email: body.email, name: body.name, notes: body.notes, business: body.answers?.business, ig: body.answers?.ig });
+  if (body.hp) f.push('honeypot');
+  if (typeof body.elapsedMs === 'number' && body.elapsedMs < 1500) f.push('too-fast');
+  return f;
+}
+
+async function deliver(p: LeadPayload, req: Request) {
+  const { subject, html, score } = buildLeadEmail(p);
+  const domain = 'influencecreators.marketing';
+  const transporter = nodemailer.createTransport({ service: 'gmail', auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD } });
+  const root = `<lead-${p.leadId}@${domain}>`;
+  await transporter.sendMail({
+    from: `"Influence Leads" <${process.env.GMAIL_USER}>`,
+    to: `${process.env.GMAIL_USER}, alphatrustsolutions@gmail.com`,
+    subject, html,
+    ...(p.stage === 'contact' ? { messageId: root } : { inReplyTo: root, references: [root] }),
+  });
+  if (process.env.MAKE_LEADS_WEBHOOK_URL) {
+    try {
+      await fetch(process.env.MAKE_LEADS_WEBHOOK_URL, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...p, score: p.answers ? score : undefined, recommendation: p.answers ? recommend(p.answers) : undefined, timestamp: new Date().toISOString() }),
+      });
+    } catch { /* non-fatal */ }
+  }
+}
+
+function metaFrom(body: any, req: Request) {
+  const m = body.meta && typeof body.meta === 'object' ? body.meta : {};
+  return { ...m, ua: req.headers.get('user-agent') || '', referrer: m.referrer || req.headers.get('referer') || '' };
+}
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { name, email, phone, source, serviceType, packageName, packagePrice, step, modelPreference, notes } = body;
-
-    if (!phone && !email) {
-      return NextResponse.json({ error: 'Missing contact info' }, { status: 400 });
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-    });
-
-    const row = (label: string, value: string) => `
-      <tr>
-        <td style="padding:10px 0;color:#888;font-size:11px;letter-spacing:2px;text-transform:uppercase;width:140px;vertical-align:top;">${label}</td>
-        <td style="padding:10px 0;color:#fff;font-size:14px;font-weight:500;">${value || '—'}</td>
-      </tr>`;
-
-    const isAbandoned = source === 'abandoned_checkout';
-    const subject = isAbandoned
-      ? `🚨 Abandoned Checkout — ${name || phone || email}`
-      : `📱 New Lead Captured — ${name || phone || email}`;
-
-    const htmlEmail = `
-    <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:600px;margin:0 auto;background:#0a0a0a;color:#fff;border:1px solid #222;">
-      <div style="padding:32px 32px 24px;border-bottom:1px solid #222;">
-        <p style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:${isAbandoned ? '#ef4444' : GOLD};margin:0 0 8px;">${isAbandoned ? '⚠ Abandoned Checkout — Follow Up Now' : '📱 New Lead'}</p>
-        <h1 style="font-size:28px;font-weight:300;font-style:italic;margin:0;color:#fff;">${name || 'Unknown'}</h1>
-      </div>
-      <div style="padding:24px 32px;border-bottom:1px solid #222;">
-        <table style="width:100%;border-collapse:collapse;">
-          ${row('Name', name || '—')}
-          ${row('Phone', phone ? `<a href="tel:${phone}" style="color:${GOLD};text-decoration:none;">${phone}</a>` : '—')}
-          ${row('Email', email ? `<a href="mailto:${email}" style="color:${GOLD};text-decoration:none;">${email}</a>` : '—')}
-          ${row('Source', source || 'marketplace_popup')}
-          ${serviceType ? row('Service Interest', serviceType) : ''}
-          ${packageName ? row('Package', packageName) : ''}
-          ${packagePrice ? row('Price', `$${Number(packagePrice).toLocaleString()}`) : ''}
-          ${modelPreference ? row('Model Preference', modelPreference) : ''}
-          ${notes ? row('Notes', notes) : ''}
-          ${step !== undefined ? row('Dropped at Step', `Step ${step} of 4`) : ''}
-        </table>
-      </div>
-      ${isAbandoned ? `
-      <div style="padding:24px 32px;background:#1a0a0a;border-bottom:1px solid #333;">
-        <p style="color:#ef4444;font-size:13px;font-weight:600;margin:0 0 6px;">📞 Follow up ASAP</p>
-        <p style="color:#aaa;font-size:12px;margin:0;">This person selected a package (${packageName || 'unknown'}) but didn't complete checkout. Call or text them at <strong style="color:#fff;">${phone || email}</strong> to close the booking.</p>
-      </div>` : ''}
-      <div style="padding:24px 32px;">
-        <p style="color:#555;font-size:12px;margin:0;">Captured at ${new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })} ET</p>
-      </div>
-    </div>`;
-
-    await transporter.sendMail({
-      from: `"Influence Leads" <${process.env.GMAIL_USER}>`,
-      to: `${process.env.GMAIL_USER}, alphatrustsolutions@gmail.com`,
-      subject,
-      html: htmlEmail,
-    });
-
-    // Ping Make.com webhook for real-time follow-up automation
-    if (process.env.MAKE_LEADS_WEBHOOK_URL) {
-      try {
-        await fetch(process.env.MAKE_LEADS_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, phone, source, serviceType, packageName, packagePrice, step, modelPreference, notes, timestamp: new Date().toISOString() }),
-        });
-      } catch {
-        // Non-fatal — don't block the response if Make.com is down
-      }
-    }
-
-    return NextResponse.json({ success: true });
+    if (!phone && !email) return NextResponse.json({ error: 'Missing contact info' }, { status: 400 });
+    const leadId = typeof body.leadId === 'string' && /^[\w-]{8,64}$/.test(body.leadId) ? body.leadId : randomUUID();
+    await deliver({ leadId, name, email, phone, source, serviceType, packageName, packagePrice, step, modelPreference, notes, meta: metaFrom(body, req), flags: flagsFor(body), stage: 'contact' }, req);
+    return NextResponse.json({ success: true, leadId });
   } catch (error: any) {
     console.error('Lead save error:', error);
     return NextResponse.json({ error: 'Failed to save lead', details: error.message }, { status: 500 });
+  }
+}
+
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+    const { leadId, name, email, phone, source, answers, partial } = body;
+    if (!leadId || typeof leadId !== 'string' || !/^[\w-]{8,64}$/.test(leadId)) return NextResponse.json({ error: 'Missing leadId' }, { status: 400 });
+    const clean = (s: unknown, n = 80) => (typeof s === 'string' ? s.slice(0, n).trim() : undefined);
+    const a = answers || {};
+    const ans = { type: clean(a.type, 12) as any, services: Array.isArray(a.services) ? a.services.slice(0, 8).map((x: unknown) => clean(x, 24)).filter(Boolean) : undefined, budget: clean(a.budget, 20), timing: clean(a.timing, 20), business: clean(a.business), ig: clean(a.ig, 40), city: clean(a.city, 40) };
+    await deliver({ leadId, name, email, phone, source, answers: ans, meta: metaFrom(body, req), flags: flagsFor({ ...body, answers: ans }), stage: partial ? 'partial' : 'qualified' }, req);
+    return NextResponse.json({ success: true, leadId, ...scoreLead(ans) });
+  } catch (error: any) {
+    console.error('Lead update error:', error);
+    return NextResponse.json({ error: 'Failed to update lead', details: error.message }, { status: 500 });
   }
 }

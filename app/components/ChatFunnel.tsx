@@ -1,4 +1,5 @@
 'use client';
+import { leadMeta } from '../../lib/leadClient';
 
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -114,6 +115,7 @@ export default function ChatFunnel() {
         body: JSON.stringify({
           name, phone, email,
           source: 'chat_funnel',
+          meta: leadMeta(),
           serviceType: PURPOSE_TO_SERVICE[purpose] || purpose,
           notes: `Chat funnel — Purpose: ${purpose} · ${location === 'remote' ? 'Remote/Digital' : location === 'local' ? 'In-person (South FL)' : 'Unspecified'} · Budget: ${budget}`,
         }),

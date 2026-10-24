@@ -1,4 +1,5 @@
 'use client';
+import { leadMeta } from '../../lib/leadClient';
 
 import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
@@ -63,6 +64,7 @@ function QuoteForm() {
           email,
           phone,
           source: 'custom_quote_page',
+          meta: leadMeta(),
           serviceType: type,
           packageName: budget,
           notes: details,

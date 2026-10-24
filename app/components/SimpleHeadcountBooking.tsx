@@ -1,4 +1,5 @@
 'use client';
+import { leadMeta } from '../../lib/leadClient';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -56,6 +57,7 @@ export default function SimpleHeadcountBooking() {
           email,
           phone,
           source: 'music_video_headcount',
+          meta: leadMeta(),
           serviceType: 'musicvideo',
           packageName: selected.label,
           packagePrice: selected.price,

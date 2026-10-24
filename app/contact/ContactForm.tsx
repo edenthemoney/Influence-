@@ -1,4 +1,5 @@
 'use client';
+import { leadMeta } from '../../lib/leadClient';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -62,6 +63,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           name, phone, email,
           source: 'contact_page',
+          meta: leadMeta(),
           serviceType: service || undefined,
           notes: [service ? `Service: ${service}` : '', budget ? `Budget: ${budget}` : '', message].filter(Boolean).join(' | '),
         }),

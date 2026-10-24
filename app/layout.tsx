@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import PostHogProvider, { PostHogPageView } from "./components/PostHogProvider";
 import ChatFunnel from './components/ChatFunnel';
 import PolishFX from './components/PolishFX';
+import LeadQualifier from './components/LeadQualifier';
 import GlobalLeadPopup from './components/GlobalLeadPopup';
 import "./globals.css";
 
@@ -782,6 +783,7 @@ export default function RootLayout({
           {children}
           <Reveal />
           <PolishFX />
+          <LeadQualifier />
           <ChatFunnel />
           <GlobalLeadPopup />
         </PostHogProvider>

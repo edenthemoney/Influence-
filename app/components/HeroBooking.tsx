@@ -1,4 +1,5 @@
 'use client';
+import { saveLead } from '../../lib/leadClient';
 import { useState } from 'react';
 import posthog from 'posthog-js';
 import { ChevronRight, Camera, Headphones, Sparkles, Play, Check, Music, TrendingUp, Film, Wine, Phone } from 'lucide-react';
@@ -51,12 +52,7 @@ export default function HeroBooking() {
     if (!phone.trim()) return;
     setLoading(true);
     try {
-      await fetch('/api/save-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, source: 'hero_widget', serviceType: svc }),
-      });
-      try { sessionStorage.setItem('lead_name', name); sessionStorage.setItem('lead_phone', phone); } catch {}
+      await saveLead({ name, phone }, 'hero_widget', { serviceType: svc }, { defer: true });
     } catch {}
     setLoading(false);
     setSubmitted(true);
