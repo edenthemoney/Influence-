@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import { randomUUID } from 'crypto';
 import { buildLeadEmail, type LeadPayload } from '../../../lib/leadEmail';
 import { vendorFlags, scoreLead, recommend } from '../../../lib/leads';
+import { storeLead } from '../../../lib/leadStore';
 
 /**
  * POST  = save contact immediately (email + Make webhook), returns { leadId }.
@@ -48,6 +49,7 @@ export async function POST(req: Request) {
     const { name, email, phone, source, serviceType, packageName, packagePrice, step, modelPreference, notes } = body;
     if (!phone && !email) return NextResponse.json({ error: 'Missing contact info' }, { status: 400 });
     const leadId = typeof body.leadId === 'string' && /^[\w-]{8,64}$/.test(body.leadId) ? body.leadId : randomUUID();
+    await storeLead(req, { id: leadId, name, email, phone, source, serviceType, packageName, notes, meta: metaFrom(body, req), flags: flagsFor(body), stage: 'contact' });
     await deliver({ leadId, name, email, phone, source, serviceType, packageName, packagePrice, step, modelPreference, notes, meta: metaFrom(body, req), flags: flagsFor(body), stage: 'contact' }, req);
     return NextResponse.json({ success: true, leadId });
   } catch (error: any) {
@@ -64,6 +66,7 @@ export async function PATCH(req: Request) {
     const clean = (s: unknown, n = 80) => (typeof s === 'string' ? s.slice(0, n).trim() : undefined);
     const a = answers || {};
     const ans = { type: clean(a.type, 12) as any, services: Array.isArray(a.services) ? a.services.slice(0, 8).map((x: unknown) => clean(x, 24)).filter(Boolean) : undefined, budget: clean(a.budget, 20), timing: clean(a.timing, 20), business: clean(a.business), ig: clean(a.ig, 40), city: clean(a.city, 40) };
+    await storeLead(req, { id: leadId, name, email, phone, source, answers: ans, meta: metaFrom(body, req), flags: flagsFor({ ...body, answers: ans }), stage: partial ? 'partial' : 'qualified' });
     await deliver({ leadId, name, email, phone, source, answers: ans, meta: metaFrom(body, req), flags: flagsFor({ ...body, answers: ans }), stage: partial ? 'partial' : 'qualified' }, req);
     return NextResponse.json({ success: true, leadId, ...scoreLead(ans) });
   } catch (error: any) {
