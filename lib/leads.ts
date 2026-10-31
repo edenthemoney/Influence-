@@ -34,10 +34,27 @@ export const STARTER_BUDGET = 'Under $450 (Starter)';
 export const BUDGETS = [STARTER_BUDGET, '$450–1.5K', '$1.5K–5K', '$5K+'] as const;
 
 // Starter (/starter): single-unit, one creator one deliverable. Only recommended for the lowest budget.
-const STARTER_PICK: Record<string, string> = {
-  mv: 'Starter: Solo Model for Your Music Video, 1 hr ($249) or 2 hrs ($399)',
-  reaction: 'Starter: Single Reaction Video ($350)',
-  ugc: 'Starter: Single UGC Video ($350)',
+// Each requested service maps to the closest Starter item for THAT service, or none (then we say so and
+// suggest the smallest main package for that same service).
+const STARTER_PICK: Record<string, { pkg: string; what: string } | undefined> = {
+  mv: { pkg: 'Starter: Solo Model for Your Music Video, 1 hr ($249) or 2 hrs ($399)', what: 'one model for your music video, 1 hr ($249) or 2 hrs ($399)' },
+  reaction: { pkg: 'Starter: Single Reaction Video ($350)', what: 'a single reaction video ($350)' },
+  label: { pkg: 'Starter: Single Reaction Video ($350)', what: 'a single reaction video for the release ($350)' },
+  ugc: { pkg: 'Starter: Single UGC Video ($350)', what: 'a single UGC video ($350)' },
+  campaign: { pkg: 'Starter: Single Story Post ($200)', what: 'a single creator story post ($200)' },
+};
+// Smallest main package per service (used when there is no Starter equivalent or budget is below it).
+const SMALLEST: Record<string, string> = {
+  ambassador: 'Brand Ambassador Half-Day visit ($600)',
+  hosts: 'Event models, 2-model 4-hr minimum ($760)',
+  bottle: 'VIP hostesses, 2-hostess 4-hr minimum ($760)',
+  venueMonthly: 'Brand Ambassador Half-Day visit ($600) as a one-off before a monthly program ($2,130/mo)',
+  ugc: 'UGC 3-pack ($750)',
+  campaign: 'Influencer campaign (from $2,500/mo)',
+  shoot: 'Shoot model, half day ($600)',
+  mv: 'Music video Featured model ($450)',
+  reaction: 'High-Reach Reaction ($500)',
+  label: 'Label rollout campaign (from $2,500/mo)',
 };
 export const STARTER_HREF = '/starter';
 export const TIMINGS = ['This week', 'This month', 'Later'] as const;
@@ -56,30 +73,63 @@ export function scoreLead(a: LeadAnswers): { score: 'hot' | 'warm' | 'cold'; poi
   return { score: p >= 7 ? 'hot' : p >= 4 ? 'warm' : 'cold', points: p };
 }
 
+const BUDGET_MAX: Record<string, number> = { [STARTER_BUDGET]: 449, '$450–1.5K': 1500, '$1.5K–5K': 5000, '$5K+': Infinity };
+const MIN_PRICE: Record<string, number> = { ambassador: 600, hosts: 760, bottle: 760, venueMonthly: 2130, ugc: 750, campaign: 2500, shoot: 600, mv: 450, reaction: 500, label: 2500 };
+const TYPE_DEFAULT: Record<LeadType, string> = { venue: 'ambassador', brand: 'ugc', artist: 'mv', event: 'hosts', other: 'notsure' };
+export const lc = (x: string) => (/^[A-Z]{2}/.test(x) ? x : x.charAt(0).toLowerCase() + x.slice(1));
+function joinList(xs: string[]) { return xs.length <= 1 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`; }
+
+/** Requested services (in the order they were picked), ignoring "not sure". */
+export function requestedServices(a: LeadAnswers): Svc[] {
+  return (a.services || []).map((id) => S[id]).filter((s): s is Svc => !!s && s.id !== 'notsure');
+}
+
 export function recommend(a: LeadAnswers): { pkg: string; pitch: string } {
-  const svcs = (a.services || []).map((id) => S[id]).filter(Boolean);
-  const main = svcs.find((s) => s.id !== 'notsure') || (a.type ? SERVICES_BY_TYPE[a.type][0] : S.ambassador);
-  const big = a.budget === '$1.5K–5K' || a.budget === '$5K+';
-  if (a.budget === STARTER_BUDGET) {
-    const pkg = STARTER_PICK[main.id] || 'Starter: Single Story Post ($200) or another single-deliverable option';
-    const who = a.business || a.ig || 'your project';
-    return { pkg: `${pkg} (see ${STARTER_HREF})`, pitch: `Hi! For ${who}, our Starter options are built for solo artists and small creatives: one creator, one deliverable, from $200. Here they are: https://influencecreators.marketing${STARTER_HREF}. Happy to help you pick.` };
-  }
-  let pkg = main.pkg;
-  if (a.type === 'venue' && big) pkg = `${S.venueMonthly.pkg}, or one-off ${main.label.toLowerCase()}`;
-  if (a.type === 'artist' && main.id === 'mv' && big) pkg = 'Music video Ensemble: 3 models, full day ($1,950); add Reaction Launch Bundle ($750)';
-  if (a.type === 'brand' && a.budget === '$5K+') pkg = `${S.campaign.pkg} + UGC add-on`;
-  const who = a.business || a.ig || 'your brand';
-  const when = a.timing === 'This week' ? 'this week' : a.timing === 'This month' ? 'this month' : 'when you’re ready';
+  const type: LeadType = a.type || 'other';
+  const asked = requestedServices(a);
+  const who = a.business || a.ig || ({ venue: 'your venue', brand: 'your brand', artist: 'your release', event: 'your event', other: 'your project' } as const)[type];
+  const when = a.timing === 'This week' ? 'this week' : a.timing === 'This month' ? 'this month' : 'whenever you’re ready';
   const where = a.city && !a.city.startsWith('Other') ? ` in ${a.city}` : '';
-  const pitch = {
-    venue: `Hi! Saw you're looking for ${main.label.toLowerCase()} for ${who}${where}. We can have vetted, camera-ready talent at your venue ${when}. Want me to send 3 options and a quote?`,
-    brand: `Hi! For ${who}, we'd start with ${main.label.toLowerCase()} (from ${main.from || 'a custom quote'}). I can send creator picks that fit your product ${when}.`,
-    artist: `Hey! For ${who}, we can lock in ${main.label.toLowerCase()} (from ${main.from || 'custom'})${where} ${when}. Send me the song/treatment and I'll match talent.`,
-    event: `Hi! For your event${where}, we can staff ${main.label.toLowerCase()} (${main.from || 'custom quote'}) ${when}. What's the date and headcount?`,
-    other: `Hi! Thanks for reaching out to Influence. Based on what you picked, I'd suggest ${main.label.toLowerCase()}. Quick 5-min call to scope it?`,
-  }[a.type || 'other'];
-  return { pkg, pitch };
+  const close = { venue: 'Want 3 talent options and a quote?', brand: 'Want me to send creator picks that fit your product?', artist: 'Send me the song or treatment and I’ll match talent.', event: 'What’s the date, location and headcount?', other: 'Quick 5-min call to scope it?' }[type];
+
+  const contentOnly = asked.length > 0 && asked.every((s) => ['ugc', 'campaign', 'reaction', 'label'].includes(s.id));
+  const closeQ = contentOnly ? 'Want me to send creator picks and a quick brief so we can get started?' : close;
+  // Nothing specific requested: say so and offer a call; suggest the type's usual starting point.
+  if (!asked.length) {
+    const d = S[TYPE_DEFAULT[type]];
+    const pkg = d.id === 'notsure' ? S.notsure.pkg : `Discovery call; typical starting point: ${SMALLEST[d.id]}`;
+    return { pkg, pitch: `Hi! Thanks for reaching out about ${who}${where}. You weren’t sure yet which service fits, so a quick 5-min call is the fastest way to scope it${d.id === 'notsure' ? '' : `; most ${LEAD_TYPES.find((t) => t.id === type)!.label.toLowerCase()} clients start with ${lc(d.label)}`}. What’s a good time ${when}?` };
+  }
+
+  const max = BUDGET_MAX[a.budget || ''] ?? Infinity;
+  const names = joinList(asked.map((s) => lc(s.label)));
+
+  if (a.budget === STARTER_BUDGET) {
+    const parts = asked.map((s) => {
+      const st = STARTER_PICK[s.id];
+      return st ? { pkg: st.pkg, line: `for ${lc(s.label)}, our Starter option is ${st.what}` } : { pkg: `No Starter option for ${lc(s.label)}; smallest package: ${SMALLEST[s.id]}`, line: `${lc(s.label)} doesn’t have a Starter option; the smallest package is ${SMALLEST[s.id]}` };
+    });
+    const anyStarter = asked.some((s) => STARTER_PICK[s.id]);
+    const pkg = parts.map((p) => p.pkg).join(' | ') + (anyStarter ? ` (see ${STARTER_HREF})` : '');
+    const link = anyStarter ? ` You can book it here: https://influencecreators.marketing${STARTER_HREF}.` : '';
+    return { pkg, pitch: `Hi! Thanks for reaching out about ${names} for ${who}${where}. On your budget, ${parts.map((p) => p.line).join('; ')}.${link} We can make ${when} work. ${closeQ}` };
+  }
+
+  // Main packages: one line per requested service, never swapping in a service they didn't ask for.
+  const big = max > 1500;
+  const pkgs = asked.map((s) => {
+    if (s.id === 'mv' && big) return 'Music video Ensemble: 3 models, full day ($1,950)';
+    if (s.id === 'ugc' && max === Infinity) return 'UGC 10-pack ($2,250)';
+    return s.pkg;
+  });
+  const over = asked.filter((s) => MIN_PRICE[s.id] > max);
+  let pkg = pkgs.join(' | ');
+  if (type === 'venue' && big && asked.some((s) => ['ambassador', 'hosts', 'bottle'].includes(s.id)) && !asked.some((s) => s.id === 'venueMonthly')) pkg += ` | Optional upsell: ${S.venueMonthly.pkg}`;
+  if (over.length) pkg += ` | Note: ${joinList(over.map((s) => `${lc(s.label)} starts at ${s.from}`))}, above the stated budget`;
+  const fromTxt = joinList(asked.map((s) => `${lc(s.label)} (from ${s.from})`));
+  const budgetNote = over.length ? ` Heads up: ${joinList(over.map((s) => `${lc(s.label)} starts at ${s.from}`))}, so I can suggest how to fit it to your budget.` : '';
+  const verb = { venue: `we can have vetted, camera-ready talent for ${fromTxt} at ${who}${where}`, brand: `we can start ${who} with ${fromTxt}`, artist: `we can lock in ${fromTxt} for ${who}${where}`, event: `we can set up ${fromTxt} for ${who}${where}`, other: `we can do ${fromTxt} for ${who}${where}` }[type];
+  return { pkg, pitch: `Hi! Thanks for reaching out about ${names}. ${verb.charAt(0).toUpperCase() + verb.slice(1)} ${when}.${budgetNote} ${closeQ}` };
 }
 
 const VENDOR_WORDS = /\b(seo|backlink|clipping|video edit(ing|or)|editing services?|web ?design|lead gen(eration)?|outsourc|virtual assistant|white[- ]label|agency (partnership|outreach)|grow your (business|followers)|guest post|marketing services|dev(elopment)? services|app development|crypto|loan|we (can|will) help you)\b/i;
