@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: 'Bottle Girls Miami | Event Hostesses & Models for Events',
     description: 'Book bottle girls and event hostesses in Miami. Verified talent for clubs, parties, and activations. From $400.',
-    url: 'https://influencemodels.agency/event-talent',
+    url: 'https://influencecreators.marketing/event-talent',
   },
 };
 

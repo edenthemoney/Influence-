@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Influence — South Florida Influencer Marketing Agency',
     description: 'Meet Eden Roy and Deseray Marie — the founders behind Influence, connecting brands with elite influencers in South Florida and beyond.',
-    url: 'https://influencemodels.agency/about',
+    url: 'https://influencecreators.marketing/about',
   },
 };
 

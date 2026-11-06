@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Brand Ambassadors — Models at Your Location | Influence',
     description: 'Book a brand ambassador for your business. Reels, stories, promos — all delivered same day. South Florida.',
-    url: 'https://influencemodels.agency/services/business',
+    url: 'https://influencecreators.marketing/services/business',
   },
 };
 
@@ -54,7 +54,7 @@ export default function BusinessContentPage() {
             <Link href="/model-booking?service=business" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Book a Brand Ambassador <ChevronRight className="h-4 w-4" />
             </Link>
-            <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+            <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
               <Phone className="h-4 w-4" /> Call Us
             </a>
           </div>

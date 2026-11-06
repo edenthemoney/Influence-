@@ -7,8 +7,8 @@ const serviceSchema = {
   '@type': 'Service',
   name: 'UGC Content Creation — Florida',
   description: 'Professional UGC creators in Florida produce branded short-form video content for TikTok and Instagram Reels. Authentic, high-converting content starting at $300 per reel. Available remotely nationwide.',
-  url: 'https://influencemodels.agency/ugc-creators-florida',
-  provider: { '@type': 'Organization', name: 'Influence Models Agency', url: 'https://influencemodels.agency' },
+  url: 'https://influencecreators.marketing/ugc-creators-florida',
+  provider: { '@type': 'Organization', name: 'Influence Models Agency', url: 'https://influencecreators.marketing' },
   areaServed: [{ '@type': 'State', name: 'Florida' }, { '@type': 'Country', name: 'United States' }],
   serviceType: 'UGC Content Creation',
   offers: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'UGC Creators in Florida | Influence Models Agency',
     description: 'Professional UGC creators for authentic, high-converting brand content. Starting at $100.',
-    url: 'https://influencemodels.agency/ugc-creators-florida',
+    url: 'https://influencecreators.marketing/ugc-creators-florida',
   },
 };
 

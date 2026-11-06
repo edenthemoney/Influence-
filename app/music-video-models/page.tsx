@@ -6,15 +6,15 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Music Video Models for Hire — Miami, South Florida',
-  description: 'Professional music video models in Miami with credits including Sean Paul, Trippie Redd, Kodak Black, DaBaby, and French Montana. Book for music video productions in South Florida. Starting at $500.',
-  url: 'https://influencemodels.agency/music-video-models',
-  provider: { '@type': 'Organization', name: 'Influence Models Agency', url: 'https://influencemodels.agency' },
+  description: 'Music video creators for productions in South Florida. Featured is one model for up to 5 hours, from $450.',
+  url: 'https://influencecreators.marketing/music-video-models',
+  provider: { '@id': 'https://influencecreators.marketing/#organization' },
   areaServed: [{ '@type': 'City', name: 'Miami' }, { '@type': 'State', name: 'Florida' }],
   serviceType: 'Music Video Model Booking',
   offers: [
-    { '@type': 'Offer', name: 'Solo Feature', price: '500', priceCurrency: 'USD', description: '1 model, 4hr, featured scenes.' },
-    { '@type': 'Offer', name: 'Trio Feature', price: '1200', priceCurrency: 'USD', description: '3 models, 4hr, full video cast.' },
-    { '@type': 'Offer', name: 'Big Production', price: '3500', priceCurrency: 'USD', description: '10-50 models, full music video production.' },
+    { '@type': 'Offer', name: 'Featured', price: '450', priceCurrency: 'USD', description: 'From $450. 1 model, half day (up to 5 hours).' },
+    { '@type': 'Offer', name: 'Lead', price: '950', priceCurrency: 'USD', description: 'From $950. 1 lead model, full day (up to 10 hours).' },
+    { '@type': 'Offer', name: 'Ensemble', price: '1950', priceCurrency: 'USD', description: 'From $1,950. 3+ models, full day. Custom quote.' },
   ],
 };
 
@@ -24,8 +24,8 @@ export const metadata: Metadata = {
   keywords: 'music video models, music video girls, hire models for music video, music video models Miami, video vixens Miami',
   openGraph: {
     title: 'Music Video Models for Hire | Influence Models Agency',
-    description: 'Professional music video models with credits including Sean Paul, Trippie Redd, Kodak Black. Starting at $100.',
-    url: 'https://influencemodels.agency/music-video-models',
+    description: 'Music video creators in South Florida. Featured is one model for up to 5 hours, from $450.',
+    url: 'https://influencecreators.marketing/music-video-models',
   },
 };
 
@@ -78,7 +78,7 @@ export default function MusicVideoModels() {
             'Comfortable with long shoot days, multiple setups, and direction changes',
             'Available for same-week bookings in Miami/South Florida',
             'Content rights included — use footage across all platforms',
-            'Behind-the-scenes social media coverage included with Pro packages',
+            'Ask about behind-the-scenes coverage when you book',
           ].map((item, i) => (
             <div key={i} className="flex items-center gap-3">
               <Check className="w-4 h-4 flex-shrink-0" style={{ color: gold }} />
@@ -90,10 +90,9 @@ export default function MusicVideoModels() {
         <h2 className="text-2xl font-bold mb-6">Packages for Artists</h2>
         <div className="space-y-4 mb-16">
           {[
-            { name: 'Sample', price: '$100', desc: '1 model, 1 scene/reel. Perfect for a teaser or social clip.', best: 'Emerging artists' },
-            { name: 'Starter', price: '$300', desc: '1 model, 2 scenes. Full music video with featured model.', best: 'Independent artists' },
-            { name: 'Growth', price: '$500', desc: '1 model, 4 scenes. Multiple looks, outfits, and setups.', best: 'Serious releases', highlight: true },
-            { name: 'Pro', price: '$850', desc: '1 model, 6 premium scenes. Full treatment with BTS content.', best: 'Label-quality visuals' },
+            { name: 'Featured', price: 'From $450', desc: '1 model, half day (up to 5 hrs).', best: 'Most videos' },
+            { name: 'Lead', price: 'From $950', desc: '1 lead model, full day (up to 10 hrs).', best: 'Lead role', highlight: true },
+            { name: 'Ensemble', price: 'From $1,950', desc: '3+ models, full day. Custom quote.', best: 'Group scenes' },
           ].map((pkg, i) => (
             <div key={i} className={`border p-6 flex items-center justify-between ${pkg.highlight ? 'border-[#c9a96e]/30 bg-[#c9a96e]/[0.04]' : 'border-white/[0.06]'}`}>
               <div>
@@ -111,7 +110,7 @@ export default function MusicVideoModels() {
 
         <div className="border border-white/[0.06] p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">Book a Music Video Model</h2>
-          <p className="text-white/40 mb-6">Same-week availability. Professional talent. Starting at $100.</p>
+          <p className="text-white/40 mb-6">Same-week availability. Professional creators. From $450.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/marketplace" className="px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all text-center" style={{ backgroundColor: gold, color: '#000' }}>
               Browse Models

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Miami Casting Agency — Models, Actresses & Voiceover Talent | Influence',
     description: 'Source professional talent for commercials, TV, film, and brand productions.',
-    url: 'https://influencemodels.agency/casting-agency-miami',
+    url: 'https://influencecreators.marketing/casting-agency-miami',
   },
 };
 

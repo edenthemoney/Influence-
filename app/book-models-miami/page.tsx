@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Book Models in Miami | Hire a Model for Any Project',
     description: 'Professional models for music videos, photoshoots, events, commercials & more. From $150. Miami & South Florida.',
-    url: 'https://influencemodels.agency/book-models-miami',
+    url: 'https://influencecreators.marketing/book-models-miami',
   },
 };
 

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Influencer Marketing Agency Miami | Influence Models Agency',
     description: 'Full-service influencer marketing from Miami\'s top talent agency. Campaigns, content, and results.',
-    url: 'https://influencemodels.agency/influencer-marketing-agency-miami',
+    url: 'https://influencecreators.marketing/influencer-marketing-agency-miami',
   },
 };
 
@@ -101,7 +101,7 @@ export default function InfluencerMarketingAgencyMiami() {
 
         <div className="mt-16 text-white/20 text-sm leading-relaxed">
           <h3 className="text-white/40 font-bold mb-2">Miami Influencer Marketing Agency</h3>
-          <p>Influence Models Agency operates out of Miami, Florida, serving clients across South Florida, the United States, and internationally. Our talent roster is based primarily in Miami, Fort Lauderdale, Hollywood, and Orlando, with availability for travel. We specialize in influencer marketing, talent booking, content creation, and brand partnerships. Contact us at influencemodelsagency@gmail.com or visit influencemodels.agency.</p>
+          <p>Influence serves Miami and the rest of South Florida, the United States, and international remote work. The agency office is in Boca Raton. Creator home cities are not additional offices. Contact us at influencemodelsagency@gmail.com or visit influencecreators.marketing.</p>
         </div>
       </div>
     </div>

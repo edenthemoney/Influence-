@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Book Models for Shoots & Music Videos — Influence Agency',
     description: 'Professional models for your video or photo production. South Florida.',
-    url: 'https://influencemodels.agency/services/shoots',
+    url: 'https://influencecreators.marketing/services/shoots',
   },
 };
 

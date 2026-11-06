@@ -38,9 +38,7 @@ export default function LandingPage_ugc_videos() {
       {/* Trust Badges */}
       <section className="border-y border-white/[0.06] py-6">
         <div className="max-w-4xl mx-auto px-6 flex flex-wrap justify-center gap-8">
-          <span className="text-white/40 text-[12px] tracking-widest uppercase">500+ Brands Served</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">South Florida Based</span>
-          <span className="text-white/40 text-[12px] tracking-widest uppercase">48-Hr Turnaround</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">No Lock-In Contracts</span>
         </div>
       </section>
@@ -63,16 +61,6 @@ export default function LandingPage_ugc_videos() {
             <h3 className="text-xl font-bold mb-3">Photo & Brand Shoots</h3>
             <p className="text-white/50 text-sm leading-relaxed">Camera-ready models for lookbooks, e-comm, editorials and product campaigns.</p>
           </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="border-t border-white/[0.06] py-16 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xl text-white/80 italic leading-relaxed mb-6">
-            &ldquo;We saw a 4x increase in engagement within the first week. The content was exactly on-brand.&rdquo;
-          </p>
-          <p className="text-[#c9a96e] text-sm font-bold tracking-widest uppercase">Marketing Director, South FL Brand</p>
         </div>
       </section>
 

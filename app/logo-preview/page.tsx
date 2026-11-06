@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Logo preview',
+  robots: { index: false, follow: false },
+};
+
 export default function LogoPreviewPage() {
   return (
     <div className="min-h-screen bg-black text-white">

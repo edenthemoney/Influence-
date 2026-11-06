@@ -29,8 +29,8 @@ export async function POST(req: NextRequest) {
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencemodels.agency'}/shop/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencemodels.agency'}/shop`,
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencecreators.marketing'}/shop/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencecreators.marketing'}/shop`,
       shipping_address_collection: {
         allowed_countries: ['US'],
       },

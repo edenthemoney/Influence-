@@ -4,8 +4,8 @@ import { X, Phone } from 'lucide-react';
 import HeroBooking from './HeroBooking';
 
 const G = '#c9a96e';
-const PHONE = '5615520392';
-const PHONE_DISPLAY = '(561) 552-0392';
+const PHONE = '5612877194';
+const PHONE_DISPLAY = '(561) 287-7194';
 
 export default function FloatingBooking() {
   const [open, setOpen] = useState(false);

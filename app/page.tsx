@@ -9,27 +9,67 @@ import HomeFAQ from './components/HomeFAQ';
 
 const organizationSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Influence Models Agency',
-  alternateName: 'Influence',
-  url: 'https://influencemodels.agency',
-  logo: 'https://influencemodels.agency/favicon.svg',
-  description: 'South Florida influencer marketing agency providing UGC content, music promotion, brand campaigns, and event hosting services.',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Miami',
-    addressRegion: 'FL',
-    addressCountry: 'US',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+1-561-552-0392',
-    contactType: 'sales',
-  },
-  sameAs: [
-    'https://www.instagram.com/influencemodels.agency',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://influencecreators.marketing/#organization',
+      name: 'Influence',
+      alternateName: ['Influence Models Agency', 'Influence Agency'],
+      url: 'https://influencecreators.marketing',
+      logo: 'https://influencecreators.marketing/favicon.svg',
+      description: 'South Florida influencer marketing agency founded by Eden Roy and Deseray Marie. Books creators for UGC, music videos, events, and brand campaigns.',
+      foundingDate: '2024',
+      email: 'influencemodelsagency@gmail.com',
+      telephone: '+1-561-287-7194',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '4756 NW 2nd Ave',
+        addressLocality: 'Boca Raton',
+        addressRegion: 'FL',
+        postalCode: '33431',
+        addressCountry: 'US',
+      },
+      areaServed: [
+        { '@type': 'City', name: 'Boca Raton' },
+        { '@type': 'City', name: 'Miami' },
+        { '@type': 'City', name: 'Fort Lauderdale' },
+        { '@type': 'City', name: 'West Palm Beach' },
+        { '@type': 'City', name: 'Delray Beach' },
+        { '@type': 'State', name: 'Florida' },
+        { '@type': 'Country', name: 'United States' },
+      ],
+      founders: [
+        { '@type': 'Person', name: 'Eden Roy', jobTitle: 'Founder' },
+        { '@type': 'Person', name: 'Deseray Marie', jobTitle: 'Co-Founder' },
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+1-561-287-7194',
+        email: 'influencemodelsagency@gmail.com',
+        contactType: 'customer service',
+        areaServed: 'US',
+      },
+      sameAs: [
+        'https://www.instagram.com/influencemodels.agency',
+        'https://www.tiktok.com/@influencemodelsagency',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://influencecreators.marketing/#website',
+      url: 'https://influencecreators.marketing',
+      name: 'Influence',
+      publisher: { '@id': 'https://influencecreators.marketing/#organization' },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': 'https://influencecreators.marketing/#webpage',
+      url: 'https://influencecreators.marketing',
+      name: 'Influence',
+      isPartOf: { '@id': 'https://influencecreators.marketing/#website' },
+      about: { '@id': 'https://influencecreators.marketing/#organization' },
+    },
   ],
-  serviceType: ['Influencer Marketing', 'UGC Content Creation', 'Music Promotion', 'Brand Campaigns', 'Event Marketing'],
 };
 
 export default function HomePage() {

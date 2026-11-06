@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Event Models Miami — Party Models & Event Hosting Florida',
     description: 'Miami event models for clubs, parties, brand activations. Serving South Florida.',
-    url: 'https://influencemodels.agency/services/events',
+    url: 'https://influencecreators.marketing/services/events',
   },
 };
 
@@ -24,7 +24,7 @@ const eventModelsSchema = {
   provider: {
     '@type': 'Organization',
     name: 'Influence Models Agency',
-    url: 'https://influencemodels.agency',
+    url: 'https://influencecreators.marketing',
   },
   areaServed: ['Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach', 'West Palm Beach', 'Delray Beach', 'Hollywood', 'Pompano Beach', 'Hallandale Beach', 'Aventura', 'Sunny Isles Beach', 'Miami Beach'],
   offers: {
@@ -79,7 +79,7 @@ export default function EventsPage() {
             <Link href="/model-booking?service=event" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
               Book Event Models <ChevronRight className="h-4 w-4" />
             </Link>
-            <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+            <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
               <Phone className="h-4 w-4" /> Call Us
             </a>
           </div>

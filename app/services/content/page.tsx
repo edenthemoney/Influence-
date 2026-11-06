@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Social Media Content & Music Reactions Miami — UGC Agency Florida',
     description: 'Miami UGC content creation. Models create scroll-stopping content for brands and music. Serving South Florida and nationwide.',
-    url: 'https://influencemodels.agency/services/content',
+    url: 'https://influencecreators.marketing/services/content',
   },
 };
 
@@ -24,7 +24,7 @@ const serviceSchema = {
   provider: {
     '@type': 'Organization',
     name: 'Influence Models Agency',
-    url: 'https://influencemodels.agency',
+    url: 'https://influencecreators.marketing',
   },
   areaServed: ['United States', 'Miami', 'Fort Lauderdale', 'Boca Raton', 'Palm Beach'],
   offers: {
@@ -43,7 +43,7 @@ const musicReactionSchema = {
   provider: {
     '@type': 'Organization',
     name: 'Influence Models Agency',
-    url: 'https://influencemodels.agency',
+    url: 'https://influencecreators.marketing',
   },
   areaServed: ['United States'],
   offers: {

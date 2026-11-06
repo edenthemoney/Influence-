@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Event Models for Hire in Miami | Promo Girls & Party Models',
     description: 'Professional event models and promo girls for parties, clubs, brand activations, and VIP events. $400/girl (4hr shift). Miami & South Florida.',
-    url: 'https://influencemodels.agency/event-models-miami',
+    url: 'https://influencecreators.marketing/event-models-miami',
   },
 };
 

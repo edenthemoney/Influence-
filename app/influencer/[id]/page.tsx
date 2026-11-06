@@ -9,9 +9,16 @@ import AnimatedCounter from '../../components/AnimatedCounter';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 // SEO metadata for Deseray Marie - helps Google Knowledge Panel
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const person = influencers[params.id];
+  if (!person) {
+    return { title: 'Profile not found', robots: { index: false, follow: false } };
+  }
+  const canonical = `https://influencecreators.marketing/influencer/${params.id}`;
+  const description = person.description || `${person.name} creator profile.`;
   if (params.id === 'des-001') {
     return {
       title: 'Deseray Marie | Creator, Actress, Entrepreneur & CEO | Influence',
@@ -20,6 +27,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
       openGraph: {
         title: 'Deseray Marie | Creator, Actress, Entrepreneur & CEO',
         description: 'Featured in Forbes Magazine. 40M+ music video views. Film & TV credits. CEO of Influence.',
+        url: canonical,
         images: ['https://influencecreators.marketing/images/Des/des-1.jpg'],
         type: 'profile',
       },
@@ -29,15 +37,20 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
         description: 'Featured in Forbes Magazine. 40M+ music video views. CEO of Influence.',
         images: ['https://influencecreators.marketing/images/Des/des-1.jpg'],
       },
-      alternates: {
-        canonical: 'https://influencecreators.marketing/influencer/des-001',
-      },
+      alternates: { canonical },
     };
   }
-  
+
   return {
-    title: 'Influencer Profile | Influence',
-    description: 'Book top creators and influencers for music videos, brand campaigns, and content creation.',
+    title: `${person.name} | Influence`,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: person.name,
+      description,
+      url: canonical,
+      images: person.avatar ? [`https://influencecreators.marketing${person.avatar}`] : undefined,
+    },
   };
 }
 
@@ -1314,18 +1327,7 @@ const influencers: Record<string, any> = {
 export default function InfluencerProfilePage({ params }: { params: { id: string } }) {
   const influencer = influencers[params.id];
 
-  if (!influencer) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Influencer Not Found</h1>
-          <Link href="/marketplace">
-            <Button className="gold-gradient text-black">Browse All Talent</Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if (!influencer) notFound();
 
   // Schema.org structured data for Deseray Marie - enables Google Knowledge Panel
   const deserayMarieSchema = params.id === 'des-001' ? {

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/api/', '/booking/success'],
+        disallow: ['/admin', '/api/', '/booking/success', '/logo-preview', '/shop/success'],
       },
       // Explicitly allow major AI/LLM crawlers
       { userAgent: 'GPTBot',           allow: '/' },
@@ -20,6 +20,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Bytespider',       allow: '/' },
       { userAgent: 'FacebookBot',      allow: '/' },
     ],
-    sitemap: 'https://influencemodels.agency/sitemap.xml',
+    sitemap: 'https://influencecreators.marketing/sitemap.xml',
   };
 }

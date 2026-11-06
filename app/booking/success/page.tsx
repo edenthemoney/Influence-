@@ -5,7 +5,14 @@ import MobileNav from '../../components/MobileNav';
 import { BookingSuccessTracker } from './tracker';
 import { PostBookingForm } from './post-booking-form';
 
+import type { Metadata } from 'next';
+
 const gold = '#c9a96e';
+
+export const metadata: Metadata = {
+  title: 'Booking received',
+  robots: { index: false, follow: false },
+};
 
 export default function BookingSuccessPage() {
   return (
@@ -76,7 +83,7 @@ export default function BookingSuccessPage() {
         <div className="border-t border-white/[0.06] pt-8">
           <div className="flex items-center justify-center gap-3 text-white/35 text-sm">
             <Crown className="h-4 w-4" style={{ color: gold }} />
-            <span>Need help? <a href="mailto:influencemodelsagency@gmail.com" className="underline hover:text-white transition-colors" style={{ color: gold }}>influencemodelsagency@gmail.com</a> or <a href="tel:+15615520392" className="underline hover:text-white transition-colors" style={{ color: gold }}>(561) 552-0392</a></span>
+            <span>Need help? <a href="mailto:influencemodelsagency@gmail.com" className="underline hover:text-white transition-colors" style={{ color: gold }}>influencemodelsagency@gmail.com</a> or <a href="tel:+15612877194" className="underline hover:text-white transition-colors" style={{ color: gold }}>(561) 287-7194</a></span>
           </div>
         </div>
       </div>

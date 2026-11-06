@@ -259,12 +259,12 @@ export default function BehrProposal() {
           <p className="text-white/40 text-[15px] mb-10">Once approved, we'll activate your campaign within 48 hours.</p>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <a
-              href="tel:+15615520392"
+              href="tel:+15612877194"
               className="flex items-center gap-3 px-8 py-5 font-bold text-[14px] tracking-[0.15em] uppercase transition-all hover:opacity-90"
               style={{ backgroundColor: gold, color: '#000' }}
             >
               <Phone className="h-5 w-5" />
-              Call to Approve — (561) 552-0392
+              Call to Approve — (561) 287-7194
             </a>
             <a
               href="mailto:eden@influenceagency.com"

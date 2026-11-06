@@ -11,31 +11,22 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'UGC Creators Miami — UGC Content Creation Agency',
     description: 'Miami\'s top UGC creators. Authentic content, verified influencers, transparent pricing for brands.',
-    url: 'https://influencemodels.agency/ugc-creators-miami',
+    url: 'https://influencecreators.marketing/ugc-creators-miami',
   },
 };
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ServiceAreaBusiness',
-  name: 'Influence Models Agency - Miami UGC Creators',
+  '@type': 'Service',
+  name: 'UGC content in Miami',
+  provider: { '@id': 'https://influencecreators.marketing/#organization' },
   description: 'Miami UGC content creation agency. Book verified influencers for authentic user-generated content, reels, TikToks, and brand videos.',
-  url: 'https://influencemodels.agency/ugc-creators-miami',
-  telephone: '+15615520392',
+  url: 'https://influencecreators.marketing/ugc-creators-miami',
+  telephone: '+15612877194',
   email: 'influencemodelsagency@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Serving Miami-Dade County',
-    addressLocality: 'Miami',
-    addressRegion: 'FL',
-    addressCountry: 'US',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 25.76168,
-    longitude: -80.19178,
-  },
-  openingHours: 'Mo-Su 00:00-23:59',
+
+
+
   priceRange: '$300-$3,000',
   sameAs: [
     'https://www.instagram.com/influencemodels.agency',
@@ -43,44 +34,6 @@ const localBusinessSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How much does UGC content cost in Miami?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Miami UGC content starts at $300 per video. Package deals available for multiple videos. Pricing varies based on content type, complexity, and influencer tier.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you work with Miami-based UGC creators only?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We work with both Miami-based UGC creators and nationwide talent. For Miami-specific content, we prioritize local creators. Remote UGC is available from creators anywhere in the US.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How fast can you deliver Miami UGC content?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We offer same-day response for Miami UGC bookings. Most UGC content is delivered within 3-7 days depending on complexity and revisions.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What types of UGC content do Miami creators make?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Miami UGC creators produce product demos, testimonials, lifestyle content, branded reels, trend participation, GRWM videos, and more. All content is optimized for Instagram Reels and TikTok.',
-      },
-    },
-  ],
-};
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -90,13 +43,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://influencemodels.agency',
+      item: 'https://influencecreators.marketing',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'UGC Creators Miami',
-      item: 'https://influencemodels.agency/ugc-creators-miami',
+      item: 'https://influencecreators.marketing/ugc-creators-miami',
     },
   ],
 };
@@ -107,10 +60,6 @@ export default function MiamiUGCCreatorsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <script
         type="application/ld+json"
@@ -151,8 +100,8 @@ export default function MiamiUGCCreatorsPage() {
               <Link href="/model-booking?service=ugc" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Miami UGC Creators <ChevronRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
-                <Phone className="h-4 w-4" /> (561) 552-0392
+              <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+                <Phone className="h-4 w-4" /> (561) 287-7194
               </a>
             </div>
           </div>

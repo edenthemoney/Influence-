@@ -7,8 +7,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!article) {
     return { title: 'Article Not Found' };
   }
-  const description = (article.content.find((b: any) => b.type === 'text')?.value || '').slice(0, 160);
-  const url = `https://influencemodels.agency/blog/${params.slug}`;
+  const textBlock = article.content.find((block) => block.type === 'text');
+  const description = (textBlock && textBlock.type === 'text' ? textBlock.value : '').slice(0, 160);
+  const url = `https://influencecreators.marketing/blog/${params.slug}`;
   return {
     title: article.title,
     description,

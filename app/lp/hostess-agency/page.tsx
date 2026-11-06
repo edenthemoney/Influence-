@@ -41,7 +41,6 @@ export default function LandingPage_hostess_agency() {
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Top South FL Venues</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Palm Beach to Miami</span>
           <span className="text-white/40 text-[12px] tracking-widest uppercase">Vetted Professionals</span>
-          <span className="text-white/40 text-[12px] tracking-widest uppercase">Book in 24 Hrs</span>
         </div>
       </section>
 
@@ -63,16 +62,6 @@ export default function LandingPage_hostess_agency() {
             <h3 className="text-xl font-bold mb-3">Event Content Creation</h3>
             <p className="text-white/50 text-sm leading-relaxed">Models who also capture and post content from your event — reach built in.</p>
           </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="border-t border-white/[0.06] py-16 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xl text-white/80 italic leading-relaxed mb-6">
-            &ldquo;Best agency I've worked with. Showed up early, looked amazing, and kept the VIP section popping all night.&rdquo;
-          </p>
-          <p className="text-[#c9a96e] text-sm font-bold tracking-widest uppercase">Event Promoter, Boca Raton FL</p>
         </div>
       </section>
 

@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Influence — South Florida Influencer Marketing Agency',
     description: 'Reach out for bookings, partnerships, or questions. Based in Miami & Boca Raton, FL.',
-    url: 'https://influencemodels.agency/contact',
+    url: 'https://influencecreators.marketing/contact',
   },
   alternates: {
-    canonical: 'https://influencemodels.agency/contact',
+    canonical: 'https://influencecreators.marketing/contact',
   },
 };
 
@@ -66,16 +66,16 @@ export default function ContactPage() {
           <div className="border border-white/[0.06] p-8">
             <MapPin className="h-8 w-8 mb-4" style={{ color: '#c9a96e' }} />
             <h2 className="text-white font-bold text-xl mb-2">Location</h2>
-            <p className="text-white/40 text-sm mb-4">In-person services available in South Florida.</p>
-            <p className="text-white/60 text-sm font-medium">Miami &middot; Boca Raton, FL</p>
+            <p className="text-white/40 text-sm mb-4">Office in Boca Raton. Miami and the rest of South Florida are service areas.</p>
+            <p className="text-white/60 text-sm font-medium">4756 NW 2nd Ave<br />Boca Raton, FL 33431</p>
           </div>
 
           {/* Phone */}
-          <a href="tel:+15615520392" className="border border-white/[0.06] p-8 hover:bg-white/[0.02] transition-all group">
+          <a href="tel:+15612877194" className="border border-white/[0.06] p-8 hover:bg-white/[0.02] transition-all group">
             <Phone className="h-8 w-8 mb-4" style={{ color: '#c9a96e' }} />
             <h2 className="text-white font-bold text-xl mb-2">Call Us</h2>
             <p className="text-white/40 text-sm mb-4">For urgent bookings or quick questions.</p>
-            <p className="font-bold text-sm group-hover:underline" style={{ color: '#c9a96e' }}>(561) 552-0392</p>
+            <p className="font-bold text-sm group-hover:underline" style={{ color: '#c9a96e' }}>(561) 287-7194</p>
           </a>
 
           {/* For Models */}

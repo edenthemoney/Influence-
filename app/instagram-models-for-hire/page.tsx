@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Instagram Models for Hire | Influence Models Agency',
     description: 'Professional Instagram models for campaigns, shoots, events & content. Starting at $100.',
-    url: 'https://influencemodels.agency/instagram-models-for-hire',
+    url: 'https://influencecreators.marketing/instagram-models-for-hire',
   },
 };
 

@@ -8,7 +8,7 @@ const gold = '#c9a96e';
 const faqs = [
   {
     question: 'What is Influence Models Agency?',
-    answer: 'Influence Models Agency is a South Florida influencer marketing agency based in Miami. We connect artists, brands, record labels, and local businesses with verified influencers and models for UGC content, music videos, event hosting, commercial shoots, and brand campaigns.',
+    answer: 'Influence is a South Florida influencer marketing agency. The office is in Boca Raton. In-person work covers Miami and the rest of South Florida. We connect artists, brands, record labels, and local businesses with creators for UGC, music videos, event hosting, commercial shoots, and brand campaigns.',
   },
   {
     question: 'How do I book a model or influencer in Miami?',
@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     question: 'What services do you offer for music artists?',
-    answer: 'We provide music video models, TikTok and Instagram music promotion, song reaction videos, viral challenge creators, album release livestreams, and influencer campaigns designed to increase streams and visibility for independent and signed artists.',
+    answer: 'We provide music video models, TikTok and Instagram music promotion, song reaction videos, and album release livestreams for independent and signed artists. A separate viral-challenge product is not offered on this site.',
   },
   {
     question: 'Do you offer UGC content creation for businesses?',

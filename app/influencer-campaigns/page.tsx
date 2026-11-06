@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: 'Book Social Media Influencers | Influencer Marketing Agency',
     description: 'Book social media influencers for coordinated campaigns. Verified creators. From $2,000.',
-    url: 'https://influencemodels.agency/influencer-campaigns',
+    url: 'https://influencecreators.marketing/influencer-campaigns',
   },
 };
 

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Book Actress Models in Miami — Acting & Casting | Influence',
     description: 'Professional actress models with on-camera, commercial, and film experience. From $599.',
-    url: 'https://influencemodels.agency/actress-models-miami',
+    url: 'https://influencecreators.marketing/actress-models-miami',
   },
 };
 

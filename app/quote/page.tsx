@@ -240,10 +240,10 @@ function QuoteForm() {
                 {sending ? 'Sending...' : 'Get My Quote'} <ArrowRight className="h-4 w-4" />
               </button>
               <a
-                href="tel:+15615520392"
+                href="tel:+15612877194"
                 className="inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-white/40 hover:text-white transition-colors"
               >
-                <Phone className="h-4 w-4" /> Prefer to call? (561) 552-0392
+                <Phone className="h-4 w-4" /> Prefer to call? (561) 287-7194
               </a>
             </div>
           </form>

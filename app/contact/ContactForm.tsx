@@ -69,7 +69,7 @@ export default function ContactForm() {
       if (!res.ok) throw new Error('failed');
       setSubmitted(true);
     } catch {
-      setError('Something went wrong. Please call or text us at (561) 552-0392.');
+      setError('Something went wrong. Please call or text us at (561) 287-7194.');
       setSubmitting(false);
     }
   };
