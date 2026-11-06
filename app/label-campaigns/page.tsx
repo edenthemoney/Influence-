@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: 'Label Campaigns & Large-Scale Music Videos | Influencer Agency Miami',
     description: 'Full-service label campaigns and large-scale productions with 10 to 100+ creators. From $8,500.',
-    url: 'https://influencemodels.agency/label-campaigns',
+    url: 'https://influencecreators.marketing/label-campaigns',
   },
 };
 

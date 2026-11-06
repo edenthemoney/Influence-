@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: 'Models for Photoshoot | Hire Models for Shoots Miami',
     description: 'Hire professional models for photoshoots, editorials, and e-commerce in South Florida. From $300.',
-    url: 'https://influencemodels.agency/models-for-shoots',
+    url: 'https://influencecreators.marketing/models-for-shoots',
   },
 };
 

@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   title: 'Influencer Marketing Agency Fort Lauderdale — Story Reposts, Collab Posts, UGC & Models | Influence',
   description: 'Fort Lauderdale influencer marketing agency. Book celebrity-connected creators for story reposts, collab posts, UGC content, business promotion, events, and music videos. Serving Broward County.',
   alternates: {
-    canonical: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
+    canonical: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
   },
   openGraph: {
     locale: 'en_US',
     siteName: 'Influence Models Agency',
     title: 'Influencer Marketing Agency Fort Lauderdale — Story Reposts, Collab Posts & UGC',
     description: 'Fort Lauderdale\'s premier influencer marketing agency. Celebrity-connected talent, story reposts, collab posts, UGC, transparent pricing for brands and events.',
-    url: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
+    url: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
     type: 'website',
   },
   twitter: {
@@ -30,25 +30,16 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ServiceAreaBusiness',
-  name: 'Influence Models Agency - Fort Lauderdale',
+  '@type': 'Service',
+  name: 'Influencer marketing in Fort Lauderdale',
+  provider: { '@id': 'https://influencecreators.marketing/#organization' },
   description: 'Fort Lauderdale influencer marketing agency. Book celebrity-connected influencers for story reposts, collab posts, UGC content, business promotion, events, and model bookings.',
-  url: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
-  telephone: '+15615520392',
+  url: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
+  telephone: '+15612877194',
   email: 'influencemodelsagency@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Serving Broward County',
-    addressLocality: 'Fort Lauderdale',
-    addressRegion: 'FL',
-    addressCountry: 'US',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 26.12244,
-    longitude: -80.13732,
-  },
-  openingHours: 'Mo-Su 00:00-23:59',
+
+
+
   priceRange: '$300-$3,000',
   areaServed: [
     'Fort Lauderdale',
@@ -80,44 +71,6 @@ const localBusinessSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How much does influencer marketing cost in Fort Lauderdale?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Fort Lauderdale influencer marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $500. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you work with Fort Lauderdale-based influencers only?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We work with both Fort Lauderdale-based influencers and nationwide talent. For on-site bookings in Broward County, we prioritize local influencers. For remote UGC content, we can work with influencers anywhere in the US.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How fast can you book Fort Lauderdale influencers?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We offer same-day response for Fort Lauderdale bookings. Most campaigns can be booked and scheduled within 24-48 hours. Remote UGC content is typically delivered within 3-7 days.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What areas of Broward County do you serve?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We serve all of Broward County including Fort Lauderdale, Hollywood, Pompano Beach, Hallandale Beach, Dania Beach, Lauderdale-by-the-Sea, and surrounding areas.',
-      },
-    },
-  ],
-};
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -127,13 +80,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://influencemodels.agency',
+      item: 'https://influencecreators.marketing',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Fort Lauderdale Influencer Marketing',
-      item: 'https://influencemodels.agency/influencer-marketing-fort-lauderdale',
+      item: 'https://influencecreators.marketing/influencer-marketing-fort-lauderdale',
     },
   ],
 };
@@ -144,10 +97,6 @@ export default function FortLauderdalePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <script
         type="application/ld+json"
@@ -188,8 +137,8 @@ export default function FortLauderdalePage() {
               <Link href="/model-booking" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Fort Lauderdale Influencers <ChevronRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
-                <Phone className="h-4 w-4" /> (561) 552-0392
+              <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+                <Phone className="h-4 w-4" /> (561) 287-7194
               </a>
             </div>
           </div>
@@ -321,7 +270,7 @@ export default function FortLauderdalePage() {
                 <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '17px', color: gold }}>Influence</Link>
                 <p className="text-white/40 text-sm mt-4 mb-2">Influence Models Agency</p>
                 <p className="text-white/30 text-xs mb-1">Fort Lauderdale, FL 33301</p>
-                <p className="text-white/30 text-xs mb-1">(561) 552-0392</p>
+                <p className="text-white/30 text-xs mb-1">(561) 287-7194</p>
                 <p className="text-white/30 text-xs">influencemodelsagency@gmail.com</p>
               </div>
             </div>

@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) {
+    throw new Error('RESEND_API_KEY is not set');
+  }
+  return new Resend(key);
+}
 
 // Email templates
 const emailTemplates = {
@@ -103,7 +109,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ success: false, error: 'Invalid template' }, { status: 400 });
     }
 
-    const data = await resend.emails.send({
+    const data = await getResend().emails.send({
       from: 'Influence Models Agency <influencemodelsagency@gmail.com>',
       to: [to],
       subject: subject,

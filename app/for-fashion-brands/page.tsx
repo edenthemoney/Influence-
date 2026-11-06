@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Influencer Marketing for Fashion & Clothing Brands — Influence',
     description: 'Models wear and promote your clothing brand. UGC reels, shoots, shoutouts & product seeding. From $150.',
-    url: 'https://influencemodels.agency/for-fashion-brands',
+    url: 'https://influencecreators.marketing/for-fashion-brands',
   },
 };
 

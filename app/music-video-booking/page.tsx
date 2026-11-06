@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Hire Models for Music Video | Miami Music Video Girls',
     description: 'Hire verified models for music video shoots in Miami. Same-week availability. From $500.',
-    url: 'https://influencemodels.agency/music-video-booking',
+    url: 'https://influencecreators.marketing/music-video-booking',
   },
 };
 

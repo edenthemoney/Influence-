@@ -1,12 +1,27 @@
 import Stripe from 'stripe';
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
+let stripeClient: Stripe | null = null;
+
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
+  }
+  if (!stripeClient) {
+    stripeClient = new Stripe(key, {
+      apiVersion: '2024-04-10',
+      typescript: true,
+    });
+  }
+  return stripeClient;
 }
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-04-10',
-  typescript: true,
+export const stripe = new Proxy({} as Stripe, {
+  get(_target, prop, receiver) {
+    const client = getStripe();
+    const value = Reflect.get(client, prop, receiver);
+    return typeof value === 'function' ? value.bind(client) : value;
+  },
 });
 
 export const COMMISSION_RATE = 0.40;

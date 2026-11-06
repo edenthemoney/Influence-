@@ -11,7 +11,7 @@ export const metadata = {
   openGraph: {
     title: 'Book Social Media Influencers, Models & Creators',
     description: 'Choose your project type and book verified influencers and creators in minutes.',
-    url: 'https://influencemodels.agency/start',
+    url: 'https://influencecreators.marketing/start',
   },
 };
 

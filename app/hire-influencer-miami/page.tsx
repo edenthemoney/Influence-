@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hire an Influencer in Miami | Influence Models Agency',
     description: 'Professional Miami influencers for music videos, brand campaigns, UGC, and events. Starting at $100.',
-    url: 'https://influencemodels.agency/hire-influencer-miami',
+    url: 'https://influencecreators.marketing/hire-influencer-miami',
   },
 };
 

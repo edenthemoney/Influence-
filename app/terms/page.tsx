@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: 'Terms of Service — Influence',
   description: 'Terms of service for Influence influencer marketing agency. Read our policies on bookings, payments, content delivery, and usage.',
   alternates: {
-    canonical: 'https://influencemodels.agency/terms',
+    canonical: 'https://influencecreators.marketing/terms',
   },
 };
 
@@ -41,7 +41,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-white font-bold text-xl mb-4">1. Overview</h2>
             <p>
-              These Terms of Service (&quot;Terms&quot;) govern your use of the Influence website (influencemodels.agency) and services operated by Influence (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). By accessing our website or purchasing services, you agree to these Terms.
+              These Terms of Service (&quot;Terms&quot;) govern your use of the Influence website (influencecreators.marketing) and services operated by Influence (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). By accessing our website or purchasing services, you agree to these Terms.
             </p>
           </section>
 

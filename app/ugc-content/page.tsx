@@ -6,7 +6,7 @@ export const metadata = {
   openGraph: {
     title: 'Paid Instagram Shoutouts & Social Media Promo',
     description: 'Get paid Instagram shoutouts, UGC content, and creator reviews. From $300.',
-    url: 'https://influencemodels.agency/ugc-content',
+    url: 'https://influencecreators.marketing/ugc-content',
   },
 };
 

@@ -13,7 +13,7 @@ const serviceSchema = {
   provider: {
     "@type": "Organization",
     name: "Influence Models Agency",
-    url: "https://influencemodels.agency",
+    url: "https://influencecreators.marketing",
   },
   areaServed: [
     { "@type": "City", name: "Miami" },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Services — Influence Agency',
     description: 'Social media content, music reactions, business visits, shoots, commercials, and events.',
-    url: 'https://influencemodels.agency/services',
+    url: 'https://influencecreators.marketing/services',
   },
 };
 

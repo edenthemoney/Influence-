@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'The Influence Journal',
     description: 'Influencer marketing insights, creator economy trends, and brand collaboration strategies.',
-    url: 'https://influencemodels.agency/blog',
+    url: 'https://influencecreators.marketing/blog',
     siteName: 'Influence Models Agency',
     type: 'website',
   },

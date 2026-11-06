@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hire Voiceover Talent in Miami — Audiobooks & Commercials | Influence',
     description: 'Professional voiceover talent for audiobooks, commercials, ads, and narration.',
-    url: 'https://influencemodels.agency/voiceover-talent-miami',
+    url: 'https://influencecreators.marketing/voiceover-talent-miami',
   },
 };
 

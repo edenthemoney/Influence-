@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   title: 'Influencer Marketing Agency Boca Raton — Story Reposts, Collab Posts, UGC & Models | Influence',
   description: 'Boca Raton influencer marketing agency. Book celebrity-connected creators for story reposts, collab posts, UGC content, business promotion, events, and music videos. Serving Palm Beach County.',
   alternates: {
-    canonical: 'https://influencemodels.agency/influencer-marketing-boca-raton',
+    canonical: 'https://influencecreators.marketing/influencer-marketing-boca-raton',
   },
   openGraph: {
     locale: 'en_US',
     siteName: 'Influence Models Agency',
     title: 'Influencer Marketing Agency Boca Raton — Story Reposts, Collab Posts & UGC',
     description: 'Boca Raton\'s premier influencer marketing agency. Celebrity-connected talent, story reposts, collab posts, UGC, transparent pricing for brands and businesses.',
-    url: 'https://influencemodels.agency/influencer-marketing-boca-raton',
+    url: 'https://influencecreators.marketing/influencer-marketing-boca-raton',
     type: 'website',
   },
   twitter: {
@@ -30,25 +30,16 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ServiceAreaBusiness',
-  name: 'Influence Models Agency - Boca Raton',
+  '@type': 'Service',
+  name: 'Influencer marketing in Boca Raton',
+  provider: { '@id': 'https://influencecreators.marketing/#organization' },
   description: 'Boca Raton influencer marketing agency. Book celebrity-connected influencers for story reposts, collab posts, UGC content, business promotion, events, and model bookings.',
-  url: 'https://influencemodels.agency/influencer-marketing-boca-raton',
-  telephone: '+15615520392',
+  url: 'https://influencecreators.marketing/influencer-marketing-boca-raton',
+  telephone: '+15612877194',
   email: 'influencemodelsagency@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Serving Palm Beach County',
-    addressLocality: 'Boca Raton',
-    addressRegion: 'FL',
-    addressCountry: 'US',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 26.3683,
-    longitude: -80.1029,
-  },
-  openingHours: 'Mo-Su 00:00-23:59',
+
+
+
   priceRange: '$300-$3,000',
   serviceType: [
     'Story Reposts',
@@ -71,44 +62,6 @@ const localBusinessSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How much does influencer marketing cost in Boca Raton?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Boca Raton influencer marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $500. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you work with Boca Raton-based influencers only?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We work with both Boca Raton-based influencers and nationwide talent. For on-site bookings in Palm Beach County, we prioritize local influencers. For remote UGC content, we can work with influencers anywhere in the US.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How fast can you book Boca Raton influencers?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We offer same-day response for Boca Raton bookings. Most campaigns can be booked and scheduled within 24-48 hours. Remote UGC content is typically delivered within 3-7 days.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What areas of Palm Beach County do you serve?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We serve all of Palm Beach County including Boca Raton, Delray Beach, Boynton Beach, Deerfield Beach, West Palm Beach, Palm Beach, and surrounding areas.',
-      },
-    },
-  ],
-};
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -118,13 +71,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://influencemodels.agency',
+      item: 'https://influencecreators.marketing',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Boca Raton Influencer Marketing',
-      item: 'https://influencemodels.agency/influencer-marketing-boca-raton',
+      item: 'https://influencecreators.marketing/influencer-marketing-boca-raton',
     },
   ],
 };
@@ -135,10 +88,6 @@ export default function BocaRatonPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <script
         type="application/ld+json"
@@ -179,8 +128,8 @@ export default function BocaRatonPage() {
               <Link href="/model-booking" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Boca Raton Influencers <ChevronRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
-                <Phone className="h-4 w-4" /> (561) 552-0392
+              <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+                <Phone className="h-4 w-4" /> (561) 287-7194
               </a>
             </div>
           </div>
@@ -311,7 +260,7 @@ export default function BocaRatonPage() {
                 <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '17px', color: gold }}>Influence</Link>
                 <p className="text-white/40 text-sm mt-4 mb-2">Influence Models Agency</p>
                 <p className="text-white/30 text-xs mb-1">Boca Raton, FL 33431</p>
-                <p className="text-white/30 text-xs mb-1">(561) 552-0392</p>
+                <p className="text-white/30 text-xs mb-1">(561) 287-7194</p>
                 <p className="text-white/30 text-xs">influencemodelsagency@gmail.com</p>
               </div>
             </div>

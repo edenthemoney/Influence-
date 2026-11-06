@@ -186,8 +186,8 @@ export default function HeroBooking() {
                 Skip → go straight to booking
               </button>
               <div className="flex items-center justify-center gap-2 mt-3">
-                <a href="tel:+15615520392" className="flex items-center gap-2 text-white/30 hover:text-white/60 text-[11px] transition-colors">
-                  <Phone className="h-3 w-3" /> Prefer to call? (561) 552-0392
+                <a href="tel:+15612877194" className="flex items-center gap-2 text-white/30 hover:text-white/60 text-[11px] transition-colors">
+                  <Phone className="h-3 w-3" /> Prefer to call? (561) 287-7194
                 </a>
               </div>
             </>

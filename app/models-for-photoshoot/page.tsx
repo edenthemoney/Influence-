@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hire Models for Photoshoot | Professional Photo & Fashion Models',
     description: 'Professional models for fashion, product, lifestyle, and editorial photoshoots. From $300. South Florida.',
-    url: 'https://influencemodels.agency/models-for-photoshoot',
+    url: 'https://influencecreators.marketing/models-for-photoshoot',
   },
 };
 

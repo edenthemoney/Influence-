@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Browse Influencers — Influence Talent Marketplace',
     description: 'Verified influencers available for UGC content, music videos, events, and brand campaigns. South Florida\'s premier talent roster.',
-    url: 'https://influencemodels.agency/marketplace',
+    url: 'https://influencecreators.marketing/marketplace',
   },
   alternates: {
-    canonical: 'https://influencemodels.agency/marketplace',
+    canonical: 'https://influencecreators.marketing/marketplace',
   },
 };
 

@@ -11,38 +11,25 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Influencer Marketing Agency Miami — Story Reposts, Collab Posts & UGC',
     description: 'Miami\'s premier influencer marketing agency. Celebrity-connected talent, story reposts, collab posts, UGC, transparent pricing, proven results for brands and artists.',
-    url: 'https://influencemodels.agency/influencer-marketing-miami',
+    url: 'https://influencecreators.marketing/influencer-marketing-miami',
   },
   alternates: {
-    canonical: 'https://influencemodels.agency/influencer-marketing-miami',
-    languages: {
-      'en': 'https://influencemodels.agency/influencer-marketing-miami',
-      'es': 'https://influencemodels.agency/influencer-marketing-miami-es',
-    },
+    canonical: 'https://influencecreators.marketing/influencer-marketing-miami',
   },
 };
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'ServiceAreaBusiness',
-  name: 'Influence Models Agency - Miami',
+  '@type': 'Service',
+  name: 'Influencer marketing in Miami',
+  provider: { '@id': 'https://influencecreators.marketing/#organization' },
   description: 'Miami\'s premier influencer marketing agency. Book celebrity-connected influencers for story reposts, collab posts, UGC content, music promotion, brand campaigns, and model bookings.',
-  url: 'https://influencemodels.agency/influencer-marketing-miami',
-  telephone: '+15615520392',
+  url: 'https://influencecreators.marketing/influencer-marketing-miami',
+  telephone: '+15612877194',
   email: 'influencemodelsagency@gmail.com',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Serving Miami-Dade County',
-    addressLocality: 'Miami',
-    addressRegion: 'FL',
-    addressCountry: 'US',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 25.76168,
-    longitude: -80.19178,
-  },
-  openingHours: 'Mo-Su 00:00-23:59',
+
+
+
   priceRange: '$300-$3,000',
   areaServed: [
     { '@type': 'City', name: 'Miami' },
@@ -71,52 +58,6 @@ const localBusinessSchema = {
   ],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How much does influencer marketing cost in Miami?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Miami influencer marketing starts at $300 for UGC content. Event models start at $400/girl. Music video models start at $500. Pricing varies based on the influencer\'s following, content type, and campaign scope.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you work with Miami-based influencers only?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We work with both Miami-based influencers and nationwide talent. For on-site bookings in Miami, we prioritize local influencers. For remote UGC content, we can work with influencers anywhere in the US.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How fast can you book Miami influencers?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We offer same-day response for Miami bookings. Most campaigns can be booked and scheduled within 24-48 hours. Remote UGC content is typically delivered within 3-7 days.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'What areas of Miami do you serve?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We serve all of Miami-Dade County including Miami, Miami Beach, Coral Gables, Key Biscayne, Aventura, Sunny Isles Beach, Hallandale Beach, and surrounding areas.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Can influencers create content at my Miami business location?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, our Business Content service sends influencers to your Miami business location to create reels, stories, and promotional content on-site. This is perfect for restaurants, salons, gyms, and retail stores.',
-      },
-    },
-  ],
-};
 
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
@@ -126,13 +67,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://influencemodels.agency',
+      item: 'https://influencecreators.marketing',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'Miami Influencer Marketing',
-      item: 'https://influencemodels.agency/influencer-marketing-miami',
+      item: 'https://influencecreators.marketing/influencer-marketing-miami',
     },
   ],
 };
@@ -143,10 +84,6 @@ export default function MiamiPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <script
         type="application/ld+json"
@@ -187,8 +124,8 @@ export default function MiamiPage() {
               <Link href="/model-booking" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Miami Influencers <ChevronRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
-                <Phone className="h-4 w-4" /> (561) 552-0392
+              <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+                <Phone className="h-4 w-4" /> (561) 287-7194
               </a>
             </div>
           </div>
@@ -328,7 +265,7 @@ export default function MiamiPage() {
                 <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '17px', color: gold }}>Influence</Link>
                 <p className="text-white/40 text-sm mt-4 mb-2">Influence Models Agency</p>
                 <p className="text-white/30 text-xs">Miami, FL 33101</p>
-                <p className="text-white/30 text-xs">(561) 552-0392</p>
+                <p className="text-white/30 text-xs">(561) 287-7194</p>
                 <p className="text-white/30 text-xs">influencemodelsagency@gmail.com</p>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-20">

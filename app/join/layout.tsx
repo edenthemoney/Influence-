@@ -6,10 +6,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Join Influence — Apply to Be a Model',
     description: 'Get booked for UGC content, music videos, brand campaigns, and events. Apply to join our roster.',
-    url: 'https://influencemodels.agency/join',
+    url: 'https://influencecreators.marketing/join',
   },
   alternates: {
-    canonical: 'https://influencemodels.agency/join',
+    canonical: 'https://influencecreators.marketing/join',
   },
 };
 

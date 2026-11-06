@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Book Models for Commercials & Speaking Roles — Influence Agency',
     description: 'Models with acting & speaking ability for your commercial production. South Florida.',
-    url: 'https://influencemodels.agency/services/commercials',
+    url: 'https://influencecreators.marketing/services/commercials',
   },
 };
 
