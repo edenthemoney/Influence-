@@ -1,14 +1,20 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { PAYMENT_LINK_URL } from '@/lib/nov18/payment-link';
+import TicketButton from './ticket-button';
 import ShareButton from './share-button';
 
 const gold = 'flex min-h-14 touch-manipulation items-center justify-center bg-[#c9a96e] px-3 text-center text-[15px] font-black uppercase tracking-[0.12em] text-[#0b0a08]';
 
 export function HeroButtons() {
+  const [notice, setNotice] = useState('');
+  useEffect(() => {
+    const t = new URLSearchParams(window.location.search).get('tickets');
+    if (t === 'unavailable' || t === 'error') setNotice('Checkout could not open just now. Please try again in a minute.');
+  }, []);
   return (
     <div id="hero-cta" className="px-5 pb-4">
-      <a href={PAYMENT_LINK_URL} className={`${gold} w-full min-h-[60px] text-[17px]`}>Get tickets · $25&nbsp;&nbsp;→</a>
+      {notice && <p role="alert" className="mb-3 text-[15px] font-medium leading-snug text-[#f4efe6]">{notice}</p>}
+      <TicketButton className={`${gold} w-full min-h-[60px] text-[17px]`}>Get tickets · $25&nbsp;&nbsp;→</TicketButton>
       <ShareButton className="mt-3" />
     </div>
   );
@@ -41,7 +47,7 @@ export function StickyBar() {
       className={`fixed inset-x-0 bottom-0 z-40 border-t border-[#c9a96e]/40 bg-black/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300 md:hidden ${show ? 'translate-y-0' : 'pointer-events-none translate-y-full'}`}
     >
       <div className="mx-auto max-w-[440px]">
-        <a href={PAYMENT_LINK_URL} tabIndex={show ? 0 : -1} className={`${gold} w-full`}>Get tickets · $25&nbsp;&nbsp;→</a>
+        <TicketButton tabIndex={show ? 0 : -1} className={`${gold} w-full`}>Get tickets · $25&nbsp;&nbsp;→</TicketButton>
       </div>
     </div>
   );

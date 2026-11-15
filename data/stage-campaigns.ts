@@ -196,7 +196,7 @@ export const campaigns: Campaign[] = [
     bio: 'See you at Influence Connect.',
     service: 'event',
     serviceLabel: 'Creator networking night',
-    external: { href: '/tickets', label: 'Get networking night tickets' },
+    external: { href: '/dec16', label: 'Get networking night tickets' },
     backdrop: `${S}/bg-event.webp`,
     grid: [
       { src: `${S}/serena-patio-sq.webp` }, { src: `${S}/og-dessertz-line-sq-a.webp`, reel: true }, { src: `${S}/serena-martini-sq.webp` },
@@ -205,15 +205,15 @@ export const campaigns: Campaign[] = [
     ],
     beats: ['Invite story', 'Meet the roster', 'Collab post', 'Ticket story'],
     screens: [
-      { kind: 'story', beat: 0, bg: `${S}/story-event.webp`, title: () => 'Influence Connect', sub: () => 'Wed Nov 18 · 4 – 7 PM · Boca Raton', notif: (n) => `${n} is on the guest list` },
+      { kind: 'story', beat: 0, bg: `${S}/story-event.webp`, title: () => 'Influence Connect', sub: () => 'Wed Dec 16 · 4 – 7 PM · Boca Raton', notif: (n) => `${n} is on the guest list` },
       { kind: 'story', beat: 0, bg: `${F}/serena-drink-smoked-old-fashioned.webp`, title: () => 'See you there', sub: () => 'Creators, brands and venues · one night', notif: () => 'Influence Connect added to your story' },
-      { kind: 'reel', beat: 1, ...v('og-dessertz-line'), label: 'Reels', caption: () => 'Influence Connect is Wed Nov 18. Save the date.', notif: () => 'New reel: Influence Connect' },
+      { kind: 'reel', beat: 1, ...v('og-dessertz-line'), label: 'Reels', caption: () => 'Influence Connect is Wed Dec 16. Save the date.', notif: () => 'New reel: Influence Connect' },
       { kind: 'post', beat: 2, image: `${S}/event-45.webp`, caption: (n) => `${n} × Influence Connect. See you at Serena Pastificio.`, notif: (n) => `${n} × Influence collab is live` },
       { kind: 'repost', beat: 3, talent: 'Deseray', avatar: AV.des, image: `${S}/event-45.webp`, line: () => 'Get tickets', notif: () => 'Deseray shared the ticket link', song: false },
     ],
     recap: {
       source: 'Influence Connect · ticket page',
-      items: ['Creator networking night', 'Wednesday, November 18, 2026 · 4 – 7 PM ET', 'Serena Pastificio, Mizner Park, Boca Raton', 'Hosted by Deseray Marie'],
+      items: ['Creator networking night', 'Wednesday, December 16, 2026 · 4 – 7 PM ET', 'Serena Pastificio, Mizner Park, Boca Raton', 'Hosted by Deseray Marie'],
     },
   },
 ];

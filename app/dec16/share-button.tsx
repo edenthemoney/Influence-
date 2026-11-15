@@ -1,18 +1,18 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
-import { SHARE_URL } from '@/lib/nov18/payment-link';
+import { SHARE_URL } from '@/lib/dec16/payment-link';
 
 // Story flyer handed to the iPhone share sheet (JPEG keeps it small enough to preload).
-const FLYER = '/nov18-assets/nov18-story-flyer.jpg';
-const FLYER_PNG = '/nov18-assets/nov18-story-flyer.png';
+const FLYER = '/dec16-assets/dec16-story-flyer.jpg';
+const FLYER_PNG = '/dec16-assets/dec16-story-flyer.png';
 const LINK_TEXT = SHARE_URL.replace('https://', '');
 let flyerFile: File | null = null;
 
 // Fetch the flyer ahead of the tap: iOS only opens the share sheet if share() runs inside the tap itself.
 export function preloadFlyer() {
   if (flyerFile || typeof window === 'undefined') return;
-  fetch(FLYER).then((r) => r.blob()).then((b) => { flyerFile = new File([b], 'influence-nov18-story.jpg', { type: 'image/jpeg' }); }).catch(() => {});
+  fetch(FLYER).then((r) => r.blob()).then((b) => { flyerFile = new File([b], 'influence-dec16-story.jpg', { type: 'image/jpeg' }); }).catch(() => {});
 }
 
 function legacyCopy(text: string) {
@@ -148,7 +148,7 @@ function ShareOverlay({ mode, copied, onClose, onCopy, onReshare }: { mode: Mode
             <ol className="grid gap-4">
               <Step n={1} icon={<span className="text-[34px]">👆</span>} title="Press and hold the flyer" body="Then tap Save to Photos (or Add to Photos)." />
             </ol>
-            <img src={FLYER_PNG} width={1080} height={1920} alt="Nov 18 story flyer. Press and hold, then Save." className="mx-auto mt-3 w-[70%] border border-[#c9a96e]/60" style={{ WebkitTouchCallout: 'default' }} />
+            <img src={FLYER_PNG} width={1080} height={1920} alt="Dec 16 story flyer. Press and hold, then Save." className="mx-auto mt-3 w-[70%] border border-[#c9a96e]/60" style={{ WebkitTouchCallout: 'default' }} />
             <ol start={2} className="mt-4 grid gap-4">
               <Step n={2} icon={<InstagramGlyph />} title="Open Instagram, swipe to Story" body="Pick the flyer from your photos." />
               <Step n={3} icon={<StickerIcon />} title={<>Sticker button → <LinkChip /> → Paste</>} body="The link is already copied. Tap Done, then share." />

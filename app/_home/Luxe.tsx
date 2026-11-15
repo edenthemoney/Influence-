@@ -481,7 +481,7 @@ export function LuxeFooter() {
           <div className="col-span-2 md:col-span-1">
             <p className="font-display text-[22px] italic leading-snug text-white">Brand Ambassadors, creators, and talent for South Florida venues and brands.</p>
           </div>
-          {col('Book', [['Start a booking', BOOK_HREF], ['All services', '/services'], ['Browse the roster', '/marketplace'], ['Networking night', '/tickets']])}
+          {col('Book', [['Start a booking', BOOK_HREF], ['All services', '/services'], ['Browse the roster', '/marketplace'], ['Networking night', '/dec16']])}
           {col('Services', [['Music video models', '/music-video-creators'], ['Brand ambassadors', '/brand-ambassadors-miami'], ['Music promotion', '/music-promotion'], ['Bottle girls / VIP', '/bottle-girls-miami'], ['Restaurants', '/restaurant-influencer-marketing-miami'], ['Nightlife', '/nightclub-influencer-marketing-miami'], ['Hotels', '/hotel-influencer-marketing-miami'], ['Influencer cost guide', '/influencer-cost-guide']])}
           {col('Creators', [['Join the roster', '/join'], ['FAQ', '/faq'], ['Starter for independent creatives', '/starter']])}
           {col('Contact', [['(561) 287-7194', 'tel:+15612877194', true], ['Email us', 'mailto:influencemodelsagency@gmail.com', true], ['Instagram', 'https://instagram.com/influencecreators.marketing', true]])}

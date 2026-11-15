@@ -13,7 +13,7 @@ export function PreviewNav({ variant }: { variant: string }) {
           <div className="hidden items-center gap-8 md:flex">
             <Link href="/marketplace" className="text-[13px] uppercase tracking-[0.14em] text-white/90 hover:text-white">Creators</Link>
             <Link href="/services" className="text-[13px] uppercase tracking-[0.14em] text-white/90 hover:text-white">Services</Link>
-            <Link href="/tickets" className="text-[13px] uppercase tracking-[0.14em] text-white/90 hover:text-white">Events</Link>
+            <Link href="/dec16" className="text-[13px] uppercase tracking-[0.14em] text-white/90 hover:text-white">Events</Link>
           </div>
         </div>
         <Link href="/" className="shrink-0 whitespace-nowrap font-display text-[18px] font-semibold uppercase tracking-[0.4em]" style={{ color: GOLD }}>
@@ -47,7 +47,7 @@ export function PreviewFooter() {
                 <li><Link href={BOOK_HREF}>Start a booking</Link></li>
                 <li><Link href="/services">All services</Link></li>
                 <li><Link href="/marketplace">Browse the roster</Link></li>
-                <li><Link href="/tickets">Networking night</Link></li>
+                <li><Link href="/dec16">Networking night</Link></li>
               </ul>
             </div>
             <div>

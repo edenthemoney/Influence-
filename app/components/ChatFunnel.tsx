@@ -51,7 +51,7 @@ export default function ChatFunnel() {
   }, [messages]);
 
   // Hide on booking page so it doesn't overlap the sticky checkout button
-  if (pathname === '/start' || pathname?.startsWith('/nov18')) return null;
+  if (pathname === '/start' || pathname?.startsWith('/dec16')) return null;
 
   const addMessage = (from: 'bot' | 'user', text: string) => {
     setMessages(prev => [...prev, { from, text }]);

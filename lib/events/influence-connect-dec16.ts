@@ -1,5 +1,5 @@
 import type { EventListing } from './types';
-import { INFLUENCE_CONNECT as E } from '@/lib/nov18/influence-connect';
+import { INFLUENCE_CONNECT as E } from '@/lib/dec16/influence-connect';
 
 const event: EventListing = {
   slug: E.slug,
@@ -11,8 +11,8 @@ const event: EventListing = {
   location: `${E.area}, ${E.cityLine}`,
   host: E.host,
   startsAt: E.startsAt,
-  href: '/nov18',
-  image: '/nov18-assets/patio-hero.webp',
+  href: '/dec16',
+  image: '/dec16-assets/patio-hero.webp',
   imageAlt: 'Serena Pastificio patio under string lights',
   priceNote: 'Ladies free RSVP · Gentlemen $25',
   ctaLabel: 'Get tickets',

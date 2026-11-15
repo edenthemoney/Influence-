@@ -161,7 +161,7 @@ export const serviceLineup: ServiceGroup[] = [
       {
         title: 'Creator networking events',
         line: 'Meet the roster in person.',
-        href: '/tickets',
+        href: '/dec16',
       },
     ],
   },

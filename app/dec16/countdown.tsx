@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { INFLUENCE_CONNECT } from '@/lib/nov18/influence-connect';
+import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
 
 const START = new Date(INFLUENCE_CONNECT.startsAt).getTime();
 
@@ -37,7 +37,7 @@ export default function Countdown() {
       <p className="sr-only" aria-live="polite" aria-atomic="true">
         {remaining
           ? `Starts in ${remaining.days} days, ${remaining.hours} hours, ${remaining.minutes} minutes.`
-          : 'Countdown to Wednesday, November 18, 2026 at 4:00 PM Eastern.'}
+          : 'Countdown to Wednesday, December 16, 2026 at 4:00 PM Eastern.'}
       </p>
       <div className="grid grid-cols-4 gap-2" aria-hidden="true">
         {units.map(([label, value]) => (

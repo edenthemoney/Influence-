@@ -4,14 +4,14 @@
 export const STRIPE_TICKET_ACCOUNT_ID = 'acct_1TOWINLibar2Zpvv';
 
 export const INFLUENCE_CONNECT = {
-  slug: 'influence-connect-nov18',
+  slug: 'influence-connect-dec16',
   name: 'Influence Connect',
   tagline: 'Where Businesses Meet the Right Influencers',
   eyebrow: 'Meet & Greet · Influencer Network',
   host: 'Deseray Marie',
   weekday: 'Wednesday',
-  dateShort: 'Nov 18',
-  dateLong: 'Wednesday, November 18, 2026',
+  dateShort: 'Dec 16',
+  dateLong: 'Wednesday, December 16, 2026',
   time: '4 – 7 PM ET',
   venue: 'Serena Pastificio',
   street: '301 Plaza Real',
@@ -26,11 +26,11 @@ export const INFLUENCE_CONNECT = {
   gentlemenPerk: 'Apps on us',
   dressCode: 'All black, touch of gold',
   theme: 'Black & Gold Soirée',
-  // 4:00 PM America/New_York on Nov 18, 2026. DST has ended, so this is 21:00 UTC.
-  startsAt: '2026-11-18T21:00:00.000Z',
+  // 4:00 PM America/New_York on Dec 16, 2026. DST has ended, so this is 21:00 UTC.
+  startsAt: '2026-12-16T21:00:00.000Z',
   mapsUrl:
     'https://www.google.com/maps/search/?api=1&query=301%20Plaza%20Real%2C%20Boca%20Raton%2C%20FL%2033432',
-  calendarFile: '/nov18-assets/influence-connect-nov18.ics',
+  calendarFile: '/dec16-assets/influence-connect-dec16.ics',
 } as const;
 
 export type TicketTier = 'ladies' | 'gentlemen';

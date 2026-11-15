@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 export type VerifiedTicket = { amountTotal?: number; quantity?: number; customerName?: string; customerEmail?: string; instagram?: string };
-// Static build: no server verification. Stripe only redirects to /nov18/success after a completed payment.
+// No server verification here. Stripe Checkout (/api/tickets/checkout) only redirects to /dec16/success after a completed payment.
 export function useVerifiedTicket() {
   const params = useSearchParams();
   const rsvp = params.get('rsvp');

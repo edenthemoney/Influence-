@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { INFLUENCE_CONNECT } from '@/lib/nov18/influence-connect';
+import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
 import { useVerifiedTicket } from '../use-verified-ticket';
 import GoldConfetti from '../gold-confetti';
 
@@ -67,7 +67,7 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
               </p>
               {sessionId && (
                 <Link
-                  href={`/nov18/success?session_id=${encodeURIComponent(sessionId)}`}
+                  href={`/dec16/success?session_id=${encodeURIComponent(sessionId)}`}
                   className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#0b0a08]"
                 >
                   View your ticket
@@ -91,7 +91,7 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
             <>
               <a
                 href={INFLUENCE_CONNECT.calendarFile}
-                download="influence-connect-nov18.ics"
+                download="influence-connect-dec16.ics"
                 className="flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#0b0a08]"
               >
                 Add to calendar
@@ -105,7 +105,7 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
             </>
           )}
           <Link
-            href="/nov18"
+            href="/dec16"
             className="flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c9a96e]/70 px-4 text-center text-[14px] font-semibold uppercase tracking-[0.14em] text-[#c9a96e]"
           >
             Back to tickets

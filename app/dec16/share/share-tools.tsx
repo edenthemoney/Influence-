@@ -1,5 +1,5 @@
 'use client';
-import ShareButton from '@/app/nov18/share-button';
+import ShareButton from '@/app/dec16/share-button';
 
 function download(href: string, name: string) {
   const a = document.createElement('a'); a.href = href; a.download = name; document.body.appendChild(a); a.click(); a.remove();
@@ -11,8 +11,8 @@ export default function ShareTools() {
     <>
       <ShareButton variant="giant" className="mt-6" />
       <div className="mt-8 grid gap-3">
-        <button type="button" onClick={() => download('/nov18-assets/nov18-story-flyer.png', 'influence-nov18-story.png')} className={small}>Download story flyer</button>
-        <button type="button" onClick={() => download('/nov18-assets/nov18-feed-flyer.png', 'influence-nov18-feed.png')} className={small}>Download feed flyer</button>
+        <button type="button" onClick={() => download('/dec16-assets/dec16-story-flyer.png', 'influence-dec16-story.png')} className={small}>Download story flyer</button>
+        <button type="button" onClick={() => download('/dec16-assets/dec16-feed-flyer.png', 'influence-dec16-feed.png')} className={small}>Download feed flyer</button>
       </div>
     </>
   );

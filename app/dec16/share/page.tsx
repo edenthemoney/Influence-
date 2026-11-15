@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import ShareTools from './share-tools';
 export const metadata: Metadata = {
-  title: { absolute: 'Share the Nov 18 flyer | Influence' },
+  title: { absolute: 'Share the Dec 16 flyer | Influence' },
   robots: { index: false, follow: false },
 };
 const steps = [
@@ -24,7 +24,7 @@ export default function SharePage() {
           ))}
         </ol>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/nov18-assets/nov18-story-flyer.png" width={1080} height={1920} alt="Nov 18 Influence Connect story flyer. Press and hold, then Save." className="mt-8 w-full border border-[#c9a96e]/50" style={{ WebkitTouchCallout: 'default' }} />
+        <img src="/dec16-assets/dec16-story-flyer.png" width={1080} height={1920} alt="Dec 16 Influence Connect story flyer. Press and hold, then Save." className="mt-8 w-full border border-[#c9a96e]/50" style={{ WebkitTouchCallout: 'default' }} />
       </main>
     </>
   );

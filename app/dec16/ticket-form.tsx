@@ -6,7 +6,7 @@ import {
   normalizeInstagram,
   normalizeName,
   normalizePhone,
-} from '@/lib/nov18/influence-connect';
+} from '@/lib/dec16/influence-connect';
 
 const inputClass =
   'mt-2 w-full min-h-14 rounded-none border border-[#c9a96e]/60 bg-[#0a0908] px-4 text-[17px] font-medium normal-case tracking-normal text-[#f4efe6] outline-none appearance-none shadow-none placeholder:text-[#f4efe6]/45 focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e]';
@@ -40,10 +40,10 @@ export default function TicketForm() {
       const res = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({ 'form-name': 'ladies-rsvp', name: cleanName, phone: cleanPhone, instagram: cleanInstagram || '' }).toString(),
+        body: new URLSearchParams({ 'form-name': 'ladies-rsvp', event: 'Influence Connect · Wed Dec 16, 2026', name: cleanName, phone: cleanPhone, instagram: cleanInstagram || '' }).toString(),
       });
       if (!res.ok) throw new Error('save');
-      router.push('/nov18/success?rsvp=ladies');
+      router.push('/dec16/success?rsvp=ladies');
     } catch {
       setError('We could not save your RSVP. Try again in a moment.');
       lock.current = false;

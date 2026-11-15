@@ -1,25 +1,25 @@
-/* eslint-disable @next/next/no-img-element -- pre-sized WebP assets in /public/tickets */
+/* eslint-disable @next/next/no-img-element -- pre-sized WebP assets in /public/dec16-assets */
 import type { Metadata } from 'next';
 import TicketForm from './ticket-form';
 import Countdown from './countdown';
 import { HeroButtons, StickyBar } from './cta';
-import { PAYMENT_LINK_URL } from '@/lib/nov18/payment-link';
+import TicketButton from './ticket-button';
 import ShareButton from './share-button';
-import { INFLUENCE_CONNECT } from '@/lib/nov18/influence-connect';
+import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
 
 const HEADLINE = 'Find the Right Brand Ambassadors & Influencers for Your Business';
 
 export const metadata: Metadata = {
-  title: { absolute: `${HEADLINE} — Nov 18 | Influence` },
-  description: `${INFLUENCE_CONNECT.name}, an influencer networking event on Wednesday, November 18, 2026, 4–7 PM ET at Serena Pastificio, 301 Plaza Real, Mizner Park, Boca Raton. Hosted by Deseray Marie. Ladies RSVP free with first drink free. Gentlemen $25, apps included.`,
-  alternates: { canonical: 'https://influencecreators.marketing/nov18' },
+  title: { absolute: `${HEADLINE} — Dec 16 | Influence` },
+  description: `${INFLUENCE_CONNECT.name}, an influencer networking event on Wednesday, December 16, 2026, 4–7 PM ET at Serena Pastificio, 301 Plaza Real, Mizner Park, Boca Raton. Hosted by Deseray Marie. Ladies RSVP free with first drink free. Gentlemen $25, apps included.`,
+  alternates: { canonical: 'https://influencecreators.marketing/dec16' },
   openGraph: {
-    title: `${HEADLINE} — Nov 18`,
+    title: `${HEADLINE} — Dec 16`,
     description:
-      'Influencer networking event. Wednesday, Nov 18, 2026, 4–7 PM ET at Serena Pastificio, Boca Raton. Hosted by Deseray Marie.',
-    url: 'https://influencecreators.marketing/nov18',
+      'Influencer networking event. Wednesday, Dec 16, 2026, 4–7 PM ET at Serena Pastificio, Boca Raton. Hosted by Deseray Marie.',
+    url: 'https://influencecreators.marketing/dec16',
     type: 'website',
-    images: [{ url: 'https://influencecreators.marketing/nov18-assets/patio-hero.webp', width: 780, height: 560, alt: 'Serena Pastificio patio under string lights' }],
+    images: [{ url: 'https://influencecreators.marketing/dec16-assets/patio-hero.webp', width: 780, height: 560, alt: 'Serena Pastificio patio under string lights' }],
   },
 };
 
@@ -28,11 +28,12 @@ const eventJsonLd = {
   '@type': 'Event',
   name: `${INFLUENCE_CONNECT.name}: ${HEADLINE}`,
   description: `Influencer networking event at ${INFLUENCE_CONNECT.venue}. Hosted by ${INFLUENCE_CONNECT.host}.`,
-  startDate: '2026-11-18T16:00:00-05:00',
-  endDate: '2026-11-18T19:00:00-05:00',
+  startDate: '2026-12-16T16:00:00-05:00',
+  endDate: '2026-12-16T19:00:00-05:00',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-  eventStatus: 'https://schema.org/EventScheduled',
-  image: ['https://influencecreators.marketing/nov18-assets/patio-hero.webp'],
+  eventStatus: 'https://schema.org/EventRescheduled',
+  previousStartDate: '2026-11-18T16:00:00-05:00',
+  image: ['https://influencecreators.marketing/dec16-assets/patio-hero.webp'],
   location: {
     '@type': 'Place',
     name: INFLUENCE_CONNECT.venue,
@@ -47,17 +48,17 @@ const eventJsonLd = {
   },
   organizer: { '@type': 'Person', name: INFLUENCE_CONNECT.host },
   offers: [
-    { '@type': 'Offer', name: 'Ladies RSVP', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/nov18' },
-    { '@type': 'Offer', name: 'Gentlemen Entry', price: '25', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/nov18' },
+    { '@type': 'Offer', name: 'Ladies RSVP', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/dec16' },
+    { '@type': 'Offer', name: 'Gentlemen Entry', price: '25', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/dec16' },
   ],
 };
 
 const AMBASSADORS = ['Genesis', 'Seahra', 'Kat', 'Ferrari', 'Alisha'];
 
 const DRINKS = [
-  { src: '/nov18-assets/drink-espresso-martini.webp', alt: 'Espresso martini at Serena' },
-  { src: '/nov18-assets/drink-smoked-old-fashioned.webp', alt: 'Smoked old fashioned at Serena' },
-  { src: '/nov18-assets/serena-dining-room.webp', alt: 'Serena Pastificio dining room' },
+  { src: '/dec16-assets/drink-espresso-martini.webp', alt: 'Espresso martini at Serena' },
+  { src: '/dec16-assets/drink-smoked-old-fashioned.webp', alt: 'Smoked old fashioned at Serena' },
+  { src: '/dec16-assets/serena-dining-room.webp', alt: 'Serena Pastificio dining room' },
 ];
 
 const label = 'text-[13px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]';
@@ -71,7 +72,7 @@ export default function TicketsPage() {
       <div className="ic-hero-photo relative">
         <div className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10"><ShareButton variant="icon" /></div>
         <img
-          src="/nov18-assets/patio-hero.webp"
+          src="/dec16-assets/patio-hero.webp"
           alt="Serena Pastificio patio under string lights, Mizner Park"
           width={780}
           height={560}
@@ -108,7 +109,7 @@ export default function TicketsPage() {
       {/* Host: clearly separate from the ambassadors */}
       <section className="flex gap-4 px-5 py-5" aria-label="Host, date and venue">
         <img
-          src="/nov18-assets/host-deseray-marie.webp"
+          src="/dec16-assets/host-deseray-marie.webp"
           alt="Deseray Marie, host"
           width={480}
           height={600}
@@ -119,10 +120,11 @@ export default function TicketsPage() {
           <p className={label}>Hosted by</p>
           <p className="mt-1 font-display text-[26px] font-bold leading-[1.05] text-[#f4efe6]">Deseray Marie</p>
           <p className="mt-3 text-[17px] font-bold uppercase leading-snug tracking-[0.06em] text-[#c9a96e]">
-            Wed Nov 18
+            Wed Dec 16
             <br />
             4–7 PM ET
           </p>
+          <p className="mt-1 text-[13px] font-bold uppercase tracking-[0.12em] text-[#f4efe6]/80">New date · moved from Nov 18</p>
           <p className="mt-2 text-[16px] font-medium leading-snug text-[#f4efe6]">
             {INFLUENCE_CONNECT.venue}
             <br />
@@ -133,12 +135,11 @@ export default function TicketsPage() {
 
       <section className="px-5 pb-6" aria-label="Countdown and tickets">
         <Countdown />
-        <a
-          href={PAYMENT_LINK_URL}
-          className="mt-4 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-[16px] font-black uppercase tracking-[0.14em] text-[#0b0a08]"
-        >
-          Get tickets · $25&nbsp;&nbsp;→
-        </a>
+        <div className="mt-4">
+          <TicketButton className="flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-[16px] font-black uppercase tracking-[0.14em] text-[#0b0a08]">
+            Get tickets · $25&nbsp;&nbsp;→
+          </TicketButton>
+        </div>
       </section>
 
       <div className="ic-rule mx-5" />
@@ -152,7 +153,7 @@ export default function TicketsPage() {
           {AMBASSADORS.map((name) => (
             <li key={name}>
               <img
-                src={`/nov18-assets/ambassador-${name.toLowerCase()}.webp`}
+                src={`/dec16-assets/ambassador-${name.toLowerCase()}.webp`}
                 alt={name}
                 width={330}
                 height={450}
@@ -212,7 +213,7 @@ export default function TicketsPage() {
         </a>
         <a
           href={INFLUENCE_CONNECT.calendarFile}
-          download="influence-connect-nov18.ics"
+          download="influence-connect-dec16.ics"
           className="mt-3 flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c9a96e] px-4 text-center text-[15px] font-bold uppercase tracking-[0.14em] text-[#c9a96e]"
         >
           Add to calendar

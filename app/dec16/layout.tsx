@@ -3,7 +3,7 @@ import { Bodoni_Moda } from 'next/font/google';
 import TicketBodyColor from './body-color';
 import './soiree.css';
 
-// Same type system as the Nov 18 flyer: Bodoni Moda for headlines, Satoshi for labels and UI.
+// Same type system as the Dec 16 flyer: Bodoni Moda for headlines, Satoshi for labels and UI.
 const bodoni = Bodoni_Moda({
   subsets: ['latin'],
   axes: ['opsz'],

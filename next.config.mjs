@@ -10,12 +10,18 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   async redirects() {
     return [
-      // Nov 18 event: short links to the ticket page
-      { source: '/tickets', destination: '/nov18', statusCode: 301 },
-      { source: '/tickets/success', destination: '/nov18/success', statusCode: 301 },
-      { source: '/tickets/:path*', destination: '/nov18', statusCode: 301 },
-      { source: '/t', destination: '/nov18', statusCode: 301 },
-      { source: '/share', destination: '/nov18/share', statusCode: 301 },
+      // Influence Connect, rescheduled from Nov 18 to Dec 16, 2026: short links and
+      // old /nov18 links (printed QR codes, IG posts, Stripe redirect) all land on /dec16.
+      { source: '/tickets', destination: '/dec16', statusCode: 301 },
+      { source: '/tickets/success', destination: '/dec16/success', statusCode: 301 },
+      { source: '/tickets/:path*', destination: '/dec16', statusCode: 301 },
+      { source: '/t', destination: '/dec16', statusCode: 301 },
+      { source: '/share', destination: '/dec16/share', statusCode: 301 },
+      { source: '/nov18', destination: '/dec16', statusCode: 301 },
+      { source: '/nov18/:path*', destination: '/dec16/:path*', statusCode: 301 },
+      { source: '/nov18-assets/influence-connect-nov18.ics', destination: '/dec16-assets/influence-connect-dec16.ics', statusCode: 301 },
+      { source: '/nov18-assets/nov18-:rest', destination: '/dec16-assets/dec16-:rest', statusCode: 301 },
+      { source: '/nov18-assets/:path*', destination: '/dec16-assets/:path*', statusCode: 301 },
       // Retired pages (no source) -> closest live page
       { source: '/events/miami-influencer-summit-2026', destination: '/events', statusCode: 301 },
       { source: '/best-creator-marketplaces-miami', destination: '/marketplace', statusCode: 301 },

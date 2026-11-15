@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes: { route: string; priority: number; changeFrequency: 'weekly' | 'monthly' | 'yearly' }[] = [
     { route: '', priority: 1.0, changeFrequency: 'weekly' },
     { route: '/events', priority: 0.8, changeFrequency: 'weekly' },
-    { route: '/nov18', priority: 0.8, changeFrequency: 'weekly' },
+    { route: '/dec16', priority: 0.8, changeFrequency: 'weekly' },
     { route: '/marketplace', priority: 0.95, changeFrequency: 'weekly' },
     { route: '/influencer/des-001', priority: 0.95, changeFrequency: 'weekly' },
     { route: '/influencer/kaylese-062', priority: 0.7, changeFrequency: 'monthly' },
