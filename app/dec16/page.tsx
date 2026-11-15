@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import TicketForm from './ticket-form';
 import Countdown from './countdown';
 import { HeroButtons, StickyBar } from './cta';
-import TicketButton from './ticket-button';
+import { PAYMENT_LINK_URL } from '@/lib/dec16/payment-link';
 import ShareButton from './share-button';
 import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
 
@@ -135,11 +135,12 @@ export default function TicketsPage() {
 
       <section className="px-5 pb-6" aria-label="Countdown and tickets">
         <Countdown />
-        <div className="mt-4">
-          <TicketButton className="flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-[16px] font-black uppercase tracking-[0.14em] text-[#0b0a08]">
-            Get tickets · $25&nbsp;&nbsp;→
-          </TicketButton>
-        </div>
+        <a
+          href={PAYMENT_LINK_URL}
+          className="mt-4 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-[16px] font-black uppercase tracking-[0.14em] text-[#0b0a08]"
+        >
+          Get tickets · $25&nbsp;&nbsp;→
+        </a>
       </section>
 
       <div className="ic-rule mx-5" />

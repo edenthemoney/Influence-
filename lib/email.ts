@@ -12,7 +12,6 @@ interface Order {
   songLink: string;
   packageTier: string;
   influencerId: string;
-  metadata?: Record<string, string> | null;
 }
 
 export async function sendOrderNotification(order: Order) {
@@ -124,10 +123,6 @@ export async function sendCustomerConfirmation(order: Order) {
 
   if (!RESEND_API_KEY) return;
 
-  if (order.metadata?.bookingSource === 'event-ticket') {
-    return sendTicketConfirmation(order, RESEND_API_KEY, FROM_EMAIL);
-  }
-
   try {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -164,33 +159,5 @@ export async function sendCustomerConfirmation(order: Order) {
     console.log('✅ Customer confirmation sent to', order.customerEmail);
   } catch (error) {
     console.error('❌ Failed to send customer confirmation:', error);
-  }
-}
-
-// Influence Connect ticket confirmation (Wed Dec 16, 2026). Only sends when RESEND_API_KEY is set.
-async function sendTicketConfirmation(order: Order, apiKey: string, from: string) {
-  try {
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({
-        from,
-        to: [order.customerEmail],
-        subject: "You're in: Influence Connect, Wed Dec 16",
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #000; color: #f4efe6; padding: 32px;">
-            <p style="color: #c9a96e; letter-spacing: 3px; font-size: 12px; margin: 0;">INFLUENCE CONNECT</p>
-            <h1 style="color: #c9a96e; font-family: Georgia, serif; margin: 12px 0;">You're on the list</h1>
-            <p style="margin: 0 0 6px;"><strong>Wednesday, December 16, 2026 · 4–7 PM ET</strong></p>
-            <p style="margin: 0 0 6px;">Serena Pastificio, 301 Plaza Real, Mizner Park, Boca Raton, FL 33432</p>
-            <p style="margin: 0 0 18px;">Hosted by Deseray Marie · Dress: all black, touch of gold · Apps on us</p>
-            <p style="margin: 0 0 18px;">Paid: $${order.amount.toFixed(2)}. Bring this email or your Stripe receipt to the door.</p>
-            <p style="margin: 0;"><a href="https://influencecreators.marketing/dec16-assets/influence-connect-dec16.ics" style="color: #c9a96e;">Add to calendar</a> · <a href="https://influencecreators.marketing/dec16" style="color: #c9a96e;">Event page</a></p>
-          </div>
-        `,
-      }),
-    });
-  } catch (error) {
-    console.error('❌ Failed to send ticket confirmation:', error);
   }
 }

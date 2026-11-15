@@ -1,7 +1,6 @@
-// Gentlemen entry ($25) is sold through our own server-side Stripe Checkout route,
-// which only runs on the Influence Stripe account (acct_1TOWINLibar2Zpvv; see
-// STRIPE_TICKET_ACCOUNT_ID). The old Nov 18 Payment Link is no longer used on the site.
-export const TICKET_CHECKOUT_PATH = '/api/tickets/checkout';
+// Stripe Payment Link for Gentlemen entry ($25, Influence account acct_1TOWINLibar2Zpvv).
+// Same link as Nov 18; product name and after-payment redirect are updated to Dec 16 in the Stripe dashboard.
+export const PAYMENT_LINK_URL = 'https://buy.stripe.com/9B67sM95GcgE7982QxeIw0l';
 export const SHORT_LINK = 'influencecreators.marketing/dec16';
 // Link people paste in their IG story Link sticker.
 export const SHARE_URL = 'https://influencecreators.marketing/dec16';

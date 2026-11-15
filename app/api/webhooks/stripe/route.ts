@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
       const order = {
         id: session.id,
         amount: session.amount_total ? session.amount_total / 100 : 0,
-        customerEmail: session.customer_email || session.customer_details?.email || session.metadata?.clientEmail || 'no-email@provided.com',
+        customerEmail: session.customer_email || session.metadata?.clientEmail || 'no-email@provided.com',
         customerName: session.customer_details?.name || 'N/A',
         status: 'paid',
         createdAt: new Date().toISOString(),
@@ -87,29 +87,6 @@ export async function POST(req: NextRequest) {
         await sendCustomerConfirmation(order);
       } catch (emailError) {
         console.error('Email notification failed:', emailError);
-      }
-
-      // Influence Connect ticket (Wed Dec 16, 2026): team notification with the door-list details.
-      if (session.metadata?.bookingSource === 'event-ticket') {
-        try {
-          const t = nodemailer.createTransport({
-            service: 'gmail',
-            auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD },
-          });
-          const m = session.metadata;
-          const qty = Number(m.quantityRequested || 1);
-          const ig = (session.custom_fields || []).find((f: any) => f.key === 'instagram')?.text?.value || '';
-          const buyer = session.customer_details?.name || 'N/A';
-          const paidAt = new Date(session.created * 1000).toLocaleString('en-US', { timeZone: 'America/New_York' });
-          await t.sendMail({
-            from: `"Influence Tickets" <${process.env.GMAIL_USER}>`,
-            to: process.env.GMAIL_USER,
-            subject: `🎟️ Ticket sold: ${m.eventName || 'Influence Connect'} Wed Dec 16, ${buyer}`,
-            text: `GENTLEMEN TICKET PAID\n\nEvent: ${m.eventName || 'Influence Connect'}, Wednesday, December 16, 2026, ${m.eventTime || '4 – 7 PM ET'}\nVenue: ${m.venue || 'Serena Pastificio'}\nPaid: ${paidAt} ET\nAmount: $${order.amount}\nTickets (as first requested; buyer can change on Stripe): ${qty}\n\nName: ${buyer}\nEmail: ${session.customer_details?.email || 'N/A'}\nPhone: ${session.customer_details?.phone || 'N/A'}\nInstagram: ${ig || 'N/A'}\n\nSession: ${session.id}`,
-          });
-        } catch (e) {
-          console.error('Ticket email failed:', e);
-        }
       }
 
       // If this is a model booking payment, send the detailed booking email
