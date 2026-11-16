@@ -39,13 +39,13 @@ export default function Countdown() {
           ? `Starts in ${remaining.days} days, ${remaining.hours} hours, ${remaining.minutes} minutes.`
           : 'Countdown to Wednesday, December 16, 2026 at 4:00 PM Eastern.'}
       </p>
-      <div className="grid grid-cols-4 gap-2" aria-hidden="true">
+      <div className="grid grid-cols-4 divide-x divide-[#c9a96e]/30" aria-hidden="true">
         {units.map(([label, value]) => (
-          <div key={label} className="border border-[#c9a96e]/60 px-1 py-3 text-center">
-            <p className="font-display text-[30px] font-bold leading-none tabular-nums text-[#f4efe6]">
+          <div key={label} className="px-1 py-1 text-center">
+            <p className="font-display text-[34px] font-semibold leading-none tabular-nums text-[#f4efe6]">
               {typeof value === 'number' ? String(value).padStart(2, '0') : '—'}
             </p>
-            <p className="mt-1.5 text-[13px] font-bold uppercase tracking-[0.14em] text-[#c9a96e]">{label}</p>
+            <p className="mt-2 text-[12px] font-bold uppercase tracking-[0.2em] text-[#c9a96e]">{label}</p>
           </div>
         ))}
       </div>

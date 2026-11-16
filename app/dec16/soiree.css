@@ -59,3 +59,45 @@
     transform: none;
   }
 }
+
+/* ---------- v3 editorial invite ---------- */
+.ic-tickets { font-size: 17px; line-height: 1.6; }
+.ic-eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ic-gold); }
+.ic-h2 { font-family: var(--font-display), 'Bodoni 72', Didot, Georgia, serif; font-weight: 600; line-height: 1.08; letter-spacing: -0.005em; color: var(--ic-ivory); font-size: clamp(32px, 8.4vw, 52px); }
+.ic-body { font-size: 18px; line-height: 1.65; color: rgba(244, 239, 230, 0.9); }
+.ic-hair { height: 1px; background: linear-gradient(90deg, rgba(201,169,110,0) 0%, rgba(201,169,110,.75) 50%, rgba(201,169,110,0) 100%); }
+.ic-btn-gold {
+  display: flex; min-height: 58px; align-items: center; justify-content: center; gap: .6em;
+  background: var(--ic-gold); color: #0b0a08; padding: 0 22px;
+  font-size: 15px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap;
+  touch-action: manipulation; transition: background-color 200ms ease;
+}
+.ic-btn-gold:hover { background: #d8bc86; }
+.ic-btn-ghost {
+  display: flex; min-height: 58px; align-items: center; justify-content: center;
+  border: 1px solid rgba(201,169,110,.8); color: var(--ic-gold); padding: 0 22px;
+  font-size: 15px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; touch-action: manipulation;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+.ic-btn-ghost:hover { background: var(--ic-gold); color: #0b0a08; }
+.ic-btn-ghost:disabled { opacity: .6; }
+.ic-card { border: 1px solid rgba(201,169,110,.45); background: linear-gradient(180deg, #0d0b09 0%, #070605 100%); }
+.ic-photo { position: relative; overflow: hidden; background: #0a0908; }
+.ic-photo img { width: 100%; height: 100%; object-fit: cover; }
+.ic-hero-img { background: #000; }
+@media (min-width: 768px) { .ic-hero-img::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, #000 0%, rgba(0,0,0,0) 28%); pointer-events: none; } }
+.ic-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.65) 78%, #000 100%); pointer-events: none; }
+.ic-step { font-family: var(--font-display), Georgia, serif; font-size: 44px; line-height: 1; color: var(--ic-gold); font-weight: 500; }
+.ic-faq summary { list-style: none; cursor: pointer; }
+.ic-faq summary::-webkit-details-marker { display: none; }
+.ic-faq summary .ic-plus { transition: transform 200ms ease; }
+.ic-faq[open] summary .ic-plus { transform: rotate(45deg); }
+
+/* Subtle load-in only. Content is always visible without JS: the animation starts
+   from a visible state on browsers without support and never waits on scroll. */
+@keyframes ic-settle { from { transform: scale(1.035); } to { transform: scale(1); } }
+.ic-hero-img img { animation: ic-settle 2.4s cubic-bezier(.2,.7,.2,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .ic-hero-img img { animation: none; }
+  .ic-btn-gold, .ic-btn-ghost, .ic-faq summary .ic-plus { transition: none; }
+}

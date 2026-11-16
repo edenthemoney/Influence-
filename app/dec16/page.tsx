@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import TicketForm from './ticket-form';
 import Countdown from './countdown';
-import { HeroButtons, StickyBar } from './cta';
+import { StickyBar } from './cta';
 import { PAYMENT_LINK_URL } from '@/lib/dec16/payment-link';
 import ShareButton from './share-button';
 import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
       'An evening for business owners and brand ambassadors. Curated introductions, apps on us. Wed, Dec 16, 2026, 4–7 PM ET at Serena Pastificio, Mizner Park, Boca Raton. Hosted by Deseray Marie. Business Owner Entry $75.',
     url: 'https://influencecreators.marketing/dec16',
     type: 'website',
-    images: [{ url: 'https://influencecreators.marketing/dec16-assets/patio-hero.webp', width: 780, height: 560, alt: 'Serena Pastificio patio under string lights' }],
+    images: [{ url: 'https://influencecreators.marketing/dec16-assets/dec16-feed-flyer.png', width: 1080, height: 1350, alt: 'Influence Connect, Wed Dec 16 at Serena Pastificio, hosted by Deseray Marie' }],
   },
 };
 
@@ -53,206 +53,243 @@ const eventJsonLd = {
   ],
 };
 
-const AMBASSADORS = ['Genesis', 'Seahra', 'Kat', 'Ferrari', 'Alisha'];
-
-const DRINKS = [
-  { src: '/dec16-assets/drink-espresso-martini.webp', alt: 'Espresso martini at Serena' },
-  { src: '/dec16-assets/drink-smoked-old-fashioned.webp', alt: 'Smoked old fashioned at Serena' },
-  { src: '/dec16-assets/serena-dining-room.webp', alt: 'Serena Pastificio dining room' },
+const AMBASSADORS = [
+  { name: 'Genesis', src: '/dec16-assets/v3/amb-genesis.webp' },
+  { name: 'Seahra', src: '/dec16-assets/v3/amb-seahra.webp' },
+  { name: 'Kat', src: '/dec16-assets/v3/amb-kat.webp' },
+  { name: 'Alisha', src: '/dec16-assets/v3/amb-alisha.webp' },
 ];
 
-const label = 'text-[13px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]';
+const STEPS = [
+  { t: 'Arrive and check in', d: 'Tell our team what your business does and who you want to reach.' },
+  { t: 'We make the introductions', d: 'Deseray and the Influence team bring over brand ambassadors who fit your brand.' },
+  { t: 'Talk it through', d: 'Meet in person over apps and drinks, and leave with the right people to work with.' },
+];
+
+const FAQ = [
+  { q: 'What should I wear?', a: 'All black with a touch of gold.' },
+  { q: 'Where do I park?', a: 'Mizner Park has public garages around the plaza. Serena Pastificio is at 301 Plaza Real.' },
+  { q: 'What does the $75 Business Owner Entry include?', a: 'Entry for one, curated introductions to brand ambassadors matched to your business, and apps on us.' },
+  { q: 'Ladies and brand ambassadors?', a: 'Entry is free with an RSVP, and your first drink is free.' },
+  { q: 'Refunds or changes?', a: 'Questions? Contact us.' },
+];
+
+const wrap = 'mx-auto w-full max-w-[1120px] px-6 md:px-10';
 
 export default function TicketsPage() {
   return (
-    <main className="mx-auto min-h-dvh w-full max-w-[480px] bg-black pb-[env(safe-area-inset-bottom)] text-[#f4efe6]">
+    <main className="min-h-dvh w-full bg-black text-[#f4efe6]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }} />
 
-      {/* Serena string-light patio. Photo only, no text on it. */}
-      <div className="ic-hero-photo relative">
-        <div className="absolute right-3 top-[max(0.75rem,env(safe-area-inset-top))] z-10"><ShareButton variant="icon" /></div>
-        <img
-          src="/dec16-assets/patio-hero.webp"
-          alt="Serena Pastificio patio under string lights, Mizner Park"
-          width={780}
-          height={560}
-          fetchPriority="high"
-          decoding="async"
-          className="h-full w-full object-cover"
-        />
-      </div>
-
-      <header className="px-5 pb-6">
-        <p className="font-display -mt-1 whitespace-nowrap text-[min(68px,calc((100vw-40px)*0.152))] font-bold leading-[0.95] tracking-[0.04em] text-[#c9a96e]">
-          INFLUENCE
-        </p>
-        <p className="mt-3 text-[14px] font-black uppercase tracking-[0.13em] text-[#c9a96e]">Influence Connect · An Evening for Business Owners</p>
-        <h1 className="mt-4 font-display font-extrabold leading-[1.02]">
-          <span className="block text-[min(38px,calc((100vw-40px)*0.092))] text-[#f4efe6]">Meet the Right</span>
-          <span className="mt-1 block whitespace-nowrap text-[min(52px,calc((100vw-40px)*0.117))] font-bold tracking-[0.02em] text-[#c9a96e]">
-            BRAND
-            <br />
-            AMBASSADORS
-          </span>
-          <span className="mt-2 block text-[min(34px,calc((100vw-40px)*0.08))] text-[#f4efe6]">
-            for Your Business
-          </span>
-        </h1>
-        <p className="mt-5 text-[17px] font-medium leading-relaxed text-[#f4efe6]/90">
-          An evening in Mizner Park for business owners, founders and brands. Tell us what you sell and who you want to reach, and Deseray Marie and the Influence team introduce you to brand ambassadors who fit, over apps on us.
-        </p>
-      </header>
-
-      <HeroButtons />
-
-      <div className="ic-rule mx-5" />
-
-      {/* Host: clearly separate from the ambassadors */}
-      <section className="flex gap-4 px-5 py-5" aria-label="Host, date and venue">
-        <img
-          src="/dec16-assets/host-deseray-marie.webp"
-          alt="Deseray Marie, host"
-          width={480}
-          height={600}
-          decoding="async"
-          className="h-[170px] w-[136px] shrink-0 border border-[#c9a96e] object-cover"
-        />
-        <div className="min-w-0 pt-1">
-          <p className={label}>Hosted by</p>
-          <p className="mt-1 font-display text-[26px] font-bold leading-[1.05] text-[#f4efe6]">Deseray Marie</p>
-          <p className="mt-3 text-[17px] font-bold uppercase leading-snug tracking-[0.06em] text-[#c9a96e]">
-            Wed Dec 16
-            <br />
-            4–7 PM ET
-          </p>
-          <p className="mt-1 text-[13px] font-bold uppercase tracking-[0.12em] text-[#f4efe6]/80">New date · moved from Nov 18</p>
-          <p className="mt-2 text-[16px] font-medium leading-snug text-[#f4efe6]">
-            {INFLUENCE_CONNECT.venue}
-            <br />
-            Boca Raton
-          </p>
+      {/* 1. Hero */}
+      <section className="relative md:min-h-[min(100dvh,860px)]" aria-label="Influence Connect">
+        <div className="absolute inset-x-0 top-0 z-20">
+          <div className={`${wrap} flex items-center justify-between pt-[max(1.1rem,env(safe-area-inset-top))]`}>
+            <p className="font-display text-[22px] font-semibold tracking-[0.28em] text-[#c9a96e]">INFLUENCE</p>
+            <ShareButton variant="icon" />
+          </div>
+        </div>
+        <div className="md:absolute md:inset-y-0 md:right-0 md:w-[52%]">
+          <div className="ic-photo ic-hero-img aspect-[4/4.4] w-full md:aspect-auto md:h-full">
+            <img
+              src="/dec16-assets/v3/des-hero.webp"
+              alt="Deseray Marie, host of Influence Connect"
+              width={1200}
+              height={1500}
+              fetchPriority="high"
+              decoding="async"
+              className="object-[50%_18%]"
+            />
+          </div>
+        </div>
+        <div className={`${wrap} relative z-10 -mt-24 pb-12 md:mt-0 md:flex md:min-h-[min(100dvh,860px)] md:items-center md:pb-0`}>
+          <div className="md:max-w-[50%] md:pr-10">
+            <p className="ic-eyebrow">Influence Connect</p>
+            <h1 className="mt-4 font-display text-[clamp(40px,11vw,68px)] font-semibold leading-[1.02] tracking-[-0.01em]">
+              Meet the Right <span className="text-[#c9a96e]">Brand Ambassadors</span> for Your Business
+            </h1>
+            <div className="mt-6 space-y-1 text-[18px] leading-snug">
+              <p className="font-bold text-[#f4efe6]">Wednesday, December 16 · 4–7 PM</p>
+              <p className="text-[#f4efe6]/85"><span className="whitespace-nowrap">Serena Pastificio</span> · <span className="whitespace-nowrap">Mizner Park, Boca Raton</span></p>
+            </div>
+            <div id="hero-cta" className="mt-8">
+              <a href={PAYMENT_LINK_URL} className="ic-btn-gold w-full md:w-auto md:px-10">Business Owner Entry · $75 →</a>
+              <p className="mt-4 text-[15px] text-[#f4efe6]/80">
+                Ladies &amp; brand ambassadors: <a href="#rsvp" className="text-[#c9a96e] underline decoration-[#c9a96e]/50 underline-offset-4">RSVP free</a>
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="px-5 pb-6" aria-label="Countdown and tickets">
-        <Countdown />
-        <a
-          href={PAYMENT_LINK_URL}
-          className="mt-4 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-[16px] font-black uppercase tracking-[0.14em] text-[#0b0a08]"
-        >
-          Business Owner Entry · $75&nbsp;&nbsp;→
-        </a>
+      {/* 2. The evening */}
+      <section className={`${wrap} py-16 md:py-28`} aria-labelledby="evening">
+        <div className="md:grid md:grid-cols-12 md:gap-10">
+          <p id="evening" className="ic-eyebrow md:col-span-4">The evening</p>
+          <div className="mt-5 md:col-span-8 md:mt-0">
+            <p className="font-display text-[clamp(28px,7.4vw,44px)] font-medium leading-[1.2] text-[#f4efe6]">
+              An evening for business owners and the brand ambassadors who can carry their name.
+            </p>
+            <p className="ic-body mt-6 max-w-[620px]">
+              Three unhurried hours at Serena Pastificio, hosted by Deseray Marie. A curated guest list, apps on us, and introductions made for you, in person.
+            </p>
+            <p className="mt-6 text-[14px] font-bold uppercase tracking-[0.18em] text-[#f4efe6]/70">New date · moved from Nov 18</p>
+          </div>
+        </div>
       </section>
 
-      <div className="ic-rule mx-5" />
+      <div className={wrap}><div className="ic-hair" /></div>
 
-      <section className="px-5 pb-6 pt-5" aria-labelledby="for-who">
-        <h2 id="for-who" className={label}>Who it&rsquo;s for</h2>
-        <p className="mt-2 font-display text-[26px] font-bold leading-[1.1] text-[#f4efe6]">Business owners, founders &amp; brands</p>
-        <p className="mt-2 text-[16px] leading-relaxed text-[#f4efe6]/85">
-          Restaurants, boutiques, beauty and wellness, real estate, hospitality, and anyone who wants the right faces and voices behind their brand. A curated guest list, a relaxed setting, real conversations.
-        </p>
+      {/* 3. Who it's for */}
+      <section className={`${wrap} py-16 md:py-24`} aria-labelledby="for-who">
+        <div className="md:grid md:grid-cols-12 md:gap-10">
+          <p className="ic-eyebrow md:col-span-4">Who it&rsquo;s for</p>
+          <div className="mt-5 md:col-span-8 md:mt-0">
+            <h2 id="for-who" className="ic-h2">Business owners, founders and brands.</h2>
+            <ul className="mt-8 grid gap-0 border-t border-[#c9a96e]/25 md:grid-cols-2 md:gap-x-10">
+              {[
+                'Restaurants, lounges and hospitality',
+                'Boutiques, beauty and wellness',
+                'Real estate and luxury services',
+                'Founders launching or growing a brand',
+              ].map((t) => (
+                <li key={t} className="border-b border-[#c9a96e]/25 py-4 text-[18px] text-[#f4efe6]">{t}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </section>
 
-      <section className="px-5 pb-7" aria-labelledby="how">
-        <h2 id="how" className={label}>How it works</h2>
-        <ol className="mt-3 space-y-3">
-          {[
-            ['Get your entry', 'Business Owner Entry is $75. Apps are on us.'],
-            ['Tell us about your business', 'At check-in, share what you sell and who you want to reach.'],
-            ['Meet your matches', 'Deseray and the Influence team introduce you to brand ambassadors who fit.'],
-          ].map(([t, d], i) => (
-            <li key={t} className="flex gap-3">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-[#c9a96e] font-display text-[18px] font-bold text-[#c9a96e]">{i + 1}</span>
-              <div>
-                <p className="text-[17px] font-bold leading-snug text-[#f4efe6]">{t}</p>
-                <p className="mt-0.5 text-[15px] leading-snug text-[#f4efe6]/80">{d}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+      {/* 4. How the introductions work */}
+      <section className="bg-[#0b0a08] py-16 md:py-24" aria-labelledby="how">
+        <div className={wrap}>
+          <p className="ic-eyebrow">How the introductions work</p>
+          <h2 id="how" className="ic-h2 mt-4 max-w-[760px]">Three simple steps, handled for you.</h2>
+          <ol className="mt-10 grid gap-10 md:grid-cols-3 md:gap-12">
+            {STEPS.map((s, i) => (
+              <li key={s.t} className="border-t border-[#c9a96e]/40 pt-6">
+                <p className="ic-step">0{i + 1}</p>
+                <p className="mt-4 text-[20px] font-bold leading-snug text-[#f4efe6]">{s.t}</p>
+                <p className="ic-body mt-2">{s.d}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="ic-eyebrow mt-16">Brand ambassadors from the Influence network</p>
+          <ul className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+            {AMBASSADORS.map((a) => (
+              <li key={a.name}>
+                <div className="ic-photo aspect-[4/5]">
+                  <img src={a.src} alt={a.name} width={640} height={800} loading="lazy" decoding="async" />
+                </div>
+                <p className="mt-3 font-display text-[20px] font-medium text-[#f4efe6]">{a.name}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 text-[16px] text-[#f4efe6]/80">&amp; many more from the Influence network.</p>
+        </div>
       </section>
 
-      <div className="ic-rule mx-5" />
-
-      {/* Example talent from the network. Not hosts. */}
-      <section className="px-5 pb-7 pt-5" aria-labelledby="ambassadors">
-        <h2 id="ambassadors" className={label}>
-          Brand Ambassadors
-        </h2>
-        <ul className="mt-3 grid grid-cols-3 gap-[6px]">
-          {AMBASSADORS.map((name) => (
-            <li key={name}>
-              <img
-                src={`/dec16-assets/ambassador-${name.toLowerCase()}.webp`}
-                alt={name}
-                width={330}
-                height={450}
-                loading="lazy"
-                decoding="async"
-                className="aspect-[330/450] w-full object-cover"
-              />
-              <p className="mt-1.5 text-center font-display text-[18px] font-bold leading-tight text-[#f4efe6]">{name}</p>
-            </li>
-          ))}
-          <li className="flex aspect-[330/450] flex-col items-center justify-center border border-[#c9a96e]/60 px-2 text-center">
-            <p className="font-display text-[22px] font-bold leading-tight text-[#c9a96e]">&amp; many more</p>
-            <p className="mt-2 text-[13px] font-medium leading-snug text-[#f4efe6]">from the Influence network</p>
-          </li>
-        </ul>
+      {/* 5. Host */}
+      <section className={`${wrap} py-16 md:py-28`} aria-labelledby="host">
+        <div className="grid grid-cols-[128px_1fr] items-center gap-6 md:grid-cols-2 md:gap-x-16 md:gap-y-6">
+          <div className="ic-photo aspect-[4/5] w-full max-w-[460px] border border-[#c9a96e]/40 md:row-span-2">
+            <img src="/dec16-assets/v3/des-host.webp" alt="Deseray Marie" width={800} height={1000} loading="lazy" decoding="async" className="object-[50%_25%]" />
+          </div>
+          <div className="md:self-end">
+            <p className="ic-eyebrow">Your host</p>
+            <h2 id="host" className="ic-h2 mt-3">Deseray Marie</h2>
+          </div>
+          <div className="col-span-2 md:col-span-1 md:col-start-2 md:self-start">
+            <p className="ic-body max-w-[520px]">
+              Deseray hosts the evening and, with the Influence team, introduces each business owner to the brand ambassadors who fit their brand.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* Drinks and dining at Serena. Photos only. */}
-      <div className="grid grid-cols-3 gap-[6px]" aria-label="Serena Pastificio">
-        {DRINKS.map((d) => (
-          <img
-            key={d.src}
-            src={d.src}
-            alt={d.alt}
-            width={360}
-            height={440}
-            loading="lazy"
-            decoding="async"
-            className="aspect-[360/440] w-full object-cover"
-          />
-        ))}
-      </div>
-
-      <section className="px-5 pb-2 pt-7" aria-labelledby="details">
-        <h2 id="details" className={label}>
-          What&rsquo;s included
-        </h2>
-        <ul className="mt-3 space-y-2 text-[17px] font-medium leading-snug text-[#f4efe6]">
-          <li>
-            <span className="font-bold text-[#c9a96e]">Business Owner Entry · $75</span> · curated introductions to brand ambassadors matched to your business, apps on us
-          </li>
-          <li>
-            <span className="font-bold text-[#c9a96e]">Ladies &amp; brand ambassadors</span> · free RSVP, first drink free
-          </li>
-          <li>
-            <span className="font-bold text-[#c9a96e]">Dress</span> · {INFLUENCE_CONNECT.dressCode.toLowerCase()}
-          </li>
-        </ul>
-
-        <a href={INFLUENCE_CONNECT.mapsUrl} className="mt-6 block min-h-14 touch-manipulation border border-[#c9a96e]/70 px-4 py-4">
-          <p className={label}>{INFLUENCE_CONNECT.area}</p>
-          <p className="mt-1.5 font-display text-[26px] font-bold leading-tight text-[#f4efe6]">{INFLUENCE_CONNECT.venue}</p>
-          <p className="mt-1.5 text-[16px] leading-snug text-[#f4efe6]">
-            {INFLUENCE_CONNECT.street}, {INFLUENCE_CONNECT.cityLine}
-          </p>
-          <p className="mt-3 text-[14px] font-bold uppercase tracking-[0.12em] text-[#c9a96e]">Open in Google Maps →</p>
-        </a>
-        <a
-          href={INFLUENCE_CONNECT.calendarFile}
-          download="influence-connect-dec16.ics"
-          className="mt-3 flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c9a96e] px-4 text-center text-[15px] font-bold uppercase tracking-[0.14em] text-[#c9a96e]"
-        >
-          Add to calendar
-        </a>
+      {/* 6. Venue */}
+      <section className="bg-[#0b0a08] pb-16 md:py-24" aria-labelledby="venue">
+        <div className="md:mx-auto md:grid md:max-w-[1120px] md:grid-cols-12 md:items-center md:gap-12 md:px-10">
+          <div className="md:col-span-7">
+            <div className="ic-photo aspect-[4/3]">
+              <img src="/dec16-assets/v3/venue-room.webp" alt="Serena Pastificio dining room, Boca Raton" width={960} height={700} loading="lazy" decoding="async" />
+            </div>
+          </div>
+          <div className="px-6 pt-10 md:col-span-5 md:px-0 md:pt-0">
+            <p className="ic-eyebrow">The venue</p>
+            <h2 id="venue" className="ic-h2 mt-4">Serena Pastificio</h2>
+            <p className="ic-body mt-4">{INFLUENCE_CONNECT.street}, Mizner Park<br />Boca Raton, FL 33432</p>
+            <div className="mt-7 grid gap-3 sm:grid-cols-2 md:grid-cols-1">
+              <a href={INFLUENCE_CONNECT.mapsUrl} className="ic-btn-ghost">Open in Maps</a>
+              <a href={INFLUENCE_CONNECT.calendarFile} download="influence-connect-dec16.ics" className="ic-btn-ghost">Add to calendar</a>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <div className="px-5 pb-2"><ShareButton /></div>
-      <TicketForm />
+      {/* 7. Tickets */}
+      <section id="tickets" className={`${wrap} scroll-mt-6 py-16 md:py-28`} aria-labelledby="tickets-h">
+        <p className="ic-eyebrow">Tickets</p>
+        <h2 id="tickets-h" className="ic-h2 mt-4">Wednesday, December 16</h2>
+        <p className="mt-2 text-[18px] text-[#f4efe6]/85">4–7 PM ET · Serena Pastificio, Boca Raton</p>
+        <div className="mt-8 max-w-[520px]"><Countdown /></div>
+        <div className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
+          <div className="ic-card p-7 md:p-10">
+            <p className="ic-eyebrow">Business Owner Entry</p>
+            <p className="mt-4 font-display text-[64px] font-semibold leading-none text-[#f4efe6]">$75</p>
+            <ul className="mt-6 space-y-3 text-[17px] text-[#f4efe6]/90">
+              <li>· Curated introductions to brand ambassadors matched to your business</li>
+              <li>· Apps on us</li>
+              <li>· Hosted by Deseray Marie</li>
+            </ul>
+            <a href={PAYMENT_LINK_URL} className="ic-btn-gold mt-8 w-full">Get my entry · $75 →</a>
+            <p className="mt-3 text-center text-[14px] text-[#f4efe6]/70">Secure checkout by Stripe</p>
+          </div>
+          <div className="ic-card p-7 md:p-10">
+            <p className="ic-eyebrow">Ladies &amp; brand ambassadors</p>
+            <p className="mt-4 font-display text-[40px] font-semibold leading-none text-[#f4efe6]">Free RSVP</p>
+            <p className="mt-3 text-[17px] text-[#f4efe6]/85">First drink on us. Add your name to the door list.</p>
+            <div className="mt-6"><TicketForm /></div>
+          </div>
+        </div>
+      </section>
+
+      <div className={wrap}><div className="ic-hair" /></div>
+
+      {/* 8. FAQ */}
+      <section className={`${wrap} py-16 md:py-24`} aria-labelledby="faq">
+        <div className="md:grid md:grid-cols-12 md:gap-10">
+          <div className="md:col-span-4">
+            <p className="ic-eyebrow">Good to know</p>
+            <h2 id="faq" className="ic-h2 mt-4">Questions</h2>
+          </div>
+          <div className="mt-8 border-t border-[#c9a96e]/25 md:col-span-8 md:mt-0">
+            {FAQ.map((f) => (
+              <details key={f.q} className="ic-faq border-b border-[#c9a96e]/25">
+                <summary className="flex min-h-[64px] items-center justify-between gap-4 py-4 text-[18px] font-bold text-[#f4efe6]">
+                  {f.q}
+                  <span className="ic-plus font-display text-[28px] font-normal leading-none text-[#c9a96e]" aria-hidden="true">+</span>
+                </summary>
+                <p className="ic-body pb-5 pr-8">
+                  {f.a === 'Questions? Contact us.' ? (<>Questions? <a href="/contact" className="text-[#c9a96e] underline underline-offset-4">Contact us</a>.</>) : f.a}
+                </p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <footer className={`${wrap} pb-36 pt-6 md:pb-16`}>
+        <div className="ic-hair" />
+        <div className="mt-10 flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="font-display text-[26px] font-semibold tracking-[0.28em] text-[#c9a96e]">INFLUENCE</p>
+            <p className="mt-2 text-[15px] text-[#f4efe6]/75">Influence Connect · Wed Dec 16 · Serena Pastificio, Boca Raton</p>
+          </div>
+          <div className="w-full md:w-auto"><ShareButton /></div>
+        </div>
+      </footer>
+
       <StickyBar />
     </main>
   );

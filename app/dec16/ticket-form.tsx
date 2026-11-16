@@ -9,9 +9,9 @@ import {
 } from '@/lib/dec16/influence-connect';
 
 const inputClass =
-  'mt-2 w-full min-h-14 rounded-none border border-[#c9a96e]/60 bg-[#0a0908] px-4 text-[17px] font-medium normal-case tracking-normal text-[#f4efe6] outline-none appearance-none shadow-none placeholder:text-[#f4efe6]/45 focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e]';
+  'mt-2 w-full min-h-[56px] rounded-none border-0 border-b border-[#c9a96e]/55 bg-transparent px-0 text-[18px] font-medium normal-case tracking-normal text-[#f4efe6] outline-none appearance-none shadow-none placeholder:text-[#f4efe6]/40 focus:border-[#c9a96e]';
 
-const labelClass = 'block text-[13px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]';
+const labelClass = 'block text-[13px] font-bold uppercase tracking-[0.18em] text-[#c9a96e]';
 
 export default function TicketForm() {
   const router = useRouter();
@@ -53,37 +53,34 @@ export default function TicketForm() {
 
 
   return (
-    <form id="rsvp" onSubmit={onSubmit} className="scroll-mt-4 px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-10" noValidate>
-      <div className="ic-rule mb-6" />
-      <h2 className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]">Ladies &amp; brand ambassadors · free RSVP</h2>
-      <p className="mt-1 text-[15px] text-[#f4efe6]/75">First drink free. Add your name to the door list. Business owners: use the $75 entry above.</p>
-          <div className="mt-4 grid gap-3">
-            <label className={labelClass}>
-              Name
-              <input className={inputClass} name="name" autoComplete="name" autoCapitalize="words" enterKeyHint="next" value={name} onChange={(e) => setName(e.target.value)} required />
-            </label>
-            <label className={labelClass}>
-              Phone
-              <input className={inputClass} name="phone" type="tel" inputMode="tel" autoComplete="tel" enterKeyHint={showIg ? 'next' : 'done'} value={phone} onChange={(e) => setPhone(e.target.value)} required />
-            </label>
-            {showIg ? (
-              <label className={labelClass}>
-                Instagram (optional)
-                <input className={inputClass} name="instagram" autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} enterKeyHint="done" placeholder="@yourhandle" value={instagram} onChange={(e) => setInstagram(e.target.value)} />
-              </label>
-            ) : (
-              <button type="button" onClick={() => setShowIg(true)} className="justify-self-start text-[14px] font-bold uppercase tracking-[0.14em] text-[#c9a96e] underline underline-offset-4">
-                + Add Instagram
-              </button>
-            )}
-          </div>
-          {error && (
-            <p role="alert" className="mt-4 text-[16px] font-medium leading-snug text-[#f4efe6]">{error}</p>
-          )}
-          <button type="submit" disabled={submitting} className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c9a96e]/80 px-4 text-[15px] font-bold uppercase tracking-[0.14em] text-[#c9a96e] disabled:opacity-60">
-            {submitting ? 'Saving RSVP…' : 'RSVP free'}
+    <form id="rsvp" onSubmit={onSubmit} className="scroll-mt-24" noValidate>
+      <div className="grid gap-4">
+        <label className={labelClass}>
+          Name
+          <input className={inputClass} name="name" autoComplete="name" autoCapitalize="words" enterKeyHint="next" value={name} onChange={(e) => setName(e.target.value)} required />
+        </label>
+        <label className={labelClass}>
+          Phone
+          <input className={inputClass} name="phone" type="tel" inputMode="tel" autoComplete="tel" enterKeyHint={showIg ? 'next' : 'done'} value={phone} onChange={(e) => setPhone(e.target.value)} required />
+        </label>
+        {showIg ? (
+          <label className={labelClass}>
+            Instagram (optional)
+            <input className={inputClass} name="instagram" autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} enterKeyHint="done" placeholder="@yourhandle" value={instagram} onChange={(e) => setInstagram(e.target.value)} />
+          </label>
+        ) : (
+          <button type="button" onClick={() => setShowIg(true)} className="justify-self-start py-1 text-[15px] font-bold uppercase tracking-[0.14em] text-[#c9a96e] underline decoration-[#c9a96e]/50 underline-offset-[6px]">
+            + Add Instagram
           </button>
-          <p className="mt-3 text-center text-[14px] leading-relaxed text-[#f4efe6]/75">RSVP is free for ladies and brand ambassadors. Your name and phone go on the door list.</p>
+        )}
+      </div>
+      {error && (
+        <p role="alert" className="mt-4 text-[17px] font-medium leading-snug text-[#f4efe6]">{error}</p>
+      )}
+      <button type="submit" disabled={submitting} className="ic-btn-ghost mt-6 w-full">
+        {submitting ? 'Saving RSVP…' : 'Reserve my place · Free'}
+      </button>
+      <p className="mt-3 text-center text-[15px] leading-relaxed text-[#f4efe6]/80">Your name and phone go on the door list.</p>
     </form>
   );
 }
