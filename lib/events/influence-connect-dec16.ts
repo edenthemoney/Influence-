@@ -14,7 +14,7 @@ const event: EventListing = {
   href: '/dec16',
   image: '/dec16-assets/patio-hero.webp',
   imageAlt: 'Serena Pastificio patio under string lights',
-  priceNote: 'Ladies free RSVP · Gentlemen $25',
+  priceNote: 'Business Owner Entry $75 · Ladies free RSVP',
   ctaLabel: 'Get tickets',
 };
 export default event;

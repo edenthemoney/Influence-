@@ -14,7 +14,7 @@ export default function TicketResult({ mode }: { mode: 'success' | 'cancel' }) {
       <GoldConfetti active={celebrate} />
       <div className="mx-auto flex min-h-[calc(100dvh-20px)] w-full max-w-[440px] flex-col bg-[#000000] px-5 pb-[max(1.75rem,env(safe-area-inset-bottom))] pt-8">
         <p className="font-display text-[52px] font-bold leading-none tracking-[0.04em] text-[#c9a96e]">INFLUENCE</p>
-        <p className="mt-2 text-[14px] font-black uppercase tracking-[0.13em] text-[#c9a96e]">Influencer Networking Event</p>
+        <p className="mt-2 text-[14px] font-black uppercase tracking-[0.13em] text-[#c9a96e]">Influence Connect · An Evening for Business Owners</p>
         <p className="mt-3 text-[16px] text-[#f4efe6]/85">
           {INFLUENCE_CONNECT.dateLong}
           <br />

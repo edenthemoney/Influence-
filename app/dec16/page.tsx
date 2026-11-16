@@ -7,16 +7,16 @@ import { PAYMENT_LINK_URL } from '@/lib/dec16/payment-link';
 import ShareButton from './share-button';
 import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
 
-const HEADLINE = 'Find the Right Brand Ambassadors & Influencers for Your Business';
+const HEADLINE = 'Meet the Right Brand Ambassadors for Your Business';
 
 export const metadata: Metadata = {
   title: { absolute: `${HEADLINE} — Dec 16 | Influence` },
-  description: `${INFLUENCE_CONNECT.name}, an influencer networking event on Wednesday, December 16, 2026, 4–7 PM ET at Serena Pastificio, 301 Plaza Real, Mizner Park, Boca Raton. Hosted by Deseray Marie. Ladies RSVP free with first drink free. Gentlemen $25, apps included.`,
+  description: `${INFLUENCE_CONNECT.name}: an evening for business owners and brand ambassadors. Curated introductions to brand ambassadors matched to your business. Wednesday, December 16, 2026, 4–7 PM ET at Serena Pastificio, 301 Plaza Real, Mizner Park, Boca Raton. Hosted by Deseray Marie. Business Owner Entry $75, apps on us. Ladies and brand ambassadors RSVP free.`,
   alternates: { canonical: 'https://influencecreators.marketing/dec16' },
   openGraph: {
     title: `${HEADLINE} — Dec 16`,
     description:
-      'Influencer networking event. Wednesday, Dec 16, 2026, 4–7 PM ET at Serena Pastificio, Boca Raton. Hosted by Deseray Marie.',
+      'An evening for business owners and brand ambassadors. Curated introductions, apps on us. Wed, Dec 16, 2026, 4–7 PM ET at Serena Pastificio, Mizner Park, Boca Raton. Hosted by Deseray Marie. Business Owner Entry $75.',
     url: 'https://influencecreators.marketing/dec16',
     type: 'website',
     images: [{ url: 'https://influencecreators.marketing/dec16-assets/patio-hero.webp', width: 780, height: 560, alt: 'Serena Pastificio patio under string lights' }],
@@ -27,7 +27,7 @@ const eventJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Event',
   name: `${INFLUENCE_CONNECT.name}: ${HEADLINE}`,
-  description: `Influencer networking event at ${INFLUENCE_CONNECT.venue}. Hosted by ${INFLUENCE_CONNECT.host}.`,
+  description: `An evening for business owners and brand ambassadors at ${INFLUENCE_CONNECT.venue}, Mizner Park. Curated introductions to brand ambassadors matched to your business, apps on us. Hosted by ${INFLUENCE_CONNECT.host}.`,
   startDate: '2026-12-16T16:00:00-05:00',
   endDate: '2026-12-16T19:00:00-05:00',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
@@ -48,8 +48,8 @@ const eventJsonLd = {
   },
   organizer: { '@type': 'Person', name: INFLUENCE_CONNECT.host },
   offers: [
-    { '@type': 'Offer', name: 'Ladies RSVP', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/dec16' },
-    { '@type': 'Offer', name: 'Gentlemen Entry', price: '25', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/dec16' },
+    { '@type': 'Offer', name: 'Ladies & Brand Ambassadors RSVP', price: '0', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/dec16' },
+    { '@type': 'Offer', name: 'Business Owner Entry', price: '75', priceCurrency: 'USD', availability: 'https://schema.org/InStock', url: 'https://influencecreators.marketing/dec16' },
   ],
 };
 
@@ -86,20 +86,21 @@ export default function TicketsPage() {
         <p className="font-display -mt-1 whitespace-nowrap text-[min(68px,calc((100vw-40px)*0.152))] font-bold leading-[0.95] tracking-[0.04em] text-[#c9a96e]">
           INFLUENCE
         </p>
-        <p className="mt-3 text-[14px] font-black uppercase tracking-[0.13em] text-[#c9a96e]">Influencer Networking Event</p>
+        <p className="mt-3 text-[14px] font-black uppercase tracking-[0.13em] text-[#c9a96e]">Influence Connect · An Evening for Business Owners</p>
         <h1 className="mt-4 font-display font-extrabold leading-[1.02]">
-          <span className="block text-[min(38px,calc((100vw-40px)*0.092))] text-[#f4efe6]">Find the Right</span>
+          <span className="block text-[min(38px,calc((100vw-40px)*0.092))] text-[#f4efe6]">Meet the Right</span>
           <span className="mt-1 block whitespace-nowrap text-[min(52px,calc((100vw-40px)*0.117))] font-bold tracking-[0.02em] text-[#c9a96e]">
             BRAND
             <br />
             AMBASSADORS
           </span>
           <span className="mt-2 block text-[min(34px,calc((100vw-40px)*0.08))] text-[#f4efe6]">
-            &amp; Influencers for
-            <br />
-            Your Business
+            for Your Business
           </span>
         </h1>
+        <p className="mt-5 text-[17px] font-medium leading-relaxed text-[#f4efe6]/90">
+          An evening in Mizner Park for business owners, founders and brands. Tell us what you sell and who you want to reach, and Deseray Marie and the Influence team introduce you to brand ambassadors who fit, over apps on us.
+        </p>
       </header>
 
       <HeroButtons />
@@ -139,8 +140,37 @@ export default function TicketsPage() {
           href={PAYMENT_LINK_URL}
           className="mt-4 flex min-h-14 w-full touch-manipulation items-center justify-center bg-[#c9a96e] px-4 text-[16px] font-black uppercase tracking-[0.14em] text-[#0b0a08]"
         >
-          Get tickets · $25&nbsp;&nbsp;→
+          Business Owner Entry · $75&nbsp;&nbsp;→
         </a>
+      </section>
+
+      <div className="ic-rule mx-5" />
+
+      <section className="px-5 pb-6 pt-5" aria-labelledby="for-who">
+        <h2 id="for-who" className={label}>Who it&rsquo;s for</h2>
+        <p className="mt-2 font-display text-[26px] font-bold leading-[1.1] text-[#f4efe6]">Business owners, founders &amp; brands</p>
+        <p className="mt-2 text-[16px] leading-relaxed text-[#f4efe6]/85">
+          Restaurants, boutiques, beauty and wellness, real estate, hospitality, and anyone who wants the right faces and voices behind their brand. A curated guest list, a relaxed setting, real conversations.
+        </p>
+      </section>
+
+      <section className="px-5 pb-7" aria-labelledby="how">
+        <h2 id="how" className={label}>How it works</h2>
+        <ol className="mt-3 space-y-3">
+          {[
+            ['Get your entry', 'Business Owner Entry is $75. Apps are on us.'],
+            ['Tell us about your business', 'At check-in, share what you sell and who you want to reach.'],
+            ['Meet your matches', 'Deseray and the Influence team introduce you to brand ambassadors who fit.'],
+          ].map(([t, d], i) => (
+            <li key={t} className="flex gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-[#c9a96e] font-display text-[18px] font-bold text-[#c9a96e]">{i + 1}</span>
+              <div>
+                <p className="text-[17px] font-bold leading-snug text-[#f4efe6]">{t}</p>
+                <p className="mt-0.5 text-[15px] leading-snug text-[#f4efe6]/80">{d}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <div className="ic-rule mx-5" />
@@ -190,14 +220,14 @@ export default function TicketsPage() {
 
       <section className="px-5 pb-2 pt-7" aria-labelledby="details">
         <h2 id="details" className={label}>
-          The Night
+          What&rsquo;s included
         </h2>
         <ul className="mt-3 space-y-2 text-[17px] font-medium leading-snug text-[#f4efe6]">
           <li>
-            <span className="font-bold text-[#c9a96e]">Ladies</span> · free RSVP, first drink free
+            <span className="font-bold text-[#c9a96e]">Business Owner Entry · $75</span> · curated introductions to brand ambassadors matched to your business, apps on us
           </li>
           <li>
-            <span className="font-bold text-[#c9a96e]">Gentlemen</span> · $25 entry, apps included
+            <span className="font-bold text-[#c9a96e]">Ladies &amp; brand ambassadors</span> · free RSVP, first drink free
           </li>
           <li>
             <span className="font-bold text-[#c9a96e]">Dress</span> · {INFLUENCE_CONNECT.dressCode.toLowerCase()}

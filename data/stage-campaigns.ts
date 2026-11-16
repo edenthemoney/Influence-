@@ -195,8 +195,8 @@ export const campaigns: Campaign[] = [
     category: 'Business',
     bio: 'See you at Influence Connect.',
     service: 'event',
-    serviceLabel: 'Creator networking night',
-    external: { href: '/dec16', label: 'Get networking night tickets' },
+    serviceLabel: 'Business owner evening',
+    external: { href: '/dec16', label: 'Business Owner Entry · $75' },
     backdrop: `${S}/bg-event.webp`,
     grid: [
       { src: `${S}/serena-patio-sq.webp` }, { src: `${S}/og-dessertz-line-sq-a.webp`, reel: true }, { src: `${S}/serena-martini-sq.webp` },
@@ -213,7 +213,7 @@ export const campaigns: Campaign[] = [
     ],
     recap: {
       source: 'Influence Connect · ticket page',
-      items: ['Creator networking night', 'Wednesday, December 16, 2026 · 4 – 7 PM ET', 'Serena Pastificio, Mizner Park, Boca Raton', 'Hosted by Deseray Marie'],
+      items: ['An evening for business owners and brand ambassadors', 'Wednesday, December 16, 2026 · 4 – 7 PM ET', 'Serena Pastificio, Mizner Park, Boca Raton', 'Hosted by Deseray Marie'],
     },
   },
 ];

@@ -55,8 +55,8 @@ export default function TicketForm() {
   return (
     <form id="rsvp" onSubmit={onSubmit} className="scroll-mt-4 px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-10" noValidate>
       <div className="ic-rule mb-6" />
-      <h2 className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]">Ladies · free RSVP</h2>
-      <p className="mt-1 text-[15px] text-[#f4efe6]/75">First drink free. Add your name to the door list.</p>
+      <h2 className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]">Ladies &amp; brand ambassadors · free RSVP</h2>
+      <p className="mt-1 text-[15px] text-[#f4efe6]/75">First drink free. Add your name to the door list. Business owners: use the $75 entry above.</p>
           <div className="mt-4 grid gap-3">
             <label className={labelClass}>
               Name
@@ -83,7 +83,7 @@ export default function TicketForm() {
           <button type="submit" disabled={submitting} className="mt-6 flex min-h-14 w-full touch-manipulation items-center justify-center border border-[#c9a96e]/80 px-4 text-[15px] font-bold uppercase tracking-[0.14em] text-[#c9a96e] disabled:opacity-60">
             {submitting ? 'Saving RSVP…' : 'RSVP free'}
           </button>
-          <p className="mt-3 text-center text-[14px] leading-relaxed text-[#f4efe6]/75">Ladies RSVP is free. Your name and phone go on the door list.</p>
+          <p className="mt-3 text-center text-[14px] leading-relaxed text-[#f4efe6]/75">RSVP is free for ladies and brand ambassadors. Your name and phone go on the door list.</p>
     </form>
   );
 }

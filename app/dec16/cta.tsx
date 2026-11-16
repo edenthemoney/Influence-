@@ -8,7 +8,7 @@ const gold = 'flex min-h-14 touch-manipulation items-center justify-center bg-[#
 export function HeroButtons() {
   return (
     <div id="hero-cta" className="px-5 pb-4">
-      <a href={PAYMENT_LINK_URL} className={`${gold} w-full min-h-[60px] text-[17px]`}>Get tickets · $25&nbsp;&nbsp;→</a>
+      <a href={PAYMENT_LINK_URL} className={`${gold} w-full min-h-[60px] flex-col gap-0.5 py-2 text-[17px]`}><span>Business Owner Entry · $75&nbsp;&nbsp;→</span><span className="text-[11px] font-bold tracking-[0.16em] opacity-80">Curated introductions · apps on us</span></a>
       <ShareButton className="mt-3" />
     </div>
   );
@@ -41,7 +41,7 @@ export function StickyBar() {
       className={`fixed inset-x-0 bottom-0 z-40 border-t border-[#c9a96e]/40 bg-black/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300 md:hidden ${show ? 'translate-y-0' : 'pointer-events-none translate-y-full'}`}
     >
       <div className="mx-auto max-w-[440px]">
-        <a href={PAYMENT_LINK_URL} tabIndex={show ? 0 : -1} className={`${gold} w-full`}>Get tickets · $25&nbsp;&nbsp;→</a>
+        <a href={PAYMENT_LINK_URL} tabIndex={show ? 0 : -1} className={`${gold} w-full`}>Business Owner Entry · $75&nbsp;&nbsp;→</a>
       </div>
     </div>
   );
