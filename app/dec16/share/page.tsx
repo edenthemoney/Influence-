@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import ShareTools from './share-tools';
 import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
+import { SHORT_LINK } from '@/lib/dec16/payment-link';
 
 export const metadata: Metadata = {
   title: { absolute: 'Share the Dec 16 flyer | Influence' },
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 };
 
 const steps = [
-  ['Tap the gold button', 'Your ticket link gets copied for you.'],
-  ['Pick Instagram, then Story', 'The flyer is already in it.'],
-  ['Sticker button, Link, Paste', 'Tap Done and share. That\u2019s it.'],
+  ['Tap Share to my story', 'The event link is copied for your Instagram Link sticker.'],
+  ['Pick Instagram, then Story', 'The flyer is already in the share sheet (or save it below).'],
+  ['Sticker → Link → Paste', `Paste ${SHORT_LINK}. Tap Done and share.`],
 ];
 
 export default function SharePage() {
@@ -28,6 +29,14 @@ export default function SharePage() {
         <br />
         {INFLUENCE_CONNECT.venue}, Boca Raton
       </p>
+      <p className="mt-4 border border-[#c9a96e]/40 px-4 py-3 text-[15px] leading-snug text-[#f4efe6]/90">
+        <span className="font-bold text-[#c9a96e]">Business owners $75</span>
+        {' · '}
+        Ladies &amp; brand ambassadors RSVP free.
+        {' '}
+        Entry is not free for business owners.
+      </p>
+      <p className="mt-5 break-all font-display text-[20px] font-medium text-[#c9a96e]">{SHORT_LINK}</p>
 
       <ShareTools />
 
@@ -48,10 +57,13 @@ export default function SharePage() {
         src="/dec16-assets/dec16-story-flyer.png"
         width={1080}
         height={1920}
-        alt="Dec 16 Influence Connect story flyer. Press and hold, then Save."
+        alt="Dec 16 Influence Connect story flyer — Business Owners $75, Ladies RSVP free. Press and hold, then Save."
         className="mt-10 w-full border border-[#c9a96e]/45"
         style={{ WebkitTouchCallout: 'default' }}
       />
+      <p className="mt-3 text-center text-[14px] text-[#f4efe6]/65">
+        Press and hold the flyer to save · Business Owners $75 on the art
+      </p>
     </main>
   );
 }

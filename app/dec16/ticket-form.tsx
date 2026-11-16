@@ -78,9 +78,11 @@ export default function TicketForm() {
         <p role="alert" className="mt-4 text-[17px] font-medium leading-snug text-[#f4efe6]">{error}</p>
       )}
       <button type="submit" disabled={submitting} className="ic-btn-ghost mt-6 w-full">
-        {submitting ? 'Saving RSVP…' : 'Ladies & Ambassadors: RSVP Free'}
+        {submitting ? 'Saving RSVP…' : 'RSVP free · Ladies & ambassadors'}
       </button>
-      <p className="mt-3 text-center text-[15px] leading-relaxed text-[#f4efe6]/80">Your name and phone go on the door list.</p>
+      <p className="mt-3 text-center text-[15px] leading-relaxed text-[#f4efe6]/80">
+        For ladies &amp; brand ambassadors only. Business owners pay $75 above.
+      </p>
     </form>
   );
 }

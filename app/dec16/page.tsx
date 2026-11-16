@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import TicketForm from './ticket-form';
 import { StickyBar } from './cta';
-import { PAYMENT_LINK_URL } from '@/lib/dec16/payment-link';
+import { PAYMENT_LINK_URL, SHORT_LINK } from '@/lib/dec16/payment-link';
 import ShareButton from './share-button';
 import { INFLUENCE_CONNECT } from '@/lib/dec16/influence-connect';
 import { DEC16_HERO_COLLAGE, DEC16_ROSTER } from '@/lib/dec16/roster';
@@ -104,12 +104,16 @@ const FAQ = [
     a: 'Mizner Park has public garages around the plaza. Serena Pastificio is at 301 Plaza Real.',
   },
   {
+    q: 'Is entry free for business owners?',
+    a: 'No. Business Owner Entry is $75 for gentlemen. Only ladies and brand ambassadors RSVP free.',
+  },
+  {
     q: 'What does the $75 Business Owner Entry include?',
     a: 'Entry for one and curated introductions to brand ambassadors matched to your business.',
   },
   {
     q: 'Ladies and brand ambassadors?',
-    a: 'Entry is free with an RSVP.',
+    a: 'Entry is free with an RSVP. Business owners still pay $75.',
   },
   { q: 'Refunds or changes?', a: 'Questions? Contact us.' },
 ];
@@ -161,11 +165,15 @@ export default function TicketsPage() {
                 Connect affluent business owners with the right brand ambassadors — in person.
               </p>
 
-              <div id="hero-cta" className="ic-rise ic-rise-delay-2 mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                <a href={PAYMENT_LINK_URL} className="ic-btn-gold w-full sm:w-auto">
+              <p className="ic-rise ic-rise-delay-2 mt-5 text-[14px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]">
+                Business owners $75 · Ladies &amp; ambassadors RSVP free
+              </p>
+
+              <div id="hero-cta" className="ic-rise ic-rise-delay-2 mt-6 flex flex-col gap-3 sm:max-w-[420px]">
+                <a href={PAYMENT_LINK_URL} className="ic-btn-gold w-full">
                   Get Business Owner Entry – $75
                 </a>
-                <a href="#rsvp" className="ic-btn-ghost w-full sm:w-auto">
+                <a href="#rsvp" className="text-center text-[15px] font-bold uppercase tracking-[0.12em] text-[#c9a96e] underline decoration-[#c9a96e]/45 underline-offset-[6px]">
                   Ladies &amp; Ambassadors: RSVP Free
                 </a>
               </div>
@@ -319,11 +327,16 @@ export default function TicketsPage() {
           </h2>
           <p className="mt-2 text-[18px] text-[#f4efe6]/85">4–7 PM ET · Serena Pastificio, Boca Raton</p>
 
+          <p className="mt-6 max-w-[560px] text-[16px] leading-relaxed text-[#f4efe6]/85">
+            Business owners pay <span className="font-bold text-[#f4efe6]">$75</span> — entry is not free.
+            Ladies and brand ambassadors RSVP free.
+          </p>
+
           <div className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
             <div className="ic-card p-7 md:p-10">
-              <p className="ic-eyebrow">Business Owner Entry</p>
-              <p className="mt-4 font-display text-[64px] font-semibold leading-none text-[#f4efe6]">$75</p>
-              <p className="mt-2 text-[15px] font-bold uppercase tracking-[0.14em] text-[#c9a96e]">Gentlemen</p>
+              <p className="ic-eyebrow">Business Owner Entry · Paid</p>
+              <p className="mt-4 font-display text-[64px] font-semibold leading-none text-[#c9a96e]">$75</p>
+              <p className="mt-2 text-[15px] font-bold uppercase tracking-[0.14em] text-[#f4efe6]/85">Gentlemen / business owners</p>
               <ul className="mt-6 space-y-3 text-[17px] text-[#f4efe6]/90">
                 <li>· Curated introductions to brand ambassadors matched to your business</li>
                 <li>· Hosted by Deseray Marie</li>
@@ -332,13 +345,15 @@ export default function TicketsPage() {
               <a href={PAYMENT_LINK_URL} className="ic-btn-gold mt-8 w-full">
                 Get Business Owner Entry – $75
               </a>
-              <p className="mt-3 text-center text-[14px] text-[#f4efe6]/65">Secure checkout by Stripe</p>
+              <p className="mt-3 text-center text-[14px] text-[#f4efe6]/65">Secure checkout by Stripe · Not free</p>
             </div>
 
             <div className="ic-card p-7 md:p-10">
-              <p className="ic-eyebrow">Ladies &amp; brand ambassadors</p>
+              <p className="ic-eyebrow">Ladies &amp; brand ambassadors only</p>
               <p className="mt-4 font-display text-[40px] font-semibold leading-none text-[#f4efe6]">Free RSVP</p>
-              <p className="mt-3 text-[17px] text-[#f4efe6]/85">Add your name to the door list.</p>
+              <p className="mt-3 text-[17px] text-[#f4efe6]/85">
+                Free for ladies and brand ambassadors — not for business owners. Add your name to the door list.
+              </p>
               <div className="mt-6">
                 <TicketForm />
               </div>
@@ -347,7 +362,64 @@ export default function TicketsPage() {
         </div>
       </section>
 
-      {/* 7. FAQ */}
+      {/* 7. Share / Instagram flyer */}
+      <section id="share" className={`${wrap} scroll-mt-6 py-16 md:py-28`} aria-labelledby="share-h">
+        <div className="md:grid md:grid-cols-12 md:items-start md:gap-14">
+          <div className="md:col-span-5">
+            <p className="ic-eyebrow">Share the invitation</p>
+            <h2 id="share-h" className="ic-h2 mt-4">
+              Instagram story flyer + shareable link
+            </h2>
+            <p className="ic-body mt-5">
+              Copy the link, share the flyer to your story, and paste it as a Link sticker. Business Owner Entry is $75 on the page.
+            </p>
+            <p className="mt-6 break-all font-display text-[22px] font-medium tracking-wide text-[#c9a96e]">
+              {SHORT_LINK}
+            </p>
+            <div className="mt-8 flex flex-col gap-3">
+              <ShareButton />
+              <a href="/dec16/share" className="ic-btn-ghost w-full">
+                Open share tools &amp; flyers
+              </a>
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href="/dec16-assets/dec16-story-flyer.png"
+                  download="influence-dec16-story.png"
+                  className="ic-btn-ghost !min-h-[48px] !text-[12px]"
+                >
+                  Story flyer
+                </a>
+                <a
+                  href="/dec16-assets/dec16-feed-flyer.png"
+                  download="influence-dec16-feed.png"
+                  className="ic-btn-ghost !min-h-[48px] !text-[12px]"
+                >
+                  Feed flyer
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="mt-10 md:col-span-7 md:mt-0">
+            <div className="mx-auto max-w-[320px] border border-[#c9a96e]/45 md:ml-auto md:mr-0 md:max-w-[360px]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/dec16-assets/dec16-story-flyer.jpg"
+                width={1080}
+                height={1920}
+                alt="Influence Connect Dec 16 story flyer — Business Owners $75, Ladies RSVP free"
+                className="w-full"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <p className="mt-4 text-center text-[14px] text-[#f4efe6]/65 md:text-right">
+              Flyer shows Business Owners $75 · Ladies RSVP free
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. FAQ */}
       <section className={`${wrap} py-16 md:py-24`} aria-labelledby="faq">
         <div className="md:grid md:grid-cols-12 md:gap-10">
           <div className="md:col-span-4">
@@ -384,19 +456,20 @@ export default function TicketsPage() {
         </div>
       </section>
 
-      {/* 8. Final CTA */}
+      {/* 10. Final CTA */}
       <section id="final-cta" className="border-t border-[#c9a96e]/25 bg-[#0b0a08]" aria-label="Get your entry">
         <div className={`${wrap} py-16 text-center md:py-24`}>
           <p className="font-display text-[22px] font-semibold tracking-[0.32em] text-[#c9a96e]">INFLUENCE</p>
           <h2 className="ic-h2 mx-auto mt-6 max-w-[640px]">Wednesday, December 16 · Serena Pastificio</h2>
-          <p className="mx-auto mt-4 max-w-[420px] text-[17px] text-[#f4efe6]/80">
-            Hosted by Deseray Marie. Business Owner Entry $75. Ladies and brand ambassadors RSVP free.
+          <p className="mx-auto mt-4 max-w-[480px] text-[17px] text-[#f4efe6]/80">
+            Hosted by Deseray Marie. Business Owner Entry is <span className="font-bold text-[#f4efe6]">$75</span> — not free.
+            Ladies and brand ambassadors RSVP free.
           </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href={PAYMENT_LINK_URL} className="ic-btn-gold w-full sm:w-auto">
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:max-w-[420px] sm:mx-auto">
+            <a href={PAYMENT_LINK_URL} className="ic-btn-gold w-full">
               Get Business Owner Entry – $75
             </a>
-            <a href="#rsvp" className="ic-btn-ghost w-full sm:w-auto">
+            <a href="#rsvp" className="text-[15px] font-bold uppercase tracking-[0.12em] text-[#c9a96e] underline decoration-[#c9a96e]/45 underline-offset-[6px]">
               Ladies &amp; Ambassadors: RSVP Free
             </a>
           </div>
@@ -409,11 +482,14 @@ export default function TicketsPage() {
           <div>
             <p className="font-display text-[26px] font-semibold tracking-[0.28em] text-[#c9a96e]">INFLUENCE</p>
             <p className="mt-2 text-[15px] text-[#f4efe6]/75">
-              Influence Connect · Wed Dec 16 · Serena Pastificio, Boca Raton
+              Influence Connect · Wed Dec 16 · {SHORT_LINK}
             </p>
           </div>
-          <div className="w-full md:w-auto">
+          <div className="flex w-full flex-col gap-3 sm:max-w-[280px] md:w-auto">
             <ShareButton />
+            <a href="/dec16/share" className="text-center text-[14px] font-bold uppercase tracking-[0.14em] text-[#c9a96e] underline decoration-[#c9a96e]/40 underline-offset-4">
+              Flyer downloads
+            </a>
           </div>
         </div>
       </footer>
