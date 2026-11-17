@@ -23,7 +23,7 @@
     background: #000;
     color: #f4efe6;
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-    padding: 220px 56px 260px;
+    padding: 220px 56px 250px;
     display: flex;
     flex-direction: column;
   }
@@ -31,46 +31,46 @@
   .brand {
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 30px;
     letter-spacing: 0.46em;
     color: #c9a96e;
     text-align: center;
     padding-right: 0.46em;
   }
   .eyebrow {
-    margin-top: 14px;
+    margin-top: 12px;
     text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.28em;
     text-transform: uppercase;
     color: #c9a96e;
   }
   .headline {
-    margin-top: 18px;
+    margin-top: 16px;
     text-align: center;
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-weight: 600;
-    font-size: 46px;
-    line-height: 1.1;
+    font-size: 44px;
+    line-height: 1.08;
   }
   .headline .gold { color: #c9a96e; }
   .meta {
-    margin-top: 16px;
+    margin-top: 14px;
     text-align: center;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
   .place {
-    margin-top: 8px;
+    margin-top: 6px;
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
     color: rgba(244,239,230,0.8);
   }
   .host {
-    margin-top: 10px;
+    margin-top: 8px;
     text-align: center;
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-style: italic;
@@ -78,13 +78,12 @@
     color: #c9a96e;
   }
 
-  /* Main visual: host + night at Serena */
   .feature {
-    margin-top: 28px;
+    margin-top: 22px;
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     gap: 10px;
-    height: 720px;
+    height: 560px;
   }
   .feature figure {
     margin: 0;
@@ -92,11 +91,7 @@
     background: #0a0908;
     height: 100%;
   }
-  .feature img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  .feature img { width: 100%; height: 100%; object-fit: cover; }
   .feature .des img { object-position: center 12%; }
   .stack {
     display: grid;
@@ -108,7 +103,6 @@
   .stack .patio img { object-position: center 42%; }
   .stack .drink img { object-position: center 38%; }
 
-  /* Ambassadors */
   .girls {
     margin-top: 12px;
     display: grid;
@@ -128,17 +122,39 @@
     object-position: center 14%;
   }
 
+  .sell {
+    margin-top: 16px;
+    border: 1px solid rgba(201,169,110,0.55);
+    padding: 16px 18px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(201,169,110,0.1) 0%, rgba(0,0,0,0) 100%);
+  }
+  .sell-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9a96e;
+  }
+  .sell-body {
+    margin-top: 8px;
+    font-family: 'Bodoni Moda', Didot, Georgia, serif;
+    font-size: 26px;
+    line-height: 1.18;
+    color: #f4efe6;
+  }
+
   .price {
-    margin-top: 22px;
+    margin-top: 14px;
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
     border: 1px solid rgba(201,169,110,0.8);
   }
-  .price .col { padding: 20px 12px 18px; text-align: center; }
+  .price .col { padding: 16px 10px 14px; text-align: center; }
   .price .label {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: #c9a96e;
   }
@@ -146,14 +162,14 @@
     margin-top: 6px;
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-weight: 600;
-    font-size: 48px;
+    font-size: 42px;
     line-height: 1;
   }
   .price .divider { background: rgba(201,169,110,0.55); }
   .url {
-    margin-top: 16px;
+    margin-top: 12px;
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
     color: rgba(244,239,230,0.68);
   }
@@ -181,6 +197,11 @@
       <figure><img src="./img/amb-kat.webp" alt="" /></figure>
       <figure><img src="./img/amb-alisha.webp" alt="" /></figure>
       <figure><img src="./img/amb-seahra.webp" alt="" /></figure>
+    </div>
+
+    <div class="sell">
+      <div class="sell-title">With every $75 ticket</div>
+      <div class="sell-body">Surprise luxury gift bag · Raffle for a free month of influencer work</div>
     </div>
 
     <div class="price">

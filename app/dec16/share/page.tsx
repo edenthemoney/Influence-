@@ -31,7 +31,7 @@ export default function SharePage() {
       </p>
       <p className="mt-4 border border-[#c9a96e]/40 px-4 py-3 text-[15px] leading-snug text-[#f4efe6]/90">
         <span className="font-bold text-[#c9a96e]">Business owners $75</span>
-        {' · '}
+        {' — gift bag + raffle · '}
         Ladies &amp; brand ambassadors RSVP free.
       </p>
       <p className="mt-5 break-all font-display text-[20px] font-medium text-[#c9a96e]">{SHORT_LINK}</p>

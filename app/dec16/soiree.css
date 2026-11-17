@@ -275,6 +275,103 @@
   font-weight: 500;
 }
 
+/* Ticket value — gold atmosphere + editorial list */
+.ic-perks {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% -10%, rgba(201, 169, 110, 0.16), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(201, 169, 110, 0.06), transparent 50%),
+    linear-gradient(180deg, #0c0a07 0%, #050403 100%);
+}
+
+.ic-perks::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(201, 169, 110, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 169, 110, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 90%);
+}
+
+.ic-perks > * {
+  position: relative;
+  z-index: 1;
+}
+
+.ic-perk-duo {
+  display: grid;
+  gap: 0;
+  border: 1px solid rgba(201, 169, 110, 0.45);
+  background: linear-gradient(135deg, rgba(201, 169, 110, 0.08) 0%, rgba(0, 0, 0, 0.35) 55%);
+}
+
+@media (min-width: 768px) {
+  .ic-perk-duo {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.ic-perk-panel {
+  padding: 1.75rem 1.5rem 1.85rem;
+}
+
+@media (min-width: 768px) {
+  .ic-perk-panel {
+    padding: 2.25rem 2rem 2.4rem;
+  }
+  .ic-perk-panel + .ic-perk-panel {
+    border-left: 1px solid rgba(201, 169, 110, 0.35);
+  }
+}
+
+@media (max-width: 767px) {
+  .ic-perk-panel + .ic-perk-panel {
+    border-top: 1px solid rgba(201, 169, 110, 0.35);
+  }
+}
+
+.ic-perk-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ic-gold);
+}
+
+.ic-perk-title {
+  margin-top: 0.65rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(32px, 5vw, 44px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ic-ivory);
+}
+
+.ic-perk-copy {
+  margin-top: 0.75rem;
+  max-width: 28ch;
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(244, 239, 230, 0.82);
+}
+
+.ic-perk-footnote {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(244, 239, 230, 0.72);
+  border-top: 1px solid rgba(201, 169, 110, 0.3);
+  padding-top: 1.25rem;
+  max-width: 42rem;
+}
+
 .ic-faq summary {
   list-style: none;
   cursor: pointer;

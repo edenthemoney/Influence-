@@ -12,12 +12,12 @@ const HEADLINE = 'Meet the Right Brand Ambassadors for Your Business';
 
 export const metadata: Metadata = {
   title: { absolute: `${HEADLINE} — Dec 16 | Influence` },
-  description: `${INFLUENCE_CONNECT.name}: an evening for business owners and brand ambassadors. Curated introductions to brand ambassadors matched to your business. Wednesday, December 16, 2026, 4–7 PM ET at Serena Pastificio, 301 Plaza Real, Mizner Park, Boca Raton. Hosted by Deseray Marie. Business Owner Entry $75. Ladies and brand ambassadors RSVP free.`,
+  description: `${INFLUENCE_CONNECT.name}: connect affluent business owners with brand ambassadors. Surprise luxury gift bags. Every $75 Business Owner Entry is a raffle entry to win a free month of influencer work. Wednesday, December 16, 2026, 4–7 PM ET at Serena Pastificio, Mizner Park, Boca Raton. Hosted by Deseray Marie. Ladies and brand ambassadors RSVP free.`,
   alternates: { canonical: 'https://influencecreators.marketing/dec16' },
   openGraph: {
     title: `${HEADLINE} — Dec 16`,
     description:
-      'An evening for business owners and brand ambassadors. Wed, Dec 16, 2026, 4–7 PM ET at Serena Pastificio, Mizner Park, Boca Raton. Hosted by Deseray Marie. Business Owner Entry $75.',
+      'Business Owner Entry $75 — surprise luxury gift bags + raffle for a free month of influencer work. Wed, Dec 16, 2026, 4–7 PM ET at Serena Pastificio, Boca Raton. Hosted by Deseray Marie.',
     url: 'https://influencecreators.marketing/dec16',
     type: 'website',
     images: [
@@ -35,7 +35,7 @@ const eventJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Event',
   name: `${INFLUENCE_CONNECT.name}: ${HEADLINE}`,
-  description: `An evening for business owners and brand ambassadors at ${INFLUENCE_CONNECT.venue}, Mizner Park. Curated introductions to brand ambassadors matched to your business. Hosted by ${INFLUENCE_CONNECT.host}.`,
+  description: `An evening for business owners and brand ambassadors at ${INFLUENCE_CONNECT.venue}, Mizner Park. Curated introductions, surprise luxury gift bags, and a raffle for a free month of influencer work. Hosted by ${INFLUENCE_CONNECT.host}.`,
   startDate: '2026-12-16T16:00:00-05:00',
   endDate: '2026-12-16T19:00:00-05:00',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
@@ -85,8 +85,8 @@ const EXPECT = [
     d: 'Deseray and the Influence team introduce brand ambassadors who fit your brand.',
   },
   {
-    t: 'Talk in person',
-    d: 'Meet over the evening at Serena Pastificio and leave knowing who to work with.',
+    t: 'Gift bags & raffle',
+    d: 'Surprise luxury gift bags for the evening — and every Business Owner Entry is a raffle entry to win a free month of influencer work.',
   },
 ];
 
@@ -109,7 +109,11 @@ const FAQ = [
   },
   {
     q: 'What does the $75 Business Owner Entry include?',
-    a: 'Entry for one and curated introductions to brand ambassadors matched to your business.',
+    a: 'Entry for one, curated introductions to brand ambassadors matched to your business, a surprise luxury gift bag, and one raffle entry to win a free month of influencer work.',
+  },
+  {
+    q: 'How does the raffle work?',
+    a: 'Every Business Owner Entry ticket is one raffle entry. Winner receives a free month of influencer work from Influence.',
   },
   {
     q: 'Ladies and brand ambassadors?',
@@ -162,11 +166,11 @@ export default function TicketsPage() {
               </div>
 
               <p className="ic-rise ic-rise-delay-2 mt-7 max-w-[480px] text-[17px] leading-relaxed text-[#f4efe6]/85">
-                Connect affluent business owners with the right brand ambassadors — in person.
+                Affluent business owners. Curated brand ambassadors. One private evening.
               </p>
 
-              <p className="ic-rise ic-rise-delay-2 mt-5 text-[14px] font-bold uppercase tracking-[0.16em] text-[#c9a96e]">
-                Business owners $75 · Ladies &amp; ambassadors RSVP free
+              <p className="ic-rise ic-rise-delay-2 mt-5 text-[13px] font-bold uppercase tracking-[0.18em] text-[#c9a96e]">
+                $75 · Gift bag · Raffle · Free month of influencer work
               </p>
 
               <div id="hero-cta" className="ic-rise ic-rise-delay-2 mt-6 flex flex-col gap-3 sm:max-w-[420px]">
@@ -209,7 +213,9 @@ export default function TicketsPage() {
       {/* 3. What to expect */}
       <section className={`${wrap} py-16 md:py-24`} aria-labelledby="expect">
         <p className="ic-eyebrow">What to expect</p>
-        <h2 id="expect" className="ic-h2 mt-4 max-w-[720px]">Three unhurried hours. Introductions made for you.</h2>
+        <h2 id="expect" className="ic-h2 mt-4 max-w-[760px]">
+          Introductions, luxury gift bags, and a raffle worth winning.
+        </h2>
         <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-12">
           {EXPECT.map((s, i) => (
             <li key={s.t} className="border-t border-[#c9a96e]/40 pt-6">
@@ -221,8 +227,48 @@ export default function TicketsPage() {
         </ol>
       </section>
 
+      {/* 3b. Included with $75 — visual sell */}
+      <section className="ic-perks py-16 md:py-28" aria-labelledby="included">
+        <div className={wrap}>
+          <div className="md:grid md:grid-cols-12 md:items-end md:gap-12">
+            <div className="md:col-span-5">
+              <p className="ic-eyebrow">With your $75 entry</p>
+              <h2 id="included" className="ic-h2 mt-4">
+                More than a ticket.
+              </h2>
+            </div>
+            <p className="ic-body mt-5 max-w-[480px] md:col-span-7 md:mt-0 md:pb-1">
+              Business Owner Entry turns the night into relationships — and a shot at a free month of influencer work.
+            </p>
+          </div>
+
+          <div className="ic-perk-duo mt-12 md:mt-16">
+            <article className="ic-perk-panel">
+              <p className="ic-perk-kicker">Surprise</p>
+              <h3 className="ic-perk-title">Luxury gift bags</h3>
+              <p className="ic-perk-copy">A private-evening gift for every business owner — details revealed at Serena.</p>
+            </article>
+            <article className="ic-perk-panel">
+              <p className="ic-perk-kicker">Every ticket</p>
+              <h3 className="ic-perk-title">Raffle entry</h3>
+              <p className="ic-perk-copy">Win a free month of influencer work. One Business Owner Entry = one entry.</p>
+            </article>
+          </div>
+
+          <p className="ic-perk-footnote mt-8 md:mt-10">
+            Also included: curated introductions to brand ambassadors matched to your business.
+          </p>
+
+          <div className="mt-10 max-w-[520px] md:mt-12">
+            <a href={PAYMENT_LINK_URL} className="ic-btn-gold w-full sm:w-auto">
+              Get Business Owner Entry – $75
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* 4. Full roster gallery */}
-      <section className="bg-[#0b0a08] py-16 md:py-28" aria-labelledby="roster">
+      <section className="bg-black py-16 md:py-28" aria-labelledby="roster">
         <div className={wrap}>
           <div className="md:grid md:grid-cols-12 md:items-end md:gap-10">
             <div className="md:col-span-7">
@@ -327,9 +373,9 @@ export default function TicketsPage() {
           </h2>
           <p className="mt-2 text-[18px] text-[#f4efe6]/85">4–7 PM ET · Serena Pastificio, Boca Raton</p>
 
-          <p className="mt-6 max-w-[560px] text-[16px] leading-relaxed text-[#f4efe6]/85">
+          <p className="mt-6 max-w-[620px] text-[16px] leading-relaxed text-[#f4efe6]/85">
             Business owners pay <span className="font-bold text-[#f4efe6]">$75</span> — entry is not free.
-            Ladies and brand ambassadors RSVP free.
+            Every paid ticket is a raffle entry. Ladies and brand ambassadors RSVP free.
           </p>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 md:gap-8">
@@ -339,13 +385,14 @@ export default function TicketsPage() {
               <p className="mt-2 text-[15px] font-bold uppercase tracking-[0.14em] text-[#f4efe6]/85">Gentlemen / business owners</p>
               <ul className="mt-6 space-y-3 text-[17px] text-[#f4efe6]/90">
                 <li>· Curated introductions to brand ambassadors matched to your business</li>
-                <li>· Hosted by Deseray Marie</li>
-                <li>· Serena Pastificio, Mizner Park</li>
+                <li className="text-[#c9a96e]">· Surprise luxury gift bag</li>
+                <li className="text-[#c9a96e]">· Raffle — win a free month of influencer work</li>
+                <li>· Hosted by Deseray Marie at Serena Pastificio</li>
               </ul>
               <a href={PAYMENT_LINK_URL} className="ic-btn-gold mt-8 w-full">
                 Get Business Owner Entry – $75
               </a>
-              <p className="mt-3 text-center text-[14px] text-[#f4efe6]/65">Secure checkout by Stripe · Not free</p>
+              <p className="mt-3 text-center text-[14px] text-[#f4efe6]/65">Secure checkout by Stripe · One ticket = one raffle entry</p>
             </div>
 
             <div className="ic-card p-7 md:p-10">
@@ -413,7 +460,7 @@ export default function TicketsPage() {
               />
             </div>
             <p className="mt-4 text-center text-[14px] text-[#f4efe6]/65 md:text-right">
-              New story flyer · safe zones · roster · Business Owners $75
+              Story flyer · gift bag + raffle · Business Owners $75
             </p>
           </div>
         </div>
@@ -461,9 +508,9 @@ export default function TicketsPage() {
         <div className={`${wrap} py-16 text-center md:py-24`}>
           <p className="font-display text-[22px] font-semibold tracking-[0.32em] text-[#c9a96e]">INFLUENCE</p>
           <h2 className="ic-h2 mx-auto mt-6 max-w-[640px]">Wednesday, December 16 · Serena Pastificio</h2>
-          <p className="mx-auto mt-4 max-w-[480px] text-[17px] text-[#f4efe6]/80">
-            Hosted by Deseray Marie. Business Owner Entry is <span className="font-bold text-[#f4efe6]">$75</span> — not free.
-            Ladies and brand ambassadors RSVP free.
+          <p className="mx-auto mt-4 max-w-[520px] text-[17px] text-[#f4efe6]/80">
+            Hosted by Deseray Marie. Business Owner Entry is <span className="font-bold text-[#f4efe6]">$75</span> —
+            gift bag + raffle for a free month of influencer work. Ladies and brand ambassadors RSVP free.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:max-w-[420px] sm:mx-auto">
             <a href={PAYMENT_LINK_URL} className="ic-btn-gold w-full">

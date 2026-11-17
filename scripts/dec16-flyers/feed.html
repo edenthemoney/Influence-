@@ -10,34 +10,52 @@
   .feed {
     width: 1080px; height: 1350px; background: #000; color: #f4efe6;
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-    padding: 52px 48px 44px; display: flex; flex-direction: column;
+    padding: 48px 44px 40px; display: flex; flex-direction: column; gap: 14px;
   }
-  .top { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; min-height: 620px; }
-  .brand { font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 26px; letter-spacing: 0.4em; color: #c9a96e; padding-right: 0.4em; }
-  .eyebrow { margin-top: 28px; font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a96e; }
-  .headline { margin-top: 18px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 48px; line-height: 1.08; }
+  .top { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: stretch; min-height: 520px; }
+  .brand { font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 24px; letter-spacing: 0.4em; color: #c9a96e; padding-right: 0.4em; }
+  .eyebrow { margin-top: 18px; font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #c9a96e; }
+  .headline { margin-top: 14px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 42px; line-height: 1.08; }
   .headline .gold { color: #c9a96e; }
-  .details { margin-top: 22px; font-size: 18px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .place { margin-top: 10px; font-size: 17px; color: rgba(244,239,230,0.8); }
-  .host { margin-top: 16px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-style: italic; font-size: 22px; color: #c9a96e; }
-  .portrait { overflow: hidden; }
+  .details { margin-top: 16px; font-size: 17px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .place { margin-top: 8px; font-size: 16px; color: rgba(244,239,230,0.8); }
+  .host { margin-top: 12px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-style: italic; font-size: 20px; color: #c9a96e; }
+  .portrait { overflow: hidden; border: 1px solid rgba(201,169,110,0.35); min-height: 420px; }
   .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 14%; }
-  .strip { margin-top: 22px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-  .strip figure { margin: 0; aspect-ratio: 3/4; overflow: hidden; border: 1px solid rgba(201,169,110,0.28); background: #0a0908; }
-  .strip img { width: 100%; height: 100%; object-fit: cover; }
-  .strip .face img { object-position: center 14%; }
-  .strip .place-shot img { object-position: center 42%; }
-  .strip .drink img { object-position: center 40%; }
-  .bottom { margin-top: auto; padding-top: 22px; border-top: 1px solid rgba(201,169,110,0.35); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; }
+
+  .sell {
+    border: 1px solid rgba(201,169,110,0.55);
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    background: linear-gradient(90deg, rgba(201,169,110,0.1) 0%, rgba(0,0,0,0) 100%);
+  }
+  .sell-title { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c9a96e; }
+  .sell-body { margin-top: 6px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-size: 22px; line-height: 1.18; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(3, 1fr);
+    gap: 8px;
+  }
+  .row figure { margin: 0; aspect-ratio: 4/3; overflow: hidden; background: #0a0908; border: 1px solid rgba(201,169,110,0.22); }
+  .row img { width: 100%; height: 100%; object-fit: cover; }
+  .row .patio { aspect-ratio: auto; height: 100%; }
+  .row .patio img { object-position: center 42%; }
+  .row .face img { object-position: center 14%; }
+  .row .drink img { object-position: center 40%; }
+
+  .bottom { margin-top: auto; display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: end; padding-top: 6px; }
   .price { display: grid; grid-template-columns: 1fr 1px 1fr; border: 1px solid rgba(201,169,110,0.75); }
-  .price .col { padding: 18px 12px; text-align: center; }
-  .price .label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #c9a96e; }
-  .price .value { margin-top: 6px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 42px; line-height: 1; }
+  .price .col { padding: 16px 10px; text-align: center; }
+  .price .label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #c9a96e; }
+  .price .value { margin-top: 4px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 38px; line-height: 1; }
   .price .divider { background: rgba(201,169,110,0.5); }
-  .url { margin-top: 12px; font-size: 15px; color: rgba(244,239,230,0.65); }
+  .url { margin-top: 10px; font-size: 14px; color: rgba(244,239,230,0.65); }
   .qr-wrap { text-align: center; }
   .qr-wrap .scan { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #c9a96e; margin-bottom: 6px; }
-  .qr { width: 124px; height: 124px; background: #fff; padding: 6px; }
+  .qr { width: 118px; height: 118px; background: #fff; padding: 6px; }
   .qr img { width: 100%; height: 100%; display: block; }
 </style>
 </head>
@@ -54,13 +72,25 @@
       </div>
       <div class="portrait"><img src="./img/des-hero.webp" alt="" /></div>
     </div>
-    <div class="strip">
-      <figure class="face"><img src="./img/amb-genesis.webp" alt="" /></figure>
-      <figure class="face"><img src="./img/amb-kat.webp" alt="" /></figure>
-      <figure class="place-shot"><img src="./img/patio-hero.webp" alt="" /></figure>
-      <figure class="drink"><img src="./img/venue-martini.webp" alt="" /></figure>
-      <figure class="face"><img src="./img/amb-alisha.webp" alt="" /></figure>
+
+    <div class="sell">
+      <div>
+        <div class="sell-title">Luxury gift bags</div>
+        <div class="sell-body">Surprise gifts for the evening</div>
+      </div>
+      <div>
+        <div class="sell-title">Ticket raffle</div>
+        <div class="sell-body">Win a free month of influencer work</div>
+      </div>
     </div>
+
+    <div class="row">
+      <figure class="patio"><img src="./img/patio-hero.webp" alt="" /></figure>
+      <figure class="face"><img src="./img/amb-genesis.webp" alt="" /></figure>
+      <figure class="drink"><img src="./img/venue-martini.webp" alt="" /></figure>
+      <figure class="face"><img src="./img/amb-kat.webp" alt="" /></figure>
+    </div>
+
     <div class="bottom">
       <div>
         <div class="price">
@@ -68,7 +98,7 @@
           <div class="divider"></div>
           <div class="col"><div class="label">Ladies &amp; Ambassadors</div><div class="value">RSVP Free</div></div>
         </div>
-        <div class="url">influencecreators.marketing/dec16</div>
+        <div class="url">influencecreators.marketing/dec16 · Every ticket = 1 raffle entry</div>
       </div>
       <div class="qr-wrap">
         <div class="scan">Scan for tickets</div>

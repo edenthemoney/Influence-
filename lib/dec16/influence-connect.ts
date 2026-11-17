@@ -6,7 +6,8 @@ export const STRIPE_TICKET_ACCOUNT_ID = 'acct_1TOWINLibar2Zpvv';
 export const INFLUENCE_CONNECT = {
   slug: 'influence-connect-dec16',
   name: 'Influence Connect',
-  tagline: 'An evening for business owners and brand ambassadors. Meet the brand ambassadors who fit your business.',
+  tagline:
+    'An evening for business owners and brand ambassadors — with surprise luxury gift bags and a raffle for a free month of influencer work.',
   eyebrow: 'An Evening for Business Owners',
   host: 'Deseray Marie',
   weekday: 'Wednesday',
@@ -21,9 +22,12 @@ export const INFLUENCE_CONNECT = {
   gentlemenUnitAmount: 7500,
   maxGentlemenQuantity: 8,
   ladiesLabel: 'Free RSVP for ladies & brand ambassadors',
-  ladiesPerk: 'First drink free',
+  ladiesPerk: 'Door-list RSVP',
   gentlemenLabel: 'Business Owner Entry · $75',
-  gentlemenPerk: 'Apps on us',
+  gentlemenPerk: 'Surprise luxury gift bag · raffle entry',
+  giftBag: 'Surprise luxury gift bags',
+  raffle:
+    'Every Business Owner Entry is one raffle entry to win a free month of influencer work.',
   dressCode: 'All black, touch of gold',
   theme: 'Black & Gold Soirée',
   // 4:00 PM America/New_York on Dec 16, 2026. DST has ended, so this is 21:00 UTC.
