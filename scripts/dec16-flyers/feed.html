@@ -3,165 +3,41 @@
 <head>
 <meta charset="utf-8" />
 <style>
-  @font-face {
-    font-family: 'Bodoni Moda';
-    src: url('./fonts/BodoniModa.ttf') format('truetype');
-    font-weight: 400 900;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Bodoni Moda';
-    src: url('./fonts/BodoniModa-Italic.ttf') format('truetype');
-    font-weight: 400 900;
-    font-style: italic;
-  }
+  @font-face { font-family: 'Bodoni Moda'; src: url('./fonts/BodoniModa.ttf') format('truetype'); font-weight: 400 900; font-style: normal; }
+  @font-face { font-family: 'Bodoni Moda'; src: url('./fonts/BodoniModa-Italic.ttf') format('truetype'); font-weight: 400 900; font-style: italic; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { width: 1080px; height: 1350px; overflow: hidden; background: #000; }
   .feed {
-    width: 1080px;
-    height: 1350px;
-    background: #000;
-    color: #f4efe6;
+    width: 1080px; height: 1350px; background: #000; color: #f4efe6;
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-    padding: 48px 48px 40px;
-    display: flex;
-    flex-direction: column;
+    padding: 52px 48px 44px; display: flex; flex-direction: column;
   }
-  .top {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    align-items: start;
-  }
-  .brand {
-    font-family: 'Bodoni Moda', Didot, Georgia, serif;
-    font-weight: 600;
-    font-size: 26px;
-    letter-spacing: 0.4em;
-    color: #c9a96e;
-    padding-right: 0.4em;
-  }
-  .eyebrow {
-    margin-top: 16px;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: #c9a96e;
-  }
-  .weekday {
-    margin-top: 28px;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: #c9a96e;
-  }
-  .day {
-    margin-top: 6px;
-    font-family: 'Bodoni Moda', Didot, Georgia, serif;
-    font-weight: 600;
-    font-size: 64px;
-    line-height: 0.94;
-    letter-spacing: -0.02em;
-  }
-  .time {
-    margin-top: 10px;
-    font-family: 'Bodoni Moda', Didot, Georgia, serif;
-    font-size: 24px;
-    color: rgba(244,239,230,0.78);
-  }
-  .venue { margin-top: 22px; font-size: 22px; font-weight: 700; }
-  .addr { margin-top: 4px; font-size: 16px; color: rgba(244,239,230,0.72); }
-  .host {
-    margin-top: 14px;
-    font-family: 'Bodoni Moda', Didot, Georgia, serif;
-    font-style: italic;
-    font-size: 22px;
-    color: #c9a96e;
-  }
-  .hero-photo {
-    overflow: hidden;
-    border: 1px solid rgba(201,169,110,0.4);
-    aspect-ratio: 4 / 5;
-    background: #0a0908;
-  }
-  .hero-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 18%;
-  }
-
-  .mosaic {
-    margin-top: 22px;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 170px 170px;
-    gap: 6px;
-  }
-  .mosaic figure {
-    margin: 0;
-    overflow: hidden;
-    background: #0a0908;
-    border: 1px solid rgba(201,169,110,0.22);
-  }
-  .mosaic img { width: 100%; height: 100%; object-fit: cover; }
-  .m-g1 { grid-column: 1 / 2; }
-  .m-g2 { grid-column: 2 / 3; }
-  .m-g3 { grid-column: 3 / 4; }
-  .m-patio { grid-column: 4 / 7; }
-  .m-patio img { object-position: center 45%; }
-  .m-room { grid-column: 1 / 4; }
-  .m-room img { object-position: center 50%; }
-  .m-drink1 { grid-column: 4 / 5; }
-  .m-drink2 { grid-column: 5 / 6; }
-  .m-g4 { grid-column: 6 / 7; }
-  .m-g1 img, .m-g2 img, .m-g3 img, .m-g4 img { object-position: center 14%; }
-  .m-drink1 img, .m-drink2 img { object-position: center 40%; }
-
-  .bottom {
-    margin-top: auto;
-    padding-top: 22px;
-    border-top: 1px solid rgba(201,169,110,0.4);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 20px;
-    align-items: end;
-  }
-  .price {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    border: 1px solid rgba(201,169,110,0.75);
-  }
+  .top { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; min-height: 620px; }
+  .brand { font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 26px; letter-spacing: 0.4em; color: #c9a96e; padding-right: 0.4em; }
+  .eyebrow { margin-top: 28px; font-size: 14px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #c9a96e; }
+  .headline { margin-top: 18px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 48px; line-height: 1.08; }
+  .headline .gold { color: #c9a96e; }
+  .details { margin-top: 22px; font-size: 18px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .place { margin-top: 10px; font-size: 17px; color: rgba(244,239,230,0.8); }
+  .host { margin-top: 16px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-style: italic; font-size: 22px; color: #c9a96e; }
+  .portrait { overflow: hidden; }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 14%; }
+  .strip { margin-top: 22px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .strip figure { margin: 0; aspect-ratio: 3/4; overflow: hidden; border: 1px solid rgba(201,169,110,0.28); background: #0a0908; }
+  .strip img { width: 100%; height: 100%; object-fit: cover; }
+  .strip .face img { object-position: center 14%; }
+  .strip .place-shot img { object-position: center 42%; }
+  .strip .drink img { object-position: center 40%; }
+  .bottom { margin-top: auto; padding-top: 22px; border-top: 1px solid rgba(201,169,110,0.35); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: end; }
+  .price { display: grid; grid-template-columns: 1fr 1px 1fr; border: 1px solid rgba(201,169,110,0.75); }
   .price .col { padding: 18px 12px; text-align: center; }
-  .price .label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #c9a96e;
-  }
-  .price .value {
-    margin-top: 6px;
-    font-family: 'Bodoni Moda', Didot, Georgia, serif;
-    font-weight: 600;
-    font-size: 44px;
-    line-height: 1;
-  }
-  .price .value.gold { color: #c9a96e; }
+  .price .label { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #c9a96e; }
+  .price .value { margin-top: 6px; font-family: 'Bodoni Moda', Didot, Georgia, serif; font-weight: 600; font-size: 42px; line-height: 1; }
   .price .divider { background: rgba(201,169,110,0.5); }
-  .url { margin-top: 12px; font-size: 15px; color: rgba(244,239,230,0.68); }
+  .url { margin-top: 12px; font-size: 15px; color: rgba(244,239,230,0.65); }
   .qr-wrap { text-align: center; }
-  .qr-wrap .scan {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #c9a96e;
-    margin-bottom: 6px;
-  }
-  .qr { width: 132px; height: 132px; background: #fff; padding: 7px; }
+  .qr-wrap .scan { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #c9a96e; margin-bottom: 6px; }
+  .qr { width: 124px; height: 124px; background: #fff; padding: 6px; }
   .qr img { width: 100%; height: 100%; display: block; }
 </style>
 </head>
@@ -171,49 +47,32 @@
       <div>
         <div class="brand">INFLUENCE</div>
         <div class="eyebrow">Influence Connect</div>
-        <div class="weekday">Wednesday</div>
-        <div class="day">December 16</div>
-        <div class="time">2026 · 4–7 PM ET</div>
-        <div class="venue">Serena Pastificio</div>
-        <div class="addr">Mizner Park · Boca Raton</div>
+        <div class="headline">Meet the Right <span class="gold">Brand Ambassadors</span> for Your Business</div>
+        <div class="details">Wed · Dec 16 · 4–7 PM</div>
+        <div class="place">Serena Pastificio / Mizner Park, Boca Raton</div>
         <div class="host">Hosted by Deseray Marie</div>
       </div>
-      <div class="hero-photo">
-        <img src="./img/des-hero.webp" alt="" />
-      </div>
+      <div class="portrait"><img src="./img/des-hero.webp" alt="" /></div>
     </div>
-
-    <div class="mosaic">
-      <figure class="m-g1"><img src="./img/amb-genesis.webp" alt="" /></figure>
-      <figure class="m-g2"><img src="./img/amb-kat.webp" alt="" /></figure>
-      <figure class="m-g3"><img src="./img/amb-alisha.webp" alt="" /></figure>
-      <figure class="m-patio"><img src="./img/venue-patio.webp" alt="" /></figure>
-      <figure class="m-room"><img src="./img/venue-room.webp" alt="" /></figure>
-      <figure class="m-drink1"><img src="./img/venue-martini.webp" alt="" /></figure>
-      <figure class="m-drink2"><img src="./img/drink-smoked-old-fashioned.webp" alt="" /></figure>
-      <figure class="m-g4"><img src="./img/seahra-gold-lg.webp" alt="" /></figure>
+    <div class="strip">
+      <figure class="face"><img src="./img/amb-genesis.webp" alt="" /></figure>
+      <figure class="face"><img src="./img/amb-kat.webp" alt="" /></figure>
+      <figure class="place-shot"><img src="./img/patio-hero.webp" alt="" /></figure>
+      <figure class="drink"><img src="./img/venue-martini.webp" alt="" /></figure>
+      <figure class="face"><img src="./img/amb-alisha.webp" alt="" /></figure>
     </div>
-
     <div class="bottom">
       <div>
         <div class="price">
-          <div class="col">
-            <div class="label">Business Owners</div>
-            <div class="value gold">$75</div>
-          </div>
+          <div class="col"><div class="label">Business Owners</div><div class="value">$75</div></div>
           <div class="divider"></div>
-          <div class="col">
-            <div class="label">Ladies &amp; Ambassadors</div>
-            <div class="value">Free</div>
-          </div>
+          <div class="col"><div class="label">Ladies &amp; Ambassadors</div><div class="value">RSVP Free</div></div>
         </div>
         <div class="url">influencecreators.marketing/dec16</div>
       </div>
       <div class="qr-wrap">
         <div class="scan">Scan for tickets</div>
-        <div class="qr">
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&amp;margin=0&amp;data=https%3A%2F%2Finfluencecreators.marketing%2Fdec16" alt="" />
-        </div>
+        <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&amp;margin=0&amp;data=https%3A%2F%2Finfluencecreators.marketing%2Fdec16" alt="" /></div>
       </div>
     </div>
   </div>
