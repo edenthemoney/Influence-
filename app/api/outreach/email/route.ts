@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+function getResend() {
+  const key = process.env.RESEND_API_KEY;
+  if (!key) return null;
+  return new Resend(key);
+}
 
 // Email templates
 const emailTemplates = {
@@ -16,7 +20,7 @@ We have influencers who would be perfect for creating authentic UGC content for 
 - 10K-100K+ authentic followings
 - Professional content creation experience
 - Quick turnaround (48hrs)
-- Starting at $300 per content piece
+- Packages from $450
 
 ${influencerProfiles.map(profile => `
 - ${profile.name}: ${profile.followers} followers - ${profile.niche}
@@ -26,7 +30,7 @@ Would you be open to seeing a few influencer profiles that match your brand aest
 
 Best,
 Influence Models Agency
-561-552-0392
+561-287-7194
 `,
   
   restaurant: (brandName: string, contactName: string, location: string) => `
@@ -46,7 +50,7 @@ Would you be interested in seeing some sample content we could create for ${bran
 
 Best,
 Influence Models Agency
-561-552-0392
+561-287-7194
 `,
   
   music: (artistName: string, contactName: string) => `
@@ -66,7 +70,7 @@ Would you be open to discussing a music promotion campaign for your next release
 
 Best,
 Influence Models Agency
-561-552-0392
+561-287-7194
 `
 };
 
@@ -81,6 +85,14 @@ export async function POST(request: NextRequest) {
     location,
     artistName 
   } = body;
+
+  const resend = getResend();
+  if (!resend) {
+    return NextResponse.json(
+      { success: false, error: 'Email is not configured' },
+      { status: 503 }
+    );
+  }
 
   try {
     let htmlContent = '';
@@ -104,7 +116,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await resend.emails.send({
-      from: 'Influence Models Agency <influencemodelsagency@gmail.com>',
+      from: 'Influence <influencemodelsagency@gmail.com>',
       to: [to],
       subject: subject,
       html: `<p>${htmlContent.replace(/\n/g, '<br>')}</p>`,

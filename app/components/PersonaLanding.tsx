@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Check, ChevronRight, Phone, ArrowRight } from 'lucide-react';
 import MobileNav from './MobileNav';
+import QuickLead from './QuickLead';
 
 const gold = '#c9a96e';
 
@@ -67,7 +69,7 @@ export default function PersonaLanding({
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
             </div>
@@ -84,7 +86,7 @@ export default function PersonaLanding({
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-end overflow-hidden">
-        <img src={heroImage} alt={heroImageAlt} className="absolute inset-0 w-full h-full object-cover object-top" />
+        <Image src={heroImage} alt={heroImageAlt} fill priority quality={90} sizes="100vw" className="object-cover object-top" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
         <div className="relative z-10 px-8 md:px-16 pb-20 md:pb-28 max-w-4xl">
@@ -246,16 +248,20 @@ export default function PersonaLanding({
         </section>
       )}
 
+      <section className="px-5 md:px-16 py-14 md:py-20 border-t border-white/[0.06]">
+        <QuickLead source="persona_page" />
+      </section>
+
       {/* Final CTA */}
       <section className="relative py-24 md:py-36 px-8 md:px-16 overflow-hidden">
-        <img src={heroImage} alt={heroImageAlt} className="absolute inset-0 w-full h-full object-cover opacity-20" />
+        <Image src={heroImage} alt={heroImageAlt} fill quality={85} sizes="100vw" className="object-cover opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/90 to-[#080808]/70" />
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h2 className="font-display font-bold italic text-white leading-[0.9] mb-6" style={{ fontSize: 'clamp(36px, 6vw, 72px)' }}>
             Ready to Book?
           </h2>
           <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-            Same-week availability. Verified talent. Professional results. Start your project today.
+            Same-week availability. Verified creators. Professional results. Start your project today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={finalCta.href} className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
@@ -277,10 +283,10 @@ export default function PersonaLanding({
               <div>
                 <p className="text-white/40 text-[9px] tracking-widest uppercase mb-6">Work With Us</p>
                 <ul className="space-y-3">
-                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Talent</Link></li>
+                  <li><Link href="/marketplace" className="text-white/60 hover:text-white transition-colors text-sm">Browse Creators</Link></li>
                   <li><Link href="/services" className="text-white/60 hover:text-white transition-colors text-sm">All Services</Link></li>
                   <li><Link href="/pricing" className="text-white/60 hover:text-white transition-colors text-sm">Packages</Link></li>
-                  <li><Link href="/model-booking" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
+                  <li><Link href="/start" className="text-white/60 hover:text-white transition-colors text-sm">Book Now</Link></li>
                 </ul>
               </div>
               <div>
@@ -290,7 +296,7 @@ export default function PersonaLanding({
                   <li><Link href="/services/business" className="text-white/40 hover:text-white transition-colors text-sm">Business Content</Link></li>
                   <li><Link href="/services/shoots" className="text-white/40 hover:text-white transition-colors text-sm">Shoots &amp; Videos</Link></li>
                   <li><Link href="/services/commercials" className="text-white/40 hover:text-white transition-colors text-sm">Commercials</Link></li>
-                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Talent</Link></li>
+                  <li><Link href="/services/events" className="text-white/40 hover:text-white transition-colors text-sm">Event Creators</Link></li>
                 </ul>
               </div>
               <div>
@@ -306,7 +312,7 @@ export default function PersonaLanding({
           </div>
           <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-            <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+            <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
             <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
           </div>
         </div>

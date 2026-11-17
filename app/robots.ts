@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/api/', '/booking/success'],
+        disallow: ['/admin', '/api/', '/booking/success', '/wp-admin', '/wp-login', '/wp-content', '/logo-preview', '/.env'],
       },
       // Explicitly allow major AI/LLM crawlers
       { userAgent: 'GPTBot',           allow: '/' },
@@ -15,11 +15,12 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'ClaudeBot',        allow: '/' },
       { userAgent: 'anthropic-ai',     allow: '/' },
       { userAgent: 'cohere-ai',        allow: '/' },
+      { userAgent: 'Google-Extended',  allow: '/' },
       { userAgent: 'Googlebot-Extended', allow: '/' },
       { userAgent: 'Applebot-Extended',  allow: '/' },
       { userAgent: 'Bytespider',       allow: '/' },
       { userAgent: 'FacebookBot',      allow: '/' },
     ],
-    sitemap: 'https://influencemodels.agency/sitemap.xml',
+    sitemap: 'https://influencecreators.marketing/sitemap.xml',
   };
 }

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Promote My Music — Cast & Promote Fast | Influence Models Agency',
-  description: 'Book verified talent for your music video and get creators to promote your song on TikTok & Instagram.',
+  title: 'Promote My Music — Cast & Promote Fast | Influence',
+  description: 'Book verified creators for your music video and get creators to promote your song on TikTok & Instagram.',
 };
 
 export default function LandingPage_promote_my_music() {
@@ -11,12 +11,12 @@ export default function LandingPage_promote_my_music() {
 
       {/* Hero */}
       <section className="relative px-6 pt-20 pb-16 text-center max-w-4xl mx-auto">
-        <p className="text-[11px] tracking-[0.3em] uppercase text-[#c9a96e] mb-4">Influence Models Agency</p>
+        <p className="text-[11px] tracking-[0.3em] uppercase text-[#c9a96e] mb-4">Influence</p>
         <h1 className="text-4xl md:text-6xl font-black leading-tight mb-6">
           Promote My Music — Cast & Promote Fast
         </h1>
         <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-          Book verified talent for your music video and get creators to promote your song on TikTok & Instagram.
+          Book verified creators for your music video and get creators to promote your song on TikTok & Instagram.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
@@ -24,10 +24,10 @@ export default function LandingPage_promote_my_music() {
             className="px-8 py-4 text-black font-bold text-sm tracking-widest uppercase"
             style={{ backgroundColor: '#c9a96e' }}
           >
-            Book Video Talent
+            Book Video Creators
           </Link>
           <Link
-            href="/model-booking?service=reaction"
+            href="/start?service=reaction"
             className="px-8 py-4 border border-white/20 text-white font-bold text-sm tracking-widest uppercase hover:border-[#c9a96e] transition-colors"
           >
             Promote My Music
@@ -79,13 +79,13 @@ export default function LandingPage_promote_my_music() {
       {/* CTA */}
       <section className="bg-[#0a0a0a] border-t border-white/[0.06] py-20 px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-black mb-4">Ready to Get Started?</h2>
-        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. South Florida&apos;s top talent agency.</p>
+        <p className="text-white/50 mb-10 max-w-xl mx-auto">No lock-in contracts. Fast turnaround. South Florida&apos;s top creator network.</p>
         <Link
           href="/music-video-booking"
           className="inline-block px-10 py-5 text-black font-bold text-sm tracking-widest uppercase"
           style={{ backgroundColor: '#c9a96e' }}
         >
-          Book Video Talent →
+          Book Video Creators →
         </Link>
       </section>
 

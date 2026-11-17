@@ -70,7 +70,7 @@ We have influencers who would be perfect for creating authentic UGC content for 
 - 10K-100K+ authentic followings
 - Professional content creation experience
 - Quick turnaround (48hrs)
-- Starting at $300 per content piece
+- Starting at $300 per UGC video ($199 music video cameo)
 
 Would you be open to seeing a few influencer profiles that match your brand aesthetic?
 

@@ -1,4 +1,5 @@
 'use client';
+import { leadMeta } from '../../lib/leadClient';
 
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -50,7 +51,7 @@ export default function ChatFunnel() {
   }, [messages]);
 
   // Hide on booking page so it doesn't overlap the sticky checkout button
-  if (pathname === '/model-booking') return null;
+  if (pathname === '/start' || pathname?.startsWith('/dec16')) return null;
 
   const addMessage = (from: 'bot' | 'user', text: string) => {
     setMessages(prev => [...prev, { from, text }]);
@@ -114,6 +115,7 @@ export default function ChatFunnel() {
         body: JSON.stringify({
           name, phone, email,
           source: 'chat_funnel',
+          meta: leadMeta(),
           serviceType: PURPOSE_TO_SERVICE[purpose] || purpose,
           notes: `Chat funnel — Purpose: ${purpose} · ${location === 'remote' ? 'Remote/Digital' : location === 'local' ? 'In-person (South FL)' : 'Unspecified'} · Budget: ${budget}`,
         }),
@@ -130,7 +132,7 @@ export default function ChatFunnel() {
 
   const getResult = (budgetRange: string): Result => {
     const svc = PURPOSE_TO_SERVICE[purpose];
-    const bookLink = svc ? `/model-booking?service=${svc}` : '/start';
+    const bookLink = svc ? `/start?service=${svc}` : '/start';
     if (location === 'remote') {
       if (budgetRange === 'Just one to start') {
         return { title: 'Starter Content', description: 'A Starter pack is your move — a creator makes a reel or reaction for you. Quick and effective. Your packages are ready on the next screen.', link: bookLink, cta: 'See My Options' };
@@ -167,14 +169,15 @@ export default function ChatFunnel() {
   return (
     <>
       {/* Floating Button */}
-      {!open && (
+      {/* Hidden on the homepage (it has its own booking widget and Book buttons). */}
+      {!open && pathname !== '/' && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-[60] w-14 h-14 flex items-center justify-center shadow-2xl transition-transform hover:scale-105"
+          className="fixed bottom-6 right-6 z-[60] w-14 h-14 p-0 leading-none grid place-items-center shadow-2xl transition-transform hover:scale-105"
           style={{ backgroundColor: gold }}
           aria-label="Open chat"
         >
-          <MessageCircle className="w-6 h-6 text-black" />
+          <MessageCircle className="block w-6 h-6 shrink-0 text-black" />
         </button>
       )}
 

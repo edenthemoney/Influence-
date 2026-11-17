@@ -5,7 +5,6 @@ import MobileNav from '../../components/MobileNav';
 import IPhoneMockup from '../../components/IPhoneMockup';
 import LuxuryBrandBanner from '../../components/LuxuryBrandBanner';
 import BrandLogoMarquee from '../../components/BrandLogoMarquee';
-import AnimatedCounter from '../../components/AnimatedCounter';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import type { Metadata } from 'next';
@@ -1564,27 +1563,15 @@ export default function InfluencerProfilePage({ params }: { params: { id: string
               )}
               <p className="text-white/60 text-center mb-6">{influencer.location}</p>
 
-              <div className="grid grid-cols-2 gap-4 mb-6 text-center">
+              <div className="grid grid-cols-1 gap-4 mb-6 text-center">
                 <div>
                   <p className="text-2xl font-bold text-white">
-                    <AnimatedCounter 
-                      value={influencer.followers >= 1000000 ? (influencer.followers / 1000000).toFixed(1) + 'M' : (influencer.followers / 1000).toFixed(0) + 'K'} 
-                      duration={1500}
-                    />
+                    {influencer.followers >= 1000000 ? (influencer.followers / 1000000).toFixed(1) + 'M' : (influencer.followers / 1000).toFixed(0) + 'K'}
                   </p>
                   <p className="text-xs text-white/40 uppercase tracking-wider">Followers</p>
                 </div>
-                <div>
-                  <p className="text-2xl font-bold text-white">★★★★★</p>
-                  <p className="text-xs text-white/40 uppercase tracking-wider">5 Stars</p>
-                </div>
               </div>
 
-              <div className="bg-[#c9a96e]/10 border border-[#c9a96e]/30 p-3 text-center mb-6">
-                <p className="text-[9px] text-[#c9a96e]/60 uppercase tracking-[0.2em] mb-1">Guarantee</p>
-                <p className="text-[#c9a96e] font-black text-base">10K+</p>
-                <p className="text-[#c9a96e]/60 text-xs">Views / Reel</p>
-              </div>
 
               {/* Availability Badge */}
               <div className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg">

@@ -1,4 +1,5 @@
 'use client';
+import { leadMeta } from '../../lib/leadClient';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -10,14 +11,13 @@ interface Option {
   count: number;
   label: string;
   price: number;
+  id: string;
 }
 
 const musicVideoOptions: Option[] = [
-  { count: 1, label: '1 Girl', price: 500 },
-  { count: 2, label: '2 Girls', price: 900 },
-  { count: 3, label: '3 Girls', price: 1200 },
-  { count: 5, label: '5 Girls', price: 1800 },
-  { count: 10, label: '10 Girls', price: 3500 },
+  { count: 2, label: 'Featured · 1 model, half day', price: 450, id: 'mv-featured' },
+  { count: 3, label: 'Lead · 1 lead model, full day', price: 950, id: 'mv-lead' },
+  { count: 4, label: 'Ensemble · 3 models, full day (+$550/extra)', price: 1950, id: 'mv-ensemble' },
 ];
 
 export default function SimpleHeadcountBooking() {
@@ -55,6 +55,7 @@ export default function SimpleHeadcountBooking() {
           email,
           phone,
           source: 'music_video_headcount',
+          meta: leadMeta(),
           serviceType: 'musicvideo',
           packageName: selected.label,
           packagePrice: selected.price,
@@ -66,14 +67,7 @@ export default function SimpleHeadcountBooking() {
     }
 
     // Redirect to booking with package preselected
-    const pkgMap: Record<number, string> = {
-      1: 'mv-solo',
-      2: 'mv-duo',
-      3: 'mv-trio',
-      5: 'mv-squad',
-      10: 'mv-ten',
-    };
-    router.push(`/model-booking?service=musicvideo&package=${pkgMap[selected.count]}`);
+    router.push(`/start?service=musicvideo&package=${selected.id}`);
   };
 
   return (
@@ -82,7 +76,7 @@ export default function SimpleHeadcountBooking() {
         <>
           <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-4" style={{ color: gold }}>Step 1 of 2</p>
           <h3 className="text-2xl font-bold text-white mb-2">How Many Girls Do You Need?</h3>
-          <p className="text-white/45 text-sm mb-6">Pick your headcount. We&apos;ll show pricing and confirm availability after you send your info.</p>
+          <p className="text-white/45 text-sm mb-6">Pick your tier. We&apos;ll show pricing and confirm availability after you send your info.</p>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {musicVideoOptions.map((option) => (
               <button
@@ -161,10 +155,10 @@ export default function SimpleHeadcountBooking() {
                 {submitting ? 'Sending...' : 'Continue to Booking'} <ArrowRight className="h-4 w-4" />
               </button>
               <a
-                href="tel:+15615520392"
+                href="tel:+15612877194"
                 className="inline-flex items-center gap-2 text-[12px] font-bold tracking-widest uppercase text-white/40 hover:text-white transition-colors"
               >
-                <Phone className="h-4 w-4" /> Call (561) 552-0392
+                <Phone className="h-4 w-4" /> Call (561) 287-7194
               </a>
             </div>
           </form>

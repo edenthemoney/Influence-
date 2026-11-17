@@ -1,12 +1,12 @@
 import PersonaLanding from '../components/PersonaLanding';
 
 export const metadata = {
-  title: 'Book Social Media Influencers | Influencer Marketing Agency — Influence Agency',
+  title: 'Book Social Media Influencers | Creator Marketing Marketplace — Influence Marketplace',
   description: 'Book social media influencers for coordinated campaigns. Instagram, TikTok, and YouTube creator rollouts with synchronized launches and performance tracking. From $2,000.',
   openGraph: {
-    title: 'Book Social Media Influencers | Influencer Marketing Agency',
+    title: 'Book Social Media Influencers | Creator Marketing Marketplace',
     description: 'Book social media influencers for coordinated campaigns. Verified creators. From $2,000.',
-    url: 'https://influencemodels.agency/influencer-campaigns',
+    url: 'https://influencecreators.marketing/influencer-campaigns',
   },
 };
 
@@ -74,7 +74,7 @@ export default function InfluencerCampaignsPage() {
         { q: 'How do I book social media influencers for a campaign?', a: 'Start by selecting your campaign size on our quote page. We’ll match you with verified creators, send a roster for approval, and coordinate the launch.' },
         { q: 'How long does an influencer campaign take to set up?', a: 'Most campaigns are live within 5–7 days. Larger campaigns with 10+ creators may take 10–14 days for full coordination.' },
         { q: 'Can I approve the creators before launch?', a: 'Yes. We send you a curated roster for approval before any content is created or posted.' },
-        { q: 'Where do I find social media influencers near me?', a: 'Influence Agency has a nationwide network of verified creators. We match you to influencers based on your audience, location, and campaign goals.' },
+        { q: 'Where do I find social media influencers near me?', a: 'Influence Marketplace has a nationwide network of verified creators. We match you to influencers based on your audience, location, and campaign goals.' },
         { q: 'Do you track influencer campaign performance?', a: 'Every campaign includes a performance dashboard with reach, engagement, and content delivery tracking.' },
         { q: 'What platforms do you cover for influencer campaigns?', a: 'Instagram, TikTok, YouTube Shorts, and Snapchat. We can add Facebook, X, and Twitch for larger campaigns.' },
       ]}

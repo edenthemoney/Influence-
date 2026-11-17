@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { saveLead } from '../../lib/leadClient';
 import { X, Phone, ChevronRight, Lock, MessageCircle } from 'lucide-react';
 
 const gold = '#c9a96e';
@@ -13,6 +14,8 @@ export default function LeadCapturePopup() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [hp, setHp] = useState('');
+  const started = useRef(Date.now());
 
   useEffect(() => {
     const dismissed = sessionStorage.getItem('lead_popup_dismissed');
@@ -25,9 +28,34 @@ export default function LeadCapturePopup() {
       }
       return;
     }
-    // Show popup after 4 seconds on the page
-    const timer = setTimeout(() => setVisible(true), 4000);
-    return () => clearTimeout(timer);
+    // Never on the first screen: open after 45s on the page, on exit intent (desktop), or past 60% scroll.
+    // At most once per session (marked as shown the moment it opens).
+    let done = false;
+    const open = () => {
+      if (done || sessionStorage.getItem('lead_popup_dismissed')) return;
+      if (window.scrollY < window.innerHeight * 0.9) return; // still on the first screen
+      done = true;
+      sessionStorage.setItem('lead_popup_dismissed', '1');
+      started.current = Date.now();
+      setVisible(true);
+      cleanup();
+    };
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max > 0 && window.scrollY / max >= 0.6) open();
+    };
+    const onExit = (e: MouseEvent) => { if (!e.relatedTarget && e.clientY <= 0) open(); };
+    let timer = 0;
+    const tick = () => { timer = window.setTimeout(() => { if (window.scrollY < window.innerHeight * 0.9) tick(); else open(); }, timer ? 5000 : 45000); };
+    tick();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('mouseout', onExit);
+    function cleanup() {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('mouseout', onExit);
+    }
+    return cleanup;
   }, []);
 
   const dismiss = () => {
@@ -41,29 +69,21 @@ export default function LeadCapturePopup() {
     setStickyVisible(false);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (source: string) => async (e: React.FormEvent) => {
     e.preventDefault();
     if (!phone && !email) return;
     setLoading(true);
     try {
-      await fetch('/api/save-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, email, source: 'marketplace_popup' }),
-      });
-      // Save to session so booking form is pre-filled
-      sessionStorage.setItem('lead_name', name);
-      sessionStorage.setItem('lead_phone', phone);
-      sessionStorage.setItem('lead_email', email);
+      // Saves the lead immediately, then the one-tap qualifier (LeadQualifier) opens for the same lead.
+      setVisible(false);
+      await saveLead({ name, phone, email }, source, {}, { startedAt: started.current, hp });
       sessionStorage.setItem('lead_popup_submitted', '1');
       sessionStorage.setItem('lead_popup_dismissed', '1');
     } catch {}
     setSubmitted(true);
     setStickyVisible(false);
     setLoading(false);
-    setTimeout(() => {
-      setVisible(false);
-    }, 2500);
+
   };
 
   return (
@@ -80,19 +100,20 @@ export default function LeadCapturePopup() {
               <>
                 <p className="text-[10px] font-bold tracking-[0.4em] uppercase mb-3" style={{ color: gold }}>Exclusive Access</p>
                 <h2 className="font-display font-bold italic text-white text-2xl leading-tight mb-2">
-                  Book Miami's Top Models
+                  Book Miami's Top Influencers
                 </h2>
                 <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                  Drop your number and we'll reach out with availability, pricing, and first access to new talent.
+                  Story reposts, collab posts, UGC, brand ambassadors, events &amp; more. Drop your number and we'll reach out with availability and pricing.
                 </p>
 
-                <form onSubmit={handleSubmit} className="space-y-3">
+                <form onSubmit={handleSubmit('marketplace_popup')} className="space-y-3">
+                  <input type="text" name="company_website" tabIndex={-1} autoComplete="off" value={hp} onChange={e => setHp(e.target.value)} aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
                   <input
                     type="text"
                     placeholder="Your Name"
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
+                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-[16px] placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
                   />
                   <input
                     type="tel"
@@ -100,14 +121,14 @@ export default function LeadCapturePopup() {
                     value={phone}
                     onChange={e => setPhone(e.target.value)}
                     required
-                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
+                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-[16px] placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
                   />
                   <input
                     type="email"
                     placeholder="Email (optional)"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
-                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-sm placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
+                    className="w-full bg-white/[0.04] border border-white/10 px-4 py-3 text-white text-[16px] placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
                   />
                   <button
                     type="submit"
@@ -139,20 +160,21 @@ export default function LeadCapturePopup() {
 
       {/* Sticky bottom bar — shows after popup is dismissed */}
       {stickyVisible && !visible && (
-        <div className="fixed bottom-0 left-0 right-0 z-[9998] border-t border-white/10 bg-[#0a0a0a]/95 backdrop-blur-xl px-4 py-3 flex items-center justify-between gap-3">
+        <div className="fixed bottom-0 left-0 right-0 z-[9998] border-t border-white/10 bg-[#0a0a0a] px-4 py-3 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <MessageCircle className="h-4 w-4 flex-shrink-0" style={{ color: gold }} />
-            <p className="text-white/70 text-xs truncate">Get pricing & availability — drop your number</p>
+            <p className="text-white/70 text-xs whitespace-nowrap">Get pricing in 1 minute</p>
           </div>
           <div className="flex items-center gap-2 flex-shrink-0">
-            <form onSubmit={handleSubmit} className="flex items-center gap-2">
+            <form onSubmit={handleSubmit('sticky_bar')} className="flex items-center gap-2">
+              <input type="text" name="company_website" tabIndex={-1} autoComplete="off" value={hp} onChange={e => setHp(e.target.value)} aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
               <input
                 type="tel"
                 placeholder="Your phone"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 required
-                className="w-32 sm:w-40 bg-white/[0.06] border border-white/15 px-3 py-2 text-white text-xs placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
+                className="w-32 sm:w-40 bg-white/[0.06] border border-white/15 px-3 py-2 text-white text-[16px] placeholder-white/25 focus:outline-none focus:border-[#c9a96e]/50 transition-colors"
               />
               <button
                 type="submit"

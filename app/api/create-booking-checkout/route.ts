@@ -1,17 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
+import { findPackage, CREW_ADDONS } from '@/lib/booking-packages';
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { serviceType, bookingType, packageName, packageTagline, packagePrice, crewAddon, date, name, email, phone, notes, location, time, songLink, selectedModel } = body;
+    const { serviceType, bookingType, packageId, crewAddon: crewReq, date, name, email, phone, notes, location, time, songLink, selectedModel } = body;
 
-    if (!packageName || !packagePrice) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    // Price is looked up server-side; the client-sent price is never trusted.
+    const pkg: any = findPackage(String(serviceType || ''), String(bookingType || ''), String(packageId || ''));
+    if (!pkg) {
+      return NextResponse.json({ error: 'Unknown package. Please reselect your package.' }, { status: 400 });
     }
+    if (pkg.price > 6000) {
+      return NextResponse.json({ error: 'This package is booked by call. Please contact us.' }, { status: 400 });
+    }
+    const packageName: string = pkg.name;
+    const packageTagline: string = pkg.tagline;
+    const packagePrice: number = pkg.price;
+    const crewAddon: any = crewReq && crewReq.id ? CREW_ADDONS.find((a: any) => a.id === crewReq.id) || null : null;
 
     const isMonthly = bookingType === 'monthly';
-    const serviceLabel = serviceType === 'shoot' ? 'Video / Photo Shoot' : serviceType === 'reaction' ? 'Music Reaction' : serviceType === 'ugc' ? 'UGC & Branded Content' : serviceType === 'business' ? 'Business Content' : serviceType === 'commercial' ? 'Commercial Production' : serviceType === 'bottle' ? 'Bottle Girls / VIP Hostesses' : 'Event Hosting & Promo';
+    const SERVICE_LABELS: Record<string, string> = {
+      shoot: 'Photo / Commercial Shoot', musicvideo: 'Music Video Models', reaction: 'Music Reaction', ugc: 'UGC & Branded Content',
+      business: 'Brand Ambassador Visit', commercial: 'Actors & Voiceover', bottle: 'Bottle Girls / VIP Hostesses', event: 'Event Hosting & Promo',
+      storyreposts: 'Story Reposts', collabreposts: 'Collab Posts', starter: 'Starter (single creator)',
+    };
+    const serviceLabel = SERVICE_LABELS[String(serviceType)] || 'Influence Booking';
     const description = `${packageTagline} — ${serviceLabel}${isMonthly ? ' (Monthly)' : ''}`;
 
     const lineItem: any = {
@@ -20,7 +35,7 @@ export async function POST(req: NextRequest) {
         product_data: {
           name: `${packageName} — ${serviceLabel}`,
           description,
-          images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencemodels.agency'}/logo_stripe.png`],
+          images: [`${process.env.NEXT_PUBLIC_BASE_URL || 'https://influencecreators.marketing'}/logo_stripe.png`],
         },
         unit_amount: Math.round(packagePrice * 100),
         ...(isMonthly ? { recurring: { interval: 'month' } } : {}),
@@ -50,7 +65,7 @@ export async function POST(req: NextRequest) {
       line_items: lineItems,
       mode: isMonthly ? 'subscription' : 'payment',
       success_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/booking/success?session_id={CHECKOUT_SESSION_ID}&type=model-booking`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/model-booking`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}${serviceType === 'starter' ? '/starter' : '/model-booking'}`,
       ...(email ? { customer_email: email } : {}),
       metadata: {
         bookingSource: 'model-booking',

@@ -1,12 +1,33 @@
 import Stripe from 'stripe';
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
+const globalForStripe = globalThis as unknown as { stripe?: Stripe };
+
+function createStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) {
+    throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
+  }
+  return new Stripe(key, {
+    apiVersion: '2024-04-10',
+    typescript: true,
+  });
 }
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-04-10',
-  typescript: true,
+function getStripe(): Stripe {
+  if (!globalForStripe.stripe) {
+    globalForStripe.stripe = createStripe();
+  }
+  return globalForStripe.stripe;
+}
+
+// Defer client setup until a checkout or webhook handler actually uses it,
+// so `next build` can collect route modules without STRIPE_SECRET_KEY.
+export const stripe: Stripe = new Proxy({} as Stripe, {
+  get(_target, prop, receiver) {
+    const client = getStripe();
+    const value = Reflect.get(client, prop, receiver);
+    return typeof value === 'function' ? (value as (...args: unknown[]) => unknown).bind(client) : value;
+  },
 });
 
 export const COMMISSION_RATE = 0.40;

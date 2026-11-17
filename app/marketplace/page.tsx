@@ -653,8 +653,6 @@ export default function MarketplacePage() {
       {/* Trust Bar */}
       <div className="border-y border-white/[0.05] py-4 px-6 md:px-14 mb-12 md:mb-16">
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[10px] tracking-[0.2em] uppercase text-white/25">
-          <span>★★★★★ Rated #1 in South Florida</span>
-          <span className="hidden md:inline">·</span>
           <span>Celebrity-Connected Creators</span>
           <span className="hidden md:inline">·</span>
           <span>Content Delivered in 48hrs</span>

@@ -2,38 +2,46 @@ import type { Metadata } from 'next';
 import ArticleView from './ArticleView';
 import { articles } from './articles-data';
 
+const SITE = 'https://influencecreators.marketing';
+
+export function generateStaticParams() {
+  return Object.keys(articles).map((slug) => ({ slug }));
+}
+
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const article = articles[params.slug];
   if (!article) {
     return { title: 'Article Not Found' };
   }
-  const description = (article.content.find((b: any) => b.type === 'text')?.value || '').slice(0, 160);
-  const url = `https://influencemodels.agency/blog/${params.slug}`;
+  const firstText = article.content.find((block) => block.type === 'text');
+  const description = (firstText && firstText.type === 'text' ? firstText.value : '').slice(0, 160);
+  const url = `${SITE}/blog/${params.slug}`;
+  const image = `${SITE}${article.image}`;
   return {
-    title: article.title,
+    title: { absolute: article.title },
     description,
     alternates: { canonical: url },
     openGraph: {
       locale: 'en_US',
-      siteName: 'Influence Models Agency',
+      siteName: 'Influence',
       title: article.title,
       description,
       url,
       type: 'article',
-      images: [{ url: article.image, width: 1200, height: 630, alt: article.title }],
+      images: [{ url: image, width: 1200, height: 630, alt: article.title }],
       publishedTime: article.date,
       modifiedTime: article.date,
-      authors: [article.author || 'Influence Models Agency'],
-      section: 'Influencer Marketing',
-      tags: ['influencer marketing', 'UGC', 'Miami', 'South Florida', 'social media marketing'],
+      authors: [article.author || 'Influence'],
+      section: 'Creator Marketing',
+      tags: ['creator marketing', 'UGC', 'Miami', 'South Florida', 'social media marketing'],
     },
     twitter: {
-      creator: '@influencemodels.agency',
-      site: '@influencemodels.agency',
+      creator: '@influencecreators.marketing',
+      site: '@influencecreators.marketing',
       card: 'summary_large_image',
       title: article.title,
       description,
-      images: [article.image],
+      images: [image],
     },
   };
 }

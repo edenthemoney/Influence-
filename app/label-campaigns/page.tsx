@@ -1,12 +1,12 @@
 import PersonaLanding from '../components/PersonaLanding';
 
 export const metadata = {
-  title: 'Label Campaigns & Large-Scale Music Videos | Influencer Agency Miami — Influence Agency',
-  description: 'Full-service label campaigns and large-scale music video productions with 10 to 100+ verified creators. Influencer agency in Miami. From $8,500.',
+  title: 'Label Campaigns & Large-Scale Music Videos | Influencer Marketplace Miami — Influence Marketplace',
+  description: 'Full-service label campaigns and large-scale music video productions with 10 to 100+ verified creators. Influencer marketplace in Miami. From $8,500.',
   openGraph: {
-    title: 'Label Campaigns & Large-Scale Music Videos | Influencer Agency Miami',
+    title: 'Label Campaigns & Large-Scale Music Videos | Influencer Marketplace Miami',
     description: 'Full-service label campaigns and large-scale productions with 10 to 100+ creators. From $8,500.',
-    url: 'https://influencemodels.agency/label-campaigns',
+    url: 'https://influencecreators.marketing/label-campaigns',
   },
 };
 
@@ -71,8 +71,8 @@ export default function LabelCampaignsPage() {
         { stat: '7-day', label: 'Avg. Setup' },
       ]}
       faq={[
-        { q: 'How do I book a label campaign with an influencer agency in Miami?', a: 'Start with a custom quote. We’ll review your artist, release timeline, and budget, then build a campaign with 10 to 100+ verified creators.' },
-        { q: 'Can you handle a full music video production?', a: 'Yes. We provide talent casting and on-set coordination for music videos of any scale, from 10 to 50+ models.' },
+        { q: 'How do I book a label campaign with an influencer marketplace in Miami?', a: 'Start with a custom quote. We’ll review your artist, release timeline, and budget, then build a campaign with 10 to 100+ verified creators.' },
+        { q: 'Can you handle a full music video production?', a: 'Yes. We provide creator casting and on-set coordination for music videos of any scale, from 10 to 50+ models.' },
         { q: 'Do you offer retainer contracts for labels?', a: 'Yes. Labels and enterprise brands can book monthly retainer packages with dedicated teams and priority access.' },
         { q: 'Can you work with our creative director?', a: 'Absolutely. We integrate with your in-house team and execute against your creative direction.' },
         { q: 'What reporting do you provide for label campaigns?', a: 'We provide real-time dashboards, launch reports, and weekly executive summaries with reach, engagement, and content performance.' },

@@ -13,8 +13,7 @@ const categories = [
 ];
 
 const packages = [
-  { min: 0,    max: 500,   name: 'Starter', price: '$100–$499',    desc: 'Single influencer, 1–2 posts',  reach: '50K–100K',   budgetTier: 'testing' },
-  { min: 500,  max: 1500,  name: 'Growth',  price: '$500–$1,499',  desc: '1 influencer, 4–6 posts',      reach: '200K–300K',  budgetTier: 'scaling' },
+  { min: 0,    max: 1500,  name: 'Growth',  price: '$450–$1,499',  desc: '1 influencer, 4–6 posts',      reach: '200K–300K',  budgetTier: 'scaling' },
   { min: 1500, max: 5000,  name: 'Pro',     price: '$1,500–$4,999', desc: 'Multi-influencer rollout',     reach: '300K–700K',  budgetTier: 'scaling' },
   { min: 5000, max: 99999, name: 'Elite',   price: '$5,000+',      desc: '10–100+ influencers, full team', reach: '1M+',          budgetTier: 'enterprise' },
 ];
@@ -94,7 +93,7 @@ export default function BookingGuide() {
             <div className="flex items-center gap-6 mb-3">
               <input
                 type="range"
-                min={200}
+                min={450}
                 max={5000}
                 step={100}
                 value={budget}
@@ -106,7 +105,7 @@ export default function BookingGuide() {
               </span>
             </div>
             <div className="flex justify-between text-white/25 text-xs tracking-widest uppercase">
-              <span>$300</span>
+              <span>$450</span>
               <span>$5,000+</span>
             </div>
           </div>

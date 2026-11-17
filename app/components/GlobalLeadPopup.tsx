@@ -5,7 +5,8 @@ import LeadCapturePopup from './LeadCapturePopup';
 
 // Pages where an auto-popup would interrupt an active conversion flow.
 const EXCLUDED = [
-  '/model-booking',
+  '/dec16',
+  '/start',
   '/music-video-booking',
   '/quote',
   '/book',

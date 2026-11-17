@@ -10,7 +10,7 @@ interface IPhoneMockupProps {
 
 export default function IPhoneMockup({ image, title, className = '' }: IPhoneMockupProps) {
   return (
-    <div className={`relative mx-auto ${className}`} style={{ width: 'clamp(200px, 55vw, 280px)', height: 'clamp(415px, 114vw, 580px)' }}>
+    <div className={`lx-phone relative mx-auto ${className}`} style={{ width: 'clamp(200px, 55vw, 280px)', height: 'clamp(415px, 114vw, 580px)' }}>
       {/* iPhone Frame */}
       <div 
         className="absolute inset-0 rounded-[3rem] border-8 border-gray-900 bg-black overflow-hidden"

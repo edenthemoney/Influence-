@@ -9,8 +9,88 @@ const gold = '#c9a96e';
 
 const articles = [
   {
+    slug: "how-much-does-ugc-cost-miami",
+    title: "How Much Does UGC Cost in Miami? 2026 Price Guide",
+    excerpt: "Influence UGC reels and campaigns start at $750. What changes the price of UGC in Miami.",
+    category: "Pricing",
+    readTime: "5 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Des/des-5.jpg",
+  },
+  {
+    slug: "how-to-book-event-models-miami",
+    title: "How to Book Event Models and Promo Girls in Miami (Rates, Timing, What to Ask)",
+    excerpt: "Event models in Miami are $95/hr per model with a 4-hour minimum, 2-person minimum ($760) at Influence. How booking works and what to ask.",
+    category: "Events",
+    readTime: "5 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Des/des-4.jpg",
+  },
+  {
+    slug: "how-to-cast-models-for-your-music-video",
+    title: "How to Cast Models for Your Music Video: A Step-by-Step Guide for Artists",
+    excerpt: "Music video models at Influence start from $450: Featured, Lead and Ensemble tiers. Step-by-step casting guide for artists.",
+    category: "Music",
+    readTime: "6 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Nadia/nadia-1.jpg",
+  },
+  {
+    slug: "do-song-reaction-videos-help-your-music",
+    title: "Do Song Reaction Videos Actually Help Your Music? How They Work",
+    excerpt: "How song reaction videos work on Instagram and TikTok, what they can and cannot do, and how to book them.",
+    category: "Music",
+    readTime: "5 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Kady/kady-1.jpg",
+  },
+  {
+    slug: "instagram-story-reposts-vs-collab-posts",
+    title: "Instagram Story Reposts vs Collab Posts: Which Should You Buy?",
+    excerpt: "Collab posts appear on both feeds and stay up; story reposts last 24 hours. How to choose.",
+    category: "Strategy",
+    readTime: "5 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Shay/shay-1.jpg",
+  },
+  {
+    slug: "hiring-actors-and-voiceover-for-commercials-south-florida",
+    title: "Hiring Actors and Voiceover Talent for Commercials in South Florida",
+    excerpt: "Commercial work at Influence starts at $450 for voiceover and $750 for an on-camera actor. How casting and voiceover work in South Florida.",
+    category: "Commercials",
+    readTime: "5 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Des/des-3.jpg",
+  },
+  {
+    slug: "brand-ambassador-visits-for-local-businesses",
+    title: "Brand Ambassador Visits for Local Businesses: What You Get for $600+",
+    excerpt: "Brand ambassador visits at Influence start from $600: Solo Visit, Content Day and Full Production packages.",
+    category: "Business",
+    readTime: "5 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Des/des-2.jpg",
+  },
+  {
+    slug: "influencer-agency-vs-creator-marketplace",
+    title: "Influencer Agency vs Creator Marketplace: Which Is Right for Your Campaign?",
+    excerpt: "When to book creators directly on a marketplace and when to use a managed campaign.",
+    category: "Strategy",
+    readTime: "5 min read",
+    date: 'Oct 2026',
+    featured: false,
+    image: "/images/Nya/nya-1.jpg",
+  },
+  {
     slug: 'why-influencer-marketing-is-dominating-2025',
-    title: 'Why Influencer Marketing Is Dominating 2025 (And It\'s Only Getting Bigger)',
+    title: 'Why Creator Marketing Is Dominating 2025 (And It\'s Only Getting Bigger)',
     excerpt: 'Brands are shifting billions from traditional advertising to influencer partnerships. Here\'s the data behind the explosion — and why it matters for your business.',
     category: 'Industry',
     readTime: '7 min read',
@@ -20,7 +100,7 @@ const articles = [
   },
   {
     slug: 'roi-of-influencer-marketing-vs-traditional-ads',
-    title: 'Influencer Marketing ROI: 11x Returns vs. Traditional Advertising',
+    title: 'Creator Marketing ROI: 11x Returns vs. Traditional Advertising',
     excerpt: 'The numbers don\'t lie. Dollar for dollar, influencer campaigns outperform TV, billboard, and paid social. We break down exactly why.',
     category: 'Data',
     readTime: '5 min read',
@@ -31,7 +111,7 @@ const articles = [
   {
     slug: 'how-miami-brands-are-winning-with-local-influencers',
     title: 'How Miami Brands Are Winning Big With Local Influencers',
-    excerpt: 'Restaurants, nightclubs, and fashion labels in Miami are seeing 3-5x more engagement using local talent over celebrity endorsements. Here\'s their playbook.',
+    excerpt: 'Restaurants, nightclubs, and fashion labels in Miami are seeing 3-5x more engagement using local creators over celebrity endorsements. Here\'s their playbook.',
     category: 'Case Study',
     readTime: '6 min read',
     date: 'May 2025',
@@ -41,7 +121,7 @@ const articles = [
   {
     slug: 'ugc-vs-branded-content-what-converts-better',
     title: 'UGC vs. Branded Content: What Actually Converts Better in 2025',
-    excerpt: 'User-generated content outperforms polished brand ads by 4x on engagement and 2.4x on conversions. Here\'s how to use it.',
+    excerpt: 'How user-generated content and polished brand ads differ, and how to use each.',
     category: 'Strategy',
     readTime: '5 min read',
     date: 'May 2025',
@@ -50,8 +130,8 @@ const articles = [
   },
   {
     slug: 'music-video-models-the-secret-weapon-for-viral-videos',
-    title: 'Music Video Models: The Secret Weapon Behind Every Viral Video',
-    excerpt: 'From Trippie Redd to Sean Paul — why professional models make or break a music video\'s performance. Plus: what it costs.',
+    title: 'Music Video Creators: The Secret Weapon Behind Every Viral Video',
+    excerpt: 'From Trippie Redd to Sean Paul — why professional creators make or break a music video\'s performance. Plus: what it costs.',
     category: 'Music',
     readTime: '8 min read',
     date: 'May 2025',
@@ -72,7 +152,7 @@ export default function BlogPage() {
           <div className="flex items-center gap-4">
             <MobileNav />
             <div className="hidden md:flex items-center gap-10">
-              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+              <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
               <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
               <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
               <Link href="/blog" className="text-white transition-colors duration-300 text-[11px] tracking-widest uppercase" style={{ color: gold }}>Journal</Link>
@@ -103,7 +183,7 @@ export default function BlogPage() {
             <span style={{ color: gold }}>Creator Economy</span>
           </h1>
           <p className="text-white/40 text-lg max-w-xl">
-            Data, strategy, and stories from the front lines of influencer marketing.
+            Data, strategy, and stories from the front lines of creator marketing.
           </p>
         </div>
 
@@ -157,8 +237,8 @@ export default function BlogPage() {
 
         {/* CTA */}
         <div className="max-w-5xl mx-auto mt-20 text-center border border-white/[0.06] p-12">
-          <h2 className="text-2xl font-bold text-white mb-3">Ready to Leverage Influencer Marketing?</h2>
-          <p className="text-white/40 mb-6">Book a model or launch a campaign today.</p>
+          <h2 className="text-2xl font-bold text-white mb-3">Ready to Leverage Creator Marketing?</h2>
+          <p className="text-white/40 mb-6">Book a creator or launch a campaign today.</p>
           <Link href="/book" className="inline-block px-8 py-4 text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
             Get Started
           </Link>

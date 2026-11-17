@@ -6,22 +6,22 @@ import MobileNav from '../components/MobileNav';
 const gold = '#c9a96e';
 
 export const metadata: Metadata = {
-  title: 'UGC Creators Miami — UGC Content Creation Agency | Influence',
-  description: 'Top UGC creators in Miami. Book verified influencers for authentic user-generated content, reels, TikToks, and brand videos. From $300.',
+  title: 'UGC Creators Miami — UGC Content Creation Marketplace | Influence',
+  description: 'Top UGC creators in Miami. Book verified influencers for authentic user-generated content, reels, TikToks, and brand videos. From $750.',
   openGraph: {
-    title: 'UGC Creators Miami — UGC Content Creation Agency',
+    title: 'UGC Creators Miami — UGC Content Creation Marketplace',
     description: 'Miami\'s top UGC creators. Authentic content, verified influencers, transparent pricing for brands.',
-    url: 'https://influencemodels.agency/ugc-creators-miami',
+    url: 'https://influencecreators.marketing/ugc-creators-miami',
   },
 };
 
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'ServiceAreaBusiness',
-  name: 'Influence Models Agency - Miami UGC Creators',
-  description: 'Miami UGC content creation agency. Book verified influencers for authentic user-generated content, reels, TikToks, and brand videos.',
-  url: 'https://influencemodels.agency/ugc-creators-miami',
-  telephone: '+15615520392',
+  name: 'Influence - Miami UGC Creators',
+  description: 'Miami UGC content creation marketplace. Book verified influencers for authentic user-generated content, reels, TikToks, and brand videos.',
+  url: 'https://influencecreators.marketing/ugc-creators-miami',
+  telephone: '+15612877194',
   email: 'influencemodelsagency@gmail.com',
   address: {
     '@type': 'PostalAddress',
@@ -36,9 +36,9 @@ const localBusinessSchema = {
     longitude: -80.19178,
   },
   openingHours: 'Mo-Su 00:00-23:59',
-  priceRange: '$300-$3,000',
+  priceRange: '$750-$3,000',
   sameAs: [
-    'https://www.instagram.com/influencemodels.agency',
+    'https://www.instagram.com/influencecreators.marketing',
     'https://www.tiktok.com/@influencemodelsagency',
   ],
 };
@@ -52,7 +52,7 @@ const faqSchema = {
       name: 'How much does UGC content cost in Miami?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Miami UGC content starts at $300 per video. Package deals available for multiple videos. Pricing varies based on content type, complexity, and influencer tier.',
+        text: 'Miami UGC content starts at $750 for a 3-video pack. Package deals available for multiple videos. Pricing varies based on content type, complexity, and influencer tier.',
       },
     },
     {
@@ -60,7 +60,7 @@ const faqSchema = {
       name: 'Do you work with Miami-based UGC creators only?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We work with both Miami-based UGC creators and nationwide talent. For Miami-specific content, we prioritize local creators. Remote UGC is available from creators anywhere in the US.',
+        text: 'We work with both Miami-based UGC creators and nationwide creators. For Miami-specific content, we prioritize local creators. Remote UGC is available from creators anywhere in the US.',
       },
     },
     {
@@ -90,13 +90,13 @@ const breadcrumbSchema = {
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://influencemodels.agency',
+      item: 'https://influencecreators.marketing',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: 'UGC Creators Miami',
-      item: 'https://influencemodels.agency/ugc-creators-miami',
+      item: 'https://influencecreators.marketing/ugc-creators-miami',
     },
   ],
 };
@@ -123,7 +123,7 @@ export default function MiamiUGCCreatorsPage() {
             <div className="flex items-center gap-4">
               <MobileNav />
               <div className="hidden md:flex items-center gap-10">
-                <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Talent</Link>
+                <Link href="/marketplace" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Creators</Link>
                 <Link href="/services" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Services</Link>
                 <Link href="/pricing" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase">Pricing</Link>
               </div>
@@ -131,7 +131,7 @@ export default function MiamiUGCCreatorsPage() {
             <Link href="/" className="font-display font-semibold tracking-[0.4em] uppercase" style={{ fontSize: '18px', color: gold }}>Influence</Link>
             <div className="flex items-center gap-10">
               <Link href="/about" className="text-white/55 hover:text-white transition-colors duration-300 text-[11px] tracking-widest uppercase hidden md:block">About</Link>
-              <Link href="/model-booking?service=ugc" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book UGC</Link>
+              <Link href="/start?service=ugc" className="text-[11px] md:text-[12px] tracking-widest uppercase px-5 py-3 md:px-8 md:py-4 transition-all duration-300 hover:opacity-80 font-bold" style={{ backgroundColor: gold, color: '#000' }}>Book UGC</Link>
             </div>
           </div>
         </nav>
@@ -145,14 +145,14 @@ export default function MiamiUGCCreatorsPage() {
               Miami's Top<br />UGC Creators
             </h1>
             <p className="text-white/60 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
-              Verified Miami influencers creating authentic user-generated content for brands. Reels, TikToks, product demos, testimonials — all delivered remotely. From $300.
+              Verified Miami influencers creating authentic user-generated content for brands. Reels, TikToks, product demos, testimonials — all delivered remotely. From $750.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/model-booking?service=ugc" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+              <Link href="/start?service=ugc" className="inline-flex items-center justify-center gap-3 px-10 py-5 text-[13px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Miami UGC Creators <ChevronRight className="h-4 w-4" />
               </Link>
-              <a href="tel:+15615520392" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
-                <Phone className="h-4 w-4" /> (561) 552-0392
+              <a href="tel:+15612877194" className="inline-flex items-center justify-center gap-3 px-8 py-5 text-[13px] font-bold tracking-widest uppercase border border-white/20 text-white/60 hover:text-white hover:border-white/40 transition-all">
+                <Phone className="h-4 w-4" /> (561) 287-7194
               </a>
             </div>
           </div>
@@ -194,12 +194,12 @@ export default function MiamiUGCCreatorsPage() {
             </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { name: 'Product Demos', price: 'From $300', desc: 'Authentic product demonstrations and unboxing videos.' },
-                { name: 'Testimonials', price: 'From $300', desc: 'Genuine customer testimonials and reviews on camera.' },
-                { name: 'Lifestyle Content', price: 'From $300', desc: 'Lifestyle videos featuring your product in daily use.' },
-                { name: 'Brand Reels', price: 'From $300', desc: 'Branded Instagram reels and TikTok content.' },
-                { name: 'Trend Content', price: 'From $300', desc: 'Viral trend participation and challenge videos.' },
-                { name: 'GRWM Content', price: 'From $300', desc: 'Get Ready With Me style content with products.' },
+                { name: 'Product Demos', price: 'From $750', desc: 'Authentic product demonstrations and unboxing videos.' },
+                { name: 'Testimonials', price: 'From $750', desc: 'Genuine customer testimonials and reviews on camera.' },
+                { name: 'Lifestyle Content', price: 'From $750', desc: 'Lifestyle videos featuring your product in daily use.' },
+                { name: 'Brand Reels', price: 'From $750', desc: 'Branded Instagram reels and TikTok content.' },
+                { name: 'Trend Content', price: 'From $750', desc: 'Viral trend participation and challenge videos.' },
+                { name: 'GRWM Content', price: 'From $750', desc: 'Get Ready With Me style content with products.' },
               ].map(({ name, price, desc }) => (
                 <div key={name} className="border border-white/[0.06] p-6">
                   <h3 className="text-white font-bold text-sm mb-1">{name}</h3>
@@ -246,9 +246,9 @@ export default function MiamiUGCCreatorsPage() {
             <h2 className="font-display font-bold italic text-black leading-[0.9] mb-6" style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}>
               Book Miami UGC<br />creators today.
             </h2>
-            <p className="text-black/50 text-lg mb-10 max-w-lg">Authentic content from verified Miami influencers. From $300. 3-7 day delivery.</p>
+            <p className="text-black/50 text-lg mb-10 max-w-lg">Authentic content from verified Miami influencers. From $750. 3-7 day delivery.</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/model-booking?service=ugc" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+              <Link href="/start?service=ugc" className="inline-flex items-center justify-center gap-3 px-12 py-6 text-[14px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
                 Book Miami UGC <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
@@ -260,7 +260,7 @@ export default function MiamiUGCCreatorsPage() {
           <div className="max-w-7xl mx-auto px-6 md:px-16 pt-16 pb-10">
             <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-white/20 text-xs">&copy; 2026 Influence</p>
-              <Link href="https://www.instagram.com/influencemodels.agency" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
+              <Link href="https://www.instagram.com/influencecreators.marketing" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-white/70 transition-colors text-[11px] tracking-widest uppercase">Instagram</Link>
               <p className="text-white/10 text-[9px] tracking-widest uppercase">Miami &middot; Boca Raton, FL</p>
             </div>
           </div>

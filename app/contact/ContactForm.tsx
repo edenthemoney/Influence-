@@ -1,4 +1,5 @@
 'use client';
+import { leadMeta } from '../../lib/leadClient';
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
@@ -9,11 +10,11 @@ const gold = '#c9a96e';
 const SERVICES = [
   { value: 'ugc',        label: 'UGC & Branded Reels' },
   { value: 'reaction',   label: 'Music Reactions' },
-  { value: 'musicvideo', label: 'Music Video Models' },
+  { value: 'musicvideo', label: 'Music Video Creators' },
   { value: 'shoot',      label: 'Photo / Video Shoot' },
   { value: 'business',   label: 'Models at My Business' },
   { value: 'commercial', label: 'Commercials & Speaking Roles' },
-  { value: 'event',      label: 'Event Models / Hosting' },
+  { value: 'event',      label: 'Event Creators / Hosting' },
   { value: 'bottle',     label: 'Bottle Girls / VIP Hostesses' },
   { value: 'other',      label: 'Not sure yet' },
 ];
@@ -62,6 +63,7 @@ export default function ContactForm() {
         body: JSON.stringify({
           name, phone, email,
           source: 'contact_page',
+          meta: leadMeta(),
           serviceType: service || undefined,
           notes: [service ? `Service: ${service}` : '', budget ? `Budget: ${budget}` : '', message].filter(Boolean).join(' | '),
         }),
@@ -69,7 +71,7 @@ export default function ContactForm() {
       if (!res.ok) throw new Error('failed');
       setSubmitted(true);
     } catch {
-      setError('Something went wrong. Please call or text us at (561) 552-0392.');
+      setError('Something went wrong. Please call or text us at (561) 287-7194.');
       setSubmitting(false);
     }
   };
@@ -84,7 +86,7 @@ export default function ContactForm() {
         <p className="text-white/45 text-sm mb-6 max-w-md mx-auto">
           Our team will reach out shortly. Want to keep moving? Start your booking now and we&apos;ll have everything ready.
         </p>
-        <Link href="/model-booking" className="inline-flex items-center gap-2 px-8 py-4 text-[12px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
+        <Link href="/start" className="inline-flex items-center gap-2 px-8 py-4 text-[12px] font-bold tracking-widest uppercase hover:opacity-85 transition-all" style={{ backgroundColor: gold, color: '#000' }}>
           Book Now <ChevronRight className="h-4 w-4" />
         </Link>
       </div>
