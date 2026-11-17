@@ -23,126 +23,149 @@
     background: #000;
     color: #f4efe6;
     font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
-    /* Keep copy inside Instagram Story safe zones */
-    padding: 260px 0 310px;
+    padding: 250px 0 290px;
     display: flex;
     flex-direction: column;
   }
-
   .pad { padding-left: 56px; padding-right: 56px; }
 
   .brand {
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-weight: 600;
-    font-size: 36px;
+    font-size: 34px;
     letter-spacing: 0.44em;
     color: #c9a96e;
     text-align: center;
     padding-right: 0.44em;
   }
   .eyebrow {
-    margin-top: 20px;
+    margin-top: 18px;
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: #c9a96e;
   }
-
-  .date-block { margin-top: 44px; text-align: center; }
+  .date-block { margin-top: 36px; text-align: center; }
   .weekday {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
-    letter-spacing: 0.38em;
+    letter-spacing: 0.36em;
     text-transform: uppercase;
     color: #c9a96e;
-    padding-left: 0.38em;
+    padding-left: 0.36em;
   }
   .day {
-    margin-top: 8px;
+    margin-top: 6px;
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-weight: 600;
-    font-size: 128px;
+    font-size: 112px;
     line-height: 0.9;
     letter-spacing: -0.025em;
   }
   .time {
-    margin-top: 16px;
+    margin-top: 12px;
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
-    font-weight: 500;
-    font-size: 34px;
-    letter-spacing: 0.1em;
+    font-size: 30px;
+    letter-spacing: 0.08em;
     color: rgba(244,239,230,0.78);
   }
-
   .rule {
-    width: 72px;
+    width: 64px;
     height: 1px;
     background: #c9a96e;
-    margin: 32px auto 0;
+    margin: 24px auto 0;
   }
-
-  .meta { margin-top: 26px; text-align: center; }
-  .venue { font-size: 28px; font-weight: 700; }
-  .addr { margin-top: 8px; font-size: 20px; color: rgba(244,239,230,0.72); }
+  .meta { margin-top: 20px; text-align: center; }
+  .venue { font-size: 26px; font-weight: 700; }
+  .addr { margin-top: 6px; font-size: 18px; color: rgba(244,239,230,0.72); }
   .host {
-    margin-top: 18px;
+    margin-top: 14px;
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-style: italic;
-    font-size: 28px;
+    font-size: 26px;
     color: #c9a96e;
   }
 
-  /* Edge-to-edge editorial roster — studio portraits only */
-  .band {
-    margin-top: 48px;
+  /* Collage: girls + venue + drinks */
+  .collage {
+    margin-top: 36px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 280px 240px 220px;
+    gap: 4px;
   }
-  .band figure {
+  .collage figure {
     margin: 0;
-    aspect-ratio: 4 / 5;
     overflow: hidden;
     background: #0a0908;
+    position: relative;
   }
-  .band img {
+  .collage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 14%;
+  }
+  .g1 { grid-column: 1 / 3; grid-row: 1; }
+  .g2 { grid-column: 3 / 5; grid-row: 1; }
+  .g3 { grid-column: 5 / 7; grid-row: 1; }
+  .g1 img, .g2 img, .g3 img { object-position: center 16%; }
+
+  .patio { grid-column: 1 / 5; grid-row: 2; }
+  .patio img { object-position: center 45%; }
+  .drink1 { grid-column: 5 / 7; grid-row: 2; }
+  .drink1 img { object-position: center 40%; }
+
+  .room { grid-column: 1 / 4; grid-row: 3; }
+  .room img { object-position: center 50%; }
+  .g4 { grid-column: 4 / 5; grid-row: 3; }
+  .g4 img { object-position: center 14%; }
+  .g5 { grid-column: 5 / 6; grid-row: 3; }
+  .g5 img { object-position: center 14%; }
+  .drink2 { grid-column: 6 / 7; grid-row: 3; }
+  .drink2 img { object-position: center 45%; }
+
+  .caption {
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.92);
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
   }
 
-  .spacer { flex: 1; min-height: 36px; }
+  .spacer { flex: 1; min-height: 24px; }
 
   .price {
     display: grid;
     grid-template-columns: 1fr 1px 1fr;
     border: 1px solid rgba(201,169,110,0.85);
   }
-  .price .col { padding: 28px 14px 26px; text-align: center; }
+  .price .col { padding: 24px 12px 22px; text-align: center; }
   .price .label {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #c9a96e;
   }
   .price .value {
-    margin-top: 10px;
+    margin-top: 8px;
     font-family: 'Bodoni Moda', Didot, Georgia, serif;
     font-weight: 600;
-    font-size: 64px;
+    font-size: 56px;
     line-height: 1;
   }
   .price .value.gold { color: #c9a96e; }
   .price .divider { background: rgba(201,169,110,0.55); }
-
   .url {
-    margin-top: 24px;
+    margin-top: 20px;
     text-align: center;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     color: rgba(244,239,230,0.7);
   }
@@ -166,13 +189,29 @@
       </div>
     </div>
 
-    <div class="band">
-      <figure><img src="./img/des-hero.webp" alt="" /></figure>
-      <figure><img src="./img/amb-genesis.webp" alt="" /></figure>
-      <figure><img src="./img/amb-kat.webp" alt="" /></figure>
-      <figure><img src="./img/amb-alisha.webp" alt="" /></figure>
-      <figure><img src="./img/seahra-gold-lg.webp" alt="" /></figure>
-      <figure><img src="./img/celeste.webp" alt="" /></figure>
+    <div class="collage">
+      <figure class="g1"><img src="./img/des-hero.webp" alt="" /></figure>
+      <figure class="g2"><img src="./img/amb-genesis.webp" alt="" /></figure>
+      <figure class="g3"><img src="./img/amb-kat.webp" alt="" /></figure>
+
+      <figure class="patio">
+        <img src="./img/venue-patio.webp" alt="" />
+        <span class="caption">Serena patio</span>
+      </figure>
+      <figure class="drink1">
+        <img src="./img/venue-martini.webp" alt="" />
+        <span class="caption">Drinks</span>
+      </figure>
+
+      <figure class="room">
+        <img src="./img/venue-room.webp" alt="" />
+        <span class="caption">Dining room</span>
+      </figure>
+      <figure class="g4"><img src="./img/amb-alisha.webp" alt="" /></figure>
+      <figure class="g5"><img src="./img/seahra-gold-lg.webp" alt="" /></figure>
+      <figure class="drink2">
+        <img src="./img/drink-smoked-old-fashioned.webp" alt="" />
+      </figure>
     </div>
 
     <div class="spacer"></div>
