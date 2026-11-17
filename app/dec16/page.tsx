@@ -406,14 +406,14 @@ export default function TicketsPage() {
                 src="/dec16-assets/dec16-story-flyer.jpg"
                 width={1080}
                 height={1920}
-                alt="Influence Connect Dec 16 story flyer — Business Owners $75, Ladies RSVP free"
+                alt="Influence Connect Dec 16 Instagram story flyer — December 16, roster, Business Owners $75"
                 className="w-full"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <p className="mt-4 text-center text-[14px] text-[#f4efe6]/65 md:text-right">
-              Flyer shows Business Owners $75 · Ladies RSVP free
+              New story flyer · safe zones · roster · Business Owners $75
             </p>
           </div>
         </div>

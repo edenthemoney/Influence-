@@ -33,8 +33,6 @@ export default function SharePage() {
         <span className="font-bold text-[#c9a96e]">Business owners $75</span>
         {' · '}
         Ladies &amp; brand ambassadors RSVP free.
-        {' '}
-        Entry is not free for business owners.
       </p>
       <p className="mt-5 break-all font-display text-[20px] font-medium text-[#c9a96e]">{SHORT_LINK}</p>
 
@@ -54,15 +52,15 @@ export default function SharePage() {
 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/dec16-assets/dec16-story-flyer.png"
+        src="/dec16-assets/dec16-story-flyer.jpg"
         width={1080}
         height={1920}
-        alt="Dec 16 Influence Connect story flyer — Business Owners $75, Ladies RSVP free. Press and hold, then Save."
+        alt="Dec 16 Influence Connect Instagram story flyer — December 16, Serena Pastificio, Business Owners $75, Ladies RSVP free."
         className="mt-10 w-full border border-[#c9a96e]/45"
         style={{ WebkitTouchCallout: 'default' }}
       />
       <p className="mt-3 text-center text-[14px] text-[#f4efe6]/65">
-        Press and hold the flyer to save · Business Owners $75 on the art
+        Built for Instagram Stories · press &amp; hold to save · $75 on the art
       </p>
     </main>
   );

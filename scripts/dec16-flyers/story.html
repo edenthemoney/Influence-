@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  @font-face {
+    font-family: 'Bodoni Moda';
+    src: url('./fonts/BodoniModa.ttf') format('truetype');
+    font-weight: 400 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Bodoni Moda';
+    src: url('./fonts/BodoniModa-Italic.ttf') format('truetype');
+    font-weight: 400 900;
+    font-style: italic;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+  .story {
+    width: 1080px;
+    height: 1920px;
+    background: #000;
+    color: #f4efe6;
+    font-family: Inter, 'Helvetica Neue', Arial, sans-serif;
+    /* Keep copy inside Instagram Story safe zones */
+    padding: 260px 0 310px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pad { padding-left: 56px; padding-right: 56px; }
+
+  .brand {
+    font-family: 'Bodoni Moda', Didot, Georgia, serif;
+    font-weight: 600;
+    font-size: 36px;
+    letter-spacing: 0.44em;
+    color: #c9a96e;
+    text-align: center;
+    padding-right: 0.44em;
+  }
+  .eyebrow {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c9a96e;
+  }
+
+  .date-block { margin-top: 44px; text-align: center; }
+  .weekday {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    padding-left: 0.38em;
+  }
+  .day {
+    margin-top: 8px;
+    font-family: 'Bodoni Moda', Didot, Georgia, serif;
+    font-weight: 600;
+    font-size: 128px;
+    line-height: 0.9;
+    letter-spacing: -0.025em;
+  }
+  .time {
+    margin-top: 16px;
+    font-family: 'Bodoni Moda', Didot, Georgia, serif;
+    font-weight: 500;
+    font-size: 34px;
+    letter-spacing: 0.1em;
+    color: rgba(244,239,230,0.78);
+  }
+
+  .rule {
+    width: 72px;
+    height: 1px;
+    background: #c9a96e;
+    margin: 32px auto 0;
+  }
+
+  .meta { margin-top: 26px; text-align: center; }
+  .venue { font-size: 28px; font-weight: 700; }
+  .addr { margin-top: 8px; font-size: 20px; color: rgba(244,239,230,0.72); }
+  .host {
+    margin-top: 18px;
+    font-family: 'Bodoni Moda', Didot, Georgia, serif;
+    font-style: italic;
+    font-size: 28px;
+    color: #c9a96e;
+  }
+
+  /* Edge-to-edge editorial roster — studio portraits only */
+  .band {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .band figure {
+    margin: 0;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #0a0908;
+  }
+  .band img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 14%;
+  }
+
+  .spacer { flex: 1; min-height: 36px; }
+
+  .price {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    border: 1px solid rgba(201,169,110,0.85);
+  }
+  .price .col { padding: 28px 14px 26px; text-align: center; }
+  .price .label {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9a96e;
+  }
+  .price .value {
+    margin-top: 10px;
+    font-family: 'Bodoni Moda', Didot, Georgia, serif;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1;
+  }
+  .price .value.gold { color: #c9a96e; }
+  .price .divider { background: rgba(201,169,110,0.55); }
+
+  .url {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(244,239,230,0.7);
+  }
+</style>
+</head>
+<body>
+  <div class="story">
+    <div class="pad">
+      <div class="brand">INFLUENCE</div>
+      <div class="eyebrow">Influence Connect</div>
+      <div class="date-block">
+        <div class="weekday">Wednesday</div>
+        <div class="day">December 16</div>
+        <div class="time">2026 · 4–7 PM ET</div>
+      </div>
+      <div class="rule"></div>
+      <div class="meta">
+        <div class="venue">Serena Pastificio</div>
+        <div class="addr">Mizner Park · Boca Raton</div>
+        <div class="host">Hosted by Deseray Marie</div>
+      </div>
+    </div>
+
+    <div class="band">
+      <figure><img src="./img/des-hero.webp" alt="" /></figure>
+      <figure><img src="./img/amb-genesis.webp" alt="" /></figure>
+      <figure><img src="./img/amb-kat.webp" alt="" /></figure>
+      <figure><img src="./img/amb-alisha.webp" alt="" /></figure>
+      <figure><img src="./img/seahra-gold-lg.webp" alt="" /></figure>
+      <figure><img src="./img/celeste.webp" alt="" /></figure>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="pad">
+      <div class="price">
+        <div class="col">
+          <div class="label">Business Owners</div>
+          <div class="value gold">$75</div>
+        </div>
+        <div class="divider"></div>
+        <div class="col">
+          <div class="label">Ladies &amp; Ambassadors</div>
+          <div class="value">Free</div>
+        </div>
+      </div>
+      <div class="url">influencecreators.marketing/dec16</div>
+    </div>
+  </div>
+</body>
+</html>
