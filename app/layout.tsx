@@ -551,6 +551,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="msvalidate.01" content="FCCEB34D22A812F436477A8C8780C714" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Google Ads conversion tracking */}
         {process.env.NEXT_PUBLIC_GOOGLE_ADS_ID && (
